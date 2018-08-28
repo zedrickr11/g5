@@ -2,12 +2,12 @@
 @section ('contenido')
 <section class="content-header">
       <h1>
-        Equipo
-        <small>Área</small>
+        Hospital
+        <small>Regiones</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Equipo</a></li>
-        <li class="active">Área</li>
+        <li><a href="#"><i class="fa fa-tv"></i> Region</a></li>
+        <li class="active">Listado</li>
       </ol>
 	</section>
 	<section class="content">
@@ -17,8 +17,8 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="box">
             <div class="box-header">
-			  <h3 class="box-title">Listado de Áreas IGSS<a href="area/create"><button class="btn btn-success">Nueva</button></a>
-			  		</h3>
+			  <h3 class="box-title">Listado de Regiones <a href="region/create"><button class="btn btn-success">Nuevo</button></a>
+			  		<a href="#" target="_blank"><button class="btn btn-info">Reporte</button></a></h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -26,27 +26,25 @@
                 <table  class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Formato</th>
-                    <th>Área</th>
-                    <th>Opciones</th>
+                    <th>Id</th>
+                    <th>Region</th>
                   </tr>
                   </thead>
                   <tbody>
-            @foreach ($areas as $a)
+            @foreach ($regiones as $reg)
             <tr>
-              <td>{{ $a->idarea}}</td>
-              <td>{{ $a->nombre_area}}</td>
-
+              <td>{{ $reg->idregion}}</td>
+              <td>{{ $reg->region}}</td>
 
               <td>
 
-                  <a href="{{route('area.edit',$a->idarea)}}">
+                  <a href="{{route('region.edit',$reg->idregion)}}">
                     <button type="button" class="btn btn-warning btn-sm" name="button">Editar</button>
                   </a>
-                  <a href="{{route('area.show',$a->idarea)}}">
+                  <a href="{{route('region.show',$reg->idregion)}}">
                     <button type="button" class="btn btn-info btn-sm" name="button">Detalles</button>
                   </a>
-                  <form style="display: inline" method="POST" action="{{route('area.destroy', $a->idarea)}}">
+                  <form style="display: inline" method="POST" action="{{route('region.destroy', $reg->idregion)}}">
                   {!!method_field('DELETE')!!}
                   {!!csrf_field()!!}
                     <button type="submit" class="btn btn-danger btn-sm" name="button">Eliminar</button>
