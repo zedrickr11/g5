@@ -18,3 +18,6 @@ Route::get('/', function () {
 Route::resource('equipo/fabricante','FabricanteController');
 Route::resource('equipo/area','AreaController');
 Route::resource('equipo/grupo','GrupoController');
+Route::resource('equipo/estado','EstadoController');
+Route::resource('equipo/servicioTecnico','servicioTecnicoController');
+Route::resource('equipo/tipoManual','tipoManualController');
