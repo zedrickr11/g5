@@ -12,6 +12,10 @@
     </a>
     <ul class="treeview-menu">
       <li class=""><a href="{{route('fabricante.index')}} "><i class="fa fa-circle-o"></i> Fabricante</a></li>
+      <li><a href="#"><i class="fa fa-circle-o"></i> Distribuidor</a></li>
+      <li class=""><a href="{{route('servicioTecnico.index')}} "><i class="fa fa-circle-o"></i> Servicio Tecnico</a></li>
+      <li class=""><a href="{{route('tipoManual.index')}} "><i class="fa fa-circle-o"></i> Tipo de Manual</a></li>
+      <li class=""><a href="{{route('estado.index')}} "><i class="fa fa-circle-o"></i> Estado</a></li>
       <li><a href="{{route('area.index')}}"><i class="fa fa-circle-o"></i> Área</a></li>
         <li class=""><a href="{{route('proveedor.index')}} "><i class="fa fa-circle-o"></i>Proveedor</a></li>
     </ul>
