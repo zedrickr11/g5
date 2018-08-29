@@ -24,7 +24,7 @@ class GrupoFormRequest extends FormRequest
     public function rules()
     {
         return [
-          'idgrupo'=>'required|numeric'
+          'idgrupo'=>'required|numeric',
           'idarea'=>'required',
           'grupo'=>'required|max:255',
         ];
