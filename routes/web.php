@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return 'Pagina de inicio prueba ZEDRICK HUECO';
+    return 'Pagina de inicio prueba BONILLA';
 });
 
 Route::resource('equipo/fabricante','FabricanteController');
