@@ -12,9 +12,16 @@
 */
 
 Route::get('/', function () {
-    return 'Pagina de inicio prueba';
+    return 'Pagina de inicio prueba BONILLA';
 });
 
 Route::resource('equipo/fabricante','FabricanteController');
 Route::resource('equipo/area','AreaController');
 Route::resource('equipo/grupo','GrupoController');
+
+
+
+Route::resource('equipo/proveedor','ProveedorController');
+Route::resource('hospital/region','RegionController');
+Route::resource('hospital/hospitales','HospitalController');
+Route::resource('hospital/unidad','UnidadSaludController');
