@@ -27,10 +27,7 @@
 				{!!csrf_field()!!}
 				<div class="box-body col-md-12">
 
-  					<div class="form-group">
-  						<label for="idarea">Formato</label>
-  						<input style="text-transform: uppercase;" type="text" class="form-control" name="idarea" value="{{$areas->idarea}}">
-  					</div>
+  					
   					<div class="form-group">
   						<label for="nombre_area">Nombre del área</label>
   						<input type="text" class="form-control" name="nombre_area" value="{{$areas->nombre_area}}">
