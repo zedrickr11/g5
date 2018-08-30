@@ -17,7 +17,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="box">
             <div class="box-header">
-       <h3 class="box-title">Listado de Grupos <a href="area/create"><button class="btn btn-success">Nuevo</button></a>
+       <h3 class="box-title">Listado de Grupos <a href="grupo/create"><button class="btn btn-success">Nuevo</button></a>
            </h3>
             </div>
             <!-- /.box-header -->
@@ -35,9 +35,9 @@
                   <tbody>
             @foreach ($grupos as $gr)
             <tr>
-              <td>{{ $gr->idgrupo}}</td>
-              <td>{{ $gr->grupo}}</td>
-              <td>{{ $gr->idarea}}</td>
+              <td>{{ $gr->idgrupo }}</td>
+              <td>{{ $gr->grupo }}</td>
+              <td>{{ $gr->area }}</td>
 
 
               <td>

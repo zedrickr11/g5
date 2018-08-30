@@ -18,6 +18,7 @@
       <li class=""><a href="{{route('estado.index')}} "><i class="fa fa-circle-o"></i> Estado</a></li>
       <li><a href="{{route('area.index')}}"><i class="fa fa-circle-o"></i> Área</a></li>
         <li class=""><a href="{{route('proveedor.index')}} "><i class="fa fa-circle-o"></i>Proveedor</a></li>
+        <li class=""><a href="{{route('grupo.index')}} "><i class="fa fa-circle-o"></i>Grupo</a></li>
     </ul>
   </li>
 

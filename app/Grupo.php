@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Grupo extends Model
 {
   protected $table='grupo';
-
-protected $primaryKey='idgrupo';
+  //protected $casts = ['idgrupo' => 'string'];
+  protected $primaryKey='idgrupo';
 
 public $timestamps=false;
 
