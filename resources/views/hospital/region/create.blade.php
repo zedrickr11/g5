@@ -25,7 +25,7 @@
 			<form role="form" method="POST" action="{{route('region.store')}}" >
 					{!! csrf_field() !!}
 
-				<div class="box-body col-md-6">
+				<div class="box-body col-md-12">
 					<div class="form-group">
 						<label for="direccion_fab">Codigo Region</label>
 						<input type="text" class="form-control" name="idregion" value="{{old('idregion')}}">

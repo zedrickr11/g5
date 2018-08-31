@@ -1,13 +1,12 @@
 @extends ('layouts.admin')
 @section ('contenido')
-
 <section class="content-header">
       <h1>
         Hospital
-        <small>Hospitales</small>
+        <small>Unidades De Salud</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Hospitales</a></li>
+        <li><a href="#"><i class="fa fa-tv"></i> Region</a></li>
         <li class="active">Listado</li>
       </ol>
 	</section>
@@ -30,17 +29,15 @@
                     <th>Id</th>
                     <th>Unidad de Salud</th>
                     <th>Hospital</th>
+                    <th>Opciones</th>
                   </tr>
                   </thead>
                   <tbody>
-
-
-
-
-
             @foreach ($unidades as $u)
             <tr>
-          
+              <td>{{ $u->idunidadsalud}}</td>
+              <td>{{ $u->unidad_salud}}</td>
+              <td>{{ $u->hospi}}</td>
 
               <td>
 
@@ -50,7 +47,7 @@
                   <a href="{{route('unidad.show',$u->idunidadsalud)}}">
                     <button type="button" class="btn btn-info btn-sm" name="button">Detalles</button>
                   </a>
-                  <form style="display: inline" method="POST" action="{{route('unidad.destroy', $hos->idunidadsalud)}}">
+                  <form style="display: inline" method="POST" action="{{route('unidad.destroy', $u->idunidadsalud)}}">
                   {!!method_field('DELETE')!!}
                   {!!csrf_field()!!}
                     <button type="submit" class="btn btn-danger btn-sm" name="button">Eliminar</button>
