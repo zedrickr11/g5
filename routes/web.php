@@ -26,3 +26,4 @@ Route::resource('hospital/region','RegionController');
 Route::resource('hospital/hospitales','HospitalController');
 Route::resource('hospital/unidad','UnidadSaludController');
 
+Route::resource('equipo/index','EquipoController');
