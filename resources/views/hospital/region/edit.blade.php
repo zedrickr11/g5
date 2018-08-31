@@ -25,7 +25,7 @@
 			<form role="form" method="POST" action="{{route('region.update',$regiones->idregion)}}" >
 				{!!method_field('PUT')!!}
 				{!!csrf_field()!!}
-				<div class="box-body col-md-6">
+				<div class="box-body col-md-12">
 					<div class="form-group">
 						<label for="direccion_fab">Region</label>
 						<input type="text" class="form-control" name="region" value="{{$regiones->region}}">

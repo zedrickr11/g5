@@ -29,6 +29,7 @@
                     <th>Id</th>
                     <th>Hospital</th>
                     <th>Clave</th>
+                        <th>Opciones</th>
                   </tr>
                   </thead>
                   <tbody>
