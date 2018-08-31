@@ -22,7 +22,8 @@ Route::resource('equipo/estado','EstadoController');
 Route::resource('equipo/servicioTecnico','servicioTecnicoController');
 Route::resource('equipo/tipoManual','tipoManualController');
 Route::resource('equipo/proveedor','ProveedorController');
+Route::resource('equipo/subgrupo','SubgrupoController');
+
 Route::resource('hospital/region','RegionController');
 Route::resource('hospital/hospitales','HospitalController');
 Route::resource('hospital/unidad','UnidadSaludController');
-
