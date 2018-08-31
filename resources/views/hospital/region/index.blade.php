@@ -28,6 +28,7 @@
                   <tr>
                     <th>Id</th>
                     <th>Region</th>
+                        <th>Opciones</th>
                   </tr>
                   </thead>
                   <tbody>

@@ -25,7 +25,7 @@
                     <ul class="treeview-menu" style="display: block;">
                       <li><a href="{{route('area.index')}}"><i class="fa fa-circle-o"></i>Área</a></li>
                       <li><a href="{{route('grupo.index')}}"><i class="fa fa-circle-o"></i>Grupo</a></li>
-                      <li><a href="#"><i class="fa fa-circle-o"></i>Subgrupo</a></li>
+                      <li><a href="{{route('subgrupo.index')}}"><i class="fa fa-circle-o"></i>Subgrupo</a></li>
                     </ul>
                   </li>
 
@@ -46,7 +46,7 @@
     <li class=""><a href="{{route('region.index')}} "><i class="fa fa-circle-o"></i> Region</a></li>
       <li class=""><a href="{{route('hospitales.index')}} "><i class="fa fa-circle-o"></i>Hospitales</a></li>
         <li class=""><a href="{{route('unidad.index')}} "><i class="fa fa-circle-o"></i>Unidad de Salud</a></li>
-    <li><a href="#"><i class="fa fa-circle-o"></i> Distribuidor</a></li>
+ 
   </ul>
 </li>
 </ul>

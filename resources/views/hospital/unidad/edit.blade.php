@@ -4,10 +4,10 @@
 <section class="content-header">
       <h1>
         Hospital
-        <small>Hospitales</small>
+        <small>Region</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Hospital</a></li>
+        <li><a href="#"><i class="fa fa-tv"></i> Region</a></li>
         <li class="active">Modificar</li>
       </ol>
 </section>
@@ -22,17 +22,27 @@
 			</div>
 			<!-- /.box-header -->
 			<!-- form start -->
-			<form role="form" method="POST" action="{{route('hospitales.update',$hospitales->idhospital)}}" >
+			<form role="form" method="POST" action="{{route('unidad.update',$unidades->idunidadsalud)}}" >
 				{!!method_field('PUT')!!}
 				{!!csrf_field()!!}
 				<div class="box-body col-md-12">
 					<div class="form-group">
-						<label for="direccion_fab">Hospital</label>
-						<input type="text" class="form-control" name="hospital" value="{{$hospitales->hospital}}">
+						<label for="direccion_fab">Region</label>
+						<input type="text" class="form-control" name="unidad_salud" value="{{$unidades->unidad_salud}}">
 					</div>
+
           <div class="form-group">
-            <label for="direccion_fab">Clave Administador</label>
-            <input type="text" class="form-control" name="clave_admin" value="{{$hospitales->clave_admin}}">
+            <label for="direccion_fab">Region</label>
+            <br>
+            <select name="idhospital"  name="idhospital" value="{{$unidades->idhospital}}">
+     @foreach($hospitals as $hosp)
+              @if ($hosp->idhospital==$unidades->idhospital)
+            <option value="{{$hosp->idhospital}}" selected>{{$hosp->hospital}}</option>
+            @else
+            <option value="{{$hosp->idhospital}}">{{$hosp->hospital}}</option>
+            @endif
+             @endforeach
+      </select>
           </div>
 				</div>
 

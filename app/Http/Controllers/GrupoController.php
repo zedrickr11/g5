@@ -61,7 +61,11 @@ class GrupoController extends Controller
        */
       public function show($id)
       {
-        $grupos=Grupo::findOrFail($id);
+        $grupos=DB::table('grupo as g')
+          ->join('area as a','a.idarea','=','g.idarea')
+          ->select('g.idgrupo','g.grupo','a.nombre_area as area')
+          ->where('g.idgrupo','=',$id)
+          ->first();
         return view('equipo.grupo.show', compact('grupos'));
       }
 
