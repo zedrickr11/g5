@@ -46,7 +46,7 @@
     <li class=""><a href="{{route('region.index')}} "><i class="fa fa-circle-o"></i> Region</a></li>
       <li class=""><a href="{{route('hospitales.index')}} "><i class="fa fa-circle-o"></i>Hospitales</a></li>
         <li class=""><a href="{{route('unidad.index')}} "><i class="fa fa-circle-o"></i>Unidad de Salud</a></li>
- 
+       <li class=""><a href="{{route('tipounidad.index')}} "><i class="fa fa-circle-o"></i>Tipo Unidad de Salud</a></li>
   </ul>
 </li>
 </ul>
