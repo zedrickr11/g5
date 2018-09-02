@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Http\Requests\GrupoFormRequest;
 use DB;
 use App\Grupo;
+use App\Area;
 use Carbon\Carbon;
 
 class GrupoController extends Controller
@@ -21,7 +22,11 @@ class GrupoController extends Controller
        */
       public function index()
       {
-        $grupos=Grupo::all();
+        $grupos=DB::table('grupo as g')
+        ->join('area as a','a.idarea','=','g.idarea')
+        ->select('g.idgrupo','g.grupo','a.nombre_area as area')
+        ->get();
+
         return view('equipo.grupo.index', compact('grupos'));
       }
 
@@ -32,7 +37,8 @@ class GrupoController extends Controller
        */
       public function create()
       {
-            return view("equipo.grupo.create");
+            $areas=Area::all();
+            return view("equipo.grupo.create",compact('areas'));
       }
 
       /**
@@ -55,7 +61,11 @@ class GrupoController extends Controller
        */
       public function show($id)
       {
-        $grupos=Grupo::findOrFail($id);
+        $grupos=DB::table('grupo as g')
+          ->join('area as a','a.idarea','=','g.idarea')
+          ->select('g.idgrupo','g.grupo','a.nombre_area as area')
+          ->where('g.idgrupo','=',$id)
+          ->first();
         return view('equipo.grupo.show', compact('grupos'));
       }
 
@@ -68,7 +78,8 @@ class GrupoController extends Controller
       public function edit($id)
       {
         $grupos=Grupo::findOrFail($id);
-        return view('equipo.grupo.edit', compact('grupos'));
+        $areas=Area::all();
+        return view('equipo.grupo.edit', compact('grupos','areas'));
       }
 
       /**

@@ -4,19 +4,21 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Grupo extends Model
+class Subgrupo extends Model
 {
-  protected $table='grupo';
+  protected $table='subgrupo';
   //protected $casts = ['idgrupo' => 'string'];
-  protected $primaryKey='idgrupo';
+  protected $primaryKey='idsubgrupo';
 
 public $timestamps=false;
 
 
 protected $fillable =[
-  'idgrupo',
-  'idarea',
-  'grupo'
+  'codigosubgrupo',
+  'subgrupo',
+  'idgrupo'
+
+
 ];
 
 protected $guarded =[

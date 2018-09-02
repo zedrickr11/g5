@@ -2,23 +2,23 @@
 @section ('contenido')
 <section class="content-header">
       <h1>
-        Equipo
-        <small>Grupo</small>
+        Hospital
+        <small>Hospitales</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Equipo</a></li>
-        <li class="active">Grupo</li>
+        <li><a href="#"><i class="fa fa-tv"></i> Hospitales</a></li>
+        <li class="active">Listado</li>
       </ol>
- </section>
- <section class="content">
+	</section>
+	<section class="content">
 
 
 <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="box">
             <div class="box-header">
-       <h3 class="box-title">Listado de Grupos <a href="grupo/create"><button class="btn btn-success">Nuevo</button></a>
-           </h3>
+			  <h3 class="box-title">Listado de Hospitales <a href="hospitales/create"><button class="btn btn-success">Nuevo</button></a>
+			  		<a href="#" target="_blank"><button class="btn btn-info">Reporte</button></a></h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -27,28 +27,27 @@
                   <thead>
                   <tr>
                     <th>Id</th>
-                    <th>Grupo</th>
-                    <th>Área</th>
-                    <th>Opciones</th>
+                    <th>Hospital</th>
+                    <th>Clave</th>
+                        <th>Opciones</th>
                   </tr>
                   </thead>
                   <tbody>
-            @foreach ($grupos as $gr)
+            @foreach ($hospitales as $hos)
             <tr>
-              <td>{{ $gr->idgrupo }}</td>
-              <td>{{ $gr->grupo }}</td>
-              <td>{{ $gr->area }}</td>
-
+              <td>{{ $hos->idhospital}}</td>
+              <td>{{ $hos->hospital}}</td>
+              <td>{{ $hos->clave_admin}}</td>
 
               <td>
 
-                  <a href="{{route('grupo.edit',$gr->idgrupo)}}">
+                  <a href="{{route('hospitales.edit',$hos->idhospital)}}">
                     <button type="button" class="btn btn-warning btn-sm" name="button">Editar</button>
                   </a>
-                  <a href="{{route('grupo.show',$gr->idgrupo)}}">
+                  <a href="{{route('hospitales.show',$hos->idhospital)}}">
                     <button type="button" class="btn btn-info btn-sm" name="button">Detalles</button>
                   </a>
-                  <form style="display: inline" method="POST" action="{{route('grupo.destroy', $gr->idgrupo)}}">
+                  <form style="display: inline" method="POST" action="{{route('hospitales.destroy', $hos->idhospital)}}">
                   {!!method_field('DELETE')!!}
                   {!!csrf_field()!!}
                     <button type="submit" class="btn btn-danger btn-sm" name="button">Eliminar</button>

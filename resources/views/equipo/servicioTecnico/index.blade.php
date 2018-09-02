@@ -3,22 +3,22 @@
 <section class="content-header">
       <h1>
         Equipo
-        <small>Grupo</small>
+        <small>Servicio Tecnico</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-tv"></i> Equipo</a></li>
-        <li class="active">Grupo</li>
+        <li class="active">Servicio Tecnico</li>
       </ol>
- </section>
- <section class="content">
+	</section>
+	<section class="content">
 
 
 <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="box">
             <div class="box-header">
-       <h3 class="box-title">Listado de Grupos <a href="grupo/create"><button class="btn btn-success">Nuevo</button></a>
-           </h3>
+			  <h3 class="box-title">Listado de Servicios Tecnicos <a href="servicioTecnico/create"><button class="btn btn-success">Nuevo</button></a>
+			  		<a href="#" target="_blank"><button class="btn btn-info">Reporte</button></a></h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -27,35 +27,42 @@
                   <thead>
                   <tr>
                     <th>Id</th>
-                    <th>Grupo</th>
-                    <th>Área</th>
+                    <th>Direccion</th>
+                    <th>Telefono</th>
+                    <th>Fax</th>
+                    <th>Correo Electronico</th>
+                    <th>Nombre de Contacto</th>
+                    <th>Nombre de Empresa</th>
+
                     <th>Opciones</th>
                   </tr>
                   </thead>
                   <tbody>
-            @foreach ($grupos as $gr)
+            @foreach ($servicioTecnicos as $ser)
             <tr>
-              <td>{{ $gr->idgrupo }}</td>
-              <td>{{ $gr->grupo }}</td>
-              <td>{{ $gr->area }}</td>
-
-
+              <td>{{ $ser->idservicio_tecnico}}</td>
+              <td>{{ $ser->direccion_servicio_tecnico}}</td>
+              <td>{{ $ser-> telefono_servicio_tecnico}}</td>
+              <td>{{ $ser->fax_servicio_tecnico}}</td>
+              <td>{{ $ser->correo_servicio_mantenimiento}}</td>
+              <td>{{ $ser->nombre_contacto_servicio_tecnico}}</td>
+              <td>{{ $ser->nombre_empresa_sevicio_tecnico}}</td>
               <td>
 
-                  <a href="{{route('grupo.edit',$gr->idgrupo)}}">
+                  <a href="{{route('servicioTecnico.edit',$ser->idservicio_tecnico)}}">
                     <button type="button" class="btn btn-warning btn-sm" name="button">Editar</button>
                   </a>
-                  <a href="{{route('grupo.show',$gr->idgrupo)}}">
+                  <a href="{{route('servicioTecnico.show',$ser->idservicio_tecnico)}}">
                     <button type="button" class="btn btn-info btn-sm" name="button">Detalles</button>
                   </a>
-                  <form style="display: inline" method="POST" action="{{route('grupo.destroy', $gr->idgrupo)}}">
+                  <form style="display: inline" method="POST" action="{{route('servicioTecnico.destroy', $ser->idservicio_tecnico)}}">
                   {!!method_field('DELETE')!!}
                   {!!csrf_field()!!}
                     <button type="submit" class="btn btn-danger btn-sm" name="button">Eliminar</button>
                   </form>
 
 
-              </td>
+              </td >
             </tr>
 
             @endforeach
