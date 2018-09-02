@@ -28,3 +28,4 @@ Route::resource('hospital/region','RegionController');
 Route::resource('hospital/hospitales','HospitalController');
 Route::resource('hospital/unidad','UnidadSaludController');
 Route::resource('hospital/tipounidad','TipoUnidadSaludController');
+Route::resource('hospital/departamento','DepartamentoController');
