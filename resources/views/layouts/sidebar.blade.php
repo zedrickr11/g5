@@ -16,6 +16,8 @@
       <li class=""><a href="{{route('servicioTecnico.index')}} "><i class="fa fa-circle-o"></i> Servicio Tecnico</a></li>
       <li class=""><a href="{{route('tipoManual.index')}} "><i class="fa fa-circle-o"></i> Tipo de Manual</a></li>
       <li class=""><a href="{{route('estado.index')}} "><i class="fa fa-circle-o"></i> Estado</a></li>
+            <li class=""><a href="{{route('advertencia.index')}} "><i class="fa fa-circle-o"></i> Advertencia</a></li>
+
       <li class="treeview menu-open">
                     <a href="#"><i class="fa fa-circle-o"></i>Areas
                       <span class="pull-right-container">
