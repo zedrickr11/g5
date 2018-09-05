@@ -30,3 +30,9 @@ Route::resource('hospital/unidad','UnidadSaludController');
 
 Route::resource('hospital/tipounidad','TipoUnidadSaludController');
 
+Route::resource('equipo/caracteristica/caractec','CaracTecController');
+Route::resource('equipo/caracteristica/caracespefun','caracespefunController');
+Route::resource('equipo/caracteristica/valorrefesp','valorrefespController');
+Route::resource('equipo/caracteristica/subcaractec','subcaractecController');
+Route::resource('equipo/caracteristica/valorreftec','valorreftecController');
+Route::resource('equipo/caracteristica/detcaractec','detcaractecController');
