@@ -16,11 +16,31 @@ class RegionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $regiones=Region::all();
-      return view('hospital.region.index', compact('regiones'));
+        if ($request)
+        {
+            $query=trim($request->get('searchText'));
+              $regiones=DB::table('region as r')
+              ->select('*')
+              ->where('region','LIKE','%'.$query.'%')
+              ->orderBy('idregion','desc')
+              ->paginate(10);
+      return view('hospital.region.index', ["regiones"=>$regiones,"searchText"=>$query]);
+          }
+
+
+          if ($request)
+          {
+              $query=trim($request->get('searchText'));
+              $fabricantes=DB::table('fabricante as f')
+              ->select('*')
+              ->where('contacto_fabricante','LIKE','%'.$query.'%')
+              ->orderBy('idfabricante','desc')
+              ->paginate(10);
+              return view('equipo.fabricante.index',["fabricantes"=>$fabricantes,"searchText"=>$query]);
+          }
     }
 
     /**
