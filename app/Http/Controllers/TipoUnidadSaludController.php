@@ -14,13 +14,21 @@ class TipoUnidadSaludController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-      $tipos= DB::table('tipounidadsalud as u')
-      ->join('hospital as h', 'u.idhospital','=', 'h.idhospital')
-      ->select('u.idtipounidad','u.nivel_atencion','u.categoria','u.comp_res','u.unidad_medica','h.hospital as hospi')
-      ->get();
-      return view('hospital.tipounidad.index', compact('tipos'));
+      if ($request)
+      {
+          $query=trim($request->get('searchText'));
+        $tipos= DB::table('tipounidadsalud as u')
+            ->select('*')
+            ->where('unidad_medica','LIKE','%'.$query.'%')
+            ->orderBy('idtipounidad','desc')
+            ->join('hospital as h', 'u.idhospital','=', 'h.idhospital')
+            ->select('u.idtipounidad','u.nivel_atencion','u.categoria','u.comp_res','u.unidad_medica','h.hospital as hospi')
+            ->get();
+    return view('hospital.tipounidad.index', ["tipos"=>$tipos,"searchText"=>$query]);
+        }
+
     }
 
     /**

@@ -22,6 +22,8 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+              @include('hospital.departamento.search')
+                <div class="col-md-12">
               <div class="table-responsive">
                 <table  class="table table-bordered table-striped">
                   <thead>
@@ -67,7 +69,7 @@
           </table>
               </div>
 
-
+</div>
             </div>
             <!-- /.box-body -->
           </div>
