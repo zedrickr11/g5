@@ -73,6 +73,7 @@
 
                     </tfoot>
             </table>
+            {!! $fabricantes->links() !!}
                 </div>
               </div>
 
@@ -86,6 +87,7 @@
           <!-- /.box -->
         </div>
         <!-- /.col -->
+
       </div>
 
 </section>
