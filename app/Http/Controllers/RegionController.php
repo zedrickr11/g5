@@ -31,16 +31,7 @@ class RegionController extends Controller
           }
 
 
-          if ($request)
-          {
-              $query=trim($request->get('searchText'));
-              $fabricantes=DB::table('fabricante as f')
-              ->select('*')
-              ->where('contacto_fabricante','LIKE','%'.$query.'%')
-              ->orderBy('idfabricante','desc')
-              ->paginate(10);
-              return view('equipo.fabricante.index',["fabricantes"=>$fabricantes,"searchText"=>$query]);
-          }
+  
     }
 
     /**
