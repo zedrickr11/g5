@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Region;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RegionFormRequest;
 
 use DB;
 
@@ -31,7 +32,7 @@ class RegionController extends Controller
           }
 
 
-  
+
     }
 
     /**
@@ -50,8 +51,10 @@ class RegionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RegionFormRequest $request)
     {
+
+
       Region::create($request->all());
       return redirect()->route('region.index');
     }
@@ -88,7 +91,7 @@ class RegionController extends Controller
      * @param  \App\Region  $region
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RegionFormRequest $request, $id)
     {
       Region::findOrFail($id)->update($request->all());
       return redirect()->route('region.index');

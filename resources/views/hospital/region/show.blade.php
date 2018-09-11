@@ -24,7 +24,7 @@
 			<!-- form start -->
 
 
-				<div class="box-body col-md-6">
+				<div class="box-body col-md-12">
 					<div class="form-group">
 						<label for="direccion_fab">Codigo Region</label>
             <p>{{$regiones->idregion}}</p>
@@ -42,8 +42,8 @@
 
 				<div class="box-footer">
 
-					<a href="{{route('region.index')}}">
-            <button type="button" name="atras" class="btn btn-warning">Atrás</button>
+          <a href="{{route('region.index')}}">
+            <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
           </a>
 				</div>
 

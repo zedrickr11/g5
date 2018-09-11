@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Equipo;
+use App\Http\Requests\AdvertenciaFormRequest;
 class AdvertenciaController extends Controller
 {
     /**
@@ -21,12 +22,11 @@ class AdvertenciaController extends Controller
       if ($request)
       {
           $query=trim($request->get('searchText'));
-                $advertencis= DB::table('advertencia as a')
-          ->select('*')
-          ->where('valor_advertencia','LIKE','%'.$query.'%')
-          ->orderBy('idadvertencia','desc')
+          $advertencis= DB::table('advertencia as a')
           ->join('equipo as e', 'a.equipo_idequipo','=', 'e.idequipo')
           ->select('a.idadvertencia','a.nombre_advertencia','a.valor_advertencia','e.nombre_equipo as equi')
+          ->where('valor_advertencia','LIKE','%'.$query.'%')
+          ->orderBy('idadvertencia','desc')
           ->paginate(10);
           return view('equipo.advertencia.index',["advertencis"=>$advertencis,"searchText"=>$query]);
       }
@@ -50,7 +50,7 @@ class AdvertenciaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AdvertenciaFormRequest $request)
     {
       Advertencia::create($request->all());
       return redirect()->route('advertencia.index');
@@ -89,7 +89,7 @@ class AdvertenciaController extends Controller
      * @param  \App\Advertencia  $advertencia
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AdvertenciaFormRequest $request, $id)
     {
       Advertencia::findOrFail($id)->update($request->all());
       return redirect()->route('advertencia.index');

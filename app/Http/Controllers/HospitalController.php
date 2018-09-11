@@ -6,6 +6,7 @@ use App\Hospital;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use App\Http\Requests\HospitalFormRequest;
 class HospitalController extends Controller
 {
     /**
@@ -45,7 +46,7 @@ class HospitalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HospitalFormRequest $request)
     {
       Hospital::create($request->all());
       return redirect()->route('hospitales.index');
@@ -82,7 +83,7 @@ class HospitalController extends Controller
      * @param  \App\Hospital  $hospital
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(HospitalFormRequest $request,$id)
     {
       Hospital::findOrFail($id)->update($request->all());
       return redirect()->route('hospitales.index');
