@@ -7,7 +7,7 @@ use App\Hospital;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
-
+use App\Http\Requests\UnidadSaludFormRequest;
 class UnidadSaludController extends Controller
 {
     /**
@@ -15,17 +15,24 @@ class UnidadSaludController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
     /*  $unidades=UnidadSalud::all();
     return view('hospital.unidad.index', compact('unidades'));
-*/
+*/  if ($request)
+  {
+      $query=trim($request->get('searchText'));
+        $unidades=DB::table('unidadsalud as u')
+        ->join('hospital as h', 'u.idhospital','=', 'h.idhospital')
+        ->select('u.idunidadsalud','u.unidad_salud','h.hospital as hospi')
+        ->where('unidad_salud','LIKE','%'.$query.'%')
+        ->orderBy('idunidadsalud','desc')
+        ->paginate(10);
 
-    $unidades= DB::table('unidadsalud as u')
-    ->join('hospital as h', 'u.idhospital','=', 'h.idhospital')
-    ->select('u.idunidadsalud','u.unidad_salud','h.hospital as hospi')
-    ->get();
-    return view('hospital.unidad.index', compact('unidades'));
+return view('hospital.unidad.index', ["unidades"=>$unidades,"searchText"=>$query]);
+    }
+
+
 
     }
 
@@ -47,7 +54,7 @@ class UnidadSaludController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UnidadSaludFormRequest $request)
     {
 
       UnidadSalud::create($request->all());
@@ -87,7 +94,7 @@ class UnidadSaludController extends Controller
      * @param  \App\UnidadSalud  $unidadSalud
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UnidadSaludFormRequest $request, $id)
     {
       UnidadSalud::findOrFail($id)->update($request->all());
       return redirect()->route('unidad.index');
