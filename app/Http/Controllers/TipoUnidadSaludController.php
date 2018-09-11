@@ -7,20 +7,29 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Hospital;
+use App\Http\Requests\TipoUnidadSaludFormRequest;
 class TipoUnidadSaludController extends Controller
+
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-      $tipos= DB::table('tipounidadsalud as u')
-      ->join('hospital as h', 'u.idhospital','=', 'h.idhospital')
-      ->select('u.idtipounidad','u.nivel_atencion','u.categoria','u.comp_res','u.unidad_medica','h.hospital as hospi')
-      ->get();
-      return view('hospital.tipounidad.index', compact('tipos'));
+      if ($request)
+      {
+          $query=trim($request->get('searchText'));
+        $tipos= DB::table('tipounidadsalud as u')
+        ->join('hospital as h', 'u.idhospital','=', 'h.idhospital')
+        ->select('u.idtipounidad','u.nivel_atencion','u.categoria','u.comp_res','u.unidad_medica','h.hospital as hospi')
+        ->where('unidad_medica','LIKE','%'.$query.'%')
+        ->orderBy('idtipounidad','desc')
+          ->paginate(10);
+    return view('hospital.tipounidad.index', ["tipos"=>$tipos,"searchText"=>$query]);
+        }
+
     }
 
     /**
@@ -41,7 +50,7 @@ class TipoUnidadSaludController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TipoUnidadSaludFormRequest $request)
     {
         //
         TipoUnidadSalud::create($request->all());
@@ -81,7 +90,7 @@ class TipoUnidadSaludController extends Controller
      * @param  \App\TipoUnidadSalud  $tipoUnidadSalud
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TipoUnidadSaludFormRequest $request, $id)
     {
         //
         TipoUnidadSalud::findOrFail($id)->update($request->all());

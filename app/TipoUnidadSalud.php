@@ -8,6 +8,7 @@ class TipoUnidadSalud extends Model
 {
     //
     protected $table='tipounidadsalud';
+      protected $casts = ['idtipounidad' => 'string'];
     protected $primaryKey='idtipounidad';
     public $timestamps=false;
 

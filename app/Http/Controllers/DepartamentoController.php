@@ -7,6 +7,7 @@ use App\Departamento;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use App\Http\Requests\DepartamentoFormRequest;
 class DepartamentoController extends Controller
 {
     /**
@@ -14,14 +15,24 @@ class DepartamentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-      $departamentos= DB::table('departamento as d')
-      ->join('hospital as h', 'd.idhospital','=', 'h.idhospital')
-      ->join('region as r', 'd.idregion','=', 'r.idregion')
-      ->select('d.iddepartamento','d.depto','h.hospital as hospi','r.region as regi')
-      ->get();
-      return view('hospital.departamento.index', compact('departamentos'));
+
+      if ($request)
+      {
+          $query=trim($request->get('searchText'));
+            $departamentos= DB::table('departamento as d')
+            ->join('hospital as h', 'd.idhospital','=', 'h.idhospital')
+            ->join('region as r', 'd.idregion','=', 'r.idregion')
+            ->select('d.iddepartamento','d.depto','h.hospital as hospi','r.region as regi')
+            ->where('depto','LIKE','%'.$query.'%')
+            ->orderBy('iddepartamento','desc')
+
+              ->paginate(10);
+    return view('hospital.departamento.index', ["departamentos"=>$departamentos,"searchText"=>$query]);
+        }
+
+
     }
 
     /**
@@ -44,7 +55,7 @@ class DepartamentoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DepartamentoFormRequest $request)
     {
       Departamento::create($request->all());
       return redirect()->route('departamento.index');
@@ -86,7 +97,7 @@ class DepartamentoController extends Controller
      * @param  \App\Departamento  $departamento
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DepartamentoFormRequest $request, $id)
     {
       Departamento::findOrFail($id)->update($request->all());
       return redirect()->route('departamento.index');
