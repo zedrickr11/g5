@@ -4,11 +4,11 @@
 <section class="content-header">
       <h1>
         Equipo
-        <small>Configuración de los subgrupos</small>
+        <small>Configuración de los correlativos</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-tv"></i> Equipo</a></li>
-        <li class="active">Configuración de los subgrupos</li>
+        <li class="active">Configuración de los correlativos</li>
       </ol>
 </section>
 	<section class="content">
@@ -18,7 +18,7 @@
 		<!-- general form elements -->
 		<div class="box box-success">
 			<div class="box-header with-border">
-				<h3 class="box-title">Nueva configuración de los subgrupos</h3>
+				<h3 class="box-title">Editar configuración de los correlativos</h3>
 			</div>
       @if (count($errors)>0)
       <div class="alert alert-danger">
@@ -31,39 +31,49 @@
       @endif
 			<!-- /.box-header -->
 			<!-- form start -->
-			<form role="form" method="POST" action="{{route('confsubgrupo.store')}}" >
-					{!! csrf_field() !!}
+			<form role="form" method="POST" action="{{route('confcorrelativo.update',$confcorrelativo->idconf_corr)}}" >
+        {!!method_field('PUT')!!}
+        {!!csrf_field()!!}
 
 				<div class="box-body col-lg-12 col-sm-12 col-md-12 col-xs-12">
-          <div class="form-group">
-      			<label>Grupo</label>
-      			<select name="idgrupo" class="form-control">
-              @foreach ($grupos as $grupo)
-                <option value="{{ $grupo->idgrupo }}">{{ $grupo->grupo }}</option>
-              @endforeach
-      			</select>
-      		</div>
+
 					<div class="form-group">
 						<label for="inicio">Inicio</label>
-						<input type="number" class="form-control" name="inicio" value="{{old('inicio')}}">
+						<input type="number" class="form-control" name="inicio" value="{{$confcorrelativo->inicio}}">
 					</div>
-					<div class="form-group">
+          <div class="form-group">
 						<label for="fin">Fin</label>
-						<input type="number" class="form-control" name="fin" value="{{old('fin')}}">
+						<input type="number" class="form-control" name="fin" value="{{$confcorrelativo->fin}}">
 					</div>
           <div class="form-group">
 						<label for="actual">Actual</label>
-						<input type="number" class="form-control" name="actual" value="{{old('actual')}}">
+						<input type="number" class="form-control" name="actual" value="{{$confcorrelativo->actual}}">
 					</div>
 
 
+      		<div class="form-group">
+      			<label>Grupo</label>
+      			<select name="idsubgrupo" class="form-control">
+              @foreach ($grupos as $grupo)
+                     @if ($grupo->idsubgrupo==$confcorrelativo->idsubgrupo)
+                     <option value="{{$grupo->idsubgrupo}}" selected>{{$grupo->subgrupo}}</option>
+                     @else
+                     <option value="{{$grupo->idsubgrupo}}">{{$grupo->subgrupo}}</option>
+                     @endif
+              @endforeach
+      			</select>
+      		</div>
           <div class="form-group">
-						<label for="estad">Estado</label>
+						<label for="estado">Estado</label>
             <select class="form-control" name="estado">
-              <option value="1">ACTIVO</option>
-              <option value="0">INACTIVO</option>
+  						@if ($confcorrelativo->estado==1)
+                <option value="1" selected>ACTIVO</option>
+                <option value="0" >INACTIVO</option>
+              @else
+                <option value="1" >ACTIVO</option>
+                <option value="0" selected>INACTIVO</option>
+              @endif
             </select>
-
 					</div>
     	</div>
 
@@ -74,8 +84,7 @@
 				<!-- /.box-body -->
 
 				<div class="box-footer">
-
-          <a href="{{route('confsubgrupo.index')}}">
+          <a href="{{route('confcorrelativo.index')}}">
             <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
           </a>
           <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
@@ -90,5 +99,4 @@
 
 </div>
 </section>
-
 @endsection

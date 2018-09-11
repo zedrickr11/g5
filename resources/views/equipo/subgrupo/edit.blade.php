@@ -36,24 +36,14 @@
         {!!csrf_field()!!}
 
 				<div class="box-body col-lg-12 col-sm-12 col-md-12 col-xs-12">
-          
+
 					<div class="form-group">
 						<label for="subgrupo">Subrupo</label>
 						<input type="text" class="form-control" name="subgrupo" value="{{$subgrupos->subgrupo}}">
 					</div>
 
-      		<div class="form-group">
-      			<label>Grupo</label>
-      			<select name="idgrupo" class="form-control">
-              @foreach ($grupos as $grupo)
-                     @if ($grupo->idgrupo==$subgrupos->idgrupo)
-                     <option value="{{$grupo->idgrupo}}" selected>{{$grupo->grupo}}</option>
-                     @else
-                     <option value="{{$grupo->idgrupo}}">{{$grupo->grupo}}</option>
-                     @endif
-              @endforeach
-      			</select>
-      		</div>
+
+      	
     	</div>
 
 
