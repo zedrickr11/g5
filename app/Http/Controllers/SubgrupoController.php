@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Requests\GrupoFormRequest;
+use App\Http\Requests\SubgrupoFormRequest;
 use DB;
 use App\Grupo;
 use App\Subgrupo;
+use App\Conf_subgrupo;
 use Carbon\Carbon;
 
 class SubgrupoController extends Controller
@@ -20,14 +21,20 @@ class SubgrupoController extends Controller
          *
          * @return \Illuminate\Http\Response
          */
-        public function index()
+        public function index(Request $request)
         {
-          $subgrupos=DB::table('subgrupo as s')
-          ->join('grupo as g','g.idgrupo','=','s.idgrupo')
-          ->select('s.idsubgrupo','s.codigosubgrupo','s.subgrupo','g.grupo as grupo')
-          ->get();
-
-          return view('equipo.subgrupo.index', compact('subgrupos'));
+          if ($request)
+          {
+              $query=trim($request->get('searchText'));
+              $subgrupos=DB::table('subgrupo as s')
+              ->join('grupo as g','g.idgrupo','=','s.idgrupo')
+              ->select('s.idsubgrupo','s.codigosubgrupo','s.subgrupo','g.grupo as grupo')
+              ->where('s.subgrupo','LIKE','%'.$query.'%')
+              ->orderBy('g.grupo','desc')
+              ->paginate(10);
+              return view('equipo.subgrupo.index',["subgrupos"=>$subgrupos,"searchText"=>$query]);
+          }
+          
         }
 
         /**
@@ -47,7 +54,7 @@ class SubgrupoController extends Controller
          * @param  \Illuminate\Http\Request  $request
          * @return \Illuminate\Http\Response
          */
-        public function store(GrupoFormRequest $request)
+        public function store(SubgrupoFormRequest $request)
         {
           Subgrupo::create($request->all());
           return redirect()->route('subgrupo.index');
@@ -90,7 +97,7 @@ class SubgrupoController extends Controller
          * @param  int  $id
          * @return \Illuminate\Http\Response
          */
-        public function update(GrupoFormRequest $request, $id)
+        public function update(SubgrupoFormRequest $request, $id)
         {
           Subgrupo::findOrFail($id)->update($request->all());
           return redirect()->route('subgrupo.index');
