@@ -20,14 +20,20 @@ class GrupoController extends Controller
        *
        * @return \Illuminate\Http\Response
        */
-      public function index()
+      public function index(Request $request)
       {
-        $grupos=DB::table('grupo as g')
-        ->join('area as a','a.idarea','=','g.idarea')
-        ->select('g.idgrupo','g.grupo','a.nombre_area as area')
-        ->get();
-
-        return view('equipo.grupo.index', compact('grupos'));
+        if ($request)
+        {
+            $query=trim($request->get('searchText'));
+            $grupos=DB::table('grupo as g')
+            ->join('area as a','a.idarea','=','g.idarea')
+            ->select('g.idgrupo','g.grupo','a.nombre_area as area')
+            ->where('g.grupo','LIKE','%'.$query.'%')
+            ->orderBy('g.idgrupo','desc')
+            ->paginate(10);
+            return view('equipo.grupo.index',["grupos"=>$grupos,"searchText"=>$query]);
+        }
+        
       }
 
       /**

@@ -31,7 +31,7 @@ class FabricanteFormRequest extends FormRequest
             'fax_fabricante'=>'max:16',
             'correo_fabricante'=>'required|email|max:255',
             'contacto_fabricante'=>'required|max:255',
-            'direccion_guatemala_fabricante'=>'max:256',
+            'direccion_guatemala_fabricante'=>'required|max:256',
             'telefono_guatemala_fabricante'=>'max:8',
             'correo_guatemala_fabricante'=>'required|email|max:255',
         ];
