@@ -65,6 +65,7 @@
 
                   </tfoot>
           </table>
+                {!! $unidades->links() !!}
               </div>
 
 

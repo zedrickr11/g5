@@ -25,7 +25,7 @@ class TipoUnidadSaludController extends Controller
             ->orderBy('idtipounidad','desc')
             ->join('hospital as h', 'u.idhospital','=', 'h.idhospital')
             ->select('u.idtipounidad','u.nivel_atencion','u.categoria','u.comp_res','u.unidad_medica','h.hospital as hospi')
-            ->get();
+          ->paginate(10);
     return view('hospital.tipounidad.index', ["tipos"=>$tipos,"searchText"=>$query]);
         }
 

@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return 'Pagina de inicio prueba BONILLA';
 });
+Route::resource('login','LoginController');
 
 Route::resource('equipo/fabricante','FabricanteController');
 Route::resource('equipo/area','AreaController');
@@ -43,4 +44,3 @@ Route::resource('equipo/caracteristica/valorreftec','valorreftecController');
 Route::resource('equipo/caracteristica/detcaractec','detcaractecController');
 
 Route::resource('hospital/departamento','DepartamentoController');
-

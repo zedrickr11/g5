@@ -27,11 +27,11 @@ class DepartamentoController extends Controller
             ->join('hospital as h', 'd.idhospital','=', 'h.idhospital')
             ->join('region as r', 'd.idregion','=', 'r.idregion')
             ->select('d.iddepartamento','d.depto','h.hospital as hospi','r.region as regi')
-            ->get();
+              ->paginate(10);
     return view('hospital.departamento.index', ["departamentos"=>$departamentos,"searchText"=>$query]);
         }
 
-     
+
     }
 
     /**

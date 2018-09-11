@@ -65,6 +65,8 @@
 
                   </tfoot>
           </table>
+          {!! $hospitales->links() !!}
+
               </div>
               </div>
 

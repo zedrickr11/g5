@@ -67,6 +67,8 @@
 
                   </tfoot>
           </table>
+          {!! $departamentos->links() !!}
+
               </div>
 
 </div>

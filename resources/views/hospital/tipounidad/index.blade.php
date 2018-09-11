@@ -71,6 +71,7 @@
 
                   </tfoot>
           </table>
+            {!! $tipos->links() !!}
               </div>
               </div>
 

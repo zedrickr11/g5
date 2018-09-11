@@ -29,8 +29,8 @@ class UnidadSaludController extends Controller
 
         ->join('hospital as h', 'u.idhospital','=', 'h.idhospital')
         ->select('u.idunidadsalud','u.unidad_salud','h.hospital as hospi')
-        ->get();
-        
+        ->paginate(10);
+
 return view('hospital.unidad.index', ["unidades"=>$unidades,"searchText"=>$query]);
     }
 
