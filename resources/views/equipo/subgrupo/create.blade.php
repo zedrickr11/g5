@@ -31,13 +31,13 @@
       @endif
 			<!-- /.box-header -->
 			<!-- form start -->
-			<form role="form" method="POST" action="{{route('subgrupo.store')}}" >
+			<form role="form" method="POST" action="{{route('subgrupo.store')}}" id="sub" >
 					{!! csrf_field() !!}
 
 				<div class="box-body col-lg-12 col-sm-12 col-md-12 col-xs-12">
           <div class="form-group">
       			<label>Grupo</label>
-      			<select name="idgrupo" class="form-control">
+      			<select name="idgrupo" id="grupo" class="form-control">
               @foreach ($grupos as $grupo)
                 <option value="{{ $grupo->idgrupo }}">{{ $grupo->grupo }}</option>
               @endforeach
@@ -45,8 +45,9 @@
       		</div>
 					<div class="form-group">
 						<label for="codigosubgrupo">Código</label>
-						<input disabled type="number" class="form-control" name="codigosubgrupo" value="{{old('codigosubgrupo')}}">
+						<input id="codigosubgrupo" class="form-control"  name="codigosubgrupo" readonly>
 					</div>
+
 					<div class="form-group">
 						<label for="subgrupo">Subrupo</label>
 						<input type="text" class="form-control" name="subgrupo" value="{{old('subgrupo')}}">
@@ -78,4 +79,24 @@
 
 </div>
 </section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+  $('#grupo').on('change', function(e){
+    console.log(e);
+    var grupo_id = e.target.value;
+    $.get('/json-confsubgrupo?grupo_id=' + grupo_id,function(data) {
+      console.log(data);
+
+      $.each(data, function(index, regenciesObj){
+
+        $('#codigosubgrupo').val(regenciesObj.actual);
+      })
+    });
+  });
+
+
+
+
+</script>
 @endsection

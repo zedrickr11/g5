@@ -39,7 +39,7 @@
 
             <div class="form-group">
               <label for="idarea">Código</label>
-              <input type="text" class="form-control" name="idarea" value="{{$areas->idarea}}">
+              <input type="text" class="form-control" name="idarea" value="{{$areas->idarea}}" readonly>
             </div>
 
 
