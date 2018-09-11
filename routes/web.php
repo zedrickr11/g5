@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return 'Pagina de inicio prueba BONILLA';
+    return view ('index') ;
 });
 
 Route::resource('equipo/fabricante','FabricanteController');
