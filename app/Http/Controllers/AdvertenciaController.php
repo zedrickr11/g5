@@ -15,13 +15,22 @@ class AdvertenciaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-      $advertencis= DB::table('advertencia as a')
-      ->join('equipo as e', 'a.equipo_idequipo','=', 'e.idequipo')
-      ->select('a.idadvertencia','a.nombre_advertencia','a.valor_advertencia','e.nombre_equipo as equi')
-      ->get();
-      return view('equipo.advertencia.index', compact('advertencis'));
+
+      if ($request)
+      {
+          $query=trim($request->get('searchText'));
+                $advertencis= DB::table('advertencia as a')
+          ->select('*')
+          ->where('valor_advertencia','LIKE','%'.$query.'%')
+          ->orderBy('idadvertencia','desc')
+          ->join('equipo as e', 'a.equipo_idequipo','=', 'e.idequipo')
+          ->select('a.idadvertencia','a.nombre_advertencia','a.valor_advertencia','e.nombre_equipo as equi')
+          ->paginate(10);
+          return view('equipo.advertencia.index',["advertencis"=>$advertencis,"searchText"=>$query]);
+      }
+
     }
 
     /**

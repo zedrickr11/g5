@@ -14,14 +14,24 @@ class DepartamentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-      $departamentos= DB::table('departamento as d')
-      ->join('hospital as h', 'd.idhospital','=', 'h.idhospital')
-      ->join('region as r', 'd.idregion','=', 'r.idregion')
-      ->select('d.iddepartamento','d.depto','h.hospital as hospi','r.region as regi')
-      ->get();
-      return view('hospital.departamento.index', compact('departamentos'));
+
+      if ($request)
+      {
+          $query=trim($request->get('searchText'));
+            $departamentos= DB::table('departamento as d')
+            ->select('*')
+            ->where('depto','LIKE','%'.$query.'%')
+            ->orderBy('iddepartamento','desc')
+            ->join('hospital as h', 'd.idhospital','=', 'h.idhospital')
+            ->join('region as r', 'd.idregion','=', 'r.idregion')
+            ->select('d.iddepartamento','d.depto','h.hospital as hospi','r.region as regi')
+              ->paginate(10);
+    return view('hospital.departamento.index', ["departamentos"=>$departamentos,"searchText"=>$query]);
+        }
+
+
     }
 
     /**

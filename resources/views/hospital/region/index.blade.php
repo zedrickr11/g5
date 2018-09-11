@@ -63,6 +63,8 @@
 
                   </tfoot>
           </table>
+          {!! $regiones->links() !!}
+
               </div>
 </div>
 

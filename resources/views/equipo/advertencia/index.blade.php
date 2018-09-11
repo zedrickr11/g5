@@ -8,7 +8,7 @@
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-tv"></i> Equipo</a></li>
         <li class="active">Advertencia</li>
-      
+
       </ol>
 	</section>
 	<section class="content">
@@ -23,6 +23,9 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+              <div class="box-body">
+                  @include('equipo.advertencia.search')
+                    <div class="col-md-12">
               <div class="table-responsive">
                 <table  class="table table-bordered table-striped">
                   <thead>
@@ -67,6 +70,7 @@
 
                   </tfoot>
           </table>
+                  {!! $advertencis->links() !!}
               </div>
 
 

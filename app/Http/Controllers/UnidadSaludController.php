@@ -15,17 +15,26 @@ class UnidadSaludController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
     /*  $unidades=UnidadSalud::all();
     return view('hospital.unidad.index', compact('unidades'));
-*/
+*/  if ($request)
+  {
+      $query=trim($request->get('searchText'));
+        $unidades=DB::table('unidadsalud as u')
+        ->select('*')
+        ->where('unidad_salud','LIKE','%'.$query.'%')
+        ->orderBy('idunidadsalud','desc')
 
-    $unidades= DB::table('unidadsalud as u')
-    ->join('hospital as h', 'u.idhospital','=', 'h.idhospital')
-    ->select('u.idunidadsalud','u.unidad_salud','h.hospital as hospi')
-    ->get();
-    return view('hospital.unidad.index', compact('unidades'));
+        ->join('hospital as h', 'u.idhospital','=', 'h.idhospital')
+        ->select('u.idunidadsalud','u.unidad_salud','h.hospital as hospi')
+        ->paginate(10);
+
+return view('hospital.unidad.index', ["unidades"=>$unidades,"searchText"=>$query]);
+    }
+
+
 
     }
 
