@@ -37,7 +37,7 @@
 				<div class="box-body col-lg-12 col-sm-12 col-md-12 col-xs-12">
 					<div class="form-group">
 						<label for="idgrupo">Código</label>
-						<input type="number" class="form-control" name="idgrupo" value="{{old('idgrupo')}}" required>
+						<input type="number" class="form-control" name="idgrupo" value="{{old('idgrupo')}}" >
 					</div>
 					<div class="form-group">
 						<label for="grupo">Grupo</label>
