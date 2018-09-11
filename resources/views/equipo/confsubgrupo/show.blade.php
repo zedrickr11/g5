@@ -42,8 +42,14 @@
             <p>{{$confsubgrupos->actual}}</p>
          </div>
          <div class="form-group">
-           <label for="estado">Estado</label>
-            <p>{{$confsubgrupos->estado}}</p>
+           <label for="estado">Estado <br>
+           @if ($confsubgrupos->estado==1)
+             <input type="checkbox" checked disabled>
+           @else
+             <input  type="checkbox" disabled>
+           @endif
+           </label>
+
          </div>
 
 

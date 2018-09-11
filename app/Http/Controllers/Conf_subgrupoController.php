@@ -30,7 +30,7 @@ class Conf_subgrupoController extends Controller
                 ->select('c.idconf_subgrupo','c.inicio','c.fin','c.actual','c.estado','g.grupo as grupo')
                 ->where('g.grupo','LIKE','%'.$query.'%')
                 ->orderBy('c.idconf_subgrupo','desc')
-                ->paginate(10);
+                ->paginate(5);
                 return view('equipo.confsubgrupo.index',["confsubgrupos"=>$confsubgrupos,"searchText"=>$query]);
             }
 

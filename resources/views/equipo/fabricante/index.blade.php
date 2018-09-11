@@ -17,8 +17,8 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="box">
             <div class="box-header">
-			  <h3 class="box-title">Listado de Fabricantes <a href="fabricante/create"><button class="btn btn-success">Nuevo</button></a>
-			  		<a href="#" target="_blank"><button class="btn btn-info">Reporte</button></a></h3>
+			  <h3 class="box-title">Listado de Fabricantes <a href="fabricante/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
+			  		<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
             </div>
 
             <!-- /.box-header -->
@@ -52,15 +52,15 @@
                 <td>
 
                     <a href="{{route('fabricante.edit',$fab->idfabricante)}}">
-                      <button type="button" class="btn btn-warning btn-sm" name="button">Editar</button>
+                      <button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-cog"></span> </button>
                     </a>
                     <a href="{{route('fabricante.show',$fab->idfabricante)}}">
-                      <button type="button" class="btn btn-info btn-sm" name="button">Detalles</button>
+                      <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></span> </button>
                     </a>
                     <form style="display: inline" method="POST" action="{{route('fabricante.destroy', $fab->idfabricante)}}">
                     {!!method_field('DELETE')!!}
                     {!!csrf_field()!!}
-                      <button type="submit" class="btn btn-danger btn-sm" name="button">Eliminar</button>
+                      <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></span> </button>
                     </form>
 
 
