@@ -20,6 +20,15 @@
 			<div class="box-header with-border">
 				<h3 class="box-title">Editar Grupo</h3>
 			</div>
+      @if (count($errors)>0)
+      <div class="alert alert-danger">
+        <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{$error}}</li>
+        @endforeach
+        </ul>
+      </div>
+      @endif
 			<!-- /.box-header -->
 			<!-- form start -->
 			<form role="form" method="POST" action="{{route('grupo.update',$grupos->idgrupo)}}" >
@@ -27,7 +36,10 @@
         {!!csrf_field()!!}
 
 				<div class="box-body col-lg-12 col-sm-12 col-md-12 col-xs-12">
-					
+          <div class="form-group">
+						<label for="idgrupo">Código</label>
+						<input type="number" class="form-control" name="idgrupo" value="{{$grupos->idgrupo}}" disabled>
+					</div>
 					<div class="form-group">
 						<label for="grupo">Grupo</label>
 						<input type="text" class="form-control" name="grupo" value="{{$grupos->grupo}}">
@@ -55,7 +67,11 @@
 
 				<div class="box-footer">
 
-					<input class="btn btn-primary" type="submit" name="" value="Guardar">
+          <a href="{{route('grupo.index')}}">
+            <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
+          </a>
+          <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
+          <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
 				</div>
 			</form>
 		</div>
