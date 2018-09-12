@@ -49,6 +49,7 @@ Route::resource('hospital/departamento','DepartamentoController');
 Route::resource('equipo/caracteristica/detcaracesp','detcaracespController');
 
 
+
 Route::get('/json-confsubgrupo','SubgrupoController@codigosubgrupo');
 Route::resource('equipo/confcorrelativo','Conf_corrController');
 
