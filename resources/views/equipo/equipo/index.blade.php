@@ -1,4 +1,3 @@
-
 @extends ('layouts.admin')
 @section ('contenido')
 <section class="content-header">
@@ -15,139 +14,79 @@
 
 
 <div class="row">
-  <div class="col-md-12">
-    <div class="box box-default collapsed-box box-solid">
-      <div class="box-header with-border">
-        <h3 class="box-title">ID</h3>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="box">
+            <div class="box-header">
+			  <h3 class="box-title">Listado de Equipos <a href="equipo/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
+			  		<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
+            </div>
 
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-          </button>
-        </div>
-        <!-- /.box-tools -->
-      </div>
-      <!-- /.box-header -->
-      <div class="box-body">
-        The body of the box
-      </div>
-      <!-- /.box-body -->
-    </div>
-    <!-- /.box -->
-  </div>
-  <div class="col-md-12">
-    <div class="box box-default collapsed-box box-solid">
-      <div class="box-header with-border">
-        <h3 class="box-title">IDENTIFICACION</h3>
+            <!-- /.box-header -->
+            <div class="box-body">
+              @include('equipo.equipo.search')
+              <div class="col-md-12">
+                <div class="table-responsive">
+                  <table  class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Equipo</th>
+                      <th>Marca</th>
+                      <th>Modelo</th>
+                      <th>Serie</th>
+                      <th>Estado</th>
 
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-          </button>
-        </div>
-        <!-- /.box-tools -->
-      </div>
-      <!-- /.box-header -->
-      <div class="box-body">
-        The body of the box
-      </div>
-      <!-- /.box-body -->
-    </div>
-    <!-- /.box -->
-  </div>
-  <div class="col-md-12">
-    <div class="box box-default collapsed-box box-solid">
-      <div class="box-header with-border">
-        <h3 class="box-title">LOCALIZACION Y FRECUENCIA DE USO</h3>
+                      <th>Opciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+              @foreach ($equipos as $eq)
+              <tr>
+                <td>{{ $eq->idequipo}}</td>
+                <td>{{ $eq->nombre_equipo}}</td>
+                <td>{{ $eq->marca}}</td>
+                <td>{{ $eq->modelo}}</td>
+                <td>{{ $eq->serie}}</td>
+                <td>{{ $eq->estado}}</td>
 
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-          </button>
-        </div>
-        <!-- /.box-tools -->
-      </div>
-      <!-- /.box-header -->
-      <div class="box-body">
-        The body of the box
-      </div>
-      <!-- /.box-body -->
-    </div>
-    <!-- /.box -->
-  </div>
-  <div class="col-md-12">
-    <div class="box box-default collapsed-box box-solid">
-      <div class="box-header with-border">
-        <h3 class="box-title">INFORMACION TECNICA</h3>
+                <td>
 
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-          </button>
-        </div>
-        <!-- /.box-tools -->
-      </div>
-      <!-- /.box-header -->
-      <div class="box-body">
-        The body of the box
-      </div>
-      <!-- /.box-body -->
-    </div>
-    <!-- /.box -->
-  </div>
-  <div class="col-md-12">
-    <div class="box box-default collapsed-box box-solid">
-      <div class="box-header with-border">
-        <h3 class="box-title">FABRICANTE</h3>
+                    <a href="{{route('equipo.edit',$eq->idequipo)}}">
+                      <button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-cog"></span> </button>
+                    </a>
+                    <a href="{{route('equipo.show',$eq->idequipo)}}">
+                      <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></span> </button>
+                    </a>
+                    <form style="display: inline" method="POST" action="{{route('equipo.destroy', $eq->idequipo)}}">
+                    {!!method_field('DELETE')!!}
+                    {!!csrf_field()!!}
+                      <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></span> </button>
+                    </form>
 
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-          </button>
-        </div>
-        <!-- /.box-tools -->
-      </div>
-      <!-- /.box-header -->
-      <div class="box-body">
-        The body of the box
-      </div>
-      <!-- /.box-body -->
-    </div>
-    <!-- /.box -->
-  </div>
-  <div class="col-md-12">
-    <div class="box box-default collapsed-box box-solid">
-      <div class="box-header with-border">
-        <h3 class="box-title">DISTRIBUIDOR</h3>
 
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-          </button>
-        </div>
-        <!-- /.box-tools -->
-      </div>
-      <!-- /.box-header -->
-      <div class="box-body">
-        The body of the box
-      </div>
-      <!-- /.box-body -->
-    </div>
-    <!-- /.box -->
-  </div>
-  <div class="col-md-12">
-    <div class="box box-success collapsed-box box-solid">
-      <div class="box-header with-border">
-        <h3 class="box-title">EXISTENCIA DE INFORMACION TECNICA</h3>
+                </td>
+              </tr>
 
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-          </button>
+              @endforeach
+                    </tbody>
+                    <tfoot>
+
+                    </tfoot>
+            </table>
+            {!! $equipos->links() !!}
+                </div>
+              </div>
+
+
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+
+          <!-- /.box -->
         </div>
-        <!-- /.box-tools -->
-      </div>
-      <!-- /.box-header -->
-      <div class="box-body">
-        The body of the box
-      </div>
-      <!-- /.box-body -->
-    </div>
-    <!-- /.box -->
-  </div>
+        <!-- /.col -->
 
       </div>
 
