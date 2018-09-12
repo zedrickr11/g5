@@ -28,18 +28,20 @@
                   <table  class="table table-bordered table-striped">
                     <thead>
                     <tr>
+                      <th>Grupo</th>
                       <th>Código</th>
                       <th>Subgrupo</th>
-                      <th>Grupo</th>
+
                       <th>Opciones</th>
                     </tr>
                     </thead>
                     <tbody>
               @foreach ($subgrupos as $sub)
               <tr>
+                <td>{{ $sub->grupo }}</td>
                 <td>{{ $sub->codigosubgrupo }}</td>
                 <td>{{ $sub->subgrupo }}</td>
-                <td>{{ $sub->grupo }}</td>
+
 
 
                 <td>
