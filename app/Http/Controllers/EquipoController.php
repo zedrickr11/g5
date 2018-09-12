@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 //falta el form Request
+use App\Http\Requests\EquipoFormRequest;
 
 use App\Proveedor;
 use App\UnidadSalud;
@@ -21,6 +22,7 @@ use App\Grupo;
 use App\Subgrupo;
 use App\Conf_corr;
 use App\TipoUnidadSalud;
+
 
 use Carbon\Carbon;
 use DB;
@@ -67,6 +69,7 @@ class EquipoController extends Controller
       $grupo=Grupo::all();
       $subgrupo=Subgrupo::all();
       $tipounidadsalud=TipoUnidadSalud::all();
+
       return view("equipo.equipo.create",compact('proveedor','unidad_salud','area',
                   'estado','servicio_tecnico','fabricante','hospital','departamento',
                   'region','grupo','subgrupo','tipounidadsalud'));
@@ -79,7 +82,7 @@ class EquipoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EquipoFormRequest $request)
     {
       Equipo::create($request->all());
       return redirect()->route('equipo.index');
@@ -91,7 +94,7 @@ class EquipoController extends Controller
      * @param  \App\Equipo  $equipo
      * @return \Illuminate\Http\Response
      */
-    public function show(Equipo $equipo)
+    public function show($id)
     {
         //
     }

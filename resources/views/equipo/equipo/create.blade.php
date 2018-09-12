@@ -38,28 +38,29 @@
 
       <div class="tab-content">
         <div class="tab-pane" id="tab_1-1">
-
+          <p class="text-danger">(*) Campos requeridos</p>
           <div class="form-group">
-            <label for="est">Codigo financiero</label>
+            <label for="cod_financiero">Codigo financiero</label>
             <input type="text" class="form-control" name="cod_financiero" value="{{old('cod_financiero')}}">
           </div>
 
           <div class="form-group">
-            <label for="est">Forma de adquisicion</label>
+            <label for="forma_adquisicion">Forma de adquisicion</label>
             <input type="text" class="form-control" name="forma_adquisicion" value="{{old('forma_adquisicion')}}">
           </div>
           <div class="form-group">
-            <label for="est">Atencion mantenimiento equipo</label>
-            <input type="textarea" class="form-control" name="atencion_mantenimiento_equipo" value="{{old('atencion_mantenimiento_equipo')}}">
+            <label for="atencion_mantenimiento_equipo">Atencion mantenimiento equipo</label>
+            <textarea rows="3" class="form-control" name="atencion_mantenimiento_equipo" value="{{old('atencion_mantenimiento_equipo')}}">
+            </textarea>
           </div>
 
 
 
         </div>
         <div class="tab-pane" id="tab_7-7">
-
+          <p class="text-danger">(*) Campos requeridos</p>
           <div class="form-group">
-          <label for="select" class="est">Servicio técnico</label>
+          <label for="idservicio_tecnico" class="est">Servicio técnico (*)</label>
           <select name="idservicio_tecnico" class="form-control" id="select">
           @foreach($servicio_tecnico as $st)
             <option value="{{$st->idservicio_tecnico}}">{{$st->nombre_empresa_sevicio_tecnico}}</option>
@@ -83,8 +84,9 @@
 
         </div>
         <div class="tab-pane" id="tab_2-2">
+          <p class="text-danger">(*) Campos requeridos</p>
           <div class="form-group">
-          <label for="select" class="est">Distribuidor</label>
+          <label for="id_proveedor" class="est">Distribuidor (*)</label>
           <select name="id_proveedor" class="form-control" id="select">
           @foreach($proveedor as $prov)
             <option value="{{$prov->id_proveedor}}">{{$prov->contacto_proveedor}}</option>
@@ -114,16 +116,17 @@
                 <!-- /.input group -->
               </div>
               <div class="form-group">
-                <label for="est">Precio</label>
-                <input type="text" class="form-control" name="precio" value="{{old('precio')}}">
+                <label for="precio">Precio</label>
+                <input type="number" class="form-control" name="precio" value="{{old('precio')}}">
               </div>
 
 
         </div>
         <div class="tab-pane" id="tab_3-3">
+          <p class="text-danger">(*) Campos requeridos</p>
           <div class="form-group">
-          <label for="select" class="est">Fabricante</label>
-          <select name="idfabricante" class="form-control" id="select">
+          <label for="idfabricante" class="est">Fabricante (*)</label>
+          <select name="idfabricante" class="form-control" >
           @foreach($fabricante as $fab)
                 <option value="{{$fab->idfabricante}}">{{$fab->contacto_fabricante}}</option>
           @endforeach
@@ -145,86 +148,140 @@
 
         </div>
         <div class="tab-pane" id="tab_4-4">
-
+          <p class="text-danger">(*) Campos requeridos</p>
           <div class="form-group">
-            <label for="est">Area/Sala/Laboratorio</label>
+            <label for="ambiente">Area/Sala/Laboratorio (*)</label>
             <input type="text" class="form-control" name="ambiente" value="{{old('ambiente')}}">
           </div>
           <div class="form-group">
-            <label for="est">Departamento/Servicio</label>
+            <label for="servicio">Departamento/Servicio (*)</label>
             <input type="text" class="form-control" name="servicio" value="{{old('servicio')}}">
           </div>
           <div class="form-group">
-            <label for="est">Frecuencia uso día/semana </label>
-            <input type="text" class="form-control" name="frecuencia_uso_dia_semana" value="{{old('frecuencia_uso_dia_semana')}}">
+            <label for="frec_uso_dia_semana">Frecuencia uso día/semana (*) </label>
+            <select class="form-control" name="frec_uso_dia_semana">
+              <option value="1">1 días/semana</option>
+              <option value="2">2 días/semana</option>
+              <option value="3">3 días/semana</option>
+              <option value="4">4 días/semana</option>
+              <option value="5">5 días/semana</option>
+              <option value="6">6 días/semana</option>
+              <option value="7">7 días/semana</option>
+            </select>
           </div>
           <div class="form-group">
-            <label for="est">Frecuencia uso horas/día </label>
-            <input type="text" class="form-control" name="frecuencia_uso_hora_dia" value="{{old('frecuencia_uso_hora_dia')}}">
+            <label for="frec_uso_hora_dia">Frecuencia uso horas/día (*) </label>
+            <select class="form-control" name="frec_uso_hora_dia">
+              <option value="1">1 hrs/día</option>
+              <option value="2">2 hrs/día</option>
+              <option value="3">3 hrs/día</option>
+              <option value="4">4 hrs/día</option>
+              <option value="5">5 hrs/día</option>
+              <option value="6">6 hrs/día</option>
+              <option value="7">7 hrs/día</option>
+              <option value="8">8 hrs/día</option>
+              <option value="9">9 hrs/día</option>
+              <option value="10">10 hrs/día</option>
+              <option value="11">11 hrs/día</option>
+              <option value="12">12 hrs/día</option>
+              <option value="13">13 hrs/día</option>
+              <option value="14">14 hrs/día</option>
+              <option value="15">15 hrs/día</option>
+              <option value="16">16 hrs/día</option>
+              <option value="17">17 hrs/día</option>
+              <option value="18">18 hrs/día</option>
+              <option value="19">19 hrs/día</option>
+              <option value="20">20 hrs/día</option>
+              <option value="21">21 hrs/día</option>
+              <option value="22">22 hrs/día</option>
+              <option value="23">23 hrs/día</option>
+              <option value="24">24 hrs/día</option>
+            </select>
           </div>
           <div class="form-group">
-            <label for="est">Personal capacitado </label>
-            <input type="text" class="form-control" name="personal_cap" value="{{old('personal_cap')}}">
+          <label for="idestado" >Estado (*)</label>
+          <select name="idestado" class="form-control">
+          @foreach($estado as $e)
+            <option value="{{$e->idestado}}">{{$e->estado}}</option>
+             @endforeach
+          </select>
+          </div>
+          <div class="form-group">
+            <label for="personal_cap">Personal capacitado (*) </label>
+            <select class="form-control" name="personal_cap">
+              <option value="1">SI</option>
+              <option value="0">NO</option>
+            </select>
           </div>
 
 
         </div>
         <!-- /.tab-pane -->
         <div class="tab-pane" id="tab_5-5">
-
+          <p class="text-danger">(*) Campos requeridos</p>
           <div class="form-group">
-            <label for="est">Nombre equipo</label>
+            <label for="nombre_equipo">Nombre equipo (*)</label>
             <input type="text" class="form-control" name="nombre_equipo" value="{{old('nombre_equipo')}}">
           </div>
           <div class="form-group">
-            <label for="est">Marca</label>
+            <label for="marca">Marca (*)</label>
             <input type="text" class="form-control" name="marca" value="{{old('marca')}}">
           </div>
           <div class="form-group">
-            <label for="est">Modelo</label>
+            <label for="modelo">Modelo (*)</label>
             <input type="text" class="form-control" name="modelo" value="{{old('modelo')}}">
           </div>
-          <div class="form-group">
-            <label for="est">Descripción</label>
-            <input type="text" class="form-control" name="descripcion" value="{{old('descripcion')}}">
-          </div>
+
 
           <div class="form-group">
-            <label for="est">Serie</label>
+            <label for="serie">Serie (*)</label>
             <input type="text" class="form-control" name="serie" value="{{old('serie')}}">
           </div>
           <div class="form-group">
-            <label for="est">Clase tecnológica médica</label>
+            <label for="descripcion">Descripción</label>
+            <textarea rows="3" class="form-control" name="descripcion" value="{{old('descripcion')}}">
+              </textarea>
+          </div>
+          <div class="form-group">
+            <label for="clase_tec_med">Clase tecnológica médica</label>
             <input type="text" class="form-control" name="clase_tec_med" value="{{old('clase_tec_med')}}">
           </div>
           <div class="form-group">
-            <label for="est">Clase </label>
+            <label for="clase">Clase </label>
             <input type="text" class="form-control" name="clase" value="{{old('clase')}}">
           </div>
           <div class="form-group">
-            <label for="est">Nivel de riesgo </label>
+            <label for="nivel_riesgo">Nivel de riesgo </label>
             <input type="text" class="form-control" name="nivel_riesgo" value="{{old('nivel_riesgo')}}">
           </div>
           <div class="form-group">
-            <label for="est">Conexión otro equipo </label>
+            <label for="conexion_otro_eq">Conexión otro equipo </label>
             <input type="text" class="form-control" name="conexion_otro_eq" value="{{old('conexion_otro_eq')}}">
           </div>
 
         </div>
         <!-- /.tab-pane -->
         <div class="tab-pane active " id="tab_6-6">
-
+          <p class="text-danger">(*) Campos requeridos</p>
+          <div class="form-group">
+          <label for="idhospital" >Hospital (*)</label>
+          <select name="idhospital" class="form-control" >
+          @foreach($hospital as $h)
+            <option value="{{$h->idhospital}}">{{$h->hospital}}</option>
+          @endforeach
+          </select>
+          </div>
             <div class="form-group">
-            <label for="idarea" class="est">Área</label>
-            <select name="idarea" class="form-control" id="aarea">
+            <label for="idarea" >Área (*)</label>
+            <select name="idarea" class="form-control" >
             @foreach($area as $a)
               <option value="{{$a->idarea}}">{{$a->nombre_area}}</option>
             @endforeach
             </select>
             </div>
             <div class="form-group">
-            <label for="idgrupo" class="est">Grupo</label>
-            <select name="idgrupo" class="form-control" id="ggrupo">
+            <label for="idgrupo" >Grupo (*)</label>
+            <select name="idgrupo" class="form-control" >
               @foreach($grupo as $g)
                 <option value="{{$g->idgrupo}}">{{$g->grupo}}</option>
               @endforeach
@@ -232,8 +289,8 @@
             </div>
 
             <div class="form-group">
-            <label for="idsubgrupo" class="est">Subgrupo</label>
-            <select name="idsubgrupo" class="form-control" id="ggrupo">
+            <label for="idsubgrupo" >Subgrupo (*)</label>
+            <select name="idsubgrupo" class="form-control">
               @foreach($subgrupo as $sub)
                 <option value="{{$sub->idsubgrupo}}">{{$sub->subgrupo}}</option>
               @endforeach
@@ -241,8 +298,8 @@
             </div>
 
             <div class="form-group">
-            <label for="idregion" class="est">Región</label>
-            <select name="idregion" class="form-control" id="ggrupo">
+            <label for="idregion" >Región (*)</label>
+            <select name="idregion" class="form-control">
               @foreach($region as $reg)
                 <option value="{{$reg->idregion}}">{{$reg->region}}</option>
               @endforeach
@@ -250,8 +307,8 @@
             </div>
 
             <div class="form-group">
-            <label for="iddepartamento" class="est">Departamento</label>
-            <select name="iddepartamento" class="form-control" id="ggrupo">
+            <label for="iddepartamento">Departamento (*)</label>
+            <select name="iddepartamento" class="form-control" >
               @foreach($departamento as $depto)
                 <option value="{{$depto->iddepartamento}}">{{$depto->depto}}</option>
               @endforeach
@@ -259,8 +316,8 @@
             </div>
 
             <div class="form-group">
-            <label for="idtipounidad" class="est">Tipo unidad de salud</label>
-            <select name="idtipounidad" class="form-control" id="ggrupo">
+            <label for="idtipounidad" >Tipo unidad de salud (*)</label>
+            <select name="idtipounidad" class="form-control">
               @foreach($tipounidadsalud as $tipo)
                 <option value="{{$tipo->idtipounidad}}">{{$tipo->unidad_medica}}</option>
               @endforeach
@@ -268,8 +325,8 @@
             </div>
 
             <div class="form-group">
-            <label for="select" class="est">Unidad de salud</label>
-            <select name="idunidadsalud" class="form-control" id="select">
+            <label for="idunidadsalud" >Unidad de salud (*)</label>
+            <select name="idunidadsalud" class="form-control">
             @foreach($unidad_salud as $u)
               <option value="{{$u->idunidadsalud}}">{{$u->unidad_salud}}</option>
                @endforeach
@@ -277,8 +334,12 @@
             </div>
 
             <div class="form-group">
-  						<label for="est">Correlativo</label>
-  						<input type="text" class="form-control" name="correlativo" value="{{old('correlativo')}}">
+  						<label for="correlativo">Correlativo (*)</label>
+  						<input type="number" class="form-control" name="correlativo" value="{{old('correlativo')}}">
+  					</div>
+            <div class="form-group">
+  						<label for="idequipo">Código del equipo (*)</label>
+  						<input type="text" class="form-control" name="idequipo" value="{{old('idequipo')}}">
   					</div>
 
 

@@ -8,6 +8,7 @@ class Equipo extends Model
 {
     //
     protected $table='equipo';
+    protected $casts = ['idequipo' => 'string'];
     protected $primaryKey='idequipo';
     public $timestamps=false;
 
@@ -31,7 +32,9 @@ class Equipo extends Model
          'tipo_idgrupo',
          'conexion_otro_eq',
          'frec_uso_dia_semana',
+
          'frec_uso_hora_dia',
+
          'personal_cap',
 
          'atencion_mantenimineto_equipo',
@@ -47,7 +50,7 @@ class Equipo extends Model
          'idfabricante',
          'idhospital',
          'iddepartamento',
-         'region_idregion',
+         'idregion',
          'idgrupo',
          'idsubgrupo',
          'idtipounidad'
