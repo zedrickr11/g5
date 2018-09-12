@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CaracTec;
 use Illuminate\Http\Request;
+use App\Http\Requests\caractecFormRequest;
 use App\Http\Controllers\Controller;
 use DB;
 class CaracTecController extends Controller
@@ -13,10 +14,22 @@ class CaracTecController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-      $caract_tec=CaracTec::all();
-      return view('equipo.caracteristica.caractec.index', compact('caract_tec'));
+
+      if ($request)
+      {
+          $query=trim($request->get('searchText'));
+          $caract_tec=DB::table('caracteristica_tecnica as f')
+          ->select('*')
+          ->where('nombre_caracteristica_tecnica','LIKE','%'.$query.'%')
+          ->orderBy('idcaracteristica_tecnica','desc')
+          ->paginate(10);
+          return view('equipo.caracteristica.caractec.index',["caract_tec"=>$caract_tec,"searchText"=>$query]);
+      }
+
+    //  $caract_tec=CaracTec::all();
+    //  return view('equipo.caracteristica.caractec.index', compact('caract_tec'));
     }
 
     /**
@@ -35,7 +48,7 @@ class CaracTecController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(caractecFormRequest $request)
     {  CaracTec::create($request->all());
       return redirect()->route('caractec.index');
     }
@@ -70,7 +83,7 @@ class CaracTecController extends Controller
      * @param  \App\CaracTec  $caracTec
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(caractecFormRequest $request, $id)
     {
       CaracTec::findOrFail($id)->update($request->all());
       return redirect()->route('caractec.index');

@@ -60,12 +60,9 @@
 
 
 
-
-
+                    				</div>
+	<div class="box-body col-md-6">
 					<div class="form-group">
-
-
-
 
             <label for="direccion_fab">Estado caracteristica tecnica</label>
 						<input type="text" class="form-control" name="estado_detalle_caracteristica_tecnica" value="{{old('estado_detalle_caracteristica_tecnica')}}">
@@ -81,19 +78,27 @@
             <label for="direccion_fab">Valor caracteristica tecnica</label>
             <input type="text" class="form-control" name="valor_detalle_caracteristica_tecnica" value="{{old('valor_detalle_caracteristica_tecnica')}}">
           </div>
-	<input class="btn btn-primary" type="submit" name="" value="Guardar">
 
 
+</div>
 
 
-				</div>
 
 				<!-- /.box-body -->
 
-				<div class="box-footer">
+        <div class="box-footer">
 
-
-				</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+          <a href="{{route('detcaractec.index')}}">
+            <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
+          </a>
+          <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
+          <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
+        </div>
 			</form>
 		</div>
 		<!-- /.box -->

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\valorrefesp;
 use Illuminate\Http\Request;
+use App\Http\Requests\valorrefespFormRequest;
 use App\Http\Controllers\Controller;
 use DB;
 class valorrefespController extends Controller
@@ -13,10 +14,22 @@ class valorrefespController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function index()
+  public function index(Request $request)
   {
-    $valorrefesp=valorrefesp::all();
-    return view('equipo.caracteristica.valorrefesp.index', compact('valorrefesp'));
+    if ($request)
+    {
+        $query=trim($request->get('searchText'));
+        $valorrefesp=DB::table('valor_ref_esp as f')
+        ->select('*')
+        ->where('nombre_valor_ref_esp','LIKE','%'.$query.'%')
+        ->orderBy('idvalor_ref_esp','desc')
+        ->paginate(10);
+        return view('equipo.caracteristica.valorrefesp.index',["valorrefesp"=>$valorrefesp,"searchText"=>$query]);
+    }
+
+
+    //$valorrefesp=valorrefesp::all();
+  //  return view('equipo.caracteristica.valorrefesp.index', compact('valorrefesp'));
   }
 
   /**
@@ -35,7 +48,7 @@ class valorrefespController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
+  public function store(valorrefespFormRequest $request)
   {  valorrefesp::create($request->all());
     return redirect()->route('valorrefesp.index');
   }
@@ -70,7 +83,7 @@ class valorrefespController extends Controller
    * @param  \App\valorrefesp  $caracTec
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, $id)
+  public function update(valorrefespFormRequest $request, $id)
   {
     valorrefesp::findOrFail($id)->update($request->all());
     return redirect()->route('valorrefesp.index');
