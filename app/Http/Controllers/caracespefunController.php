@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\caracespefun;
 use Illuminate\Http\Request;
+use App\Http\Requests\caracespefunFormRequest;
 use App\Http\Controllers\Controller;
+
 use DB;
 class caracespefunController extends Controller
 {
@@ -13,10 +15,21 @@ class caracespefunController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function index()
+  public function index(Request $request)
   {
-    $caracespefun=caracespefun::all();
-    return view('equipo.caracteristica.caracespefun.index', compact('caracespefun'));
+    if ($request)
+    {
+        $query=trim($request->get('searchText'));
+        $caracespefun=DB::table('caracteristica_especial_funcionamiento as f')
+        ->select('*')
+        ->where('nombre_caracteristica_especial','LIKE','%'.$query.'%')
+        ->orderBy('idcaracteristica_especial','desc')
+        ->paginate(10);
+        return view('equipo.caracteristica.caracespefun.index',["caracespefun"=>$caracespefun,"searchText"=>$query]);
+    }
+
+  //  $caracespefun=caracespefun::all();
+    //return view('equipo.caracteristica.caracespefun.index', compact('caracespefun'));
   }
 
   /**
@@ -35,7 +48,7 @@ class caracespefunController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
+  public function store(caracespefunFormRequest $request)
   {  caracespefun::create($request->all());
     return redirect()->route('caracespefun.index');
   }
@@ -70,7 +83,7 @@ class caracespefunController extends Controller
    * @param  \App\caracespefun  $caracTec
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, $id)
+  public function update(caracespefunFormRequest $request, $id)
   {
     caracespefun::findOrFail($id)->update($request->all());
     return redirect()->route('caracespefun.index');
