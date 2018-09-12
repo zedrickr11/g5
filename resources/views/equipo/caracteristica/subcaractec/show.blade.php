@@ -27,7 +27,7 @@
 				<div class="box-body col-md-6">
 					<div class="form-group">
 						<label for="direccion_fab">Nombre subgrupo caracteristica tecnica</label>
-            <p>{{$subcaractec->nombre_valor_ref_esp}}</p>
+            <p>{{$subcaractec->nombre_subgrupo_carac_tecnica}}</p>
 					</div>
 
 
@@ -36,12 +36,15 @@
 
 				<!-- /.box-body -->
 
-				<div class="box-footer">
-
-					<a href="{{route('valorrefesp.index')}}">
-            <button type="button" name="atras" class="btn btn-warning">Atrás</button>
+        <div class="box-footer">
+<br>
+<br>
+<br>
+<br>
+          <a href="{{route('subcaractec.index')}}">
+            <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
           </a>
-				</div>
+        </div>
 
 		</div>
 		<!-- /.box -->

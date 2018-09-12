@@ -36,12 +36,15 @@
 
 				<!-- /.box-body -->
 
-				<div class="box-footer">
-
-					<a href="{{route('caracespefun.index')}}">
-            <button type="button" name="atras" class="btn btn-warning">Atrás</button>
+        <div class="box-footer">
+<br>
+<br>
+<br>
+<br>
+          <a href="{{route('caracespefun.index')}}">
+            <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
           </a>
-				</div>
+        </div>
 
 		</div>
 		<!-- /.box -->

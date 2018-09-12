@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\subcaractec;
 use Illuminate\Http\Request;
+use App\Http\Requests\subcaractecFormRequest;
 use App\Http\Controllers\Controller;
 use DB;
 class subcaractecController extends Controller
@@ -13,10 +14,21 @@ class subcaractecController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function index()
+  public function index(Request $request)
   {
-    $subcaractec=subcaractec::all();
-    return view('equipo.caracteristica.subcaractec.index', compact('subcaractec'));
+    if ($request)
+    {
+        $query=trim($request->get('searchText'));
+        $subcaractec=DB::table('subgrupo_carac_tecnica as f')
+        ->select('*')
+        ->where('nombre_subgrupo_carac_tecnica','LIKE','%'.$query.'%')
+        ->orderBy('idsubgrupo_carac_tecnica','desc')
+        ->paginate(10);
+        return view('equipo.caracteristica.subcaractec.index',["subcaractec"=>$subcaractec,"searchText"=>$query]);
+    }
+
+  //  $subcaractec=subcaractec::all();
+  //  return view('equipo.caracteristica.subcaractec.index', compact('subcaractec'));
   }
 
   /**
@@ -35,7 +47,7 @@ class subcaractecController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
+  public function store(subcaractecFormRequest $request)
   {  subcaractec::create($request->all());
     return redirect()->route('subcaractec.index');
   }
@@ -70,7 +82,7 @@ class subcaractecController extends Controller
    * @param  \App\subcaractec  $subcaractec
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, $id)
+  public function update(subcaractecFormRequest $request, $id)
   {
     subcaractec::findOrFail($id)->update($request->all());
     return redirect()->route('subcaractec.index');

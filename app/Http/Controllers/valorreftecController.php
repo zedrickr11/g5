@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\valorreftec;
 use Illuminate\Http\Request;
+use App\Http\Requests\valorreftecFormRequest;
 use App\Http\Controllers\Controller;
+use DB;
 
 class valorreftecController extends Controller
 {
@@ -13,10 +15,22 @@ class valorreftecController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function index()
+  public function index(Request $request)
   {
-    $valorreftec=valorreftec::all();
-    return view('equipo.caracteristica.valorreftec.index', compact('valorreftec'));
+
+    if ($request)
+    {
+        $query=trim($request->get('searchText'));
+        $valorreftec=DB::table('valor_ref_tec as f')
+        ->select('*')
+        ->where('nombre_valor_ref_tec','LIKE','%'.$query.'%')
+        ->orderBy('idvalor_ref_tec','desc')
+        ->paginate(10);
+        return view('equipo.caracteristica.valorreftec.index',["valorreftec"=>$valorreftec,"searchText"=>$query]);
+    }
+
+  //  $valorreftec=valorreftec::all();
+//    return view('equipo.caracteristica.valorreftec.index', compact('valorreftec'));
   }
 
   /**
@@ -35,7 +49,7 @@ class valorreftecController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
+  public function store(valorreftecFormRequest $request)
   {  valorreftec::create($request->all());
     return redirect()->route('valorreftec.index');
   }
@@ -70,7 +84,7 @@ class valorreftecController extends Controller
    * @param  \App\valorreftec  $valorreftec
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, $id)
+  public function update(valorreftecFormRequest $request, $id)
   {
     valorreftec::findOrFail($id)->update($request->all());
     return redirect()->route('valorreftec.index');

@@ -11,6 +11,7 @@
       </span>
     </a>
     <ul class="treeview-menu">
+
       <li class=""><a href="{{route('fabricante.index')}} "><i class="fa fa-circle-o"></i> Fabricante</a></li>
       
       <li class=""><a href="{{route('servicioTecnico.index')}} "><i class="fa fa-circle-o"></i> Servicio Tecnico</a></li>
@@ -68,7 +69,7 @@
                                   <li class=""><a href="{{route('subcaractec.index')}} "><i class="fa fa-circle-o"></i>Subgrupo tecnica</a></li>
                                   <li class=""><a href="{{route('valorreftec.index')}} "><i class="fa fa-circle-o"></i>Valor referencia tecnica</a></li>
                                   <li class=""><a href="{{route('detcaractec.index')}} "><i class="fa fa-circle-o"></i>Detalle tecnica</a></li>
-
+                                  <li class=""><a href="{{route('detcaracesp.index')}} "><i class="fa fa-circle-o"></i>Detalle especial</a></li>
 
                                   </ul>
                               </li>
