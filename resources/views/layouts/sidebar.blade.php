@@ -28,7 +28,7 @@
                       <li><a href="{{route('area.index')}}"><i class="fa fa-circle-o"></i>Área</a></li>
                       <li><a href="{{route('grupo.index')}}"><i class="fa fa-circle-o"></i>Grupo</a></li>
                       <li class="treeview menu-open">
-                        <a href="{{route('grupo.index')}}"><i class="fa fa-circle-o"></i> Grupo
+                        <a href="{{route('grupo.index')}}"><i class="fa fa-circle-o"></i>Grupo
                           <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                           </span>
@@ -39,6 +39,17 @@
                         </ul>
                       </li>
                       <li><a href="{{route('subgrupo.index')}}"><i class="fa fa-circle-o"></i>Subgrupo</a></li>
+                      <li class="treeview menu-open">
+                        <a href="{{route('grupo.index')}}"><i class="fa fa-circle-o"></i>Subgrupo
+                          <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                          </span>
+                        </a>
+                        <ul class="treeview-menu" style="display: block;">
+
+                          <li><a href="{{route('confcorrelativo.index')}}"><i class="fa fa-circle-o"></i> Configuración</a></li>
+                        </ul>
+                      </li>
                     </ul>
                   </li>
 

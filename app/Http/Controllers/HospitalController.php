@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Hospital;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use DB;
+use App\Http\Requests\HospitalFormRequest;
 class HospitalController extends Controller
 {
     /**
@@ -13,10 +14,20 @@ class HospitalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-      $hospitales=Hospital::all();
-    return view('hospital.hospitales.index', compact('hospitales'));
+
+    if ($request)
+    {
+        $query=trim($request->get('searchText'));
+          $hospitales=DB::table('hospital as h')
+          ->select('*')
+          ->where('hospital','LIKE','%'.$query.'%')
+          ->orderBy('idhospital','desc')
+          ->paginate(10);
+  return view('hospital.hospitales.index', ["hospitales"=>$hospitales,"searchText"=>$query]);
+      }
+
     }
 
     /**
@@ -35,7 +46,7 @@ class HospitalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HospitalFormRequest $request)
     {
       Hospital::create($request->all());
       return redirect()->route('hospitales.index');
@@ -72,7 +83,7 @@ class HospitalController extends Controller
      * @param  \App\Hospital  $hospital
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(HospitalFormRequest $request,$id)
     {
       Hospital::findOrFail($id)->update($request->all());
       return redirect()->route('hospitales.index');
