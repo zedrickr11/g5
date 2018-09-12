@@ -11,9 +11,9 @@ class Hospital extends Model
   public $timestamps=false;
 
   protected $fillable =[
-       'idhospital',
+       
        'hospital',
-       'clave_admin'	
+       'clave_admin'
 
 
   ];

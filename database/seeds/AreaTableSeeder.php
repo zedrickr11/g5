@@ -13,7 +13,7 @@ class AreaTableSeeder extends Seeder
     public function run()
     {
 
-
+        //DB::table('area')->truncate();
         Area::create([
 
           'idarea' => "EB",
