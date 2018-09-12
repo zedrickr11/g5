@@ -5,6 +5,14 @@ namespace App\Http\Controllers;
 use App\Equipo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Estado;
+use App\ServicioTecnico;
+use App\Fabricante;
+use App\Proveedor;
+use App\UnidadSalud;
+use App\Area;
+use DB;
+
 
 class EquipoController extends Controller
 {
@@ -15,7 +23,16 @@ class EquipoController extends Controller
      */
     public function index()
     {
-        //
+<<<<<<< HEAD
+
+      $equipo= DB::table('equipo as e')
+      ->join('estado_equipo as h','h.idestado','=','e.estado_equipo_idestado')
+      ->select('e.idequipo','e.correlativo','e.nombre_equipo','e.marca','e.modelo','e.serie','h.estado as estado_equipo_idestado')
+      ->get();
+    return view('equipo.equipo.index', compact('equipo'));
+=======
+        return view('equipo.equipo.index');
+>>>>>>> facec7b23a2faf9c0fe032df88b5dfee46326619
     }
 
     /**
@@ -25,7 +42,13 @@ class EquipoController extends Controller
      */
     public function create()
     {
-        //
+      $estado_equipo=Estado::all();
+        $servicio_tecnico=ServicioTecnico::all();
+          $fabricante=Fabricante::all();
+            $proveedor=Proveedor::all();
+              $unidad_salud=UnidadSalud::all();
+                $area=Area::all();
+        return view("equipo.equipo.create",compact('estado_equipo','servicio_tecnico','fabricante','proveedor','unidad_salud','area'));
     }
 
     /**
@@ -36,7 +59,8 @@ class EquipoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      Equipo::create($request->all());
+      return redirect()->route('equipo.index');
     }
 
     /**

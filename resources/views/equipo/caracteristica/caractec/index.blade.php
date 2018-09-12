@@ -15,14 +15,22 @@
 
 
 <div class="row">
+
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="box">
             <div class="box-header">
-			  <h3 class="box-title">Listado de Caracteristica Tecnica <a href="caractec/create"><button class="btn btn-success">Nuevo</button></a>
-			  	</h3>
+
+			  <h3 class="box-title">Listado de Caracteristica Tecnica<a href="caractec/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
+			  		<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
             </div>
             <!-- /.box-header -->
+
             <div class="box-body">
+                  @include('equipo.caracteristica.caractec.search')
+                  <br>
+                  <br>
+                  <br>
+
               <div class="table-responsive">
                 <table  class="table table-bordered table-striped">
                   <thead>
@@ -44,15 +52,15 @@
               <td>
 
                   <a href="{{route('caractec.edit',$cat->idcaracteristica_tecnica)}}">
-                    <button type="button" class="btn btn-warning btn-sm" name="button">Editar</button>
+                    <button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-cog"></button>
                   </a>
                   <a href="{{route('caractec.show',$cat->idcaracteristica_tecnica)}}">
-                    <button type="button" class="btn btn-info btn-sm" name="button">Detalles</button>
+                    <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></button>
                   </a>
                   <form style="display: inline" method="POST" action="{{route('caractec.destroy', $cat->idcaracteristica_tecnica)}}">
                   {!!method_field('DELETE')!!}
                   {!!csrf_field()!!}
-                    <button type="submit" class="btn btn-danger btn-sm" name="button">Eliminar</button>
+                    <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></button>
                   </form>
 
 
@@ -66,7 +74,7 @@
                   </tfoot>
           </table>
               </div>
-
+      {!! $caract_tec->links() !!}
 
             </div>
             <!-- /.box-body -->

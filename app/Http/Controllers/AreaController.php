@@ -19,10 +19,21 @@ class AreaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-      $areas=Area::all();
-      return view('equipo.area.index', compact('areas'));
+
+      if ($request)
+      {
+          $query=trim($request->get('searchText'));
+          $areas=DB::table('area as a')
+          ->select('*')
+          ->where('nombre_area','LIKE','%'.$query.'%')
+          ->orderBy('idarea','desc')
+          ->paginate(10);
+          return view('equipo.area.index',["areas"=>$areas,"searchText"=>$query]);
+      }
+
+
     }
 
     /**

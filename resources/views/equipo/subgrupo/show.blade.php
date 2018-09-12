@@ -46,8 +46,8 @@
        <div class="box-footer">
 
          <a href="{{route('subgrupo.index')}}">
-            <button type="button" name="atras" class="btn btn-warning">Atrás</button>
-          </a>
+           <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
+         </a>
        </div>
 
    </div>

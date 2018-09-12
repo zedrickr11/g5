@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Input;
+
 use App\Http\Requests;
-use App\Http\Requests\GrupoFormRequest;
+use App\Http\Requests\SubgrupoFormRequest;
 use DB;
 use App\Grupo;
 use App\Subgrupo;
+use App\Conf_subgrupo;
 use Carbon\Carbon;
 
 class SubgrupoController extends Controller
@@ -20,15 +23,22 @@ class SubgrupoController extends Controller
          *
          * @return \Illuminate\Http\Response
          */
-        public function index()
+        public function index(Request $request)
         {
-          $subgrupos=DB::table('subgrupo as s')
-          ->join('grupo as g','g.idgrupo','=','s.idgrupo')
-          ->select('s.idsubgrupo','s.codigosubgrupo','s.subgrupo','g.grupo as grupo')
-          ->get();
+          if ($request)
+          {
+              $query=trim($request->get('searchText'));
+              $subgrupos=DB::table('subgrupo as s')
+              ->join('grupo as g','g.idgrupo','=','s.idgrupo')
+              ->select('s.idsubgrupo','s.codigosubgrupo','s.subgrupo','g.idgrupo','g.grupo as grupo')
+              ->where('s.subgrupo','LIKE','%'.$query.'%')
+              ->orderBy('g.idgrupo','desc')
+              ->paginate(10);
+              return view('equipo.subgrupo.index',["subgrupos"=>$subgrupos,"searchText"=>$query]);
+          }
 
-          return view('equipo.subgrupo.index', compact('subgrupos'));
         }
+
 
         /**
          * Show the form for creating a new resource.
@@ -40,6 +50,14 @@ class SubgrupoController extends Controller
               $grupos=Grupo::all();
               return view("equipo.subgrupo.create",compact('grupos'));
         }
+        public function codigosubgrupo(){
+          $grupo_id = Input::get('grupo_id');
+          $confsubgrupo = DB::table('Conf_subgrupo as c')
+          ->select('c.actual')
+          ->where('c.idgrupo','=',$grupo_id)
+          ->get();
+          return response()->json($confsubgrupo);
+        }
 
         /**
          * Store a newly created resource in storage.
@@ -47,7 +65,7 @@ class SubgrupoController extends Controller
          * @param  \Illuminate\Http\Request  $request
          * @return \Illuminate\Http\Response
          */
-        public function store(GrupoFormRequest $request)
+        public function store(SubgrupoFormRequest $request)
         {
           Subgrupo::create($request->all());
           return redirect()->route('subgrupo.index');
@@ -90,7 +108,7 @@ class SubgrupoController extends Controller
          * @param  int  $id
          * @return \Illuminate\Http\Response
          */
-        public function update(GrupoFormRequest $request, $id)
+        public function update(Request $request, $id)
         {
           Subgrupo::findOrFail($id)->update($request->all());
           return redirect()->route('subgrupo.index');
