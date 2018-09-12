@@ -44,6 +44,13 @@ Route::resource('equipo/caracteristica/valorreftec','valorreftecController');
 Route::resource('equipo/caracteristica/detcaractec','detcaractecController');
 
 Route::resource('hospital/departamento','DepartamentoController');
+<<<<<<< HEAD
+
+
+Route::get('/json-confsubgrupo','SubgrupoController@codigosubgrupo');
+Route::resource('equipo/confcorrelativo','Conf_corrController');
+=======
 Route::get('/json-confsubgrupo','SubgrupoController@codigosubgrupo');
 Route::resource('equipo/confcorrelativo','Conf_corrController');
 
+>>>>>>> 0498dadf34d35ed92081501d952dc4c863a3c09c
