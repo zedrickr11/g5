@@ -42,7 +42,7 @@
 </center>
     <p class="login-box-msg">Iniciar Sesion</p>
 
-    <form action="" method="post">
+    <form  action="/" method="get" >
 
       <div class="form-group has-feedback">
         <input type="email" class="form-control" placeholder="Usuario">
@@ -63,11 +63,12 @@
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
-            <a href="/">
+        <a href="/">  <button type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
+
         </div>
         <!-- /.col -->
       </div>
+
     </form>
   </div>
 
