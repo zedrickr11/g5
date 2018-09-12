@@ -45,12 +45,10 @@ Route::resource('equipo/caracteristica/detcaractec','detcaractecController');
 
 Route::resource('hospital/departamento','DepartamentoController');
 
-<<<<<<< HEAD
+
 Route::resource('equipo/caracteristica/detcaracesp','detcaracespController');
 
 
-=======
->>>>>>> facec7b23a2faf9c0fe032df88b5dfee46326619
 Route::get('/json-confsubgrupo','SubgrupoController@codigosubgrupo');
 Route::resource('equipo/confcorrelativo','Conf_corrController');
 
