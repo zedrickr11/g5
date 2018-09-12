@@ -33,16 +33,24 @@ class Equipo extends Model
          'frec_uso_dia_semana',
          'frec_uso_hora_dia',
          'personal_cap',
-         'id_proveedor',
+
          'atencion_mantenimineto_equipo',
          'fecha_compra',
          'forma_adquisicion',
          'fecha_expiracion_garantia',
-         'unidadsalud_idunidadsaludÍndice',
-         'area_idarea',
-         'estado_equipo_idestado',
-         'servicio_tecnico_idservicio_tecnico',
-         'fabricante_idfabricante'
+
+         'id_proveedor',
+         'idunidadsalud',
+         'idarea',
+         'idestado',
+         'idservicio_tecnico',
+         'idfabricante',
+         'idhospital',
+         'iddepartamento',
+         'region_idregion',
+         'idgrupo',
+         'idsubgrupo',
+         'idtipounidad'
     ];
 
     protected $guarded =[
