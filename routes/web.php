@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return 'Pagina de inicio prueba BONILLA';
+    return view ('index') ;
 });
 Route::resource('login','LoginController');
 
@@ -46,6 +46,12 @@ Route::resource('equipo/caracteristica/detcaractec','detcaractecController');
 Route::resource('hospital/departamento','DepartamentoController');
 
 
+
+Route::get('/json-confsubgrupo','SubgrupoController@codigosubgrupo');
+Route::resource('equipo/confcorrelativo','Conf_corrController');
+
+
+
 Route::resource('equipo/caracteristica/detcaracesp','detcaracespController');
 
 
@@ -55,3 +61,4 @@ Route::resource('equipo/confcorrelativo','Conf_corrController');
 
 
 Route::resource('equipo/equipo','EquipoController');
+
