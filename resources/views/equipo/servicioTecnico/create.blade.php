@@ -54,8 +54,12 @@
 				<!-- /.box-body -->
 
 				<div class="box-footer">
-
-					<input class="btn btn-primary" type="submit" name="" value="Guardar">
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+					<a href="{{route('servicioTecnico.index')}}">
+		            <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
+		          	</a>
+		          	<button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
+		          	<button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
 				</div>
 			</form>
 		</div>
