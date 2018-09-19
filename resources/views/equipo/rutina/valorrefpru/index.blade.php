@@ -3,63 +3,61 @@
 <section class="content-header">
       <h1>
         Equipo
-        <small>Detalle caracteristica tecnica</small>
+        <small>Valor referencia prueba</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-tv"></i> Equipo</a></li>
-          <li class="active">Caracteristica</li>
-        <li class="active">Detalle tecnica</li>
+          <li class="active">Rutina</li>
+        <li class="active">Valor referencia prueba</li>
       </ol>
 	</section>
 	<section class="content">
 
 
 <div class="row">
+
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="box">
             <div class="box-header">
-			  <h3 class="box-title">Listado de detalle caracteristica tecnica <a href="detcaractec/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
+
+			  <h3 class="box-title">Listado de valor referencia prueba<a href="valorrefpru/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
 			  		<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
             </div>
             <!-- /.box-header -->
+
             <div class="box-body">
-              @include('equipo.caracteristica.detcaractec.search')
-                <br>
-                <br>
-                <br>
+                  @include('equipo.rutina.valorrefpru.search')
+                  <br>
+                  <br>
+                  <br>
+
               <div class="table-responsive">
                 <table  class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Caracteristica tecnica</th>
-                    <th>Equipo</th>
-                    <th>Valor referencia tecnica</th>
-                    <th>Subgrupo caracteristica tecnica</th>
-                    <th>Estado detalle caracteristica tecnica</th>
-                    <th>Descripcion detalle caracteristica tecnica</th>
-                    <th>Valor detalle caracteristica tecnica</th>
+                    <th>Id</th>
+                    <th>Nombre de valor referencia prueba</th>
+
+
                     <th>Opciones</th>
                   </tr>
                   </thead>
                   <tbody>
-            @foreach ($detcaractec as $cat)
+            @foreach ($valorrefpru as $cat)
             <tr>
-              <td>{{ $cat->idcaracteristica_tecnica}}</td>
-              <td>{{ $cat->idequipo}}</td>
-              <td>{{ $cat->idvalor_ref_tec}}</td>
-              <td>{{ $cat->idsubgrupo_carac_tecnica}}</td>
-              <td>{{ $cat->estado_detalle_caracteristica_tecnica}}</td>
-              <td>{{ $cat->descripcion_detalle_caracteristica_tecnica}}</td>
-              <td>{{ $cat->valor_detalle_caracteristica_tecnica}}</td>
+              <td>{{ $cat->idvalor_ref_prueba}}</td>
+              <td>{{ $cat->descripcion}}</td>
+
+
               <td>
 
-                  <a href="{{route('detcaractec.edit',$cat->idcaracteristica_tecnica)}}">
+                  <a href="{{route('valorrefpru.edit',$cat->idvalor_ref_prueba)}}">
                     <button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-cog"></button>
                   </a>
-                  <a href="{{route('detcaractec.show',$cat->idcaracteristica_tecnica)}}">
+                  <a href="{{route('valorrefpru.show',$cat->idvalor_ref_prueba)}}">
                     <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></button>
                   </a>
-                  <form style="display: inline" method="POST" action="{{route('detcaractec.destroy', $cat->idsubgrupo_carac_tecnica)}}">
+                  <form style="display: inline" method="POST" action="{{route('valorrefpru.destroy', $cat->idvalor_ref_prueba)}}">
                   {!!method_field('DELETE')!!}
                   {!!csrf_field()!!}
                     <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></button>
@@ -76,8 +74,8 @@
                   </tfoot>
           </table>
               </div>
+      {!! $valorrefpru->links() !!}
 
-{!! $detcaractec->links() !!}
             </div>
             <!-- /.box-body -->
           </div>
