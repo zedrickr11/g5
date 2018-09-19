@@ -131,6 +131,20 @@
   <i class="fa fa-cart-plus"></i> <span>Proveedor</span>
 </a>
 </li>
+<li class="treeview">
+<a href="">
+  <i class="fa fa-exclamation-triangle"></i> <span>Precauciones</span>
+  <span class="pull-right-container">
+    <i class="fa fa-angle-left pull-right"></i>
+  </span>
+</a>
+
+<ul class="treeview-menu">
+  <li class=""><a href="{{route('ejecutante.index')}} "><i class="fa fa-circle-o"></i>Ejecutante</a></li>
+
 
 </ul>
+</li>
+</ul>
+
 @endsection
