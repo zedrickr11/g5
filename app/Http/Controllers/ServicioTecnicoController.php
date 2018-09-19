@@ -15,8 +15,19 @@ class ServicioTecnicoController extends Controller
      */
     public function index(Request $request)
     {
-        $servicioTecnicos=ServicioTecnico::all();
-        return view('equipo.servicioTecnico.index', compact('servicioTecnicos'));    }
+        //$servicioTecnicos=ServicioTecnico::all();
+        //return view('equipo.servicioTecnico.index', compact('servicioTecnicos'));  
+        if ($request)
+        {
+            $query=trim($request->get('searchText'));
+            $servicioTecnicos=DB::table('servicio_tecnico as f')
+            ->select('*')
+            ->where('nombre_empresa_sevicio_tecnico','LIKE','%'.$query.'%') 
+            ->orderBy('idservicio_tecnico','asc')
+            ->paginate(10);
+            return view('equipo.servicioTecnico.index',["servicioTecnicos"=>$servicioTecnicos,"searchText"=>$query]);
+        }  
+    }
 
     /**
      * Show the form for creating a new resource.

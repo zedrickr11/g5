@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Estado;
@@ -16,8 +18,18 @@ class EstadoController extends Controller
      */
     public function index(Request $request)
     {
-        $estados=Estado::all();
-        return view('equipo.estado.index', compact('estados'));
+        //$estados=Estado::all();
+        //return view('equipo.estado.index', compact('estados'));
+         if ($request)
+        {
+            $query=trim($request->get('searchText'));
+            $estados=DB::table('estado_equipo as f')
+            ->select('*')
+            ->where('estado','LIKE','%'.$query.'%')
+            ->orderBy('idestado','desc')
+            ->paginate(10);
+            return view('equipo.estado.index',["estados"=>$estados,"searchText"=>$query]);
+        }
     }
 
     /**
@@ -36,7 +48,7 @@ class EstadoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EstadoFormRequest $request)
+    public function store(Request $request)
     {
         Estado::create($request->all());
         return redirect()->route('estado.index');

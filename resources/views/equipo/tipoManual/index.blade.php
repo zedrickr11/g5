@@ -21,46 +21,50 @@
 			  		<a href="#" target="_blank"><button class="btn btn-info">Reporte</button></a></h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
-              <div class="table-responsive">
-                <table  class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>Id</th>
-                    <th>Tipo de Manual</th>
+           <div class="box-body">
+              @include('equipo.tipoManual.search')
+              <div class="col-md-12">
+                <div class="table-responsive">
+                  <table  class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Tipo de Manual</th>
 
-                    <th>Opciones</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-            @foreach ($tipoManuals as $tip)
-            <tr>
-              <td>{{ $tip->idtipomanual}}</td>
-              <td>{{ $tip->nombre_tipo_manual}}</td>
-              <td>
+                      <th>Opciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+              @foreach ($tipoManuals as $tip)
+              <tr>
+                <td>{{ $tip->idtipomanual}}</td>
+                <td>{{ $tip->nombre_tipo_manual}}</td>
+                <td>
 
-                  <a href="{{route('tipoManual.edit',$tip->idtipomanual)}}">
-                    <button type="button" class="btn btn-warning btn-sm" name="button">Editar</button>
-                  </a>
-                  <a href="{{route('tipoManual.show',$tip->idtipomanual)}}">
-                    <button type="button" class="btn btn-info btn-sm" name="button">Detalles</button>
-                  </a>
-                  <form style="display: inline" method="POST" action="{{route('tipoManual.destroy', $tip->idtipomanual)}}">
-                  {!!method_field('DELETE')!!}
-                  {!!csrf_field()!!}
-                    <button type="submit" class="btn btn-danger btn-sm" name="button">Eliminar</button>
-                  </form>
+                    <a href="{{route('tipoManual.edit',$tip->idtipomanual)}}">
+                      <button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-cog"></span> </button>
+                    </a>
+                    <a href="{{route('tipoManual.show',$tip->idtipomanual)}}">
+                      <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></span> </button>
+                    </a>
+                    <form style="display: inline" method="POST" action="{{route('tipoManual.destroy', $tip->idtipomanual)}}">
+                    {!!method_field('DELETE')!!}
+                    {!!csrf_field()!!}
+                      <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></span> </button>
+                    </form>
 
 
-              </td>
-            </tr>
+                </td>
+              </tr>
 
-            @endforeach
-                  </tbody>
-                  <tfoot>
+              @endforeach
+                    </tbody>
+                    <tfoot>
 
-                  </tfoot>
-          </table>
+                    </tfoot>
+            </table>
+            {!! $tipoManuals->links() !!}
+                </div>
               </div>
 
 

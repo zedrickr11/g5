@@ -22,10 +22,12 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <div class="table-responsive">
-                <table  class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
+              @include('equipo.servicioTecnico.search')
+              <div class="col-md-12">
+                <div class="table-responsive">
+                  <table  class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
                     <th>Id</th>
                     <th>Direccion</th>
                     <th>Telefono</th>
@@ -33,12 +35,11 @@
                     <th>Correo Electronico</th>
                     <th>Nombre de Contacto</th>
                     <th>Nombre de Empresa</th>
-
                     <th>Opciones</th>
                   </tr>
-                  </thead>
-                  <tbody>
-            @foreach ($servicioTecnicos as $ser)
+                    </thead>
+                    <tbody>
+              @foreach ($servicioTecnicos as $ser)
             <tr>
               <td>{{ $ser->idservicio_tecnico}}</td>
               <td>{{ $ser->direccion_servicio_tecnico}}</td>
@@ -49,28 +50,30 @@
               <td>{{ $ser->nombre_empresa_sevicio_tecnico}}</td>
               <td>
 
-                  <a href="{{route('servicioTecnico.edit',$ser->idservicio_tecnico)}}">
-                    <button type="button" class="btn btn-warning btn-sm" name="button">Editar</button>
-                  </a>
-                  <a href="{{route('servicioTecnico.show',$ser->idservicio_tecnico)}}">
-                    <button type="button" class="btn btn-info btn-sm" name="button">Detalles</button>
-                  </a>
-                  <form style="display: inline" method="POST" action="{{route('servicioTecnico.destroy', $ser->idservicio_tecnico)}}">
-                  {!!method_field('DELETE')!!}
-                  {!!csrf_field()!!}
-                    <button type="submit" class="btn btn-danger btn-sm" name="button">Eliminar</button>
-                  </form>
+                    <a href="{{route('servicioTecnico.edit',$ser->idservicio_tecnico)}}">
+                      <button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-cog"></span> </button>
+                    </a>
+                    <a href="{{route('servicioTecnico.show',$ser->idservicio_tecnico)}}">
+                      <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></span> </button>
+                    </a>
+                    <form style="display: inline" method="POST" action="{{route('servicioTecnico.destroy', $ser->idservicio_tecnico)}}">
+                    {!!method_field('DELETE')!!}
+                    {!!csrf_field()!!}
+                      <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></span> </button>
+                    </form>
 
 
-              </td >
-            </tr>
+                </td>
+              </tr>
 
-            @endforeach
-                  </tbody>
-                  <tfoot>
+              @endforeach
+                    </tbody>
+                    <tfoot>
 
-                  </tfoot>
-          </table>
+                    </tfoot>
+            </table>
+            {!! $servicioTecnicos->links() !!}
+                </div>
               </div>
 
 
