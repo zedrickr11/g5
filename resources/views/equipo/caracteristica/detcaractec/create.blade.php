@@ -30,29 +30,38 @@
 				<div class="box-body col-md-6">
 
 
-                    <div class="form-group">
-                      <label for="select" class="">Caracteristica tecnica</label>
-                      <select name="idcaracteristica_tecnica" class="form-control" id="select">
-                        @foreach($caract_tec as $carac)
-                        <option value="{{$carac->idcaracteristica_tecnica}}">{{$carac->nombre_caracteristica_tecnica}}</option>
-                    @endforeach
-                    </select>
-                    </div>
+          <div class="form-group">
+            <label for="select" class="">Caractecnica tecnica</label>
+            <select name="idcaracteristica_tecnica" class="form-control" id="select">
+              @foreach($caract_tec as $carac)
+              <option value="{{$carac->idcaracteristica_tecnica}}">{{$carac->nombre_caracteristica_tecnica}}</option>
+          @endforeach
+          </select>
+          </div>
 
                     <div class="form-group">
                       <label for="select" class="">Subgrupo  caractecnica tecnica</label>
-                      <select name="idcaracteristica_tecnica" class="form-control" id="select">
+                      <select name="idsubgrupo_carac_tecnica" class="form-control" id="select">
                         @foreach($subcaractec as $carac)
                         <option value="{{$carac->idsubgrupo_carac_tecnica}}">{{$carac->nombre_subgrupo_carac_tecnica}}</option>
                     @endforeach
                     </select>
                     </div>
-
                     <div class="form-group">
                       <label for="select" class="">Valor referencia tecnica</label>
                       <select name="idvalor_ref_tec" class="form-control" id="select">
                         @foreach($valorreftec as $carac)
                         <option value="{{$carac->idvalor_ref_tec}}">{{$carac->nombre_valor_ref_tec}}</option>
+                    @endforeach
+                    </select>
+                    </div>
+
+
+                    <div class="form-group">
+                      <label for="select" class="">Equipo</label>
+                      <select name="idequipo" class="form-control" id="select">
+                        @foreach($equipo as $carac)
+                        <option value="{{$carac->idequipo}}">{{$carac->nombre_equipo}}</option>
                     @endforeach
                     </select>
                     </div>
@@ -93,6 +102,18 @@
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
           <a href="{{route('detcaractec.index')}}">
             <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
           </a>

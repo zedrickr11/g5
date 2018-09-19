@@ -40,6 +40,27 @@
 
   </ul>
 </li>
+
+<li class="treeview">
+<a href="">
+  <i class="fa fa-th"></i> <span>Rutinas</span>
+  <span class="pull-right-container">
+    <i class="fa fa-angle-left pull-right"></i>
+  </span>
+</a>
+
+<ul class="treeview-menu">
+  <li class=""><a href="{{route('caracru.index')}} "><i class="fa fa-circle-o"></i>Caracteristica rutina</a></li>
+  <li class=""><a href="{{route('valorrefpru.index')}} "><i class="fa fa-circle-o"></i>Valor referencia prueba</a></li>
+  <li class=""><a href="{{route('subpru.index')}} "><i class="fa fa-circle-o"></i>Subgrupo prueba</a></li>
+  <li class=""><a href="{{route('pruru.index')}} "><i class="fa fa-circle-o"></i>Prueba rutina</a></li>
+  <li class=""><a href="{{route('tiporu.index')}} "><i class="fa fa-circle-o"></i>Tipo rutina</a></li>
+
+
+</ul>
+</li>
+
+
   <li class="treeview">
   <a href="">
     <i class="fa fa-map"></i> <span>Organización de regiones</span>
