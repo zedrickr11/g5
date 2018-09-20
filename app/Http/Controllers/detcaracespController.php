@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\caracespefun;
 use App\valorrefesp;
+use App\Equipo;
 
 
 class detcaracespController extends Controller
@@ -16,20 +17,38 @@ class detcaracespController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-      $detcaracesp=DB::table('detalle_caracteristica_especial as a')
-      ->join('caracteristica_especial_funcionamiento as d','a.idcaracteristica_especial','=','d.idcaracteristica_especial')
-        ->join('valor_ref_esp as s','a.idvalor_ref_esp','=','s.idvalor_ref_esp')
 
-          ->join('equipo as e','a.idequipo','=','e.idequipo')
+      if ($request)
+      {
+          $query=trim($request->get('searchText'));
+            $detcaracesp=DB::table('detalle_caracteristica_especial as a')
+              ->join('caracteristica_especial_funcionamiento as d','a.idcaracteristica_especial','=','d.idcaracteristica_especial')
+                ->join('valor_ref_esp as s','a.idvalor_ref_esp','=','s.idvalor_ref_esp')
+                ->join('equipo as e','a.idequipo','=','e.idequipo')
+              ->select('d.nombre_caracteristica_especial as idcaracteristica_especial','e.nombre_equipo as idequipo','s.nombre_valor_ref_esp as idvalor_ref_esp','a.estado_detalle_caracteristica_especial','descripcion_detalle_caracteristica_especial','valor_detalle_caracteristica_especial')
 
-      ->select('d.nombre_caracteristica_especial as idcaracteristica_especial','e.nombre_equipo as idequipo','s.nombre_valor_ref_esp as idvalor_ref_esp','a.estado_detalle_caracteristica_especial','descripcion_detalle_caracteristica_especial','valor_detalle_caracteristica_especial')
-      ->get();
+        //  ->select('*')
+          ->where('d.nombre_caracteristica_especial','LIKE','%'.$query.'%')
+          ->orderBy('d.idcaracteristica_especial','desc')
+          ->paginate(10);
+
+          return view('equipo.caracteristica.detcaracesp.index',["detcaracesp"=>$detcaracesp,"searchText"=>$query]);
+      }
+
+  //    $detcaracesp=DB::table('detalle_caracteristica_especial as a')
+    //  ->join('caracteristica_especial_funcionamiento as d','a.idcaracteristica_especial','=','d.idcaracteristica_especial')
+      //  ->join('valor_ref_esp as s','a.idvalor_ref_esp','=','s.idvalor_ref_esp')
+
+        //  ->join('equipo as e','a.idequipo','=','e.idequipo')
+
+  //    ->select('d.nombre_caracteristica_especial as idcaracteristica_especial','e.nombre_equipo as idequipo','s.nombre_valor_ref_esp as idvalor_ref_esp','a.estado_detalle_caracteristica_especial','descripcion_detalle_caracteristica_especial','valor_detalle_caracteristica_especial')
+    //  ->get();
 
 
 
-      return view('equipo.caracteristica.detcaracesp.index', compact('detcaracesp'));
+  //    return view('equipo.caracteristica.detcaracesp.index', compact('detcaracesp'));
     }
 
     /**
@@ -41,8 +60,9 @@ class detcaracespController extends Controller
     {
       $caracespefun=caracespefun::all();
       $valorrefesp=valorrefesp::all();
+      $equipo=Equipo::all();
 
-      return view("equipo.caracteristica.detcaracesp.create",compact('caracespefun','valorrefesp'));
+      return view("equipo.caracteristica.detcaracesp.create",compact('caracespefun','valorrefesp','equipo'));
     }
 
     /**
@@ -53,7 +73,8 @@ class detcaracespController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      detcaracesp::create($request->all());
+       return redirect()->route('detcaracesp.index');
     }
 
     /**
