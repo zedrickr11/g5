@@ -55,3 +55,7 @@ Route::resource('equipo/confcorrelativo','Conf_corrController');
 
 
 Route::resource('equipo/equipo','EquipoController');
+
+Route::get('/json-grupo','EquipoController@grupo');
+Route::get('/json-subgrupo','EquipoController@subgrupo');
+Route::get('/json-correlativo','EquipoController@correlativo'); 

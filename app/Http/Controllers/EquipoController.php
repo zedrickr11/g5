@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 //falta el form Request
 use App\Http\Requests\EquipoFormRequest;
 
+use Illuminate\Support\Facades\Input;
+
 use App\Proveedor;
 use App\UnidadSalud;
 use App\Area;
@@ -48,6 +50,30 @@ class EquipoController extends Controller
           ->paginate(10);
           return view('equipo.equipo.index',["equipos"=>$equipos,"searchText"=>$query]);
       }
+    }
+    public function grupo(){
+      $area_id = Input::get('area_id');
+      $grupo = DB::table('grupo as g')
+      ->select('g.idgrupo','g.grupo')
+      ->where('g.idarea','=',$area_id)
+      ->get();
+      return response()->json($grupo);
+    }
+    public function subgrupo(){
+      $grupo_id = Input::get('grupo_id');
+      $subgrupo = DB::table('subgrupo as s')
+      ->select('s.idsubgrupo','s.subgrupo')
+      ->where('s.idgrupo','=',$grupo_id)
+      ->get();
+      return response()->json($subgrupo);
+    }
+    public function correlativo(){
+      $subgrupo_id = Input::get('subgrupo_id');
+      $correlativo = DB::table('Conf_corr as c')
+      ->select('c.actual')
+      ->where('c.idsubgrupo','=',$subgrupo_id)
+      ->get();
+      return response()->json($correlativo);
     }
 
     /**
