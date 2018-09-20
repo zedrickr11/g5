@@ -38,6 +38,7 @@
           <div class="form-group">
       			<label>Grupo</label>
       			<select name="idgrupo" id="grupo" class="form-control">
+               <option value="0" disable="true" selected="true">=== Selecciona un grupo ===</option>
               @foreach ($grupos as $grupo)
                 <option value="{{ $grupo->idgrupo }}">{{ $grupo->grupo }}</option>
               @endforeach
@@ -79,8 +80,11 @@
 
 </div>
 </section>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+<script src="{{asset('ajax/jquery.min.js')}}"></script>
+<script src="{{asset('ajax/bootstrap.min.js')}}"></script>
+
 <script type="text/javascript">
   $('#grupo').on('change', function(e){
     console.log(e);
