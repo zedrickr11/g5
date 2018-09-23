@@ -22,45 +22,49 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <div class="table-responsive">
-                <table  class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>Id</th>
-                    <th>Estado</th>
+              @include('equipo.estado.search')
+              <div class="col-md-12">
+                <div class="table-responsive">
+                  <table  class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Estado</th>
 
-                    <th>Opciones</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-            @foreach ($estados as $est)
-            <tr>
-              <td>{{ $est->idestado}}</td>
-              <td>{{ $est->estado}}</td>
-              <td>
+                      <th>Opciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+              @foreach ($estados as $est)
+              <tr>
+                <td>{{ $est->idestado}}</td>
+                <td>{{ $est->estado}}</td>
+                <td>
 
-                  <a href="{{route('estado.edit',$est->idestado)}}">
-                    <button type="button" class="btn btn-warning btn-sm" name="button">Editar</button>
-                  </a>
-                  <a href="{{route('estado.show',$est->idestado)}}">
-                    <button type="button" class="btn btn-info btn-sm" name="button">Detalles</button>
-                  </a>
-                  <form style="display: inline" method="POST" action="{{route('estado.destroy', $est->idestado)}}">
-                  {!!method_field('DELETE')!!}
-                  {!!csrf_field()!!}
-                    <button type="submit" class="btn btn-danger btn-sm" name="button">Eliminar</button>
-                  </form>
+                    <a href="{{route('estado.edit',$est->idestado)}}">
+                      <button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-cog"></span> </button>
+                    </a>
+                    <a href="{{route('estado.show',$est->idestado)}}">
+                      <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></span> </button>
+                    </a>
+                    <form style="display: inline" method="POST" action="{{route('estado.destroy', $est->idestado)}}">
+                    {!!method_field('DELETE')!!}
+                    {!!csrf_field()!!}
+                      <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></span> </button>
+                    </form>
 
 
-              </td>
-            </tr>
+                </td>
+              </tr>
 
-            @endforeach
-                  </tbody>
-                  <tfoot>
+              @endforeach
+                    </tbody>
+                    <tfoot>
 
-                  </tfoot>
-          </table>
+                    </tfoot>
+            </table>
+            {!! $estados->links() !!}
+                </div>
               </div>
 
 
