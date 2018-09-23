@@ -69,7 +69,6 @@ Route::resource('equipo/rutina/tiporu','tiporuController');
 Route::resource('equipo/rutina/caracru','caracruController');
 
 Route::resource('precaucion/ejecutante','PrecaucionEjecutanteController');
-
 Route::resource('precaucion/responsable','PrecaucionResponsableController');
 
 Route::resource('peligro/naturaleza','NaturalezaPeligroController');
