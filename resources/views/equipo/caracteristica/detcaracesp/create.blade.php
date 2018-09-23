@@ -32,18 +32,26 @@
 
                     <div class="form-group">
                       <label for="select" class="">Caracteristica especial</label>
-                      <select name="idcaracteristica_tecnica" class="form-control" id="select">
-                        @foreach($caracespefun as $carac)
-                        <option value="{{$carac->idcaracteristica_especial}}">{{$carac->nombre_caracteristica_especial}}</option>
+                      <select name="idcaracteristica_especial" class="form-control" id="select">
+                        @foreach($caracespefun as $carac1)
+                        <option value="{{$carac1->idcaracteristica_especial}}">{{$carac1->nombre_caracteristica_especial}}</option>
                     @endforeach
                     </select>
                     </div>
 
                     <div class="form-group">
                       <label for="select" class="">Subgrupo  caractecnica tecnica</label>
-                      <select name="idcaracteristica_tecnica" class="form-control" id="select">
-                        @foreach($valorrefesp as $carac)
-                        <option value="{{$carac->idvalor_ref_esp}}">{{$carac->nombre_valor_ref_esp}}</option>
+                      <select name="idvalor_ref_esp" class="form-control" id="select">
+                        @foreach($valorrefesp as $carac2)
+                        <option value="{{$carac2->idvalor_ref_esp}}">{{$carac2->nombre_valor_ref_esp}}</option>
+                    @endforeach
+                    </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="select" class="">Equipo</label>
+                      <select name="idequipo" class="form-control" id="select">
+                        @foreach($equipo as $carac)
+                        <option value="{{$carac->idequipo}}">{{$carac->nombre_equipo}}</option>
                     @endforeach
                     </select>
                     </div>

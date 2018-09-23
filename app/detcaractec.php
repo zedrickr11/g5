@@ -9,12 +9,13 @@ class detcaractec extends Model
 
     protected $table='detalle_caracteristica_tecnica';
 
-    protected $primaryKey='idcaracteristica_tecnica';
+  //  protected $primaryKey='idcaracteristica_tecnica';
 
     public $timestamps=false;
 
 
     protected $fillable =[
+        'idcaracteristica_tecnica',
         'idequipo',
         'idvalor_ref_tec',
         'idsubgrupo_carac_tecnica',

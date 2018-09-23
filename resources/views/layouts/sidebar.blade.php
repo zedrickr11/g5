@@ -40,6 +40,30 @@
 
   </ul>
 </li>
+
+<li class="treeview">
+<a href="">
+  <i class="fa fa-th"></i> <span>Rutinas</span>
+  <span class="pull-right-container">
+    <i class="fa fa-angle-left pull-right"></i>
+  </span>
+</a>
+
+<ul class="treeview-menu">
+  <li class=""><a href="{{route('caracru.index')}} "><i class="fa fa-circle-o"></i>Caracteristica rutina</a></li>
+  <li class=""><a href="{{route('valorrefpru.index')}} "><i class="fa fa-circle-o"></i>Valor referencia prueba</a></li>
+  <li class=""><a href="{{route('subpru.index')}} "><i class="fa fa-circle-o"></i>Subgrupo prueba</a></li>
+  <li class=""><a href="{{route('pruru.index')}} "><i class="fa fa-circle-o"></i>Prueba rutina</a></li>
+  <li class=""><a href="{{route('tiporu.index')}} "><i class="fa fa-circle-o"></i>Tipo rutina</a></li>
+  <li class=""><a href="{{route('valrefru.index')}} "><i class="fa fa-circle-o"></i>Valor referencia rutina</a></li>
+  <li class=""><a href="{{route('subru.index')}} "><i class="fa fa-circle-o"></i>Subgrupo rutina</a></li>
+  <li class=""><a href="{{route('ruman.index')}} "><i class="fa fa-circle-o"></i>Rutina mantenimiento</a></li>
+
+
+</ul>
+</li>
+
+
   <li class="treeview">
   <a href="">
     <i class="fa fa-map"></i> <span>Organización de regiones</span>
@@ -110,6 +134,56 @@
   <i class="fa fa-cart-plus"></i> <span>Proveedor</span>
 </a>
 </li>
+<li class="treeview">
+<a href="">
+  <i class="fa fa-exclamation-triangle"></i> <span>Precauciones</span>
+  <span class="pull-right-container">
+    <i class="fa fa-angle-left pull-right"></i>
+  </span>
+</a>
+
+<ul class="treeview-menu">
+  <li class=""><a href="{{route('ejecutante.index')}} "><i class="fa fa-circle-o"></i>Ejecutante</a></li>
+    <li class=""><a href="{{route('responsable.index')}} "><i class="fa fa-circle-o"></i>Responsable</a></li>
 
 </ul>
+</li>
+<li class="treeview">
+<a href="">
+  <i class="fa 	fa fa-times-circle-o"></i> <span>Peligro</span>
+  <span class="pull-right-container">
+    <i class="fa fa-angle-left pull-right"></i>
+  </span>
+</a>
+<ul class="treeview-menu">
+  <li class=""><a href="{{route('naturaleza.index')}} "><i class="fa fa-circle-o"></i>Naturaleza</a></li>
+</ul>
+</li>
+<li class="treeview">
+<a href="">
+  <i class="fa  fa-building-o"></i> <span>Mantenimiento</span>
+  <span class="pull-right-container">
+    <i class="fa fa-angle-left pull-right"></i>
+  </span>
+</a>
+<ul class="treeview-menu">
+  <li class=""><a href="{{route('areamantenimiento.index')}} "><i class="fa fa-circle-o"></i>Areas</a></li>
+</ul>
+</li>
+<li class="treeview">
+<a href="">
+  <i class="fa  fa-suitcase"></i> <span>Trabajo</span>
+  <span class="pull-right-container">
+    <i class="fa fa-angle-left pull-right"></i>
+  </span>
+</a>
+<ul class="treeview-menu">
+  <li class=""><a href="{{route('tipo.index')}} "><i class="fa fa-circle-o"></i>Tipo de Trabajo</a></li>
+  <li class=""><a href="{{route('solicitud.index')}} "><i class="fa fa-circle-o"></i>Solicitud de Trabajo</a></li>
+  <li class=""><a href="{{route('permiso.index')}} "><i class="fa fa-circle-o"></i>Permiso de Trabajo</a></li>
+</ul>
+</li>
+
+</ul>
+
 @endsection

@@ -23,6 +23,10 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+              @include('equipo.caracteristica.detcaractec.search')
+                <br>
+                <br>
+                <br>
               <div class="table-responsive">
                 <table  class="table table-bordered table-striped">
                   <thead>
@@ -58,7 +62,7 @@
                   <form style="display: inline" method="POST" action="{{route('detcaractec.destroy', $cat->idsubgrupo_carac_tecnica)}}">
                   {!!method_field('DELETE')!!}
                   {!!csrf_field()!!}
-                    <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-cog"></button>
+                    <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></button>
                   </form>
 
 
@@ -73,7 +77,7 @@
           </table>
               </div>
 
-
+{!! $detcaractec->links() !!}
             </div>
             <!-- /.box-body -->
           </div>

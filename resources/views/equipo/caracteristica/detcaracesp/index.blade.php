@@ -23,6 +23,10 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+              @include('equipo.caracteristica.detcaracesp.search')
+                <br>
+                <br>
+                <br>
               <div class="table-responsive">
                 <table  class="table table-bordered table-striped">
                   <thead>
@@ -50,13 +54,13 @@
                   <a href="{{route('detcaracesp.edit',$cat->idcaracteristica_especial)}}">
                     <button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-cog"></button>
                   </a>
-                  <a href="{{route('detcaractec.show',$cat->idcaracteristica_especial)}}">
+                  <a href="{{route('detcaracesp.show',$cat->idcaracteristica_especial)}}">
                     <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></button>
                   </a>
-                  <form style="display: inline" method="POST" action="{{route('detcaracesp.destroy', $cat->idsubgrupo_carac_tecnica)}}">
+                  <form style="display: inline" method="POST" action="{{route('detcaracesp.destroy', $cat->idcaracteristica_especial)}}">
                   {!!method_field('DELETE')!!}
                   {!!csrf_field()!!}
-                    <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-cog"></button>
+                    <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></button>
                   </form>
 
 
@@ -70,8 +74,7 @@
                   </tfoot>
           </table>
               </div>
-
-
+{!! $detcaracesp->links() !!}
             </div>
             <!-- /.box-body -->
           </div>
