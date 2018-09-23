@@ -55,9 +55,12 @@
   <li class=""><a href="{{route('subpru.index')}} "><i class="fa fa-circle-o"></i>Subgrupo prueba</a></li>
   <li class=""><a href="{{route('pruru.index')}} "><i class="fa fa-circle-o"></i>Prueba rutina</a></li>
   <li class=""><a href="{{route('tiporu.index')}} "><i class="fa fa-circle-o"></i>Tipo rutina</a></li>
+<<<<<<< HEAD
   <li class=""><a href="{{route('valrefru.index')}} "><i class="fa fa-circle-o"></i>Valor referencia rutina</a></li>
   <li class=""><a href="{{route('subru.index')}} "><i class="fa fa-circle-o"></i>Subgrupo rutina</a></li>
   <li class=""><a href="{{route('ruman.index')}} "><i class="fa fa-circle-o"></i>Rutina mantenimiento</a></li>
+=======
+>>>>>>> 03e4bcda5514324c61c493beb6f477f994f056c0
 
 
 </ul>
