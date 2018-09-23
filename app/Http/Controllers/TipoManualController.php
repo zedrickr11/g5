@@ -16,8 +16,19 @@ class TipoManualController extends Controller
      */
     public function index(Request $request)
     {
-        $tipoManuals=TipoManual::all();
-        return view('equipo.tipoManual.index', compact('tipoManuals'));    }
+        //$tipoManuals=TipoManual::all();
+        //return view('equipo.tipoManual.index', compact('tipoManuals'));    
+        if ($request)
+        {
+            $query=trim($request->get('searchText'));
+            $tipoManuals=DB::table('tipomanual as f')
+            ->select('*')
+            ->where('nombre_tipo_manual','LIKE','%'.$query.'%')
+            ->orderBy('idtipomanual','desc')
+            ->paginate(10);
+            return view('equipo.tipoManual.index',["tipoManuals"=>$tipoManuals,"searchText"=>$query]);
+        }
+    }
 
     /**
      * Show the form for creating a new resource.
