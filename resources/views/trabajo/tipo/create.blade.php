@@ -1,6 +1,5 @@
 @extends ('layouts.admin')
 @section ('contenido')
-
 <section class="content-header">
 <h1>
 Trabajo
