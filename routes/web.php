@@ -69,6 +69,7 @@ Route::resource('equipo/rutina/tiporu','tiporuController');
 Route::resource('equipo/rutina/caracru','caracruController');
 
 Route::resource('precaucion/ejecutante','PrecaucionEjecutanteController');
+ 
 Route::resource('precaucion/responsable','PrecaucionResponsableController');
 
 Route::resource('peligro/naturaleza','NaturalezaPeligroController');
@@ -78,3 +79,4 @@ Route::resource('mantenimiento/areamantenimiento','AreaMantenimientoController')
 Route::resource('trabajo/tipo','TipoTrabajoController');
 Route::resource('trabajo/solicitud','SolicitudTrabajoController');
 Route::resource('trabajo/permiso','PermisoTrabajoController');
+ 
