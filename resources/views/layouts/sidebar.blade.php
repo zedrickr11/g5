@@ -141,10 +141,46 @@
 
 <ul class="treeview-menu">
   <li class=""><a href="{{route('ejecutante.index')}} "><i class="fa fa-circle-o"></i>Ejecutante</a></li>
-
+    <li class=""><a href="{{route('responsable.index')}} "><i class="fa fa-circle-o"></i>Responsable</a></li>
 
 </ul>
 </li>
+<li class="treeview">
+<a href="">
+  <i class="fa 	fa fa-times-circle-o"></i> <span>Peligro</span>
+  <span class="pull-right-container">
+    <i class="fa fa-angle-left pull-right"></i>
+  </span>
+</a>
+<ul class="treeview-menu">
+  <li class=""><a href="{{route('naturaleza.index')}} "><i class="fa fa-circle-o"></i>Naturaleza</a></li>
+</ul>
+</li>
+<li class="treeview">
+<a href="">
+  <i class="fa  fa-building-o"></i> <span>Mantenimiento</span>
+  <span class="pull-right-container">
+    <i class="fa fa-angle-left pull-right"></i>
+  </span>
+</a>
+<ul class="treeview-menu">
+  <li class=""><a href="{{route('areamantenimiento.index')}} "><i class="fa fa-circle-o"></i>Areas</a></li>
+</ul>
+</li>
+<li class="treeview">
+<a href="">
+  <i class="fa  fa-suitcase"></i> <span>Trabajo</span>
+  <span class="pull-right-container">
+    <i class="fa fa-angle-left pull-right"></i>
+  </span>
+</a>
+<ul class="treeview-menu">
+  <li class=""><a href="{{route('tipo.index')}} "><i class="fa fa-circle-o"></i>Tipo de Trabajo</a></li>
+  <li class=""><a href="{{route('solicitud.index')}} "><i class="fa fa-circle-o"></i>Solicitud de Trabajo</a></li>
+  <li class=""><a href="{{route('permiso.index')}} "><i class="fa fa-circle-o"></i>Permiso de Trabajo</a></li>
+</ul>
+</li>
+
 </ul>
 
 @endsection
