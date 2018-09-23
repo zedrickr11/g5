@@ -67,6 +67,7 @@ Route::resource('equipo/rutina/subpru','subpruController');
 Route::resource('equipo/rutina/pruru','pruruController');
 Route::resource('equipo/rutina/tiporu','tiporuController');
 Route::resource('equipo/rutina/caracru','caracruController');
+
 Route::resource('equipo/rutina/valrefru','valrefruController');
 Route::resource('equipo/rutina/subru','subruController');
 Route::resource('equipo/rutina/ruman','rumanController');

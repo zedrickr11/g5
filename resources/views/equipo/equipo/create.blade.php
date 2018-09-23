@@ -273,7 +273,8 @@
           </div>
             <div class="form-group">
             <label for="idarea" >Área (*)</label>
-            <select name="idarea" class="form-control" >
+            <select name="idarea" class="form-control" id="area">
+               <option value="0" disable="true" selected="true">=== Selecciona un área ===</option>
             @foreach($area as $a)
               <option value="{{$a->idarea}}">{{$a->nombre_area}}</option>
             @endforeach
@@ -281,19 +282,15 @@
             </div>
             <div class="form-group">
             <label for="idgrupo" >Grupo (*)</label>
-            <select name="idgrupo" class="form-control" >
-              @foreach($grupo as $g)
-                <option value="{{$g->idgrupo}}">{{$g->grupo}}</option>
-              @endforeach
+            <select name="idgrupo" class="form-control" id="grupo">
+              <option value="0" disable="true" selected="true">=== Selecciona un grupo ===</option>
             </select>
             </div>
 
             <div class="form-group">
             <label for="idsubgrupo" >Subgrupo (*)</label>
-            <select name="idsubgrupo" class="form-control">
-              @foreach($subgrupo as $sub)
-                <option value="{{$sub->idsubgrupo}}">{{$sub->subgrupo}}</option>
-              @endforeach
+            <select name="idsubgrupo" class="form-control" id="subgrupo">
+              <option value="0" disable="true" selected="true">=== Selecciona un subgrupo ===</option>
             </select>
             </div>
 
@@ -335,7 +332,7 @@
 
             <div class="form-group">
   						<label for="correlativo">Correlativo (*)</label>
-  						<input type="number" class="form-control" name="correlativo" value="{{old('correlativo')}}">
+  						<input id="correlativo" class="form-control"  name="correlativo" readonly>
   					</div>
             <div class="form-group">
   						<label for="idequipo">Código del equipo (*)</label>
@@ -376,4 +373,55 @@
   <!-- /.col -->
 </div>
 </section>
+
+<script src="{{asset('ajax/jquery.min.js')}}"></script>
+<script src="{{asset('ajax/bootstrap.min.js')}}"></script>
+
+<script type="text/javascript">
+  $('#area').on('change', function(e){
+    console.log(e);
+    var area_id = e.target.value;
+    $.get('/json-grupo?area_id=' + area_id,function(data) {
+      console.log(data);
+      $('#grupo').empty();
+      $('#grupo').append('<option value="0" disable="true" selected="true">=== Selecciona un grupo ===</option>');
+
+      $('#subgrupo').empty();
+      $('#subgrupo').append('<option value="0" disable="true" selected="true">=== Selecciona un subgrupo ===</option>');
+
+      $.each(data, function(index, regenciesObj){
+        $('#grupo').append('<option value="'+ regenciesObj.idgrupo +'">'+ regenciesObj.grupo +'</option>');
+      })
+    });
+  });
+
+  $('#grupo').on('change', function(e){
+    console.log(e);
+    var grupo_id = e.target.value;
+    $.get('/json-subgrupo?grupo_id=' + grupo_id,function(data) {
+      console.log(data);
+
+
+      $('#subgrupo').empty();
+      $('#subgrupo').append('<option value="0" disable="true" selected="true">=== Selecciona un subgrupo ===</option>');
+
+      $.each(data, function(index, regenciesObj){
+        $('#subgrupo').append('<option value="'+ regenciesObj.idsubgrupo +'">'+ regenciesObj.subgrupo +'</option>');
+      })
+    });
+  });
+
+  $('#subgrupo').on('change', function(e){
+    console.log(e);
+    var subgrupo_id = e.target.value;
+    $.get('/json-correlativo?subgrupo_id=' + subgrupo_id,function(data) {
+      console.log(data);
+
+      $.each(data, function(index, regenciesObj){
+
+        $('#correlativo').val(regenciesObj.actual);
+      })
+    });
+  });
+     </script>
 @endsection
