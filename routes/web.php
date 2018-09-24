@@ -80,4 +80,5 @@ Route::resource('trabajo/solicitud','SolicitudTrabajoController');
 Route::resource('trabajo/permiso','PermisoTrabajoController');
 
 Route::resource('trabajo/seguimiento','SeguimientoController');
+
 Route::resource('equipo/rutina/detcaracru','detcaracruController');
