@@ -178,6 +178,7 @@
   <li class=""><a href="{{route('tipo.index')}} "><i class="fa fa-circle-o"></i>Tipo de Trabajo</a></li>
   <li class=""><a href="{{route('solicitud.index')}} "><i class="fa fa-circle-o"></i>Solicitud de Trabajo</a></li>
   <li class=""><a href="{{route('permiso.index')}} "><i class="fa fa-circle-o"></i>Permiso de Trabajo</a></li>
+  <li class=""><a href="{{route('seguimiento.index')}} "><i class="fa fa-circle-o"></i>Seguimiento de Trabajo</a></li>
 </ul>
 </li>
 
