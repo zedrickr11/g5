@@ -8,6 +8,7 @@ use DB;
 use App\Http\Requests\rumanFormRequest;
 use App\tiporu;
 use App\Equipo;
+use App\PermisoTrabajo;
 class rumanController extends Controller
 {
   /**
@@ -44,8 +45,9 @@ class rumanController extends Controller
   {
     $tiporu=tiporu::all();
     $equipo=Equipo::all();
+        $permisotrabajo=PermisoTrabajo::all();
 
-    return view("equipo.rutina.ruman.create",compact('tiporu','equipo'));
+    return view("equipo.rutina.ruman.create",compact('tiporu','equipo','permisotrabajo'));
 
   }
 

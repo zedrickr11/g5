@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view ('index') ;
 });
@@ -69,9 +58,14 @@ Route::resource('equipo/rutina/tiporu','tiporuController');
 Route::resource('equipo/rutina/caracru','caracruController');
 
 
+
 Route::resource('equipo/rutina/valrefru','valrefruController');
 Route::resource('equipo/rutina/subru','subruController');
 Route::resource('equipo/rutina/ruman','rumanController');
+
+Route::resource('precaucion/ejecutante','PrecaucionEjecutanteController');
+
+
 
 Route::resource('precaucion/ejecutante','PrecaucionEjecutanteController');
 
@@ -84,3 +78,6 @@ Route::resource('mantenimiento/areamantenimiento','AreaMantenimientoController')
 Route::resource('trabajo/tipo','TipoTrabajoController');
 Route::resource('trabajo/solicitud','SolicitudTrabajoController');
 Route::resource('trabajo/permiso','PermisoTrabajoController');
+
+Route::resource('trabajo/seguimiento','SeguimientoController');
+Route::resource('equipo/rutina/detcaracru','detcaracruController');

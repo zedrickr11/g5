@@ -116,8 +116,20 @@
           </div>
 
 
+          <div class="form-group">
+            <label for="select" class="">Permiso de trabajo</label>
+            <select name="permisotrabajo_idpermiso_trabajo" class="form-control" id="select">
+              @foreach($permisotrabajo as $carac)
+              <option value="{{$carac->dpermiso_trabajo}}">{{$carac->num_permiso}}</option>
+          @endforeach
+          </select>
+          </div>
 
+          <div class="form-group">
 
+            <label for="direccion_fab">Estado rutina</label>
+            <input type="text" class="form-control" name="estado_rutina" value="{{old('estado_rutina')}}">
+          </div>
 
 
 
@@ -129,22 +141,7 @@
 
         <div class="box-footer">
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 
           <a href="{{route('ruman.index')}}">
             <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
