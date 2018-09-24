@@ -80,3 +80,4 @@ Route::resource('mantenimiento/areamantenimiento','AreaMantenimientoController')
 Route::resource('trabajo/tipo','TipoTrabajoController');
 Route::resource('trabajo/solicitud','SolicitudTrabajoController');
 Route::resource('trabajo/permiso','PermisoTrabajoController');
+Route::resource('trabajo/seguimiento','SeguimientoController');
