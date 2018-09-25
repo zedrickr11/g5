@@ -58,8 +58,6 @@ Route::resource('equipo/rutina/tiporu','tiporuController');
 Route::resource('equipo/rutina/caracru','caracruController');
 
 
-
-<<<<<<< HEAD
 Route::resource('equipo/rutina/valrefru','valrefruController');
 Route::resource('equipo/rutina/subru','subruController');
 Route::resource('equipo/rutina/ruman','rumanController');
@@ -70,9 +68,9 @@ Route::resource('precaucion/ejecutante','PrecaucionEjecutanteController');
 
 Route::resource('precaucion/ejecutante','PrecaucionEjecutanteController');
 
-=======
+
 Route::resource('precaucion/ejecutante','PrecaucionEjecutanteController');
->>>>>>> 15d57c6cf406aeccd9f1180cda00a116a670f23c
+
 Route::resource('precaucion/responsable','PrecaucionResponsableController');
 
 Route::resource('peligro/naturaleza','NaturalezaPeligroController');
@@ -82,11 +80,14 @@ Route::resource('mantenimiento/areamantenimiento','AreaMantenimientoController')
 Route::resource('trabajo/tipo','TipoTrabajoController');
 Route::resource('trabajo/solicitud','SolicitudTrabajoController');
 Route::resource('trabajo/permiso','PermisoTrabajoController');
-<<<<<<< HEAD
+
 
 Route::resource('trabajo/seguimiento','SeguimientoController');
 
 Route::resource('equipo/rutina/detcaracru','detcaracruController');
-=======
+
 Route::resource('trabajo/seguimiento','SeguimientoController');
->>>>>>> 15d57c6cf406aeccd9f1180cda00a116a670f23c
+
+Route::resource('equipo/rutina/valrefru','valrefruController');
+Route::resource('equipo/rutina/subru','subruController');
+Route::resource('equipo/rutina/ruman','rumanController');

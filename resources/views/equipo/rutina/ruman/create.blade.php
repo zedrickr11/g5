@@ -116,6 +116,7 @@
           </div>
 
 
+
           <div class="form-group">
             <label for="select" class="">Permiso de trabajo</label>
             <select name="permisotrabajo_idpermiso_trabajo" class="form-control" id="select">
@@ -141,6 +142,23 @@
 
         <div class="box-footer">
 
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
           <a href="{{route('ruman.index')}}">
