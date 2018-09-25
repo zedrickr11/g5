@@ -47,6 +47,10 @@ Route::resource('equipo/rutina/subpru','subpruController');
 Route::resource('equipo/rutina/pruru','pruruController');
 Route::resource('equipo/rutina/tiporu','tiporuController');
 Route::resource('equipo/rutina/caracru','caracruController');
+Route::resource('equipo/rutina/valrefru','valrefruController');
+Route::resource('equipo/rutina/subru','subruController');
+Route::resource('equipo/rutina/ruman','rumanController');
+Route::resource('equipo/rutina/detcaracru','detcaracruController');
 
 
 //solicitud de trabajo
@@ -66,4 +70,4 @@ Route::resource('mantenimiento/areamantenimiento','AreaMantenimientoController')
 Route::get('/json-confsubgrupo','SubgrupoController@codigosubgrupo');
 Route::get('/json-grupo','EquipoController@grupo');
 Route::get('/json-subgrupo','EquipoController@subgrupo');
-Route::get('/json-correlativo','EquipoController@correlativo'); 
+Route::get('/json-correlativo','EquipoController@correlativo');
