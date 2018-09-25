@@ -11,9 +11,9 @@ class ruman extends Model
 
   protected $primaryKey='idrutina_mantenimiento';
 
-  protected $table='rutina_mantenimiento','notificacion';
+  //protected $table='rutina_mantenimiento','notificacion';
 
-  protected $primaryKey='idrutina_mantenimiento','idnotificacion';
+//  protected $primaryKey='idrutina_mantenimiento','idnotificacion';
 
 
   public $timestamps=false;
@@ -31,13 +31,13 @@ class ruman extends Model
 
 
 
-      'idnotificacion',
-      'descripcion_noti',
-      'fecha_creacion_noti',
-      'fecha_finalizacion_noti',
-      'hora_finalizacion_noti',
-      'rutina_mantenimiento_idrutina_mantenimiento',
-      'estado_notificacion',
+    //  'idnotificacion',
+    //  'descripcion_noti',
+    //  'fecha_creacion_noti',
+    //  'fecha_finalizacion_noti',
+    //  'hora_finalizacion_noti',
+    //  'rutina_mantenimiento_idrutina_mantenimiento',
+    //  'estado_notificacion',
 
   ];
 
