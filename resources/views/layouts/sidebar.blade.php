@@ -30,6 +30,7 @@
   </a>
 
   <ul class="treeview-menu">
+    <li class=""><a href="{{route('fichatecnica.index')}} "><i class="fa fa-circle-o"></i>Ficha Técnica</a></li>
     <li class=""><a href="{{route('caractec.index')}} "><i class="fa fa-circle-o"></i>Característica Técnica</a></li>
     <li class=""><a href="{{route('caracespefun.index')}} "><i class="fa fa-circle-o"></i>Especial Funcionamiento</a></li>
     <li class=""><a href="{{route('valorrefesp.index')}} "><i class="fa fa-circle-o"></i>Valor Referencia Especial</a></li>
