@@ -21,8 +21,18 @@ class FabricanteController extends Controller
      */
     public function index(Request $request)
     {
-        $fabricantes=Fabricante::all();
-        return view('equipo.fabricante.index', compact('fabricantes'));
+        //$fabricantes=Fabricante::all();
+        if ($request)
+        {
+            $query=trim($request->get('searchText'));
+            $fabricantes=DB::table('fabricante as f')
+            ->select('*')
+            ->where('contacto_fabricante','LIKE','%'.$query.'%')
+            ->orderBy('idfabricante','desc')
+            ->paginate(10);
+            return view('equipo.fabricante.index',["fabricantes"=>$fabricantes,"searchText"=>$query]);
+        }
+        //return view('equipo.fabricante.index', compact('fabricantes'));
     }
 
     /**

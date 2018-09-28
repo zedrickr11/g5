@@ -17,17 +17,20 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="box">
             <div class="box-header">
-			  <h3 class="box-title">Listado de Regiones <a href="region/create"><button class="btn btn-success">Nuevo</button></a>
-			  		<a href="#" target="_blank"><button class="btn btn-info">Reporte</button></a></h3>
+        <h3 class="box-title">Listado de Regiones <a href="region/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
+            <a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+                @include('hospital.region.search')
+                  <div class="col-md-12">
               <div class="table-responsive">
                 <table  class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>Id</th>
                     <th>Region</th>
+                        <th>Opciones</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -38,17 +41,17 @@
 
               <td>
 
-                  <a href="{{route('region.edit',$reg->idregion)}}">
-                    <button type="button" class="btn btn-warning btn-sm" name="button">Editar</button>
-                  </a>
-                  <a href="{{route('region.show',$reg->idregion)}}">
-                    <button type="button" class="btn btn-info btn-sm" name="button">Detalles</button>
-                  </a>
-                  <form style="display: inline" method="POST" action="{{route('region.destroy', $reg->idregion)}}">
-                  {!!method_field('DELETE')!!}
-                  {!!csrf_field()!!}
-                    <button type="submit" class="btn btn-danger btn-sm" name="button">Eliminar</button>
-                  </form>
+                <a href="{{route('region.edit',$reg->idregion)}}">
+                  <button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-cog"></span> </button>
+                </a>
+                <a href="{{route('region.show',$reg->idregion)}}">
+                  <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></span> </button>
+                </a>
+                <form style="display: inline" method="POST" action="{{route('region.destroy', $reg->idregion)}}">
+                {!!method_field('DELETE')!!}
+                {!!csrf_field()!!}
+                  <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></span> </button>
+                </form>
 
 
               </td>
@@ -60,8 +63,10 @@
 
                   </tfoot>
           </table>
-              </div>
+          {!! $regiones->links() !!}
 
+              </div>
+</div>
 
             </div>
             <!-- /.box-body -->

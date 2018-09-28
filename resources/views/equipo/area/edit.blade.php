@@ -20,17 +20,33 @@
 			<div class="box-header with-border">
 				<h3 class="box-title">Editar Área</h3>
 			</div>
+      @if (count($errors)>0)
+      <div class="alert alert-danger">
+        <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{$error}}</li>
+        @endforeach
+        </ul>
+      </div>
+      @endif
 			<!-- /.box-header -->
 			<!-- form start -->
 			<form role="form" method="POST" action="{{route('area.update',$areas->idarea)}}" >
 				{!!method_field('PUT')!!}
 				{!!csrf_field()!!}
-				<div class="box-body col-md-12">
+        <div class="box-body col-md-6">
 
-  					<div class="form-group">
-  						<label for="idarea">Formato</label>
-  						<input style="text-transform: uppercase;" type="text" class="form-control" name="idarea" value="{{$areas->idarea}}">
-  					</div>
+
+            <div class="form-group">
+              <label for="idarea">Código</label>
+              <input type="text" class="form-control" name="idarea" value="{{$areas->idarea}}" readonly>
+            </div>
+
+
+        </div>
+				<div class="box-body col-md-6">
+
+
   					<div class="form-group">
   						<label for="nombre_area">Nombre del área</label>
   						<input type="text" class="form-control" name="nombre_area" value="{{$areas->nombre_area}}">
@@ -42,7 +58,11 @@
 
 				<div class="box-footer">
 
-					<input class="btn btn-primary" type="submit" name="" value="Guardar">
+          <a href="{{route('area.index')}}">
+            <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
+          </a>
+          <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
+          <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
 				</div>
 			</form>
 		</div>

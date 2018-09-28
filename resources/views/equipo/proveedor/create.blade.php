@@ -25,7 +25,7 @@
 			<form role="form" method="POST" action="{{route('proveedor.store')}}" >
 					{!! csrf_field() !!}
 
-				<div class="box-body col-md-6">
+				<div class="box-body col-md-12">
 					<div class="form-group">
 						<label for="direccion_fab">Dirección Proveedor</label>
 						<input type="text" class="form-control" name="direccion_proveedor" value="{{old('direccion_proveedor')}}">

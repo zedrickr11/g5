@@ -7,7 +7,7 @@ use App\Hospital;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
-
+use App\Http\Requests\UnidadSaludFormRequest;
 class UnidadSaludController extends Controller
 {
     /**
@@ -15,14 +15,25 @@ class UnidadSaludController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-/*
-    $unidades=DB::table('unidadsalud as u')
-    ->join('hospital as h', 'h.idhospital','=', 'u.idhospital')
-    ->select('u.idunidadsalud','u.unidad_salud','h.hospital');
+    /*  $unidades=UnidadSalud::all();
     return view('hospital.unidad.index', compact('unidades'));
-*/
+*/  if ($request)
+  {
+      $query=trim($request->get('searchText'));
+        $unidades=DB::table('unidadsalud as u')
+        ->join('hospital as h', 'u.idhospital','=', 'h.idhospital')
+        ->select('u.idunidadsalud','u.unidad_salud','h.hospital as hospi')
+        ->where('unidad_salud','LIKE','%'.$query.'%')
+        ->orderBy('idunidadsalud','desc')
+        ->paginate(10);
+
+return view('hospital.unidad.index', ["unidades"=>$unidades,"searchText"=>$query]);
+    }
+
+
+
     }
 
 
@@ -33,7 +44,8 @@ class UnidadSaludController extends Controller
      */
     public function create()
     {
-        //
+      $hospitals=Hospital::all();
+        return view("hospital.unidad.create",compact('hospitals'));
     }
 
     /**
@@ -42,9 +54,11 @@ class UnidadSaludController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UnidadSaludFormRequest $request)
     {
-        //
+
+      UnidadSalud::create($request->all());
+      return redirect()->route('unidad.index');
     }
 
     /**
@@ -53,9 +67,11 @@ class UnidadSaludController extends Controller
      * @param  \App\UnidadSalud  $unidadSalud
      * @return \Illuminate\Http\Response
      */
-    public function show(UnidadSalud $unidadSalud)
+    public function show($id)
     {
-        //
+      $hospitals=Hospital::all();
+      $unidades=UnidadSalud::findOrFail($id);
+      return view('hospital.unidad.show', compact('unidades'), compact('hospitals'));
     }
 
     /**
@@ -64,9 +80,11 @@ class UnidadSaludController extends Controller
      * @param  \App\UnidadSalud  $unidadSalud
      * @return \Illuminate\Http\Response
      */
-    public function edit(UnidadSalud $unidadSalud)
+    public function edit($id)
     {
-        //
+      $hospitals=Hospital::all();
+      $unidades=UnidadSalud::findOrFail($id);
+      return view('hospital.unidad.edit', compact('unidades'),compact('hospitals'));
     }
 
     /**
@@ -76,9 +94,10 @@ class UnidadSaludController extends Controller
      * @param  \App\UnidadSalud  $unidadSalud
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UnidadSalud $unidadSalud)
+    public function update(UnidadSaludFormRequest $request, $id)
     {
-        //
+      UnidadSalud::findOrFail($id)->update($request->all());
+      return redirect()->route('unidad.index');
     }
 
     /**
@@ -87,8 +106,9 @@ class UnidadSaludController extends Controller
      * @param  \App\UnidadSalud  $unidadSalud
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UnidadSalud $unidadSalud)
+    public function destroy($id)
     {
-        //
+      UnidadSalud::findOrFail($id)->delete();
+      return redirect()->route('unidad.index');
     }
 }
