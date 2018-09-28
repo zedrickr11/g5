@@ -21,7 +21,11 @@ Route::resource('equipo/confsubgrupo','Conf_subgrupoController');
 Route::resource('equipo/advertencia','AdvertenciaController');
 Route::resource('equipo/confcorrelativo','Conf_corrController');
 Route::resource('equipo/equipo','EquipoController');
-
+Route::resource('equipo/equipo/fichatecnica','EquipoController');
+Route::get('equipo/equipo/ficha/{id}',[
+    'as' => 'equipo.ficha',
+    'uses' => 'EquipoController@ficha'
+]);
 
 //hospital
 Route::resource('hospital/region','RegionController');
@@ -39,7 +43,7 @@ Route::resource('equipo/caracteristica/subcaractec','subcaractecController');
 Route::resource('equipo/caracteristica/valorreftec','valorreftecController');
 Route::resource('equipo/caracteristica/detcaractec','detcaractecController');
 Route::resource('equipo/caracteristica/detcaracesp','detcaracespController');
-
+Route::resource('equipo/caracteristica/fichatecnica','fichatecnicaController');
 
 //Caracteristicas de rutinas
 Route::resource('equipo/rutina/valorrefpru','valorrefpruController');
