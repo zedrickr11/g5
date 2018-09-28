@@ -85,8 +85,6 @@
                   <ul class="nav nav-tabs pull-right">
                     <li class="active"><a href="#tab_1-1" data-toggle="tab">CORRECTIVO</a></li>
                     <li><a href="#tab_2-2" data-toggle="tab">PREVENTIVO</a></li>
-             
-                   
                     <li class="pull-left header"><i class="fa fa-th"></i> CALENDARIOS</li>
                   </ul>
 
@@ -106,10 +104,10 @@
                        </div>
                             <!-- /. box -->
                           
-                    </div>
+                      </div>
                     <!-- /.tab-pane -->
                     <div class="tab-pane fade " id="tab_2-2">
-
+                      
                         <div class="box box-solid box-danger">
                             <div class="box-body ">
                                   <!-- THE CALENDAR 2 -->

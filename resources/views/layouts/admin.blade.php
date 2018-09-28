@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="{{asset('bower_components/morris.js/morris.css')}}">
   <!-- jvectormap -->
   <link rel="stylesheet" href="{{asset('bower_components/jvectormap/jquery-jvectormap.css')}}">
-  
+
   <!-- Daterange picker -->
   <link rel="stylesheet" href="{{asset('bower_components/bootstrap-daterangepicker/daterangepicker.css')}}">
   <!-- bootstrap wysihtml5 - text editor -->
@@ -45,7 +45,7 @@
       <span class="logo-mini"><b>I</b>GSS</span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>IGSS</b> Mantenimiento
-        
+
       </span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
@@ -119,7 +119,7 @@
                 </p>
               </li>
               <!-- Menu Body -->
-             
+
               <!-- Menu Footer-->
               <li class="user-footer ">
                 <div class="pull-left">

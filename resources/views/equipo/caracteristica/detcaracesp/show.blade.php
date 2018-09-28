@@ -3,12 +3,12 @@
 
 <section class="content-header">
       <h1>
-        Equipo
-        <small>Subgrupo caracteristica tecnica</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Equipo</a></li>
-        <li class="active">Subgrupo caracteristica tecnica</li>
+        Ficha Técnica
+      <small>Detalle caracteristica especial</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-edit"></i>   Ficha Técnica</a></li>
+      <li class="active">Detalle caracteristica especial</li>
       </ol>
 </section>
 	<section class="content">
@@ -24,26 +24,77 @@
 			<!-- form start -->
 
 
-				<div class="box-body col-md-6">
-					<div class="form-group">
-						<label for="direccion_fab">Nombre subgrupo caracteristica tecnica</label>
-            <p>{{$subcaractec->nombre_valor_ref_esp}}</p>
-					</div>
+      <div class="box-body col-md-6">
+        <div class="form-group">
+          <label for="direccion_fab">Caracteristica especial</label>
+          <br>
+
+          @foreach($caracespefun as $hosp)
+                   @if ($hosp->idcaracteristica_especial==$detcaracesp->idcaracteristica_especial)
+                   <p>{{$hosp->nombre_caracteristica_especial}}</p>
+
+
+                 @endif
+                  @endforeach
 
 
 
-				</div>
+        </div>
+        <div class="form-group">
+          <label for="direccion_fab">Equipo</label>
+          @foreach($equipo as $hosp)
+                   @if ($hosp->idequipo==$detcaracesp->idequipo)
+                   <p>{{$hosp->nombre_equipo}}</p>
+
+
+                 @endif
+                  @endforeach
+
+        </div>
+
+        <div class="form-group">
+          <label for="direccion_fab">Valor referencia especial</label>
+
+          @foreach($valorrefesp as $hosp)
+                   @if ($hosp->idvalor_ref_esp==$detcaracesp->idvalor_ref_esp)
+                   <p>{{$hosp->nombre_valor_ref_esp}}</p>
+
+
+                 @endif
+                  @endforeach
+        </div>
+
+
+
+
+      </div>
+<div class="box-body col-md-6">
+<div class="form-group">
+  <label for="direccion_fab">Estado detalle caracteristica especial</label>
+  <p>{{$detcaracesp->estado_detalle_caracteristica_especial}}</p>
+</div>
+<div class="form-group">
+  <label for="direccion_fab">Descripcion detalle caracteristica especial</label>
+  <p>{{$detcaracesp->descripcion_detalle_caracteristica_especial}}</p>
+</div>
+
+<div class="form-group">
+  <label for="direccion_fab">Valor detalle caracteristica especial</label>
+  <p>{{$detcaracesp->valor_detalle_caracteristica_especial}}</p>
+</div>
+
+
+
+</div>
 
 				<!-- /.box-body -->
 
         <div class="box-footer">
-<br>
-<br>
-<br>
-<br>
-          <a href="{{route('detcaractec.index')}}">
-            <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
-          </a>
+
+
+                  <a href="{{route('detcaracesp.index')}}">
+                    <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
+                  </a>
         </div>
 
 		</div>

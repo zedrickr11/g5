@@ -30,7 +30,7 @@ if ($request)
     ->join('valor_ref_rutina as v','a.idvalor_ref_rutina','=','v.idvalor_ref_rutina')
       ->join('rutina_mantenimiento as e','a.idrutina_mantenimiento','=','e.idrutina_mantenimiento')
 
-  ->select('d.caracteristica_rutina as idcaracteristica_rutina','s.subgrupo_rutina as idsubgrupo_rutina','v.descripcion as idvalor_ref_rutina','e.idrutina_mantenimiento','estado_detalle_caracteristica_rutina','fecha_detalle_caracteristica_rutina','comentario_detalle_caracteristica_rutina')
+  ->select('iddetalle_caracteristica_rutina','d.caracteristica_rutina as idcaracteristica_rutina','s.subgrupo_rutina as idsubgrupo_rutina','v.descripcion as idvalor_ref_rutina','e.idrutina_mantenimiento','estado_detalle_caracteristica_rutina','fecha_detalle_caracteristica_rutina','comentario_detalle_caracteristica_rutina')
 
   //  ->select('*')
     ->where('d.caracteristica_rutina','LIKE','%'.$query.'%')
@@ -86,12 +86,16 @@ if ($request)
    * @return \Illuminate\Http\Response
    */
   public function show($id)
+
   {  $detcaracru=detcaracru::findOrFail($id);
+    $caracru=caracru::all();
+    $subru=subru::all();
+      $valrefru=valrefru::all();
+        $ruman=ruman::all();
 
 
 
-
-    return view('equipo.rutina.detcaracru.show', compact('detcaracru'));
+    return view('equipo.rutina.detcaracru.show', compact('detcaracru','caracru','subru','valrefru','ruman'));
   }
 
   /**
@@ -102,8 +106,12 @@ if ($request)
    */
   public function edit($id)
   {
+    $caracru=caracru::all();
+    $subru=subru::all();
+      $valrefru=valrefru::all();
+        $ruman=ruman::all();
   $detcaracru=detcaracru::findOrFail($id);
-    return view('equipo.rutina.detcaracru.edit', compact('detcaracru'));
+    return view('equipo.rutina.detcaracru.edit', compact('detcaracru','caracru','subru','valrefru','ruman'));
   }
 
   /**

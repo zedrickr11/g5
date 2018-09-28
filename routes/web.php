@@ -51,6 +51,7 @@ Route::resource('equipo/rutina/valrefru','valrefruController');
 Route::resource('equipo/rutina/subru','subruController');
 Route::resource('equipo/rutina/ruman','rumanController');
 Route::resource('equipo/rutina/detcaracru','detcaracruController');
+Route::resource('equipo/rutina/detrupru','detrupruController');
 
 
 //solicitud de trabajo
@@ -71,3 +72,11 @@ Route::get('/json-confsubgrupo','SubgrupoController@codigosubgrupo');
 Route::get('/json-grupo','EquipoController@grupo');
 Route::get('/json-subgrupo','EquipoController@subgrupo');
 Route::get('/json-correlativo','EquipoController@correlativo');
+
+//Detalles
+Route::resource('detalles/detallenaturaleza','DetalleNaturalezaPeligroController');
+Route::resource('detalles/detalletipo','DetalleTipoTrabajoController');
+Route::resource('detalles/detallearea','DetalleAreaMantenimientoController');
+Route::resource('detalles/detalletipotrabajo','DetalleTipoTrabajoPermisoController');
+Route::resource('detalles/detalleresponsable','DetallePrecaucionResponsableController');
+Route::resource('detalles/detalleejecutante','DetallePrecaucionEjecutanteController');

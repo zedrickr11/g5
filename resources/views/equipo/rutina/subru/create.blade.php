@@ -3,11 +3,11 @@
 
 <section class="content-header">
       <h1>
-        Equipo
+        Rutinas
         <small>Subgrupo rutina</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Equipo</a></li>
+        <li><a href="#"><i class="fa fa-th"></i> Rutinas</a></li>
         <li class="active">Subgrupo rutina</li>
       </ol>
 </section>
@@ -34,7 +34,7 @@
 			<form role="form" method="POST" action="{{route('subru.store')}}" >
 					{!! csrf_field() !!}
 
-				<div class="box-body col-md-6">
+				<div class="box-body col-md-12">
 					<div class="form-group">
 						<label for="direccion_fab">Nombre de subgrupo</label>
 						<input type="text" class="form-control" name="subgrupo_rutina" value="{{old('subgrupo_rutina')}}">
@@ -44,22 +44,11 @@
 
 
 				</div>
-				<div class="box-body col-md-6">
 
-
-
-
-
-				</div>
 				<!-- /.box-body -->
 
         <div class="box-footer">
 
-<br>
-<br>
-<br>
-<br>
-<br>
           <a href="{{route('subru.index')}}">
             <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
           </a>

@@ -2,13 +2,12 @@
 @section ('contenido')
 <section class="content-header">
       <h1>
-        Equipo
-        <small>Valor referencia tecnica</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Equipo</a></li>
-          <li class="active">Caracteristica</li>
-        <li class="active">Valor referencia tecnica</li>
+        Ficha Técnica
+      <small>Valor referencia técnica</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-edit"></i>   Ficha Técnica</a></li>
+      <li class="active">Valor referencia técnica</li>
       </ol>
 	</section>
 	<section class="content">

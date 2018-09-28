@@ -3,12 +3,12 @@
 
 <section class="content-header">
       <h1>
-        Equipo
-        <small>Caracteristica tecnica</small>
+        Ficha Técnica
+        <small>Caracteristica técnica</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Equipo</a></li>
-        <li class="active">Fabricante</li>
+        <li><a href="#"><i class="fa fa-edit"></i> Ficha Técnica</a></li>
+        <li class="active">Caracteristica técnica</li>
       </ol>
 </section>
 	<section class="content">
@@ -18,7 +18,7 @@
 		<!-- general form elements -->
 		<div class="box box-success">
 			<div class="box-header with-border">
-				<h3 class="box-title">Editar caracteristica tecnica</h3>
+				<h3 class="box-title">Editar caracteristica técnica</h3>
 			</div>
       @if (count($errors)>0)
       <div class="alert alert-danger">
@@ -34,30 +34,20 @@
 			<form role="form" method="POST" action="{{route('caractec.update',$caract_tec->idcaracteristica_tecnica)}}" >
 				{!!method_field('PUT')!!}
 				{!!csrf_field()!!}
-				<div class="box-body col-md-6">
+				<div class="box-body col-md-12">
 					<div class="form-group">
-						<label for="direccion_fab">Nombre caracteristica tecnica</label>
+						<label for="direccion_fab">Nombre caracteristica técnica</label>
 						<input type="text" class="form-control" name="nombre_caracteristica_tecnica" value="{{$caract_tec->nombre_caracteristica_tecnica}}">
 					</div>
 
 
 
 				</div>
-				<div class="box-body col-md-6">
 
-
-
-
-
-				</div>
 				<!-- /.box-body -->
 
         <div class="box-footer">
-<br>
-<br>
-<br>
-<br>
-<br>
+
 
           <a href="{{route('caractec.index')}}">
             <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
