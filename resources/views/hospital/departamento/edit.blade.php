@@ -41,9 +41,9 @@
 					</div>
 
           <div class="form-group">
-            <label for="direccion_fab">Hospital</label>
+            <label >Hospital</label>
             <br>
-            <select name="idhospital"  name="idhospital" value="{{$departamentos->idhospital}}">
+            <select name="idhospital"  class="form-control">
      @foreach($hospitals as $hosp)
               @if ($hosp->idhospital==$departamentos->idhospital)
             <option value="{{$hosp->idhospital}}" selected>{{$hosp->hospital}}</option>
@@ -54,9 +54,9 @@
       </select>
           </div>
           <div class="form-group">
-            <label for="direccion_fab">Region</label>
-            <br>
-            <select name="idregion"  name="idregion" value="{{$departamentos->idregion}}">
+            <label >Region</label>
+
+            <select name="idregion"  class="form-control">
      @foreach($regions as $reg)
               @if ($reg->idregion==$departamentos->idregion)
             <option value="{{$reg->idregion}}" selected>{{$reg->region}}</option>

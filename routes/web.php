@@ -71,3 +71,11 @@ Route::get('/json-confsubgrupo','SubgrupoController@codigosubgrupo');
 Route::get('/json-grupo','EquipoController@grupo');
 Route::get('/json-subgrupo','EquipoController@subgrupo');
 Route::get('/json-correlativo','EquipoController@correlativo');
+
+//Detalles
+Route::resource('detalles/detallenaturaleza','DetalleNaturalezaPeligroController');
+Route::resource('detalles/detalletipo','DetalleTipoTrabajoController');
+Route::resource('detalles/detallearea','DetalleAreaMantenimientoController');
+Route::resource('detalles/detalletipotrabajo','DetalleTipoTrabajoPermisoController');
+Route::resource('detalles/detalleresponsable','DetallePrecaucionResponsableController');
+Route::resource('detalles/detalleejecutante','DetallePrecaucionEjecutanteController');
