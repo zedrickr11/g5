@@ -8,8 +8,8 @@ use DB;
 use App\Http\Requests\rumanFormRequest;
 use App\tiporu;
 use App\Equipo;
-
 use App\PermisoTrabajo;
+
 class rumanController extends Controller
 {
   /**
@@ -23,11 +23,15 @@ class rumanController extends Controller
     {
         $query=trim($request->get('searchText'));
         $ruman=DB::table('rutina_mantenimiento as f')
-        ->join('notificacion as d','f.idrutina_mantenimiento','=','d.rutina_mantenimiento_idrutina_mantenimiento')
-        ->select('f.idrutina_mantenimiento','f.idtipo_rutina','f.idequipo','f.estado_rutina','d.descripcion_noti','d.estado_notificacion')
+        ->join('tipo_rutina as d','f.idtipo_rutina','=','d.idtipo_rutina')
+        ->join('equipo as e','f.idequipo','=','e.idequipo')
 
 
-        ->where('idequipo','LIKE','%'.$query.'%')
+
+      ->select('f.idrutina_mantenimiento','d.tipo_rutina as idtipo_rutina','e.nombre_equipo as idequipo','f.estado_rutina')
+
+
+        ->where('e.nombre_equipo','LIKE','%'.$query.'%')
         ->orderBy('idrutina_mantenimiento','desc')
         ->paginate(10);
         return view('equipo.rutina.ruman.index',["ruman"=>$ruman,"searchText"=>$query]);
@@ -52,7 +56,7 @@ class rumanController extends Controller
     return view("equipo.rutina.ruman.create",compact('tiporu','equipo','permisotrabajo'));
 
 
-    return view("equipo.rutina.ruman.create",compact('tiporu','equipo'));
+  //  return view("equipo.rutina.ruman.create",compact('tiporu','equipo'));
 
   }
 
@@ -70,47 +74,54 @@ class rumanController extends Controller
   /**
    * Display the specified resource.
    *
-   * @param  \App\subcaractec  $caracTec
+   * @param  \App\ruman  $caracTec
    * @return \Illuminate\Http\Response
    */
   public function show($id)
-  {  $subcaractec=subcaractec::findOrFail($id);
-    return view('equipo.caracteristica.subcaractec.show', compact('subcaractec'));
+
+  {   $tiporu=tiporu::all();
+    $equipo=Equipo::all();
+    $ruman=ruman::findOrFail($id);
+        $permisotrabajo=PermisoTrabajo::all();
+    return view('equipo.rutina.ruman.show', compact('ruman','tiporu','equipo','permisotrabajo'));
   }
 
   /**
    * Show the form for editing the specified resource.
    *
-   * @param  \App\subcaractec  $caracTec
+   * @param  \App\ruman  $caracTec
    * @return \Illuminate\Http\Response
    */
   public function edit($id)
   {
-  $subcaractec=subcaractec::findOrFail($id);
-    return view('equipo.caracteristica.subcaractec.edit', compact('subcaractec'));
+    $tiporu=tiporu::all();
+    $equipo=Equipo::all();
+  $ruman=ruman::findOrFail($id);
+      $permisotrabajo=PermisoTrabajo::all();
+    return view('equipo.rutina.ruman.edit', compact('ruman','tiporu','equipo','permisotrabajo'));
   }
 
   /**
    * Update the specified resource in storage.
    *
    * @param  \Illuminate\Http\Request  $request
-   * @param  \App\subcaractec  $subcaractec
+   * @param  \App\ruman  $subcaractec
    * @return \Illuminate\Http\Response
    */
-  public function update(subcaractecFormRequest $request, $id)
+  public function update(rumanFormRequest $request, $id)
   {
-    subcaractec::findOrFail($id)->update($request->all());
-    return redirect()->route('subcaractec.index');
+    ruman::findOrFail($id)->update($request->all());
+    return redirect()->route('ruman.index');
   }
 
   /**
    * Remove the specified resource from storage.
    *
-   * @param  \App\subcaractec  $subcaractec
+   * @param  \App\ruman  $subcaractec
    * @return \Illuminate\Http\Response
    */
   public function destroy($id)
-  {subcaractec::findOrFail($id)->delete();
-  return redirect()->route('subcaractec.index');
+  {ruman::findOrFail($id)->delete();
+  return redirect()->route('ruman.index');
   }
 }

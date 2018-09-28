@@ -3,12 +3,12 @@
 
 <section class="content-header">
       <h1>
-        Equipo
-        <small>Caracteristica especial</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Equipo</a></li>
-        <li class="active">Caracteristica especial</li>
+        Ficha Técnica
+      <small>Caracteristica especial</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-edit"></i>   Ficha Técnica</a></li>
+      <li class="active">Caracteristica especial</li>
       </ol>
 </section>
 	<section class="content">
@@ -24,7 +24,7 @@
 			<!-- form start -->
 
 
-				<div class="box-body col-md-6">
+				<div class="box-body col-md-12">
 					<div class="form-group">
 						<label for="direccion_fab">Nombre caracteristica especial</label>
             <p>{{$caracespefun->nombre_caracteristica_especial}}</p>
@@ -37,10 +37,7 @@
 				<!-- /.box-body -->
 
         <div class="box-footer">
-<br>
-<br>
-<br>
-<br>
+
           <a href="{{route('caracespefun.index')}}">
             <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
           </a>

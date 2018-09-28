@@ -3,12 +3,13 @@
 
 <section class="content-header">
       <h1>
-        Equipo
+        Rutinas
         <small>Detalle caracteristica rutina</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Equipo</a></li>
+        <li><a href="#"><i class="fa fa-th"></i> Rutinas</a></li>
         <li class="active">Detalle caracteristica rutina</li>
+
       </ol>
 </section>
 	<section class="content">
@@ -32,7 +33,7 @@
 
                     <div class="form-group">
                       <label for="select" class="">Caracteristica rutina</label>
-                      <select name="idcaracteristica_rutina" class="form-control" id="select">
+                      <select name="idcaracteristica_rutina" class="form-control select2" id="select">
                         @foreach($caracru as $carac1)
                         <option value="{{$carac1->idcaracteristica_rutina}}">{{$carac1->caracteristica_rutina}}</option>
                     @endforeach
@@ -63,12 +64,6 @@
                     @endforeach
                     </select>
                     </div>
-                    <a href="{{route('detcaracru.index')}}">
-                      <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
-                    </a>
-                    <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
-                    <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
-                
 
 
 
@@ -91,6 +86,13 @@
             <label for="direccion_fab">Comentario detalle caracteristica rutina</label>
             <input type="text" class="form-control" name="comentario_detalle_caracteristica_rutina" value="{{old('comentario_detalle_caracteristica_rutina')}}">
           </div>
+<br>
+          <a href="{{route('detcaracru.index')}}">
+            <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
+          </a>
+          <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
+          <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
+
 
 
 </div>

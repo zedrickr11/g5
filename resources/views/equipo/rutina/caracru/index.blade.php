@@ -2,13 +2,12 @@
 @section ('contenido')
 <section class="content-header">
       <h1>
-        Equipo
-        <small>Caracteristica rutina</small>
+        Rutinas
+        <small>Característica rutina</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Equipo</a></li>
-          <li class="active">Rutina</li>
-        <li class="active">Caracteristica rutina</li>
+        <li><a href="#"><i class="fa fa-th"></i> Rutinas</a></li>
+        <li class="active">Característica rutina</li>
       </ol>
 	</section>
 	<section class="content">
@@ -20,7 +19,7 @@
           <div class="box">
             <div class="box-header">
 
-			  <h3 class="box-title">Listado de caracteristica rutina<a href="caracru/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
+			  <h3 class="box-title">Listado de característica rutina<a href="caracru/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
 			  		<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
             </div>
             <!-- /.box-header -->
@@ -36,7 +35,7 @@
                   <thead>
                   <tr>
                     <th>Id</th>
-                    <th>Nombre de caracteristica rutina</th>
+                    <th>Nombre de característica rutina</th>
 
 
                     <th>Opciones</th>

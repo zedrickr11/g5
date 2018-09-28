@@ -59,6 +59,7 @@
   <li class=""><a href="{{route('subru.index')}} "><i class="fa fa-circle-o"></i>Subgrupo rutina</a></li>
   <li class=""><a href="{{route('ruman.index')}} "><i class="fa fa-circle-o"></i>Rutina mantenimiento</a></li>
   <li class=""><a href="{{route('detcaracru.index')}} "><i class="fa fa-circle-o"></i>Detalle caracterisitca rutina</a></li>
+  <li class=""><a href="{{route('detrupru.index')}} "><i class="fa fa-circle-o"></i>Detalle rutina prueba</a></li>
 
 
 </ul>

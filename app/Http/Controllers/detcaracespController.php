@@ -27,7 +27,7 @@ class detcaracespController extends Controller
               ->join('caracteristica_especial_funcionamiento as d','a.idcaracteristica_especial','=','d.idcaracteristica_especial')
                 ->join('valor_ref_esp as s','a.idvalor_ref_esp','=','s.idvalor_ref_esp')
                 ->join('equipo as e','a.idequipo','=','e.idequipo')
-              ->select('d.nombre_caracteristica_especial as idcaracteristica_especial','e.nombre_equipo as idequipo','s.nombre_valor_ref_esp as idvalor_ref_esp','a.estado_detalle_caracteristica_especial','descripcion_detalle_caracteristica_especial','valor_detalle_caracteristica_especial')
+              ->select('iddetalle_caracteristica_especial','d.nombre_caracteristica_especial as idcaracteristica_especial','e.nombre_equipo as idequipo','s.nombre_valor_ref_esp as idvalor_ref_esp','a.estado_detalle_caracteristica_especial','descripcion_detalle_caracteristica_especial','valor_detalle_caracteristica_especial')
 
         //  ->select('*')
           ->where('d.nombre_caracteristica_especial','LIKE','%'.$query.'%')
@@ -83,9 +83,15 @@ class detcaracespController extends Controller
      * @param  \App\detcaracesp  $detcaracesp
      * @return \Illuminate\Http\Response
      */
-    public function show(detcaracesp $detcaracesp)
+    public function show($id)
     {
-        //
+      $detcaracesp=detcaracesp::findOrFail($id);
+      $caracespefun=caracespefun::all();
+      $valorrefesp=valorrefesp::all();
+      $equipo=Equipo::all();
+
+      return view("equipo.caracteristica.detcaracesp.show",compact('detcaracesp','caracespefun','valorrefesp','equipo'));
+
     }
 
     /**
@@ -94,9 +100,15 @@ class detcaracespController extends Controller
      * @param  \App\detcaracesp  $detcaracesp
      * @return \Illuminate\Http\Response
      */
-    public function edit(detcaracesp $detcaracesp)
+    public function edit($id)
     {
-        //
+        $detcaracesp=detcaracesp::findOrFail($id);
+      $caracespefun=caracespefun::all();
+      $valorrefesp=valorrefesp::all();
+      $equipo=Equipo::all();
+
+      return view("equipo.caracteristica.detcaracesp.edit",compact('detcaracesp','caracespefun','valorrefesp','equipo'));
+
     }
 
     /**
@@ -106,9 +118,11 @@ class detcaracespController extends Controller
      * @param  \App\detcaracesp  $detcaracesp
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, detcaracesp $detcaracesp)
+    public function update(Request $request, $id)
     {
-        //
+
+        detcaracesp::findOrFail($id)->update($request->all());
+        return redirect()->route('detcaracesp.index');
     }
 
     /**
@@ -117,8 +131,9 @@ class detcaracespController extends Controller
      * @param  \App\detcaracesp  $detcaracesp
      * @return \Illuminate\Http\Response
      */
-    public function destroy(detcaracesp $detcaracesp)
+    public function destroy($id)
     {
-        //
+      detcaracesp::findOrFail($id)->delete();
+      return redirect()->route('detcaracesp.index');
     }
 }
