@@ -41,9 +41,9 @@
 					</div>
 
           <div class="form-group">
-            <label for="direccion_fab">Hospital</label>
+            <label >Hospital</label>
             <br>
-            <select name="idhospital"  name="idhospital" value="{{$unidades->idhospital}}">
+            <select name="idhospital"  class="form-control">
      @foreach($hospitals as $hosp)
               @if ($hosp->idhospital==$unidades->idhospital)
             <option value="{{$hosp->idhospital}}" selected>{{$hosp->hospital}}</option>

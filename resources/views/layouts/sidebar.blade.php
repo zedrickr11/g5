@@ -159,6 +159,7 @@
 </a>
 <ul class="treeview-menu">
   <li class=""><a href="{{route('naturaleza.index')}} "><i class="fa fa-circle-o"></i>Naturaleza</a></li>
+
 </ul>
 </li>
 <li class="treeview">
@@ -186,7 +187,22 @@
   <li class=""><a href="{{route('seguimiento.index')}} "><i class="fa fa-circle-o"></i>Seguimiento de Trabajo</a></li>
 </ul>
 </li>
-
+<li class="treeview">
+<a href="">
+  <i class="fa fa-object-ungroup"></i> <span>Detalles</span>
+  <span class="pull-right-container">
+    <i class="fa fa-angle-left pull-right"></i>
+  </span>
+</a>
+<ul class="treeview-menu">
+  <li class=""><a href="{{route('detallenaturaleza.index')}} "><i class="fa fa-circle-o"></i>Detalle de Naturaleza</a></li>
+  <li class=""><a href="{{route('detalletipo.index')}} "><i class="fa fa-circle-o"></i>Detalle Tipo de Trabajo</a></li>
+  <li class=""><a href="{{route('detallearea.index')}} "><i class="fa fa-circle-o"></i>Detalle Area de Mantenimiento</a></li>
+  <li class=""><a href="{{route('detalletipotrabajo.index')}} "><i class="fa fa-circle-o"></i>Detalle Tipo de Trabajo Permiso</a></li>
+    <li class=""><a href="{{route('detalleresponsable.index')}} "><i class="fa fa-circle-o"></i>Detalle Responsable</a></li>
+      <li class=""><a href="{{route('detalleejecutante.index')}} "><i class="fa fa-circle-o"></i>Detalle Ejecutante</a></li>
+</ul>
+</li>
 </ul>
 
 @endsection

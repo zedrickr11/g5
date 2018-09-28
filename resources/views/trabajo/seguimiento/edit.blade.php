@@ -51,9 +51,9 @@
 </div>
 
 <div class="form-group">
-  <label for="direccion_fab">No de solicitud</label>
+  <label >No de solicitud</label>
   <br>
-  <select name="solitud_trabajo_idsolitud_trabajo"  value="{{$seguimientos->solitud_trabajo_idsolitud_trabajo}}">
+  <select name="solitud_trabajo_idsolitud_trabajo"  class="form-control">
 @foreach($solicitudes as $s)
     @if ($s->idsolitud_trabajo==$seguimientos->solitud_trabajo_idsolitud_trabajo)
   <option value="{{$s->idsolitud_trabajo}}" selected>{{$s->numero}}</option>

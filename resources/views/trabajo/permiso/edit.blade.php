@@ -47,9 +47,9 @@
 
 
 <div class="form-group">
-  <label for="direccion_fab">No de solicitud</label>
-  <br>
-  <select name="solitud_trabajo_idsolitud_trabajo"  value="{{$permisos->solitud_trabajo_idsolitud_trabajo}}">
+  <label >No de solicitud</label>
+ 
+  <select name="solitud_trabajo_idsolitud_trabajo"  class="form-control">
 @foreach($solicitudes as $s)
     @if ($s->idsolitud_trabajo==$permisos->solitud_trabajo_idsolitud_trabajo)
   <option value="{{$s->idsolitud_trabajo}}" selected>{{$s->numero}}</option>

@@ -32,12 +32,7 @@ Trabajo
 <!-- form start -->
 <form role="form" method="POST" action="{{route('tipo.store')}}" >
 {!! csrf_field() !!}
-<div class="box-body col-md-12">
-<div class="form-group">
-<label for="direccion_fab">Id tipo</label>
-<input type="text" class="form-control" name="idtipo_trabajo" value="{{old('idtipo_trabajo')}}">
-</div>
-</div>
+ 
 <div class="box-body col-md-12">
 <div class="form-group">
 <label for="direccion_fab">Nombre del tipo de trabajo</label>
