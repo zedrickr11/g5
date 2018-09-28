@@ -9,7 +9,7 @@ class detcaractec extends Model
 
     protected $table='detalle_caracteristica_tecnica';
 
-  //  protected $primaryKey='idcaracteristica_tecnica';
+    protected $primaryKey='iddetalle_caracteristica_tecnica';
 
     public $timestamps=false;
 

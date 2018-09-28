@@ -8,7 +8,7 @@ class detcaracru extends Model
 {
   protected $table='detalle_caracteristica_rutina';
 
-  //protected $primaryKey='idcaracteristica_especial';
+  protected $primaryKey='iddetalle_caracteristica_rutina';
 
   public $timestamps=false;
 

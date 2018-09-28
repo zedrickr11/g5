@@ -51,6 +51,7 @@ Route::resource('equipo/rutina/valrefru','valrefruController');
 Route::resource('equipo/rutina/subru','subruController');
 Route::resource('equipo/rutina/ruman','rumanController');
 Route::resource('equipo/rutina/detcaracru','detcaracruController');
+Route::resource('equipo/rutina/detrupru','detrupruController');
 
 
 //solicitud de trabajo

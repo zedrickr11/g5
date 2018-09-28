@@ -3,12 +3,13 @@
 
 <section class="content-header">
       <h1>
-        Equipo
-        <small>Valor referencia tecnica</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Equipo</a></li>
-        <li class="active">Valor referencia tecnica</li>
+        Ficha Técnica
+      <small>Valor referencia técnica</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-edit"></i>   Ficha Técnica</a></li>
+      <li class="active">Valor referencia técnica</li>
+
       </ol>
 </section>
 	<section class="content">
@@ -34,7 +35,7 @@
 			<form role="form" method="POST" action="{{route('valorreftec.store')}}" >
 					{!! csrf_field() !!}
 
-				<div class="box-body col-md-6">
+				<div class="box-body col-md-12">
 					<div class="form-group">
 						<label for="direccion_fab">Nombre de valor referencia tecnica</label>
 						<input type="text" class="form-control" name="nombre_valor_ref_tec" value="{{old('nombre_valor_ref_tec')}}">
@@ -44,22 +45,11 @@
 
 
 				</div>
-				<div class="box-body col-md-6">
 
-
-
-
-
-				</div>
 				<!-- /.box-body -->
 
         <div class="box-footer">
 
-<br>
-<br>
-<br>
-<br>
-<br>
           <a href="{{route('valorreftec.index')}}">
             <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
           </a>

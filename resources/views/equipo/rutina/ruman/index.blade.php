@@ -2,12 +2,11 @@
 @section ('contenido')
 <section class="content-header">
       <h1>
-        Equipo
+        Rutinas
         <small>Rutina mantenimiento</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Equipo</a></li>
-          <li class="active">Rutina</li>
+        <li><a href="#"><i class="fa fa-th"></i> Rutinas</a></li>
         <li class="active">Rutina mantenimiento</li>
       </ol>
 	</section>
@@ -39,8 +38,8 @@
                     <th>Tipo de rutina</th>
                     <th>Equipo</th>
                     <th>Estado</th>
-                    <th>Descripcion notificacion</th>
-                    <th>Estado notificacion</th>
+
+
 
 
                     <th>Opciones</th>
@@ -53,8 +52,8 @@
               <td>{{ $cat->idtipo_rutina}}</td>
               <td>{{ $cat->idequipo}}</td>
               <td>{{ $cat->estado_rutina}}</td>
-              <td>{{ $cat->descripcion_noti}}</td>
-              <td>{{ $cat->estado_notificacion}}</td>
+
+
               <td>
 
                   <a href="{{route('ruman.edit',$cat->idrutina_mantenimiento)}}">
