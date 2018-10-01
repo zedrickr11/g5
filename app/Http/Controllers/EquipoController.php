@@ -51,6 +51,11 @@ class EquipoController extends Controller
           return view('equipo.equipo.index',["equipos"=>$equipos,"searchText"=>$query]);
       }
     }
+    public function nuevo()
+    {
+
+        return view("equipo.equipo.nuevo");
+    }
     public function grupo(){
       $area_id = Input::get('area_id');
       $grupo = DB::table('grupo as g')
@@ -74,6 +79,14 @@ class EquipoController extends Controller
       ->where('c.idsubgrupo','=',$subgrupo_id)
       ->get();
       return response()->json($correlativo);
+    }
+    public function codigosubgrupo(){
+      $subgrupo_id = Input::get('subgrupo_id');
+      $codigosubgrupo = DB::table('subgrupo as s')
+      ->select('s.codigosubgrupo')
+      ->where('s.idsubgrupo','=',$subgrupo_id)
+      ->get();
+      return response()->json($codigosubgrupo);
     }
 
     /**

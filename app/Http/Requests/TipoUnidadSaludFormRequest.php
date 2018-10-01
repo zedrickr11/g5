@@ -28,7 +28,7 @@ class TipoUnidadSaludFormRequest extends FormRequest
               'nivel_atencion'=>'required|max:255',
                 'categoria'=>'required|max:255',
                   'comp_res'=>'required|max:255',
-                    'unidad_medica'=>'required|max:255',
+                    'unidad_medica'=>'required|max:400',
         ];
     }
 }

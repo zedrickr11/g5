@@ -25,11 +25,14 @@
   <link rel="stylesheet" href="{{asset('bower_components/morris.js/morris.css')}}">
   <!-- jvectormap -->
   <link rel="stylesheet" href="{{asset('bower_components/jvectormap/jquery-jvectormap.css')}}">
-  
+
   <!-- Daterange picker -->
   <link rel="stylesheet" href="{{asset('bower_components/bootstrap-daterangepicker/daterangepicker.css')}}">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
+  <link rel="stylesheet" href="{{asset('bower_components/select2/dist/css/select2.min.css')}}">
+  <link rel="stylesheet" href="{{asset('plugins/timepicker/bootstrap-timepicker.min.css')}}">
+  <link rel="stylesheet" href="{{asset('plugins/iCheck/all.css')}}">
 
 
   <!-- Google Font -->
@@ -45,7 +48,7 @@
       <span class="logo-mini"><b>I</b>GSS</span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>IGSS</b> Mantenimiento
-        
+
       </span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
@@ -119,7 +122,7 @@
                 </p>
               </li>
               <!-- Menu Body -->
-             
+
               <!-- Menu Footer-->
               <li class="user-footer ">
                 <div class="pull-left">
@@ -180,6 +183,17 @@
 <script src="{{asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="{{asset('bower_components/jquery-ui/jquery-ui.min.js')}}"></script>
+<script src="{{asset('bower_components/select2/dist/js/select2.full.min.js')}}"></script>
+<script src="{{asset('plugins/input-mask/jquery.inputmask.js')}}"></script>
+<script src="{{asset('plugins/input-mask/jquery.inputmask.date.extensions.js')}}"></script>
+<script src="{{asset('plugins/input-mask/jquery.inputmask.extensions.js')}}"></script>
+<script src="{{asset('bower_components/moment/min/moment.min.js')}}"></script>
+<script src="{{asset('bower_components/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+<script src="{{asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+<script src="{{asset('bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js')}}"></script>
+<script src="{{asset('plugins/timepicker/bootstrap-timepicker.min.js')}}"></script>
+<script src="{{asset('plugins/iCheck/icheck.min.js')}}"></script>
+
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button);
@@ -212,7 +226,13 @@
 
 <script src="{{asset('bower_components/moment/moment.js')}}"></script>
 <script src="{{asset('bower_components/fullcalendar/dist/fullcalendar.min.js')}}"></script>
-
+<script type="text/javascript">
+$(function (){
+  $('#datepicker').datepicker({
+    autoclose: true
+  })
+})
+</script>
 
 
 </body>

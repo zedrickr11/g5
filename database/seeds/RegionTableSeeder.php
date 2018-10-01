@@ -12,17 +12,45 @@ class RegionTableSeeder extends Seeder
      */
     public function run()
     {
-      for ($i=1; $i<10 ; $i++) {
+
 
         Region::create([
 
 
-          'idregion' => "{$i}",
-          'region' => "region {$i}"
+          'idregion' => "A",
+          'region' => "Metropolitana"
+
+        ]);
+        Region::create([
+
+
+          'idregion' => "B",
+          'region' => "Sur"
+
+        ]);
+        Region::create([
+
+
+          'idregion' => "C",
+          'region' => "Sur-Occidental"
+
+        ]);
+        Region::create([
+
+
+          'idregion' => "D",
+          'region' => "Occidental"
+
+        ]);
+        Region::create([
+
+
+          'idregion' => "E",
+          'region' => "Nor-Oriental"
 
         ]);
 
 
-      }
+
     }
 }

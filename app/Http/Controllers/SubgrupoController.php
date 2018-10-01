@@ -34,6 +34,7 @@ class SubgrupoController extends Controller
               ->where('s.subgrupo','LIKE','%'.$query.'%')
               ->orderBy('g.idgrupo','desc')
               ->paginate(10);
+              //return response()->json($subgrupos);
               return view('equipo.subgrupo.index',["subgrupos"=>$subgrupos,"searchText"=>$query]);
           }
 

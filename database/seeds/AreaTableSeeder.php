@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Area;
+//use DB;
 
 class AreaTableSeeder extends Seeder
 {
@@ -13,6 +14,7 @@ class AreaTableSeeder extends Seeder
     public function run()
     {
 
+        //DB::table('area')->truncate();
         //DB::table('area')->truncate();
         Area::create([
 

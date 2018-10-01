@@ -26,7 +26,7 @@ class GrupoFormRequest extends FormRequest
         return [
           'idgrupo'=>'required|numeric',
           'idarea'=>'required',
-          'grupo'=>'required|max:255',
+          'grupo'=>'required|max:150',
         ];
     }
 }

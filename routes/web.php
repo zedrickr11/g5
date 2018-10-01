@@ -21,6 +21,7 @@ Route::resource('equipo/confsubgrupo','Conf_subgrupoController');
 Route::resource('equipo/advertencia','AdvertenciaController');
 Route::resource('equipo/confcorrelativo','Conf_corrController');
 Route::resource('equipo/equipo','EquipoController');
+Route::get('equipo/nuevo',['as'=>'nuevo','uses' => 'EquipoController@nuevo']);
 
 
 //hospital
@@ -66,4 +67,5 @@ Route::resource('mantenimiento/areamantenimiento','AreaMantenimientoController')
 Route::get('/json-confsubgrupo','SubgrupoController@codigosubgrupo');
 Route::get('/json-grupo','EquipoController@grupo');
 Route::get('/json-subgrupo','EquipoController@subgrupo');
-Route::get('/json-correlativo','EquipoController@correlativo'); 
+Route::get('/json-correlativo','EquipoController@correlativo');
+Route::get('/json-codigosubgrupo','EquipoController@codigosubgrupo');
