@@ -104,7 +104,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-calendar"></i>
                     </div>
-                    <input type="date" class="form-control pull-right" name="fecha_compra" value="{{old('fecha_compra')}}">
+                    <input  type="date" class="form-control pull-right" name="fecha_compra" value="{{old('fecha_compra')}}">
                   </div>
                   <!-- /.input group -->
                 </div>
@@ -116,7 +116,7 @@
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
-                  <input type="date" class="form-control pull-right" name="fecha_expiracion_garantia" value="{{old('fecha_expiracion_garantia')}}" id="datepicker">
+                  <input type="date" class="form-control pull-right " name="fecha_expiracion_garantia" value="{{old('fecha_expiracion_garantia')}}" >
                 </div>
                 <!-- /.input group -->
               </div>
@@ -274,7 +274,7 @@
           <p class="text-danger">(*) Campos requeridos</p>
           <div class="form-group">
           <label for="idhospital" >Hospital (*)</label>
-          <select id="hospital" name="idhospital " class="form-control select2" >
+          <select name="idhospital" class="form-control" >
             <option value="0" disabled selected>=== Selecciona un hospital ===</option>
           @foreach($hospital as $h)
             <option value="{{$h->idhospital}}">{{$h->hospital}}</option>
@@ -399,7 +399,7 @@
 
     //selects dinamicos
   $('#area').on('change', function(e){
-    selectarea = document.getElementById('area');
+
 
 
     console.log(e);
@@ -463,7 +463,7 @@
     });
   });
 function mostrarValores(){
-  //datosHospital=document.getElementById('hospital').value;
+
   datosArea=document.getElementById('area').value;
   datosGrupo=document.getElementById('grupo').value;
   datosSubgrupo=document.getElementById('codigosubgrupo').value;
