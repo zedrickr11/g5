@@ -93,7 +93,7 @@
                     <div class="tab-pane fade in active" id="tab_1-1">
                           
                       <div class="box box-solid box-primary">
-                          
+                       <h2 class="text-center"> Mantenimientos Correctivos</h2> 
                         <div class="box-body ">
                                 <!-- THE CALENDAR 1 -->
                             <div id="calendar">
@@ -106,9 +106,10 @@
                           
                       </div>
                     <!-- /.tab-pane -->
-                    <div class="tab-pane fade " id="tab_2-2">
-                      
+                    <div class="tab-pane fade in active " id="tab_2-2">
+                       
                         <div class="box box-solid box-danger">
+                            <h2 class="text-center"> Mantenimientos Preventivos</h2>
                             <div class="box-body ">
                                   <!-- THE CALENDAR 2 -->
                               <div id="calendar2">

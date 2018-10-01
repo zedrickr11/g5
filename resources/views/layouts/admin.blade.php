@@ -26,8 +26,7 @@
   <!-- jvectormap -->
   <link rel="stylesheet" href="{{asset('bower_components/jvectormap/jquery-jvectormap.css')}}">
 
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="{{asset('bower_components/bootstrap-daterangepicker/daterangepicker.css')}}">
+  
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
   <link rel="stylesheet" href="{{asset('bower_components/select2/dist/css/select2.min.css')}}">
@@ -188,8 +187,9 @@
 <script src="{{asset('plugins/input-mask/jquery.inputmask.date.extensions.js')}}"></script>
 <script src="{{asset('plugins/input-mask/jquery.inputmask.extensions.js')}}"></script>
 <script src="{{asset('bower_components/moment/min/moment.min.js')}}"></script>
-<script src="{{asset('bower_components/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
-<script src="{{asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+
+
+
 <script src="{{asset('bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js')}}"></script>
 <script src="{{asset('plugins/timepicker/bootstrap-timepicker.min.js')}}"></script>
 <script src="{{asset('plugins/iCheck/icheck.min.js')}}"></script>
@@ -226,13 +226,7 @@
 
 <script src="{{asset('bower_components/moment/moment.js')}}"></script>
 <script src="{{asset('bower_components/fullcalendar/dist/fullcalendar.min.js')}}"></script>
-<script type="text/javascript">
-$(function (){
-  $('#datepicker').datepicker({
-    autoclose: true
-  })
-})
-</script>
+
 
 
 </body>
