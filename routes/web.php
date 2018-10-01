@@ -20,12 +20,13 @@ Route::resource('equipo/subgrupo','SubgrupoController');
 Route::resource('equipo/confsubgrupo','Conf_subgrupoController');
 Route::resource('equipo/advertencia','AdvertenciaController');
 Route::resource('equipo/confcorrelativo','Conf_corrController');
+Route::get('equipo/equipo/fichatecnica/{id}', 'EquipoController@ficha')->name('equipo.ficha');
 Route::resource('equipo/equipo','EquipoController');
-Route::resource('equipo/equipo/fichatecnica','EquipoController');
-Route::get('equipo/equipo/ficha/{id}',[
-    'as' => 'equipo.ficha',
-    'uses' => 'EquipoController@ficha'
-]);
+//Route::resource('equipo/equipo/fichatecnica','EquipoController');
+//Route::get('equipo/equipo/ficha/{id}',[
+//    'as' => 'equipo.ficha',
+  //  'uses' => 'EquipoController@ficha'
+//]);
 
 //hospital
 Route::resource('hospital/region','RegionController');
