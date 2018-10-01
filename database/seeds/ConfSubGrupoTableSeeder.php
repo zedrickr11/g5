@@ -16,9 +16,9 @@ class ConfSubGrupoTableSeeder extends Seeder
 
         Conf_subgrupo::create([
 
-          'inicio' => "1",
+          'inicio' => "0",
           'fin' => "99",
-          'actual' => "1",
+          'actual' => "6",
           'estado' => "1",
           'idgrupo' => "{$i}"
 

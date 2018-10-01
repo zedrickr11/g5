@@ -21,6 +21,12 @@ Route::resource('equipo/confsubgrupo','Conf_subgrupoController');
 Route::resource('equipo/advertencia','AdvertenciaController');
 Route::resource('equipo/confcorrelativo','Conf_corrController');
 Route::resource('equipo/equipo','EquipoController');
+Route::get('equipo/nuevo',['as'=>'nuevo','uses' => 'EquipoController@nuevo']);
+Route::resource('equipo/equipo/fichatecnica','EquipoController');
+Route::get('equipo/equipo/ficha/{id}',[
+    'as' => 'equipo.ficha',
+    'uses' => 'EquipoController@ficha'
+]);
 
 
 //hospital
@@ -39,7 +45,7 @@ Route::resource('equipo/caracteristica/subcaractec','subcaractecController');
 Route::resource('equipo/caracteristica/valorreftec','valorreftecController');
 Route::resource('equipo/caracteristica/detcaractec','detcaractecController');
 Route::resource('equipo/caracteristica/detcaracesp','detcaracespController');
-
+Route::resource('equipo/caracteristica/fichatecnica','fichatecnicaController');
 
 //Caracteristicas de rutinas
 Route::resource('equipo/rutina/valorrefpru','valorrefpruController');
@@ -72,6 +78,8 @@ Route::get('/json-confsubgrupo','SubgrupoController@codigosubgrupo');
 Route::get('/json-grupo','EquipoController@grupo');
 Route::get('/json-subgrupo','EquipoController@subgrupo');
 Route::get('/json-correlativo','EquipoController@correlativo');
+Route::get('/json-codigosubgrupo','EquipoController@codigosubgrupo');
+
 
 //Detalles
 Route::resource('detalles/detallenaturaleza','DetalleNaturalezaPeligroController');
@@ -80,3 +88,4 @@ Route::resource('detalles/detallearea','DetalleAreaMantenimientoController');
 Route::resource('detalles/detalletipotrabajo','DetalleTipoTrabajoPermisoController');
 Route::resource('detalles/detalleresponsable','DetallePrecaucionResponsableController');
 Route::resource('detalles/detalleejecutante','DetallePrecaucionEjecutanteController');
+
