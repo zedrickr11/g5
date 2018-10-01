@@ -47,7 +47,7 @@ class Conf_corrController extends Controller
             public function create()
             {
                   $grupos=Subgrupo::all();
-                  return view("equipo.confcorrelativo.create",compact('grupos'));
+                  return view("equipo.confcorrelativo.create",compact('grupos')); 
             }
 
             /**

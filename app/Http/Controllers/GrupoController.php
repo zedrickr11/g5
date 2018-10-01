@@ -31,9 +31,10 @@ class GrupoController extends Controller
             ->where('g.grupo','LIKE','%'.$query.'%')
             ->orderBy('g.idgrupo','desc')
             ->paginate(10);
+            //return response()->json($grupos);
             return view('equipo.grupo.index',["grupos"=>$grupos,"searchText"=>$query]);
         }
-        
+
       }
 
       /**

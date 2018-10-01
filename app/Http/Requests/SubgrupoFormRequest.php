@@ -25,7 +25,7 @@ class SubgrupoFormRequest extends FormRequest
     {
         return [
           'codigosubgrupo'=>'required|numeric',
-          'subgrupo'=>'required|max:255',
+          'subgrupo'=>'required|max:150',
           'idgrupo'=>'required',
         ];
     }
