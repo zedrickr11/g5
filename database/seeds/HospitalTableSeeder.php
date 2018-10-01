@@ -12,7 +12,7 @@ class HospitalTableSeeder extends Seeder
      */
     public function run()
     {
-      for ($i=1; $i<21 ; $i++) {
+      for ($i=1; $i<22 ; $i++) {
 
         Hospital::create([
 
@@ -24,6 +24,13 @@ class HospitalTableSeeder extends Seeder
 
 
       }
+      Hospital::create([
+
+
+        'hospital' => "Hospital de Quetzaltenango",
+        'clave_admin'	=> "1234"
+
+      ]);
 
     }
 }

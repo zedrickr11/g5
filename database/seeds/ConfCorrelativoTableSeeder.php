@@ -15,13 +15,13 @@ class ConfCorrelativoTableSeeder extends Seeder
     {
 
 
-      for ($i=1; $i<21 ; $i++) {
+      for ($i=1; $i<67 ; $i++) {
 
         Conf_corr::create([
 
-          'inicio' => "1",
+          'inicio' => "0",
           'fin' => "9999",
-          'actual' => "1",
+          'actual' => "0",
           'estado' => "1",
           'idsubgrupo' => "{$i}"
 
