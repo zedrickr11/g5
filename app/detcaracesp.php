@@ -8,7 +8,7 @@ class detcaracesp extends Model
 {
   protected $table='detalle_caracteristica_especial';
 
-  //protected $primaryKey='idcaracteristica_especial';
+  protected $primaryKey='iddetalle_caracteristica_especial';
 
   public $timestamps=false;
 

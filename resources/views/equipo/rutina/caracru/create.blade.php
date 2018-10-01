@@ -3,12 +3,12 @@
 
 <section class="content-header">
       <h1>
-        Equipo
-        <small>Caracteristica rutina</small>
+        Rutinas
+        <small>Característica rutina</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Equipo</a></li>
-        <li class="active">Caracteristica rutina</li>
+        <li><a href="#"><i class="fa fa-th"></i> Rutinas</a></li>
+        <li class="active">Característica rutina</li>
       </ol>
 </section>
 	<section class="content">
@@ -34,9 +34,9 @@
 			<form role="form" method="POST" action="{{route('caracru.store')}}" >
 					{!! csrf_field() !!}
 
-				<div class="box-body col-md-6">
+				<div class="box-body col-md-12">
 					<div class="form-group">
-						<label for="direccion_fab">Nombre de caracteristica rutina</label>
+						<label for="direccion_fab">Nombre de característica rutina</label>
 						<input type="text" class="form-control" name="caracteristica_rutina" value="{{old('caracteristica_rutina')}}">
 					</div>
 
@@ -44,23 +44,11 @@
 
 
 				</div>
-				<div class="box-body col-md-6">
 
-
-
-
-
-				</div>
 				<!-- /.box-body -->
 
         <div class="box-footer">
-
-<br>
-<br>
-<br>
-<br>
-<br>
-          <a href="{{route('caracru.index')}}">
+  <a href="{{route('caracru.index')}}">
             <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
           </a>
           <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>

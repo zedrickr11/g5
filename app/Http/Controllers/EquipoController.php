@@ -24,7 +24,8 @@ use App\Grupo;
 use App\Subgrupo;
 use App\Conf_corr;
 use App\TipoUnidadSalud;
-
+use App\fichatecnica;
+use Barryvdh\DomPDF\Facade as PDF;
 
 use Carbon\Carbon;
 use DB;
@@ -135,7 +136,18 @@ class EquipoController extends Controller
      */
     public function show($id)
     {
-        //
+
+  }
+
+    public function ficha($id)
+    {
+      $equipo=Equipo::findOrFail($id);
+//$view= view("equipo.caracteristica.fichatecnica.show",compact('equipo'));
+
+        $pdf = PDF::loadView("equipo.caracteristica.fichatecnica.show",compact('equipo'));
+
+        return $pdf->stream('FichaTécnica.pdf');
+        //return view("equipo.caracteristica.fichatecnica.show",compact('equipo'));
     }
 
     /**

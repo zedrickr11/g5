@@ -2,13 +2,12 @@
 @section ('contenido')
 <section class="content-header">
       <h1>
-        Equipo
-        <small>Detalle caracteristica especial</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Equipo</a></li>
-          <li class="active">Caracteristica</li>
-        <li class="active">Detalle especial</li>
+        Ficha Técnica
+      <small>Detalle caracteristica especial</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-edit"></i>   Ficha Técnica</a></li>
+      <li class="active">Detalle caracteristica especial</li>
       </ol>
 	</section>
 	<section class="content">
@@ -35,8 +34,7 @@
                     <th>Equipo</th>
                     <th>Valor referencia especial</th>
                     <th>Estado detalle caracteristica especial</th>
-                    <th>Descripcion detalle caracteristica especial</th>
-                    <th>Valor detalle caracteristica especial</th>
+
                     <th>Opciones</th>
                   </tr>
                   </thead>
@@ -47,17 +45,16 @@
               <td>{{ $cat->idequipo}}</td>
               <td>{{ $cat->idvalor_ref_esp}}</td>
               <td>{{ $cat->estado_detalle_caracteristica_especial}}</td>
-              <td>{{ $cat->descripcion_detalle_caracteristica_especial}}</td>
-              <td>{{ $cat->valor_detalle_caracteristica_especial}}</td>
+            
               <td>
 
-                  <a href="{{route('detcaracesp.edit',$cat->idcaracteristica_especial)}}">
+                  <a href="{{route('detcaracesp.edit',$cat->iddetalle_caracteristica_especial)}}">
                     <button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-cog"></button>
                   </a>
-                  <a href="{{route('detcaracesp.show',$cat->idcaracteristica_especial)}}">
+                  <a href="{{route('detcaracesp.show',$cat->iddetalle_caracteristica_especial)}}">
                     <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></button>
                   </a>
-                  <form style="display: inline" method="POST" action="{{route('detcaracesp.destroy', $cat->idcaracteristica_especial)}}">
+                  <form style="display: inline" method="POST" action="{{route('detcaracesp.destroy', $cat->iddetalle_caracteristica_especial)}}">
                   {!!method_field('DELETE')!!}
                   {!!csrf_field()!!}
                     <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></button>

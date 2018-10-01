@@ -50,7 +50,9 @@
                 <td>{{ $eq->estado}}</td>
 
                 <td>
-
+                  <a href="{{route('equipo.ficha',$eq->idequipo)}}">
+                    <button type="button" class="btn btn-success btn-sm" name="button"><span class="fa fa-edit"></span></button>
+                  </a>
                     <a href="{{route('equipo.edit',$eq->idequipo)}}">
                       <button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-cog"></span> </button>
                     </a>
