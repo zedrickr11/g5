@@ -20,13 +20,22 @@ Route::resource('equipo/subgrupo','SubgrupoController');
 Route::resource('equipo/confsubgrupo','Conf_subgrupoController');
 Route::resource('equipo/advertencia','AdvertenciaController');
 Route::resource('equipo/confcorrelativo','Conf_corrController');
+Route::get('equipo/equipo/fichatecnica/{id}', 'EquipoController@ficha')->name('equipo.ficha');
 Route::resource('equipo/equipo','EquipoController');
+<<<<<<< HEAD
+//Route::resource('equipo/equipo/fichatecnica','EquipoController');
+//Route::get('equipo/equipo/ficha/{id}',[
+//    'as' => 'equipo.ficha',
+  //  'uses' => 'EquipoController@ficha'
+//]);
+=======
 Route::get('equipo/nuevo',['as'=>'nuevo','uses' => 'EquipoController@nuevo']);
 Route::resource('equipo/equipo/fichatecnica','EquipoController');
 Route::get('equipo/equipo/ficha/{id}',[
     'as' => 'equipo.ficha',
     'uses' => 'EquipoController@ficha'
 ]);
+>>>>>>> e11e5e452cba62a5ad177074dfc26247664a83cd
 
 
 //hospital

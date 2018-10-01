@@ -1,0 +1,77 @@
+#contenedor {
+width: 52%;
+margin: 50px auto;
+border: solid 1px #000;
+font: 1em arial, helvetica, sans-serif;
+color: white;
+}
+#foto{
+    border: black 2px solid;
+    margin: 3px 10px 6px 8px;
+}
+#p {
+
+  border: black 2px solid;
+ width: 80%;
+   padding: 5px;
+   font-weight: bold;
+   font-size: 125%
+}
+#p1 {
+
+  border: black 2px solid;
+ width: 80%;
+   padding: 5px;
+   font-weight: bold;
+}
+#table{
+  border: black 2px solid;
+
+}
+#negrita{ font-weight: bold;
+ font-size: 16px; }
+ #neg{ font-weight: bold;
+ }
+#gris{
+  background-color: #e6e6e6;
+   font-weight: bold;
+}
+#p2 {
+background-color: #e6e6e6;
+  border: black 2px solid;
+ width: 80%;
+   padding: 5px;
+   font-weight: bold;
+}
+#sin{font-weight: normal;}
+
+#nada, #borde, #relleno, #margen, #todos {
+background-color: #360;
+border: solid #08f;
+width: 400px;
+}
+#nada {
+margin: 0;
+padding: 0;
+border-width: 0;
+}
+#borde      {
+margin: 0;
+padding: 0;
+border-width: 20px;
+}
+#relleno    {
+margin: 0;
+padding: 20px;
+border-width: 0;
+}
+#margen     {
+margin: 20px;
+padding: 0;
+border-width: 0;
+}
+#todos      {
+margin: 20px;
+padding: 20px;
+border-width: 20px;
+}
