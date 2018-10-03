@@ -90,7 +90,7 @@ class Ingreso_insumoController extends Controller
   {
     $ingreso=DB::table('ingreso_insumo as i')
           ->join('proveedor_insumo as p','i.idproveedor_insumo','=','p.idproveedor_insumo')
-          ->join('detalle_ingreso as di','i.idingreso_insumo','=','di.idingreso_insumo')
+          ->join('detalle_ingreso_insumo as di','i.idingreso_insumo','=','di.idingreso_insumo')
           ->select('i.idingreso_insumo','i.fecha_hora','p.nombre','i.tipo_comprobante','i.serie_comprobante','i.num_comprobante','i.estado')
           ->where('i.idingreso_insumo','=',$id)
           ->first();
