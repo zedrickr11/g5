@@ -37,6 +37,7 @@ Route::get('equipo/equipo/ficha/{id}',[
     'uses' => 'EquipoController@ficha'
 ]);
 
+
 Route::resource('equipo/equipo/rutinamante','EquipoController');
 Route::get('equipo/equipo/rutina/{id}',[
     'as' => 'equipo.rutina',
