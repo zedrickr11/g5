@@ -92,3 +92,10 @@ Route::resource('detalles/detalletipotrabajo','DetalleTipoTrabajoPermisoControll
 Route::resource('detalles/detalleresponsable','DetallePrecaucionResponsableController');
 Route::resource('detalles/detalleejecutante','DetallePrecaucionEjecutanteController');
 
+
+//almacen de insumos
+Route::resource('almacen/insumo', 'InsumoController');
+Route::resource('compras/insumo/prove','Proveedor_insumoController');
+Route::resource('compras/insumo-ingreso','Ingreso_insumoController');
+//almacen de repuestos
+Route::resource('compras/repuesto/prov','Proveedor_repuestoController');

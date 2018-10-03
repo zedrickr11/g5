@@ -31,8 +31,8 @@ class EquipoFormRequest extends FormRequest
           'modelo' => 'required|max:45',
           'serie' => 'max:45',
           'cod_financiero' => 'max:45',
-          'fecha_fabricacion' => 'date',
-          'fecha_instalcion' => 'date',
+          //'fecha_fabricacion' => 'date',
+          //'fecha_instalcion' => 'date',
           'precio' => 'max:50',
           'servicio' => 'max:45',
           'ambiente' => 'max:45',
@@ -47,9 +47,9 @@ class EquipoFormRequest extends FormRequest
           'personal_cap' => 'required',
 
           'atencion_mantenimineto_equipo' => 'max:401',
-          'fecha_compra' => 'date',
+          //'fecha_compra' => 'date',
           'forma_adquisicion' => 'max:451',
-          'fecha_expiracion_garantia' => 'date',
+          //'fecha_expiracion_garantia' => 'date',
 
           'id_proveedor' => 'numeric',
           'idunidadsalud' => 'required',
