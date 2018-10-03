@@ -44,8 +44,7 @@ class EquipoController extends Controller
       {
           $query=trim($request->get('searchText'));
           $equipos= DB::table('equipo as e')
-          ->join('estado_equipo as h','h.idestado','=','e.idestado')
-          ->select('e.idequipo','e.nombre_equipo','e.marca','e.modelo','e.serie','h.estado as estado')
+          ->select('*')
           ->where('e.nombre_equipo','LIKE','%'.$query.'%')
           ->orderBy('e.idequipo','desc')
           ->paginate(10);

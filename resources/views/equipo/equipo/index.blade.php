@@ -33,8 +33,7 @@
                       <th>Equipo</th>
                       <th>Marca</th>
                       <th>Modelo</th>
-                      <th>Serie</th>
-                      <th>Estado</th>
+                      
 
                       <th>Opciones</th>
                     </tr>
@@ -46,8 +45,7 @@
                 <td>{{ $eq->nombre_equipo}}</td>
                 <td>{{ $eq->marca}}</td>
                 <td>{{ $eq->modelo}}</td>
-                <td>{{ $eq->serie}}</td>
-                <td>{{ $eq->estado}}</td>
+
 
                 <td>
                   <a href="{{route('equipo.ficha',$eq->idequipo)}}" target="_blank">
