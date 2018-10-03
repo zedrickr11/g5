@@ -399,9 +399,6 @@
 
     //selects dinamicos
   $('#area').on('change', function(e){
-
-
-
     console.log(e);
     var area_id = e.target.value;
     $.get('/json-grupo?area_id=' + area_id,function(data) {
