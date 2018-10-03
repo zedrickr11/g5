@@ -99,3 +99,6 @@ Route::resource('compras/insumo/prove','Proveedor_insumoController');
 Route::resource('compras/insumo-ingreso','Ingreso_insumoController');
 //almacen de repuestos
 Route::resource('compras/repuesto/prov','Proveedor_repuestoController');
+
+//calendario
+Route::get('/json-calendario','CalendarioController@llenarcalendario');

@@ -356,80 +356,8 @@
         },
 
         //Random default events
-        events    : [
-          {
-            title          : 'Equipo ejemplo ESTE',
-            start          : new Date(y, m, 1),
-            end            : new Date(y, m, d - 2),
-            backgroundColor: 'black', //red
-            borderColor    : '#f56954', //red
-            textColor :'red',
-            idrutina       : '123342',
-            descripcionmantenimiento: 'Este mantenimiento es urgente',
-            hora           : '12:00',
-            estadonotificacion : 'falta realizar'
-
-
-          },
-          {
-            title          : 'Equipo ejemplo ',
-            start          : new Date(y, m, d - 5),
-            end            : new Date(y, m, d - 2),
-            backgroundColor: '#f39c12', //yellow
-            borderColor    : '#f39c12', //yellow
-            idrutina       : '123342',
-            descripcionmantenimiento: 'Este mantenimiento es urgente',
-            hora           : '12:00',
-            estadonotificacion : 'falta realizar'
-          },
-          {
-            title          : 'Equipo ejemplo ',
-            start          : new Date(y, m, d, 10, 30),
-            allDay         : false,
-            backgroundColor: '#0073b7', //Blue
-            borderColor    : '#0073b7', //Blue
-            idrutina       : '123342',
-            descripcionmantenimiento: 'Este mantenimiento es urgente',
-            hora           : '12:00',
-            estadonotificacion : 'falta realizar'
-          },
-          {
-            title          : 'Equipo ejemplo ',
-            start          : new Date(y, m, d, 12, 0),
-            end            : new Date(y, m, d, 14, 0),
-            allDay         : false,
-            backgroundColor: '#00c0ef', //Info (aqua)
-            borderColor    : '#00c0ef', //Info (aqua)
-            idrutina       : '123342',
-            descripcionmantenimiento: 'Este mantenimiento es urgente',
-            hora           : '12:00',
-            estadonotificacion : 'falta realizar'
-          },
-          {
-            title          : 'Equipo ejemplo ',
-            start          : new Date(y, m, d + 1, 19, 0),
-            end            : new Date(y, m, d + 1, 22, 30),
-            allDay         : false,
-            backgroundColor: '#00a65a', //Success (green)
-            borderColor    : '#00a65a', //Success (green)
-            idrutina       : '123342',
-            descripcionmantenimiento: 'Este mantenimiento es urgente',
-            hora           : '12:00',
-            estadonotificacion : 'falta realizar'
-          },
-          {
-            title          : 'Equipo ejemplo CLICK',
-            start          : new Date(y, m, 28),
-            end            : new Date(y, m, 29),
-            url            : 'http://google.com/',
-            backgroundColor: '#3c8dbc', //Primary (light-blue)
-            borderColor    : '#3c8dbc', //Primary (light-blue)
-            idrutina       : '123342',
-            descripcionmantenimiento: 'Este mantenimiento es urgente',
-            hora           : '12:00',
-            estadonotificacion : 'falta realizar'
-          }
-        ],
+        events: 'http://localhost:8000/json-calendario',
+        
         editable  : true,
         droppable : true, // this allows things to be dropped onto the calendar !!!
         drop      : function (date, allDay) { // this function is called when something is dropped
