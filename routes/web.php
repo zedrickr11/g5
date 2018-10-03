@@ -21,21 +21,28 @@ Route::resource('equipo/confsubgrupo','Conf_subgrupoController');
 Route::resource('equipo/advertencia','AdvertenciaController');
 Route::resource('equipo/confcorrelativo','Conf_corrController');
 Route::get('equipo/equipo/fichatecnica/{id}', 'EquipoController@ficha')->name('equipo.ficha');
+Route::get('equipo/rutina/rutinamante/{id}', 'EquipoController@rutina')->name('equipo.rutina');
 Route::resource('equipo/equipo','EquipoController');
-<<<<<<< HEAD
+
 //Route::resource('equipo/equipo/fichatecnica','EquipoController');
 //Route::get('equipo/equipo/ficha/{id}',[
 //    'as' => 'equipo.ficha',
   //  'uses' => 'EquipoController@ficha'
 //]);
-=======
+
 Route::get('equipo/nuevo',['as'=>'nuevo','uses' => 'EquipoController@nuevo']);
 Route::resource('equipo/equipo/fichatecnica','EquipoController');
 Route::get('equipo/equipo/ficha/{id}',[
     'as' => 'equipo.ficha',
     'uses' => 'EquipoController@ficha'
 ]);
->>>>>>> e11e5e452cba62a5ad177074dfc26247664a83cd
+
+Route::resource('equipo/equipo/rutinamante','EquipoController');
+Route::get('equipo/equipo/rutina/{id}',[
+    'as' => 'equipo.rutina',
+    'uses' => 'EquipoController@rutina'
+]);
+
 
 
 //hospital
