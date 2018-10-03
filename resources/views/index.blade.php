@@ -127,8 +127,145 @@
             </div>
           
           
-          
+            <div class="modal modal-success fade" id="modal-success">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">AGREGAR MANTENIMIENTO CORRECTIVO</h4>
+                  </div>
+                 
+                  <div class="modal-body">
+                    
+                   
+                    <form role="form">
+                      <div class="box-body">
+                        
+                        <div class="form-group">
+                          <label for="nombreequipo">Equipo</label>
+                          <input type="text" class="form-control" id="nombreequipo" placeholder="Equipo">
+                        </div>
+                      
+                        <div class="form-group">
+                          <label for="idrutina">Numero de mantenimiento</label>
+                          <input type="text" class="form-control" id="idrutina" placeholder=" numero de Mantenimniento">
+                        </div>
 
+                        <div class="form-group">
+                          <label for="descripcionmantenimiento">Descripcion </label>
+                          <input type="text" class="form-control" id="descripcionmantenimiento" placeholder="Descripcion">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="fechacreacion">Fecha de inicio</label>
+                          <input type="text" class="form-control" id="fechacreacion" placeholder="Fecha de inicio">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="fechafinal">Fecha final</label>
+                          <input type="text" class="form-control" id="fechafinal" placeholder="Fecha final">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="horamantenimiento">Hora</label>
+                          <input type="text" class="form-control" id="horamantenimiento" placeholder="Hora">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="estadonotificacion">Estado</label>
+                          <input type="text" class="form-control" id="estadonotificacion " placeholder="Estado">
+                        </div>
+                        
+                        
+                        </div>
+                  
+                        </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">CERRAR</button>
+                          <button type="button" class="btn btn-outline pull-left" >Modificar</button>
+                          <button type="submit" class="btn btn-outline">AGREGAR</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.modal-content -->
+              </div>
+              <!-- /.modal-dialog -->
+            </div>
+
+
+            <div class="modal modal-success fade" id="ModalEventos">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">CREAR MANTENIMIENTO CORRECTIVO</h4>
+                  </div>
+                 
+                  <div class="modal-body">
+                    
+                   
+                    <form role="form" id="formularioParaIngreso">
+                      <div class="box-body">
+                        
+                        <div class="form-group">
+                          <label for="nombreequipo2">Equipo</label>
+                          <input type="text" class="form-control" id="nombreequipo2" placeholder="Equipo">
+                        </div>
+                      
+                        <div class="form-group">
+                          <label for="idrutina2">Numero de mantenimiento</label>
+                          <input type="text" class="form-control" id="idrutina2" placeholder=" numero de Mantenimniento">
+                        </div>
+
+                        <div class="form-group">
+                          
+                          
+                          <label for="descripcionmantenimiento2">Descripcion </label>
+                          <textarea id="descripcionmantenimiento2" placeholder="Descripcion" rows="4" cols="88" style="color:black;"></textarea>
+                      
+                        </div>
+
+                        <div class="form-group">
+                          <label for="fechacreacion2">Fecha de inicio</label>
+                          <input type="text" class="form-control" id="fechacreacion2" placeholder="Fecha de inicio">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="fechafinal2">Fecha final</label>
+                          <input type="text" class="form-control" id="fechafinal2" placeholder="Fecha final">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="horamantenimiento2">Hora</label>
+                          <input type="text" class="form-control" id="horamantenimiento2" placeholder="Hora" value ="10:30">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="estadonotificacion2">Estado</label>
+                          <input type="text" class="form-control" id="estadonotificacion2 " placeholder="Estado">
+                        </div>
+                        
+                        
+                        </div>
+                  
+                        </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">CERRAR</button>
+                          <button type="button" class="btn btn-outline pull-left" >Modificar</button>
+                          <button type="button" class="btn btn-outline" id="botonParaAgregar">AGREGAR</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.modal-content -->
+              </div>
+              <!-- /.modal-dialog -->
+            </div>
 
          
       </div>
@@ -180,6 +317,7 @@
       var d    = date.getDate(),
           m    = date.getMonth(),
           y    = date.getFullYear()
+
       $('#calendar, #calendar2').fullCalendar({
         header    : {
           left  : 'prev,next today',
@@ -187,32 +325,73 @@
           right : 'month,agendaWeek,agendaDay'
         },
         buttonText: {
-          today: 'hoy',
-          month: 'mes',
-          week : 'semana',
-          day  : 'día'
+          today: 'HOY',
+          month: 'MES',
+          week : 'SEMANA',
+          day  : 'DÍA'
         },
+
+        dayClick:function(date,jsEvent,view){
+
+          $('#fechacreacion2').val(date.format());
+        
+          $("#ModalEventos").modal();
+
+        },
+        eventClick:function(calEvent,jsEvent,view){
+
+          $('#nombreequipo').val(calEvent.title);
+          $('#idrutina').val(calEvent.idrutina);
+          $('#descripcionmantenimiento').val(calEvent.descripcionmantenimiento);
+          $('#fechacreacion').val(calEvent.start);
+          $('#fechafinal').val(calEvent.end);
+          $('#horamantenimiento').val(calEvent.hora);
+          $('#estadonotificacion').val(calEvent.estadonotificacion);
+          
+
+
+          $("#modal-success").modal();
+
+
+        },
+
         //Random default events
         events    : [
           {
-            title          : 'Equipo ejemplo ',
+            title          : 'Equipo ejemplo ESTE',
             start          : new Date(y, m, 1),
-            backgroundColor: '#f56954', //red
-            borderColor    : '#f56954' //red
+            end            : new Date(y, m, d - 2),
+            backgroundColor: 'black', //red
+            borderColor    : '#f56954', //red
+            textColor :'red',
+            idrutina       : '123342',
+            descripcionmantenimiento: 'Este mantenimiento es urgente',
+            hora           : '12:00',
+            estadonotificacion : 'falta realizar'
+
+
           },
           {
             title          : 'Equipo ejemplo ',
             start          : new Date(y, m, d - 5),
             end            : new Date(y, m, d - 2),
             backgroundColor: '#f39c12', //yellow
-            borderColor    : '#f39c12' //yellow
+            borderColor    : '#f39c12', //yellow
+            idrutina       : '123342',
+            descripcionmantenimiento: 'Este mantenimiento es urgente',
+            hora           : '12:00',
+            estadonotificacion : 'falta realizar'
           },
           {
             title          : 'Equipo ejemplo ',
             start          : new Date(y, m, d, 10, 30),
             allDay         : false,
             backgroundColor: '#0073b7', //Blue
-            borderColor    : '#0073b7' //Blue
+            borderColor    : '#0073b7', //Blue
+            idrutina       : '123342',
+            descripcionmantenimiento: 'Este mantenimiento es urgente',
+            hora           : '12:00',
+            estadonotificacion : 'falta realizar'
           },
           {
             title          : 'Equipo ejemplo ',
@@ -220,7 +399,11 @@
             end            : new Date(y, m, d, 14, 0),
             allDay         : false,
             backgroundColor: '#00c0ef', //Info (aqua)
-            borderColor    : '#00c0ef' //Info (aqua)
+            borderColor    : '#00c0ef', //Info (aqua)
+            idrutina       : '123342',
+            descripcionmantenimiento: 'Este mantenimiento es urgente',
+            hora           : '12:00',
+            estadonotificacion : 'falta realizar'
           },
           {
             title          : 'Equipo ejemplo ',
@@ -228,7 +411,11 @@
             end            : new Date(y, m, d + 1, 22, 30),
             allDay         : false,
             backgroundColor: '#00a65a', //Success (green)
-            borderColor    : '#00a65a' //Success (green)
+            borderColor    : '#00a65a', //Success (green)
+            idrutina       : '123342',
+            descripcionmantenimiento: 'Este mantenimiento es urgente',
+            hora           : '12:00',
+            estadonotificacion : 'falta realizar'
           },
           {
             title          : 'Equipo ejemplo CLICK',
@@ -236,7 +423,11 @@
             end            : new Date(y, m, 29),
             url            : 'http://google.com/',
             backgroundColor: '#3c8dbc', //Primary (light-blue)
-            borderColor    : '#3c8dbc' //Primary (light-blue)
+            borderColor    : '#3c8dbc', //Primary (light-blue)
+            idrutina       : '123342',
+            descripcionmantenimiento: 'Este mantenimiento es urgente',
+            hora           : '12:00',
+            estadonotificacion : 'falta realizar'
           }
         ],
         editable  : true,
@@ -304,6 +495,29 @@
         $('#new-event').val('')
       })
     })
+
+
+    $('#botonParaAgregar').click(function(){
+
+      var NuevoEvento = {
+           
+            title          :  $('#nombreequipo2').val(),
+            start          :  $('#fechacreacion2').val()+" "+$('#horamantenimiento2').val(),
+            end            : $('#fechafinal2').val()+" "+$('#horamantenimiento2').val(),
+            backgroundColor: '#f56954', //red
+            borderColor    : '#f56954', //red
+            idrutina       :  $('#idrutina2').val(),
+            descripcionmantenimiento: $('#descripcionmantenimiento2').val(),
+            hora           : $('#horamantenimiento2').val(),
+            estadonotificacion :  $('#estadonotificacion2').val()
+      };
+
+       $('#calendar').fullCalendar( 'renderEvent',NuevoEvento); 
+      
+       $("#ModalEventos").modal('toggle');
+       $("#formularioParaIngreso")[0].reset();
+
+    });
   </script>
 </body>
 </html>
