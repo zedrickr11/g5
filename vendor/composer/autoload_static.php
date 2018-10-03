@@ -16,6 +16,7 @@ class ComposerStaticInit2895ef693b0520ba52423d216455e6b4
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
+        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -79,6 +80,10 @@ class ComposerStaticInit2895ef693b0520ba52423d216455e6b4
             'League\\Flysystem\\' => 17,
             'Laravel\\Tinker\\' => 15,
         ),
+        'J' => 
+        array (
+            'JakubOnderka\\PhpConsoleColor\\' => 29,
+        ),
         'I' => 
         array (
             'Illuminate\\' => 11,
@@ -104,6 +109,7 @@ class ComposerStaticInit2895ef693b0520ba52423d216455e6b4
         'C' => 
         array (
             'Cron\\' => 5,
+            'Collective\\Html\\' => 16,
             'Carbon\\' => 7,
         ),
         'B' => 
@@ -239,6 +245,10 @@ class ComposerStaticInit2895ef693b0520ba52423d216455e6b4
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
         ),
+        'JakubOnderka\\PhpConsoleColor\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src',
+        ),
         'Illuminate\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
@@ -282,6 +292,10 @@ class ComposerStaticInit2895ef693b0520ba52423d216455e6b4
         'Cron\\' => 
         array (
             0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
+        ),
+        'Collective\\Html\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravelcollective/html/src',
         ),
         'Carbon\\' => 
         array (
@@ -332,10 +346,6 @@ class ComposerStaticInit2895ef693b0520ba52423d216455e6b4
             'JakubOnderka\\PhpConsoleHighlighter' => 
             array (
                 0 => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src',
-            ),
-            'JakubOnderka\\PhpConsoleColor' => 
-            array (
-                0 => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src',
             ),
         ),
         'D' => 
@@ -397,6 +407,8 @@ class ComposerStaticInit2895ef693b0520ba52423d216455e6b4
         'App\\Http\\Controllers\\PrecaucionEjecutanteController' => __DIR__ . '/../..' . '/app/Http/Controllers/PrecaucionEjecutanteController.php',
         'App\\Http\\Controllers\\PrecaucionResponsableController' => __DIR__ . '/../..' . '/app/Http/Controllers/PrecaucionResponsableController.php',
         'App\\Http\\Controllers\\ProveedorController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProveedorController.php',
+        'App\\Http\\Controllers\\Proveedor_insumoController' => __DIR__ . '/../..' . '/app/Http/Controllers/Proveedor_insumoController.php',
+        'App\\Http\\Controllers\\Proveedor_repuestoController' => __DIR__ . '/../..' . '/app/Http/Controllers/Proveedor_repuestoController.php',
         'App\\Http\\Controllers\\RegionController' => __DIR__ . '/../..' . '/app/Http/Controllers/RegionController.php',
         'App\\Http\\Controllers\\SeguimientoController' => __DIR__ . '/../..' . '/app/Http/Controllers/SeguimientoController.php',
         'App\\Http\\Controllers\\ServicioTecnicoController' => __DIR__ . '/../..' . '/app/Http/Controllers/ServicioTecnicoController.php',
@@ -450,6 +462,7 @@ class ComposerStaticInit2895ef693b0520ba52423d216455e6b4
         'App\\Http\\Requests\\PermisoTrabajoFormRequest' => __DIR__ . '/../..' . '/app/Http/Requests/PermisoTrabajoFormRequest.php',
         'App\\Http\\Requests\\PrecaucionEjecutanteFormRequest' => __DIR__ . '/../..' . '/app/Http/Requests/PrecaucionEjecutanteFormRequest.php',
         'App\\Http\\Requests\\PrecaucionResponsableFormRequest' => __DIR__ . '/../..' . '/app/Http/Requests/PrecaucionResponsableFormRequest.php',
+        'App\\Http\\Requests\\Proveedor_insumoRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Proveedor_insumoRequest.php',
         'App\\Http\\Requests\\RegionFormRequest' => __DIR__ . '/../..' . '/app/Http/Requests/RegionFormRequest.php',
         'App\\Http\\Requests\\SeguimientoFormRequest' => __DIR__ . '/../..' . '/app/Http/Requests/SeguimientoFormRequest.php',
         'App\\Http\\Requests\\SolicitudTrabajoFormRequest' => __DIR__ . '/../..' . '/app/Http/Requests/SolicitudTrabajoFormRequest.php',
@@ -472,12 +485,15 @@ class ComposerStaticInit2895ef693b0520ba52423d216455e6b4
         'App\\Http\\Requests\\valorrefpruFormRequest' => __DIR__ . '/../..' . '/app/Http/Requests/valorrefpruFormRequest.php',
         'App\\Http\\Requests\\valorreftecFormRequest' => __DIR__ . '/../..' . '/app/Http/Requests/valorreftecFormRequest.php',
         'App\\Http\\Requests\\valrefruFormRequest' => __DIR__ . '/../..' . '/app/Http/Requests/valrefruFormRequest.php',
+        'App\\Ingreso_insumo' => __DIR__ . '/../..' . '/app/Ingreso_insumo.php',
+        'App\\Insumo' => __DIR__ . '/../..' . '/app/Insumo.php',
         'App\\Login' => __DIR__ . '/../..' . '/app/Login.php',
         'App\\NaturalezaPeligro' => __DIR__ . '/../..' . '/app/NaturalezaPeligro.php',
         'App\\PermisoTrabajo' => __DIR__ . '/../..' . '/app/PermisoTrabajo.php',
         'App\\PrecaucionEjecutante' => __DIR__ . '/../..' . '/app/PrecaucionEjecutante.php',
         'App\\PrecaucionResponsable' => __DIR__ . '/../..' . '/app/PrecaucionResponsable.php',
         'App\\Proveedor' => __DIR__ . '/../..' . '/app/Proveedor.php',
+        'App\\Proveedor_insumo' => __DIR__ . '/../..' . '/app/Proveedor_insumo.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -518,6 +534,13 @@ class ComposerStaticInit2895ef693b0520ba52423d216455e6b4
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
+        'Collective\\Html\\Componentable' => __DIR__ . '/..' . '/laravelcollective/html/src/Componentable.php',
+        'Collective\\Html\\Eloquent\\FormAccessible' => __DIR__ . '/..' . '/laravelcollective/html/src/Eloquent/FormAccessible.php',
+        'Collective\\Html\\FormBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/FormBuilder.php',
+        'Collective\\Html\\FormFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/FormFacade.php',
+        'Collective\\Html\\HtmlBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlBuilder.php',
+        'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
+        'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
         'ConfCorrelativoTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ConfCorrelativoTableSeeder.php',
         'ConfSubGrupoTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ConfSubGrupoTableSeeder.php',
         'Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
@@ -2051,8 +2074,8 @@ class ComposerStaticInit2895ef693b0520ba52423d216455e6b4
         'Illuminate\\View\\ViewFinderInterface' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewFinderInterface.php',
         'Illuminate\\View\\ViewName' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewName.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
-        'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/ConsoleColor.php',
-        'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/InvalidStyleException.php',
+        'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/ConsoleColor.php',
+        'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/InvalidStyleException.php',
         'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src/JakubOnderka/PhpConsoleHighlighter/Highlighter.php',
         'Laravel\\Tinker\\ClassAliasAutoloader' => __DIR__ . '/..' . '/laravel/tinker/src/ClassAliasAutoloader.php',
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
@@ -2730,6 +2753,8 @@ class ComposerStaticInit2895ef693b0520ba52423d216455e6b4
         'PhpParser\\Builder\\Namespace_' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Builder/Namespace_.php',
         'PhpParser\\Builder\\Param' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Builder/Param.php',
         'PhpParser\\Builder\\Property' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Builder/Property.php',
+        'PhpParser\\Builder\\TraitUse' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Builder/TraitUse.php',
+        'PhpParser\\Builder\\TraitUseAdaptation' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Builder/TraitUseAdaptation.php',
         'PhpParser\\Builder\\Trait_' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Builder/Trait_.php',
         'PhpParser\\Builder\\Use_' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Builder/Use_.php',
         'PhpParser\\Comment' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Comment.php',
