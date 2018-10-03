@@ -168,6 +168,34 @@ class EquipoController extends Controller
         return $pdf->stream('FichaTécnica.pdf');
         //return view("equipo.caracteristica.fichatecnica.show",compact('equipo'));
     }
+    public function rutina($id)
+    {
+    //   $equipo = Equipo::all();
+      // $equipo = Equipo::where('idequipo', $id)->first();
+
+    //  $equipo=Equipo::findOrFail($id);
+    $proveedor=Proveedor::all();
+    $unidadsalud=UnidadSalud::all();
+    $area=Area::all();
+    $estado=Estado::all();
+    $serviciotecnico=ServicioTecnico::all();
+    $fabricante=Fabricante::all();
+    $hospital=Hospital::all();
+    $departamento=Departamento::all();
+    $region=Region::all();
+    $grupo=Grupo::all();
+    $subgrupo=Subgrupo::all();
+    $tipounidadsalud=TipoUnidadSalud::all();
+    $equipo=DB::table('equipo')->where('idequipo', $id)->get();
+//$view= view("equipo.caracteristica.fichatecnica.show",compact('equipo'));
+
+        $pdf = PDF::loadView("equipo.rutina.rutinamante.show",compact('equipo','proveedor','unidadsalud','area',
+                    'estado','serviciotecnico','fabricante','hospital','departamento',
+                    'region','grupo','subgrupo','tipounidadsalud'));
+
+        return $pdf->stream('RutinaMantenimiento.pdf');
+        //return view("equipo.caracteristica.fichatecnica.show",compact('equipo'));
+    }
 
     /**
      * Show the form for editing the specified resource.
