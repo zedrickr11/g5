@@ -33,8 +33,7 @@
                       <th>Equipo</th>
                       <th>Marca</th>
                       <th>Modelo</th>
-                      <th>Serie</th>
-                      <th>Estado</th>
+                      
 
                       <th>Opciones</th>
                     </tr>
@@ -46,12 +45,14 @@
                 <td>{{ $eq->nombre_equipo}}</td>
                 <td>{{ $eq->marca}}</td>
                 <td>{{ $eq->modelo}}</td>
-                <td>{{ $eq->serie}}</td>
-                <td>{{ $eq->estado}}</td>
+
 
                 <td>
                   <a href="{{route('equipo.ficha',$eq->idequipo)}}" target="_blank">
                     <button type="button" class="btn btn-success btn-sm" name="button"><span class="fa fa-edit"></span></button>
+                  </a>
+                  <a href="{{route('equipo.rutina',$eq->idequipo)}}" target="_blank">
+                    <button type="button" class="btn btn-primary btn-sm" name="button"><span class="fa fa-th"></span></button>
                   </a>
                     <a href="{{route('equipo.edit',$eq->idequipo)}}">
                       <button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-cog"></span> </button>

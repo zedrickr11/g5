@@ -48,8 +48,7 @@ class EquipoController extends Controller
       {
           $query=trim($request->get('searchText'));
           $equipos= DB::table('equipo as e')
-          ->join('estado_equipo as h','h.idestado','=','e.idestado')
-          ->select('e.idequipo','e.nombre_equipo','e.marca','e.modelo','e.serie','h.estado as estado')
+          ->select('*')
           ->where('e.nombre_equipo','LIKE','%'.$query.'%')
           ->orderBy('e.idequipo','desc')
           ->paginate(10);
@@ -174,6 +173,34 @@ class EquipoController extends Controller
                     'region','grupo','subgrupo','tipounidadsalud','detcaractec','CaracTec','subcaractec','valorreftec'));
 
         return $pdf->stream('FICHA TÉCNICA"'.$id.'".pdf');
+        //return view("equipo.caracteristica.fichatecnica.show",compact('equipo'));
+    }
+    public function rutina($id)
+    {
+    //   $equipo = Equipo::all();
+      // $equipo = Equipo::where('idequipo', $id)->first();
+
+    //  $equipo=Equipo::findOrFail($id);
+    $proveedor=Proveedor::all();
+    $unidadsalud=UnidadSalud::all();
+    $area=Area::all();
+    $estado=Estado::all();
+    $serviciotecnico=ServicioTecnico::all();
+    $fabricante=Fabricante::all();
+    $hospital=Hospital::all();
+    $departamento=Departamento::all();
+    $region=Region::all();
+    $grupo=Grupo::all();
+    $subgrupo=Subgrupo::all();
+    $tipounidadsalud=TipoUnidadSalud::all();
+    $equipo=DB::table('equipo')->where('idequipo', $id)->get();
+//$view= view("equipo.caracteristica.fichatecnica.show",compact('equipo'));
+
+        $pdf = PDF::loadView("equipo.rutina.rutinamante.show",compact('equipo','proveedor','unidadsalud','area',
+                    'estado','serviciotecnico','fabricante','hospital','departamento',
+                    'region','grupo','subgrupo','tipounidadsalud'));
+
+        return $pdf->stream('RutinaMantenimiento.pdf');
         //return view("equipo.caracteristica.fichatecnica.show",compact('equipo'));
     }
 
