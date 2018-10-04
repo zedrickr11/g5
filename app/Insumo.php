@@ -20,6 +20,7 @@ class Insumo extends Model
     'codigo',
     'descripcion',
     'stock',
+    'unidad_medida',
     'estado'
   ];
 
