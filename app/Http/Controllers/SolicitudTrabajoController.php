@@ -64,6 +64,9 @@ class SolicitudTrabajoController extends Controller
        return view('trabajo.solicitud.show', compact('solicitud'));
      }
 
+
+
+
      public function ficha($id)
      {
      $solicitudes=DB::table('solitud_trabajo')->where('idsolitud_trabajo', $id)->get();
