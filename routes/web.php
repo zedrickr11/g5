@@ -21,18 +21,14 @@ Route::resource('equipo/confsubgrupo','Conf_subgrupoController');
 Route::resource('equipo/advertencia','AdvertenciaController');
 Route::resource('equipo/confcorrelativo','Conf_corrController');
 Route::get('equipo/equipo/fichatecnica/{id}', 'EquipoController@ficha')->name('equipo.ficha');
-Route::get('equipo/rutina/rutinamante/{id}', 'EquipoController@rutina')->name('equipo.rutina');
 Route::resource('equipo/equipo','EquipoController');
 
-<<<<<<< HEAD
 
-=======
 //Route::resource('equipo/equipo/fichatecnica','EquipoController');
 //Route::get('equipo/equipo/ficha/{id}',[
 //    'as' => 'equipo.ficha',
   //  'uses' => 'EquipoController@ficha'
 //]);
->>>>>>> 2e380d6ee35e0636001fd5bde8a9f4dfe87f5858
 
 Route::get('equipo/nuevo',['as'=>'nuevo','uses' => 'EquipoController@nuevo']);
 Route::resource('equipo/equipo/fichatecnica','EquipoController');
@@ -41,8 +37,6 @@ Route::get('equipo/equipo/ficha/{id}',[
     'uses' => 'EquipoController@ficha'
 ]);
 
-<<<<<<< HEAD
-=======
 
 Route::resource('equipo/equipo/rutinamante','EquipoController');
 Route::get('equipo/equipo/rutina/{id}',[
@@ -50,7 +44,8 @@ Route::get('equipo/equipo/rutina/{id}',[
     'uses' => 'EquipoController@rutina'
 ]);
 
->>>>>>> 2e380d6ee35e0636001fd5bde8a9f4dfe87f5858
+
+
 
 
 //hospital
@@ -112,8 +107,6 @@ Route::resource('detalles/detallearea','DetalleAreaMantenimientoController');
 Route::resource('detalles/detalletipotrabajo','DetalleTipoTrabajoPermisoController');
 Route::resource('detalles/detalleresponsable','DetallePrecaucionResponsableController');
 Route::resource('detalles/detalleejecutante','DetallePrecaucionEjecutanteController');
-<<<<<<< HEAD
-=======
 
 
 //almacen de insumos
@@ -122,4 +115,7 @@ Route::resource('compras/insumo/prove','Proveedor_insumoController');
 Route::resource('compras/insumo-ingreso','Ingreso_insumoController');
 //almacen de repuestos
 Route::resource('compras/repuesto/prov','Proveedor_repuestoController');
->>>>>>> 2e380d6ee35e0636001fd5bde8a9f4dfe87f5858
+
+//calendario
+Route::get('/json-calendario','CalendarioController@llenarcalendario');
+
