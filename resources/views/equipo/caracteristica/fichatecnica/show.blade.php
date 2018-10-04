@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
-<title>Página de ejemplo</title>
+
+      @foreach($equipo as $eq)
+  @php($clave =$eq->idequipo)
+
+<title>FICHA TÉCNICA {{ $eq->idequipo}}</title>
 	<link type="text/css" rel="stylesheet" href="estilos.css" />
 
   <body>
@@ -8,7 +12,7 @@
       </SPAN>
 
 
-        @foreach($equipo as $eq)
+
 
 
         <table id="table" width="100%" border="10" cellpadding="5" cellspacing="0" bordercolor="#000000">
@@ -27,8 +31,9 @@
 
           </tr>
           <tr>
-            <td >  </td>
-              <td > </td>
+            @php($clavedividida= explode("-",$clave))
+            <td id="neg">  <div align="center">{{$clavedividida[0]}} </div></td>
+              <td id="neg"> <div align="center"> {{$clavedividida[1]}} </div></td>
 
           </tr>
           <tr>
@@ -56,7 +61,7 @@
 
           </tr>
           <tr>
-            <td  colspan="4">  Partes de Equip:</td>
+            <td  colspan="4">  Partes de Equipo:</td>
           </tr>
           <tr>
             <td  colspan="4">  Accesorios:</td>
@@ -104,6 +109,66 @@
           <tr>
             <td id="gris" colspan="4"> <div align="center"> INFORMACIÓN TÉCNICA </div></td>
           </tr>
+
+
+
+          @foreach($CaracTec as $CaracTecnica)
+            @php ($num = 0)
+          @foreach($detcaractec as $hosp)
+          @if ($num==0 and $hosp->idequipo==$eq->idequipo  and $hosp->idcaracteristica_tecnica==$CaracTecnica->idcaracteristica_tecnica)
+          <tr>
+          <td id="neg" colspan="4"> <div align="center"><font style="text-transform: uppercase;"> {{$CaracTecnica->nombre_caracteristica_tecnica}}  </font></div></td>
+          </tr>
+           @php ($num=1)
+           @foreach($subcaractec as $subcaractecnica)
+           @php ($num2 = 0)
+           @foreach($detcaractec as $hosp2)
+           @if ($num2==0 and $hosp2->idequipo==$eq->idequipo  and $hosp2->idsubgrupo_carac_tecnica==$subcaractecnica->idsubgrupo_carac_tecnica and $hosp2->idcaracteristica_tecnica==$CaracTecnica->idcaracteristica_tecnica)
+
+           <tr>
+             <td id="neg" colspan="4"> <font style="text-transform: uppercase;"> {{$subcaractecnica->nombre_subgrupo_carac_tecnica}}  </font></td>
+           </tr>
+            @php ($num2=1)
+            @php ($divisor=0)
+
+
+            @foreach($detcaractec as $hosp3)
+            @foreach($valorreftec as $hosp4)
+
+            @if ($hosp3->idequipo==$eq->idequipo and $hosp3->idsubgrupo_carac_tecnica==$subcaractecnica->idsubgrupo_carac_tecnica and $hosp3->idcaracteristica_tecnica==$CaracTecnica->idcaracteristica_tecnica)
+            @if ($hosp4->idvalor_ref_tec==$hosp3->idvalor_ref_tec)
+              @if ($divisor%2==0)
+              <tr>
+              @endif
+              <td  colspan="2"><font style="text-transform: uppercase;"> {{$hosp4->nombre_valor_ref_tec}}  </font></div></td>
+
+              @if ($divisor%2!=0 )
+              </tr>
+              @endif
+                @php ($divisor++)
+            @endif
+
+            @endif
+
+            @endforeach
+            @endforeach
+            @if ($divisor%2!=0 )
+                <td  colspan="2"></td>
+                  </tr>
+            @endif
+
+           @endif
+           @endforeach
+           @endforeach
+
+          @endif
+
+
+          @endforeach
+          @endforeach
+
+
+
 
 
           @foreach($fabricante as $hosp)
