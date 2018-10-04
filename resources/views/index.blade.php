@@ -356,7 +356,7 @@
         },
 
         //Random default events
-        events: 'http://localhost:8000/json-calendario',
+        events: '/json-calendario',
         
         editable  : true,
         droppable : true, // this allows things to be dropped onto the calendar !!!

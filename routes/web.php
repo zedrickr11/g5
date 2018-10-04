@@ -32,6 +32,15 @@ Route::get('equipo/equipo/ficha/{id}',[
 
 
 
+Route::resource('equipo/equipo/rutinamante','EquipoController');
+Route::get('equipo/equipo/rutina/{id}',[
+    'as' => 'equipo.rutina',
+    'uses' => 'EquipoController@rutina'
+]);
+
+
+
+
 //hospital
 Route::resource('hospital/region','RegionController');
 Route::resource('hospital/hospitales','HospitalController');
