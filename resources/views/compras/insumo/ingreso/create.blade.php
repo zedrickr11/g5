@@ -92,7 +92,7 @@
 
                   <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
                       <div class="form-group">
-                        <button id="bt_add" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
+                        <button type="button" id="bt_add" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
 
                       </div>
                   </div>
