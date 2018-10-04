@@ -386,6 +386,7 @@ class ComposerStaticInit2895ef693b0520ba52423d216455e6b4
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
+        'App\\Http\\Controllers\\CalendarioController' => __DIR__ . '/../..' . '/app/Http/Controllers/CalendarioController.php',
         'App\\Http\\Controllers\\CaracTecController' => __DIR__ . '/../..' . '/app/Http/Controllers/CaracTecController.php',
         'App\\Http\\Controllers\\Conf_corrController' => __DIR__ . '/../..' . '/app/Http/Controllers/Conf_corrController.php',
         'App\\Http\\Controllers\\Conf_subgrupoController' => __DIR__ . '/../..' . '/app/Http/Controllers/Conf_subgrupoController.php',

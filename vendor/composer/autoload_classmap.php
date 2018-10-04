@@ -34,6 +34,7 @@ return array(
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',
     'App\\Http\\Controllers\\Auth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ResetPasswordController.php',
+    'App\\Http\\Controllers\\CalendarioController' => $baseDir . '/app/Http/Controllers/CalendarioController.php',
     'App\\Http\\Controllers\\CaracTecController' => $baseDir . '/app/Http/Controllers/CaracTecController.php',
     'App\\Http\\Controllers\\Conf_corrController' => $baseDir . '/app/Http/Controllers/Conf_corrController.php',
     'App\\Http\\Controllers\\Conf_subgrupoController' => $baseDir . '/app/Http/Controllers/Conf_subgrupoController.php',
