@@ -24,21 +24,13 @@ Route::get('equipo/equipo/fichatecnica/{id}', 'EquipoController@ficha')->name('e
 Route::get('equipo/rutina/rutinamante/{id}', 'EquipoController@rutina')->name('equipo.rutina');
 Route::resource('equipo/equipo','EquipoController');
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 
-=======
->>>>>>> e612d7bc27f342206446ca6a2af7c8b1d7eaa53e
 //Route::resource('equipo/equipo/fichatecnica','EquipoController');
 //Route::get('equipo/equipo/ficha/{id}',[
 //    'as' => 'equipo.ficha',
   //  'uses' => 'EquipoController@ficha'
 //]);
-<<<<<<< HEAD
-=======
->>>>>>> 2e380d6ee35e0636001fd5bde8a9f4dfe87f5858
->>>>>>> e612d7bc27f342206446ca6a2af7c8b1d7eaa53e
+
 
 Route::get('equipo/nuevo',['as'=>'nuevo','uses' => 'EquipoController@nuevo']);
 Route::resource('equipo/equipo/fichatecnica','EquipoController');
@@ -46,11 +38,6 @@ Route::get('equipo/equipo/ficha/{id}',[
     'as' => 'equipo.ficha',
     'uses' => 'EquipoController@ficha'
 ]);
-<<<<<<< HEAD
-=======
-
-<<<<<<< HEAD
-=======
 
 Route::resource('equipo/equipo/rutinamante','EquipoController');
 Route::get('equipo/equipo/rutina/{id}',[
@@ -58,8 +45,7 @@ Route::get('equipo/equipo/rutina/{id}',[
     'uses' => 'EquipoController@rutina'
 ]);
 
->>>>>>> 2e380d6ee35e0636001fd5bde8a9f4dfe87f5858
->>>>>>> e612d7bc27f342206446ca6a2af7c8b1d7eaa53e
+
 
 //pdf SolicitudTrabajos
 Route::resource('trabajo/solicitud/solicitud','SolicitudTrabajoController');
@@ -128,10 +114,6 @@ Route::resource('detalles/detallearea','DetalleAreaMantenimientoController');
 Route::resource('detalles/detalletipotrabajo','DetalleTipoTrabajoPermisoController');
 Route::resource('detalles/detalleresponsable','DetallePrecaucionResponsableController');
 Route::resource('detalles/detalleejecutante','DetallePrecaucionEjecutanteController');
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
 
 
 //almacen de insumos
@@ -140,5 +122,3 @@ Route::resource('compras/insumo/prove','Proveedor_insumoController');
 Route::resource('compras/insumo-ingreso','Ingreso_insumoController');
 //almacen de repuestos
 Route::resource('compras/repuesto/prov','Proveedor_repuestoController');
->>>>>>> 2e380d6ee35e0636001fd5bde8a9f4dfe87f5858
->>>>>>> e612d7bc27f342206446ca6a2af7c8b1d7eaa53e
