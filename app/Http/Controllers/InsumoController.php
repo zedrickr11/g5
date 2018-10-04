@@ -39,6 +39,7 @@ class InsumoController extends Controller
       $insumo->nombre=$request->get('nombre');
       $insumo->stock=0;
       $insumo->descripcion=$request->get('descripcion');
+      $insumo->unidad_medida=$request->get('unidad_medida');
       $insumo->estado='Activo';
       $insumo->save();
       return Redirect::to('almacen/insumo');
@@ -64,6 +65,7 @@ class InsumoController extends Controller
       $insumo->nombre=$request->get('nombre');
       $insumo->stock=$request->get('stock');
       $insumo->descripcion=$request->get('descripcion');
+      $insumo->unidad_medida=$request->get('unidad_medida');
       $insumo->estado='Activo';
       $insumo->update();
       return Redirect::to('almacen/insumo');

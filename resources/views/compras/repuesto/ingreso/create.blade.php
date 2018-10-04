@@ -75,7 +75,7 @@
                   <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                       <div class="form-group">
                           <label>Artículo</label>
-                          <select name="pidinsumo" class="form-control select2" id="pidinsumo" data-live-search="true">
+                          <select name="pidinsumo" class="form-control selectpicker" id="pidinsumo" data-live-search="true">
                               @foreach($articulos as $articulo)
                               <option value="{{$articulo->idinsumo}}">{{$articulo->articulo}}</option>
                               @endforeach

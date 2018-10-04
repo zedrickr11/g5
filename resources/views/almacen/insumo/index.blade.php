@@ -32,6 +32,7 @@
 												<th>Nombre</th>
 												<th>Código</th>
 												<th>Stock</th>
+                        <th>Unidad de medida</th>
 												<th>Estado</th>
 												<th>Opciones</th>
 											</thead>
@@ -42,7 +43,7 @@
 												<td>{{ $art->codigo}}</td>
 
 												<td>{{ $art->stock}}</td>
-
+                        <td>{{ $art->unidad_medida }}</td>
 												<td>{{ $art->estado}}</td>
 												<td>
 													<a href="{{URL::action('InsumoController@edit',$art->idinsumo)}}"><button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-cog"></span> </button></a>
