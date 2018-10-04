@@ -142,7 +142,16 @@
 </section>
 <script src="{{asset('ajax/jquery.min.js')}}"></script>
 <script src="{{asset('ajax/bootstrap.min.js')}}"></script>
+<script src="{{asset('ajax/select2.min.js')}}"></script>
+
 <script>
+
+  $('#pidinsumo').select2({
+    theme: "classic"
+  });
+  $('#idproveedor_insumo').select2({
+    theme: "classic"
+  });
   $(document).ready(function(){
     $('#bt_add').click(function(){
       agregar();
