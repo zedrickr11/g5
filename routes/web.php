@@ -23,6 +23,13 @@ Route::resource('equipo/confcorrelativo','Conf_corrController');
 Route::get('equipo/equipo/fichatecnica/{id}', 'EquipoController@ficha')->name('equipo.ficha');
 Route::resource('equipo/equipo','EquipoController');
 
+
+//Route::resource('equipo/equipo/fichatecnica','EquipoController');
+//Route::get('equipo/equipo/ficha/{id}',[
+//    'as' => 'equipo.ficha',
+  //  'uses' => 'EquipoController@ficha'
+//]);
+
 Route::get('equipo/nuevo',['as'=>'nuevo','uses' => 'EquipoController@nuevo']);
 Route::resource('equipo/equipo/fichatecnica','EquipoController');
 Route::get('equipo/equipo/ficha/{id}',[
@@ -31,12 +38,12 @@ Route::get('equipo/equipo/ficha/{id}',[
 ]);
 
 
-
 Route::resource('equipo/equipo/rutinamante','EquipoController');
 Route::get('equipo/equipo/rutina/{id}',[
     'as' => 'equipo.rutina',
     'uses' => 'EquipoController@rutina'
 ]);
+
 
 
 
@@ -111,3 +118,4 @@ Route::resource('compras/repuesto/prov','Proveedor_repuestoController');
 
 //calendario
 Route::get('/json-calendario','CalendarioController@llenarcalendario');
+
