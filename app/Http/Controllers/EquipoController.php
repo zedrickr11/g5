@@ -25,6 +25,10 @@ use App\Subgrupo;
 use App\Conf_corr;
 use App\TipoUnidadSalud;
 use App\fichatecnica;
+use App\detcaractec;
+USE App\CaracTec;
+USE App\subcaractec;
+USE App\valorreftec;
 use Barryvdh\DomPDF\Facade as PDF;
 
 use Carbon\Carbon;
@@ -158,14 +162,18 @@ class EquipoController extends Controller
     $grupo=Grupo::all();
     $subgrupo=Subgrupo::all();
     $tipounidadsalud=TipoUnidadSalud::all();
+    $detcaractec=detcaractec::all();
+    $CaracTec=CaracTec::all();
+    $subcaractec=subcaractec::all();
+    $valorreftec=valorreftec::all();
     $equipo=DB::table('equipo')->where('idequipo', $id)->get();
 //$view= view("equipo.caracteristica.fichatecnica.show",compact('equipo'));
 
         $pdf = PDF::loadView("equipo.caracteristica.fichatecnica.show",compact('equipo','proveedor','unidadsalud','area',
                     'estado','serviciotecnico','fabricante','hospital','departamento',
-                    'region','grupo','subgrupo','tipounidadsalud'));
+                    'region','grupo','subgrupo','tipounidadsalud','detcaractec','CaracTec','subcaractec','valorreftec'));
 
-        return $pdf->stream('FichaTécnica.pdf');
+        return $pdf->stream('FICHA TÉCNICA"'.$id.'".pdf');
         //return view("equipo.caracteristica.fichatecnica.show",compact('equipo'));
     }
 
