@@ -144,6 +144,7 @@ return array(
     'App\\Insumo' => $baseDir . '/app/Insumo.php',
     'App\\Login' => $baseDir . '/app/Login.php',
     'App\\NaturalezaPeligro' => $baseDir . '/app/NaturalezaPeligro.php',
+    'App\\Notificacion' => $baseDir . '/app/Notificacion.php',
     'App\\PermisoTrabajo' => $baseDir . '/app/PermisoTrabajo.php',
     'App\\PrecaucionEjecutante' => $baseDir . '/app/PrecaucionEjecutante.php',
     'App\\PrecaucionResponsable' => $baseDir . '/app/PrecaucionResponsable.php',

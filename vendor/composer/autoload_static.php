@@ -496,6 +496,7 @@ class ComposerStaticInit2895ef693b0520ba52423d216455e6b4
         'App\\Insumo' => __DIR__ . '/../..' . '/app/Insumo.php',
         'App\\Login' => __DIR__ . '/../..' . '/app/Login.php',
         'App\\NaturalezaPeligro' => __DIR__ . '/../..' . '/app/NaturalezaPeligro.php',
+        'App\\Notificacion' => __DIR__ . '/../..' . '/app/Notificacion.php',
         'App\\PermisoTrabajo' => __DIR__ . '/../..' . '/app/PermisoTrabajo.php',
         'App\\PrecaucionEjecutante' => __DIR__ . '/../..' . '/app/PrecaucionEjecutante.php',
         'App\\PrecaucionResponsable' => __DIR__ . '/../..' . '/app/PrecaucionResponsable.php',
