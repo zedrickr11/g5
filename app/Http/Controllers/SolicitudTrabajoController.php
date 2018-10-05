@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SolicitudTrabajoFormRequest;
 use DB;
+use Barryvdh\DomPDF\Facade as PDF;
 class SolicitudTrabajoController extends Controller
 {
     /**
@@ -59,11 +60,23 @@ class SolicitudTrabajoController extends Controller
      */
      public function show($id)
      {
-       $solicitudes=SolicitudTrabajo::findOrFail($id);
-       return view('trabajo.solicitud.show', compact('solicitudes'));
+       $solicitud=SolicitudTrabajo::findOrFail($id);
+       return view('trabajo.solicitud.show', compact('solicitud'));
      }
 
 
+
+
+     public function ficha($id)
+     {
+     $solicitudes=DB::table('solitud_trabajo')->where('idsolitud_trabajo', $id)->get();
+     //$view= view("equipo.caracteristica.fichatecnica.show",compact('equipo'));
+
+         $pdf = PDF::loadView("trabajo.solicitudpdf.show",compact('solicitudes'));
+
+         return $pdf->stream('SolicitudTrabajo.pdf');
+         //return view("equipo.caracteristica.fichatecnica.show",compact('equipo'));
+     }
     /**
      * Show the form for editing the specified resource.
      *

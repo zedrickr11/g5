@@ -29,7 +29,6 @@ Route::resource('equipo/equipo','EquipoController');
 //    'as' => 'equipo.ficha',
   //  'uses' => 'EquipoController@ficha'
 //]);
-
 Route::get('equipo/nuevo',['as'=>'nuevo','uses' => 'EquipoController@nuevo']);
 Route::resource('equipo/equipo/fichatecnica','EquipoController');
 Route::get('equipo/equipo/ficha/{id}',[
@@ -47,6 +46,12 @@ Route::get('equipo/equipo/rutina/{id}',[
 
 
 
+//pdf SolicitudTrabajos
+Route::resource('trabajo/solicitud/solicitud','SolicitudTrabajoController');
+Route::get('trabajo/solicitud/ficha/{id}',[
+    'as' => 'solicitud.ficha',
+    'uses' => 'SolicitudTrabajoController@ficha'
+]);
 
 //hospital
 Route::resource('hospital/region','RegionController');
@@ -87,6 +92,7 @@ Route::resource('trabajo/tipo','TipoTrabajoController');
 Route::resource('trabajo/solicitud','SolicitudTrabajoController');
 Route::resource('trabajo/permiso','PermisoTrabajoController');
 Route::resource('trabajo/seguimiento','SeguimientoController');
+Route::get('trabajo/solicitud/solicitudpdf/{id}', 'SolicitudTrabajoController@ficha')->name('Solicitudes.ficha');//pdf
 
 
 //rutinas de mantenimiento
@@ -115,6 +121,7 @@ Route::resource('compras/insumo/prove','Proveedor_insumoController');
 Route::resource('compras/insumo-ingreso','Ingreso_insumoController');
 //almacen de repuestos
 Route::resource('compras/repuesto/prov','Proveedor_repuestoController');
+
 
 //calendario
 Route::get('/json-calendario','CalendarioController@llenarcalendario');

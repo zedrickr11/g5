@@ -33,7 +33,10 @@ class DatabaseSeeder extends Seeder
         $this->call(TipoUnidadSaludTableSeeder::class);
         $this->call(UnidadSaludTableSeeder::class);
 
-
+        $this->call(PrecaucionEjecutanteTableSeeder::class);
+        $this->call(PrecaucionResponsableTableSeeder::class);
+        $this->call(NaturalezaPeligroTableSeeder::class);
+        $this->call(TipoTrabajoTableSeeder::class);
 
 
     }
