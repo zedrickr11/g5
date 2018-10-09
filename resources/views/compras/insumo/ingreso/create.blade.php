@@ -49,9 +49,9 @@
           <div class="form-group">
             <label>Tipo Comprobante</label>
             <select name="tipo_comprobante" id="tipo_comprobante" class="form-control">
-                         <option value="Boleta">Boleta</option>
-                         <option value="Factura">Factura</option>
-                         <option value="Recibo">Recibo</option>
+                         <option value="Requisición">Requisición</option>
+                         <option value="Otro">Otro</option>
+
             </select>
           </div>
         </div>
@@ -150,6 +150,10 @@
     theme: "classic"
   });
   $('#idproveedor_insumo').select2({
+    theme: "classic"
+  });
+
+  $('#tipo_comprobante').select2({
     theme: "classic"
   });
   $(document).ready(function(){
