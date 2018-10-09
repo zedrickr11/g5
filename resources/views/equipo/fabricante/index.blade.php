@@ -1,5 +1,7 @@
 @extends ('layouts.admin')
 @section ('contenido')
+  <div class="ajax-content">
+
 <section class="content-header">
       <h1>
         Equipo
@@ -73,7 +75,7 @@
 
                     </tfoot>
             </table>
-            {!! $fabricantes->links() !!}
+            {!! $fabricantes->appends(['searchText'=>request('searchText')])->links() !!}
                 </div>
               </div>
 
@@ -91,4 +93,19 @@
       </div>
 
 </section>
+
+</div>
+<script src="{{asset('bower_components/PACE/pace.min.js')}}"></script>
+<script type="text/javascript">
+$(document).ajaxStart(function () {
+  Pace.restart()
+})
+$('.ajax').click(function () {
+  $.ajax({
+    url: '#', success: function (result) {
+      $('.ajax-content').html('<hr>Ajax Request Completed !')
+    }
+  })
+})
+</script>
 @endsection

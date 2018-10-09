@@ -12,8 +12,6 @@ class PrecaucionEjecutante extends Model
 
   protected $fillable =[
        'precaucion_ejecutante'
-
-
   ];
 
   protected $guarded =[

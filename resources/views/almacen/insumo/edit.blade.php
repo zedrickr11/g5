@@ -61,8 +61,14 @@
 							<input type="text" name="descripcion" value="{{$insumo->descripcion}}" class="form-control" placeholder="Descripción del artículo...">
 						 </div>
 			</div>
+      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+        <div class="form-group">
+              <label for="unidad_medida">Unidad de medida</label>
+              <input type="text" name="unidad_medida" value="{{$insumo->unidad_medida}}" class="form-control" placeholder="Descripción del insumo...">
+            </div>
+      </div>
 
-			<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+			<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 				<div class="form-group">
 					<a href="{{route('insumo.index')}}">
 						<button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>

@@ -49,9 +49,9 @@
           <div class="form-group">
             <label>Tipo Comprobante</label>
             <select name="tipo_comprobante" id="tipo_comprobante" class="form-control">
-                         <option value="Boleta">Boleta</option>
-                         <option value="Factura">Factura</option>
-                         <option value="Recibo">Recibo</option>
+                         <option value="Requisición">Requisición</option>
+                         <option value="Otro">Otro</option>
+
             </select>
           </div>
         </div>
@@ -75,7 +75,7 @@
                   <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                       <div class="form-group">
                           <label>Artículo</label>
-                          <select name="pidinsumo" class="form-control selectpicker" id="pidinsumo" data-live-search="true">
+                          <select name="pidinsumo" class="form-control select2" id="pidinsumo" data-live-search="true">
                               @foreach($articulos as $articulo)
                               <option value="{{$articulo->idinsumo}}">{{$articulo->articulo}}</option>
                               @endforeach
@@ -92,7 +92,7 @@
 
                   <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
                       <div class="form-group">
-                        <button id="bt_add" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
+                        <button type="button" id="bt_add" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
 
                       </div>
                   </div>
@@ -142,7 +142,20 @@
 </section>
 <script src="{{asset('ajax/jquery.min.js')}}"></script>
 <script src="{{asset('ajax/bootstrap.min.js')}}"></script>
+<script src="{{asset('ajax/select2.min.js')}}"></script>
+
 <script>
+
+  $('#pidinsumo').select2({
+    theme: "classic"
+  });
+  $('#idproveedor_insumo').select2({
+    theme: "classic"
+  });
+
+  $('#tipo_comprobante').select2({
+    theme: "classic"
+  });
   $(document).ready(function(){
     $('#bt_add').click(function(){
       agregar();
