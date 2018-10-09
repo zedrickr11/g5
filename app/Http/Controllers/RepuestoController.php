@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
-use App\Http\Requests\InsumoFormRequest;
-use App\Insumo;
+use App\Http\Requests\RepuestoFormRequest;
+use App\Repuesto;
+use App\Equipo;
 use DB;
 
 class RepuestoController extends Controller
@@ -18,63 +19,68 @@ class RepuestoController extends Controller
       if ($request)
       {
           $query=trim($request->get('searchText'));
-          $insumos=DB::table('insumo as i')
-          ->select('*')
-          ->where('i.nombre','LIKE','%'.$query.'%')
-          ->orwhere('i.codigo','LIKE','%'.$query.'%')
-          ->orderBy('i.idinsumo','desc')
+          $repuestos=DB::table('repuesto as r')
+          ->join('equipo as e','e.idequipo','=','r.idequipo')
+          ->select('r.*','e.nombre_equipo as equipo')
+          ->where('r.nombre','LIKE','%'.$query.'%')
+          ->orwhere('e.nombre_equipo','LIKE','%'.$query.'%')
+          ->orderBy('r.idrepuesto','desc')
           ->paginate(7);
-          return view('almacen.insumo.index',["insumos"=>$insumos,"searchText"=>$query]);
+          return view('almacen.repuesto.index',["repuestos"=>$repuestos,"searchText"=>$query]);
       }
   }
   public function create()
   {
-
-      return view("almacen.insumo.create");
+      $equipo=Equipo::all();
+      return view("almacen.repuesto.create", compact('equipo'));
   }
-  public function store (InsumoFormRequest $request)
+  public function store (RepuestoFormRequest $request)
   {
-      $insumo=new Insumo;
-      $insumo->codigo=$request->get('codigo');
-      $insumo->nombre=$request->get('nombre');
-      $insumo->stock=0;
-      $insumo->descripcion=$request->get('descripcion');
-      $insumo->unidad_medida=$request->get('unidad_medida');
-      $insumo->estado='Activo';
-      $insumo->save();
-      return Redirect::to('almacen/insumo');
+      $repuestos=new Repuesto;
+      $repuestos->nombre=$request->get('nombre');
+      $repuestos->codigo=$request->get('codigo');
+      $repuestos->num_serie=$request->get('num_serie');
+      $repuestos->modelo=$request->get('modelo');
+      $repuestos->descripcion=$request->get('descripcion');
+      $repuestos->stock=0;
+      $repuestos->idequipo=$request->get('idequipo');
+      $repuestos->estado='Activo';
+      $repuestos->save();
+      return Redirect::to('almacen/repuesto');
 
   }
   public function show($id)
   {
-      return view("almacen.insumo.show",["insumo"=>Insumo::findOrFail($id)]);
+      $equipo=Equipo::all();
+      return view("almacen.repuesto.show",["repuesto"=>Repuesto::findOrFail($id)]);
   }
   public function edit($id)
   {
-      $insumo=Insumo::findOrFail($id);
-
-      return view("almacen.insumo.edit",["insumo"=>$insumo]);
+      $repuestos=Repuesto::findOrFail($id);
+      $equipo=Equipo::all();
+      return view("almacen.repuesto.edit",compact('repuestos','equipo'));
   }
 
 
-  public function update(InsumoFormRequest $request,$id)
+  public function update(RepuestoFormRequest $request,$id)
   {
-      $insumo=Insumo::findOrFail($id);
-
-      $insumo->codigo=$request->get('codigo');
-      $insumo->nombre=$request->get('nombre');
-      $insumo->stock=$request->get('stock');
-      $insumo->descripcion=$request->get('descripcion');
-      $insumo->unidad_medida=$request->get('unidad_medida');
-      $insumo->estado='Activo';
-      $insumo->update();
-      return Redirect::to('almacen/insumo');
+      $repuestos=Repuesto::findOrFail($id);
+      $repuestos->nombre=$request->get('nombre');
+      $repuestos->codigo=$request->get('codigo');
+      $repuestos->num_serie=$request->get('num_serie');
+      $repuestos->modelo=$request->get('modelo');
+      $repuestos->descripcion=$request->get('descripcion');
+      $repuestos->stock=0;
+      $repuestos->idequipo=$request->get('idequipo');
+      $repuestos->estado='Activo';
+      $repuestos->update();
+      return Redirect::to('almacen/repuesto');
   }
   public function destroy($id)
   {
-      $insumo=Insumo::findOrFail($id);
-      $insumo->estado='Inactivo';
-      $insumo->update();
-      return Redirect::to('almacen/insumo');
+      $repuestos=Repuesto::findOrFail($id);
+      $repuestos->estado='Inactivo';
+      $repuestos->update();
+      return Redirect::to('almacen/repuesto');
   }
 }

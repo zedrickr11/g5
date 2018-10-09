@@ -78,7 +78,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-calendar"></i>
                 </div>
-                <input type="date" class="form-control pull-right"  name="fecha_instalcion" value="{{old('fecha_instalcion')}}">
+                <input type="text" class="form-control pull-right" id="fecha_instalcion"  name="fecha_instalcion" value="{{old('fecha_instalcion')}}">
               </div>
                   <!-- /.input group -->
           </div>
@@ -104,7 +104,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-calendar"></i>
                     </div>
-                    <input  type="date" class="form-control pull-right" name="fecha_compra" value="{{old('fecha_compra')}}">
+                    <input  type="text" id="fecha_compra" class="form-control pull-right" name="fecha_compra" value="{{old('fecha_compra')}}">
                   </div>
                   <!-- /.input group -->
                 </div>
@@ -116,7 +116,7 @@
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
-                  <input type="date" class="form-control pull-right " name="fecha_expiracion_garantia" value="{{old('fecha_expiracion_garantia')}}" >
+                  <input type="text" id="fecha_expiracion_garantia" class="form-control pull-right " name="fecha_expiracion_garantia" value="{{old('fecha_expiracion_garantia')}}" >
                 </div>
                 <!-- /.input group -->
               </div>
@@ -145,7 +145,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-calendar"></i>
                     </div>
-                    <input type="date" class="form-control pull-right"  id="datepicker"  name="fecha_fabricacion" value="{{old('fecha_fabricacion')}}">
+                    <input type="text" class="form-control pull-right"  id="fecha_fabricacion"  name="fecha_fabricacion" value="{{old('fecha_fabricacion')}}">
                   </div>
                   <!-- /.input group -->
                 </div>
@@ -230,15 +230,15 @@
           <p class="text-danger">(*) Campos requeridos</p>
           <div class="form-group">
             <label for="nombre_equipo">Nombre equipo (*)</label>
-            <input type="text" class="form-control" name="nombre_equipo" value="{{old('nombre_equipo')}}">
+            <input type="text" id="nombre_equipo" class="form-control" name="nombre_equipo" value="{{old('nombre_equipo')}}">
           </div>
           <div class="form-group">
             <label for="marca">Marca (*)</label>
-            <input type="text" class="form-control" name="marca" value="{{old('marca')}}">
+            <input type="text" id="marca" class="form-control" name="marca" value="{{old('marca')}}">
           </div>
           <div class="form-group">
             <label for="modelo">Modelo (*)</label>
-            <input type="text" class="form-control" name="modelo" value="{{old('modelo')}}">
+            <input type="text" id="modelo" class="form-control" name="modelo" value="{{old('modelo')}}">
           </div>
 
 
@@ -274,7 +274,7 @@
           <p class="text-danger">(*) Campos requeridos</p>
           <div class="form-group">
           <label for="idhospital" >Hospital (*)</label>
-          <select name="idhospital" class="form-control" >
+          <select name="idhospital" id="hospital" class="form-control" >
             <option value="0" disabled selected>=== Selecciona un hospital ===</option>
           @foreach($hospital as $h)
             <option value="{{$h->idhospital}}">{{$h->hospital}}</option>
@@ -358,7 +358,15 @@
   					</div>
             <input type="hidden" id="codigosubgrupo" name="codigosubgrupo">
 
-
+            @if (count($errors)>0)
+            <div class="alert alert-danger">
+              <ul>
+              @foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+              @endforeach
+              </ul>
+            </div>
+            @endif
 
 
 
@@ -366,16 +374,8 @@
 
         </div>
         <!-- /.tab-pane -->
-        <div class="box-footer">
-          @if (count($errors)>0)
-          <div class="alert alert-danger">
-            <ul>
-            @foreach ($errors->all() as $error)
-              <li>{{$error}}</li>
-            @endforeach
-            </ul>
-          </div>
-          @endif
+        <div class="box-footer" id="guardar">
+
 
           <a href="{{route('nuevo')}}">
             <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
@@ -394,9 +394,67 @@
 </section>
 <script src="{{asset('ajax/jquery.min.js')}}"></script>
 <script src="{{asset('ajax/bootstrap.min.js')}}"></script>
+<script src="{{asset('ajax/select2.min.js')}}"></script>
+<script src="{{asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+
 
 <script type="text/javascript">
+//botones para guardar
+$("#guardar").hide();
+$('#idequipo').change(evaluar);
+$('#nombre_equipo').change(evaluar);
+$('#marca').change(evaluar);
+$('#modelo').change(evaluar);
+//fechas
+$('#fecha_fabricacion').datepicker({
+    autoclose: true,
+    todayHighlight: true,
+    format: "dd-mm-yy"
 
+});
+$('#fecha_instalcion').datepicker({
+    autoclose: true,
+    todayHighlight: true,
+    format: "dd-mm-yy"
+
+});
+$('#fecha_compra').datepicker({
+    autoclose: true,
+    todayHighlight: true,
+    format: "dd-mm-yy"
+
+});
+$('#fecha_expiracion_garantia').datepicker({
+    autoclose: true,
+    todayHighlight: true,
+    format: "dd-mm-yy"
+
+});
+//select con busqueda
+$('#hospital').select2({
+  theme: "classic"
+});
+$('#area').select2({
+  theme: "classic"
+});
+$('#grupo').select2({
+  theme: "classic"
+});
+$('#subgrupo').select2({
+  theme: "classic"
+});
+$('#region').select2({
+  theme: "classic"
+});
+$('#depto').select2({
+  theme: "classic"
+});
+$('#tipou').select2({
+  theme: "classic"
+});
+$('#unidad').select2({
+  theme: "classic"
+});
     //selects dinamicos
   $('#area').on('change', function(e){
     console.log(e);
@@ -482,6 +540,20 @@ function mostrarValores(){
     );
   $("#idequipo").val(idequipo);
 
+}
+function evaluar(){
+  idequipo=$("#idequipo").val();
+  nombre=$("#nombre_equipo").val();
+  marca=$("#marca").val();
+  modelo=$("#modelo").val();
+  if (idequipo!="" && nombre!=""&&marca!=""&&modelo!="")
+  {
+    $("#guardar").show();
+  }
+  else
+  {
+    $("#guardar").hide();
+  }
 }
 
 </script>

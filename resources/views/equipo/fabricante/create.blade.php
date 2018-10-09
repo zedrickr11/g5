@@ -39,6 +39,7 @@
 						<label for="direccion_fab">Dirección del fabricante</label>
 						<input type="text" class="form-control" name="direccion_fabricante" value="{{old('direccion_fabricante')}}">
 					</div>
+        
 					<div class="form-group">
 						<label for="telefono_fab">Teléfono del fabricante</label>
 						<input type="text" class="form-control" name="telefono_fabricante" value="{{old('telefono_fabricante')}}">
