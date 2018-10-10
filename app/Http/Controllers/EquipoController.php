@@ -237,4 +237,37 @@ class EquipoController extends Controller
     {
         //
     }
+
+    public function existente($id)
+    {
+      $proveedor=Proveedor::all();
+      $unidad_salud=UnidadSalud::all();
+      $area=Area::all();
+      $estado=Estado::all();
+      $servicio_tecnico=ServicioTecnico::all();
+      $fabricante=Fabricante::all();
+      $hospital=Hospital::all();
+      $departamento=Departamento::all();
+      $region=Region::all();
+      $grupo=Grupo::all();
+      $subgrupo=Subgrupo::all();
+      $tipounidadsalud=TipoUnidadSalud::all();
+
+
+      $equipo=Equipo::findOrFail($id);
+      $equipo=DB::table('equipo as e')
+        ->join('subgrupo as s','s.idsubgrupo','=','e.idsubgrupo')
+        ->join('conf_corr as c','s.idsubgrupo','=','c.idsubgrupo')
+        ->join('hospital as h','h.idhospital','=','e.idhospital')
+        ->select('e.*','c.actual as actual','s.codigosubgrupo as codigosubgrupo','h.hospital as hospi',DB::raw('CONCAT(e.idarea,e.idgrupo,s.codigosubgrupo, "-",e.idregion,e.iddepartamento,e.idtipounidad,e.idunidadsalud,c.actual) AS codigo'))
+        ->where('e.idequipo','=',$id)
+        ->first();
+      return view('equipo.existente.index', compact('equipo','proveedor','unidad_salud','area',
+                  'estado','servicio_tecnico','fabricante','hospital','departamento',
+                  'region','grupo','subgrupo','tipounidadsalud'));
+
+    }
+    
+
+
 }

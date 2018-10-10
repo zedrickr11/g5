@@ -17,7 +17,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="box">
             <div class="box-header">
-			  <h3 class="box-title">Listado de Equipos <a href="{{route('nuevo')}}"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
+			  <h3 class="box-title">Listado de Equipos <a href="equipo/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
 			  		<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
             </div>
 
@@ -33,7 +33,7 @@
                       <th>Equipo</th>
                       <th>Marca</th>
                       <th>Modelo</th>
-                      
+
 
                       <th>Opciones</th>
                     </tr>
@@ -48,6 +48,9 @@
 
 
                 <td>
+                  <a href="{{route('existente',$eq->idequipo)}}" >
+                    <button type="button" class="btn btn-info btn-sm" name="button"><span class="fa fa-copy "></span></button>
+                  </a>
                   <a href="{{route('equipo.ficha',$eq->idequipo)}}" target="_blank">
                     <button type="button" class="btn btn-success btn-sm" name="button"><span class="fa fa-edit"></span></button>
                   </a>
