@@ -79,7 +79,7 @@
 
                     </tfoot>
             </table>
-            {!! $equipos->links() !!}
+            {!! $equipos->appends(['searchText'=>request('searchText')])->links() !!}  
                 </div>
               </div>
 

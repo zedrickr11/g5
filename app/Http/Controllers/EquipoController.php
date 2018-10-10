@@ -50,6 +50,7 @@ class EquipoController extends Controller
           $equipos= DB::table('equipo as e')
           ->select('*')
           ->where('e.nombre_equipo','LIKE','%'.$query.'%')
+          ->orwhere('e.idequipo','LIKE','%'.$query.'%')
           ->orderBy('e.idequipo','desc')
           ->paginate(10);
           return view('equipo.equipo.index',["equipos"=>$equipos,"searchText"=>$query]);
@@ -92,7 +93,39 @@ class EquipoController extends Controller
       ->get();
       return response()->json($codigosubgrupo);
     }
-
+    public function depto(){
+      $region_id = Input::get('region_id');
+      $depto = DB::table('departamento as d')
+      ->select('d.iddepartamento','d.depto')
+      ->where('d.idregion','=',$region_id)
+      ->get();
+      return response()->json($depto);
+    }
+    public function hospital(){
+      $depto_id = Input::get('depto_id');
+      $hospital = DB::table('departamento as d')
+      ->join('hospital as h','h.idhospital','=','d.idhospital')
+      ->select('h.idhospital','h.hospital')
+      ->where('d.iddepartamento','=',$depto_id)
+      ->get();
+      return response()->json($hospital);
+    }
+    public function unidadsalud(){
+      $hospital_id = Input::get('hospital_id');
+      $unidad = DB::table('unidadsalud as u')
+      ->select('u.idunidadsalud','u.unidad_salud')
+      ->where('u.idhospital','=',$hospital_id)
+      ->get();
+      return response()->json($unidad);
+    }
+    public function tipounidad(){
+      $hospital_id = Input::get('hospital_id');
+      $tipounidad = DB::table('tipounidadsalud as u')
+      ->select('u.idtipounidad','u.unidad_medica')
+      ->where('u.idhospital','=',$hospital_id)
+      ->get();
+      return response()->json($tipounidad);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -267,7 +300,7 @@ class EquipoController extends Controller
                   'region','grupo','subgrupo','tipounidadsalud'));
 
     }
-    
+
 
 
 }

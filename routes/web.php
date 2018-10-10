@@ -97,6 +97,14 @@ Route::get('/json-grupo','EquipoController@grupo');
 Route::get('/json-subgrupo','EquipoController@subgrupo');
 Route::get('/json-correlativo','EquipoController@correlativo');
 Route::get('/json-codigosubgrupo','EquipoController@codigosubgrupo');
+Route::get('/json-depto','EquipoController@depto');
+Route::get('/json-hospital','EquipoController@hospital');
+Route::get('/json-unidad','EquipoController@unidadsalud');
+Route::get('/json-tipounidad','EquipoController@tipounidad');  
+
+
+
+
 
 
 //Detalles

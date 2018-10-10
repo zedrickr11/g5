@@ -390,8 +390,27 @@
               <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
               <p class="text-danger">(*) Campos requeridos</p>
             </div>
+            <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+            <div class="form-group">
+            <label for="idregion" >Región (*)</label>
+            <select id="region" name="idregion"  class="form-control select2">
+              <option value="0" disabled selected>=== Selecciona una región ===</option>
+              @foreach($region as $reg)
+                <option value="{{$reg->idregion}}">{{$reg->region}}</option>
+              @endforeach
+            </select>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+          <div class="form-group">
+          <label for="iddepartamento">Departamento (*)</label>
+          <select  id="depto" name="iddepartamento" class="form-control select2"  >
+            <option value="0" disabled selected>=== Selecciona un departamento ===</option>
 
-              <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+          </select>
+          </div>
+        </div>
+              <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
               <div class="form-group">
               <label for="idhospital" >Hospital (*)</label>
               <select name="idhospital" id="hospital" class="form-control" >
@@ -402,30 +421,10 @@
               </select>
             </div>
           </div>
-          <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-          <div class="form-group">
-          <label for="idregion" >Región (*)</label>
-          <select id="region" name="idregion"  class="form-control select2">
-            <option value="0" disabled selected>=== Selecciona una región ===</option>
-            @foreach($region as $reg)
-              <option value="{{$reg->idregion}}">{{$reg->region}}</option>
-            @endforeach
-          </select>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
-        <div class="form-group">
-        <label for="iddepartamento">Departamento (*)</label>
-        <select  id="depto" name="iddepartamento" class="form-control select2"  >
-          <option value="0" disabled selected>=== Selecciona un departamento ===</option>
-          @foreach($departamento as $depto)
-            <option value="{{$depto->iddepartamento}}">{{$depto->depto}}</option>
-          @endforeach
-        </select>
-        </div>
-      </div>
 
-        <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+
+
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
         <div class="form-group">
         <label for="idtipounidad" >Tipo unidad de salud (*)</label>
         <select id="tipou" name="idtipounidad" class="form-control select2">
@@ -437,7 +436,7 @@
         </div>
       </div>
 
-        <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
         <div class="form-group">
         <label for="idunidadsalud" >Unidad de salud (*)</label>
         <select id="unidad" name="idunidadsalud" class="form-control select2">
@@ -610,6 +609,59 @@
     theme: "classic"
   });
       //selects dinamicos
+      $('#region').on('change', function(e){
+        console.log(e);
+        var region_id = e.target.value;
+        $.get('/json-depto?region_id=' + region_id,function(data) {
+          console.log(data);
+          $('#depto').empty();
+          $('#depto').append('<option value="0" disabled selected>=== Selecciona un departamento ===</option>');
+
+          $('#hospital').empty();
+          $('#hospital').append('<option value="0" disabled selected>=== Selecciona un hospital ===</option>');
+
+          $.each(data, function(index, regenciesObj){
+            $('#depto').append('<option value="'+ regenciesObj.iddepartamento +'">'+ regenciesObj.depto +'</option>');
+          })
+        });
+      });
+      $('#depto').on('change', function(e){
+        console.log(e);
+        var depto_id = e.target.value;
+        $.get('/json-hospital?depto_id=' + depto_id,function(data) {
+          console.log(data);
+          $('#hospital').empty();
+          $('#hospital').append('<option value="0" disabled selected>=== Selecciona un departamento ===</option>');
+
+          $('#unidad').empty();
+          $('#unidad').append('<option value="0" disabled selected>=== Selecciona una unidad de salud ===</option>');
+
+          $('#tipou').empty();
+          $('#tipou').append('<option value="0" disabled selected>=== Selecciona un tipo de unidad de salud ===</option>');
+
+          $.each(data, function(index, regenciesObj){
+            $('#hospital').append('<option value="'+ regenciesObj.idhospital +'">'+ regenciesObj.hospital +'</option>');
+          })
+        });
+      });
+      $('#hospital').on('change', function(e){
+        console.log(e);
+        var hospital_id = e.target.value;
+        $.get('/json-unidad?hospital_id=' + hospital_id,function(data) {
+          console.log(data);
+
+          $.each(data, function(index, regenciesObj){
+            $('#unidad').append('<option value="'+ regenciesObj.idunidadsalud +'">'+ regenciesObj.unidad_salud +'</option>');
+          })
+        });
+        $.get('/json-tipounidad?hospital_id=' + hospital_id,function(data) {
+          console.log(data);
+
+          $.each(data, function(index, regenciesObj){
+            $('#tipou').append('<option value="'+ regenciesObj.idtipounidad +'">'+ regenciesObj.unidad_medica +'</option>');
+          })
+        });
+      });
     $('#area').on('change', function(e){
       console.log(e);
       var area_id = e.target.value;
