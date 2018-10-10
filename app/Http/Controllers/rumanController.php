@@ -9,6 +9,10 @@ use App\Http\Requests\rumanFormRequest;
 use App\tiporu;
 use App\Equipo;
 use App\PermisoTrabajo;
+use App\caracru;
+use App\subru;
+use App\valrefru;
+
 
 class rumanController extends Controller
 {
@@ -50,10 +54,14 @@ class rumanController extends Controller
   {
     $tiporu=tiporu::all();
     $equipo=Equipo::all();
+    $caracru=caracru::all();
+    $subru=subru::all();
+      $valrefru=valrefru::all();
+        $ruman=ruman::all();
 
         $permisotrabajo=PermisoTrabajo::all();
 
-    return view("equipo.rutina.ruman.create",compact('tiporu','equipo','permisotrabajo'));
+    return view("equipo.rutina.ruman.create",compact('tiporu','equipo','permisotrabajo','caracru','subru','valrefru','ruman'));
 
 
   //  return view("equipo.rutina.ruman.create",compact('tiporu','equipo'));

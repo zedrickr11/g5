@@ -1,4 +1,4 @@
-<form class="" action="{{route('caracespefun.index')}}" method="get">
+<form class="" action="{{route('fabricante.index')}}" method="get">
   {!! csrf_field() !!}
   <div class="col-md-6">
     <div class="form-group">

@@ -1,6 +1,6 @@
 <div class="modal fade modal-slide-in-right" aria-hidden="true"
-role="dialog" tabindex="-1" id="modal-delete-{{$ing->idingreso_repuesto}}">
-	{{Form::Open(array('action'=>array('Ingreso_repuestoController@destroy',$ing->idingreso_repuesto),'method'=>'delete'))}}
+role="dialog" tabindex="-1" id="modal-delete-{{$ing->idingreso_insumo}}">
+	{{Form::Open(array('action'=>array('Ingreso_insumoController@destroy',$ing->idingreso_insumo),'method'=>'delete'))}}
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -8,7 +8,7 @@ role="dialog" tabindex="-1" id="modal-delete-{{$ing->idingreso_repuesto}}">
 				aria-label="Close">
                      <span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title">Anular Repuesto</h4>
+                <h4 class="modal-title">Anular Ingreso</h4>
 			</div>
 			<div class="modal-body">
 				<p>Confirme si desea Anular el Ingreso</p>

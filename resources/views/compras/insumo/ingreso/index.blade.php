@@ -38,7 +38,7 @@
               				<tr>
               					<td>{{ $ing->fecha_hora}}</td>
               					<td>{{ $ing->nombre}}</td>
-              					<td>{{ $ing->tipo_comprobante.': '.$ing->serie_comprobante.'-'.$ing->num_comprobante}}</td>
+              					<td>{{ $ing->tipo_comprobante.'  '.$ing->serie_comprobante.' '.$ing->num_comprobante}}</td>
               					<td>{{ $ing->estado}}</td>
               					<td>
               						<a href="{{URL::action('Ingreso_insumoController@show',$ing->idingreso_insumo)}}"><button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></span> </button></a>
