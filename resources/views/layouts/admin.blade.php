@@ -7,7 +7,14 @@
   <title>IGSS | Mantenimiento</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Select con busqueda -->
+
+  <!-- datepicker -->
+  <link rel="stylesheet" href="{{asset('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
+<!-- pace -->
+  <link rel="stylesheet" href="{{asset('plugins/pace/pace.min.css')}}">
   <!-- Bootstrap 3.3.7 -->
+
   <link rel="stylesheet" href="{{asset('bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{asset('bower_components/font-awesome/css/font-awesome.min.css')}}">
@@ -30,7 +37,7 @@
   <!-- jvectormap -->
   <link rel="stylesheet" href="{{asset('bower_components/jvectormap/jquery-jvectormap.css')}}">
 
-  
+
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
   <link rel="stylesheet" href="{{asset('bower_components/select2/dist/css/select2.min.css')}}">
@@ -40,7 +47,7 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-  
+
   <style>
     .example-modal .modal {
       position: relative;
@@ -55,7 +62,7 @@
     .example-modal .modal {
       background: transparent !important;
     }
-  </style>  
+  </style>
 
 
 
@@ -65,7 +72,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="#" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>I</b>GSS</span>
       <!-- logo for regular state and mobile devices -->
@@ -200,6 +207,7 @@
 
 </div>
 <!-- ./wrapper -->
+<!-- Select con busqueda -->
 
 <!-- jQuery 3 -->
 <script src="{{asset('bower_components/jquery/dist/jquery.min.js')}}"></script>

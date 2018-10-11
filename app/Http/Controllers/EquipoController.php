@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Equipo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Facades\Redirect;
 //falta el form Request
 use App\Http\Requests\EquipoFormRequest;
 
@@ -25,6 +25,10 @@ use App\Subgrupo;
 use App\Conf_corr;
 use App\TipoUnidadSalud;
 use App\fichatecnica;
+use App\detcaractec;
+USE App\CaracTec;
+USE App\subcaractec;
+USE App\valorreftec;
 use Barryvdh\DomPDF\Facade as PDF;
 
 use Carbon\Carbon;
@@ -46,6 +50,7 @@ class EquipoController extends Controller
           $equipos= DB::table('equipo as e')
           ->select('*')
           ->where('e.nombre_equipo','LIKE','%'.$query.'%')
+          ->orwhere('e.idequipo','LIKE','%'.$query.'%')
           ->orderBy('e.idequipo','desc')
           ->paginate(10);
           return view('equipo.equipo.index',["equipos"=>$equipos,"searchText"=>$query]);
@@ -88,7 +93,39 @@ class EquipoController extends Controller
       ->get();
       return response()->json($codigosubgrupo);
     }
-
+    public function depto(){
+      $region_id = Input::get('region_id');
+      $depto = DB::table('departamento as d')
+      ->select('d.iddepartamento','d.depto')
+      ->where('d.idregion','=',$region_id)
+      ->get();
+      return response()->json($depto);
+    }
+    public function hospital(){
+      $depto_id = Input::get('depto_id');
+      $hospital = DB::table('departamento as d')
+      ->join('hospital as h','h.idhospital','=','d.idhospital')
+      ->select('h.idhospital','h.hospital')
+      ->where('d.iddepartamento','=',$depto_id)
+      ->get();
+      return response()->json($hospital);
+    }
+    public function unidadsalud(){
+      $hospital_id = Input::get('hospital_id');
+      $unidad = DB::table('unidadsalud as u')
+      ->select('u.idunidadsalud','u.unidad_salud')
+      ->where('u.idhospital','=',$hospital_id)
+      ->get();
+      return response()->json($unidad);
+    }
+    public function tipounidad(){
+      $hospital_id = Input::get('hospital_id');
+      $tipounidad = DB::table('tipounidadsalud as u')
+      ->select('u.idtipounidad','u.unidad_medica')
+      ->where('u.idhospital','=',$hospital_id)
+      ->get();
+      return response()->json($tipounidad);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -157,14 +194,18 @@ class EquipoController extends Controller
     $grupo=Grupo::all();
     $subgrupo=Subgrupo::all();
     $tipounidadsalud=TipoUnidadSalud::all();
+    $detcaractec=detcaractec::all();
+    $CaracTec=CaracTec::all();
+    $subcaractec=subcaractec::all();
+    $valorreftec=valorreftec::all();
     $equipo=DB::table('equipo')->where('idequipo', $id)->get();
 //$view= view("equipo.caracteristica.fichatecnica.show",compact('equipo'));
 
         $pdf = PDF::loadView("equipo.caracteristica.fichatecnica.show",compact('equipo','proveedor','unidadsalud','area',
                     'estado','serviciotecnico','fabricante','hospital','departamento',
-                    'region','grupo','subgrupo','tipounidadsalud'));
+                    'region','grupo','subgrupo','tipounidadsalud','detcaractec','CaracTec','subcaractec','valorreftec'));
 
-        return $pdf->stream('FichaTécnica.pdf');
+        return $pdf->stream('FICHA TÉCNICA"'.$id.'".pdf');
         //return view("equipo.caracteristica.fichatecnica.show",compact('equipo'));
     }
     public function rutina($id)
@@ -214,9 +255,11 @@ class EquipoController extends Controller
      * @param  \App\Equipo  $equipo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Equipo $equipo)
+    public function update(EquipoFormRequest $request, $id)
     {
-        //
+      Equipo::findOrFail($id)->update($request->all());
+      return back();
+      //return redirect()->route('grupo.index');
     }
 
     /**
@@ -229,4 +272,37 @@ class EquipoController extends Controller
     {
         //
     }
+
+    public function existente($id)
+    {
+      $proveedor=Proveedor::all();
+      $unidad_salud=UnidadSalud::all();
+      $area=Area::all();
+      $estado=Estado::all();
+      $servicio_tecnico=ServicioTecnico::all();
+      $fabricante=Fabricante::all();
+      $hospital=Hospital::all();
+      $departamento=Departamento::all();
+      $region=Region::all();
+      $grupo=Grupo::all();
+      $subgrupo=Subgrupo::all();
+      $tipounidadsalud=TipoUnidadSalud::all();
+
+
+      //$equipo=Equipo::findOrFail($id);
+      $equipo=DB::table('equipo as e')
+        ->join('subgrupo as s','s.idsubgrupo','=','e.idsubgrupo')
+        ->join('conf_corr as c','s.idsubgrupo','=','c.idsubgrupo')
+        ->join('hospital as h','h.idhospital','=','e.idhospital')
+        ->select('e.*','c.actual as actual','s.codigosubgrupo as codigosubgrupo','h.hospital as hospi',DB::raw('CONCAT(e.idarea,e.idgrupo,s.codigosubgrupo, "-",e.idregion,e.iddepartamento,e.idtipounidad,e.idunidadsalud,c.actual) AS codigo'))
+        ->where('e.idequipo','=',$id)
+        ->first();
+      return view('equipo.existente.index', compact('equipo','proveedor','unidad_salud','area',
+                  'estado','servicio_tecnico','fabricante','hospital','departamento',
+                  'region','grupo','subgrupo','tipounidadsalud'));
+
+    }
+
+
+
 }

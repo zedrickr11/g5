@@ -216,6 +216,18 @@
     <li id="liProveedores"><a href="{{url('compras/insumo/prove')}}"><i class="fa fa-circle-o"></i> Proveedores</a></li>
   </ul>
 </li>
+<li id="liCompras" class="treeview">
+  <a href="#">
+    <i class="fa fa-th"></i>
+    <span>Repuestos</span>
+     <i class="fa fa-angle-left pull-right"></i>
+  </a>
+  <ul class="treeview-menu">
+    <li id="#"><a href="{{url('almacen/repuesto')}}"><i class="fa fa-circle-o"></i> Insumos</a></li>
+    <li id="liIngresos"><a href="{{url('compras/repuesto-ingreso')}}"><i class="fa fa-circle-o"></i> Ingresos</a></li>
+    <li id="liProveedores"><a href="{{url('compras/repuesto/prov')}}"><i class="fa fa-circle-o"></i> Proveedores</a></li>
+  </ul>
+</li>
 </ul>
 
 @endsection

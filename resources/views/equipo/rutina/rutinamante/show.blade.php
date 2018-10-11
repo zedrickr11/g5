@@ -194,13 +194,25 @@ reverso)</div>  </td>
 
 
  </table>
-
-
-
-
   @endforeach
 
 </table>
 
+<table  id="table" width="100%" border="10" cellpadding="5" cellspacing="0" bordercolor="#000000">
+<tr>
+    <td id="negrita" > 	<div align="center"> Equipo</div>  </td>
+      <td    colspan="6" > 	<div align="left">Presión Succión</div>  </td>
+<td  > 	<div align="center">Presión Descarga </div>  </td>
+<td id="negrita" > 	<div align="center">Presión Succión </div>  </td>
+<td id="negrita" colspan="3" > 	<div align="center">Presión descarga </div>  </td>
+</tr>
+<tr>
+<td colspan="5"    > 	<div align="left">{{ $eq->nombre_equipo}}</div>  </td>
+<td id="negrita" > 	<div align="center"> </div>  </td>
+<td id="negrita" > 	<div align="center"> </div>  </td>
+<td id="negrita" colspan="4" > 	<div align="center"> </div>  </td>
+<td id="negrita" colspan="4" > 	<div align="center"> </div>  </td>
+</tr>
+ </table>
 </body>
 </html>

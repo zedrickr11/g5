@@ -40,7 +40,7 @@ class Ingreso_insumoController extends Controller
   {
     $personas=DB::table('proveedor_insumo')->where('estado','=','1')->get();
     $articulos = DB::table('insumo as art')
-          ->select(DB::raw('CONCAT(art.codigo, " ",art.nombre) AS articulo'),'art.idinsumo')
+          ->select(DB::raw('CONCAT(art.nombre, " - ",art.unidad_medida) AS articulo'),'art.idinsumo')
           ->where('art.estado','=','Activo')
           ->get();
       return view("compras.insumo.ingreso.create",["personas"=>$personas,"articulos"=>$articulos]);

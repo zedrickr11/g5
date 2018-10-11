@@ -20,16 +20,14 @@ Route::resource('equipo/subgrupo','SubgrupoController');
 Route::resource('equipo/confsubgrupo','Conf_subgrupoController');
 Route::resource('equipo/advertencia','AdvertenciaController');
 Route::resource('equipo/confcorrelativo','Conf_corrController');
-Route::get('equipo/equipo/fichatecnica/{id}', 'EquipoController@ficha')->name('equipo.ficha');
 Route::resource('equipo/equipo','EquipoController');
+Route::get('equipo/existente/{id}',['as'=>'existente','uses' => 'EquipoController@existente']);
 
-Route::get('equipo/nuevo',['as'=>'nuevo','uses' => 'EquipoController@nuevo']);
-Route::resource('equipo/equipo/fichatecnica','EquipoController');
+
 Route::get('equipo/equipo/ficha/{id}',[
     'as' => 'equipo.ficha',
     'uses' => 'EquipoController@ficha'
 ]);
-
 
 
 Route::resource('equipo/equipo/rutinamante','EquipoController');
@@ -37,9 +35,19 @@ Route::get('equipo/equipo/rutina/{id}',[
     'as' => 'equipo.rutina',
     'uses' => 'EquipoController@rutina'
 ]);
+//index del Equipo
+Route::get('equipo/principal/{id}',['as'=>'actualizar','uses' => 'EquipoIndexController@index']);
 
 
 
+
+
+//pdf SolicitudTrabajos
+Route::resource('trabajo/solicitud/solicitud','SolicitudTrabajoController');
+Route::get('trabajo/solicitud/ficha/{id}',[
+    'as' => 'solicitud.ficha',
+    'uses' => 'SolicitudTrabajoController@ficha'
+]);
 
 //hospital
 Route::resource('hospital/region','RegionController');
@@ -80,6 +88,7 @@ Route::resource('trabajo/tipo','TipoTrabajoController');
 Route::resource('trabajo/solicitud','SolicitudTrabajoController');
 Route::resource('trabajo/permiso','PermisoTrabajoController');
 Route::resource('trabajo/seguimiento','SeguimientoController');
+Route::get('trabajo/solicitud/solicitudpdf/{id}', 'SolicitudTrabajoController@ficha')->name('Solicitudes.ficha');//pdf
 
 
 //rutinas de mantenimiento
@@ -91,6 +100,14 @@ Route::get('/json-grupo','EquipoController@grupo');
 Route::get('/json-subgrupo','EquipoController@subgrupo');
 Route::get('/json-correlativo','EquipoController@correlativo');
 Route::get('/json-codigosubgrupo','EquipoController@codigosubgrupo');
+Route::get('/json-depto','EquipoController@depto');
+Route::get('/json-hospital','EquipoController@hospital');
+Route::get('/json-unidad','EquipoController@unidadsalud');
+Route::get('/json-tipounidad','EquipoController@tipounidad');
+
+
+
+
 
 
 //Detalles
@@ -108,6 +125,10 @@ Route::resource('compras/insumo/prove','Proveedor_insumoController');
 Route::resource('compras/insumo-ingreso','Ingreso_insumoController');
 //almacen de repuestos
 Route::resource('compras/repuesto/prov','Proveedor_repuestoController');
+Route::resource('almacen/repuesto','RepuestoController');
+Route::resource('compras/repuesto-ingreso','Ingreso_repuestoController');
+
+
 
 //calendario
 Route::get('/json-calendario','CalendarioController@llenarcalendario');
