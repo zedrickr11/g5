@@ -51,23 +51,14 @@
                   <a href="{{route('existente',$eq->idequipo)}}" >
                     <button type="button" class="btn btn-info btn-sm" name="button"><span class="fa fa-copy "></span></button>
                   </a>
-                  <a href="{{route('equipo.ficha',$eq->idequipo)}}" target="_blank">
-                    <button type="button" class="btn btn-success btn-sm" name="button"><span class="fa fa-edit"></span></button>
+                  <a href="{{route('actualizar',$eq->idequipo)}}" >
+                    <button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-info-sign "></span></button>
                   </a>
-                  <a href="{{route('equipo.rutina',$eq->idequipo)}}" target="_blank">
-                    <button type="button" class="btn btn-primary btn-sm" name="button"><span class="fa fa-th"></span></button>
-                  </a>
-                    <a href="{{route('equipo.edit',$eq->idequipo)}}">
-                      <button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-cog"></span> </button>
-                    </a>
-                    <a href="{{route('equipo.show',$eq->idequipo)}}">
-                      <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></span> </button>
-                    </a>
-                    <form style="display: inline" method="POST" action="{{route('equipo.destroy', $eq->idequipo)}}">
-                    {!!method_field('DELETE')!!}
-                    {!!csrf_field()!!}
-                      <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></span> </button>
-                    </form>
+
+                  
+
+
+
 
 
                 </td>
@@ -79,7 +70,7 @@
 
                     </tfoot>
             </table>
-            {!! $equipos->appends(['searchText'=>request('searchText')])->links() !!}  
+            {!! $equipos->appends(['searchText'=>request('searchText')])->links() !!}
                 </div>
               </div>
 

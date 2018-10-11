@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Equipo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Facades\Redirect;
 //falta el form Request
 use App\Http\Requests\EquipoFormRequest;
 
@@ -255,9 +255,11 @@ class EquipoController extends Controller
      * @param  \App\Equipo  $equipo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Equipo $equipo)
+    public function update(EquipoFormRequest $request, $id)
     {
-        //
+      Equipo::findOrFail($id)->update($request->all());
+      return back();
+      //return redirect()->route('grupo.index');
     }
 
     /**
@@ -287,7 +289,7 @@ class EquipoController extends Controller
       $tipounidadsalud=TipoUnidadSalud::all();
 
 
-      $equipo=Equipo::findOrFail($id);
+      //$equipo=Equipo::findOrFail($id);
       $equipo=DB::table('equipo as e')
         ->join('subgrupo as s','s.idsubgrupo','=','e.idsubgrupo')
         ->join('conf_corr as c','s.idsubgrupo','=','c.idsubgrupo')

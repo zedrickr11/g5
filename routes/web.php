@@ -35,6 +35,9 @@ Route::get('equipo/equipo/rutina/{id}',[
     'as' => 'equipo.rutina',
     'uses' => 'EquipoController@rutina'
 ]);
+//index del Equipo
+Route::get('equipo/principal/{id}',['as'=>'actualizar','uses' => 'EquipoIndexController@index']);
+
 
 
 
@@ -100,7 +103,7 @@ Route::get('/json-codigosubgrupo','EquipoController@codigosubgrupo');
 Route::get('/json-depto','EquipoController@depto');
 Route::get('/json-hospital','EquipoController@hospital');
 Route::get('/json-unidad','EquipoController@unidadsalud');
-Route::get('/json-tipounidad','EquipoController@tipounidad');  
+Route::get('/json-tipounidad','EquipoController@tipounidad');
 
 
 

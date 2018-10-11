@@ -415,9 +415,7 @@
               <label for="idhospital" >Hospital (*)</label>
               <select name="idhospital" id="hospital" class="form-control" >
                 <option value="0" disabled selected>=== Selecciona un hospital ===</option>
-              @foreach($hospital as $h)
-                <option value="{{$h->idhospital}}">{{$h->hospital}}</option>
-              @endforeach
+
               </select>
             </div>
           </div>
@@ -429,9 +427,7 @@
         <label for="idtipounidad" >Tipo unidad de salud (*)</label>
         <select id="tipou" name="idtipounidad" class="form-control select2">
           <option value="0" disabled selected>=== Selecciona un tipo de unidad de salud ===</option>
-          @foreach($tipounidadsalud as $tipo)
-            <option value="{{$tipo->idtipounidad}}">{{$tipo->unidad_medica}}</option>
-          @endforeach
+
         </select>
         </div>
       </div>
@@ -441,9 +437,7 @@
         <label for="idunidadsalud" >Unidad de salud (*)</label>
         <select id="unidad" name="idunidadsalud" class="form-control select2">
           <option value="0" disabled selected>=== Selecciona la unidad de salud ===</option>
-        @foreach($unidad_salud as $u)
-          <option value="{{$u->idunidadsalud}}">{{$u->unidad_salud}}</option>
-           @endforeach
+        
         </select>
         </div>
       </div>
