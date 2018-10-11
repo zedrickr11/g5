@@ -29,7 +29,7 @@ class FabricanteController extends Controller
             ->select('*')
             ->where('contacto_fabricante','LIKE','%'.$query.'%')
             ->orderBy('idfabricante','desc')
-            ->paginate(3);
+            ->paginate(10);
             return view('equipo.fabricante.index',["fabricantes"=>$fabricantes,"searchText"=>$query]);
         }
     }

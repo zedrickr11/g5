@@ -38,7 +38,7 @@
         <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
           <div class="form-group">
                 <label for="proveedor">Proveedor</label>
-                <select name="idproveedor_repuesto" id="idproveedor_insumo" class="form-control selectpicker" data-live-search="true">
+                <select name="idproveedor_repuesto" id="idproveedor_insumo" class="form-control select2" data-live-search="true" style="width: 100%;">
                       @foreach($personas as $persona)
                        <option value="{{$persona->idproveedor_repuesto}}">{{$persona->nombre}}</option>
                        @endforeach
@@ -140,9 +140,14 @@
 
 </div>
 </section>
-<script src="{{asset('ajax/jquery.min.js')}}"></script>
-<script src="{{asset('ajax/bootstrap.min.js')}}"></script>
-<script src="{{asset('ajax/select2.min.js')}}"></script>
+
+
+<script src="{{asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="{{asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+<!-- Select2 -->
+<script src="{{asset('bower_components/select2/dist/js/select2.full.min.js')}}"></script>
+
 <script>
 $('#pidrepuesto').select2({
   theme: "classic"
