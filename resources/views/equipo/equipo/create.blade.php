@@ -19,20 +19,24 @@
   <div class="col-md-12">
 
 
-    <form role="form" method="POST" action="{{route('equipo.store')}}" >
+    <form role="form" method="POST" action="{{route('equipo.store')}}">
         {!! csrf_field() !!}
     <!-- Custom Tabs (Pulled to the right) -->
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs pull-right">
+
+        <li class="pull-left header"><i class="fa fa-tv"></i>Nuevo Equipo</li>
         <li ><a href="#tab_1-1" data-toggle="tab">Información adicional</a></li>
         <li ><a href="#tab_7-7" data-toggle="tab">Servicio Técnico</a></li>
         <li ><a href="#tab_2-2" data-toggle="tab">Distribuidor</a></li>
         <li ><a href="#tab_3-3" data-toggle="tab">Fabricante</a></li>
-        <li ><a href="#tab_4-4" data-toggle="tab">Localización y frecuencia de uso</a></li>
+        <li ><a href="#tab_4-4" data-toggle="tab">Loc. y frec.</a></li>
         <li><a href="#tab_5-5" data-toggle="tab">Identificación</a></li>
+       
         <li class="active"><a href="#tab_6-6" data-toggle="tab">ID</a></li>
+        
 
-        <li class="pull-left header"><i class="fa fa-tv"></i>Nuevo Equipo</li>
+        
 
       </ul>
 
@@ -365,6 +369,11 @@
 
 
         </div>
+        <!-- /.tab-pane -->
+
+
+         <!-- /.tab-pane imagen -->
+       
         <!-- /.tab-pane -->
         <div class="box-footer">
           @if (count($errors)>0)
