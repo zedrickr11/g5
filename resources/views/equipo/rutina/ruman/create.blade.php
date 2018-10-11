@@ -16,25 +16,26 @@
 	<!-- left column -->
 	<div class="col-md-12">
 		<!-- general form elements -->
-		<div class="box box-success">
+
 			<div class="box-header with-border">
-				<h3 class="box-title">Nuevo detalle caracteristica rutina</h3>
+
 			</div>
 			<!-- /.box-header -->
 			<!-- form start -->
 			<form role="form" method="POST" action="{{route('ruman.store')}}">
         {!!Form::open(array('url'=>'equipo/rutina/ruman','method'=>'POST','autocomplete'=>'off'))!!}
               {{Form::token()}}
+              <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
 
           <div class="nav-tabs-custom">
-            <ul class="nav nav-tabs pull-left">
+          <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
                     <li class="active"><a href="#tab_1-1" data-toggle="tab">Rutina</a></li>
-              <li ><a href="#tab_2-2" data-toggle="tab">Detalle rutina</a></li>
+              <li ><a href="#tab_2-2" data-toggle="tab">Detalle</a></li>
+              <li ><a href="#tab_3-3" data-toggle="tab">Programación </a></li>
 
             </ul>
-            <br>
-            <br>
-            <br>
+
+
             <div class="tab-content">
               <div class="tab-pane active" id="tab_1-1">
 
@@ -82,7 +83,7 @@
 	<div class="box-body col-md-6">
     <div class="form-group">
             <label for="direccion_fab">Tiempo estimado rutina mantenimiento en horas</label>
-<input type="text" class="form-control" name="tiempo_estimado_rutina_mantenimiento" value="{{old('tiempo_estimado_rutina_mantenimiento')}}" onkeypress="return valida(event)">
+<input type="number" class="form-control" name="tiempo_estimado_rutina_mantenimiento" value="{{old('tiempo_estimado_rutina_mantenimiento')}}" onkeypress="return valida(event)">
 </div>
 
           <script>
@@ -120,8 +121,7 @@
 
           <div class="form-group">
 
-            <label for="direccion_fab">Estado rutina</label>
-            <input type="text" class="form-control" name="estado_rutina" value="{{old('estado_rutina')}}">
+                    <input type="hidden" class="form-control" name="estado_rutina" value="pendiente">
           </div>
 
 </div>
@@ -141,7 +141,7 @@
           </div>
       </div>
 
-  <div class="tab-pane" id="tab_2-2">
+  <div class="tab-pane active" id="tab_2-2">
 
 
     <div class="box-body">
@@ -230,9 +230,11 @@
                   <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
                 </a>
                 <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
-                <ul id="guardar">
-                <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
-               </ul>
+                <i id="guardar">
+                  <a onclick="mostar3();" data-toggle="tab" aria-expanded="true">
+                  <button type="button" name="adelante" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-right"></span> </button>
+                  </a>
+                </i>
               </div>
                 </div>
                 </div>
@@ -246,12 +248,62 @@
 
 
       </div>
+<div class="tab-pane active" id="tab_3-3">
+  <div class="box-body">
+    <div class="row">
+	<div class="box-body col-md-6">
+    <div class="form-group">
+        <label>Fecha inicio rutina</label>
+
+        <div class="input-group date">
+          <div class="input-group-addon">
+            <i class="fa fa-calendar"></i>
+          </div>
+          <input type="date" class="form-control pull-right" id="datepicker" name="fecha_realizacion_rutina"  min="{{date("Y-m-d")}}" value="{{date("Y-m-d")}}">
+        </div>
+            <!-- /.input group -->
+    </div>
+    <div class="form-group">
+        <label>Fecha finalización rutina</label>
+
+        <div class="input-group date">
+          <div class="input-group-addon">
+            <i class="fa fa-calendar"></i>
+          </div>
+          <input type="date" class="form-control pull-right" id="datepicker" name="fecha_realizacion_rutina" min="2018-10-10" value="{{date("Y-m-d")}}">
+        </div>
+            <!-- /.input group -->
+    </div>
+    <div class="form-group">
+      <label for="direccion_fab">Descripción</label>
+      <input type="text" class="form-control" id="comentario_detalle_caracteristica_rutina" name="comentario_detalle_caracteristica_rutina" value="{{old('comentario_detalle_caracteristica_rutina')}}">
+    </div>
+
+
+    <div class="form-group">
+          <input name"_token" value="{{ csrf_token() }}" type="hidden"></input>
+          <a onclick="mostar();">
+            <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
+          </a>
+          <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
+          <i>
+            <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
+          </i>
+        </div>
+
+  </div>
+
+</div>
+
+</div>
+</div>
+
       </div>
       </div>
 
 			</form>
           {!!Form::close()!!}
-		</div>
+
     </div>
 		<!-- /.box -->
 
@@ -261,20 +313,31 @@
 </section>
 
 
+
 <script src="{{asset('ajax/jquery.min.js')}}"></script>
 <script src="{{asset('ajax/bootstrap.min.js')}}"></script>
 <script src="{{asset('ajax/select2.min.js')}}"></script>
 
+<script type="text/javascript">
+	window.onload=function(){
+		$('.nav-tabs a[href="#tab_2-2"]').tab('show');
+      $('.nav-tabs a[href="#tab_1-1"]').tab('show');
+	}
+</script>
 <script>
-
-
-
+if (window.location.hash) {
+  $('.nav-tabs a[href="#tab_2-2"]').tab('show');
+    $('.nav-tabs a[href="#tab_1-1"]').tab('show');
+}
 function mostar(){
 
   $('.nav-tabs a[href="#tab_2-2"]').tab('show');
 }
 function mostar2(){
   $('.nav-tabs a[href="#tab_1-1"]').tab('show');
+}
+function mostar3(){
+  $('.nav-tabs a[href="#tab_3-3"]').tab('show');
 }
 $('#tipo_rutina').select2({
 
