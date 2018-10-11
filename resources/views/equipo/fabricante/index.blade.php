@@ -28,7 +28,7 @@
               @include('equipo.fabricante.search')
               <div class="col-md-12">
                 <div class="table-responsive">
-                  <table  class="table table-bordered table-striped">
+                  <table id="tabla" class="table table-bordered table-striped">
                     <thead>
                     <tr>
                       <th>Id</th>
@@ -96,16 +96,12 @@
 
 </div>
 <script src="{{asset('bower_components/PACE/pace.min.js')}}"></script>
-<script type="text/javascript">
-$(document).ajaxStart(function () {
-  Pace.restart()
-})
-$('.ajax').click(function () {
-  $.ajax({
-    url: '#', success: function (result) {
-      $('.ajax-content').html('<hr>Ajax Request Completed !')
-    }
-  })
-})
-</script>
+<!-- jQuery 3 -->
+<script src="{{asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="{{asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+<!-- DataTables -->
+<script src="{{asset('bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+
 @endsection
