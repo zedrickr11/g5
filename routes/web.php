@@ -132,3 +132,7 @@ Route::resource('compras/repuesto-ingreso','Ingreso_repuestoController');
 
 //calendario
 Route::get('/json-calendario','CalendarioController@llenarcalendario');
+
+
+//manuales
+Route::resource('equipo/principal/','EquipoIndexController');
