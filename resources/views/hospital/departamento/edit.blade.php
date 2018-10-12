@@ -39,33 +39,32 @@
 						<label for="direccion_fab">Departamento</label>
 						<input type="text" class="form-control" name="depto" value="{{$departamentos->depto}}">
 					</div>
+          
+          <div class="form-group">
+                <label for="hospital">Hospital</label>
+                <select name="idhospital" id="idhospital" class="form-control selectpicker" data-live-search="true">
+                  @foreach($hospitals as $hosp)
+                           @if ($hosp->idhospital==$departamentos->idhospital)
+                         <option value="{{$hosp->idhospital}}" selected>{{$hosp->hospital}}</option>
+                         @else
+                         <option value="{{$hosp->idhospital}}">{{$hosp->hospital}}</option>
+                         @endif
+                          @endforeach
+                  </select>
+              </div>
 
           <div class="form-group">
-            <label >Hospital</label>
-            <br>
-            <select name="idhospital"  class="form-control">
-     @foreach($hospitals as $hosp)
-              @if ($hosp->idhospital==$departamentos->idhospital)
-            <option value="{{$hosp->idhospital}}" selected>{{$hosp->hospital}}</option>
-            @else
-            <option value="{{$hosp->idhospital}}">{{$hosp->hospital}}</option>
-            @endif
-             @endforeach
-      </select>
-          </div>
-          <div class="form-group">
-            <label >Region</label>
-
-            <select name="idregion"  class="form-control">
-     @foreach($regions as $reg)
-              @if ($reg->idregion==$departamentos->idregion)
-            <option value="{{$reg->idregion}}" selected>{{$reg->region}}</option>
-            @else
-            <option value="{{$reg->idregion}}">{{$reg->region}}</option>
-            @endif
-             @endforeach
-      </select>
-          </div>
+                <label for="region">Region</label>
+                <select name="idregion" id="idregion" class="form-control selectpicker" data-live-search="true">
+                  @foreach($regions as $reg)
+                           @if ($reg->idregion==$departamentos->idregion)
+                         <option value="{{$reg->idregion}}" selected>{{$reg->region}}</option>
+                         @else
+                         <option value="{{$reg->idregion}}">{{$reg->region}}</option>
+                         @endif
+                          @endforeach
+                  </select>
+              </div>
 				</div>
 
 				<!-- /.box-body -->
@@ -86,4 +85,15 @@
 
 </div>
 </section>
+<script src="{{asset('ajax/jquery.min.js')}}"></script>
+<script src="{{asset('ajax/bootstrap.min.js')}}"></script>
+<script src="{{asset('ajax/select2.min.js')}}"></script>
+<script>
+$('#idregion').select2({
+  theme: "classic"
+});
+$('#idhospital').select2({
+  theme: "classic"
+});
+</script>
 @endsection

@@ -11,9 +11,9 @@ class DetalleAreaMantenimiento extends Model
   public $timestamps=false;
 
   protected $fillable =[
-       'area_mantenimiento_idarea_mantenimiento',
-       'solitud_trabajo_idsolitud_trabajo',
-       'estado_detalle_area_matenimiento'
+       'idarea_mantenimiento',
+       'idsolitud_trabajo',
+       'area_matenimiento'
 
   ];
 

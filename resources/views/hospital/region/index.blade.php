@@ -63,7 +63,7 @@
 
                   </tfoot>
           </table>
-          {!! $regiones->links() !!}
+          {!! $regiones->appends(['searchText'=>request('searchText')])->links() !!}
 
               </div>
 </div>

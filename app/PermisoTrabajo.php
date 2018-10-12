@@ -14,7 +14,7 @@ class PermisoTrabajo extends Model
        'fecha',
        'num_permiso',
        'descripcion',
-       'solitud_trabajo_idsolitud_trabajo',
+       'idsolitud_trabajo',
 
 
   ];

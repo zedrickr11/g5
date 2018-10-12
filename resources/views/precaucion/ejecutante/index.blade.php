@@ -63,7 +63,8 @@
 
                   </tfoot>
           </table>
-          {!! $ejecutantes->links() !!}
+            {!! $ejecutantes->appends(['searchText'=>request('searchText')])->links() !!}
+        
 
               </div>
 </div>

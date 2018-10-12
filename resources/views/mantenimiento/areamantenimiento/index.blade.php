@@ -55,7 +55,8 @@
 <tfoot>
 </tfoot>
 </table>
-{!! $areas->links() !!}
+{!! $areas->appends(['searchText'=>request('searchText')])->links() !!}
+ 
 </div>
 </div>
 </div>

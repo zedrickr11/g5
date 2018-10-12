@@ -55,20 +55,14 @@
             <label for="telefono_fab">Unidad Medica</label>
             <input type="text" class="form-control" name="unidad_medica" value="{{old('unidad_medica')}}">
           </div>
-
-
           <div class="form-group">
-    <label for="select" class="col-lg-2 control-label">Hospital</label>
-
-      <select name="idhospital" class="form-control" id="select">
-     @foreach($hospitals as $hosp)
-            <option value="{{$hosp->idhospital}}">{{$hosp->hospital}}</option>
-             @endforeach
-      </select>
-
-
-
-  </div>
+                <label for="hospital">Hospital</label>
+                <select name="idhospital" id="idhospital" class="form-control selectpicker" data-live-search="true">
+                  @foreach($hospitals as $hosp)
+                         <option value="{{$hosp->idhospital}}">{{$hosp->hospital}}</option>
+                          @endforeach
+                  </select>
+              </div>
 
 
 
@@ -93,4 +87,12 @@
 
 </div>
 </section>
+<script src="{{asset('ajax/jquery.min.js')}}"></script>
+<script src="{{asset('ajax/bootstrap.min.js')}}"></script>
+<script src="{{asset('ajax/select2.min.js')}}"></script>
+<script>
+$('#idhospital').select2({
+  theme: "classic"
+});
+</script>
 @endsection

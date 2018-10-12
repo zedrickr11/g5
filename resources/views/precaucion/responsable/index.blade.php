@@ -55,7 +55,7 @@ Precaución
 <tfoot>
 </tfoot>
 </table>
-{!! $responsables->links() !!}
+{!! $responsables->appends(['searchText'=>request('searchText')])->links() !!}
 </div>
 </div>
 </div>
