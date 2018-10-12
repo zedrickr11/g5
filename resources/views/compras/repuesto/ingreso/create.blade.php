@@ -4,11 +4,11 @@
 <section class="content-header">
       <h1>
         Compras
-        <small>Insumos</small>
+        <small>Repuestos</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-tv"></i> Compras</a></li>
-        <li class="active">Insumos</li>
+        <li class="active">Repuestos</li>
       </ol>
 </section>
 	<section class="content">
@@ -18,7 +18,7 @@
 		<!-- general form elements -->
 		<div class="box box-success">
 			<div class="box-header with-border">
-				<h3 class="box-title">Nuevo Ingreso de Insumos</h3>
+				<h3 class="box-title">Nuevo Ingreso de Repuestos</h3>
 			</div>
       @if (count($errors)>0)
       <div class="alert alert-danger">
@@ -31,16 +31,16 @@
       @endif
 			<!-- /.box-header -->
 			<!-- form start -->
-      {!!Form::open(array('url'=>'compras/insumo-ingreso','method'=>'POST','autocomplete'=>'off'))!!}
+      {!!Form::open(array('url'=>'compras/repuesto-ingreso','method'=>'POST','autocomplete'=>'off'))!!}
             {{Form::token()}}
     <div class="box-body">
       <div class="row">
         <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
           <div class="form-group">
                 <label for="proveedor">Proveedor</label>
-                <select name="idproveedor_insumo" id="idproveedor_insumo" class="form-control selectpicker" data-live-search="true">
+                <select name="idproveedor_repuesto" id="idproveedor_insumo" class="form-control select2" data-live-search="true" style="width: 100%;">
                       @foreach($personas as $persona)
-                       <option value="{{$persona->idproveedor_insumo}}">{{$persona->nombre}}</option>
+                       <option value="{{$persona->idproveedor_repuesto}}">{{$persona->nombre}}</option>
                        @endforeach
                   </select>
               </div>
@@ -49,9 +49,9 @@
           <div class="form-group">
             <label>Tipo Comprobante</label>
             <select name="tipo_comprobante" id="tipo_comprobante" class="form-control">
-                         <option value="Boleta">Boleta</option>
-                         <option value="Factura">Factura</option>
-                         <option value="Recibo">Recibo</option>
+                         <option value="Requisición">Requisición</option>
+                         <option value="Otro">Otro</option>
+
             </select>
           </div>
         </div>
@@ -75,9 +75,9 @@
                   <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                       <div class="form-group">
                           <label>Artículo</label>
-                          <select name="pidinsumo" class="form-control selectpicker" id="pidinsumo" data-live-search="true">
+                          <select name="pidrepuesto" class="form-control" id="pidrepuesto" data-live-search="true">
                               @foreach($articulos as $articulo)
-                              <option value="{{$articulo->idinsumo}}">{{$articulo->articulo}}</option>
+                              <option value="{{$articulo->idrepuesto}}">{{$articulo->articulo}}</option>
                               @endforeach
                           </select>
                       </div>
@@ -118,7 +118,7 @@
         <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12" id="guardar">
           <div class="form-group">
                 <input name"_token" value="{{ csrf_token() }}" type="hidden"></input>
-                <a href="{{route('insumo-ingreso.index')}}">
+                <a href="{{route('repuesto-ingreso.index')}}">
                   <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
                 </a>
                 <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
@@ -140,9 +140,25 @@
 
 </div>
 </section>
-<script src="{{asset('ajax/jquery.min.js')}}"></script>
-<script src="{{asset('ajax/bootstrap.min.js')}}"></script>
+
+
+<script src="{{asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="{{asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+<!-- Select2 -->
+<script src="{{asset('bower_components/select2/dist/js/select2.full.min.js')}}"></script>
+
 <script>
+$('#pidrepuesto').select2({
+  theme: "classic"
+});
+$('#tipo_comprobante').select2({
+  theme: "classic"
+});
+$('#idproveedor_insumo').select2({
+  theme: "classic"
+});
+
   $(document).ready(function(){
     $('#bt_add').click(function(){
       agregar();
@@ -157,14 +173,14 @@
 
   function agregar()
   {
-    idarticulo=$("#pidinsumo").val();
-    articulo=$("#pidinsumo option:selected").text();
+    idarticulo=$("#pidrepuesto").val();
+    articulo=$("#pidrepuesto option:selected").text();
     cantidad=$("#pcantidad").val();
 
 
     if (idarticulo!="" && cantidad!="" && cantidad>0 )
     {
-        var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idinsumo[]" value="'+idarticulo+'">'+articulo+'</td><td><input type="number" name="cantidad[]" value="'+cantidad+'"></td></tr>';
+        var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idrepuesto[]" value="'+idarticulo+'">'+articulo+'</td><td><input type="number" name="cantidad[]" value="'+cantidad+'"></td></tr>';
         cont++;
         limpiar();
         evaluar();

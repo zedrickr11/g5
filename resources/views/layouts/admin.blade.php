@@ -8,8 +8,11 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Select con busqueda -->
-  <link href="{{asset('ajax/select2.min.css')}}" rel="stylesheet" />
 
+  <!-- datepicker -->
+  <link rel="stylesheet" href="{{asset('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
+<!-- pace -->
+  <link rel="stylesheet" href="{{asset('plugins/pace/pace.min.css')}}">
   <!-- Bootstrap 3.3.7 -->
 
   <link rel="stylesheet" href="{{asset('bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
@@ -69,7 +72,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="#" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>I</b>GSS</span>
       <!-- logo for regular state and mobile devices -->
@@ -205,7 +208,7 @@
 </div>
 <!-- ./wrapper -->
 <!-- Select con busqueda -->
-<script src="{{asset('ajax/select2.min.js')}}"></script>
+
 <!-- jQuery 3 -->
 <script src="{{asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->

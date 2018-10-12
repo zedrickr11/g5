@@ -78,9 +78,9 @@
            <td  colspan="2">   Unidad: {{$hosp->unidad_salud}} </td>
                    @endif
                     @endforeach
-                    @foreach($departamento as $hosp)
-                    @if ($hosp->iddepartamento==$eq->iddepartamento)
-                    <td  colspan="2">   Departamento/Servicio: {{$hosp->depto}} </td>
+                    @foreach($equipo as $hosp)
+                    @if ($hosp->idequipo==$eq->idequipo)
+                    <td  colspan="2">   Departamento/Servicio: {{$hosp->servicio}} </td>
                     @endif
                     @endforeach
 
@@ -171,54 +171,57 @@
 
 
 
-          @foreach($fabricante as $hosp)
-                   @if ($hosp->idfabricante==$eq->idfabricante)
+
           <tr>
             <td id="gris" colspan="2">  FABRICANTE: </div></td>
             <td id="gris" colspan="2"> <div align="center"> EXSITENCIA DE INFORMACIÓN TÉCNICA </div></td>
           </tr>
           <tr>
-            <td  colspan="2">  DIRECCIÓN: {{ $hosp->direccion_fabricante}}</td>
+            <td  colspan="2">  DIRECCIÓN:      @foreach($fabricante as $hosp)
+                           @if ($hosp->idfabricante==$eq->idfabricante) {{ $hosp->direccion_fabricante}}       @endif  @endforeach
+                                </td>
             <td  colspan="2">  Manual de operación</td>
           </tr>
           <tr>
-            <td  colspan="2">  TEL/FAX: {{ $hosp->telefono_fabricante}}</td>
+            <td  colspan="2">  TEL/FAX:  @foreach($fabricante as $hosp)
+                           @if ($hosp->idfabricante==$eq->idfabricante)  {{ $hosp->telefono_fabricante}}        @endif  @endforeach</td>
             <td  colspan="2">  Manual de instalación</td>
           </tr>
           <tr>
-            <td  colspan="2">  e-mail: {{ $hosp->correo_fabricante}}</td>
+            <td  colspan="2">  e-mail:  @foreach($fabricante as $hosp)
+                           @if ($hosp->idfabricante==$eq->idfabricante) {{ $hosp->correo_fabricante}}        @endif  @endforeach</td>
             <td  colspan="2">  Manual de servicio</td>
           </tr>
-          @endif
-           @endforeach
 
 
-           @foreach($proveedor as $hosp)
-                    @if ($hosp->id_proveedor==$eq->id_proveedor)
+
           <tr>
             <td id="gris" colspan="2">  DISTRIBUIDOR: </div></td>
             <td  colspan="2">  Manual de partes</td>
           </tr>
           <tr>
-            <td  colspan="2">  DIRECCIÓN: {{ $hosp->direccion_proveedor}}</td>
+            <td  colspan="2">  DIRECCIÓN:@foreach($proveedor as $hosp)
+            @if ($hosp->id_proveedor==$eq->id_proveedor) {{ $hosp->direccion_proveedor}}   @endif @endforeach</td>
             <td  colspan="2">  Otra literatura</td>
           </tr>
           <tr>
-            <td  colspan="2">  TEL/FAX: {{ $hosp->telefono_proveedor}}</td>
+            <td  colspan="2">  TEL/FAX: @foreach($proveedor as $hosp)
+            @if ($hosp->id_proveedor==$eq->id_proveedor){{ $hosp->telefono_proveedor}}  @endif @endforeach</td>
             <td  colspan="2">  No existe información técnica</td>
           </tr>
           <tr>
-            <td  colspan="2">  e-mail: {{ $hosp->correo_proveedor}}</td>
+            <td  colspan="2">  e-mail: @foreach($proveedor as $hosp)
+            @if ($hosp->id_proveedor==$eq->id_proveedor){{ $hosp->correo_proveedor}}  @endif @endforeach</td>
             <td  colspan="2" owspan="2">  Observaciones:</td>
           </tr>
 
           <tr>
-            <td  colspan="2">  NOMBRE DE CONTACTO: {{ $hosp->correo_proveedor}}</td>
+            <td  colspan="2">  NOMBRE DE CONTACTO:@foreach($proveedor as $hosp)
+            @if ($hosp->id_proveedor==$eq->id_proveedor) {{ $hosp->contacto_proveedor}}  @endif @endforeach</td>
             <td  colspan="2" owspan="2">  Observaciones:</td>
           </tr>
 
-          @endif
-           @endforeach
+
 
 
            <tr>

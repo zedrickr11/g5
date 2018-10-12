@@ -32,7 +32,6 @@ class FabricanteController extends Controller
             ->paginate(10);
             return view('equipo.fabricante.index',["fabricantes"=>$fabricantes,"searchText"=>$query]);
         }
-        //return view('equipo.fabricante.index', compact('fabricantes'));
     }
 
     /**
@@ -42,7 +41,8 @@ class FabricanteController extends Controller
      */
     public function create()
     {
-        return view("equipo.fabricante.create");
+
+        return view("equipo.fabricante.create",compact('alerta'));
     }
 
     /**
@@ -56,7 +56,7 @@ class FabricanteController extends Controller
 
 
         Fabricante::create($request->all());
-        return redirect()->route('fabricante.index');
+        return redirect()->route('fabricante.create');
 
     }
 

@@ -1,4 +1,4 @@
-{!! Form::open(array('url'=>'compras/insumo-ingreso','method'=>'GET','autocomplete'=>'off','role'=>'search')) !!}
+{!! Form::open(array('url'=>'compras/repuesto-ingreso','method'=>'GET','autocomplete'=>'off','role'=>'search')) !!}
   <div class="col-md-6">
 <div class="form-group">
 	<div class="input-group">
