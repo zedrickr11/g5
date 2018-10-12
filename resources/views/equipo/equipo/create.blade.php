@@ -473,23 +473,6 @@
               </div>
 
 
-<<<<<<< HEAD
-        </div>
-        <!-- /.tab-pane -->
-
-
-         <!-- /.tab-pane imagen -->
-       
-        <!-- /.tab-pane -->
-        <div class="box-footer">
-          @if (count($errors)>0)
-          <div class="alert alert-danger">
-            <ul>
-            @foreach ($errors->all() as $error)
-              <li>{{$error}}</li>
-            @endforeach
-            </ul>
-=======
 
 
 
@@ -532,7 +515,6 @@
             </div>
             <!-- /.tab-pane -->
 
->>>>>>> d2b64b242d8792ad223cb039297cbcef7ff76362
           </div>
           <!-- /.tab-content -->
         </div>
