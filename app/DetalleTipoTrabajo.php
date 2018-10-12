@@ -11,8 +11,8 @@ class DetalleTipoTrabajo extends Model
   public $timestamps=false;
 
   protected $fillable =[
-    'solitud_trabajo_idsolitud_trabajo',
-       'tipo_trabajo_idtipo_trabajo',
+    'idsolitud_trabajo',
+       'idtipo_trabajo',
        'descrpcion_detalle_tipo_trabajo',
        'estado'
 

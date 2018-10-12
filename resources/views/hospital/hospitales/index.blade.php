@@ -67,7 +67,8 @@
 
                   </tfoot>
           </table>
-          {!! $hospitales->links() !!}
+          {!! $hospitales->appends(['searchText'=>request('searchText')])->links() !!}
+    
 
               </div>
               </div>

@@ -70,7 +70,8 @@
 
                   </tfoot>
           </table>
-          {!! $departamentos->links() !!}
+          {!!$departamentos->appends(['searchText'=>request('searchText')])->links() !!}
+    
 
               </div>
 

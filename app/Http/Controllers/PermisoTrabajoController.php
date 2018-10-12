@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PermisoTrabajoFormRequest;
 use App\SolicitudTrabajo;
 use DB;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input;
 class PermisoTrabajoController extends Controller
 {
     /**
@@ -22,7 +24,7 @@ class PermisoTrabajoController extends Controller
        {
            $query=trim($request->get('searchText'));
            $permisos= DB::table('permiso_trabajo as p')
-           ->join('solitud_trabajo as t', 'p.solitud_trabajo_idsolitud_trabajo','=', 't.idsolitud_trabajo')
+           ->join('solitud_trabajo as t', 'p.idsolitud_trabajo','=', 't.idsolitud_trabajo')
            ->select('p.idpermiso_trabajo','p.fecha','p.num_permiso','p.descripcion','t.numero as num')
            ->where('num_permiso','LIKE','%'.$query.'%')
            ->orderBy('idpermiso_trabajo','desc')
@@ -39,8 +41,13 @@ class PermisoTrabajoController extends Controller
      */
      public function create()
      {
-       $solicitudes=SolicitudTrabajo::all();
-         return view("trabajo.permiso.create",compact('solicitudes'));
+       $solicitudes = DB::table('solitud_trabajo as so')
+             ->select(DB::raw('CONCAT(so.numero) AS num'),'so.idsolitud_trabajo')
+             ->get();
+       $tipos = DB::table('tipo_trabajo as tp')
+              ->select(DB::raw('CONCAT(tp.nombre_tipo) AS tipo'),'tp.idtipo_trabajo')
+                ->get();
+    return view("trabajo.permiso.create",["solicitudes"=>$solicitudes,"tipos"=>$tipos]);
      }
 
     /**

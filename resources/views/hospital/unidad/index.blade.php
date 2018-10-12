@@ -19,7 +19,7 @@
             <div class="box-header">
               <h3 class="box-title">Listado de Unidades de Salud <a href="unidad/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button></a>
                   </h3>
-                  <a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
+
 
             </div>
             <!-- /.box-header -->
@@ -67,7 +67,7 @@
 
                   </tfoot>
           </table>
-                {!! $unidades->links() !!}
+              {!!  $unidades->appends(['searchText'=>request('searchText')])->links() !!}
               </div>
 
 

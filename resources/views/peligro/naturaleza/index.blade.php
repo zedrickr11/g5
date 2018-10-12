@@ -55,7 +55,8 @@
 <tfoot>
 </tfoot>
 </table>
-{!! $naturalezas->links() !!}
+{!! $naturalezas->appends(['searchText'=>request('searchText')])->links() !!}
+ 
 </div>
 </div>
 </div>

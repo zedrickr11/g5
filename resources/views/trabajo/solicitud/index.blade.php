@@ -16,7 +16,7 @@
 <div class="box">
 <div class="box-header">
 <h3 class="box-title">Listado de solicitudes <a href="solicitud/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
-<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
+ </h3>
 </div>
 <!-- /.box-header -->
 <div class="box-body">
@@ -46,9 +46,7 @@
     <button type="button" class="btn btn-success btn-sm" name="button"><span class="fa fa-edit"></span></button>
   </a>
 
-<a href="{{route('solicitud.edit', $s->idsolitud_trabajo)}}">
-<button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-cog"></span> </button>
-</a>
+
 <a href="{{route('solicitud.show',$s->idsolitud_trabajo)}}">
 <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></span> </button>
 </a>
