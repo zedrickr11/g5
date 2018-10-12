@@ -119,10 +119,8 @@
           </select>
           </div>
 
-          <div class="form-group">
 
-                    <input type="hidden" class="form-control" name="estado_rutina" value="pendiente">
-          </div>
+
 
 </div>
 
@@ -130,7 +128,7 @@
 
 				<!-- /.box-body -->
 
-        <div class="box-footer">
+
           <a href="{{route('ruman.index')}}">
             <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
           </a>
@@ -138,7 +136,7 @@
           <a onclick="mostar();" data-toggle="tab" aria-expanded="true">
           <button type="button" name="adelante" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-right"></span> </button>
           </a>
-          </div>
+
       </div>
 
   <div class="tab-pane active" id="tab_2-2">
@@ -151,7 +149,7 @@
         <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
           <div class="form-group">
               <label>Caracteristica rutina</label>
-              <select name="idcaracteristica_rutina" class="form-control" id="idcaracteristica_rutina" data-live-search="true">
+              <select name="pidcaracteristica_rutina" class="form-control" id="pidcaracteristica_rutina" data-live-search="true">
                 @foreach($caracru as $carac1)
                 <option value="{{$carac1->idcaracteristica_rutina}}">{{$carac1->caracteristica_rutina}}</option>
             @endforeach
@@ -162,7 +160,7 @@
         <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
           <div class="form-group">
             <label for="select" class="">Subgrupo rutina</label>
-            <select name="idsubgrupo_rutina" class="form-control" id="idsubgrupo_rutina" data-live-search="true">
+            <select name="pidsubgrupo_rutina" class="form-control" id="pidsubgrupo_rutina" data-live-search="true">
               @foreach($subru as $carac)
               <option value="{{$carac->idsubgrupo_rutina}}">{{$carac->subgrupo_rutina}}</option>
           @endforeach
@@ -171,8 +169,8 @@
           </div>
           <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
             <div class="form-group">
-              <label for="idvalor_ref_rutina" >Valor referencia rutina</label>
-              <select name="idvalor_ref_rutina" class="form-control select2" id="idvalor_ref_rutina" data-live-search="true">
+              <label for="pidvalor_ref_rutina" >Valor referencia rutina</label>
+              <select name="pidvalor_ref_rutina" class="form-control select2" id="pidvalor_ref_rutina" data-live-search="true">
                 @foreach($valrefru as $carac)
                 <option value="{{$carac->idvalor_ref_rutina}}">{{$carac->descripcion}}</option>
             @endforeach
@@ -184,19 +182,15 @@
       <div class="row">
           <div class="">
               <div class="panel-body">
-                  <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+                  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
                     <div class="form-group">
                       <label for="direccion_fab">Comentario detalle caracteristica rutina</label>
-                      <input type="text" class="form-control" id="comentario_detalle_caracteristica_rutina" name="comentario_detalle_caracteristica_rutina" value="{{old('comentario_detalle_caracteristica_rutina')}}">
+                      <input type="text" class="form-control" id="pcomentario_detalle_caracteristica_rutina" name="pcomentario_detalle_caracteristica_rutina" value="{{old('comentario_detalle_caracteristica_rutina')}}">
                     </div>
 
                   </div>
-                  <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
 
-                  </div>
-                  <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
 
-                  </div>
 
                   <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
                       <div class="form-group">
@@ -210,6 +204,8 @@
                           <thead style="background-color:#2ab863">
                               <th>Opciones</th>
                               <th>Caracteristica</th>
+                              <th>Subgrupo</th>
+                              <th>Valor</th>
                               <th>Comentario</th>
 
                           </thead>
@@ -345,14 +341,14 @@ $('#tipo_rutina').select2({
 $('#tipo_rutina2').select2({
 
 });
-  $('#idcaracteristica_rutina').select2({
+  $('#pidcaracteristica_rutina').select2({
 
   });
 
-  $('#idvalor_ref_rutina').select2({
+  $('#pidvalor_ref_rutina').select2({
     });
 
-  $('#idsubgrupo_rutina').select2({
+  $('#pidsubgrupo_rutina').select2({
 
     });
   $(document).ready(function(){
@@ -369,17 +365,21 @@ $('#tipo_rutina2').select2({
 
   function agregar()
   {
-    idcaracteristica=$("#idcaracteristica_rutina").val();
-    caracteristica=$("#idcaracteristica_rutina option:selected").text();
+    idcaracteristica=$("#pidcaracteristica_rutina").val();
+    caracteristica=$("#pidcaracteristica_rutina option:selected").text();
+    idsubgrupo_rutina=$("#idsubgrupo_rutina").val();
+    subgrupo_rutina=$("#idsubgrupo_rutina option:selected").text();
+    idvalor_ref_rutina=$("#pidvalor_ref_rutina").val();
+    valor_ref_rutina=$("#pidvalor_ref_rutina option:selected").text();
     idsubgrupo=$("#idsubgrupo_rutina").val();
-    subgrupo=$("#idsubgrupo_rutina option:selected").text();
-    valor=$("#idvalor_ref_rutina option:selected").text();
-   comentario_detalle_caracteristica_rutina=$("#comentario_detalle_caracteristica_rutina").val();
+    subgrupo=$("#pidsubgrupo_rutina option:selected").text();
+    valor=$("#pidvalor_ref_rutina option:selected").text();
+   comentario_detalle_caracteristica_rutina=$("#pcomentario_detalle_caracteristica_rutina").val();
 
 
-    if (caracteristica!="" && subgrupo!="" && valor!="" )
+    if (caracteristica!="" && subgrupo!="" && valor!="" && comentario_detalle_caracteristica_rutina!="")
     {
-        var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idcaracteristica_rutina[]" value="'+idcaracteristica+'">'+caracteristica+'</td><td><input type="text" name="comentario_detalle_caracteristica_rutina[]" value="'+comentario_detalle_caracteristica_rutina+'"></td></tr>';
+        var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idcaracteristica_rutina[]" value="'+idcaracteristica+'">'+caracteristica+'</td><td><input type="hidden" name="idsubgrupo_rutina[]" value="'+idsubgrupo_rutina+'">'+subgrupo_rutina+'</td><td><input type="hidden" name="idvalor_ref_rutina[]" value="'+idvalor_ref_rutina+'">'+valor_ref_rutina+'</td><td><input type="hidden" name="comentario_detalle_caracteristica_rutina[]" value="'+comentario_detalle_caracteristica_rutina+'">'+comentario_detalle_caracteristica_rutina+'</td></tr>';
         cont++;
         limpiar();
         evaluar();
@@ -391,7 +391,7 @@ $('#tipo_rutina2').select2({
     }
   }
   function limpiar(){
-    $("#comentario_detalle_caracteristica_rutina").val("");
+    $("#pcomentario_detalle_caracteristica_rutina").val("");
 
   }
 
