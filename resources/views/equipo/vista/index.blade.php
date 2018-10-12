@@ -2,7 +2,9 @@
 @section ('contenido')
   <section class="content-header">
     <h1>
-      Vista General
+      Vista General <a href="{{route('equipo.index')}}">
+        <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
+      </a>
     </h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Equipo</a></li>
@@ -73,9 +75,9 @@
 
             <strong><i class="fa  fa-qrcode margin-r-5"></i> Código QR</strong>
             <p></p>
-            <img class="profile-user-img img-responsive " src="../../dist/img/qr.png" alt="User profile picture">
+            <img class="profile-user-img img-responsive " src="" alt="User profile picture">
 
-
+            
 
 
 
@@ -93,6 +95,8 @@
             <li><a href="#timeline" data-toggle="tab">Crear rutina</a></li>
             <li><a href="#settings" data-toggle="tab">Actualizar</a></li>
             <li><a href="#manuales" data-toggle="tab">Manuales</a></li>
+            <li><a href="#imagen" data-toggle="tab">Imágenes</a></li>
+
           </ul>
           <div class="tab-content">
             <div class="active tab-pane" id="activity">
@@ -162,34 +166,35 @@
               <!-- Post -->
               <div class="post">
                 <div class="user-block">
-                  <img class="img-circle img-bordered-sm" src="../../dist/img/user6-128x128.jpg" alt="User Image">
+                  <img class="img-circle img-bordered-sm" src="../../dist/img/config1.png" alt="User Image">
                       <span class="username">
-                        <a href="#">Adam Jones</a>
+                        <a href="#">Imágenes del equipo</a>
                         <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
                       </span>
-                  <span class="description">Posted 5 photos - 5 days ago</span>
+                  <span class="description">{{ $equipo->nombre_equipo }}</span>
                 </div>
                 <!-- /.user-block -->
                 <div class="row margin-bottom">
-                  <div class="col-sm-6">
-                    <img class="img-responsive" src="../../dist/img/photo1.png" alt="Photo">
-                  </div>
+
                   <!-- /.col -->
-                  <div class="col-sm-6">
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <img class="img-responsive" src="../../dist/img/photo2.png" alt="Photo">
-                        <br>
-                        <img class="img-responsive" src="../../dist/img/photo3.jpg" alt="Photo">
-                      </div>
+                  <div class="col-sm-12">
+
+
+                        @foreach ($imagen_equipo as $img)
+                            <div class="col-sm-3">
+                          <img class="img-responsive" src="{{asset('img/equipo/'.$img->imagen)}}" alt="{{$img->descripcion_imagen}}">
+
+
+                          </div>
+
+                        @endforeach
+
+
                       <!-- /.col -->
-                      <div class="col-sm-6">
-                        <img class="img-responsive" src="../../dist/img/photo4.jpg" alt="Photo">
-                        <br>
-                        <img class="img-responsive" src="../../dist/img/photo1.png" alt="Photo">
-                      </div>
+
                       <!-- /.col -->
-                    </div>
+
+
                     <!-- /.row -->
                   </div>
                   <!-- /.col -->
@@ -197,15 +202,10 @@
                 <!-- /.row -->
 
                 <ul class="list-inline">
-                  <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                  <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
-                  </li>
-                  <li class="pull-right">
-                    <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments
-                      (5)</a></li>
+
                 </ul>
 
-                <input class="form-control input-sm" type="text" placeholder="Type a comment">
+
               </div>
               <!-- /.post -->
             </div>
@@ -307,6 +307,9 @@
             <!-- /.tab-pane -->
 
             <div class="tab-pane" id="settings">
+
+
+
               <form role="form" method="POST" action="{{route('equipo.update',$equipo->idequipo)}}" >
                 {!!method_field('PUT')!!}
                 {!!csrf_field()!!}
@@ -323,7 +326,7 @@
                   <li class="active"><a href="#tab_5-5" data-toggle="tab">Identificación</a></li>
                   <li ><a href="#tab_4-4" data-toggle="tab">Localización</a></li>
                   <li ><a href="#tab_3-3" data-toggle="tab">Fabricante</a></li>
-                    <li ><a href="#tab_2-2" data-toggle="tab">Distribuidor</a></li>
+                  <li ><a href="#tab_2-2" data-toggle="tab">Distribuidor</a></li>
                   <li ><a href="#tab_7-7" data-toggle="tab">Servicio Técnico</a></li>
                   <li ><a href="#tab_1-1" data-toggle="tab">Información adicional</a></li>
                 </ul>
@@ -729,11 +732,44 @@
               <!-- /.box-footer-->
               </form>
             </div>
+
             <div class="tab-pane" id="manuales">
 
 
               </div>
             <!-- /.box-body -->
+            <div class="tab-pane" id="imagen">
+
+              {!! Form::open(array('route'=>'imagen.store','method'=>'POST', 'files'=>true)) !!}
+                    {{Form::token()}}
+                    <div class="row">
+
+
+                              <input type="hidden" name="idequipo" value="{{ $equipo->idequipo }}" class="form-control" >
+
+                      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                        <div class="form-group">
+                              <label for="descripcion_imagen">Descripción de la imagen</label>
+                              <input type="text" name="descripcion_imagen"  class="form-control" placeholder="Descripción...">
+                            </div>
+                      </div>
+                      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                        <div class="form-group">
+                              <label for="imagen">Imagen</label>
+                              <input type="file" name="imagen" class="form-control"  >
+                            </div>
+                      </div>
+                      <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                        <div class="form-group">
+
+                          <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
+                          <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
+
+                            </div>
+                      </div>
+                    </div>
+
+              {!!Form::close()!!}
 
             </div>
             <!-- /.tab-pane -->

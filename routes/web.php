@@ -37,6 +37,7 @@ Route::get('equipo/equipo/rutina/{id}',[
 ]);
 //index del Equipo
 Route::get('equipo/principal/{id}',['as'=>'actualizar','uses' => 'EquipoIndexController@index']);
+Route::resource('equipo/equipo/imagen','Imagen_equipoController');
 
 
 
