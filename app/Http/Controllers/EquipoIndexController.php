@@ -12,6 +12,7 @@ use App\Http\Requests\EquipoFormRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 
+use App\Imagen_equipo;
 use App\Proveedor;
 use App\UnidadSalud;
 use App\Area;
@@ -55,9 +56,16 @@ class EquipoIndexController extends Controller
       $subgrupo=Subgrupo::all();
       $tipounidadsalud=TipoUnidadSalud::all();
 
+
+      $imagen_equipo=DB::table('Imagen_equipo')
+      ->select('*')
+      ->where('idequipo','=',$id)
+      ->get();
+
       $TipoManual = TipoManual::all();
       $EquipoM = Equipo::all();
       $Detalle_manual = Detalle_manual::all();
+
 
       //$equipo=Equipo::findOrFail($id);
       $equipo=DB::table('equipo as e')
@@ -67,11 +75,14 @@ class EquipoIndexController extends Controller
         ->select('e.*','c.actual as actual','s.codigosubgrupo as codigosubgrupo','h.hospital as hospi',DB::raw('CONCAT(e.idarea,e.idgrupo,s.codigosubgrupo, "-",e.idregion,e.iddepartamento,e.idtipounidad,e.idunidadsalud,c.actual) AS codigo'))
         ->where('e.idequipo','=',$id)
         ->first();
+
       return view('equipo.vista.index', compact('equipo','proveedor','unidad_salud','area',
                   'estado','servicio_tecnico','fabricante','hospital','departamento',
-                  'region','grupo','subgrupo','tipounidadsalud','TipoManual','EquipoM','Detalle_manual'));
+                  'region','grupo','subgrupo','tipounidadsalud','TipoManual','EquipoM',
+                                                'Detalle_manual','imagen_equipo'));
 
-    }
+
+      }
 
    
     public function store(Request $request){
