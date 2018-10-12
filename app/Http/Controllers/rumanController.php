@@ -17,6 +17,7 @@ use Carbon\Carbon;
 use Response;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input;
 class rumanController extends Controller
 {
   /**
@@ -94,16 +95,16 @@ class rumanController extends Controller
         $ruman->save();
 
         $comentario_detalle_caracteristica_rutina = $request->get('comentario_detalle_caracteristica_rutina');
-        $idcaracteristica = $request->get('idcaracteristica');
+        $idcaracteristica_rutina = $request->get('idcaracteristica_rutina');
         $idsubgrupo_rutina = $request->get('idsubgrupo_rutina');
         $idvalor_ref_rutina = $request->get('idvalor_ref_rutina');
 
 
         $cont = 0;
 
-        while($cont < count($idvalor_ref_rutina)){
+        while($cont < count($idcaracteristica_rutina)){
 
-          /* $detalle = new detcaracru();
+           $detalle = new detcaracru();
             $detalle->idcaracteristica_rutina= $idcaracteristica_rutina[$cont];
             $detalle->idrutina_mantenimiento= $ruman->idrutina_mantenimiento;
             $detalle->idvalor_ref_rutina= $idvalor_ref_rutina[$cont];
@@ -111,10 +112,13 @@ class rumanController extends Controller
             $detalle->comentario_detalle_caracteristica_rutina= $comentario_detalle_caracteristica_rutina[$cont];
             $detalle->idsubgrupo_rutina= $idsubgrupo_rutina[$cont];
             $detalle->save();
+
             $cont=$cont+1;
-          */
+
 
         }
+
+
 
         DB::commit();
 

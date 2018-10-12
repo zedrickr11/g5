@@ -272,7 +272,7 @@
     </div>
     <div class="form-group">
       <label for="direccion_fab">Descripción</label>
-      <input type="text" class="form-control" id="comentario_detalle_caracteristica_rutina" name="comentario_detalle_caracteristica_rutina" value="{{old('comentario_detalle_caracteristica_rutina')}}">
+      <input type="text" class="form-control" id="pcomentario_detalle_caracteristica_rutina" name="pcomentario_detalle_caracteristica_rutina" value="{{old('comentario_detalle_caracteristica_rutina')}}">
     </div>
 
 
