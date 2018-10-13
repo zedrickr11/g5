@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ruman;
+use App\Notificacion;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests\rumanFormRequest;
@@ -86,7 +87,7 @@ class rumanController extends Controller
         $ruman->idtipo_rutina=$request->get('idtipo_rutina');
         $ruman->idequipo=$request->get('idequipo');
         $mytime = Carbon::now('America/Guatemala');
-        $ruman->fecha_realizacion_rutina=$request->get('fecha_realizacion_rutina');
+        $ruman->fecha_realizacion_rutina=$mytime->toDateTimeString();
         $ruman->observaciones_rutina=$request->get('observaciones_rutina');
         $ruman->tiempo_estimado_rutina_mantenimiento=$request->get('tiempo_estimado_rutina_mantenimiento');
         $ruman->responsable_area_rutina_mantenimiento=$request->get('responsable_area_rutina_mantenimiento');
@@ -96,25 +97,32 @@ class rumanController extends Controller
 
         $comentario_detalle_caracteristica_rutina = $request->get('comentario_detalle_caracteristica_rutina');
         $idcaracteristica_rutina = $request->get('idcaracteristica_rutina');
-        $idsubgrupo_rutina = $request->get('idsubgrupo_rutina');
+        $idsubgrupo_rutina= $request->get('idsubgrupo_rutina');
         $idvalor_ref_rutina = $request->get('idvalor_ref_rutina');
 
+        $noti=new Notificacion;
+        $noti->descripcion_noti=$request->get('descripcion_noti');
+        $noti->start=$request->get('start');
+        $noti->end=$request->get('end');
+        $noti->rutina_mantenimiento_idrutina_mantenimiento=$ruman->idrutina_mantenimiento;
+        $noti->estado_notificacion='';
+        $noti->backgroundColor='';
+        $noti->textColor='';
+        $noti->title='';
+        $noti->save();
 
         $cont = 0;
 
-        while($cont < count($idcaracteristica_rutina)){
+        while($cont <count($idcaracteristica_rutina)){
 
-           $detalle = new detcaracru();
-            $detalle->idcaracteristica_rutina= $idcaracteristica_rutina[$cont];
-            $detalle->idrutina_mantenimiento= $ruman->idrutina_mantenimiento;
-            $detalle->idvalor_ref_rutina= $idvalor_ref_rutina[$cont];
+            $detalle = new detcaracru();
+            $detalle->idcaracteristica_rutina=$idcaracteristica_rutina[$cont];
+            $detalle->idrutina_mantenimiento=$ruman->idrutina_mantenimiento;
+            $detalle->idvalor_ref_rutina=$idvalor_ref_rutina[$cont];
             $detalle->idsubgrupo_rutina= $idsubgrupo_rutina[$cont];
             $detalle->comentario_detalle_caracteristica_rutina= $comentario_detalle_caracteristica_rutina[$cont];
-            $detalle->idsubgrupo_rutina= $idsubgrupo_rutina[$cont];
             $detalle->save();
-
             $cont=$cont+1;
-
 
         }
 
@@ -138,11 +146,14 @@ class rumanController extends Controller
    */
   public function show($id)
 
-  {   $tiporu=tiporu::all();
+  {
+
+    $tiporu=tiporu::all();
     $equipo=Equipo::all();
     $ruman=ruman::findOrFail($id);
-        $permisotrabajo=PermisoTrabajo::all();
+    $permisotrabajo=PermisoTrabajo::all();
     return view('equipo.rutina.ruman.show', compact('ruman','tiporu','equipo','permisotrabajo'));
+
   }
 
   /**

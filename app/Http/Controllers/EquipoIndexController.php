@@ -30,6 +30,9 @@ use App\detcaractec;
 USE App\CaracTec;
 USE App\subcaractec;
 USE App\valorreftec;
+USE App\ruman;
+use App\tiporu;
+use App\PermisoTrabajo;
 use Barryvdh\DomPDF\Facade as PDF;
 
 use Carbon\Carbon;
@@ -52,6 +55,12 @@ class EquipoIndexController extends Controller
       $grupo=Grupo::all();
       $subgrupo=Subgrupo::all();
       $tipounidadsalud=TipoUnidadSalud::all();
+      //rutinas
+      $tiporu=tiporu::all();
+      $permisotrabajo=PermisoTrabajo::all();
+      $ruman = ruman::all();
+    //   $ruman =ruman::all();
+    //  $ruman=DB::table('rutina_mantenimiento')->where('idequipo', idequipo)->get();
 
 
       //$equipo=Equipo::findOrFail($id);
@@ -62,9 +71,10 @@ class EquipoIndexController extends Controller
         ->select('e.*','c.actual as actual','s.codigosubgrupo as codigosubgrupo','h.hospital as hospi',DB::raw('CONCAT(e.idarea,e.idgrupo,s.codigosubgrupo, "-",e.idregion,e.iddepartamento,e.idtipounidad,e.idunidadsalud,c.actual) AS codigo'))
         ->where('e.idequipo','=',$id)
         ->first();
-      return view('equipo.vista.index', compact('equipo','proveedor','unidad_salud','area',
+
+      return view('equipo.vista.index', compact('ruman','equipo','proveedor','unidad_salud','area',
                   'estado','servicio_tecnico','fabricante','hospital','departamento',
-                  'region','grupo','subgrupo','tipounidadsalud'));
+                  'region','grupo','subgrupo','tipounidadsalud','tiporu','permisotrabajo'));
 
     }
 }

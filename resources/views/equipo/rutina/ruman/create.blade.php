@@ -38,6 +38,8 @@
 
             <div class="tab-content">
               <div class="tab-pane active" id="tab_1-1">
+                <div class="box-body">
+                  <div class="row">
 
 				<div class="box-body col-md-6">
 
@@ -59,17 +61,7 @@
                     </select>
                     </div>
 
-                    <div class="form-group">
-                        <label>Fecha realizacion rutina</label>
 
-                        <div class="input-group date">
-                          <div class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                          </div>
-                          <input type="date" class="form-control pull-right" id="datepicker" name="fecha_realizacion_rutina" readonly value="{{date("Y-m-d")}}">
-                        </div>
-                            <!-- /.input group -->
-                    </div>
                     <div class="form-group">
 
                       <label for="direccion_fab">Observaciones rutina</label>
@@ -112,12 +104,13 @@
 
           <div class="form-group">
             <label for="select" class="">Permiso de trabajo</label>
-            <select name="permiso_trabajo_idpermiso_trabajo" class="form-control" id="select">
+            <select name="permiso_trabajo_idpermiso_trabajo" class="form-control" id="permiso_trabajo_idpermiso_trabajo">
               @foreach($permisotrabajo as $carac)
               <option value="{{$carac->idpermiso_trabajo}}">{{$carac->num_permiso}}</option>
           @endforeach
           </select>
           </div>
+
 
 
 
@@ -129,14 +122,16 @@
 				<!-- /.box-body -->
 
 
-          <a href="{{route('ruman.index')}}">
-            <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
-          </a>
-          <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
-          <a onclick="mostar();" data-toggle="tab" aria-expanded="true">
-          <button type="button" name="adelante" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-right"></span> </button>
-          </a>
 
+      </div>
+      <a href="{{route('ruman.index')}}">
+        <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
+      </a>
+      <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
+      <a onclick="mostar();" data-toggle="tab" aria-expanded="true">
+      <button type="button" name="adelante" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-right"></span> </button>
+      </a>
+      </div>
       </div>
 
   <div class="tab-pane active" id="tab_2-2">
@@ -203,7 +198,7 @@
                       <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
                           <thead style="background-color:#2ab863">
                               <th>Opciones</th>
-                              <th>Caracteristica</th>
+                              <th>Grupo</th>
                               <th>Subgrupo</th>
                               <th>Valor</th>
                               <th>Comentario</th>
@@ -255,24 +250,24 @@
           <div class="input-group-addon">
             <i class="fa fa-calendar"></i>
           </div>
-          <input type="date" class="form-control pull-right" id="datepicker" name="fecha_realizacion_rutina"  min="{{date("Y-m-d")}}" value="{{date("Y-m-d")}}">
+          <input type="date" class="form-control pull-right" id="fechainicio" name="start"  min="{{date("Y-m-d")}}" value="{{date("Y-m-d")}}">
         </div>
             <!-- /.input group -->
     </div>
+
     <div class="form-group">
         <label>Fecha finalización rutina</label>
-
         <div class="input-group date">
           <div class="input-group-addon">
             <i class="fa fa-calendar"></i>
           </div>
-          <input type="date" class="form-control pull-right" id="datepicker" name="fecha_realizacion_rutina" min="2018-10-10" value="{{date("Y-m-d")}}">
+          <input type="date" class="form-control pull-right" id="fechafinal" name="end" min="" value="{{date("Y-m-d")}}">
         </div>
             <!-- /.input group -->
     </div>
     <div class="form-group">
       <label for="direccion_fab">Descripción</label>
-      <input type="text" class="form-control" id="pcomentario_detalle_caracteristica_rutina" name="pcomentario_detalle_caracteristica_rutina" value="{{old('comentario_detalle_caracteristica_rutina')}}">
+      <input type="text" class="form-control" id="descripcion_noti" name="descripcion_noti" value="{{old('descripcion_noti')}}">
     </div>
 
 
@@ -320,7 +315,29 @@
       $('.nav-tabs a[href="#tab_1-1"]').tab('show');
 	}
 </script>
+
+
+
+
 <script>
+
+
+$(document).ready(function(){
+    $("#fechainicio").change(function(){
+        //guardo en una variable el valor del INPUT
+     txts = $("#fechainicio").val();
+        //imprimo un alert del string cada que se escribe un caracter
+                $('#fechafinal').empty();
+      //  alert(txts);
+      //  $('#fechafinal').empty();
+
+
+    });
+
+
+});
+
+
 if (window.location.hash) {
   $('.nav-tabs a[href="#tab_2-2"]').tab('show');
     $('.nav-tabs a[href="#tab_1-1"]').tab('show');
@@ -336,6 +353,9 @@ function mostar3(){
   $('.nav-tabs a[href="#tab_3-3"]').tab('show');
 }
 $('#tipo_rutina').select2({
+
+});
+$('#permiso_trabajo_idpermiso_trabajo').select2({
 
 });
 $('#tipo_rutina2').select2({
@@ -367,8 +387,8 @@ $('#tipo_rutina2').select2({
   {
     idcaracteristica=$("#pidcaracteristica_rutina").val();
     caracteristica=$("#pidcaracteristica_rutina option:selected").text();
-    idsubgrupo_rutina=$("#idsubgrupo_rutina").val();
-    subgrupo_rutina=$("#idsubgrupo_rutina option:selected").text();
+    idsubgrupo_rutina=$("#pidsubgrupo_rutina").val();
+    subgrupo_rutina=$("#pidsubgrupo_rutina option:selected").text();
     idvalor_ref_rutina=$("#pidvalor_ref_rutina").val();
     valor_ref_rutina=$("#pidvalor_ref_rutina option:selected").text();
     idsubgrupo=$("#idsubgrupo_rutina").val();
