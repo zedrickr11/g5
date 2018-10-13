@@ -62,7 +62,9 @@ class EquipoIndexController extends Controller
       //rutinas
       $tiporu=tiporu::all();
       $permisotrabajo=PermisoTrabajo::all();
-      $ruman=ruman::all();
+      $ruman = ruman::all();
+
+
 
 
       $imagen_equipo=DB::table('Imagen_equipo')
@@ -87,7 +89,7 @@ class EquipoIndexController extends Controller
       return view('equipo.vista.index', compact('tiporu','permisotrabajo','ruman','equipo','proveedor','unidad_salud','area',
                   'estado','servicio_tecnico','fabricante','hospital','departamento',
                   'region','grupo','subgrupo','tipounidadsalud','TipoManual','EquipoM',
-                                                'Detalle_manual','imagen_equipo'));
+                                                'Detalle_manual','imagen_equipo','tiporu','permisotrabajo','ruman'));
 
 
       }
