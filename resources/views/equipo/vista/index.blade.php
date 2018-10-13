@@ -64,7 +64,7 @@
                 @foreach ($Detalle_manual as $de)
             <a href="{{asset('equipo/manuales/'.$de->link_detalle_manual)}}" target="_blank">{{$de->link_detalle_manual}}</a>
                 @endforeach
-             
+
             </p>
 
             <hr>
@@ -80,7 +80,7 @@
             <p></p>
             <img class="profile-user-img img-responsive " src="" alt="User profile picture">
 
-            
+
 
 
 
@@ -95,7 +95,7 @@
         <div class="nav-tabs-custom">
           <ul class="nav nav-tabs">
             <li class="active"><a href="#activity" data-toggle="tab">Inicio</a></li>
-            <li><a href="#timeline" data-toggle="tab">Crear rutina</a></li>
+            <li><a href="#timeline" data-toggle="tab">Rutinas</a></li>
             <li><a href="#settings" data-toggle="tab">Actualizar</a></li>
             <li><a href="#manuales" data-toggle="tab">Manuales</a></li>
             <li><a href="#imagen" data-toggle="tab">Imágenes</a></li>
@@ -214,98 +214,129 @@
             </div>
             <!-- /.tab-pane -->
             <div class="tab-pane" id="timeline">
-              <!-- The timeline -->
-              <ul class="timeline timeline-inverse">
-                <!-- timeline time label -->
-                <li class="time-label">
-                      <span class="bg-red">
-                        10 Feb. 2014
-                      </span>
-                </li>
-                <!-- /.timeline-label -->
-                <!-- timeline item -->
-                <li>
-                  <i class="fa fa-envelope bg-blue"></i>
+  <div class="box-body">
+  <div class="row">
 
-                  <div class="timeline-item">
-                    <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
 
-                    <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
+    <div class="nav-tabs-custom">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#rutina" data-toggle="tab">Mantenimiento</a></li>
+        <li><a href="#prueba" data-toggle="tab">Prueba</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="active tab-pane" id="rutina">
+          <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+          <h3 class="box-title"><a href="../rutina/ruman/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Agregar nueva rutina</button></a>
+          </div>
+              <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+          <h3 class="box-title"><a href="ruman/create"><button class="btn btn-warning"><span class="glyphicon glyphicon-plus"></span> Copiar rutinas</button></a>
+         </div>
+           <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+          </div>
 
-                    <div class="timeline-body">
-                      Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                      weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                      jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                      quora plaxo ideeli hulu weebly balihoo...
-                    </div>
-                    <div class="timeline-footer">
-                      <a class="btn btn-primary btn-xs">Read more</a>
-                      <a class="btn btn-danger btn-xs">Delete</a>
-                    </div>
-                  </div>
-                </li>
-                <!-- END timeline item -->
-                <!-- timeline item -->
-                <li>
-                  <i class="fa fa-user bg-aqua"></i>
 
-                  <div class="timeline-item">
-                    <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
+          @foreach($ruman as $st)
+            @if ($st->idequipo==$equipo->idequipo)
 
-                    <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request
-                    </h3>
-                  </div>
-                </li>
-                <!-- END timeline item -->
-                <!-- timeline item -->
-                <li>
-                  <i class="fa fa-comments bg-yellow"></i>
+  <div style=”padding:12px;background-color:#red;line-height:1.4;”>
 
-                  <div class="timeline-item">
-                    <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
+          <div class="box-body col-md-6">
 
-                    <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
 
-                    <div class="timeline-body">
-                      Take me to your leader!
-                      Switzerland is small and neutral!
-                      We are more like Germany, ambitious and misunderstood!
-                    </div>
-                    <div class="timeline-footer">
-                      <a class="btn btn-warning btn-flat btn-xs">View comment</a>
-                    </div>
-                  </div>
-                </li>
-                <!-- END timeline item -->
-                <!-- timeline time label -->
-                <li class="time-label">
-                      <span class="bg-green">
-                        3 Jan. 2014
-                      </span>
-                </li>
-                <!-- /.timeline-label -->
-                <!-- timeline item -->
-                <li>
-                  <i class="fa fa-camera bg-purple"></i>
 
-                  <div class="timeline-item">
-                    <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
+                      <div class="form-group">
+                        <label for="select" class="">Tipo rutina</label>
+                        <br>
 
-                    <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
+                        @foreach($tiporu as $hosp)
+                                 @if ($hosp->idtipo_rutina==$st->idtipo_rutina)
+                                 <p>{{$hosp->tipo_rutina}}</p>
 
-                    <div class="timeline-body">
-                      <img src="http://placehold.it/150x100" alt="..." class="margin">
-                      <img src="http://placehold.it/150x100" alt="..." class="margin">
-                      <img src="http://placehold.it/150x100" alt="..." class="margin">
-                      <img src="http://placehold.it/150x100" alt="..." class="margin">
-                    </div>
-                  </div>
-                </li>
-                <!-- END timeline item -->
-                <li>
-                  <i class="fa fa-clock-o bg-gray"></i>
-                </li>
-              </ul>
+
+                               @endif
+                                @endforeach
+
+                      </div>
+
+
+
+                      <div class="form-group">
+                          <label>Fecha que creo la rutina</label>
+                          <p>{{$st->fecha_realizacion_rutina}}</p>
+
+                              <!-- /.input group -->
+                      </div>
+                      <div class="form-group">
+
+                        <label for="direccion_fab">Observaciones rutina</label>
+                        <p>{{$st->observaciones_rutina}}</p>
+                        </div>
+
+
+
+
+                              </div>
+      <div class="box-body col-md-6">
+      <div class="form-group">
+              <label for="direccion_fab">Tiempo estimado rutina mantenimiento en horas</label>
+              <p>{{$st->tiempo_estimado_rutina_mantenimiento}}</p>
+
+      </div>
+
+
+            <div class="form-group">
+
+              <label for="direccion_fab">Responsable de area de rutina</label>
+              <p>{{$st->responsable_area_rutina_mantenimiento}}</p>
+            </div>
+
+
+
+            <div class="form-group">
+              <label for="select" class="">Permiso de trabajo</label>
+              <br>
+
+              @foreach($permisotrabajo as $hosp)
+                       @if ($hosp->idpermiso_trabajo==$st->idpermiso_trabajo)
+                       <p>{{$hosp->num_permiso}}</p>
+
+
+                     @endif
+                      @endforeach
+
+            </div>
+
+            <div class="form-group">
+
+              <label for="direccion_fab">Estado rutina</label>
+              <p>ACTIVO</p>
+            <!--  <p>{{$st->estado_rutina}}</p> -->
+
+            </div>
+
+      </div>
+  </div>
+
+      @endif
+       @endforeach
+
+
+
+
+
+                    <!--se acabo la rutina mantenimiento -->
+        </div>
+
+  <div class="tab-pane" id="prueba">
+  </div>
+</div>
+</div>
+
+
+
+
+  </div>
+    </div>
             </div>
             <!-- /.tab-pane -->
 
@@ -738,124 +769,55 @@
 
             <div class="tab-pane" id="manuales">
 
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                      <div class="box">
-                        <div class="box-header">
-                        <h3 class="box-title">Listado de Manuales
-                        
-                        <button type="button" class="btn btn-outline " id="amodal">AGREGAR</button>
-            
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                          <div class="col-md-12">
-                            <div class="table-responsive">
-                              <table  class="table table-bordered table-striped">
-                                <thead>
-                                <tr>
-                                  <th>Id</th>
-                                  <th>Nombre</th>
-                                  <th>Observacion</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                         @foreach ($Detalle_manual as $de)
-                          <tr>
-                            <td>{{ $de->idtipomanual}}</td>
-                            <td>{{ $de->link_detalle_manual}}</td>
-                            <td>{{ $de->observacion_detalle_manual}}</td>                         
-                          </tr>
-                          @endforeach
-                                </tbody>
-                                 <tfoot>
-                                </tfoot>
-                        </table>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-            
+        
 
 
 
 
 
 
-                  <div class="modal modal-success fade" id="modal-success">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          
-                          <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">AGREGAR MANUAL </h4>
-                          </div>
-                         
-                          <div class="modal-body">
-                            
-                              
-                          
-                          </div>
-
-                        </div>
-                          
-                          <div class="modal-footer">
-                                  
-                          </div>
-                            
-                        
-                        </div>
-                       
-                      </div>
-                     
-                    </div>
 
 
-              
-            <!-- ingresar manual --> 
 
             <div class="row">
                 <div class="form-group">
                   <form role="form" method="POST" action="{{route('store')}}" enctype="multipart/form-data" >
                               {!! csrf_field() !!}
-                     
+
                       <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                     
+
                         <div class="form-group">
 
                           Tipo de manual<br>
-                         
+
                           <select name="idtipomanual" class="form-control" >
                               <option value="0" disabled selected>=== Selecciona un tipo de manual ===</option>
                             @foreach($TipoManual as $ti)
-                             
+
                               <option value="{{$ti->idtipomanual}}">{{$ti->nombre_tipo_manual}}</option>
-                          
+
                                @endforeach
                             </select>
-                            
+
                           <input type="hidden" name="idequipo" class="form-control" value="{{$equipo->idequipo}}" >
                           Observacion<br>
                           <input type="text" name="observacion_detalle_manual" class="form-control">
 
                           Ingrese manual<br>
                           <input type="file" name="imagen" class="form-control">
-                  
-                        
+
+
                         </div>
-                      
-                        
+
+
                               <button class="btn btn-primary" type="submit">Guardar</button>
                               <button class="btn btn-danger" type="reset">Cancelar</button>
-                        
+
                       </div>
                   </form>
               </div>
             </div>
-            
+
 
 
           </div>
@@ -951,7 +913,7 @@
 
      $("#modal-success").modal();
   }
- 
+
 
   </script>
 @endsection

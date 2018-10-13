@@ -33,6 +33,9 @@ use App\Detalle_manual;
 USE App\CaracTec;
 USE App\subcaractec;
 USE App\valorreftec;
+USE App\ruman;
+use App\tiporu;
+use App\PermisoTrabajo;
 use Barryvdh\DomPDF\Facade as PDF;
 
 use Carbon\Carbon;
@@ -55,6 +58,12 @@ class EquipoIndexController extends Controller
       $grupo=Grupo::all();
       $subgrupo=Subgrupo::all();
       $tipounidadsalud=TipoUnidadSalud::all();
+      //rutinas
+      $tiporu=tiporu::all();
+      $permisotrabajo=PermisoTrabajo::all();
+      $ruman = ruman::all();
+    //   $ruman =ruman::all();
+    //  $ruman=DB::table('rutina_mantenimiento')->where('idequipo', idequipo)->get();
 
 
       $imagen_equipo=DB::table('Imagen_equipo')
@@ -84,9 +93,9 @@ class EquipoIndexController extends Controller
 
       }
 
-   
+
     public function store(Request $request){
-      
+
       $manual = new Detalle_manual;
       $manual->idtipomanual=$request->get('idtipomanual');
       $manual->idequipo=$request->get('idequipo');
@@ -103,5 +112,5 @@ class EquipoIndexController extends Controller
 
     }
 
-    
+
 }
