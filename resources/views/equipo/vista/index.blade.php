@@ -2,7 +2,7 @@
 @section ('contenido')
   <section class="content-header">
     <h1>
-      Vista General <a href="{{route('equipo.index')}}">
+      <a href="{{route('equipo.index')}}">Vista General 
         <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
       </a>
     </h1>
