@@ -22,6 +22,7 @@ return array(
     'App\\DetalleTipoTrabajoPermiso' => $baseDir . '/app/DetalleTipoTrabajoPermiso.php',
     'App\\Detalle_ingreso_insumo' => $baseDir . '/app/Detalle_ingreso_insumo.php',
     'App\\Detalle_ingreso_repuesto' => $baseDir . '/app/Detalle_ingreso_repuesto.php',
+    'App\\Detalle_manual' => $baseDir . '/app/Detalle_manual.php',
     'App\\Equipo' => $baseDir . '/app/Equipo.php',
     'App\\Estado' => $baseDir . '/app/Estado.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',

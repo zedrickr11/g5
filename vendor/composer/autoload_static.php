@@ -385,6 +385,7 @@ class ComposerStaticInit2895ef693b0520ba52423d216455e6b4
         'App\\DetalleTipoTrabajoPermiso' => __DIR__ . '/../..' . '/app/DetalleTipoTrabajoPermiso.php',
         'App\\Detalle_ingreso_insumo' => __DIR__ . '/../..' . '/app/Detalle_ingreso_insumo.php',
         'App\\Detalle_ingreso_repuesto' => __DIR__ . '/../..' . '/app/Detalle_ingreso_repuesto.php',
+        'App\\Detalle_manual' => __DIR__ . '/../..' . '/app/Detalle_manual.php',
         'App\\Equipo' => __DIR__ . '/../..' . '/app/Equipo.php',
         'App\\Estado' => __DIR__ . '/../..' . '/app/Estado.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',

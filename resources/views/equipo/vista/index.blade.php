@@ -64,7 +64,7 @@
                 @foreach ($Detalle_manual as $de)
             <a href="{{asset('equipo/manuales/'.$de->link_detalle_manual)}}" target="_blank">{{$de->link_detalle_manual}}</a>
                 @endforeach
-             
+
             </p>
 
             <hr>
@@ -80,7 +80,7 @@
             <p></p>
             <img class="profile-user-img img-responsive " src="" alt="User profile picture">
 
-            
+
 
 
 
@@ -241,42 +241,43 @@
   <div style=”padding:12px;background-color:#red;line-height:1.4;”>
 
           <div class="box-body col-md-6">
+<h3>Notificación</h3>
 
-
-
-                      <div class="form-group">
-                        <label for="select" class="">Tipo rutina</label>
-                        <br>
-
-                        @foreach($tiporu as $hosp)
-                                 @if ($hosp->idtipo_rutina==$st->idtipo_rutina)
-                                 <p>{{$hosp->tipo_rutina}}</p>
-
-
-                               @endif
-                                @endforeach
-
-                      </div>
-
-
-
-                      <div class="form-group">
-                          <label>Fecha que creo la rutina</label>
-                          <p>{{$st->fecha_realizacion_rutina}}</p>
-
-                              <!-- /.input group -->
-                      </div>
-                      <div class="form-group">
-
-                        <label for="direccion_fab">Observaciones rutina</label>
-                        <p>{{$st->observaciones_rutina}}</p>
-                        </div>
 
 
 
 
                               </div>
       <div class="box-body col-md-6">
+<h3>Rutina</h3>
+                              <div class="form-group">
+                                <label for="select" class="">Tipo rutina</label>
+                                <br>
+
+                                @foreach($tiporu as $hosp)
+                                         @if ($hosp->idtipo_rutina==$st->idtipo_rutina)
+                                         <p>{{$hosp->tipo_rutina}}</p>
+
+
+                                       @endif
+                                        @endforeach
+
+                              </div>
+
+
+
+                              <div class="form-group">
+                                  <label>Fecha que creo la rutina</label>
+                                  <p>{{$st->fecha_realizacion_rutina}}</p>
+
+                                      <!-- /.input group -->
+                              </div>
+                              <div class="form-group">
+
+                                <label for="direccion_fab">Observaciones rutina</label>
+                                <p>{{$st->observaciones_rutina}}</p>
+                                </div>
+
       <div class="form-group">
               <label for="direccion_fab">Tiempo estimado rutina mantenimiento en horas</label>
               <p>{{$st->tiempo_estimado_rutina_mantenimiento}}</p>
@@ -320,24 +321,23 @@
       @endif
        @endforeach
 
+      </div>
 
 
 
 
-                    <!--se acabo la rutina mantenimiento -->
-        </div>
 
-  <div class="tab-pane" id="prueba">
-  </div>
-</div>
-</div>
+         <div class="tab-pane" id="prueba">
 
 
 
-
-  </div>
-    </div>
             </div>
+          </div>        <!--se acabo la rutina mantenimiento -->
+            </div>
+          </div>
+  </div>
+          </div>
+
             <!-- /.tab-pane -->
 
             <div class="tab-pane" id="settings">
@@ -774,9 +774,9 @@
                       <div class="box">
                         <div class="box-header">
                         <h3 class="box-title">Listado de Manuales
-                        
+
                         <button type="button" class="btn btn-outline " id="amodal">AGREGAR</button>
-            
+
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -795,7 +795,7 @@
                           <tr>
                             <td>{{ $de->idtipomanual}}</td>
                             <td>{{ $de->link_detalle_manual}}</td>
-                            <td>{{ $de->observacion_detalle_manual}}</td>                         
+                            <td>{{ $de->observacion_detalle_manual}}</td>
                           </tr>
                           @endforeach
                                 </tbody>
@@ -808,7 +808,7 @@
                       </div>
                     </div>
                   </div>
-            
+
 
 
 
@@ -818,75 +818,75 @@
                   <div class="modal modal-success fade" id="modal-success">
                       <div class="modal-dialog">
                         <div class="modal-content">
-                          
+
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title">AGREGAR MANUAL </h4>
                           </div>
-                         
+
                           <div class="modal-body">
-                            
-                              
-                          
+
+
+
                           </div>
 
                         </div>
-                          
+
                           <div class="modal-footer">
-                                  
+
                           </div>
-                            
-                        
+
+
                         </div>
-                       
+
                       </div>
-                     
+
                     </div>
 
 
-              
-            <!-- ingresar manual --> 
+
+            <!-- ingresar manual -->
 
             <div class="row">
                 <div class="form-group">
                   <form role="form" method="POST" action="{{route('store')}}" enctype="multipart/form-data" >
                               {!! csrf_field() !!}
-                     
+
                       <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                     
+
                         <div class="form-group">
 
                           Tipo de manual<br>
-                         
+
                           <select name="idtipomanual" class="form-control" >
                               <option value="0" disabled selected>=== Selecciona un tipo de manual ===</option>
                             @foreach($TipoManual as $ti)
-                             
+
                               <option value="{{$ti->idtipomanual}}">{{$ti->nombre_tipo_manual}}</option>
-                          
+
                                @endforeach
                             </select>
-                            
+
                           <input type="hidden" name="idequipo" class="form-control" value="{{$equipo->idequipo}}" >
                           Observacion<br>
                           <input type="text" name="observacion_detalle_manual" class="form-control">
 
                           Ingrese manual<br>
                           <input type="file" name="imagen" class="form-control">
-                  
-                        
+
+
                         </div>
-                      
-                        
+
+
                               <button class="btn btn-primary" type="submit">Guardar</button>
                               <button class="btn btn-danger" type="reset">Cancelar</button>
-                        
+
                       </div>
                   </form>
               </div>
             </div>
-            
+
 
 
           </div>
@@ -982,7 +982,7 @@
 
      $("#modal-success").modal();
   }
- 
+
 
   </script>
 @endsection
