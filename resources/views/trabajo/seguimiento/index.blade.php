@@ -15,7 +15,7 @@
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 <div class="box">
 <div class="box-header">
-<h3 class="box-title">Listado de  seguimientos<a href="seguimiento/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
+<h3 class="box-title">Listado de  seguimientos<a href="{{route('seguimiento.create')}}"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
 <a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
 </div>
 <!-- /.box-header -->
@@ -60,7 +60,8 @@
 <tfoot>
 </tfoot>
 </table>
-{!!$seguimientos->links() !!}
+
+{!! $seguimientos->appends(['searchText'=>request('searchText')])->links() !!}
 </div>
 </div>
 </div>

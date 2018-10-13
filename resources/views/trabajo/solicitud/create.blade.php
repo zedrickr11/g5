@@ -161,6 +161,16 @@ Trabajo
   </div>
   <div class="box-body col-md-12">
     <div class="form-group">
+    <label>Equipo</label>
+    <select name="idequipo" class="form-control select2" id="idequipo" data-live-search="true">
+    @foreach($equipos as $eq)
+    <option value="{{$eq->idequipo}}">{{$eq->equipo}}</option>
+    @endforeach
+    </select>
+    </div>
+  </div>
+  <div class="box-body col-md-12">
+    <div class="form-group">
     <label for="direccion_fab">Descripcion de Solicitud</label>
     <input type="text" class="form-control" name="descripcion" value="{{old('descripcion')}}">
     </div>
@@ -201,6 +211,9 @@ Trabajo
 $('#pidtipo').select2({
   theme: "classic"
 });
+$('#idequipo').select2({
+  theme: "classic"
+});
 $(document).ready(function(){
   $('#bt_add').click(function(){
     agregar();
@@ -232,7 +245,7 @@ function agregar()
   }
 }
 function limpiar(){
-  $("#pcantidad").val("");
+  $("#pdescripcion").val("");
 
 }
 
