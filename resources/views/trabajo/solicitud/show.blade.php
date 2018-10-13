@@ -63,9 +63,13 @@
                      <label for="proveedor">Edificio</label>
                      <p>{{$solicitudes->edificio_solitud_trabajo}}</p>
                    </div>
-
-     </div>
-
+      </div>
+   <div class="box-body col-md-6">
+     <div class="form-group">
+           <label for="proveedor">Equipo</label>
+           <p>{{$solicitudes->equipo}}</p>
+         </div>
+   </div>
 
 
     </div>

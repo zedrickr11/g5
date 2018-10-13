@@ -27,7 +27,7 @@ class PermisoTrabajoFormRequest extends FormRequest
             'fecha'=>'required',
             'num_permiso'=>'required|numeric',
             'descripcion'=>'required|max:255',
-            'solitud_trabajo_idsolitud_trabajo'=>'required',
+            'idsolitud_trabajo'=>'required',
         ];
     }
 }
