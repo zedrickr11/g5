@@ -243,7 +243,8 @@
           <div class="box-body col-md-6">
     <h3>Notificación</h3>
 
-hsdfhbhsdabb
+hsdfhbhsdabbds
+btn-group
 
 
 
