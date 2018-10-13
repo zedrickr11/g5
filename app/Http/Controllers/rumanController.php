@@ -14,6 +14,7 @@ use App\caracru;
 use App\subru;
 use App\valrefru;
 use App\detcaracru;
+
 use Carbon\Carbon;
 use Response;
 use Illuminate\Support\Collection;

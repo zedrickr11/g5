@@ -78,7 +78,9 @@
 
             <strong><i class="fa  fa-qrcode margin-r-5"></i> Código QR</strong>
             <p></p>
-            <img class="profile-user-img img-responsive " src="" alt="User profile picture">
+            <img class="profile-user-img img-responsive " src="data:image/png;base64, {!! base64_encode(QrCode::format('png')
+                        ->size(500)
+                        ->generate(Request::url())) !!} " alt="User profile picture">
 
 
 
@@ -241,42 +243,43 @@
   <div style=”padding:12px;background-color:#red;line-height:1.4;”>
 
           <div class="box-body col-md-6">
+    <h3>Notificación</h3>
 
-
-
-                      <div class="form-group">
-                        <label for="select" class="">Tipo rutina</label>
-                        <br>
-
-                        @foreach($tiporu as $hosp)
-                                 @if ($hosp->idtipo_rutina==$st->idtipo_rutina)
-                                 <p>{{$hosp->tipo_rutina}}</p>
-
-
-                               @endif
-                                @endforeach
-
-                      </div>
-
-
-
-                      <div class="form-group">
-                          <label>Fecha que creo la rutina</label>
-                          <p>{{$st->fecha_realizacion_rutina}}</p>
-
-                              <!-- /.input group -->
-                      </div>
-                      <div class="form-group">
-
-                        <label for="direccion_fab">Observaciones rutina</label>
-                        <p>{{$st->observaciones_rutina}}</p>
-                        </div>
-
+hsdfhbhsdabbds
+btn-group
 
 
 
                               </div>
       <div class="box-body col-md-6">
+<h3>Rutina</h3>
+                              <div class="form-group">
+                                <label for="select" class="">Tipo rutina</label>
+                                <br>
+
+                                @foreach($tiporu as $hosp)
+                                         @if ($hosp->idtipo_rutina==$st->idtipo_rutina)
+                                         <p>{{$hosp->tipo_rutina}}</p>
+
+
+                                       @endif
+                                        @endforeach
+                              </div>
+
+
+
+                              <div class="form-group">
+                                  <label>Fecha que creo la rutina</label>
+                                  <p>{{$st->fecha_realizacion_rutina}}</p>
+
+                                      <!-- /.input group -->
+                              </div>
+                              <div class="form-group">
+
+                                <label for="direccion_fab">Observaciones rutina</label>
+                                <p>{{$st->observaciones_rutina}}</p>
+                                </div>
+
       <div class="form-group">
               <label for="direccion_fab">Tiempo estimado rutina mantenimiento en horas</label>
               <p>{{$st->tiempo_estimado_rutina_mantenimiento}}</p>
@@ -320,24 +323,23 @@
       @endif
        @endforeach
 
+      </div>
 
 
 
 
-                    <!--se acabo la rutina mantenimiento -->
-        </div>
 
-  <div class="tab-pane" id="prueba">
-  </div>
-</div>
-</div>
+         <div class="tab-pane" id="prueba">
 
 
 
-
-  </div>
-    </div>
             </div>
+          </div>        <!--se acabo la rutina mantenimiento -->
+            </div>
+          </div>
+  </div>
+          </div>
+
             <!-- /.tab-pane -->
 
             <div class="tab-pane" id="settings">
@@ -769,15 +771,7 @@
 
             <div class="tab-pane" id="manuales">
 
-        
-
-
-
-
-
-
-
-
+            <!-- ingresar manual -->
 
             <div class="row">
                 <div class="form-group">
