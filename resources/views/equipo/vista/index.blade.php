@@ -241,9 +241,9 @@
   <div style=”padding:12px;background-color:#red;line-height:1.4;”>
 
           <div class="box-body col-md-6">
-<h3>Notificación</h3>
+    <h3>Notificación</h3>
 
-
+hsdfhbhsdabb
 
 
 
@@ -261,7 +261,6 @@
 
                                        @endif
                                         @endforeach
-
                               </div>
 
 
@@ -769,7 +768,6 @@
 
             <div class="tab-pane" id="manuales">
 
-<<<<<<< HEAD
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <div class="box">
@@ -811,15 +809,11 @@
                   </div>
 
 
-=======
-        
->>>>>>> a974f43a4d9b7cfa51c93e7ff514ce72968835c2
 
 
 
 
 
-<<<<<<< HEAD
                   <div class="modal modal-success fade" id="modal-success">
                       <div class="modal-dialog">
                         <div class="modal-content">
@@ -852,11 +846,6 @@
 
 
             <!-- ingresar manual -->
-=======
-
-
-
->>>>>>> a974f43a4d9b7cfa51c93e7ff514ce72968835c2
 
             <div class="row">
                 <div class="form-group">
