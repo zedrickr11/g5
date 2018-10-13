@@ -36,6 +36,7 @@ USE App\valorreftec;
 USE App\ruman;
 use App\tiporu;
 use App\PermisoTrabajo;
+use App\detcaractec;
 use Barryvdh\DomPDF\Facade as PDF;
 
 use Carbon\Carbon;

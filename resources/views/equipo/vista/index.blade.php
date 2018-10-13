@@ -243,8 +243,7 @@
           <div class="box-body col-md-6">
     <h3>Notificación</h3>
 
-hsdfhbhsdabbds
-btn-group
+
 
 
 
@@ -317,6 +316,32 @@ btn-group
 
       </div>
   </div>
+
+  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+      <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
+          <thead style="background-color:#2ab863">
+
+              <th>Artículo</th>
+              <th>Cantidad</th>
+
+
+          </thead>
+          <tfoot>
+
+
+          </tfoot>
+          <tbody>
+              @foreach($detalles as $det)
+              <tr>
+                  <td>{{$det->articulo}}</td>
+                  <td>{{$det->cantidad}}</td>
+
+
+              </tr>
+              @endforeach
+          </tbody>
+      </table>
+   </div>
 
       @endif
        @endforeach
