@@ -73,8 +73,11 @@ class EquipoIndexController extends Controller
 
       $TipoManual = TipoManual::all();
       $EquipoM = Equipo::all();
-      $Detalle_manual = Detalle_manual::all();
-
+      
+      $Detalle_manual =DB::table('Detalle_manual')
+      ->select('*')
+      ->where('idequipo','=',$id)
+      ->get();
 
       //$equipo=Equipo::findOrFail($id);
       $equipo=DB::table('equipo as e')
