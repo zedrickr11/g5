@@ -15,7 +15,7 @@
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 <div class="box">
 <div class="box-header">
-<h3 class="box-title">Listado de solicitudes <a href="solicitud/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
+<h3 class="box-title">Listado de solicitudes <a href="{{route('solicitud.create')}}"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
  </h3>
 </div>
 <!-- /.box-header -->
@@ -62,7 +62,8 @@
 <tfoot>
 </tfoot>
 </table>
-{!! $solicitudes->links() !!}
+
+ {!! $solicitudes->appends(['searchText'=>request('searchText')])->links() !!}
 </div>
 </div>
 </div>

@@ -16,7 +16,7 @@
 <div class="box">
 <div class="box-header">
 <h3 class="box-title">Listado de permisos <a href="permiso/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
-<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
+</h3>
 </div>
 <!-- /.box-header -->
 <div class="box-body">
@@ -44,9 +44,7 @@
 <td>{{ $per->fecha}}</td>
 
 <td>
-<a href="{{route('permiso.edit', $per->idpermiso_trabajo)}}">
-<button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-cog"></span> </button>
-</a>
+
 <a href="{{route('permiso.show',$per->idpermiso_trabajo)}}">
 <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></span> </button>
 </a>

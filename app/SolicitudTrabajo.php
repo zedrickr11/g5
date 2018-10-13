@@ -20,6 +20,7 @@ class SolicitudTrabajo extends Model
     'puesto_dirigido_solitud_trabajo',
     'edificio_solitud_trabajo',
     'jefe_solitud_trabajo',
+    'idequipo',
   ];
 
   protected $guarded =[
