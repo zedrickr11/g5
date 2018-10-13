@@ -73,7 +73,8 @@
 
                   </tfoot>
           </table>
-            {!! $tipos->links() !!}
+          {!!  $tipos->appends(['searchText'=>request('searchText')])->links() !!}
+
               </div>
               </div>
 

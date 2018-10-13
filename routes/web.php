@@ -37,6 +37,7 @@ Route::get('equipo/equipo/rutina/{id}',[
 ]);
 //index del Equipo
 Route::get('equipo/principal/{id}',['as'=>'actualizar','uses' => 'EquipoIndexController@index']);
+Route::resource('equipo/equipo/imagen','Imagen_equipoController');
 
 
 
@@ -132,3 +133,7 @@ Route::resource('compras/repuesto-ingreso','Ingreso_repuestoController');
 
 //calendario
 Route::get('/json-calendario','CalendarioController@llenarcalendario');
+
+
+//manuales
+Route::resource('equipo/principal/','EquipoIndexController');

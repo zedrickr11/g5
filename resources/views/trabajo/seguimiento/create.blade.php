@@ -51,15 +51,15 @@ Trabajo
 </div>
 
 
-
 <div class="form-group">
-<label for="select">No de Solicitud</label>
-<select name="solitud_trabajo_idsolitud_trabajo" class="form-control" id="select">
-@foreach($solicitudes as $s)
-  <option value="{{$s->idsolitud_trabajo}}">{{$s->numero}}</option>
-   @endforeach
-</select>
-</div>
+      <label for="solicitud">No de Solicitud</label>
+      <select name="solitud_trabajo_idsolitud_trabajo" id="solitud_trabajo_idsolitud_trabajo" class="form-control selectpicker" data-live-search="true">
+        @foreach($solicitudes as $s)
+          <option value="{{$s->idsolitud_trabajo}}">{{$s->numero}}</option>
+           @endforeach
+        </select>
+    </div>
+
 
 
 </div>
@@ -77,4 +77,12 @@ Trabajo
 </div>
 </div>
 </section>
+<script src="{{asset('ajax/jquery.min.js')}}"></script>
+<script src="{{asset('ajax/bootstrap.min.js')}}"></script>
+<script src="{{asset('ajax/select2.min.js')}}"></script>
+<script>
+$('#solitud_trabajo_idsolitud_trabajo').select2({
+  theme: "classic"
+});
+</script>
 @endsection

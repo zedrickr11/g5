@@ -2,12 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\SolicitudTrabajo;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+
+
+
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input;
 use App\Http\Requests\SolicitudTrabajoFormRequest;
+use App\SolicitudTrabajo;
+use App\DetalleTipoTrabajo;
+use App\DetalleAreaMantenimiento;
+use App\Http\Controllers\Controller;
 use DB;
 use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Collection;
+
 class SolicitudTrabajoController extends Controller
 {
     /**
@@ -36,7 +45,14 @@ class SolicitudTrabajoController extends Controller
      */
      public function create()
      {
-           return view("trabajo.solicitud.create");
+
+           $areas = DB::table('area_mantenimiento as ar')
+                 ->select(DB::raw('CONCAT(ar.area_mantenimiento) AS area'),'ar.idarea_mantenimiento')
+                 ->get();
+           $tipos = DB::table('tipo_trabajo as tp')
+                 ->select(DB::raw('CONCAT(tp.nombre_tipo) AS tipo'),'tp.idtipo_trabajo')
+                 ->get();
+             return view("trabajo.solicitud.create",["tipos"=>$tipos,"areas"=>$areas]);
      }
 
      /**
@@ -45,10 +61,60 @@ class SolicitudTrabajoController extends Controller
       * @param  \Illuminate\Http\Request  $request
       * @return \Illuminate\Http\Response
       */
-      public function store(SolicitudTrabajoFormRequest $request)
+      public function store (SolicitudTrabajoFormRequest $request)
       {
-        SolicitudTrabajo::create($request->all());
-        return redirect()->route('solicitud.index');
+         try{
+              DB::beginTransaction();
+                $solicitudes=new SolicitudTrabajo;
+                $solicitudes->numero=$request->get('numero');
+                $solicitudes->fecha=$request->get('fecha');
+                $solicitudes->descripcion=$request->get('descripcion');
+                $solicitudes->compra_material=$request->get('compra_material');
+                $solicitudes->contratar_trabajo=$request->get('contratar_trabajo');
+                $solicitudes->dirigido_solitud_trabajo=$request->get('dirigido_solitud_trabajo');
+                $solicitudes->puesto_dirigido_solitud_trabajo=$request->get('puesto_dirigido_solitud_trabajo');
+                $solicitudes->edificio_solitud_trabajo=$request->get('edificio_solitud_trabajo');
+                $solicitudes->jefe_solitud_trabajo=$request->get('jefe_solitud_trabajo');
+                $solicitudes->save();
+
+                $idtipo_trabajo = $request->get('idtipo_trabajo');
+                $descrpcion_detalle_tipo_trabajo = $request->get('descrpcion_detalle_tipo_trabajo');
+                $estado = $request->get('estado');
+
+                $cont = 0;
+
+                while($cont <count($idtipo_trabajo)){
+                    $detalle = new DetalleTipoTrabajo();
+                    $detalle->idsolitud_trabajo = $solicitudes->idsolitud_trabajo;
+                    $detalle->idtipo_trabajo= $idtipo_trabajo[$cont];
+                    $detalle->descrpcion_detalle_tipo_trabajo= $descrpcion_detalle_tipo_trabajo[$cont];
+                    $detalle->estado= $estado[$cont];
+                    $detalle->save();
+                    $cont=$cont+1;
+                }
+
+                $idarea_mantenimiento = $request->get('idarea_mantenimiento');
+                $estado_detalle_area_matenimiento = $request->get('estado_detalle_area_matenimiento');
+
+                $conts = 0;
+
+                while($conts <count($idarea_mantenimiento)){
+                    $detalles = new DetalleAreaMantenimiento();
+                    $detalles->idsolitud_trabajo = $solicitudes->idsolitud_trabajo;
+                    $detalles->idarea_mantenimiento= $idarea_mantenimiento[$conts];
+                    $detalles->estado_detalle_area_matenimiento = $estado_detalle_area_matenimiento[$conts];
+                    $detalles->save();
+                    $conts=$cont+1;
+                }
+
+                DB::commit();
+
+              }catch(\Exception $e)
+              {
+                  DB::rollback();
+              }
+
+              return Redirect::to('trabajo/solicitud');
       }
 
 
@@ -60,8 +126,23 @@ class SolicitudTrabajoController extends Controller
      */
      public function show($id)
      {
-       $solicitud=SolicitudTrabajo::findOrFail($id);
-       return view('trabajo.solicitud.show', compact('solicitud'));
+       $solicitudes=DB::table('solitud_trabajo as s')
+             ->join('detalle_tipo_trabajo as di','s.idsolitud_trabajo','=','di.idsolitud_trabajo')
+             ->select('s.idsolitud_trabajo','s.numero','s.fecha','s.descripcion','s.compra_material','s.contratar_trabajo','s.dirigido_solitud_trabajo','s.puesto_dirigido_solitud_trabajo','s.edificio_solitud_trabajo','s.jefe_solitud_trabajo')
+             ->where('s.idsolitud_trabajo','=',$id)
+             ->first();
+        $detalles=DB::table('detalle_tipo_trabajo as d')
+             ->join('tipo_trabajo as t','d.idtipo_trabajo','=','t.idtipo_trabajo')
+             ->select('t.nombre_tipo as tipo','d.descrpcion_detalle_tipo_trabajo','d.estado')
+             ->where('d.idsolitud_trabajo','=',$id)
+             ->get();
+      $detalless=DB::table('detalle_area_matenimiento as d')
+             ->join('area_mantenimiento as t','d.idarea_mantenimiento','=','t.idarea_mantenimiento')
+             ->select('t.area_mantenimiento as area')
+             ->where('d.idsolitud_trabajo','=',$id)
+             ->get();
+return view("trabajo.solicitud.show",["solicitudes"=>$solicitudes,"detalles"=>$detalles,"detalless"=>$detalless]);
+
      }
 
 

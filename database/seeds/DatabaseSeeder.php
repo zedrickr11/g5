@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PrecaucionResponsableTableSeeder::class);
         $this->call(NaturalezaPeligroTableSeeder::class);
         $this->call(TipoTrabajoTableSeeder::class);
+        $this->call(AreaMantenimientoTableSeeder::class);
 
 
     }

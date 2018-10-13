@@ -23,7 +23,7 @@ class HospitalController extends Controller
           $hospitales=DB::table('hospital as h')
           ->select('*')
           ->where('hospital','LIKE','%'.$query.'%')
-          ->orderBy('idhospital','desc')
+          ->orderBy('idhospital','asc')
           ->paginate(10);
   return view('hospital.hospitales.index', ["hospitales"=>$hospitales,"searchText"=>$query]);
       }

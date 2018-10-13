@@ -12,6 +12,7 @@ use App\Http\Requests\EquipoFormRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 
+use App\Imagen_equipo;
 use App\Proveedor;
 use App\UnidadSalud;
 use App\Area;
@@ -27,6 +28,8 @@ use App\Conf_corr;
 use App\TipoUnidadSalud;
 use App\fichatecnica;
 use App\detcaractec;
+use App\TipoManual;
+use App\Detalle_manual;
 USE App\CaracTec;
 USE App\subcaractec;
 USE App\valorreftec;
@@ -63,6 +66,16 @@ class EquipoIndexController extends Controller
     //  $ruman=DB::table('rutina_mantenimiento')->where('idequipo', idequipo)->get();
 
 
+      $imagen_equipo=DB::table('Imagen_equipo')
+      ->select('*')
+      ->where('idequipo','=',$id)
+      ->get();
+
+      $TipoManual = TipoManual::all();
+      $EquipoM = Equipo::all();
+      $Detalle_manual = Detalle_manual::all();
+
+
       //$equipo=Equipo::findOrFail($id);
       $equipo=DB::table('equipo as e')
         ->join('subgrupo as s','s.idsubgrupo','=','e.idsubgrupo')
@@ -72,9 +85,32 @@ class EquipoIndexController extends Controller
         ->where('e.idequipo','=',$id)
         ->first();
 
-      return view('equipo.vista.index', compact('ruman','equipo','proveedor','unidad_salud','area',
+      return view('equipo.vista.index', compact('equipo','proveedor','unidad_salud','area',
                   'estado','servicio_tecnico','fabricante','hospital','departamento',
-                  'region','grupo','subgrupo','tipounidadsalud','tiporu','permisotrabajo'));
+                  'region','grupo','subgrupo','tipounidadsalud','TipoManual','EquipoM',
+                                                'Detalle_manual','imagen_equipo'));
+
+
+      }
+
+
+    public function store(Request $request){
+
+      $manual = new Detalle_manual;
+      $manual->idtipomanual=$request->get('idtipomanual');
+      $manual->idequipo=$request->get('idequipo');
+      $manual->observacion_detalle_manual=$request->get('observacion_detalle_manual');
+
+      if (Input::hasFile('imagen')){
+        $file=Input::file('imagen');
+        $file->move(public_path().'/equipo/manuales',$file->getClientOriginalName());
+          $manual->link_detalle_manual=$file->getClientOriginalName();
+      }
+
+      $manual->save();
+      return back();
 
     }
+
+
 }
