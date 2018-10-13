@@ -33,6 +33,9 @@ use App\Detalle_manual;
 USE App\CaracTec;
 USE App\subcaractec;
 USE App\valorreftec;
+USE App\ruman;
+use App\tiporu;
+use App\PermisoTrabajo;
 use Barryvdh\DomPDF\Facade as PDF;
 
 use Carbon\Carbon;
@@ -55,6 +58,12 @@ class EquipoIndexController extends Controller
       $grupo=Grupo::all();
       $subgrupo=Subgrupo::all();
       $tipounidadsalud=TipoUnidadSalud::all();
+      //rutinas
+      $tiporu=tiporu::all();
+      $permisotrabajo=PermisoTrabajo::all();
+      $ruman = ruman::all();
+
+
 
 
       $imagen_equipo=DB::table('Imagen_equipo')
@@ -76,17 +85,17 @@ class EquipoIndexController extends Controller
         ->where('e.idequipo','=',$id)
         ->first();
 
-      return view('equipo.vista.index', compact('equipo','proveedor','unidad_salud','area',
+      return view('equipo.vista.index', compact('tiporu','permisotrabajo','ruman','equipo','proveedor','unidad_salud','area',
                   'estado','servicio_tecnico','fabricante','hospital','departamento',
                   'region','grupo','subgrupo','tipounidadsalud','TipoManual','EquipoM',
-                                                'Detalle_manual','imagen_equipo'));
+                                                'Detalle_manual','imagen_equipo','tiporu','permisotrabajo','ruman'));
 
 
       }
 
-   
+
     public function store(Request $request){
-      
+
       $manual = new Detalle_manual;
       $manual->idtipomanual=$request->get('idtipomanual');
       $manual->idequipo=$request->get('idequipo');
@@ -103,5 +112,5 @@ class EquipoIndexController extends Controller
 
     }
 
-    
+
 }
