@@ -26,10 +26,22 @@ Trabajo
 <form role="form" method="POST" action="{{route('permiso.store')}}" >
 {!! csrf_field() !!}
       <div class="box-body col-md-12">
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+      @if (count($errors)>0)
+      <div class="alert alert-danger">
+      <ul>
+      @foreach ($errors->all() as $error)
+        <li>{{$error}}</li>
+      @endforeach
+      </ul>
+      </div>
+      @endif
+      </div>
 <div class="box-body col-md-6">
   <div class="form-group">
 <label for="direccion_fab">No de permiso</label>
-<input type="text" class="form-control" name="num_permiso" value="{{old('num_permiso')}}">
+<input type="text" class="form-control" readonly name="num_permiso" value="{{$numeropermiso->num_permiso+1}} ">
+
 </div>
 <div class="form-group">
 <label for="direccion_fab">Descripción</label>
@@ -46,15 +58,7 @@ Trabajo
              @endforeach
           </select>
       </div>
-      <div class="form-group">
-      <label>Fecha</label>
-      <div class="input-group date">
-      <div class="input-group-addon">
-      <i class="fa fa-calendar"></i>
-      </div>
-      <input type="date" class="form-control pull-right" id="datepicker" name="fecha" value="{{old('fecha')}}">
-      </div>
-      </div>
+
 </div>
 
 <div class="box-body col-md-12">
@@ -193,17 +197,7 @@ Trabajo
 </div>
 <!-- /.box-body -->
 <div class="box-footer">
-<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-@if (count($errors)>0)
-<div class="alert alert-danger">
-<ul>
-@foreach ($errors->all() as $error)
-  <li>{{$error}}</li>
-@endforeach
-</ul>
-</div>
-@endif
-</div>
+
 
 <a href="{{route('permiso.index')}}">
 <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
