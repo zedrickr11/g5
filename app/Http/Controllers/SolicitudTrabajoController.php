@@ -83,7 +83,7 @@ class SolicitudTrabajoController extends Controller
 
                 $idtipo_trabajo = $request->get('idtipo_trabajo');
                 $descrpcion_detalle_tipo_trabajo = $request->get('descrpcion_detalle_tipo_trabajo');
-                $estado = $request->get('estado');
+
 
                 $cont = 0;
 
@@ -92,13 +92,13 @@ class SolicitudTrabajoController extends Controller
                     $detalle->idsolitud_trabajo = $solicitudes->idsolitud_trabajo;
                     $detalle->idtipo_trabajo= $idtipo_trabajo[$cont];
                     $detalle->descrpcion_detalle_tipo_trabajo= $descrpcion_detalle_tipo_trabajo[$cont];
-                    $detalle->estado= $estado[$cont];
+                    $detalle->estado= 1;
                     $detalle->save();
                     $cont=$cont+1;
                 }
 
                 $idarea_mantenimiento = $request->get('idarea_mantenimiento');
-                $estado_detalle_area_matenimiento = $request->get('estado_detalle_area_matenimiento');
+
 
                 $conts = 0;
 
@@ -106,7 +106,7 @@ class SolicitudTrabajoController extends Controller
                     $detalles = new DetalleAreaMantenimiento();
                     $detalles->idsolitud_trabajo = $solicitudes->idsolitud_trabajo;
                     $detalles->idarea_mantenimiento= $idarea_mantenimiento[$conts];
-                    $detalles->estado_detalle_area_matenimiento = $estado_detalle_area_matenimiento[$conts];
+                    $detalles->estado_detalle_area_matenimiento = 1;
                     $detalles->save();
                     $conts=$conts+1;
                 }
@@ -194,8 +194,8 @@ return view("trabajo.solicitud.show",["solicitudes"=>$solicitudes,"detalles"=>$d
      * @param  \App\SolicitudTrabajo  $solicitudTrabajo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SolicitudTrabajo $solicitudTrabajo)
+    public function destroy($id)
     {
-        //
+    
     }
 }
