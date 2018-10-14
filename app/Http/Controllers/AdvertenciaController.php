@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 use DB;
 use App\Equipo;
 use App\Http\Requests\AdvertenciaFormRequest;
-
 class AdvertenciaController extends Controller
 {
     /**
