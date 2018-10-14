@@ -76,15 +76,13 @@
 
             <hr>
 
-            <strong><i class="fa  fa-qrcode margin-r-5"></i> Código QR</strong>
-            <p></p>
+            <strong><i class="fa  fa-qrcode margin-r-5"></i> Código QR  </strong>
+            <br>
+            <br>
             <img  class="profile-user-img img-responsive " src="data:image/png;base64, {!! base64_encode(QrCode::format('png')
                         ->size(500)
                         ->generate(Request::url())) !!} " alt="User profile picture">
-            
-            <a  href="{{asset('equipo/qr')}}"><button>imprimir</button></a>
-
-
+            <p class="text-center"> <a  href="{{url('equipo/qr',$equipo->idequipo)}}" target="_blank"><span class="label label-success">Imprimir QR</span></a></p>
 
 
 
