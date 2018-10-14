@@ -31,7 +31,7 @@
           <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
                     <li class="active"><a href="#tab_1-1" data-toggle="tab">Rutina</a></li>
               <li ><a href="#tab_2-2" data-toggle="tab">Detalle</a></li>
-              <li ><a href="#tab_3-3" data-toggle="tab">Programación </a></li>
+            <!--  <li ><a href="#tab_3-3" data-toggle="tab">Programación </a></li>-->
 
             </ul>
 
@@ -52,14 +52,6 @@
                     </select>
                     </div>
 
-                    <div class="form-group">
-                      <label for="select" class="">Equipo</label>
-                      <select name="idequipo" class="form-control" id="select">
-                        @foreach($equipo as $carac)
-                        <option value="{{$carac->idequipo}}">{{$carac->nombre_equipo}}</option>
-                    @endforeach
-                    </select>
-                    </div>
 
 
                     <div class="form-group">
@@ -69,6 +61,14 @@
                     </div>
 
 
+                              <div class="form-group">
+                                <label for="select" class="">Subgrupo</label>
+                                <select name="subgrupo" class="form-control" id="subgrupo">
+                                  @foreach($subgrupo as $carac)
+                                  <option value="{{$carac->idsubgrupo}}">{{$carac->subgrupo}}</option>
+                              @endforeach
+                              </select>
+                              </div>
 
 
                     				</div>
@@ -102,6 +102,8 @@
 
 
 
+
+<!--
           <div class="form-group">
             <label for="select" class="">Permiso de trabajo</label>
             <select name="permiso_trabajo_idpermiso_trabajo" class="form-control" id="permiso_trabajo_idpermiso_trabajo">
@@ -110,7 +112,7 @@
           @endforeach
           </select>
           </div>
-
+-->
 
 
 
@@ -177,13 +179,7 @@
       <div class="row">
           <div class="">
               <div class="panel-body">
-                  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-                    <div class="form-group">
-                      <label for="direccion_fab">Comentario detalle caracteristica rutina</label>
-                      <input type="text" class="form-control" id="pcomentario_detalle_caracteristica_rutina" name="pcomentario_detalle_caracteristica_rutina" value="{{old('comentario_detalle_caracteristica_rutina')}}">
-                    </div>
 
-                  </div>
 
 
 
@@ -222,9 +218,8 @@
                 </a>
                 <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
                 <i id="guardar">
-                  <a onclick="mostar3();" data-toggle="tab" aria-expanded="true">
-                  <button type="button" name="adelante" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-right"></span> </button>
-                  </a>
+                    <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
+
                 </i>
               </div>
                 </div>
@@ -239,6 +234,7 @@
 
 
       </div>
+  <!--
 <div class="tab-pane active" id="tab_3-3">
   <div class="box-body">
     <div class="row">
@@ -252,7 +248,7 @@
           </div>
           <input type="date" class="form-control pull-right" id="fechainicio" name="start"  min="{{date("Y-m-d")}}" value="{{date("Y-m-d")}}">
         </div>
-            <!-- /.input group -->
+
     </div>
 
     <div class="form-group">
@@ -263,7 +259,7 @@
           </div>
           <input type="date" class="form-control pull-right" id="fechafinal" name="end" min="" value="{{date("Y-m-d")}}">
         </div>
-            <!-- /.input group -->
+
     </div>
     <div class="form-group">
       <label for="direccion_fab">Descripción</label>
@@ -288,7 +284,7 @@
 
 </div>
 </div>
-
+-->
       </div>
       </div>
 
@@ -358,6 +354,9 @@ $('#tipo_rutina').select2({
 $('#permiso_trabajo_idpermiso_trabajo').select2({
 
 });
+$('#subgrupo').select2({
+
+});
 $('#tipo_rutina2').select2({
 
 });
@@ -397,7 +396,7 @@ $('#tipo_rutina2').select2({
    comentario_detalle_caracteristica_rutina=$("#pcomentario_detalle_caracteristica_rutina").val();
 
 
-    if (caracteristica!="" && subgrupo!="" && valor!="" && comentario_detalle_caracteristica_rutina!="")
+    if (caracteristica!="" && subgrupo!="" && valor!="")
     {
         var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idcaracteristica_rutina[]" value="'+idcaracteristica+'">'+caracteristica+'</td><td><input type="hidden" name="idsubgrupo_rutina[]" value="'+idsubgrupo_rutina+'">'+subgrupo_rutina+'</td><td><input type="hidden" name="idvalor_ref_rutina[]" value="'+idvalor_ref_rutina+'">'+valor_ref_rutina+'</td><td><input type="hidden" name="comentario_detalle_caracteristica_rutina[]" value="'+comentario_detalle_caracteristica_rutina+'">'+comentario_detalle_caracteristica_rutina+'</td></tr>';
         cont++;

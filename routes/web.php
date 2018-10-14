@@ -29,12 +29,18 @@ Route::get('equipo/equipo/ficha/{id}',[
     'uses' => 'EquipoController@ficha'
 ]);
 
+Route::get('equipo/rutina/ruman/asignar/{id}/{idequipo}',[
+    'as' => 'ruman.asignar',
+    'uses' => 'rumanController@asignar'
+]);
+
 
 Route::resource('equipo/equipo/rutinamante','EquipoController');
 Route::get('equipo/equipo/rutina/{id}',[
     'as' => 'equipo.rutina',
     'uses' => 'EquipoController@rutina'
 ]);
+
 //index del Equipo
 Route::get('equipo/principal/{id}',['as'=>'actualizar','uses' => 'EquipoIndexController@index']);
 Route::resource('equipo/equipo/imagen','Imagen_equipoController');
