@@ -24,10 +24,18 @@ class PermisoTrabajoFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'fecha'=>'required',
+       
             'num_permiso'=>'required|numeric',
             'descripcion'=>'required|max:255',
-            'solitud_trabajo_idsolitud_trabajo'=>'required',
+            'idsolitud_trabajo'=>'required',
+        ];
+    }
+    public function messages()
+    {
+        return [
+
+        'num_permiso.required' => 'Ingrese el numero de permiso',
+        'descripcion.required' => 'Ingrese una descripción',
         ];
     }
 }

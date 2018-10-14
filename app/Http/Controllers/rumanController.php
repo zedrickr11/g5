@@ -145,7 +145,7 @@ class rumanController extends Controller
   public function asignar($id,$idequipo)
   {
 
-    $rumen = detcaracru::all();
+        $rumen = detcaracru::all();
         $ruman=DB::table('rutina_mantenimiento as d')
 
           ->select('d.*')

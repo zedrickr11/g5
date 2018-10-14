@@ -37,13 +37,7 @@ Trabajo
       @endforeach
       </select>
       </div>
-      <div class="form-group">
-      <label for="estado">Estado</label>
-      <select class="form-control" name="estado" id="pestados">
-      <option value='1'>SI</option>
-      <option value='0'>NO</option>
-      </select>
-      </div>
+
       <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
       <div class="form-group">
       <button type="button" id="bt_adds" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
@@ -54,7 +48,6 @@ Trabajo
       <thead style="background-color:#2ab863">
         <th>Opciones</th>
         <th>Areas de Mantenimiento</th>
-        <th>Estado</th>
 
       </thead>
         <tfoot>
@@ -79,13 +72,7 @@ Trabajo
     <label for="direccion_fab">Descripcion del Tipo de Trabajo</label>
     <input type="text" class="form-control" name="descripcion" id="pdescripcion" value="">
     </div>
-    <div class="form-group">
-    <label for="estado">Estado</label>
-    <select class="form-control" name="estado" id="pestado">
-    <option value='1'>SI</option>
-    <option value='0'>NO</option>
-    </select>
-    </div>
+
     <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
     <div class="form-group">
     <button type="button" id="bt_add" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
@@ -97,7 +84,7 @@ Trabajo
       <th>Opciones</th>
       <th>Tipo de Trabajo</th>
       <th>Descripcion tipo de trabajo</th>
-      <th>Estado</th>
+
     </thead>
       <tfoot>
 
@@ -134,15 +121,7 @@ Trabajo
   </div>
   <div class="box-body col-md-6">
 
-  <div class="form-group">
-  <label>Fecha de Solicitud</label>
-  <div class="input-group date">
-  <div class="input-group-addon">
-  <i class="fa fa-calendar"></i>
-  </div>
-  <input type="date" class="form-control pull-right" id="datepicker" name="fecha" value="{{old('fecha')}}">
-  </div>
-  </div>
+
   <div class="form-group">
     <label for="solicitudes">Contratar Trabajo</label>
     <select class="form-control" name="contratar_trabajo"  >
@@ -161,6 +140,16 @@ Trabajo
   </div>
   <div class="box-body col-md-12">
     <div class="form-group">
+    <label>Equipo</label>
+    <select name="idequipo" class="form-control select2" id="idequipo" data-live-search="true">
+    @foreach($equipos as $eq)
+    <option value="{{$eq->idequipo}}">{{$eq->equipo}}</option>
+    @endforeach
+    </select>
+    </div>
+  </div>
+  <div class="box-body col-md-12">
+    <div class="form-group">
     <label for="direccion_fab">Descripcion de Solicitud</label>
     <input type="text" class="form-control" name="descripcion" value="{{old('descripcion')}}">
     </div>
@@ -168,6 +157,7 @@ Trabajo
 </div>
 <!-- /.tab-pane -->
 <div class="box-footer">
+  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 @if (count($errors)>0)
 <div class="alert alert-danger">
 <ul>
@@ -177,6 +167,7 @@ Trabajo
 </ul>
 </div>
 @endif
+</div>
   <input name"_token" value="{{ csrf_token() }}" type="hidden"></input>
 <a href="{{route('solicitud.index')}}">
 <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
@@ -198,7 +189,19 @@ Trabajo
 <script src="{{asset('ajax/bootstrap.min.js')}}"></script>
 <script src="{{asset('ajax/select2.min.js')}}"></script>
 <script>
+    $(function () {
+        $.datepicker.setDefaults($.datepicker.regional["es"]);
+        $("#datepicker").datepicker({
+            dateFormat: 'dd/mm/yy',
+            firstDay: 1
+        });
+    });
+</script>
+<script>
 $('#pidtipo').select2({
+  theme: "classic"
+});
+$('#idequipo').select2({
   theme: "classic"
 });
 $(document).ready(function(){
@@ -220,7 +223,7 @@ function agregar()
   estado=$("#pestado option:selected").text();
   if (idtipo!="" )
   {
- var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idtipo_trabajo[]" value="'+idtipo+'">'+tipo+'</td><td><input type="text" name="descrpcion_detalle_tipo_trabajo[]" value="'+descripcion+'" ></td><td><input type="hidden" name="estado[]" value="'+idestado+'">'+estado+'</td></tr>';
+ var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idtipo_trabajo[]" value="'+idtipo+'">'+tipo+'</td><td><input type="text" name="descrpcion_detalle_tipo_trabajo[]" value="'+descripcion+'" ></td></tr>';
  cont++;
  limpiar();
  evaluar();
@@ -232,7 +235,7 @@ function agregar()
   }
 }
 function limpiar(){
-  $("#pcantidad").val("");
+  $("#pdescripcion").val("");
 
 }
 
@@ -272,12 +275,11 @@ function agregar1()
 {
   idarea=$("#pidarea").val();
   area=$("#pidarea option:selected").text();
-  idestado=$("#pestados").val();
-  estado=$("#pestados option:selected").text();
+
 
   if (idarea!="" )
   {
- var fila='<tr class="selected" id="fila'+conts+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+conts+');">X</button></td><td><input type="hidden" name="idarea_mantenimiento[]" value="'+idarea+'">'+area+'</td><td><input type="hidden" name="estado_detalle_area_matenimiento[]" value="'+idestado+'">'+estado+'</td></tr>';
+ var fila='<tr class="selected" id="fila'+conts+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+conts+');">X</button></td><td><input type="hidden" name="idarea_mantenimiento[]" value="'+idarea+'">'+area+'</td></tr>';
  conts++;
  limpiar();
  evaluar2();

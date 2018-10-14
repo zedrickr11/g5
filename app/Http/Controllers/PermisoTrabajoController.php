@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\PermisoTrabajo;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\PermisoTrabajoFormRequest;
-use App\SolicitudTrabajo;
-use DB;
+
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
+use App\Http\Requests\PermisoTrabajoFormRequest;
+use App\PermisoTrabajo;
+use App\DetalleTipoTrabajoPermiso;
+use App\DetalleNaturalezaPeligro;
+use App\DetallePrecaucionResponsable;
+use App\DetallePrecaucionEjecutante;
+use App\Http\Controllers\Controller;
+use App\SolicitudTrabajo;
+use DB;
+use Carbon\Carbon;
+use Illuminate\Support\Collection;
 class PermisoTrabajoController extends Controller
 {
     /**
@@ -41,13 +48,30 @@ class PermisoTrabajoController extends Controller
      */
      public function create()
      {
-       $solicitudes = DB::table('solitud_trabajo as so')
-             ->select(DB::raw('CONCAT(so.numero) AS num'),'so.idsolitud_trabajo')
-             ->get();
-       $tipos = DB::table('tipo_trabajo as tp')
-              ->select(DB::raw('CONCAT(tp.nombre_tipo) AS tipo'),'tp.idtipo_trabajo')
+
+       $solicitudes = DB::table('solitud_trabajo')
+                ->select('idsolitud_trabajo','numero  AS num')
                 ->get();
-    return view("trabajo.permiso.create",["solicitudes"=>$solicitudes,"tipos"=>$tipos]);
+
+     $tipos = DB::table('tipo_trabajo')
+                  ->select('idtipo_trabajo','nombre_tipo  AS tipo')
+                  ->get();
+
+
+       $naturalezas = DB::table('naturaleza_peligro')
+               ->select('idnaturaleza_peligro','naturaleza_peligro AS naturaleza')
+               ->get();
+
+
+       $responsables = DB::table('precaucion_responsable')
+                       ->select('idprecaucion_responsable','precaucion_responsable AS responsable')
+                       ->get();
+ $ejecutantes = DB::table('precaucion_ejecutante')
+                      ->select('idprecaucion_ejecutante','precaucion_ejecutante AS ejecutante')
+                      ->get();
+
+                      $numeropermiso = DB::table('permiso_trabajo')->select('num_permiso')->orderBy('num_permiso', 'desc')->first();
+    return view("trabajo.permiso.create",["solicitudes"=>$solicitudes,"tipos"=>$tipos,"naturalezas"=>$naturalezas,"responsables"=>$responsables,"ejecutantes"=>$ejecutantes,"numeropermiso"=>$numeropermiso]);
      }
 
     /**
@@ -58,10 +82,87 @@ class PermisoTrabajoController extends Controller
      */
      public function store(PermisoTrabajoFormRequest $request)
      {
-       PermisoTrabajo::create($request->all());
-       return redirect()->route('permiso.index');
-     }
+       try{
+            DB::beginTransaction();
+              $permisos=new PermisoTrabajo;
+              $mytime = Carbon::now('America/Guatemala');
+              $permisos->fecha=$mytime->toDateString();
+              ;
 
+              $permisos->num_permiso=$request->get('num_permiso');
+              $permisos->descripcion=$request->get('descripcion');
+              $permisos->idsolitud_trabajo=$request->get('idsolitud_trabajo');
+              $permisos->save();
+
+
+              $idtipo_trabajo = $request->get('idtipo_trabajo');
+
+              $descripcion_detalle_tipo_trabajo_permiso	 = $request->get('descripcion_detalle_tipo_trabajo_permiso');
+
+              $cont = 0;
+
+              while($cont <count($idtipo_trabajo)){
+                  $detalle = new DetalleTipoTrabajoPermiso();
+                  $detalle->idpermiso_trabajo = $permisos->idpermiso_trabajo;
+                  $detalle->idtipo_trabajo= $idtipo_trabajo[$cont];
+                  $detalle->estado_detalle_tipo_trabajo_permiso= 1;
+                  $detalle->descripcion_detalle_tipo_trabajo_permiso= $descripcion_detalle_tipo_trabajo_permiso[$cont];
+                  $detalle->save();
+                  $cont=$cont+1;
+              }
+
+
+              $idnaturaleza_peligro = $request->get('idnaturaleza_peligro');
+
+              $contn = 0;
+
+              while($contn <count($idnaturaleza_peligro)){
+                  $detallen = new DetalleNaturalezaPeligro();
+                  $detallen->idpermiso_trabajo = $permisos->idpermiso_trabajo;
+                  $detallen->idnaturaleza_peligro= $idnaturaleza_peligro[$contn];
+                  $detallen->estado_detalle_naturaleza_peligro = 1;
+                  $detallen->save();
+                  $contn=$contn+1;
+              }
+
+
+              $idprecaucion_responsable= $request->get('idprecaucion_responsable');
+
+
+              $contr = 0;
+
+              while($contr <count($idprecaucion_responsable)){
+                  $detaller = new DetallePrecaucionResponsable();
+                  $detaller->idpermiso_trabajo = $permisos->idpermiso_trabajo;
+                  $detaller->idprecaucion_responsable= $idprecaucion_responsable[$contr];
+                  $detaller->estado_detalle_precaucion_responsable	= 1;
+                  $detaller->save();
+                  $contr=$contr+1;
+                }
+
+                $idprecaucion_ejecutante= $request->get('idprecaucion_ejecutante');
+
+
+                $contj = 0;
+
+                while($contj <count($idprecaucion_ejecutante)){
+                    $detallej = new DetallePrecaucionEjecutante();
+                    $detallej->idpermiso_trabajo = $permisos->idpermiso_trabajo;
+                    $detallej->idprecaucion_ejecutante= $idprecaucion_ejecutante[$contj];
+                    $detallej->estado_detalle_precaucion_ejecutante	= 1;
+                    $detallej->save();
+                    $contj=$contj+1;
+                  }
+
+              DB::commit();
+
+            }catch(\Exception $e)
+            {
+                DB::rollback();
+            }
+
+            return Redirect::to('trabajo/permiso');
+    }
     /**
      * Display the specified resource.
      *
@@ -70,9 +171,34 @@ class PermisoTrabajoController extends Controller
      */
      public function show($id)
      {
-       $solicitudes=SolicitudTrabajo::all();
-       $permisos=PermisoTrabajo::findOrFail($id);
-       return view('trabajo.permiso.show', compact('permisos'), compact('solicitudes'));
+       $permisos=DB::table('permiso_trabajo as p')
+             ->join('solitud_trabajo as so','p.idsolitud_trabajo','=','so.idsolitud_trabajo')
+             ->select('p.idpermiso_trabajo','p.fecha','p.num_permiso','p.descripcion','so.numero as num')
+             ->where('p.idpermiso_trabajo','=',$id)
+             ->first();
+      $detallep=DB::table('detalle_tipo_trabajo_permiso as d')
+                  ->join('tipo_trabajo as t','d.idtipo_trabajo','=','t.idtipo_trabajo')
+                  ->select('t.nombre_tipo as tipo','d.descripcion_detalle_tipo_trabajo_permiso')
+                  ->where('d.idpermiso_trabajo','=',$id)
+                  ->get();
+      $detallesn=DB::table('detalle_naturaleza_peligro as dn')
+                 ->join('naturaleza_peligro as n','dn.idnaturaleza_peligro','=','n.idnaturaleza_peligro')
+                 ->select('n.naturaleza_peligro as naturaleza')
+                 ->where('dn.idpermiso_trabajo','=',$id)
+                ->get();
+     $detallesr=DB::table('detalle_precaucion_responsable as dr')
+                ->join('precaucion_responsable as r','dr.idprecaucion_responsable','=','r.idprecaucion_responsable')
+                ->select('r.precaucion_responsable as responsable')
+                ->where('dr.idpermiso_trabajo','=',$id)
+                ->get();
+    $detallese=DB::table('detalle_precaucion_ejecutante as de')
+                ->join('precaucion_ejecutante as e','de.idprecaucion_ejecutante','=','e.idprecaucion_ejecutante')
+                ->select('e.precaucion_ejecutante as ejecutante')
+                 ->where('de.idpermiso_trabajo','=',$id)
+               ->get();
+
+               return view("trabajo.permiso.show",["permisos"=>$permisos,"detallep"=>$detallep,"detallesn"=>$detallesn,"detallesr"=>$detallesr,"detallese"=>$detallese]);
+
      }
 
     /**

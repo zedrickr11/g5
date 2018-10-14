@@ -13,7 +13,7 @@
         <div class="icon">
           <i class="ion  ion-stats-bars"></i>
         </div>
-        <a href="http://localhost:8000/equipo/equipo" class="small-box-footer">Más información <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="{{asset('http://localhost:8000/equipo/equipo')}}" class="small-box-footer">Más información <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <!-- ./col -->

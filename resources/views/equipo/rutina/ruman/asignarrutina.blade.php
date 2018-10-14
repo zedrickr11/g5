@@ -24,7 +24,11 @@
 
               <div class="box">
                   <div class="box-body">
+<div class="box-body col-md-6">
 
+
+
+</div>
   <div class="box-body col-md-6">
   <div class="form-group">
           <label for="direccion_fab">Tiempo estimado rutina mantenimiento en horas</label>

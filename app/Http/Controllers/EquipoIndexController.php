@@ -74,7 +74,21 @@ class EquipoIndexController extends Controller
 
       $TipoManual = TipoManual::all();
       $EquipoM = Equipo::all();
-      $Detalle_manual = Detalle_manual::all();
+
+      $Detalle_manual =DB::table('Detalle_manual')
+      ->select('*')
+      ->where('idequipo','=',$id)
+      ->get();
+
+      $areas = DB::table('area_mantenimiento')
+            ->select('idarea_mantenimiento','area_mantenimiento AS area')
+            ->get();
+      $tipos = DB::table('tipo_trabajo')
+            ->select('idtipo_trabajo','nombre_tipo AS tipo')
+            ->get();
+      $equipos = DB::table('equipo')
+                  ->select('idequipo','nombre_equipo AS equipo')
+                  ->get();
 
 
       //$equipo=Equipo::findOrFail($id);
@@ -82,14 +96,14 @@ class EquipoIndexController extends Controller
         ->join('subgrupo as s','s.idsubgrupo','=','e.idsubgrupo')
         ->join('conf_corr as c','s.idsubgrupo','=','c.idsubgrupo')
         ->join('hospital as h','h.idhospital','=','e.idhospital')
-        ->select('e.*','c.actual as actual','s.codigosubgrupo as codigosubgrupo','h.hospital as hospi',DB::raw('CONCAT(e.idarea,e.idgrupo,s.codigosubgrupo, "-",e.idregion,e.iddepartamento,e.idtipounidad,e.idunidadsalud,c.actual) AS codigo'))
+        ->select('e.*','s.subgrupo as subgrupo','c.actual as actual','s.codigosubgrupo as codigosubgrupo','h.hospital as hospi',DB::raw('CONCAT(e.idarea,e.idgrupo,s.codigosubgrupo, "-",e.idregion,e.iddepartamento,e.idtipounidad,e.idunidadsalud,c.actual) AS codigo'))
         ->where('e.idequipo','=',$id)
         ->first();
 
       return view('equipo.vista.index', compact('detallerutina','tiporu','permisotrabajo','ruman','equipo','proveedor','unidad_salud','area',
                   'estado','servicio_tecnico','fabricante','hospital','departamento',
                   'region','grupo','subgrupo','tipounidadsalud','TipoManual','EquipoM',
-                                                'Detalle_manual','imagen_equipo','tiporu','permisotrabajo','ruman'));
+                                                'Detalle_manual','imagen_equipo','tiporu','permisotrabajo','ruman','areas','tipos','equipos'));
 
 
       }

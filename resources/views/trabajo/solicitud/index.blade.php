@@ -15,7 +15,7 @@
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 <div class="box">
 <div class="box-header">
-<h3 class="box-title">Listado de solicitudes <a href="solicitud/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
+<h3 class="box-title">Listado de solicitudes <a href="{{route('solicitud.create')}}"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
  </h3>
 </div>
 <!-- /.box-header -->
@@ -50,11 +50,13 @@
 <a href="{{route('solicitud.show',$s->idsolitud_trabajo)}}">
 <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></span> </button>
 </a>
+<!--
 <form style="display: inline" method="POST" action="{{route('solicitud.destroy',$s->idsolitud_trabajo)}}">
 {!!method_field('DELETE')!!}
 {!!csrf_field()!!}
 <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></span> </button>
 </form>
+-->
 </td>
 </tr>
 @endforeach
@@ -62,7 +64,8 @@
 <tfoot>
 </tfoot>
 </table>
-{!! $solicitudes->links() !!}
+
+ {!! $solicitudes->appends(['searchText'=>request('searchText')])->links() !!}
 </div>
 </div>
 </div>

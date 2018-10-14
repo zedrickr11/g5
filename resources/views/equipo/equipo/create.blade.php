@@ -437,7 +437,7 @@
         <label for="idunidadsalud" >Unidad de salud (*)</label>
         <select id="unidad" name="idunidadsalud" class="form-control select2">
           <option value="0" disabled selected>=== Selecciona la unidad de salud ===</option>
-        
+
         </select>
         </div>
       </div>
@@ -758,7 +758,12 @@
 
   </script>
 
-
+  @push ('scripts')
+  <script>
+  $('#liEq').addClass("treeview active");
+  $('#liEquipo').addClass("active");
+  </script>
+  @endpush
 
 
 

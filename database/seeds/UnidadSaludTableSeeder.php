@@ -18,7 +18,7 @@ class UnidadSaludTableSeeder extends Seeder
 
           'idunidadsalud' => "{$i}",
           'unidad_salud' => "unidad de salud {$i}",
-          'idhospital' => "{$i}"
+          'idhospital' => "22"
 
         ]);
 

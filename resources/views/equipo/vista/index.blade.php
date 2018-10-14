@@ -2,9 +2,9 @@
 @section ('contenido')
   <section class="content-header">
     <h1>
-      Vista General <a href="{{route('equipo.index')}}">
+      <a href="{{route('equipo.index')}}">
         <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
-      </a>
+      </a>Vista General
     </h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Equipo</a></li>
@@ -22,7 +22,7 @@
         <!-- Profile Image -->
         <div class="box box-primary">
           <div class="box-body box-profile">
-            <img class="profile-user-img img-responsive img-circle" src="../../dist/img/config1.png" alt="User profile picture">
+            <img class="profile-user-img img-responsive img-circle" src="{{asset('dist/img/config1.png')}}" alt="User profile picture">
 
             <h3 class="profile-username text-center">{{$equipo->nombre_equipo}}</h3>
 
@@ -30,7 +30,8 @@
 
             <ul class="list-group list-group-unbordered">
               <li class="list-group-item">
-                <b>Tipo de equipo</b> <a class="pull-right">{{ $equipo->idsubgrupo }}</a>
+                <b>Tipo de equipo  </b> <a class="pull">{{ $equipo->subgrupo }}</a>
+
               </li>
               <li class="list-group-item">
                 <b>Marca</b> <a class="pull-right">{{ $equipo->marca }}</a>
@@ -76,11 +77,13 @@
 
             <hr>
 
-            <strong><i class="fa  fa-qrcode margin-r-5"></i> Código QR</strong>
-            <p></p>
-            <img class="profile-user-img img-responsive " src="" alt="User profile picture">
-
-
+            <strong><i class="fa  fa-qrcode margin-r-5"></i> Código QR  </strong>
+            <br>
+            <br>
+            <img  class="profile-user-img img-responsive " src="data:image/png;base64, {!! base64_encode(QrCode::format('png')
+                        ->size(500)
+                        ->generate(Request::url())) !!} " alt="User profile picture" style="width:100%;max-width:300px">
+            <p class="text-center"> <a  href="{{url('equipo/qr',$equipo->idequipo)}}" target="_blank"><span class="label label-success">Imprimir QR</span></a></p>
 
 
 
@@ -95,6 +98,7 @@
         <div class="nav-tabs-custom">
           <ul class="nav nav-tabs">
             <li class="active"><a href="#activity" data-toggle="tab">Inicio</a></li>
+            <li><a href="#solicitudes" data-toggle="tab">Solicitudes</a></li>
             <li><a href="#timeline" data-toggle="tab">Rutinas</a></li>
             <li><a href="#settings" data-toggle="tab">Actualizar</a></li>
             <li><a href="#manuales" data-toggle="tab">Manuales</a></li>
@@ -106,12 +110,12 @@
               <!-- Post -->
               <div class="post">
                 <div class="user-block">
-                  <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
+                  <img class="img-circle img-bordered-sm" src="{{asset('dist/img/historial.png')}}" alt="user image">
                       <span class="username">
-                        <a href="#">Jonathan Burke Jr.</a>
+                        <a href="#">Histarial de rutinas</a>
                         <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
                       </span>
-                  <span class="description">Shared publicly - 7:30 PM today</span>
+                  <span class="description">{{ $equipo->nombre_equipo }}</span>
                 </div>
                 <!-- /.user-block -->
                 <p>
@@ -169,7 +173,7 @@
               <!-- Post -->
               <div class="post">
                 <div class="user-block">
-                  <img class="img-circle img-bordered-sm" src="../../dist/img/config1.png" alt="User Image">
+                  <img class="img-circle img-bordered-sm" src="{{asset('dist/img/config1.png')}}" alt="User Image">
                       <span class="username">
                         <a href="#">Imágenes del equipo</a>
                         <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
@@ -183,23 +187,20 @@
                   <div class="col-sm-12">
 
 
-                        @foreach ($imagen_equipo as $img)
-                            <div class="col-sm-3">
-                          <img class="img-responsive" src="{{asset('img/equipo/'.$img->imagen)}}" alt="{{$img->descripcion_imagen}}">
+                          @foreach ($imagen_equipo as $img)
+                              <div class="col-sm-3">
+                            <img class="img-responsive" src="{{asset('img/equipo/'.$img->imagen)}}" alt="{{$img->descripcion_imagen}}">
 
 
-                          </div>
+                            </div>
 
-                        @endforeach
-
-
-                      <!-- /.col -->
-
-                      <!-- /.col -->
+                          @endforeach
 
 
-                    <!-- /.row -->
-                  </div>
+
+
+                      <!-- /.row -->
+                    </div>
                   <!-- /.col -->
                 </div>
                 <!-- /.row -->
@@ -213,6 +214,174 @@
               <!-- /.post -->
             </div>
             <!-- /.tab-pane -->
+
+<!--SOLICITUDES-->
+              <div class="tab-pane" id="solicitudes">
+                <div class="box-body">
+                <div class="row">
+                  <form role="form" method="POST" action="{{route('solicitud.store')}}" >
+                  {!! csrf_field() !!}
+                  <div class="nav-tabs-custom">
+
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_4-4" data-toggle="tab">ID</a></li>
+                      <li><a href="#tab-tipo" data-toggle="tab">Tipo de Trabajo</a></li>
+                      <li ><a href="#tab-area" data-toggle="tab">Area de Mantenimiento</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                    <div class="tab-pane active" id="tab_4-4">
+
+                      <div class="box-body col-md-6">
+                        <div class="form-group">
+                        <label for="direccion_fab">No de solicitud</label>
+                        <input type="text" class="form-control" name="numero" value="{{old('numero')}}">
+                        </div>
+                      <div class="form-group">
+                      <label for="estado">Compra de Material</label>
+                      <select class="form-control" name="compra_material">
+                      <option value='1'>SI</option>
+                      <option value='0'>NO</option>
+                      </select>
+                      </div>
+                      <div class="form-group">
+                      <label for="direccion_fab">Solicitud dirigida</label>
+                      <input type="text" class="form-control" name="dirigido_solitud_trabajo" value="{{old('dirigido_solitud_trabajo')}}">
+                      </div>
+                      <div class="form-group">
+                      <label for="direccion_fab">Jefe</label>
+                      <input type="text" class="form-control" name="jefe_solitud_trabajo" value="{{old('jefe_solitud_trabajo')}}">
+                      </div>
+                      </div>
+                      <div class="box-body col-md-6">
+
+
+                      <div class="form-group">
+                        <label for="solicitudes">Contratar Trabajo</label>
+                        <select class="form-control" name="contratar_trabajo"  >
+                          <option value="1">SI</option>
+                          <option value="0">NO</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                      <label for="direccion_fab">Puesto dirigido</label>
+                      <input type="text" class="form-control" name="puesto_dirigido_solitud_trabajo" value="{{old('puesto_dirigido_solitud_trabajo')}}">
+                      </div>
+                      <div class="form-group">
+                      <label for="direccion_fab">Edificio</label>
+                      <input type="text" class="form-control" name="edificio_solitud_trabajo" value="{{old('edificio_solitud_trabajo')}}">
+                      </div>
+                      </div>
+                      <div class="box-body col-md-12">
+                       <div class="form-group">
+                       <label>Equipo</label>
+                       <input  type="text" name="idequipo" class="form-control select2" id="idequipo" data-live-search="true" value="{{$equipo->idequipo}}">
+                      <!--aqui va el for each de equipo-->
+
+                       </div>
+                     </div>
+                      <div class="box-body col-md-12">
+                        <div class="form-group">
+                        <label for="direccion_fab">Descripcion de Solicitud</label>
+                        <input type="text" class="form-control" name="descripcion" value="{{old('descripcion')}}">
+                        </div>
+                      </div>
+
+                      </div>
+                          <div class="tab-pane active" id="tab-tipo">
+
+                            <div class="form-group">
+                            <label>Tipo de Trabajo</label>
+                            <select name="pidinsumo" class="form-control select2" id="pidtipo" data-live-search="true">
+                              @foreach($tipos as $tip)
+                                                     <option value="{{$tip->idtipo_trabajo}}">{{$tip->tipo}}</option>
+                                                     @endforeach
+                            </select>
+                            </div>
+                            <div class="form-group">
+                            <label for="direccion_fab">Descripcion del Tipo de Trabajo</label>
+                            <input type="text" class="form-control" name="descripcion" id="pdescripcion" value="">
+                            </div>
+
+                            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                            <div class="form-group">
+                            <button type="button" id="bt_add" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
+                            </div>
+                            </div>
+                            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                            <table id="detalle" class="table table-striped table-bordered table-condensed table-hover">
+                            <thead style="background-color:#2ab863">
+                              <th>Opciones</th>
+                              <th>Tipo de Trabajo</th>
+                              <th>Descripcion tipo de trabajo</th>
+
+                            </thead>
+                              <tfoot>
+
+                              </tfoot>
+                              <tbody>
+
+                              </tbody>
+                            </table>
+                             </div>
+
+                          </div>
+                            <div class="tab-pane active" id="tab-area">
+
+                                <div class="form-group">
+                                <label>Area de Mantenimiento</label>
+                                <select name="pidarea" class="form-control select2" id="pidarea" data-live-search="true">
+                                @foreach($areas as $are)
+                                <option value="{{$are->idarea_mantenimiento}}">{{$are->area}}</option>
+                                @endforeach
+                                </select>
+                                </div>
+
+                              <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                              <div class="form-group">
+                              <button type="button" id="bt_adds" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
+                              </div>
+                              </div>
+                              <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                              <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
+                              <thead style="background-color:#2ab863">
+                                <th>Opciones</th>
+                                <th>Areas de Mantenimiento</th>
+
+                              </thead>
+                                <tfoot>
+
+                                </tfoot>
+                                <tbody>
+
+                                </tbody>
+                              </table>
+                               </div>
+                            </div>
+
+
+
+
+
+
+
+
+
+</div>
+
+                  </div><!--nav-tabs-custom-->
+                    <div class="box-body col-md-12">
+
+
+
+                  <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
+                  <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
+                  </div>
+                  </form>
+
+                </div><!--ROW-->
+              </div><!--box-body-->
+              </div>
             <div class="tab-pane" id="timeline">
   <div class="box-body">
   <div class="row">
@@ -795,6 +964,7 @@
 
 
   <script type="text/javascript">
+
   //botones para guardar
 
   //fechas
@@ -830,11 +1000,149 @@
 
   });
 
-  $('#amodal').click(function(){
 
-     $("#modal-success").modal();
+
+
+  </script>
+  <script>
+      $(function () {
+          $.datepicker.setDefaults($.datepicker.regional["es"]);
+          $("#datepicker").datepicker({
+              dateFormat: 'dd/mm/yy',
+              firstDay: 1
+          });
+      });
+  </script>
+  <script>
+  $('#pidtipo').select2({
+    theme: "classic"
+  });
+
+
+  $(document).ready(function(){
+    $('#bt_add').click(function(){
+      agregar();
+    });
+  });
+  var cont=0;
+  total=0;
+  subtotal=[];
+  $("#guardar").hide();
+
+  function agregar()
+  {
+    idtipo=$("#pidtipo").val();
+    tipo=$("#pidtipo option:selected").text();
+    descripcion=$("#pdescripcion").val();
+    idestado=$("#pestado").val();
+    estado=$("#pestado option:selected").text();
+    if (idtipo!="" )
+    {
+   var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idtipo_trabajo[]" value="'+idtipo+'">'+tipo+'</td><td><input type="text" name="descrpcion_detalle_tipo_trabajo[]" value="'+descripcion+'" ></td></tr>';
+   cont++;
+   limpiar();
+   evaluar();
+   $('#detalle').append(fila);
+    }
+    else
+    {
+        alert("Error al ingresar el detalle del tipo, revise los datos del tipo");
+    }
+  }
+  function limpiar(){
+    $("#pdescripcion").val("");
+
   }
 
+  function evaluar()
+  {
+    if (idtipo!="")
+    {
+      $("#guardar").show();
+    }
+    else
+    {
+      $("#guardar").hide();
+    }
+   }
 
+   function eliminar(index){
+
+    $("#fila" + index).remove();
+    evaluar();
+
+  }
+
+  //parte del area de mantenimiento
+  $('#pidarea').select2({
+    theme: "classic"
+  });
+  $(document).ready(function(){
+    $('#bt_adds').click(function(){
+      agregar1();
+    });
+  });
+  var conts=0;
+  total=0;
+  subtotal=[];
+  $("#guardars").hide();
+  function agregar1()
+  {
+    idarea=$("#pidarea").val();
+    area=$("#pidarea option:selected").text();
+
+
+    if (idarea!="" )
+    {
+   var fila='<tr class="selected" id="fila'+conts+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+conts+');">X</button></td><td><input type="hidden" name="idarea_mantenimiento[]" value="'+idarea+'">'+area+'</td></tr>';
+   conts++;
+   limpiar();
+   evaluar2();
+   $('#detalles').append(fila);
+    }
+    else
+    {
+        alert("Error al ingresar el detalle del area, revise los datos del area");
+    }
+  }
+  function limpiar(){
+    $("#pcantidad").val("");
+
+  }
+
+  function evaluar2()
+  {
+    if (idarea!="")
+    {
+      $("#guardars").show();
+    }
+    else
+    {
+      $("#guardars").hide();
+    }
+   }
+
+   function eliminar(index){
+
+    $("#fila" + index).remove();
+    evaluar();
+
+  }
+  </script>
+  @push ('scripts')
+  <script>
+  $('#liEq').addClass("treeview active");
+  $('#liEquipo').addClass("active");
+  </script>
+
+  @endpush
+  <script type="text/javascript">
+  window.onload=function(){
+    $('.nav-tabs a[href="#tab-area"]').tab('show');
+    $('.nav-tabs a[href="#tab-tipo"]').tab('show');
+    $('.nav-tabs a[href="#tab_4-4"]').tab('show');
+  
+
+  }
   </script>
 @endsection

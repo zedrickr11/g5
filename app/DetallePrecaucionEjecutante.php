@@ -13,7 +13,7 @@ class DetallePrecaucionEjecutante extends Model
   protected $fillable =[
        'idpermiso_trabajo',
        'idprecaucion_ejecutante',
-       'estado_detalle_precaucion_ejecutante'
+       'estado_detalle_precaucion_ejecutante',
 
   ];
 
