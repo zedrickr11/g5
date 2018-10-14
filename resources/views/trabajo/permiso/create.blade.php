@@ -44,7 +44,7 @@ Trabajo
       <label for="solicitud">No de Solicitud</label>
       <select name="idsolitud_trabajo" id="idsolitud_trabajo" class="form-control selectpicker" data-live-search="true">
         @foreach($solicitudes as $s)
-          <option value="{{$s->idsolitud_trabajo}}">{{$s->num}}</option>
+          <option value="{{$s->idsolitud_trabajo}}">{{$s->idsolitud_trabajo}}</option>
            @endforeach
         </select>
     </div>
