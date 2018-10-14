@@ -37,13 +37,7 @@ Trabajo
       @endforeach
       </select>
       </div>
-      <div class="form-group">
-      <label for="estado">Estado</label>
-      <select class="form-control" name="estado" id="pestados">
-      <option value='1'>SI</option>
-      <option value='0'>NO</option>
-      </select>
-      </div>
+
       <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
       <div class="form-group">
       <button type="button" id="bt_adds" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
@@ -54,7 +48,6 @@ Trabajo
       <thead style="background-color:#2ab863">
         <th>Opciones</th>
         <th>Areas de Mantenimiento</th>
-        <th>Estado</th>
 
       </thead>
         <tfoot>
@@ -79,13 +72,7 @@ Trabajo
     <label for="direccion_fab">Descripcion del Tipo de Trabajo</label>
     <input type="text" class="form-control" name="descripcion" id="pdescripcion" value="">
     </div>
-    <div class="form-group">
-    <label for="estado">Estado</label>
-    <select class="form-control" name="estado" id="pestado">
-    <option value='1'>SI</option>
-    <option value='0'>NO</option>
-    </select>
-    </div>
+
     <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
     <div class="form-group">
     <button type="button" id="bt_add" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
@@ -97,7 +84,7 @@ Trabajo
       <th>Opciones</th>
       <th>Tipo de Trabajo</th>
       <th>Descripcion tipo de trabajo</th>
-      <th>Estado</th>
+
     </thead>
       <tfoot>
 
@@ -178,6 +165,7 @@ Trabajo
 </div>
 <!-- /.tab-pane -->
 <div class="box-footer">
+  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 @if (count($errors)>0)
 <div class="alert alert-danger">
 <ul>
@@ -187,6 +175,7 @@ Trabajo
 </ul>
 </div>
 @endif
+</div>
   <input name"_token" value="{{ csrf_token() }}" type="hidden"></input>
 <a href="{{route('solicitud.index')}}">
 <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
@@ -233,7 +222,7 @@ function agregar()
   estado=$("#pestado option:selected").text();
   if (idtipo!="" )
   {
- var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idtipo_trabajo[]" value="'+idtipo+'">'+tipo+'</td><td><input type="text" name="descrpcion_detalle_tipo_trabajo[]" value="'+descripcion+'" ></td><td><input type="hidden" name="estado[]" value="'+idestado+'">'+estado+'</td></tr>';
+ var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idtipo_trabajo[]" value="'+idtipo+'">'+tipo+'</td><td><input type="text" name="descrpcion_detalle_tipo_trabajo[]" value="'+descripcion+'" ></td></tr>';
  cont++;
  limpiar();
  evaluar();
@@ -285,12 +274,11 @@ function agregar1()
 {
   idarea=$("#pidarea").val();
   area=$("#pidarea option:selected").text();
-  idestado=$("#pestados").val();
-  estado=$("#pestados option:selected").text();
+
 
   if (idarea!="" )
   {
- var fila='<tr class="selected" id="fila'+conts+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+conts+');">X</button></td><td><input type="hidden" name="idarea_mantenimiento[]" value="'+idarea+'">'+area+'</td><td><input type="hidden" name="estado_detalle_area_matenimiento[]" value="'+idestado+'">'+estado+'</td></tr>';
+ var fila='<tr class="selected" id="fila'+conts+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+conts+');">X</button></td><td><input type="hidden" name="idarea_mantenimiento[]" value="'+idarea+'">'+area+'</td></tr>';
  conts++;
  limpiar();
  evaluar2();
