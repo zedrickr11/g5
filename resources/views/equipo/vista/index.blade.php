@@ -926,54 +926,53 @@ btn-group
     <!-- /.row -->
 
   </section>
-  <script src="{{asset('ajax/jquery.min.js')}}"></script>
-  <script src="{{asset('ajax/bootstrap.min.js')}}"></script>
-  <script src="{{asset('ajax/select2.min.js')}}"></script>
-  <script src="{{asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
 
 
-  <script type="text/javascript">
-
-  //botones para guardar
-
-  //fechas
-  $('#fecha_fabricacion').datepicker({
-      autoclose: true,
-      todayHighlight: true,
-      format: "yyyy-mm-dd",
-      orientation: "bottom auto",
-      showOptions: { direction: "down" }
-
-  });
-  $('#fecha_instalcion').datepicker({
-      autoclose: true,
-      todayHighlight: true,
-      format: "yyyy-mm-dd",
-      orientation: "bottom auto",
-      showOptions: { direction: "down" }
-
-  });
-  $('#fecha_compra').datepicker({
-      autoclose: true,
-      todayHighlight: true,
-      format: "yyyy-mm-dd",
-      orientation: "bottom auto",
-      showOptions: { direction: "down" }
-
-  });
-  $('#fecha_expiracion_garantia').datepicker({
-      autoclose: true,
-      todayHighlight: true,
-      orientation: "bottom auto",
-      format: "yyyy-mm-dd"
-
-  });
-
-
-
-
-  </script>
   @push ('scripts')
+    <script src="{{asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+
+
+    <script type="text/javascript">
+
+    //botones para guardar
+
+    //fechas
+    $('#fecha_fabricacion').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        format: "yyyy-mm-dd",
+        orientation: "bottom auto",
+        showOptions: { direction: "down" }
+
+    });
+    $('#fecha_instalcion').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        format: "yyyy-mm-dd",
+        orientation: "bottom auto",
+        showOptions: { direction: "down" }
+
+    });
+    $('#fecha_compra').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        format: "yyyy-mm-dd",
+        orientation: "bottom auto",
+        showOptions: { direction: "down" }
+
+    });
+    $('#fecha_expiracion_garantia').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        orientation: "bottom auto",
+        format: "yyyy-mm-dd"
+
+    });
+
+
+
+
+    </script>
   <script>
   $('#liEq').addClass("treeview active");
   $('#liEquipo').addClass("active");

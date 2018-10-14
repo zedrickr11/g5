@@ -524,95 +524,95 @@
     <!-- /.box -->
 
   </section>
-  <script src="{{asset('ajax/jquery.min.js')}}"></script>
-  <script src="{{asset('ajax/bootstrap.min.js')}}"></script>
-  <script src="{{asset('ajax/select2.min.js')}}"></script>
-  <script src="{{asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
-
-  <script type="text/javascript">
-  //botones para guardar
-  $("#guardar").hide();
-
-  $('#idequipo').change(evaluar);
-  $('#nombre_equipo').change(evaluar);
-  $('#marca').change(evaluar);
-  $('#modelo').change(evaluar);
 
 
-  //fechas
-  $('#fecha_fabricacion').datepicker({
-      autoclose: true,
-      todayHighlight: true,
-      format: "dd-mm-yy"
 
-  });
-  $('#fecha_instalcion').datepicker({
-      autoclose: true,
-      todayHighlight: true,
-      format: "dd-mm-yy"
-
-  });
-  $('#fecha_compra').datepicker({
-      autoclose: true,
-      todayHighlight: true,
-      format: "dd-mm-yy"
-
-  });
-  $('#fecha_expiracion_garantia').datepicker({
-      autoclose: true,
-      todayHighlight: true,
-      format: "dd-mm-yy"
-
-  });
-  //select con busqueda
-  $('#hospital').select2({
-    theme: "classic"
-  });
-
-
-  function mostrarValores(){
-
-    datosArea=document.getElementById('area').value;
-    datosGrupo=document.getElementById('grupo').value;
-    datosSubgrupo=document.getElementById('codigosubgrupo').value;
-    datosRegion=document.getElementById('region').value;
-    datosDepto=document.getElementById('depto').value;
-    datosTipounidad=document.getElementById('tipou').value;
-    datosUnidad=document.getElementById('unidad').value;
-    datosCorrelativo=document.getElementById('correlativo').value;
-    idequipo = datosArea.concat(
-
-      ('0'+datosGrupo).slice(-2),
-      ('0'+datosSubgrupo).slice(-2),
-      "-",
-      datosRegion,
-      datosDepto,
-      datosTipounidad,
-      ('0'+datosUnidad).slice(-2),
-      ('000'+datosCorrelativo).slice(-4)
-      );
-    $("#idequipo").val(idequipo);
-
-  }
-  function evaluar(){
-    idequipo=$("#idequipo").val();
-    nombre=$("#nombre_equipo").val();
-    marca=$("#marca").val();
-    modelo=$("#modelo").val();
-    if (idequipo!="" && nombre!=""&&marca!=""&&modelo!="")
-    {
-      $("#guardar").show();
-    }
-    else
-    {
-      $("#guardar").hide();
-    }
-  }
-
-
-  </script>
 
   @push ('scripts')
+    <script src="{{asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+
+    <script type="text/javascript">
+    //botones para guardar
+    $("#guardar").hide();
+
+    $('#idequipo').change(evaluar);
+    $('#nombre_equipo').change(evaluar);
+    $('#marca').change(evaluar);
+    $('#modelo').change(evaluar);
+
+
+    //fechas
+    $('#fecha_fabricacion').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        format: "dd-mm-yy"
+
+    });
+    $('#fecha_instalcion').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        format: "dd-mm-yy"
+
+    });
+    $('#fecha_compra').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        format: "dd-mm-yy"
+
+    });
+    $('#fecha_expiracion_garantia').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        format: "dd-mm-yy"
+
+    });
+    //select con busqueda
+    $('#hospital').select2({
+      theme: "classic"
+    });
+
+
+    function mostrarValores(){
+
+      datosArea=document.getElementById('area').value;
+      datosGrupo=document.getElementById('grupo').value;
+      datosSubgrupo=document.getElementById('codigosubgrupo').value;
+      datosRegion=document.getElementById('region').value;
+      datosDepto=document.getElementById('depto').value;
+      datosTipounidad=document.getElementById('tipou').value;
+      datosUnidad=document.getElementById('unidad').value;
+      datosCorrelativo=document.getElementById('correlativo').value;
+      idequipo = datosArea.concat(
+
+        ('0'+datosGrupo).slice(-2),
+        ('0'+datosSubgrupo).slice(-2),
+        "-",
+        datosRegion,
+        datosDepto,
+        datosTipounidad,
+        ('0'+datosUnidad).slice(-2),
+        ('000'+datosCorrelativo).slice(-4)
+        );
+      $("#idequipo").val(idequipo);
+
+    }
+    function evaluar(){
+      idequipo=$("#idequipo").val();
+      nombre=$("#nombre_equipo").val();
+      marca=$("#marca").val();
+      modelo=$("#modelo").val();
+      if (idequipo!="" && nombre!=""&&marca!=""&&modelo!="")
+      {
+        $("#guardar").show();
+      }
+      else
+      {
+        $("#guardar").hide();
+      }
+    }
+
+
+    </script>
   <script>
   $('#liEq').addClass("treeview active");
   $('#liEquipo').addClass("active");
