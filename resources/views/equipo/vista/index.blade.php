@@ -43,6 +43,7 @@
 
             <a href="{{route('equipo.ficha',$equipo->idequipo)}}" target="_blank" class="btn btn-success btn-block"><b>Ficha técnica</b></a>
             <a href="{{route('equipo.rutina',$equipo->idequipo)}}" target="_blank" class="btn btn-primary btn-block"><b>Historial de la rutina</b></a>
+                <a href="{{route('equipo.rutina',$equipo->idequipo)}}" target="_blank" class="btn btn-primary btn-block"><b>Ver Solicitudes</b></a>
           </div>
           <!-- /.box-body -->
         </div>
@@ -224,13 +225,14 @@
                   <div class="nav-tabs-custom">
 
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab_4-4" data-toggle="tab">ID</a></li>
+                        <li class="active"><a href="#tabsol" data-toggle="tab">ID</a></li>
                       <li><a href="#tab-tipo" data-toggle="tab">Tipo de Trabajo</a></li>
                       <li ><a href="#tab-area" data-toggle="tab">Area de Mantenimiento</a></li>
                     </ul>
 
                     <div class="tab-content">
-                    <div class="tab-pane active" id="tab_4-4">
+
+                    <div class="tab-pane active" id="tabsol">
 
                       <div class="box-body col-md-6">
                         <div class="form-group">
@@ -254,7 +256,12 @@
                       </div>
                       </div>
                       <div class="box-body col-md-6">
+                        <div class="form-group">
+                        <label>Id Equipo</label>
+                        <input  type="text" name="idequipo" class="form-control select2" id="idequipo" data-live-search="true" value="{{$equipo->idequipo}}">
+                       <!--aqui va el for each de equipo-->
 
+                        </div>
 
                       <div class="form-group">
                         <label for="solicitudes">Contratar Trabajo</label>
@@ -272,43 +279,41 @@
                       <input type="text" class="form-control" name="edificio_solitud_trabajo" value="{{old('edificio_solitud_trabajo')}}">
                       </div>
                       </div>
-                      <div class="box-body col-md-12">
-                       <div class="form-group">
-                       <label>Equipo</label>
-                       <input  type="text" name="idequipo" class="form-control select2" id="idequipo" data-live-search="true" value="{{$equipo->idequipo}}">
-                      <!--aqui va el for each de equipo-->
 
-                       </div>
-                     </div>
+
+
                       <div class="box-body col-md-12">
                         <div class="form-group">
                         <label for="direccion_fab">Descripcion de Solicitud</label>
                         <input type="text" class="form-control" name="descripcion" value="{{old('descripcion')}}">
                         </div>
                       </div>
+                    </div>
 
-                      </div>
-                          <div class="tab-pane active" id="tab-tipo">
 
-                            <div class="form-group">
-                            <label>Tipo de Trabajo</label>
-                            <select name="pidinsumo" class="form-control select2" id="pidtipo" data-live-search="true">
-                              @foreach($tipos as $tip)
-                                                     <option value="{{$tip->idtipo_trabajo}}">{{$tip->tipo}}</option>
-                                                     @endforeach
-                            </select>
-                            </div>
+                          <div class="tab-pane" id="tab-tipo">
+
+
+                                <div class="form-group">
+                                <label for="idarea" >Tipo de Trabajo</label>
+                                <select name="pidtipo" class="form-control " id="pidtipo" style="width:100%">
+                                   <option value="0" disabled selected>=== Selecciona un Tipo de Trabajo===</option>
+                                   @foreach($tipos as $tip)
+                                                          <option value="{{$tip->idtipo_trabajo}}">{{$tip->tipo}}</option>
+                                                          @endforeach
+                                </select>
+                                </div>
+
                             <div class="form-group">
                             <label for="direccion_fab">Descripcion del Tipo de Trabajo</label>
                             <input type="text" class="form-control" name="descripcion" id="pdescripcion" value="">
                             </div>
 
-                            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
                             <div class="form-group">
                             <button type="button" id="bt_add" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
                             </div>
-                            </div>
-                            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+
+
                             <table id="detalle" class="table table-striped table-bordered table-condensed table-hover">
                             <thead style="background-color:#2ab863">
                               <th>Opciones</th>
@@ -323,26 +328,30 @@
 
                               </tbody>
                             </table>
-                             </div>
+
 
                           </div>
-                            <div class="tab-pane active" id="tab-area">
+                            <div class="tab-pane" id="tab-area">
 
-                                <div class="form-group">
-                                <label>Area de Mantenimiento</label>
-                                <select name="pidarea" class="form-control select2" id="pidarea" data-live-search="true">
-                                @foreach($areas as $are)
-                                <option value="{{$are->idarea_mantenimiento}}">{{$are->area}}</option>
-                                @endforeach
-                                </select>
-                                </div>
 
-                              <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+
+
+                                    <div class="form-group">
+                                    <label for="ipdarea" >Area de Mantenimiento (*)</label>
+                                    <select name="idarea" class="form-control "  id="pidarea" style="width:100%">
+                                       <option value="0" disabled selected>=== Selecciona un Area de Mantenimiento ===</option>
+                                       @foreach($areas as $are)
+                                       <option value="{{$are->idarea_mantenimiento}}">{{$are->area}}</option>
+                                       @endforeach
+                                    </select>
+                                    </div>
+
+
                               <div class="form-group">
                               <button type="button" id="bt_adds" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
                               </div>
-                              </div>
-                              <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+
+
                               <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
                               <thead style="background-color:#2ab863">
                                 <th>Opciones</th>
@@ -356,7 +365,7 @@
 
                                 </tbody>
                               </table>
-                               </div>
+
                             </div>
 
 
@@ -1089,7 +1098,6 @@ btn-group
     theme: "classic"
   });
 
-
   $(document).ready(function(){
     $('#bt_add').click(function(){
       agregar();
@@ -1207,13 +1215,5 @@ btn-group
   </script>
 
   @endpush
-  <script type="text/javascript">
-  window.onload=function(){
-    $('.nav-tabs a[href="#tab-area"]').tab('show');
-    $('.nav-tabs a[href="#tab-tipo"]').tab('show');
-    $('.nav-tabs a[href="#tab_4-4"]').tab('show');
-  $('.nav-tabs a[href="#solicitudes"]').tab('show');
 
-  }
-  </script>
 @endsection
