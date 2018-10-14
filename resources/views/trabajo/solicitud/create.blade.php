@@ -121,15 +121,7 @@ Trabajo
   </div>
   <div class="box-body col-md-6">
 
-  <div class="form-group">
-  <label>Fecha de Solicitud</label>
-  <div class="input-group date">
-  <div class="input-group-addon">
-  <i class="fa fa-calendar"></i>
-  </div>
-  <input type="date" class="form-control pull-right" id="datepicker" name="fecha" value="{{old('fecha')}}">
-  </div>
-  </div>
+
   <div class="form-group">
     <label for="solicitudes">Contratar Trabajo</label>
     <select class="form-control" name="contratar_trabajo"  >
@@ -196,6 +188,15 @@ Trabajo
 <script src="{{asset('ajax/jquery.min.js')}}"></script>
 <script src="{{asset('ajax/bootstrap.min.js')}}"></script>
 <script src="{{asset('ajax/select2.min.js')}}"></script>
+<script>
+    $(function () {
+        $.datepicker.setDefaults($.datepicker.regional["es"]);
+        $("#datepicker").datepicker({
+            dateFormat: 'dd/mm/yy',
+            firstDay: 1
+        });
+    });
+</script>
 <script>
 $('#pidtipo').select2({
   theme: "classic"

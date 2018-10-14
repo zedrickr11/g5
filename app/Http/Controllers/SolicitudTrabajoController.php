@@ -16,7 +16,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Collection;
-
+use Carbon\Carbon;
 class SolicitudTrabajoController extends Controller
 {
     /**
@@ -46,14 +46,14 @@ class SolicitudTrabajoController extends Controller
      public function create()
      {
 
-           $areas = DB::table('area_mantenimiento as ar')
-                 ->select(DB::raw('CONCAT(ar.area_mantenimiento) AS area'),'ar.idarea_mantenimiento')
+           $areas = DB::table('area_mantenimiento')
+                 ->select('idarea_mantenimiento','area_mantenimiento AS area')
                  ->get();
-           $tipos = DB::table('tipo_trabajo as tp')
-                 ->select(DB::raw('CONCAT(tp.nombre_tipo) AS tipo'),'tp.idtipo_trabajo')
+           $tipos = DB::table('tipo_trabajo')
+                 ->select('idtipo_trabajo','nombre_tipo AS tipo')
                  ->get();
-           $equipos = DB::table('equipo as e')
-                       ->select(DB::raw('CONCAT(e.nombre_equipo) AS equipo'),'e.idequipo')
+           $equipos = DB::table('equipo')
+                       ->select('idequipo','nombre_equipo AS equipo')
                        ->get();
              return view("trabajo.solicitud.create",["tipos"=>$tipos,"areas"=>$areas,"equipos"=>$equipos]);
      }
@@ -70,7 +70,11 @@ class SolicitudTrabajoController extends Controller
               DB::beginTransaction();
                 $solicitudes=new SolicitudTrabajo;
                 $solicitudes->numero=$request->get('numero');
-                $solicitudes->fecha=$request->get('fecha');
+
+
+                $mytime = Carbon::now('America/Guatemala');
+                $solicitudes->fecha=$mytime->toDateString();
+
                 $solicitudes->descripcion=$request->get('descripcion');
                 $solicitudes->compra_material=$request->get('compra_material');
                 $solicitudes->contratar_trabajo=$request->get('contratar_trabajo');
@@ -118,7 +122,7 @@ class SolicitudTrabajoController extends Controller
                   DB::rollback();
               }
 
-              return Redirect::to('trabajo/solicitud');
+                return back();
       }
 
 
@@ -196,6 +200,6 @@ return view("trabajo.solicitud.show",["solicitudes"=>$solicitudes,"detalles"=>$d
      */
     public function destroy($id)
     {
-    
+
     }
 }
