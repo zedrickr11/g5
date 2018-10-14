@@ -137,3 +137,8 @@ Route::get('/json-calendario','CalendarioController@llenarcalendario');
 
 //manuales
 Route::resource('equipo/principal/','EquipoIndexController');
+
+//imprimirQR
+Route::get('equipo/qr', function () {
+    return view ('equipo.vista.img1') ;
+});

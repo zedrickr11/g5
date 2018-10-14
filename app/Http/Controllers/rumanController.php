@@ -20,6 +20,7 @@ use Response;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
+
 class rumanController extends Controller
 {
   /**

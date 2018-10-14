@@ -78,9 +78,11 @@
 
             <strong><i class="fa  fa-qrcode margin-r-5"></i> Código QR</strong>
             <p></p>
-            <img class="profile-user-img img-responsive " src="data:image/png;base64, {!! base64_encode(QrCode::format('png')
+            <img  class="profile-user-img img-responsive " src="data:image/png;base64, {!! base64_encode(QrCode::format('png')
                         ->size(500)
                         ->generate(Request::url())) !!} " alt="User profile picture">
+            
+            <a  href="{{asset('equipo/qr')}}"><button>imprimir</button></a>
 
 
 
