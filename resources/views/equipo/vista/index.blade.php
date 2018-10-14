@@ -1212,7 +1212,7 @@ btn-group
     $('.nav-tabs a[href="#tab-area"]').tab('show');
     $('.nav-tabs a[href="#tab-tipo"]').tab('show');
     $('.nav-tabs a[href="#tab_4-4"]').tab('show');
-  $('.nav-tabs a[href="#solicitudes"]').tab('show');
+  
 
   }
   </script>
