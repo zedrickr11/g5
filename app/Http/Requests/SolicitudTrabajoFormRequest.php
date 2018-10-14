@@ -25,7 +25,7 @@ class SolicitudTrabajoFormRequest extends FormRequest
     {
         return [
               'numero'=>'required|max:50',
-                'fecha'=>'required'
+              
         ];
     }
 }

@@ -8,163 +8,164 @@ Trabajo
 </h1>
 <ol class="breadcrumb">
 <li><a href="#"><i class="fa 	fa-suitcase"></i> Trabajo</a></li>
-<li class="active">Permiso de  Trabajo</li>
+<li class="active">Seguimiento de  Trabajo</li>
 </ol>
 </section>
 <section class="content">
 <div class="row">
 <!-- left column -->
 <div class="col-md-12">
+<!-- general form elements -->
+<div class="box box-success">
+<div class="box-header with-border">
+<h3 class="box-title">Nuevo Permiso  de trabajo</h3>
+</div>
 
+<!-- /.box-header -->
 <!-- form start -->
-{!!Form::open(array('url'=>'trabajo/permiso','method'=>'POST','autocomplete'=>'off'))!!}
-      {{Form::token()}}
-      <div class="nav-tabs-custom">
-           <ul class="nav nav-tabs pull-right">
-
-          <li ><a href="#tab_5-5" data-toggle="tab">Precaucion Ejecutante</a></li>
-           <li ><a href="#tab_4-4" data-toggle="tab">Precaucion Responsable</a></li>
-           <li ><a href="#tab_3-3" data-toggle="tab">Naturaleza de Peligro</a></li>
-           <li><a href="#tab_2-2" data-toggle="tab">Tipo de Trabajo</a></li>
-           <li class="active"><a href="#tab_1-1" data-toggle="tab">ID</a></li>
-           <li class="pull-left header"><i class="fa fa-tv"></i>Nuevo Permiso de Trabajo</li>
-          </ul>
-<div class="tab-content">
-    <div class="tab-pane active" id="tab_1-1">
-      <div class="form-group">
+<form role="form" method="POST" action="{{route('permiso.store')}}" >
+{!! csrf_field() !!}
+      <div class="box-body col-md-12">
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+      @if (count($errors)>0)
+      <div class="alert alert-danger">
+      <ul>
+      @foreach ($errors->all() as $error)
+        <li>{{$error}}</li>
+      @endforeach
+      </ul>
+      </div>
+      @endif
+      </div>
+<div class="box-body col-md-6">
+  <div class="form-group">
 <label for="direccion_fab">No de permiso</label>
-<input type="text" class="form-control" name="num_permiso" value="{{old('num_permiso')}}">
+<input type="text" class="form-control" readonly name="num_permiso" value="{{$numeropermiso->num_permiso+1}} ">
+
 </div>
 <div class="form-group">
 <label for="direccion_fab">Descripción</label>
 <input type="text" class="form-control" name="descripcion" value="{{old('descripcion')}}">
 </div>
+</div>
 
+<div class="box-body col-md-6">
+  <div class="form-group">
+        <label for="solicitud">No de Solicitud</label>
+        <select name="idsolitud_trabajo" id="idsolitud_trabajo" class="form-control selectpicker" data-live-search="true">
+          @foreach($solicitudes as $s)
+            <option value="{{$s->idsolitud_trabajo}}">{{$s->num}}</option>
+             @endforeach
+          </select>
+      </div>
+
+</div>
+
+<div class="box-body col-md-12">
 <div class="form-group">
-      <label for="solicitud">No de Solicitud</label>
-      <select name="idsolitud_trabajo" id="idsolitud_trabajo" class="form-control selectpicker" data-live-search="true">
-        @foreach($solicitudes as $s)
-          <option value="{{$s->idsolitud_trabajo}}">{{$s->idsolitud_trabajo}}</option>
-           @endforeach
-        </select>
-    </div>
-
-
+<label>Tipo de Trabajo</label>
+<select name="pidtipo" class="form-control select2" id="pidtipo" data-live-search="true">
+@foreach($tipos as $tip)
+<option value="{{$tip->idtipo_trabajo}}">{{$tip->tipo}}</option>
+@endforeach
+</select>
+</div>
 <div class="form-group">
-<label>Fecha</label>
-<div class="input-group date">
-<div class="input-group-addon">
-<i class="fa fa-calendar"></i>
+<label for="direccion_fab">Descripcion del Tipo de Trabajo</label>
+<input type="text" class="form-control" name="pdescripcion" id="pdescripcion" value="">
 </div>
-<input type="date" class="form-control pull-right" id="datepicker" name="fecha" value="{{old('fecha')}}">
+
+<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+<div class="form-group">
+<button type="button" id="bt_add" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
 </div>
 </div>
-    </div>
-    <div class="tab-pane active" id="tab_2-2">
-      <div class="form-group">
-      <label>Tipo de Trabajo</label>
-      <select name="idsolitud_trabajo" class="form-control select2" id="pidtipo" data-live-search="true">
-      @foreach($tipos as $tip)
-      <option value="{{$tip->idtipo_trabajo}}">{{$tip->tipo}}</option>
-      @endforeach
-      </select>
-      </div>
-      <div class="form-group">
-      <label for="direccion_fab">Descripcion del Tipo de Trabajo</label>
-      <input type="text" class="form-control" name="descripcion_detalle_tipo_trabajo_permiso" id="pdescripcion" value="">
-      </div>
+<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+<table id="detalle" class="table table-striped table-bordered table-condensed table-hover">
+<thead style="background-color:#2ab863">
+  <th>Opciones</th>
+  <th>Tipo de Trabajo</th>
+  <th>Descripcion tipo de trabajo</th>
+</thead>
+  <tfoot>
 
-      <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-      <div class="form-group">
-      <button type="button" id="bt_add" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
-      </div>
-      </div>
-      <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-      <table id="detalle" class="table table-striped table-bordered table-condensed table-hover">
-      <thead style="background-color:#2ab863">
-        <th>Opciones</th>
-        <th>Tipo de Trabajo</th>
-        <th>Descripcion tipo de trabajo</th>
+  </tfoot>
+  <tbody>
 
-      </thead>
-        <tfoot>
+  </tbody>
+</table>
+ </div>
+</div>
+<div class="box-body col-md-12">
 
-        </tfoot>
-        <tbody>
-
-        </tbody>
-      </table>
-       </div>
-    </div>
-    <div class="tab-pane active" id="tab_3-3">
-      <div class="form-group">
-      <label>Naturaleza de Peligro</label>
-      <select name="idnaturaleza_peligro" class="form-control select2" id="pidnaturaleza" data-live-search="true">
-      @foreach($naturalezas as $na)
-      <option value="{{$na->idnaturaleza_peligro}}">{{$na->naturaleza}}</option>
-      @endforeach
-      </select>
-      </div>
-
-      <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-      <div class="form-group">
-      <button type="button" id="bt_addn" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
-      </div>
-      </div>
-      <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-      <table id="detallen" class="table table-striped table-bordered table-condensed table-hover">
-      <thead style="background-color:#2ab863">
-        <th>Opciones</th>
-        <th>Naturaleza de Peligro</th>
-
-
-      </thead>
-        <tfoot>
-
-        </tfoot>
-        <tbody>
-
-        </tbody>
-      </table>
-       </div>
+  <div class="form-group">
+  <label>Naturaleza de Peligro</label>
+  <select name="pidnaturaleza" class="form-control select2" id="pidnaturaleza" data-live-search="true">
+  @foreach($naturalezas as $na)
+  <option value="{{$na->idnaturaleza_peligro}}">{{$na->naturaleza}}</option>
+  @endforeach
+  </select>
   </div>
-  <div class="tab-pane active" id="tab_4-4">
-    <div class="form-group">
-    <label>Precaucion Responsable</label>
-    <select name="idprecaucion_responsable" class="form-control select2" id="pidresponsable" data-live-search="true">
-    @foreach($responsables as $r)
-    <option value="{{$r->idprecaucion_responsable}}">{{$r->responsable}}</option>
-    @endforeach
-    </select>
-    </div>
 
-    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-    <div class="form-group">
-    <button type="button" id="bt_addr" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
-    </div>
-    </div>
-    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-    <table id="detaller" class="table table-striped table-bordered table-condensed table-hover">
-    <thead style="background-color:#2ab863">
-      <th>Opciones</th>
-      <th>PRECAUCIONES OBLIGATORIAS PARA EL RESPONSABLE DEL ÁREA / EQUIPO</th>
+  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+  <div class="form-group">
+  <button type="button" id="bt_addn" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
+  </div>
+  </div>
+  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+  <table id="detallen" class="table table-striped table-bordered table-condensed table-hover">
+  <thead style="background-color:#2ab863">
+    <th>Opciones</th>
+    <th>Naturaleza de Peligro</th>
 
 
-    </thead>
-      <tfoot>
+  </thead>
+    <tfoot>
 
-      </tfoot>
-      <tbody>
+    </tfoot>
+    <tbody>
 
-      </tbody>
-    </table>
-     </div>
+    </tbody>
+  </table>
+   </div>
 </div>
 
-<div class="tab-pane active" id="tab_5-5">
+<div class="box-body col-md-6">
+  <div class="form-group">
+  <label>Precaucion Responsable</label>
+  <select name="pidresponsable" class="form-control select2" id="pidresponsable" data-live-search="true">
+  @foreach($responsables as $r)
+  <option value="{{$r->idprecaucion_responsable}}">{{$r->responsable}}</option>
+  @endforeach
+  </select>
+  </div>
+
+  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+  <div class="form-group">
+  <button type="button" id="bt_addr" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
+  </div>
+  </div>
+  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+  <table id="detaller" class="table table-striped table-bordered table-condensed table-hover">
+  <thead style="background-color:#2ab863">
+    <th>Opciones</th>
+    <th>PRECAUCIONES OBLIGATORIAS PARA EL RESPONSABLE DEL ÁREA / EQUIPO</th>
+
+
+  </thead>
+    <tfoot>
+
+    </tfoot>
+    <tbody>
+
+    </tbody>
+  </table>
+   </div>
+</div>
+<div class="box-body col-md-6">
   <div class="form-group">
   <label>Precaucion Ejecutante</label>
-  <select name="idprecaucion_ejecutante" class="form-control select2" id="pidejecutante" data-live-search="true">
+  <select name="pidejecutante" class="form-control select2" id="pidejecutante" data-live-search="true">
   @foreach($ejecutantes as $e)
   <option value="{{$e->idprecaucion_ejecutante}}">{{$e->ejecutante}}</option>
   @endforeach
@@ -193,37 +194,21 @@ Trabajo
   </table>
    </div>
 </div>
-
-
-
-
-    <!-- /.tab-pane -->
-    <div class="box-footer">
-        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-    @if (count($errors)>0)
-    <div class="alert alert-danger">
-    <ul>
-    @foreach ($errors->all() as $error)
-      <li>{{$error}}</li>
-    @endforeach
-    </ul>
-    </div>
-    @endif
-  </div>
-      <input name"_token" value="{{ csrf_token() }}" type="hidden"></input>
-    <a href="{{route('permiso.index')}}">
-    <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
-    </a>
-    <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
-    <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
-    </div>
 </div>
-<!-- /.tab-content -->
+<!-- /.box-body -->
+<div class="box-footer">
+
+
+<a href="{{route('permiso.index')}}">
+<button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
+</a>
+<button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
+<button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
 </div>
-    <!-- nav-tabs-custom -->
-{!!Form::close()!!}
+</form>
 </div>
 <!-- /.box -->
+</div>
 </div>
 </section>
 <script src="{{asset('ajax/jquery.min.js')}}"></script>
@@ -457,13 +442,5 @@ function evaluar4()
  }
 </script>
 
-<script type="text/javascript">
-window.onload=function(){
-  $('.nav-tabs a[href="#tab_5-5"]').tab('show');
-  $('.nav-tabs a[href="#tab_4-4"]').tab('show');
-  $('.nav-tabs a[href="#tab_3-3"]').tab('show');
-  $('.nav-tabs a[href="#tab_2-2"]').tab('show');
-  $('.nav-tabs a[href="#tab_1-1"]').tab('show');
-}
-</script>
+
 @endsection

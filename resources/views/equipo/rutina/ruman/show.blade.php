@@ -42,27 +42,9 @@
 
                   </div>
 
-                  <div class="form-group">
-                    <label for="select" class="">Equipo</label>
-                    <br>
-
-                    @foreach($equipo as $hosp)
-                             @if ($hosp->idequipo==$ruman->idequipo)
-                             <p>{{$hosp->nombre_equipo}}</p>
+            
 
 
-                           @endif
-                            @endforeach
-
-
-                  </div>
-
-                  <div class="form-group">
-                      <label>Fecha realizacion rutina</label>
-                      <p>{{$ruman->fecha_realizacion_rutina}}</p>
-
-                          <!-- /.input group -->
-                  </div>
                   <div class="form-group">
 
                     <label for="direccion_fab">Observaciones rutina</label>
@@ -89,19 +71,7 @@
 
 
 
-        <div class="form-group">
-          <label for="select" class="">Permiso de trabajo</label>
-          <br>
 
-          @foreach($permisotrabajo as $hosp)
-                   @if ($hosp->idpermiso_trabajo==$ruman->idpermiso_trabajo)
-                   <p>{{$hosp->num_permiso}}</p>
-
-
-                 @endif
-                  @endforeach
-
-        </div>
 
         <div class="form-group">
 
@@ -113,11 +83,43 @@
   </div>
 
 
+  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+      <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
+          <thead style="background-color:#2ab863">
+
+              <th>Caracteristica</th>
+              <th>Subgrupo</th>
+              <th>Valor</th>
+
+
+
+
+          </thead>
+          <tfoot>
+
+
+          </tfoot>
+          <tbody>
+              @foreach($detallerutina as $det)
+                 @if ($det->idrutina_mantenimiento==$ruman->idrutina_mantenimiento)
+              <tr>
+                  <td>{{$det->idcaracteristica_rutina}}</td>
+                  <td>{{$det->idsubgrupo_rutina}}</td>
+                  <td>{{$det->idvalor_ref_rutina}}</td>
+
+                </tr>
+              @endif
+              @endforeach
+          </tbody>
+      </table>
+   </div>
+
+
 				<!-- /.box-body -->
 
 
         <div class="box-footer">
-<a href="{{route('ruman.index')}}">
+      <a href="{{route('ruman.index')}}">
             <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
           </a>
         </div>
