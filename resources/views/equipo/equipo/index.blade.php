@@ -55,7 +55,7 @@
                     <button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-info-sign "></span></button>
                   </a>
 
-                  
+
 
 
 
@@ -87,5 +87,11 @@
 
       </div>
 
-</section>
+</section
+@push ('scripts')
+<script>
+$('#liEq').addClass("treeview active");
+$('#liEquipo').addClass("active");
+</script>
+@endpush
 @endsection

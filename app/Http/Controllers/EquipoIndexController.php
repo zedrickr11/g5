@@ -73,7 +73,7 @@ class EquipoIndexController extends Controller
 
       $TipoManual = TipoManual::all();
       $EquipoM = Equipo::all();
-      
+
       $Detalle_manual =DB::table('Detalle_manual')
       ->select('*')
       ->where('idequipo','=',$id)
@@ -84,7 +84,7 @@ class EquipoIndexController extends Controller
         ->join('subgrupo as s','s.idsubgrupo','=','e.idsubgrupo')
         ->join('conf_corr as c','s.idsubgrupo','=','c.idsubgrupo')
         ->join('hospital as h','h.idhospital','=','e.idhospital')
-        ->select('e.*','c.actual as actual','s.codigosubgrupo as codigosubgrupo','h.hospital as hospi',DB::raw('CONCAT(e.idarea,e.idgrupo,s.codigosubgrupo, "-",e.idregion,e.iddepartamento,e.idtipounidad,e.idunidadsalud,c.actual) AS codigo'))
+        ->select('e.*','s.subgrupo as subgrupo','c.actual as actual','s.codigosubgrupo as codigosubgrupo','h.hospital as hospi',DB::raw('CONCAT(e.idarea,e.idgrupo,s.codigosubgrupo, "-",e.idregion,e.iddepartamento,e.idtipounidad,e.idunidadsalud,c.actual) AS codigo'))
         ->where('e.idequipo','=',$id)
         ->first();
 
