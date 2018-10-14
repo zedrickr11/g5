@@ -36,7 +36,7 @@
                   <tr>
                     <th>Id</th>
                     <th>Tipo de rutina</th>
-                    <th>Equipo</th>
+
                     <th>Estado</th>
 
 
@@ -50,13 +50,13 @@
             <tr>
               <td>{{ $cat->idrutina_mantenimiento}}</td>
               <td>{{ $cat->idtipo_rutina}}</td>
-              <td>{{ $cat->idequipo}}</td>
+
               <td>{{ $cat->estado_rutina}}</td>
 
 
               <td>
 
-                  <a href="{{route('ruman.edit',$cat->idrutina_mantenimiento)}}">
+                  <a href="{{route('ruman.show',$cat->idrutina_mantenimiento)}}">
                     <button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-cog"></button>
                   </a>
                   <a href="{{route('ruman.show',$cat->idrutina_mantenimiento)}}">
