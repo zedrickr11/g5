@@ -84,7 +84,7 @@ class PermisoTrabajoController extends Controller
 
 
               $idtipo_trabajo = $request->get('idtipo_trabajo');
-              $estado_detalle_tipo_trabajo_permiso	= $request->get('estado_detalle_tipo_trabajo_permiso');
+    
               $descripcion_detalle_tipo_trabajo_permiso	 = $request->get('descripcion_detalle_tipo_trabajo_permiso');
 
               $cont = 0;
@@ -93,7 +93,7 @@ class PermisoTrabajoController extends Controller
                   $detalle = new DetalleTipoTrabajoPermiso();
                   $detalle->idpermiso_trabajo = $permisos->idpermiso_trabajo;
                   $detalle->idtipo_trabajo= $idtipo_trabajo[$cont];
-                  $detalle->estado_detalle_tipo_trabajo_permiso= $estado_detalle_tipo_trabajo_permiso[$cont];
+                  $detalle->estado_detalle_tipo_trabajo_permiso= 1;
                   $detalle->descripcion_detalle_tipo_trabajo_permiso= $descripcion_detalle_tipo_trabajo_permiso[$cont];
                   $detalle->save();
                   $cont=$cont+1;
@@ -101,7 +101,6 @@ class PermisoTrabajoController extends Controller
 
 
               $idnaturaleza_peligro = $request->get('idnaturaleza_peligro');
-              $estado_detalle_naturaleza_peligro = $request->get('estado_detalle_naturaleza_peligro');
 
               $contn = 0;
 
@@ -109,14 +108,14 @@ class PermisoTrabajoController extends Controller
                   $detallen = new DetalleNaturalezaPeligro();
                   $detallen->idpermiso_trabajo = $permisos->idpermiso_trabajo;
                   $detallen->idnaturaleza_peligro= $idnaturaleza_peligro[$contn];
-                  $detallen->estado_detalle_naturaleza_peligro = $estado_detalle_naturaleza_peligro[$contn];
+                  $detallen->estado_detalle_naturaleza_peligro = 1;
                   $detallen->save();
                   $contn=$contn+1;
               }
 
 
               $idprecaucion_responsable= $request->get('idprecaucion_responsable');
-              $estado_detalle_precaucion_responsable = $request->get('estado_detalle_precaucion_responsable');
+
 
               $contr = 0;
 
@@ -124,13 +123,13 @@ class PermisoTrabajoController extends Controller
                   $detaller = new DetallePrecaucionResponsable();
                   $detaller->idpermiso_trabajo = $permisos->idpermiso_trabajo;
                   $detaller->idprecaucion_responsable= $idprecaucion_responsable[$contr];
-                  $detaller->estado_detalle_precaucion_responsable	= $estado_detalle_precaucion_responsable[$contr];
+                  $detaller->estado_detalle_precaucion_responsable	= 1;
                   $detaller->save();
                   $contr=$contr+1;
                 }
 
                 $idprecaucion_ejecutante= $request->get('idprecaucion_ejecutante');
-                $estado_detalle_precaucion_ejecutante= $request->get('estado_detalle_precaucion_ejecutante');
+
 
                 $contj = 0;
 
@@ -138,7 +137,7 @@ class PermisoTrabajoController extends Controller
                     $detallej = new DetallePrecaucionEjecutante();
                     $detallej->idpermiso_trabajo = $permisos->idpermiso_trabajo;
                     $detallej->idprecaucion_ejecutante= $idprecaucion_ejecutante[$contj];
-                    $detallej->estado_detalle_precaucion_ejecutante	= $estado_detalle_precaucion_ejecutante[$contj];
+                    $detallej->estado_detalle_precaucion_ejecutante	= 1;
                     $detallej->save();
                     $contj=$contj+1;
                   }

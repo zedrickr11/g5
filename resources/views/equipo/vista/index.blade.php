@@ -97,6 +97,7 @@
         <div class="nav-tabs-custom">
           <ul class="nav nav-tabs">
             <li class="active"><a href="#activity" data-toggle="tab">Inicio</a></li>
+            <li><a href="#solicitudes" data-toggle="tab">Solicitudes</a></li>
             <li><a href="#timeline" data-toggle="tab">Rutinas</a></li>
             <li><a href="#settings" data-toggle="tab">Actualizar</a></li>
             <li><a href="#manuales" data-toggle="tab">Manuales</a></li>
@@ -215,6 +216,72 @@
               <!-- /.post -->
             </div>
             <!-- /.tab-pane -->
+
+<!--SOLICITUDES-->
+              <div class="tab-pane" id="solicitudes">
+                <div class="box-body">
+                <div class="row">
+                  <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_4-4" data-toggle="tab">ID</a></li>
+                            <li><a href="#tab_3-3" data-toggle="tab">Tipo de Trabajo</a></li>
+                      <li ><a href="#tab_2-2" data-toggle="tab">Area de Mantenimiento</a></li>
+                    </ul>
+                    <div class="box-body col-md-6">
+                      <div class="form-group">
+                      <label for="direccion_fab">No de solicitud</label>
+                      <input type="text" class="form-control" name="numero" value="{{old('numero')}}">
+                      </div>
+                      <div class="form-group">
+                      <label for="estado">Compra de Material</label>
+                      <select class="form-control" name="compra_material">
+                      <option value='1'>SI</option>
+                      <option value='0'>NO</option>
+                      </select>
+                      </div>
+                      <div class="form-group">
+                      <label for="direccion_fab">Solicitud dirigida</label>
+                      <input type="text" class="form-control" name="dirigido_solitud_trabajo" value="{{old('dirigido_solitud_trabajo')}}">
+                      </div>
+                      <div class="form-group">
+                      <label for="direccion_fab">Jefe</label>
+                      <input type="text" class="form-control" name="jefe_solitud_trabajo" value="{{old('jefe_solitud_trabajo')}}">
+                      </div>
+                    </div>
+                    <div class="box-body col-md-6">
+
+                    <div class="form-group">
+                    <label>Fecha de Solicitud</label>
+                    <div class="input-group date">
+                    <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="date" class="form-control pull-right" id="datepicker" name="fecha" value="{{old('fecha')}}">
+                    </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="solicitudes">Contratar Trabajo</label>
+                      <select class="form-control" name="contratar_trabajo"  >
+                        <option value="1">SI</option>
+                        <option value="0">NO</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                    <label for="direccion_fab">Puesto dirigido</label>
+                    <input type="text" class="form-control" name="puesto_dirigido_solitud_trabajo" value="{{old('puesto_dirigido_solitud_trabajo')}}">
+                    </div>
+                    <div class="form-group">
+                    <label for="direccion_fab">Edificio</label>
+                    <input type="text" class="form-control" name="edificio_solitud_trabajo" value="{{old('edificio_solitud_trabajo')}}">
+                    </div>
+                    </div>
+
+
+
+                  </div><!--nav-tabs-custom-->
+                </div><!--ROW-->
+              </div><!--box-body-->
+              </div>
             <div class="tab-pane" id="timeline">
   <div class="box-body">
   <div class="row">

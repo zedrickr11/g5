@@ -73,13 +73,7 @@ Trabajo
       <label for="direccion_fab">Descripcion del Tipo de Trabajo</label>
       <input type="text" class="form-control" name="descripcion_detalle_tipo_trabajo_permiso" id="pdescripcion" value="">
       </div>
-      <div class="form-group">
-      <label for="estado">Estado</label>
-      <select class="form-control" name="estado_detalle_tipo_trabajo_permiso" id="pestado">
-      <option value='1'>SI</option>
-      <option value='0'>NO</option>
-      </select>
-      </div>
+
       <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
       <div class="form-group">
       <button type="button" id="bt_add" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
@@ -91,7 +85,7 @@ Trabajo
         <th>Opciones</th>
         <th>Tipo de Trabajo</th>
         <th>Descripcion tipo de trabajo</th>
-        <th>Estado</th>
+
       </thead>
         <tfoot>
 
@@ -111,13 +105,7 @@ Trabajo
       @endforeach
       </select>
       </div>
-      <div class="form-group">
-      <label for="estado">Estado</label>
-      <select class="form-control" name="estado_detalle_naturaleza_peligro" id="pestados">
-      <option value='1'>SI</option>
-      <option value='0'>NO</option>
-      </select>
-      </div>
+
       <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
       <div class="form-group">
       <button type="button" id="bt_addn" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
@@ -128,7 +116,7 @@ Trabajo
       <thead style="background-color:#2ab863">
         <th>Opciones</th>
         <th>Naturaleza de Peligro</th>
-        <th>Estado</th>
+
 
       </thead>
         <tfoot>
@@ -149,13 +137,7 @@ Trabajo
     @endforeach
     </select>
     </div>
-    <div class="form-group">
-    <label for="estado">Estado</label>
-    <select class="form-control" name="estado_detalle_precaucion_responsable" id="pestador">
-    <option value='1'>SI</option>
-    <option value='0'>NO</option>
-    </select>
-    </div>
+
     <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
     <div class="form-group">
     <button type="button" id="bt_addr" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
@@ -166,7 +148,7 @@ Trabajo
     <thead style="background-color:#2ab863">
       <th>Opciones</th>
       <th>PRECAUCIONES OBLIGATORIAS PARA EL RESPONSABLE DEL ÁREA / EQUIPO</th>
-      <th>Estado</th>
+
 
     </thead>
       <tfoot>
@@ -188,13 +170,7 @@ Trabajo
   @endforeach
   </select>
   </div>
-  <div class="form-group">
-  <label for="estado">Estado</label>
-  <select class="form-control" name="estado_detalle_precaucion_ejecutante" id="pestadoj">
-  <option value='1'>SI</option>
-  <option value='0'>NO</option>
-  </select>
-  </div>
+
   <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
   <div class="form-group">
   <button type="button" id="bt_addj" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
@@ -205,7 +181,7 @@ Trabajo
   <thead style="background-color:#2ab863">
     <th>Opciones</th>
     <th>PRECAUCIONES OBLIGATORIAS PARA EL EJECUTANTE</th>
-    <th>Estado</th>
+
 
   </thead>
     <tfoot>
@@ -223,6 +199,7 @@ Trabajo
 
     <!-- /.tab-pane -->
     <div class="box-footer">
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
     @if (count($errors)>0)
     <div class="alert alert-danger">
     <ul>
@@ -232,6 +209,7 @@ Trabajo
     </ul>
     </div>
     @endif
+  </div>
       <input name"_token" value="{{ csrf_token() }}" type="hidden"></input>
     <a href="{{route('permiso.index')}}">
     <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
@@ -276,11 +254,10 @@ function agregar()
   idtipo=$("#pidtipo").val();
   tipo=$("#pidtipo option:selected").text();
   descripcion=$("#pdescripcion").val();
-  idestado=$("#pestado").val();
-  estado=$("#pestado option:selected").text();
+
   if (idtipo!="" )
   {
- var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idtipo_trabajo[]" value="'+idtipo+'">'+tipo+'</td><td><input type="text" name="descripcion_detalle_tipo_trabajo_permiso[]" value="'+descripcion+'" ></td><td><input type="hidden" name="estado_detalle_tipo_trabajo_permiso[]" value="'+idestado+'">'+estado+'</td></tr>';
+ var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idtipo_trabajo[]" value="'+idtipo+'">'+tipo+'</td><td><input type="text" name="descripcion_detalle_tipo_trabajo_permiso[]" value="'+descripcion+'" ></td></tr>';
  cont++;
  limpiar();
  evaluar();
@@ -327,19 +304,17 @@ $(document).ready(function(){
   });
 });
 var contn=0;
-total=0;
-subtotal=[];
+total1=0;
+subtotal1=[];
 $("#guardarn").hide();
 function agregarn()
 {
   idnaturaleza=$("#pidnaturaleza").val();
   naturaleza=$("#pidnaturaleza option:selected").text();
-  idestado=$("#pestados").val();
-  estado=$("#pestados option:selected").text();
 
   if (idnaturaleza!="" )
   {
-var fila='<tr class="selected" id="fila'+contn+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+contn+');">X</button></td><td><input type="hidden" name="idnaturaleza_peligro[]" value="'+idnaturaleza+'">'+naturaleza+'</td><td><input type="hidden" name="estado_detalle_naturaleza_peligro[]" value="'+idestado+'">'+estado+'</td></tr>';
+var fila='<tr class="selected" id="fila'+contn+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+contn+');">X</button></td><td><input type="hidden" name="idnaturaleza_peligro[]" value="'+idnaturaleza+'">'+naturaleza+'</td></tr>';
  contn++;
  limpiar();
  evaluar2();
@@ -371,7 +346,7 @@ function evaluar2()
   function eliminar(index){
 
    $("#fila" + index).remove();
-   evaluar();
+   evaluar2();
 
  }
 </script>
@@ -387,20 +362,19 @@ $(document).ready(function(){
   });
 });
 var contr=0;
-total=0;
-subtotal=[];
+total2=0;
+subtotal2=[];
 $("#guardarr").hide();
 
 function agregarr()
 {
   idresponsable=$("#pidresponsable").val();
   responsable=$("#pidresponsable option:selected").text();
-  idestado=$("#pestador").val();
-  estado=$("#pestador option:selected").text();
+
 
   if (idresponsable!="" )
   {
-  var fila='<tr class="selected" id="fila'+contr+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+contr+');">X</button></td><td><input type="hidden" name="idprecaucion_responsable[]" value="'+idresponsable+'">'+responsable+'</td><td><input type="hidden" name="estado_detalle_precaucion_responsable[]" value="'+idestado+'">'+estado+'</td></tr>';
+  var fila='<tr class="selected" id="fila'+contr+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+contr+');">X</button></td><td><input type="hidden" name="idprecaucion_responsable[]" value="'+idresponsable+'">'+responsable+'</td></tr>';
  contr++;
  limpiar();
  evaluar3();
@@ -426,7 +400,7 @@ function evaluar3()
  }
   function eliminar(index){
    $("#fila" + index).remove();
-   evaluar();
+   evaluar3();
  }
 </script>
 
@@ -441,20 +415,19 @@ $(document).ready(function(){
   });
 });
 var contj=0;
-total=0;
-subtotal=[];
+total3=0;
+subtotal3=[];
 $("#guardarj").hide();
 
 function agregarj()
 {
   idejecutante=$("#pidejecutante").val();
   ejecutante=$("#pidejecutante option:selected").text();
-  idestado=$("#pestadoj").val();
-  estado=$("#pestadoj option:selected").text();
+
 
   if (idejecutante!="" )
   {
-  var fila='<tr class="selected" id="fila'+contj+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+contj+');">X</button></td><td><input type="hidden" name="idprecaucion_ejecutante[]" value="'+idejecutante+'">'+ejecutante+'</td><td><input type="hidden" name="estado_detalle_precaucion_ejecutante[]" value="'+idestado+'">'+estado+'</td></tr>';
+  var fila='<tr class="selected" id="fila'+contj+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+contj+');">X</button></td><td><input type="hidden" name="idprecaucion_ejecutante[]" value="'+idejecutante+'">'+ejecutante+'</td></tr>';
  contj++;
  limpiar();
  evaluar4();
@@ -480,12 +453,13 @@ function evaluar4()
  }
   function eliminar(index){
    $("#fila" + index).remove();
-   evaluar();
+   evaluar4();
  }
 </script>
 
 <script type="text/javascript">
 window.onload=function(){
+  $('.nav-tabs a[href="#tab_5-5"]').tab('show');
   $('.nav-tabs a[href="#tab_4-4"]').tab('show');
   $('.nav-tabs a[href="#tab_3-3"]').tab('show');
   $('.nav-tabs a[href="#tab_2-2"]').tab('show');
