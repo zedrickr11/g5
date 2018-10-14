@@ -957,62 +957,54 @@
     <!-- /.row -->
 
   </section>
-  <script src="{{asset('ajax/jquery.min.js')}}"></script>
-  <script src="{{asset('ajax/bootstrap.min.js')}}"></script>
-  <script src="{{asset('ajax/select2.min.js')}}"></script>
-  <script src="{{asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
 
 
-  <script type="text/javascript">
-
-  //botones para guardar
-
-  //fechas
-  $('#fecha_fabricacion').datepicker({
-      autoclose: true,
-      todayHighlight: true,
-      format: "yyyy-mm-dd",
-      orientation: "bottom auto",
-      showOptions: { direction: "down" }
-
-  });
-  $('#fecha_instalcion').datepicker({
-      autoclose: true,
-      todayHighlight: true,
-      format: "yyyy-mm-dd",
-      orientation: "bottom auto",
-      showOptions: { direction: "down" }
-
-  });
-  $('#fecha_compra').datepicker({
-      autoclose: true,
-      todayHighlight: true,
-      format: "yyyy-mm-dd",
-      orientation: "bottom auto",
-      showOptions: { direction: "down" }
-
-  });
-  $('#fecha_expiracion_garantia').datepicker({
-      autoclose: true,
-      todayHighlight: true,
-      orientation: "bottom auto",
-      format: "yyyy-mm-dd"
-
-  });
+  @push ('scripts')
+    <script src="{{asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
 
 
+    <script type="text/javascript">
+
+    //botones para guardar
+
+    //fechas
+    $('#fecha_fabricacion').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        format: "yyyy-mm-dd",
+        orientation: "bottom auto",
+        showOptions: { direction: "down" }
+
+    });
+    $('#fecha_instalcion').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        format: "yyyy-mm-dd",
+        orientation: "bottom auto",
+        showOptions: { direction: "down" }
+
+    });
+    $('#fecha_compra').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        format: "yyyy-mm-dd",
+        orientation: "bottom auto",
+        showOptions: { direction: "down" }
+
+    });
+    $('#fecha_expiracion_garantia').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        orientation: "bottom auto",
+        format: "yyyy-mm-dd"
+
+    });
 
 
-  </script>
-  <script>
-      $(function () {
-          $.datepicker.setDefaults($.datepicker.regional["es"]);
-          $("#datepicker").datepicker({
-              dateFormat: 'dd/mm/yy',
-              firstDay: 1
-          });
-      });
-  </script>
+
+
+    </script>
+
   <script>
   $('#pidtipo').select2({
     theme: "classic"
@@ -1129,20 +1121,12 @@
 
   }
   </script>
-  @push ('scripts')
+ 
   <script>
   $('#liEq').addClass("treeview active");
   $('#liEquipo').addClass("active");
   </script>
 
   @endpush
-  <script type="text/javascript">
-  window.onload=function(){
-    $('.nav-tabs a[href="#tab-area"]').tab('show');
-    $('.nav-tabs a[href="#tab-tipo"]').tab('show');
-    $('.nav-tabs a[href="#tab_4-4"]').tab('show');
-  
 
-  }
-  </script>
 @endsection
