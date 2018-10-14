@@ -1121,7 +1121,7 @@
 
   }
   </script>
- 
+
   <script>
   $('#liEq').addClass("treeview active");
   $('#liEquipo').addClass("active");
