@@ -40,5 +40,11 @@ class DatabaseSeeder extends Seeder
         $this->call(AreaMantenimientoTableSeeder::class);
 
 
+        $this->call(TipoRutinaTableSeeder::class);
+        $this->call(CaracteristicaRutinaTableSeeder::class);
+        $this->call(SubgrupoRutinaTableSeeder::class);
+        $this->call(ValorReferenciaRutinaTableSeeder::class);
+
+
     }
 }
