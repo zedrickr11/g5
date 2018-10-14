@@ -394,101 +394,30 @@
       </ul>
       <div class="tab-content">
         <div class="active tab-pane" id="rutina">
-          <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
-          <h3 class="box-title"><a href="../rutina/ruman/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Agregar nueva rutina</button></a>
-          </div>
-              <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
-          <h3 class="box-title"><a href="ruman/create"><button class="btn btn-warning"><span class="glyphicon glyphicon-plus"></span> Copiar rutinas</button></a>
-         </div>
-           <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+          <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+          <h3 class="box-title"><a href="{{route('ruman.asignar',[$equipo->idsubgrupo,$equipo->idequipo])}}"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Asignar rutinas</button></a>
           </div>
 
 
-          @foreach($ruman as $st)
-            @if ($st->idequipo==$equipo->idequipo)
-
-  <div style=”padding:12px;background-color:#red;line-height:1.4;”>
 
           <div class="box-body col-md-6">
-    <h3>Notificación</h3>
+        <h3>Preventivo</h3>
+        @foreach($ruman as $st)
+        @if ($st->idequipo==$equipo->idequipo)
+        <h3 class="box-title"><a target="_blank" href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button class="btn btn-warning"><span class="fa fa-th"></span> Rutina preventiva</button></a>
 
-hsdfhbhsdabbds
-btn-group
-
+          @endif
+        @endforeach
 
 
                               </div>
-      <div class="box-body col-md-6">
-<h3>Rutina</h3>
-                              <div class="form-group">
-                                <label for="select" class="">Tipo rutina</label>
-                                <br>
-
-                                @foreach($tiporu as $hosp)
-                                         @if ($hosp->idtipo_rutina==$st->idtipo_rutina)
-                                         <p>{{$hosp->tipo_rutina}}</p>
-
-
-                                       @endif
-                                        @endforeach
-                              </div>
+                              <div class="box-body col-md-6">
+                            <h3>Correctivo</h3>
 
 
 
-                              <div class="form-group">
-                                  <label>Fecha que creo la rutina</label>
-                                  <p>{{$st->fecha_realizacion_rutina}}</p>
+                          </div>
 
-                                      <!-- /.input group -->
-                              </div>
-                              <div class="form-group">
-
-                                <label for="direccion_fab">Observaciones rutina</label>
-                                <p>{{$st->observaciones_rutina}}</p>
-                                </div>
-
-      <div class="form-group">
-              <label for="direccion_fab">Tiempo estimado rutina mantenimiento en horas</label>
-              <p>{{$st->tiempo_estimado_rutina_mantenimiento}}</p>
-
-      </div>
-
-
-            <div class="form-group">
-
-              <label for="direccion_fab">Responsable de area de rutina</label>
-              <p>{{$st->responsable_area_rutina_mantenimiento}}</p>
-            </div>
-
-
-
-            <div class="form-group">
-              <label for="select" class="">Permiso de trabajo</label>
-              <br>
-
-              @foreach($permisotrabajo as $hosp)
-                       @if ($hosp->idpermiso_trabajo==$st->idpermiso_trabajo)
-                       <p>{{$hosp->num_permiso}}</p>
-
-
-                     @endif
-                      @endforeach
-
-            </div>
-
-            <div class="form-group">
-
-              <label for="direccion_fab">Estado rutina</label>
-              <p>ACTIVO</p>
-            <!--  <p>{{$st->estado_rutina}}</p> -->
-
-            </div>
-
-      </div>
-  </div>
-
-      @endif
-       @endforeach
 
       </div>
 
