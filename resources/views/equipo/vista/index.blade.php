@@ -2,9 +2,9 @@
 @section ('contenido')
   <section class="content-header">
     <h1>
-      <a href="{{route('equipo.index')}}">Vista General 
+      <a href="{{route('equipo.index')}}">
         <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
-      </a>
+      </a>Vista General
     </h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Equipo</a></li>
@@ -185,23 +185,23 @@
                   <div class="col-sm-12">
 
 
-                        @foreach ($imagen_equipo as $img)
-                            <div class="col-sm-3">
-                          <img class="img-responsive" src="{{asset('img/equipo/'.$img->imagen)}}" alt="{{$img->descripcion_imagen}}">
+                          @foreach ($imagen_equipo as $img)
+                              <div class="col-sm-3">
+                            <img class="img-responsive" src="{{asset('img/equipo/'.$img->imagen)}}" alt="{{$img->descripcion_imagen}}">
 
 
-                          </div>
+                            </div>
 
-                        @endforeach
-
-
-                      <!-- /.col -->
-
-                      <!-- /.col -->
+                          @endforeach
 
 
-                    <!-- /.row -->
-                  </div>
+                        <!-- /.col -->
+
+                        <!-- /.col -->
+
+
+                      <!-- /.row -->
+                    </div>
                   <!-- /.col -->
                 </div>
                 <!-- /.row -->
@@ -868,6 +868,7 @@ btn-group
 
 
   <script type="text/javascript">
+
   //botones para guardar
 
   //fechas
@@ -903,10 +904,7 @@ btn-group
 
   });
 
-  $('#amodal').click(function(){
 
-     $("#modal-success").modal();
-  }
 
 
   </script>
