@@ -612,7 +612,12 @@
 
   </script>
 
-
+  @push ('scripts')
+  <script>
+  $('#liEq').addClass("treeview active");
+  $('#liEquipo').addClass("active");
+  </script>
+  @endpush
 
 
 

@@ -2,9 +2,9 @@
 @section ('contenido')
   <section class="content-header">
     <h1>
-      Vista General <a href="{{route('equipo.index')}}">
+      <a href="{{route('equipo.index')}}">
         <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
-      </a>
+      </a>Vista General
     </h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Equipo</a></li>
@@ -22,7 +22,7 @@
         <!-- Profile Image -->
         <div class="box box-primary">
           <div class="box-body box-profile">
-            <img class="profile-user-img img-responsive img-circle" src="../../dist/img/config1.png" alt="User profile picture">
+            <img class="profile-user-img img-responsive img-circle" src="{{asset('dist/img/config1.png')}}" alt="User profile picture">
 
             <h3 class="profile-username text-center">{{$equipo->nombre_equipo}}</h3>
 
@@ -30,7 +30,8 @@
 
             <ul class="list-group list-group-unbordered">
               <li class="list-group-item">
-                <b>Tipo de equipo</b> <a class="pull-right">{{ $equipo->idsubgrupo }}</a>
+                <b>Tipo de equipo  </b> <a class="pull">{{ $equipo->subgrupo }}</a>
+
               </li>
               <li class="list-group-item">
                 <b>Marca</b> <a class="pull-right">{{ $equipo->marca }}</a>
@@ -76,15 +77,13 @@
 
             <hr>
 
-            <strong><i class="fa  fa-qrcode margin-r-5"></i> Código QR</strong>
-            <p></p>
+            <strong><i class="fa  fa-qrcode margin-r-5"></i> Código QR  </strong>
+            <br>
+            <br>
             <img  class="profile-user-img img-responsive " src="data:image/png;base64, {!! base64_encode(QrCode::format('png')
                         ->size(500)
-                        ->generate(Request::url())) !!} " alt="User profile picture">
-            
-            <a  href="{{asset('equipo/qr')}}"><button>imprimir</button></a>
-
-
+                        ->generate(Request::url())) !!} " alt="User profile picture" style="width:100%;max-width:300px">
+            <p class="text-center"> <a  href="{{url('equipo/qr',$equipo->idequipo)}}" target="_blank"><span class="label label-success">Imprimir QR</span></a></p>
 
 
 
@@ -111,12 +110,12 @@
               <!-- Post -->
               <div class="post">
                 <div class="user-block">
-                  <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
+                  <img class="img-circle img-bordered-sm" src="{{asset('dist/img/historial.png')}}" alt="user image">
                       <span class="username">
-                        <a href="#">Jonathan Burke Jr.</a>
+                        <a href="#">Histarial de rutinas</a>
                         <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
                       </span>
-                  <span class="description">Shared publicly - 7:30 PM today</span>
+                  <span class="description">{{ $equipo->nombre_equipo }}</span>
                 </div>
                 <!-- /.user-block -->
                 <p>
@@ -174,7 +173,7 @@
               <!-- Post -->
               <div class="post">
                 <div class="user-block">
-                  <img class="img-circle img-bordered-sm" src="../../dist/img/config1.png" alt="User Image">
+                  <img class="img-circle img-bordered-sm" src="{{asset('dist/img/config1.png')}}" alt="User Image">
                       <span class="username">
                         <a href="#">Imágenes del equipo</a>
                         <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
@@ -188,23 +187,20 @@
                   <div class="col-sm-12">
 
 
-                        @foreach ($imagen_equipo as $img)
-                            <div class="col-sm-3">
-                          <img class="img-responsive" src="{{asset('img/equipo/'.$img->imagen)}}" alt="{{$img->descripcion_imagen}}">
+                          @foreach ($imagen_equipo as $img)
+                              <div class="col-sm-3">
+                            <img class="img-responsive" src="{{asset('img/equipo/'.$img->imagen)}}" alt="{{$img->descripcion_imagen}}">
 
 
-                          </div>
+                            </div>
 
-                        @endforeach
-
-
-                      <!-- /.col -->
-
-                      <!-- /.col -->
+                          @endforeach
 
 
-                    <!-- /.row -->
-                  </div>
+
+
+                      <!-- /.row -->
+                    </div>
                   <!-- /.col -->
                 </div>
                 <!-- /.row -->
@@ -937,6 +933,7 @@ btn-group
 
 
   <script type="text/javascript">
+
   //botones para guardar
 
   //fechas
@@ -972,11 +969,14 @@ btn-group
 
   });
 
-  $('#amodal').click(function(){
 
-     $("#modal-success").modal();
-  }
 
 
   </script>
+  @push ('scripts')
+  <script>
+  $('#liEq').addClass("treeview active");
+  $('#liEquipo').addClass("active");
+  </script>
+  @endpush
 @endsection

@@ -139,6 +139,11 @@ Route::get('/json-calendario','CalendarioController@llenarcalendario');
 Route::resource('equipo/principal/','EquipoIndexController');
 
 //imprimirQR
-Route::get('equipo/qr', function () {
-    return view ('equipo.vista.img1') ;
+use App\Equipo;
+Route::get('equipo/qr/{id}', function ($id) {
+    $equipo=DB::table('equipo')
+    ->select('*')
+    ->where('idequipo','=',$id)
+    ->get();
+    return view ('equipo.vista.img1',compact('equipo')) ;
 });

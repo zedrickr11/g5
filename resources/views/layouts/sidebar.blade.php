@@ -3,7 +3,7 @@
 
 <ul class="sidebar-menu" data-widget="tree">
   <li class="header">MENU</li>
-  <li class="treeview">
+  <li id="liEq"class="treeview">
     <a href="#">
       <i class="fa fa-desktop"></i> <span>Equipo</span>
       <span class="pull-right-container">
@@ -11,16 +11,11 @@
       </span>
     </a>
     <ul class="treeview-menu">
-
-
-      <li class=""><a href="{{route('equipo.index')}} "><i class="fa fa-circle-o"></i>Equipo</a></li>
-      <li class=""><a href="{{route('estado.index')}} "><i class="fa fa-circle-o"></i>Estado</a></li>
-
-
-
-
+      <li id="liEquipo"><a href="{{route('equipo.index')}} "><i class="fa fa-circle-o"></i>Equipo</a></li>
+      <li id="liEstado"><a href="{{route('estado.index')}} "><i class="fa fa-circle-o"></i>Estado</a></li>
     </ul>
   </li>
+
   <li class="treeview">
   <a href="">
     <i class="fa fa-edit"></i> <span>Ficha Técnica</span>
