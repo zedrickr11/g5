@@ -546,7 +546,7 @@
 
   @push ('scripts')
     <script src="{{asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
-    
+
     <script type="text/javascript">
     //botones para guardar
     $("#guardar").hide();
@@ -558,25 +558,25 @@
     $('#fecha_fabricacion').datepicker({
         autoclose: true,
         todayHighlight: true,
-        format: "dd-mm-yy"
+        format: "yyyy-mm-dd"
 
     });
     $('#fecha_instalcion').datepicker({
         autoclose: true,
         todayHighlight: true,
-        format: "dd-mm-yy"
+        format: "yyyy-mm-dd"
 
     });
     $('#fecha_compra').datepicker({
         autoclose: true,
         todayHighlight: true,
-        format: "dd-mm-yy"
+        format: "yyyy-mm-dd"
 
     });
     $('#fecha_expiracion_garantia').datepicker({
         autoclose: true,
         todayHighlight: true,
-        format: "dd-mm-yy"
+        format: "yyyy-mm-dd"
 
     });
     //select con busqueda
