@@ -1,11 +1,13 @@
 <?php
 
-Route::get('/', function () {
+Route::get('/calendario', function () {
     return view ('index') ;
 });
-
 //login
-Route::resource('login','LoginController');
+Route::get('loggin','Auth\LoginController@showLoginForm');
+Route::post('loggin','Auth\LoginController@login');
+Route::get('logout','Auth\LoginController@logout');
+
 
 
 //equipo

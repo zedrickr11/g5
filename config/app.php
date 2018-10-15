@@ -163,7 +163,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
 
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
-        Caffeinated\Shinobi\ShinobiServiceProvider::class
+        
 
     ],
 

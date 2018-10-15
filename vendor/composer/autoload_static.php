@@ -111,7 +111,6 @@ class ComposerStaticInit2895ef693b0520ba52423d216455e6b4
             'Cron\\' => 5,
             'Collective\\Html\\' => 16,
             'Carbon\\' => 7,
-            'Caffeinated\\Shinobi\\' => 20,
         ),
         'B' => 
         array (
@@ -301,10 +300,6 @@ class ComposerStaticInit2895ef693b0520ba52423d216455e6b4
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
-        ),
-        'Caffeinated\\Shinobi\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/caffeinated/shinobi/src',
         ),
         'Barryvdh\\DomPDF\\' => 
         array (
@@ -609,15 +604,6 @@ class ComposerStaticInit2895ef693b0520ba52423d216455e6b4
         'Barryvdh\\DomPDF\\Facade' => __DIR__ . '/..' . '/barryvdh/laravel-dompdf/src/Facade.php',
         'Barryvdh\\DomPDF\\PDF' => __DIR__ . '/..' . '/barryvdh/laravel-dompdf/src/PDF.php',
         'Barryvdh\\DomPDF\\ServiceProvider' => __DIR__ . '/..' . '/barryvdh/laravel-dompdf/src/ServiceProvider.php',
-        'Caffeinated\\Shinobi\\Facades\\Shinobi' => __DIR__ . '/..' . '/caffeinated/shinobi/src/Facades/Shinobi.php',
-        'Caffeinated\\Shinobi\\Middleware\\UserHasPermission' => __DIR__ . '/..' . '/caffeinated/shinobi/src/Middleware/UserHasPermission.php',
-        'Caffeinated\\Shinobi\\Middleware\\UserHasRole' => __DIR__ . '/..' . '/caffeinated/shinobi/src/Middleware/UserHasRole.php',
-        'Caffeinated\\Shinobi\\Models\\Permission' => __DIR__ . '/..' . '/caffeinated/shinobi/src/Models/Permission.php',
-        'Caffeinated\\Shinobi\\Models\\Role' => __DIR__ . '/..' . '/caffeinated/shinobi/src/Models/Role.php',
-        'Caffeinated\\Shinobi\\Shinobi' => __DIR__ . '/..' . '/caffeinated/shinobi/src/Shinobi.php',
-        'Caffeinated\\Shinobi\\ShinobiServiceProvider' => __DIR__ . '/..' . '/caffeinated/shinobi/src/ShinobiServiceProvider.php',
-        'Caffeinated\\Shinobi\\Traits\\PermissionTrait' => __DIR__ . '/..' . '/caffeinated/shinobi/src/Traits/PermissionTrait.php',
-        'Caffeinated\\Shinobi\\Traits\\ShinobiTrait' => __DIR__ . '/..' . '/caffeinated/shinobi/src/Traits/ShinobiTrait.php',
         'CaracteristicaRutinaTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CaracteristicaRutinaTableSeeder.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
@@ -2494,6 +2480,8 @@ class ComposerStaticInit2895ef693b0520ba52423d216455e6b4
         'PHPUnit\\Framework\\MockObject\\Matcher\\Parameters' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/Matcher/Parameters.php',
         'PHPUnit\\Framework\\MockObject\\Matcher\\StatelessInvocation' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/Matcher/StatelessInvocation.php',
         'PHPUnit\\Framework\\MockObject\\MockBuilder' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/MockBuilder.php',
+        'PHPUnit\\Framework\\MockObject\\MockMethod' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/MockMethod.php',
+        'PHPUnit\\Framework\\MockObject\\MockMethodSet' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/MockMethodSet.php',
         'PHPUnit\\Framework\\MockObject\\MockObject' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/ForwardCompatibility/MockObject.php',
         'PHPUnit\\Framework\\MockObject\\RuntimeException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/Exception/RuntimeException.php',
         'PHPUnit\\Framework\\MockObject\\Stub' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/Stub.php',
@@ -2587,6 +2575,7 @@ class ComposerStaticInit2895ef693b0520ba52423d216455e6b4
         'PHPUnit\\Util\\TestDox\\XmlResultPrinter' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/TestDox/XmlResultPrinter.php',
         'PHPUnit\\Util\\TextTestListRenderer' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/TextTestListRenderer.php',
         'PHPUnit\\Util\\Type' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Type.php',
+        'PHPUnit\\Util\\XdebugFilterScriptGenerator' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/XdebugFilterScriptGenerator.php',
         'PHPUnit\\Util\\Xml' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Xml.php',
         'PHPUnit\\Util\\XmlTestListRenderer' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/XmlTestListRenderer.php',
         'PHPUnit_Framework_MockObject_MockObject' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/MockObject.php',
@@ -2842,6 +2831,8 @@ class ComposerStaticInit2895ef693b0520ba52423d216455e6b4
         'PhpParser\\Builder\\Namespace_' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Builder/Namespace_.php',
         'PhpParser\\Builder\\Param' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Builder/Param.php',
         'PhpParser\\Builder\\Property' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Builder/Property.php',
+        'PhpParser\\Builder\\TraitUse' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Builder/TraitUse.php',
+        'PhpParser\\Builder\\TraitUseAdaptation' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Builder/TraitUseAdaptation.php',
         'PhpParser\\Builder\\Trait_' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Builder/Trait_.php',
         'PhpParser\\Builder\\Use_' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Builder/Use_.php',
         'PhpParser\\Comment' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Comment.php',
