@@ -11,7 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\EquipoFormRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
-
+use App\Notificacion;
 use App\Imagen_equipo;
 use App\Proveedor;
 use App\UnidadSalud;
@@ -44,7 +44,10 @@ use DB;
 
 
 class EquipoIndexController extends Controller
-{
+  { function __construct()
+    {
+      $this->middleware(['auth','role:admin,jefe-mantto,jefe-sub,tec-ing']);
+    }
     public function index($id)
     {
       $proveedor=Proveedor::all();
@@ -64,6 +67,7 @@ class EquipoIndexController extends Controller
       $permisotrabajo=PermisoTrabajo::all();
       $ruman = ruman::all();
       $detallerutina = detcaracru::all();
+      $notificacion = Notificacion::all();
 
 
 
@@ -100,7 +104,7 @@ class EquipoIndexController extends Controller
         ->where('e.idequipo','=',$id)
         ->first();
 
-      return view('equipo.vista.index', compact('detallerutina','tiporu','permisotrabajo','ruman','equipo','proveedor','unidad_salud','area',
+      return view('equipo.vista.index', compact('notificacion','detallerutina','tiporu','permisotrabajo','ruman','equipo','proveedor','unidad_salud','area',
                   'estado','servicio_tecnico','fabricante','hospital','departamento',
                   'region','grupo','subgrupo','tipounidadsalud','TipoManual','EquipoM',
                                                 'Detalle_manual','imagen_equipo','tiporu','permisotrabajo','ruman','areas','tipos','equipos'));

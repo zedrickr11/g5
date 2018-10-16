@@ -9,6 +9,11 @@ use App\Http\Requests\pruruFormRequest;
 
 class pruruController extends Controller
 {
+  function __construct()
+    {
+      $this->middleware(['auth','role:admin,jefe-mantto,jefe-sub']);
+      
+    }
   /**
    * Display a listing of the resource.
    *

@@ -19,7 +19,7 @@
           <div class="box">
             <div class="box-header">
 
-			  <h3 class="box-title">Listado de valor referencia prueba<a href="valorrefpru/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
+			  <h3 class="box-title">Listado de valor referencia prueba<a href="{{route('valorrefpru/create')}}"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
 			  		<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
             </div>
             <!-- /.box-header -->
@@ -73,7 +73,7 @@
                   </tfoot>
           </table>
               </div>
-      {!! $valorrefpru->links() !!}
+              {!! $valorrefpru->appends(['searchText'=>request('searchText')])->links() !!}
 
             </div>
             <!-- /.box-body -->

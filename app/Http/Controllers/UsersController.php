@@ -14,7 +14,10 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 
 class UsersController extends Controller
-{
+{   function __construct()
+    {
+      $this->middleware(['auth','role:admin']);
+    }
     /**
      * Display a listing of the resource.
      *
