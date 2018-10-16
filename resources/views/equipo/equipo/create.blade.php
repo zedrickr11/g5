@@ -83,7 +83,7 @@
 
               <div class="form-group">
               <label for="idservicio_tecnico" class="est">Servicio técnico</label>
-              <select name="idservicio_tecnico" class="form-control" >
+              <select name="idservicio_tecnico" class="form-control" id="servicio" style="width: 100%">
                 <option value="0" disabled selected>=== Selecciona un servicio técnico ===</option>
               @foreach($servicio_tecnico as $st)
                 <option value="{{$st->idservicio_tecnico}}">{{$st->nombre_empresa_sevicio_tecnico}}</option>
@@ -120,7 +120,7 @@
 
               <div class="form-group">
               <label for="id_proveedor" class="est">Distribuidor</label>
-              <select name="id_proveedor" class="form-control" >
+              <select name="id_proveedor" class="form-control" id="proveedor" style="width: 100%" >
                 <option value="0" disabled selected>=== Selecciona un distribuidor ===</option>
               @foreach($proveedor as $prov)
                 <option value="{{$prov->id_proveedor}}">{{$prov->contacto_proveedor}}</option>
@@ -179,7 +179,7 @@
 
               <div class="form-group">
               <label for="idfabricante" class="est">Fabricante</label>
-              <select name="idfabricante" class="form-control" >
+              <select name="idfabricante" class="form-control" id="fabricante" style="width: 100%" >
                 <option value="0" disabled selected>=== Selecciona un fabricante ===</option>
               @foreach($fabricante as $fab)
                     <option value="{{$fab->idfabricante}}">{{$fab->contacto_fabricante}}</option>
@@ -232,7 +232,7 @@
 
               <div class="form-group">
                 <label for="frec_uso_dia_semana">Frecuencia uso día/semana</label>
-                <select class="form-control" name="frec_uso_dia_semana">
+                <select class="form-control" name="frec_uso_dia_semana" id="dia" style="width: 100%">
                   <option value="0" disabled selected>=== Selecciona un día ===</option>
                   <option value="1">1 días/semana</option>
                   <option value="2">2 días/semana</option>
@@ -249,7 +249,7 @@
 
               <div class="form-group">
                 <label for="frec_uso_hora_dia">Frecuencia uso horas/día</label>
-                <select class="form-control" name="frec_uso_hora_dia">
+                <select class="form-control" name="frec_uso_hora_dia" id="hora" style="width: 100%">
                   <option value="0" disabled selected>=== Selecciona una hora ===</option>
                   <option value="1">1 hrs/día</option>
                   <option value="2">2 hrs/día</option>
@@ -283,7 +283,7 @@
 
               <div class="form-group">
               <label for="idestado" >Estado</label>
-              <select name="idestado" class="form-control">
+              <select name="idestado" class="form-control" id="estado" style="width: 100%">
                 <option value="0" disabled selected>=== Selecciona un estado ===</option>
               @foreach($estado as $e)
                 <option value="{{$e->idestado}}">{{$e->estado}}</option>
@@ -296,7 +296,7 @@
 
               <div class="form-group">
                 <label for="personal_cap">Personal capacitado (*) </label>
-                <select class="form-control" name="personal_cap">
+                <select class="form-control" name="personal_cap" id="personal" style="width: 100%">
                   <option value="1">SI</option>
                   <option value="0">NO</option>
                 </select>
@@ -539,226 +539,254 @@
     <!-- /.box -->
 
   </section>
-  <script src="{{asset('ajax/jquery.min.js')}}"></script>
-  <script src="{{asset('ajax/bootstrap.min.js')}}"></script>
-  <script src="{{asset('ajax/select2.min.js')}}"></script>
-  <script src="{{asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
-
-
-  <script type="text/javascript">
-  //botones para guardar
-  $("#guardar").hide();
-  $('#idequipo').change(evaluar);
-  $('#nombre_equipo').change(evaluar);
-  $('#marca').change(evaluar);
-  $('#modelo').change(evaluar);
-  //fechas
-  $('#fecha_fabricacion').datepicker({
-      autoclose: true,
-      todayHighlight: true,
-      format: "dd-mm-yy"
-
-  });
-  $('#fecha_instalcion').datepicker({
-      autoclose: true,
-      todayHighlight: true,
-      format: "dd-mm-yy"
-
-  });
-  $('#fecha_compra').datepicker({
-      autoclose: true,
-      todayHighlight: true,
-      format: "dd-mm-yy"
-
-  });
-  $('#fecha_expiracion_garantia').datepicker({
-      autoclose: true,
-      todayHighlight: true,
-      format: "dd-mm-yy"
-
-  });
-  //select con busqueda
-  $('#hospital').select2({
-    theme: "classic"
-  });
-  $('#area').select2({
-    theme: "classic"
-  });
-  $('#grupo').select2({
-    theme: "classic"
-  });
-  $('#subgrupo').select2({
-    theme: "classic"
-  });
-  $('#region').select2({
-    theme: "classic"
-  });
-  $('#depto').select2({
-    theme: "classic"
-  });
-  $('#tipou').select2({
-    theme: "classic"
-  });
-  $('#unidad').select2({
-    theme: "classic"
-  });
-      //selects dinamicos
-      $('#region').on('change', function(e){
-        console.log(e);
-        var region_id = e.target.value;
-        $.get('/json-depto?region_id=' + region_id,function(data) {
-          console.log(data);
-          $('#depto').empty();
-          $('#depto').append('<option value="0" disabled selected>=== Selecciona un departamento ===</option>');
-
-          $('#hospital').empty();
-          $('#hospital').append('<option value="0" disabled selected>=== Selecciona un hospital ===</option>');
-
-          $.each(data, function(index, regenciesObj){
-            $('#depto').append('<option value="'+ regenciesObj.iddepartamento +'">'+ regenciesObj.depto +'</option>');
-          })
-        });
-      });
-      $('#depto').on('change', function(e){
-        console.log(e);
-        var depto_id = e.target.value;
-        $.get('/json-hospital?depto_id=' + depto_id,function(data) {
-          console.log(data);
-          $('#hospital').empty();
-          $('#hospital').append('<option value="0" disabled selected>=== Selecciona un departamento ===</option>');
-
-          $('#unidad').empty();
-          $('#unidad').append('<option value="0" disabled selected>=== Selecciona una unidad de salud ===</option>');
-
-          $('#tipou').empty();
-          $('#tipou').append('<option value="0" disabled selected>=== Selecciona un tipo de unidad de salud ===</option>');
-
-          $.each(data, function(index, regenciesObj){
-            $('#hospital').append('<option value="'+ regenciesObj.idhospital +'">'+ regenciesObj.hospital +'</option>');
-          })
-        });
-      });
-      $('#hospital').on('change', function(e){
-        console.log(e);
-        var hospital_id = e.target.value;
-        $.get('/json-unidad?hospital_id=' + hospital_id,function(data) {
-          console.log(data);
-
-          $.each(data, function(index, regenciesObj){
-            $('#unidad').append('<option value="'+ regenciesObj.idunidadsalud +'">'+ regenciesObj.unidad_salud +'</option>');
-          })
-        });
-        $.get('/json-tipounidad?hospital_id=' + hospital_id,function(data) {
-          console.log(data);
-
-          $.each(data, function(index, regenciesObj){
-            $('#tipou').append('<option value="'+ regenciesObj.idtipounidad +'">'+ regenciesObj.unidad_medica +'</option>');
-          })
-        });
-      });
-    $('#area').on('change', function(e){
-      console.log(e);
-      var area_id = e.target.value;
-      $.get('/json-grupo?area_id=' + area_id,function(data) {
-        console.log(data);
-        $('#grupo').empty();
-        $('#grupo').append('<option value="0" disabled selected>=== Selecciona un grupo ===</option>');
-
-        $('#subgrupo').empty();
-        $('#subgrupo').append('<option value="0" disabled selected>=== Selecciona un subgrupo ===</option>');
-
-        $.each(data, function(index, regenciesObj){
-          $('#grupo').append('<option value="'+ regenciesObj.idgrupo +'">'+ regenciesObj.grupo +'</option>');
-        })
-      });
-    });
-
-    $('#grupo').on('change', function(e){
-      console.log(e);
-      var grupo_id = e.target.value;
-      $.get('/json-subgrupo?grupo_id=' + grupo_id,function(data) {
-        console.log(data);
-
-
-        $('#subgrupo').empty();
-        $('#subgrupo').append('<option value="0" disabled selected>=== Selecciona un subgrupo ===</option>');
-
-        $.each(data, function(index, regenciesObj){
-          $('#subgrupo').append('<option value="'+ regenciesObj.idsubgrupo +'">'+ regenciesObj.subgrupo +'</option>');
-
-        })
-      });
-    });
 
 
 
-    $('#subgrupo').on('change', function(e){
-      console.log(e);
-      var subgrupo_id = e.target.value;
-      var c;
-      $.get('/json-correlativo?subgrupo_id=' + subgrupo_id,function(data) {
-        console.log(data);
 
-        $.each(data, function(index, regenciesObj){
-
-          $('#correlativo').val(regenciesObj.actual);
-
-        })
-
-      });
-      $.get('/json-codigosubgrupo?subgrupo_id=' + subgrupo_id,function(data) {
-        console.log(data);
-
-        $.each(data, function(index, regenciesObj){
-
-          $('#codigosubgrupo').val(regenciesObj.codigosubgrupo);
-
-        })
-
-      });
-    });
-  function mostrarValores(){
-
-    datosArea=document.getElementById('area').value;
-    datosGrupo=document.getElementById('grupo').value;
-    datosSubgrupo=document.getElementById('codigosubgrupo').value;
-    datosRegion=document.getElementById('region').value;
-    datosDepto=document.getElementById('depto').value;
-    datosTipounidad=document.getElementById('tipou').value;
-    datosUnidad=document.getElementById('unidad').value;
-    datosCorrelativo=document.getElementById('correlativo').value;
-    idequipo = datosArea.concat(
-
-      ('0'+datosGrupo).slice(-2),
-      ('0'+datosSubgrupo).slice(-2),
-      "-",
-      datosRegion,
-      datosDepto,
-      datosTipounidad,
-      ('0'+datosUnidad).slice(-2),
-      ('000'+datosCorrelativo).slice(-4)
-      );
-    $("#idequipo").val(idequipo);
-
-  }
-  function evaluar(){
-    idequipo=$("#idequipo").val();
-    nombre=$("#nombre_equipo").val();
-    marca=$("#marca").val();
-    modelo=$("#modelo").val();
-    if (idequipo!="" && nombre!=""&&marca!=""&&modelo!="")
-    {
-      $("#guardar").show();
-    }
-    else
-    {
-      $("#guardar").hide();
-    }
-  }
-
-  </script>
 
   @push ('scripts')
+    <script src="{{asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+
+    <script type="text/javascript">
+    //botones para guardar
+    $("#guardar").hide();
+    $('#idequipo').change(evaluar);
+    $('#nombre_equipo').change(evaluar);
+    $('#marca').change(evaluar);
+    $('#modelo').change(evaluar);
+    //fechas
+    $('#fecha_fabricacion').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        format: "yyyy-mm-dd"
+
+    });
+    $('#fecha_instalcion').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        format: "yyyy-mm-dd"
+
+    });
+    $('#fecha_compra').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        format: "yyyy-mm-dd"
+
+    });
+    $('#fecha_expiracion_garantia').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        format: "yyyy-mm-dd"
+
+    });
+    //select con busqueda
+  $('#fabricante').select2({
+    theme: "classic",
+
+  });
+    $('#personal').select2({
+      theme: "classic",
+
+    });
+    $('#dia').select2({
+      theme: "classic",
+
+    });
+    $('#hora').select2({
+      theme: "classic",
+
+    });
+    $('#estado').select2({
+      theme: "classic"
+
+    });
+    $('#proveedor').select2({
+      theme: "classic",
+
+    });
+    $('#servicio').select2({
+      theme: "classic",
+
+    });
+    $('#hospital').select2({
+      theme: "classic"
+    });
+    $('#area').select2({
+      theme: "classic"
+    });
+    $('#grupo').select2({
+      theme: "classic"
+    });
+    $('#subgrupo').select2({
+      theme: "classic"
+    });
+    $('#region').select2({
+      theme: "classic"
+    });
+    $('#depto').select2({
+      theme: "classic"
+    });
+    $('#tipou').select2({
+      theme: "classic"
+    });
+    $('#unidad').select2({
+      theme: "classic"
+    });
+        //selects dinamicos
+        $('#region').on('change', function(e){
+          console.log(e);
+          var region_id = e.target.value;
+          $.get('/json-depto?region_id=' + region_id,function(data) {
+            console.log(data);
+            $('#depto').empty();
+            $('#depto').append('<option value="0" disabled selected>=== Selecciona un departamento ===</option>');
+
+            $('#hospital').empty();
+            $('#hospital').append('<option value="0" disabled selected>=== Selecciona un hospital ===</option>');
+
+            $.each(data, function(index, regenciesObj){
+              $('#depto').append('<option value="'+ regenciesObj.iddepartamento +'">'+ regenciesObj.depto +'</option>');
+            })
+          });
+        });
+        $('#depto').on('change', function(e){
+          console.log(e);
+          var depto_id = e.target.value;
+          $.get('/json-hospital?depto_id=' + depto_id,function(data) {
+            console.log(data);
+            $('#hospital').empty();
+            $('#hospital').append('<option value="0" disabled selected>=== Selecciona un departamento ===</option>');
+
+            $('#unidad').empty();
+            $('#unidad').append('<option value="0" disabled selected>=== Selecciona una unidad de salud ===</option>');
+
+            $('#tipou').empty();
+            $('#tipou').append('<option value="0" disabled selected>=== Selecciona un tipo de unidad de salud ===</option>');
+
+            $.each(data, function(index, regenciesObj){
+              $('#hospital').append('<option value="'+ regenciesObj.idhospital +'">'+ regenciesObj.hospital +'</option>');
+            })
+          });
+        });
+        $('#hospital').on('change', function(e){
+          console.log(e);
+          var hospital_id = e.target.value;
+          $.get('/json-unidad?hospital_id=' + hospital_id,function(data) {
+            console.log(data);
+
+            $.each(data, function(index, regenciesObj){
+              $('#unidad').append('<option value="'+ regenciesObj.idunidadsalud +'">'+ regenciesObj.unidad_salud +'</option>');
+            })
+          });
+          $.get('/json-tipounidad?hospital_id=' + hospital_id,function(data) {
+            console.log(data);
+
+            $.each(data, function(index, regenciesObj){
+              $('#tipou').append('<option value="'+ regenciesObj.idtipounidad +'">'+ regenciesObj.unidad_medica +'</option>');
+            })
+          });
+        });
+      $('#area').on('change', function(e){
+        console.log(e);
+        var area_id = e.target.value;
+        $.get('/json-grupo?area_id=' + area_id,function(data) {
+          console.log(data);
+          $('#grupo').empty();
+          $('#grupo').append('<option value="0" disabled selected>=== Selecciona un grupo ===</option>');
+
+          $('#subgrupo').empty();
+          $('#subgrupo').append('<option value="0" disabled selected>=== Selecciona un subgrupo ===</option>');
+
+          $.each(data, function(index, regenciesObj){
+            $('#grupo').append('<option value="'+ regenciesObj.idgrupo +'">'+ regenciesObj.grupo +'</option>');
+          })
+        });
+      });
+
+      $('#grupo').on('change', function(e){
+        console.log(e);
+        var grupo_id = e.target.value;
+        $.get('/json-subgrupo?grupo_id=' + grupo_id,function(data) {
+          console.log(data);
+
+
+          $('#subgrupo').empty();
+          $('#subgrupo').append('<option value="0" disabled selected>=== Selecciona un subgrupo ===</option>');
+
+          $.each(data, function(index, regenciesObj){
+            $('#subgrupo').append('<option value="'+ regenciesObj.idsubgrupo +'">'+ regenciesObj.subgrupo +'</option>');
+
+          })
+        });
+      });
+
+
+
+      $('#subgrupo').on('change', function(e){
+        console.log(e);
+        var subgrupo_id = e.target.value;
+        var c;
+        $.get('/json-correlativo?subgrupo_id=' + subgrupo_id,function(data) {
+          console.log(data);
+
+          $.each(data, function(index, regenciesObj){
+
+            $('#correlativo').val(regenciesObj.actual);
+
+          })
+
+        });
+        $.get('/json-codigosubgrupo?subgrupo_id=' + subgrupo_id,function(data) {
+          console.log(data);
+
+          $.each(data, function(index, regenciesObj){
+
+            $('#codigosubgrupo').val(regenciesObj.codigosubgrupo);
+
+          })
+
+        });
+      });
+    function mostrarValores(){
+
+      datosArea=document.getElementById('area').value;
+      datosGrupo=document.getElementById('grupo').value;
+      datosSubgrupo=document.getElementById('codigosubgrupo').value;
+      datosRegion=document.getElementById('region').value;
+      datosDepto=document.getElementById('depto').value;
+      datosTipounidad=document.getElementById('tipou').value;
+      datosUnidad=document.getElementById('unidad').value;
+      datosCorrelativo=document.getElementById('correlativo').value;
+      idequipo = datosArea.concat(
+
+        ('0'+datosGrupo).slice(-2),
+        ('0'+datosSubgrupo).slice(-2),
+        "-",
+        datosRegion,
+        datosDepto,
+        datosTipounidad,
+        ('0'+datosUnidad).slice(-2),
+        ('000'+datosCorrelativo).slice(-4)
+        );
+      $("#idequipo").val(idequipo);
+
+    }
+    function evaluar(){
+      idequipo=$("#idequipo").val();
+      nombre=$("#nombre_equipo").val();
+      marca=$("#marca").val();
+      modelo=$("#modelo").val();
+      if (idequipo!="" && nombre!=""&&marca!=""&&modelo!="")
+      {
+        $("#guardar").show();
+      }
+      else
+      {
+        $("#guardar").hide();
+      }
+    }
+
+    </script>
   <script>
   $('#liEq').addClass("treeview active");
   $('#liEquipo').addClass("active");

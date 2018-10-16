@@ -142,80 +142,75 @@
 </section>
 
 
-<script src="{{asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="{{asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-<!-- Select2 -->
-<script src="{{asset('bower_components/select2/dist/js/select2.full.min.js')}}"></script>
-
-<script>
-$('#pidrepuesto').select2({
-  theme: "classic"
-});
-$('#tipo_comprobante').select2({
-  theme: "classic"
-});
-$('#idproveedor_insumo').select2({
-  theme: "classic"
-});
-
-  $(document).ready(function(){
-    $('#bt_add').click(function(){
-      agregar();
-    });
+@push('scripts')
+  <script>
+  $('#pidrepuesto').select2({
+    theme: "classic"
+  });
+  $('#tipo_comprobante').select2({
+    theme: "classic"
+  });
+  $('#idproveedor_insumo').select2({
+    theme: "classic"
   });
 
-  var cont=0;
-  total=0;
-  subtotal=[];
-  $("#guardar").hide();
+    $(document).ready(function(){
+      $('#bt_add').click(function(){
+        agregar();
+      });
+    });
+
+    var cont=0;
+    total=0;
+    subtotal=[];
+    $("#guardar").hide();
 
 
-  function agregar()
-  {
-    idarticulo=$("#pidrepuesto").val();
-    articulo=$("#pidrepuesto option:selected").text();
-    cantidad=$("#pcantidad").val();
-
-
-    if (idarticulo!="" && cantidad!="" && cantidad>0 )
+    function agregar()
     {
-        var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idrepuesto[]" value="'+idarticulo+'">'+articulo+'</td><td><input type="number" name="cantidad[]" value="'+cantidad+'"></td></tr>';
-        cont++;
-        limpiar();
-        evaluar();
-        $('#detalles').append(fila);
+      idarticulo=$("#pidrepuesto").val();
+      articulo=$("#pidrepuesto option:selected").text();
+      cantidad=$("#pcantidad").val();
+
+
+      if (idarticulo!="" && cantidad!="" && cantidad>0 )
+      {
+          var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idrepuesto[]" value="'+idarticulo+'">'+articulo+'</td><td><input type="number" name="cantidad[]" value="'+cantidad+'"></td></tr>';
+          cont++;
+          limpiar();
+          evaluar();
+          $('#detalles').append(fila);
+      }
+      else
+      {
+          alert("Error al ingresar el detalle del ingreso, revise los datos del artículo");
+      }
     }
-    else
+    function limpiar(){
+      $("#pcantidad").val("");
+
+    }
+
+    function evaluar()
     {
-        alert("Error al ingresar el detalle del ingreso, revise los datos del artículo");
+      if (cantidad>0)
+      {
+        $("#guardar").show();
+      }
+      else
+      {
+        $("#guardar").hide();
+      }
+     }
+
+     function eliminar(index){
+
+      $("#fila" + index).remove();
+      evaluar();
+
     }
-  }
-  function limpiar(){
-    $("#pcantidad").val("");
-
-  }
-
-  function evaluar()
-  {
-    if (cantidad>0)
-    {
-      $("#guardar").show();
-    }
-    else
-    {
-      $("#guardar").hide();
-    }
-   }
-
-   function eliminar(index){
-
-    $("#fila" + index).remove();
-    evaluar();
-
-  }
-  $('#liCompras').addClass("treeview active");
-  $('#liIngresos').addClass("active");
-</script>
-
+    $('#liCompras').addClass("treeview active");
+    $('#liIngresos').addClass("active");
+  </script>
+@endpush
 @endsection

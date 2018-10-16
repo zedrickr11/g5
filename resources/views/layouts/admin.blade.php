@@ -138,7 +138,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="{{asset('dist/img/zedrick.jpg')}}" class="user-image" alt="User Image">
-              <span class="hidden-xs">Usuario Final</span>
+              <span class="hidden-xs">{{ Auth::user()->name }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -158,7 +158,7 @@
                   <a href="#" class="btn btn-default btn-flat">Configuraciones</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Salir</a>
+                  <a href="/logout" class="btn btn-default btn-flat">Salir</a>
                 </div>
               </li>
             </ul>
@@ -248,7 +248,7 @@
 <script src="{{asset('bower_components/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
 <!-- FastClick -->
 <script src="{{asset('bower_components/fastclick/lib/fastclick.js')}}"></script>
-@stack('scripts') 
+
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.min.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -261,7 +261,7 @@
 <script src="{{asset('bower_components/moment/moment.js')}}"></script>
 <script src="{{asset('bower_components/fullcalendar/dist/fullcalendar.min.js')}}"></script>
 <script src="{{asset('bower_components/fullCalendar/dist/locale/es.js')}}"></script>
-
+@stack('scripts')
 
 
 </body>

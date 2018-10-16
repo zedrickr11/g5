@@ -28,10 +28,25 @@ Trabajo
      <li class="pull-left header"><i class="fa fa-tv"></i>Nueva Solicitud de Trabajo</li>
     </ul>
 <div class="tab-content">
-    <div class="tab-pane active" id="tab_2-2">
+  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+@if (count($errors)>0)
+<div class="alert alert-danger">
+<ul>
+@foreach ($errors->all() as $error)
+  <li>{{$error}}</li>
+@endforeach
+</ul>
+</div>
+@endif
+</div>
+    <div class="tab-pane" id="tab_2-2">
+      <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+      <p class="text-danger">(*) Campos requeridos</p>
+    </div>
       <div class="form-group">
-      <label>Area de Mantenimiento</label>
-      <select name="pidarea" class="form-control select2" id="pidarea" data-live-search="true">
+      <label>Area de Mantenimiento(*)</label>
+      <select name="pidarea" class="form-control select2"  style="width:100%"id="pidarea" data-live-search="true">
+           <option value="0" disabled selected>=== Selecciona un Area===</option>
       @foreach($areas as $are)
       <option value="{{$are->idarea_mantenimiento}}">{{$are->area}}</option>
       @endforeach
@@ -59,10 +74,14 @@ Trabajo
       </table>
        </div>
   </div>
-  <div class="tab-pane active" id="tab_3-3">
+  <div class="tab-pane" id="tab_3-3">
+    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+    <p class="text-danger">(*) Campos requeridos</p>
+  </div>
     <div class="form-group">
-    <label>Tipo de Trabajo</label>
-    <select name="pidinsumo" class="form-control select2" id="pidtipo" data-live-search="true">
+    <label>Tipo de Trabajo(*)</label>
+    <select name="pidinsumo"  style="width:100%"class="form-control select2" id="pidtipo" data-live-search="true">
+         <option value="0" disabled selected>=== Selecciona un Tipo de Trabajo===</option>
     @foreach($tipos as $tip)
     <option value="{{$tip->idtipo_trabajo}}">{{$tip->tipo}}</option>
     @endforeach
@@ -98,9 +117,12 @@ Trabajo
 
 
 <div class="tab-pane active" id="tab_4-4">
+  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+  <p class="text-danger">(*) Campos requeridos</p>
+</div>
   <div class="box-body col-md-6">
     <div class="form-group">
-    <label for="direccion_fab">No de solicitud</label>
+    <label for="direccion_fab">No de solicitud(*)</label>
     <input type="text" class="form-control" name="numero" value="{{old('numero')}}">
     </div>
   <div class="form-group">
@@ -121,7 +143,14 @@ Trabajo
   </div>
   <div class="box-body col-md-6">
 
-
+    <div class="form-group">
+    <label>Equipo</label>
+    <select name="idequipo" class="form-control select2" style="width:100%" id="idequipo" data-live-search="true">
+    @foreach($equipos as $eq)
+    <option value="{{$eq->idequipo}}">{{$eq->equipo}}</option>
+    @endforeach
+    </select>
+    </div>
   <div class="form-group">
     <label for="solicitudes">Contratar Trabajo</label>
     <select class="form-control" name="contratar_trabajo"  >
@@ -139,14 +168,7 @@ Trabajo
   </div>
   </div>
   <div class="box-body col-md-12">
-    <div class="form-group">
-    <label>Equipo</label>
-    <select name="idequipo" class="form-control select2" id="idequipo" data-live-search="true">
-    @foreach($equipos as $eq)
-    <option value="{{$eq->idequipo}}">{{$eq->equipo}}</option>
-    @endforeach
-    </select>
-    </div>
+
   </div>
   <div class="box-body col-md-12">
     <div class="form-group">
@@ -157,23 +179,15 @@ Trabajo
 </div>
 <!-- /.tab-pane -->
 <div class="box-footer">
-  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-@if (count($errors)>0)
-<div class="alert alert-danger">
-<ul>
-@foreach ($errors->all() as $error)
-  <li>{{$error}}</li>
-@endforeach
-</ul>
+  <div class="box-body col-md-12">
+    <a href="{{route('solicitud.index')}}">
+    <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
+    </a>
+  <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
+
+  <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
+
 </div>
-@endif
-</div>
-  <input name"_token" value="{{ csrf_token() }}" type="hidden"></input>
-<a href="{{route('solicitud.index')}}">
-<button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
-</a>
-<button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
-<button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
 </div>
 
 </div>
@@ -188,15 +202,7 @@ Trabajo
 <script src="{{asset('ajax/jquery.min.js')}}"></script>
 <script src="{{asset('ajax/bootstrap.min.js')}}"></script>
 <script src="{{asset('ajax/select2.min.js')}}"></script>
-<script>
-    $(function () {
-        $.datepicker.setDefaults($.datepicker.regional["es"]);
-        $("#datepicker").datepicker({
-            dateFormat: 'dd/mm/yy',
-            firstDay: 1
-        });
-    });
-</script>
+
 <script>
 $('#pidtipo').select2({
   theme: "classic"
@@ -314,12 +320,6 @@ function evaluar2()
 
 }
 </script>
-<script type="text/javascript">
-window.onload=function(){
-  $('.nav-tabs a[href="#tab_2-2"]').tab('show');
-  $('.nav-tabs a[href="#tab_3-3"]').tab('show');
-  $('.nav-tabs a[href="#tab_4-4"]').tab('show');
-}
-</script>
+
 
 @endsection

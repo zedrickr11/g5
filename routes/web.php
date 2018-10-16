@@ -1,12 +1,18 @@
 <?php
 
-Route::get('/', function () {
+Route::get('/calendario', function () {
     return view ('index') ;
 });
-
+Route::get('/', function () {
+    return view ('auth.login') ;
+});
 //login
-Route::resource('login','LoginController');
+Route::get('loggin','Auth\LoginController@showLoginForm');
+Route::post('loggin','Auth\LoginController@login');
+Route::get('logout','Auth\LoginController@logout');
 
+//usuarios
+Route::resource('usuarios','UsersController');
 
 //equipo
 Route::resource('equipo/fabricante','FabricanteController');
@@ -47,6 +53,10 @@ Route::resource('equipo/equipo/rutinamante','EquipoController');
 Route::get('equipo/equipo/rutina/{id}',[
     'as' => 'equipo.rutina',
     'uses' => 'EquipoController@rutina'
+]);
+Route::get('equipo/vista/indexsolicitudes/{id}',[
+    'as' => 'equipo.vista',
+    'uses' => 'EquipoIndexController@solis'
 ]);
 
 //index del Equipo
@@ -101,7 +111,7 @@ Route::resource('precaucion/ejecutante','PrecaucionEjecutanteController');
 Route::resource('precaucion/responsable','PrecaucionResponsableController');
 Route::resource('peligro/naturaleza','NaturalezaPeligroController');
 Route::resource('trabajo/tipo','TipoTrabajoController');
-Route::resource('trabajo/solicitud','SolicitudTrabajoController');
+Route::resource('trabajo/solicitud','SolicitudTrabajoIndexController');
 Route::resource('trabajo/permiso','PermisoTrabajoController');
 Route::resource('trabajo/seguimiento','SeguimientoController');
 Route::get('trabajo/solicitud/solicitudpdf/{id}', 'SolicitudTrabajoController@ficha')->name('Solicitudes.ficha');//pdf

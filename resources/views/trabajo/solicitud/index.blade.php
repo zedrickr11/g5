@@ -28,6 +28,7 @@
 <tr>
 <th>Id</th>
 <th>Numero</th>
+<th>Equipo</th>
 <th>Fecha</th>
 <th>Descripcion</th>
 <th>Opciones</th>
@@ -38,6 +39,7 @@
 <tr>
 <td>{{ $s->idsolitud_trabajo}}</td>
 <td>{{ $s->numero}}</td>
+<td>{{ $s->idequipo}}</td>
 <td>{{ $s->fecha}}</td>
 <td>{{ $s->descripcion}}</td>
 <td>

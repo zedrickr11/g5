@@ -128,5 +128,16 @@ class EquipoIndexController extends Controller
 
     }
 
+public function solis($id){
+  $solic = DB::table('solitud_trabajo')
+           ->select('idsolitud_trabajo','numero  AS num','idequipo','fecha','descripcion')
+             ->where('idequipo','=',$id)
+           ->get();
+
+ return view("equipo.vista.indexsolicitudes",["solic"=>$solic]);
+
+
+}
+
 
 }
