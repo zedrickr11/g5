@@ -53,7 +53,8 @@ class Equipo extends Model
          'idregion',
          'idgrupo',
          'idsubgrupo',
-         'idtipounidad'
+         'idtipounidad',
+         'users_id'
     ];
 
     protected $guarded =[

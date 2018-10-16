@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\EquipoFormRequest;
 
 use Illuminate\Support\Facades\Input;
-
+use App\User;
 use App\Proveedor;
 use App\UnidadSalud;
 use App\Area;
@@ -53,18 +53,14 @@ class EquipoController extends Controller
           $query=trim($request->get('searchText'));
           $equipos= DB::table('equipo as e')
           ->select('*')
+          ->where('e.users_id','=', auth()->id())
           ->where('e.nombre_equipo','LIKE','%'.$query.'%')
-          ->orwhere('e.idequipo','LIKE','%'.$query.'%')
-          ->orderBy('e.idequipo','desc')
+          ->orderBy('e.idequipo','e.users_id','desc')
           ->paginate(10);
           return view('equipo.equipo.index',["equipos"=>$equipos,"searchText"=>$query]);
       }
     }
-    public function nuevo()
-    {
-
-        return view("equipo.equipo.nuevo");
-    }
+    
     public function grupo(){
       $area_id = Input::get('area_id');
       $grupo = DB::table('grupo as g')
@@ -149,6 +145,7 @@ class EquipoController extends Controller
       $grupo=Grupo::all();
       $subgrupo=Subgrupo::all();
       $tipounidadsalud=TipoUnidadSalud::all();
+      
 
       return view("equipo.equipo.create",compact('proveedor','unidad_salud','area',
                   'estado','servicio_tecnico','fabricante','hospital','departamento',

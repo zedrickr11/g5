@@ -1,3 +1,4 @@
+
 @extends ('layouts.admin')
 @section ('contenido')
   <section class="content-header">
@@ -496,6 +497,12 @@
                   <input id="idequipo" readonly type="text" class="form-control" name="idequipo" value="{{old('idequipo')}}">
                 </div>
               </div>
+           
+              
+                  
+              <input type="hidden" class="form-control" name="users_id" value="{{ Auth::user()->id }}">
+                
+                  
 
                 <input type="hidden" id="codigosubgrupo" name="codigosubgrupo">
                 @if (count($errors)>0)
