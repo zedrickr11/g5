@@ -475,7 +475,7 @@
                     </div>
               </div>
 
-
+              <input type="hidden" class="form-control" name="users_id" value="{{ Auth::user()->id }}">
 
 
 
@@ -545,25 +545,25 @@
     $('#fecha_fabricacion').datepicker({
         autoclose: true,
         todayHighlight: true,
-        format: "dd-mm-yy"
+        format: "yyyy-mm-dd"
 
     });
     $('#fecha_instalcion').datepicker({
         autoclose: true,
         todayHighlight: true,
-        format: "dd-mm-yy"
+        format: "yyyy-mm-dd"
 
     });
     $('#fecha_compra').datepicker({
         autoclose: true,
         todayHighlight: true,
-        format: "dd-mm-yy"
+        format: "yyyy-mm-dd"
 
     });
     $('#fecha_expiracion_garantia').datepicker({
         autoclose: true,
         todayHighlight: true,
-        format: "dd-mm-yy"
+        format: "yyyy-mm-dd"
 
     });
     //select con busqueda
