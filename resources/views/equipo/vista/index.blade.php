@@ -394,8 +394,11 @@
       </ul>
       <div class="tab-content">
         <div class="active tab-pane" id="rutina">
-          <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-          <h3 class="box-title"><a href="{{route('ruman.asignar',[$equipo->idsubgrupo,$equipo->idequipo])}}"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Asignar rutinas</button></a>
+          <div class="box-body col-md-6">
+          <h3 class="box-title"><a href="{{route('ruman.create2',[$equipo->idequipo,$equipo->idsubgrupo])}}"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Crear rutina</button></a>
+          </div>
+          <div class="box-body col-md-6">
+          <h3 class="box-title"><a href="{{route('ruman.create2',[$equipo->idequipo,$equipo->idsubgrupo])}}"><button class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Copiar rutinas de otro equipo</button></a>
           </div>
 
 
@@ -404,8 +407,41 @@
         <h3>Preventivo</h3>
         @foreach($ruman as $st)
         @if ($st->idequipo==$equipo->idequipo)
-        <h3 class="box-title"><a target="_blank" href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button class="btn btn-warning"><span class="fa fa-th"></span> Rutina preventiva</button></a>
+        @if($st->estado_rutina=='PENDIENTE')
+        <i>Fecha a realizar próxima rutina:</i>
+        @foreach($notificacion as $noti)
+        @if ($st->idrutina_mantenimiento==$noti->rutina_mantenimiento_idrutina_mantenimiento)
+        <p>{{date("Y-m-d",strtotime($noti->start))}}</p>
+        @if(date("Y-m-d",strtotime($noti->start))<= date('Y-m-d'))
+        <h3 class="box-title"><a href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button class="btn btn-danger"><span class="fa fa-th"></span>    @if ($st->frecuencia_rutina==1)
+        <i>Mensual</i>     @endif
+        @if ($st->frecuencia_rutina==2)
+     <i>Bimestral</i>     @endif
+        @if ($st->frecuencia_rutina==3)
+     <i>Trimestral</i>     @endif
+     @if ($st->frecuencia_rutina==6)
+  <i>Semestral</i>     @endif
+  @if ($st->frecuencia_rutina==12)
+   <i>Anual</i>     @endif</button></a>
+ </h3>
+@else
+<h3 class="box-title"><a  href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button class="btn btn-warning"><span class="fa fa-th"></span>    @if ($st->frecuencia_rutina==1)
+<i>Mensual</i>     @endif
+@if ($st->frecuencia_rutina==2)
+<i>Bimestral</i>     @endif
+@if ($st->frecuencia_rutina==3)
+<i>Trimestral</i>     @endif
+@if ($st->frecuencia_rutina==6)
+<i>Semestral</i>     @endif
+@if ($st->frecuencia_rutina==12)
+<i>Anual</i>     @endif</button></a>
+</h3>
 
+
+ @endif
+ @endif
+@endforeach
+    @endif
           @endif
         @endforeach
 
@@ -1141,7 +1177,7 @@
     $('.nav-tabs a[href="#tab-area"]').tab('show');
     $('.nav-tabs a[href="#tab-tipo"]').tab('show');
     $('.nav-tabs a[href="#tab_4-4"]').tab('show');
-  
+
 
   }
   </script>

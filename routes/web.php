@@ -29,10 +29,18 @@ Route::get('equipo/equipo/ficha/{id}',[
     'uses' => 'EquipoController@ficha'
 ]);
 
-Route::get('equipo/rutina/ruman/asignar/{id}/{idequipo}',[
-    'as' => 'ruman.asignar',
-    'uses' => 'rumanController@asignar'
+Route::get('equipo/rutina/ruman/agregar',[
+    'as' => 'ruman.agregar',
+    'uses' => 'rumanController@agregar'
 ]);
+
+Route::get('equipo/rutina/ruman/create2/{idequipo}/{idsubgrupo}',[
+    'as' => 'ruman.create2',
+    'uses' => 'rumanController@create2'
+]);
+
+
+
 
 
 Route::resource('equipo/equipo/rutinamante','EquipoController');
@@ -85,6 +93,7 @@ Route::resource('equipo/rutina/subru','subruController');
 Route::resource('equipo/rutina/ruman','rumanController');
 Route::resource('equipo/rutina/detcaracru','detcaracruController');
 Route::resource('equipo/rutina/detrupru','detrupruController');
+Route::resource('equipo/rutina/AsignarRutina','AsignarRutinaController');
 
 
 //solicitud de trabajo
