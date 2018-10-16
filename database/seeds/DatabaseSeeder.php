@@ -49,5 +49,10 @@ class DatabaseSeeder extends Seeder
         $this->call(ValorRefTecTableSeeder::class);
         $this->call(SubGrupTecTableSeeder::class);
 
+        //roles y usuarios
+        $this->call(RolesTableSeeder::class);
+        $this->call(UserTableSeeder::class);
+       
+        
     }
 }
