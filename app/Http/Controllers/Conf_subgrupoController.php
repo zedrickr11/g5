@@ -13,6 +13,10 @@ use Carbon\Carbon;
 
 class Conf_subgrupoController extends Controller
 {
+  function __construct()
+      {
+        $this->middleware(['auth','role:admin,jefe-mantto']);
+      }
 
 
           /**

@@ -8,6 +8,10 @@ use DB;
 use App\ServicioTecnico;
 class ServicioTecnicoController extends Controller
 {
+    function __construct()
+    {
+      $this->middleware(['auth','role:admin,jefe-mantto,jefe-sub']);
+    }
     /**
      * Display a listing of the resource.
      *

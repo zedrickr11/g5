@@ -15,6 +15,10 @@ use DB;
 
 class CalendarioController extends Controller
 {
+    function __construct()
+      {
+        $this->middleware(['auth','role:admin,jefe-mantto']);
+      }
     public function llenarcalendario()
     {
      $eventos = DB::table('notificacion')
