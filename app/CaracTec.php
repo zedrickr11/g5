@@ -14,7 +14,7 @@ class CaracTec extends Model
 
 
   protected $fillable =[
-      'nombre_caracteristica_tecnica'
+      'nombre_caracteristica_tecnica',
   ];
 
   protected $guarded =[

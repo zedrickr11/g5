@@ -120,7 +120,7 @@ class SolicitudTrabajoIndexController extends Controller
                  DB::rollback();
              }
 
-                  return Redirect::to('trabajo/solicitud');
+                  return back();
      }
 
 
