@@ -39,28 +39,38 @@
 
 					</span>
 					<br>
-					<span class="login100-form-title p-b-34 p-t-27">
-
-					Iniciar sesión
-					</span>
-
-					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input class="input100" type="email" name="email" placeholder="Correo Electrónico">
-						<span class="focus-input100" data-placeholder="&#xf207;"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="password" placeholder="Contraseña">
-						<span class="focus-input100" data-placeholder="&#xf191;"></span>
-					</div>
 
 
 
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Ingresar
-						</button>
-					</div>
+					@if (auth()->check())
+						<br>
+						<div class="container-login100-form-btn">
+							<a href="/calendario" class="login100-form-btn">
+								Ir al inicio
+							</a>
+						</div>
+					@else
+						<span class="login100-form-title p-b-34 p-t-27">
+
+						Iniciar sesión
+						</span>
+
+						<div class="wrap-input100 validate-input" data-validate = "Enter username">
+							<input class="input100" type="email" name="email" placeholder="Correo Electrónico">
+							<span class="focus-input100" data-placeholder="&#xf207;"></span>
+						</div>
+
+						<div class="wrap-input100 validate-input" data-validate="Enter password">
+							<input class="input100" type="password" name="password" placeholder="Contraseña">
+							<span class="focus-input100" data-placeholder="&#xf191;"></span>
+						</div>
+						<div class="container-login100-form-btn">
+							<button class="login100-form-btn">
+								Ingresar
+							</button>
+						</div>
+					@endif
+
 
 
 				</form>

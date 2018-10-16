@@ -13,7 +13,7 @@
         <div class="icon">
           <i class="ion  ion-stats-bars"></i>
         </div>
-        <a href="{{asset('http://localhost:8000/equipo/equipo')}}" class="small-box-footer">Más información <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="{{route('equipo.index')}}" class="small-box-footer">Más información <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <!-- ./col -->
@@ -84,7 +84,7 @@
                 <!-- Custom Tabs (Pulled to the right) -->
                 <div class="nav-tabs-custom">
                   <ul class="nav nav-tabs pull-right">
-                    <li class="active"><a href="#tab_1-1" data-toggle="tab">CORRECTIVO</a></li>
+                    <li class=""><a href="#tab_1-1" data-toggle="tab">CORRECTIVO</a></li>
                     <li><a href="#tab_2-2" data-toggle="tab">PREVENTIVO</a></li>
                     <li class="pull-left header"><i class="fa fa-th"></i> CALENDARIOS</li>
                   </ul>
@@ -266,10 +266,10 @@
                 <!-- /.modal-content -->
               </div>
               <!-- /.modal-dialog -->
-            </div>
 
 
-      </div>
+
+
          <!-- /.row -->
 
      </section>

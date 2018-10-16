@@ -3,12 +3,16 @@
 Route::get('/calendario', function () {
     return view ('index') ;
 });
+Route::get('/', function () {
+    return view ('auth.login') ;
+});
 //login
 Route::get('loggin','Auth\LoginController@showLoginForm');
 Route::post('loggin','Auth\LoginController@login');
 Route::get('logout','Auth\LoginController@logout');
 
-
+//usuarios
+Route::resource('usuarios','UsersController');
 
 //equipo
 Route::resource('equipo/fabricante','FabricanteController');
