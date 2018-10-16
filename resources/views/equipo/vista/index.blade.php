@@ -843,6 +843,8 @@
                   <input type="hidden" name="idsubgrupo" value="{{$equipo->idsubgrupo}}">
                   <input type="hidden" name="correlativo" value="{{$equipo->correlativo}}">
                   <input type="hidden" name="idequipo" value="{{$equipo->idequipo}}">
+                  <input type="hidden" name="users_id" value="{{ Auth::user()->id }}">
+
                   </div>
                   <!-- /.tab-pane -->
 
