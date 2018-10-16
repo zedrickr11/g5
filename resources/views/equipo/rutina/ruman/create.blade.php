@@ -42,8 +42,8 @@
                   <div class="row">
 
 				<div class="box-body col-md-6">
-          <input type="text" class="form-control" name="idequipo" value="{{$idequipo}}">
-          <input type="text" class="form-control" name="idsubgrupo" value="{{$idsubgrupo}}">
+          <input type="hidden" class="form-control" name="idequipo" value="{{$idequipo}}">
+          <input type="hidden" class="form-control" name="idsubgrupo" value="{{$idsubgrupo}}">
 
           <div class="form-group">
             <label for="frec_uso_dia_semana">Frecuencia</label>

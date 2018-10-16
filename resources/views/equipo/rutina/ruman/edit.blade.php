@@ -49,12 +49,29 @@
 
                                @if($ruman->frecuencia_rutina==1)
 
-                               {{date("d-m-Y",strtotime($hosp->start."+ 1 month"))}}
-                               {{date("d-m-Y",strtotime($hosp->end."+ 1 month"))}}
-
                              <input type="hidden" name="start22" value="{{date("Y-m-d",strtotime($hosp->start."+ 1 month"))}}">
                              <input type="hidden" name="end22" value="{{date("Y-m-d",strtotime($hosp->end."+ 1 month"))}}">
                              @endif
+                             @if($ruman->frecuencia_rutina==2)
+
+                           <input type="hidden" name="start22" value="{{date("Y-m-d",strtotime($hosp->start."+ 2 month"))}}">
+                           <input type="hidden" name="end22" value="{{date("Y-m-d",strtotime($hosp->end."+ 2 month"))}}">
+                           @endif
+                           @if($ruman->frecuencia_rutina==3)
+
+                         <input type="hidden" name="start22" value="{{date("Y-m-d",strtotime($hosp->start."+ 3 month"))}}">
+                         <input type="hidden" name="end22" value="{{date("Y-m-d",strtotime($hosp->end."+ 3 month"))}}">
+                         @endif
+                         @if($ruman->frecuencia_rutina==6)
+
+                       <input type="hidden" name="start22" value="{{date("Y-m-d",strtotime($hosp->start."+ 6 month"))}}">
+                       <input type="hidden" name="end22" value="{{date("Y-m-d",strtotime($hosp->end."+ 6 month"))}}">
+                       @endif
+                       @if($ruman->frecuencia_rutina==12)
+
+                     <input type="hidden" name="start22" value="{{date("Y-m-d",strtotime($hosp->start."+ 12 month"))}}">
+                     <input type="hidden" name="end22" value="{{date("Y-m-d",strtotime($hosp->end."+ 12 month"))}}">
+                     @endif
 
                            @endif
                             @endforeach
