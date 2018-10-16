@@ -265,12 +265,7 @@
                 </div>
                 <!-- /.modal-content -->
               </div>
-              <!-- /.modal-dialog -->
-
-
-
-
-         <!-- /.row -->
+            
 
      </section>
 
