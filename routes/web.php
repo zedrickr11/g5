@@ -46,6 +46,10 @@ Route::get('equipo/equipo/rutina/{id}',[
     'as' => 'equipo.rutina',
     'uses' => 'EquipoController@rutina'
 ]);
+Route::get('equipo/vista/indexsolicitudes/{id}',[
+    'as' => 'equipo.vista',
+    'uses' => 'EquipoIndexController@solis'
+]);
 
 //index del Equipo
 Route::get('equipo/principal/{id}',['as'=>'actualizar','uses' => 'EquipoIndexController@index']);

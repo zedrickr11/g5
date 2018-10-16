@@ -45,6 +45,9 @@ class DatabaseSeeder extends Seeder
         $this->call(SubgrupoRutinaTableSeeder::class);
         $this->call(ValorReferenciaRutinaTableSeeder::class);
 
+        $this->call(CaracteristicaTecnicaTableSeeder::class);
+        $this->call(ValorRefTecTableSeeder::class);
+        $this->call(SubGrupTecTableSeeder::class);
 
     }
 }
