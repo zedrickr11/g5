@@ -1175,12 +1175,6 @@
 
   @endpush
 
-  <script type="text/javascript">
-  window.onload=function(){
-    $('.nav-tabs a[href="#tab-area"]').tab('show');
-    $('.nav-tabs a[href="#tab-tipo"]').tab('show');
-    $('.nav-tabs a[href="#tab_4-4"]').tab('show');
-
 
 
 @endsection
