@@ -1172,14 +1172,13 @@
   </script>
 
   @endpush
-<<<<<<< HEAD
+
   <script type="text/javascript">
   window.onload=function(){
     $('.nav-tabs a[href="#tab-area"]').tab('show');
     $('.nav-tabs a[href="#tab-tipo"]').tab('show');
     $('.nav-tabs a[href="#tab_4-4"]').tab('show');
 
-=======
->>>>>>> ee93a5e0c3e9148fe3ffd1812fe9161d0a744543
+
 
 @endsection
