@@ -9,6 +9,10 @@ use App\Http\Requests\NaturalezaPeligroFormRequest;
 use DB;
 class NaturalezaPeligroController extends Controller
 {
+  function __construct()
+      {
+        $this->middleware(['auth','role:admin,jefe-mantto']);
+      }
     /**
      * Display a listing of the resource.
      *

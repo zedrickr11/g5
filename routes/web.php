@@ -2,7 +2,7 @@
 
 Route::get('/calendario', function () {
     return view ('index') ;
-});
+})->middleware('auth');
 Route::get('/', function () {
     return view ('auth.login') ;
 });

@@ -23,6 +23,10 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 class rumanController extends Controller
 {
+  function __construct()
+    {
+      $this->middleware(['auth','role:admin,jefe-mantto,jefe-sub']);
+    }
   /**
    * Display a listing of the resource.
    *
