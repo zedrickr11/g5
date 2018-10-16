@@ -180,10 +180,13 @@ Trabajo
 <!-- /.tab-pane -->
 <div class="box-footer">
   <div class="box-body col-md-12">
-  <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
-  </a>
+    <a href="{{route('solicitud.index')}}">
+    <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
+    </a>
   <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
+
   <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
+
 </div>
 </div>
 

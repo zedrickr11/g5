@@ -43,7 +43,7 @@
 
             <a href="{{route('equipo.ficha',$equipo->idequipo)}}" target="_blank" class="btn btn-success btn-block"><b>Ficha técnica</b></a>
             <a href="{{route('equipo.rutina',$equipo->idequipo)}}" target="_blank" class="btn btn-primary btn-block"><b>Historial de la rutina</b></a>
-                <a href="{{route('equipo.rutina',$equipo->idequipo)}}" target="_blank" class="btn btn-primary btn-block"><b>Ver Solicitudes</b></a>
+          <a  href="{{route('equipo.vista',$equipo->idequipo)}}" target="_blank" class="btn btn-warning btn-block"><b>Ver Solicitudes</b></a>
           </div>
           <!-- /.box-body -->
         </div>
@@ -258,7 +258,7 @@
                       <div class="box-body col-md-6">
                         <div class="form-group">
                         <label>Id Equipo</label>
-                        <input  type="text" name="idequipo" class="form-control select2" id="idequipo" data-live-search="true" value="{{$equipo->idequipo}}">
+                        <input  type="text" name="idequipo" readonly class="form-control select2" id="idequipo" data-live-search="true" value="{{$equipo->idequipo}}">
                        <!--aqui va el for each de equipo-->
 
                         </div>
@@ -1129,7 +1129,7 @@
 
   }
   </script>
- 
+
   <script>
   $('#liEq').addClass("treeview active");
   $('#liEquipo').addClass("active");
