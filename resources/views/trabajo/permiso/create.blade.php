@@ -37,6 +37,9 @@ Trabajo
       </div>
       @endif
       </div>
+      <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+      <p class="text-danger">(*) Campos requeridos</p>
+    </div>
 <div class="box-body col-md-6">
   <div class="form-group">
 <label for="direccion_fab">No de permiso</label>
@@ -44,15 +47,16 @@ Trabajo
 
 </div>
 <div class="form-group">
-<label for="direccion_fab">Descripción</label>
+<label for="direccion_fab">Descripción(*)</label>
 <input type="text" class="form-control" name="descripcion" value="{{old('descripcion')}}">
 </div>
 </div>
 
 <div class="box-body col-md-6">
   <div class="form-group">
-        <label for="solicitud">No de Solicitud</label>
-        <select name="idsolitud_trabajo" id="idsolitud_trabajo" class="form-control selectpicker" data-live-search="true">
+        <label for="solicitud">No de Solicitud(*)</label>
+        <select name="idsolitud_trabajo" id="idsolitud_trabajo" style="width:100%" class="form-control selectpicker" data-live-search="true">
+             <option value="0" disabled selected>=== Selecciona un numero de solicitud===</option>
           @foreach($solicitudes as $s)
             <option value="{{$s->idsolitud_trabajo}}">{{$s->num}}</option>
              @endforeach
@@ -63,8 +67,9 @@ Trabajo
 
 <div class="box-body col-md-12">
 <div class="form-group">
-<label>Tipo de Trabajo</label>
-<select name="pidtipo" class="form-control select2" id="pidtipo" data-live-search="true">
+<label>Tipo de Trabajo(*)</label>
+<select name="pidtipo" class="form-control select2" style="width:100%" id="pidtipo" data-live-search="true">
+         <option value="0" disabled selected>=== Selecciona un tipo de trabajo===</option
 @foreach($tipos as $tip)
 <option value="{{$tip->idtipo_trabajo}}">{{$tip->tipo}}</option>
 @endforeach
@@ -99,8 +104,9 @@ Trabajo
 <div class="box-body col-md-12">
 
   <div class="form-group">
-  <label>Naturaleza de Peligro</label>
-  <select name="pidnaturaleza" class="form-control select2" id="pidnaturaleza" data-live-search="true">
+  <label>Naturaleza de Peligro(*)</label>
+  <select name="pidnaturaleza" class="form-control select2" style="width:100%"  id="pidnaturaleza" data-live-search="true">
+       <option value="0" disabled selected>=== Selecciona un numero de solicitud===</option>
   @foreach($naturalezas as $na)
   <option value="{{$na->idnaturaleza_peligro}}">{{$na->naturaleza}}</option>
   @endforeach
@@ -132,8 +138,9 @@ Trabajo
 
 <div class="box-body col-md-6">
   <div class="form-group">
-  <label>Precaucion Responsable</label>
-  <select name="pidresponsable" class="form-control select2" id="pidresponsable" data-live-search="true">
+  <label>Precaucion Responsable(*)</label>
+  <select name="pidresponsable" class="form-control select2" style="width:100%" id="pidresponsable" data-live-search="true">
+           <option value="0" disabled selected>=== Selecciona una precaucion de responsable===</option>
   @foreach($responsables as $r)
   <option value="{{$r->idprecaucion_responsable}}">{{$r->responsable}}</option>
   @endforeach
@@ -149,7 +156,7 @@ Trabajo
   <table id="detaller" class="table table-striped table-bordered table-condensed table-hover">
   <thead style="background-color:#2ab863">
     <th>Opciones</th>
-    <th>PRECAUCIONES OBLIGATORIAS PARA EL RESPONSABLE DEL ÁREA / EQUIPO</th>
+    <th>Precauciones para el responsable área </th>
 
 
   </thead>
@@ -164,8 +171,9 @@ Trabajo
 </div>
 <div class="box-body col-md-6">
   <div class="form-group">
-  <label>Precaucion Ejecutante</label>
-  <select name="pidejecutante" class="form-control select2" id="pidejecutante" data-live-search="true">
+  <label>Precaucion Ejecutante(*)</label>
+  <select name="pidejecutante" class="form-control select2" style="width:100%" id="pidejecutante" data-live-search="true">
+           <option value="0" disabled selected>=== Selecciona una precaución ejecutante==</option>
   @foreach($ejecutantes as $e)
   <option value="{{$e->idprecaucion_ejecutante}}">{{$e->ejecutante}}</option>
   @endforeach
@@ -181,7 +189,7 @@ Trabajo
   <table id="detallej" class="table table-striped table-bordered table-condensed table-hover">
   <thead style="background-color:#2ab863">
     <th>Opciones</th>
-    <th>PRECAUCIONES OBLIGATORIAS PARA EL EJECUTANTE</th>
+    <th>Precauciones para el ejecutante</th>
 
 
   </thead>

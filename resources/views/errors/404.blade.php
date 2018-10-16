@@ -21,7 +21,7 @@
       <p>
 
         No pudimos encontrar la página que estabas buscando.
-        Mientras tanto, puedes <a href="#">volver al inicio</a>
+        Mientras tanto, puedes <a href="/calendario">volver al inicio</a>
       </p>
 
 

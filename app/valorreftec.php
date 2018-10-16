@@ -14,7 +14,8 @@ class valorreftec extends Model
 
 
   protected $fillable =[
-      'nombre_valor_ref_tec'
+      'nombre_valor_ref_tec',
+
   ];
 
   protected $guarded =[
