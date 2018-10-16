@@ -8,7 +8,7 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Select con busqueda -->
-  <link href="{{asset('ajax/select2.min.css')}}" rel="stylesheet" />
+
   <!-- datepicker -->
   <link rel="stylesheet" href="{{asset('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
 <!-- pace -->
@@ -137,17 +137,17 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{{asset('dist/img/zedrick.jpg')}}" class="user-image" alt="User Image">
-              <span class="hidden-xs">Usuario Final</span>
+              <img src="{{asset('dist/img/inge.png')}}" class="user-image" alt="User Image">
+              <span class="hidden-xs">{{ Auth::user()->name }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="{{asset('dist/img/zedrick.jpg')}}" class="img-circle" alt="User Image">
+                <img src="{{asset('dist/img/inge.png')}}" class="img-circle" alt="User Image">
 
                 <p>
-                  Usuario Final - Web Developer
-                  <small>Mienbro desde Nov. 2012</small>
+                  {{ Auth::user()->name }}
+                  <small>Instituto Guatemalteco de Seguridad Social</small>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -158,7 +158,7 @@
                   <a href="#" class="btn btn-default btn-flat">Configuraciones</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Salir</a>
+                  <a href="/logout" class="btn btn-default btn-flat">Salir</a>
                 </div>
               </li>
             </ul>
@@ -208,7 +208,7 @@
 </div>
 <!-- ./wrapper -->
 <!-- Select con busqueda -->
-<script src="{{asset('ajax/select2.min.js')}}"></script>
+
 <!-- jQuery 3 -->
 <script src="{{asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -248,6 +248,7 @@
 <script src="{{asset('bower_components/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
 <!-- FastClick -->
 <script src="{{asset('bower_components/fastclick/lib/fastclick.js')}}"></script>
+
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.min.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -260,7 +261,7 @@
 <script src="{{asset('bower_components/moment/moment.js')}}"></script>
 <script src="{{asset('bower_components/fullcalendar/dist/fullcalendar.min.js')}}"></script>
 <script src="{{asset('bower_components/fullCalendar/dist/locale/es.js')}}"></script>
-
+@stack('scripts')
 
 
 </body>

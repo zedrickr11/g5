@@ -11,6 +11,10 @@ use App\Http\Requests\TipoUnidadSaludFormRequest;
 class TipoUnidadSaludController extends Controller
 
 {
+    function __construct()
+    {
+      $this->middleware(['auth','role:admin,jefe-mantto']);
+    }
     /**
      * Display a listing of the resource.
      *

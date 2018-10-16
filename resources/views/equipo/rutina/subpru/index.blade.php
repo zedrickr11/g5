@@ -19,7 +19,7 @@
           <div class="box">
             <div class="box-header">
 
-			  <h3 class="box-title">Listado de subgrupo prueba<a href="subpru/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
+			  <h3 class="box-title">Listado de subgrupo prueba<a href="{{route('subpru/create')}}"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
 			  		<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
             </div>
             <!-- /.box-header -->
@@ -73,7 +73,8 @@
                   </tfoot>
           </table>
               </div>
-      {!! $subpru->links() !!}
+              {!! $subpru->appends(['searchText'=>request('searchText')])->links() !!}
+
 
             </div>
             <!-- /.box-body -->

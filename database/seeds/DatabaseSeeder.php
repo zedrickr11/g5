@@ -37,7 +37,22 @@ class DatabaseSeeder extends Seeder
         $this->call(PrecaucionResponsableTableSeeder::class);
         $this->call(NaturalezaPeligroTableSeeder::class);
         $this->call(TipoTrabajoTableSeeder::class);
+        $this->call(AreaMantenimientoTableSeeder::class);
 
 
+        $this->call(TipoRutinaTableSeeder::class);
+        $this->call(CaracteristicaRutinaTableSeeder::class);
+        $this->call(SubgrupoRutinaTableSeeder::class);
+        $this->call(ValorReferenciaRutinaTableSeeder::class);
+
+        $this->call(CaracteristicaTecnicaTableSeeder::class);
+        $this->call(ValorRefTecTableSeeder::class);
+        $this->call(SubGrupTecTableSeeder::class);
+
+        //roles y usuarios
+        $this->call(RolesTableSeeder::class);
+        $this->call(UserTableSeeder::class);
+       
+        
     }
 }

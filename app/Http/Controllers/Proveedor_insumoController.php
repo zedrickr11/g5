@@ -14,6 +14,10 @@ use Carbon\Carbon;
 
 class Proveedor_insumoController extends Controller
 {
+    function __construct()
+    {
+      $this->middleware(['auth','role:admin,jefe-mantto,jefe-sub']);
+    }
   public function index(Request $request)
   {
       if ($request)

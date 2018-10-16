@@ -17,7 +17,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Listado de Hospitales <a href="hospitales/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button></a>
+              <h3 class="box-title">Listado de Hospitales <a href="{{route('hospitales.create')}}"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button></a>
                   </h3>
                   <a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
             </div>
@@ -67,7 +67,8 @@
 
                   </tfoot>
           </table>
-          {!! $hospitales->links() !!}
+          {!! $hospitales->appends(['searchText'=>request('searchText')])->links() !!}
+
 
               </div>
               </div>

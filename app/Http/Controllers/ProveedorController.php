@@ -11,15 +11,32 @@ use App\Http\Controllers\Controller;
 
 class ProveedorController extends Controller
 {
+  function __construct()
+    {
+      $this->middleware(['auth','role:admin,jefe-mantto,jefe-sub']);
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function index(Request $request)
     {
-      $proveedores=Proveedor::all();
-    return view('equipo.proveedor.index', compact('proveedores'));
+        //
+        if ($request)
+        {
+            $query=trim($request->get('searchText'));
+              $proveedores=DB::table('proveedor as p')
+              ->select('*')
+              ->where('contacto_proveedor','LIKE','%'.$query.'%')
+              ->orderBy('id_proveedor','asc')
+              ->paginate(10);
+      return view('equipo.proveedor.index', ["proveedores"=>$proveedores,"searchText"=>$query]);
+          }
+
+
+
     }
 
     /**

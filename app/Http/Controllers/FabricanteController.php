@@ -14,6 +14,10 @@ use Carbon\Carbon;
 
 class FabricanteController extends Controller
 {
+    function __construct()
+      {
+        $this->middleware(['auth','role:admin,jefe-mantto,jefe-sub']);
+      }
     /**
      * Display a listing of the resource.
      *
@@ -29,7 +33,7 @@ class FabricanteController extends Controller
             ->select('*')
             ->where('contacto_fabricante','LIKE','%'.$query.'%')
             ->orderBy('idfabricante','desc')
-            ->paginate(3);
+            ->paginate(10);
             return view('equipo.fabricante.index',["fabricantes"=>$fabricantes,"searchText"=>$query]);
         }
     }

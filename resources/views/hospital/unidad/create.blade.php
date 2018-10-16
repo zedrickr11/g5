@@ -35,26 +35,20 @@
 					{!! csrf_field() !!}
 
 				<div class="box-body col-md-12">
-					<div class="form-group">
-						<label for="direccion_fab">Codigo de Unidad de Salud</label>
-						<input type="text" class="form-control" name="idunidadsalud" value="{{old('idunidadsalud')}}">
-					</div>
+
 					<div class="form-group">
 						<label for="telefono_fab">Nombre de la Unidad de Salud</label>
 						<input type="text" class="form-control" name="unidad_salud" value="{{old('unidad_salud')}}">
 					</div>
           <div class="form-group">
-    <label for="select" class="col-lg-2 control-label">Hospital</label>
+                <label for="hospital">Hospital</label>
+                <select name="idhospital" id="idhospital" class="form-control selectpicker" data-live-search="true">
+                  @foreach($hospitals as $hosp)
+                         <option value="{{$hosp->idhospital}}">{{$hosp->hospital}}</option>
+                          @endforeach
+                  </select>
+              </div>
 
-      <select name="idhospital" class="form-control" id="select">
-     @foreach($hospitals as $hosp)
-            <option value="{{$hosp->idhospital}}">{{$hosp->hospital}}</option>
-             @endforeach
-      </select>
-
-
-
-  </div>
 
 
 
@@ -79,4 +73,12 @@
 
 </div>
 </section>
+<script src="{{asset('ajax/jquery.min.js')}}"></script>
+<script src="{{asset('ajax/bootstrap.min.js')}}"></script>
+<script src="{{asset('ajax/select2.min.js')}}"></script>
+<script>
+$('#idhospital').select2({
+  theme: "classic"
+});
+</script>
 @endsection

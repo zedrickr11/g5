@@ -43,23 +43,25 @@
 						<label for="telefono_fab">Nombre del Departamento</label>
 						<input type="text" class="form-control" name="depto" value="{{old('depto')}}">
 					</div>
-          <div class="form-group">
-    <label for="select" class="col-lg-2 control-label">Hospital</label>
-      <select name="idhospital" class="form-control" id="select">
-     @foreach($hospitals as $hosp)
-            <option value="{{$hosp->idhospital}}">{{$hosp->hospital}}</option>
-             @endforeach
-      </select>
-  </div>
 
-  <div class="form-group">
-<label for="select" class="col-lg-2 control-label">Region</label>
-<select name="idregion" class="form-control" id="select">
-@foreach($regiones as $r)
-    <option value="{{$r->idregion}}">{{$r->region}}</option>
-     @endforeach
-</select>
-</div>
+          <div class="form-group">
+                <label for="hospital">Hospital</label>
+                <select name="idhospital" id="idhospital" class="form-control selectpicker" data-live-search="true">
+                  @foreach($hospitals as $hosp)
+                         <option value="{{$hosp->idhospital}}">{{$hosp->hospital}}</option>
+                          @endforeach
+                  </select>
+              </div>
+
+
+<div class="form-group">
+      <label for="region">Region</label>
+      <select name="idregion" id="idregion" class="form-control selectpicker" data-live-search="true">
+        @foreach($regiones as $r)
+            <option value="{{$r->idregion}}">{{$r->region}}</option>
+             @endforeach
+        </select>
+    </div>
 
 
 
@@ -85,4 +87,15 @@
 
 </div>
 </section>
+<script src="{{asset('ajax/jquery.min.js')}}"></script>
+<script src="{{asset('ajax/bootstrap.min.js')}}"></script>
+<script src="{{asset('ajax/select2.min.js')}}"></script>
+<script>
+$('#idregion').select2({
+  theme: "classic"
+});
+$('#idhospital').select2({
+  theme: "classic"
+});
+</script>
 @endsection

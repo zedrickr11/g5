@@ -18,51 +18,41 @@
 		<!-- general form elements -->
 		<div class="box box-success">
 			<div class="box-header with-border">
-				<h3 class="box-title">Nueva prueba rutina</h3>
+				<h3 class="box-title">Detalle rutina mantenimiento</h3>
 			</div>
 			<!-- /.box-header -->
 			<!-- form start -->
 
 
       <div class="box-body col-md-6">
+        <div class="form-group">
+
+          <label for="direccion_fab">Frecuencia</label>
+             @if ($ruman->idtipo_rutina==1)
+          <p>Mensual</p>     @endif
+          @if ($ruman->idtipo_rutina==3)
+       <p>Trimestral</p>     @endif
+       @if ($ruman->idtipo_rutina==6)
+    <p>Semestral</p>     @endif
+    @if ($ruman->idtipo_rutina==12)
+ <p>Anual</p>     @endif
+          </div>
+
+
+        <div class="form-group">
+          <label for="select" class="">Tipo rutina</label>
+          <br>
+
+          @foreach($tiporu as $hosp)
+                   @if ($hosp->idtipo_rutina==$ruman->idtipo_rutina)
+                   <p>{{$hosp->tipo_rutina}}</p>
+                 @endif
+                  @endforeach
+
+        </div>
 
 
 
-                  <div class="form-group">
-                    <label for="select" class="">Tipo rutina</label>
-                    <br>
-
-                    @foreach($tiporu as $hosp)
-                             @if ($hosp->idtipo_rutina==$ruman->idtipo_rutina)
-                             <p>{{$hosp->tipo_rutina}}</p>
-
-
-                           @endif
-                            @endforeach
-
-                  </div>
-
-                  <div class="form-group">
-                    <label for="select" class="">Equipo</label>
-                    <br>
-
-                    @foreach($equipo as $hosp)
-                             @if ($hosp->idequipo==$ruman->idequipo)
-                             <p>{{$hosp->nombre_equipo}}</p>
-
-
-                           @endif
-                            @endforeach
-
-
-                  </div>
-
-                  <div class="form-group">
-                      <label>Fecha realizacion rutina</label>
-                      <p>{{$ruman->fecha_realizacion_rutina}}</p>
-
-                          <!-- /.input group -->
-                  </div>
                   <div class="form-group">
 
                     <label for="direccion_fab">Observaciones rutina</label>
@@ -89,19 +79,7 @@
 
 
 
-        <div class="form-group">
-          <label for="select" class="">Permiso de trabajo</label>
-          <br>
 
-          @foreach($permisotrabajo as $hosp)
-                   @if ($hosp->idpermiso_trabajo==$ruman->idpermiso_trabajo)
-                   <p>{{$hosp->num_permiso}}</p>
-
-
-                 @endif
-                  @endforeach
-
-        </div>
 
         <div class="form-group">
 
@@ -109,18 +87,64 @@
           <p>{{$ruman->estado_rutina}}</p>
 
         </div>
+        <a href="{{route('ruman.index')}}">
+              <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
+            </a>
 
   </div>
+
+
+  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+      <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
+          <thead style="background-color:#2ab863">
+
+              <th>Caracteristica</th>
+              <th>Subgrupo</th>
+              <th>Valor</th>
+                <th>Estado</th>
+
+
+
+
+          </thead>
+          <tfoot>
+
+
+          </tfoot>
+          <tbody>
+              @foreach($detallerutina as $det)
+                 @if ($det->idrutina_mantenimiento==$ruman->idrutina_mantenimiento)
+              <tr>
+
+                                            @foreach($caracru as $dets)
+                                            @if ($dets->idcaracteristica_rutina==$det->idcaracteristica_rutina)
+                                  <td>{{$dets->caracteristica_rutina}}</td>  @endif @endforeach
+                                  @foreach($subru as $dets)
+                                  @if ($dets->idsubgrupo_rutina==$det->idsubgrupo_rutina)
+                                  <td>{{$dets->subgrupo_rutina}}</td>@endif @endforeach
+                                  @foreach($valrefru as $dets)
+                                  @if ($dets->idvalor_ref_rutina==$det->idvalor_ref_rutina)
+                                  <td>{{$dets->descripcion}}</td>@endif @endforeach
+                                    <td>{{$det->estado_detalle_caracteristica_rutina}}</td>
+
+                </tr>
+              @endif
+              @endforeach
+          </tbody>
+      </table>
+   </div>
 
 
 				<!-- /.box-body -->
 
 
         <div class="box-footer">
-<a href="{{route('ruman.index')}}">
-            <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
-          </a>
+
         </div>
+
+
+
+
 
 		</div>
 		<!-- /.box -->

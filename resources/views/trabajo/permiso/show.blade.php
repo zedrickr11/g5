@@ -23,30 +23,132 @@
 <!-- /.box-header -->
 <!-- form start -->
 <div class="box-body col-md-12">
+  <div class="box-body col-md-6">
 <div class="form-group">
 <label for="direccion_fab">Id</label>
 <p>{{$permisos->idpermiso_trabajo}}</p>
 </div>
 <div class="form-group">
+<label for="telefono_fab">No de Solicitud</label>
+<p>{{$permisos->num}}</p>
+</div>
+</div>
+  <div class="box-body col-md-6">
+<div class="form-group">
 <label for="telefono_fab">No de permiso</label>
 <p>{{$permisos->num_permiso}}</p>
+</div>
+<div class="form-group">
+<label for="telefono_fab">Fecha</label>
+<p>{{$permisos->fecha}}</p>
+</div>
 </div>
 <div class="form-group">
 <label for="telefono_fab">Descripción</label>
 <p>{{$permisos->descripcion}}</p>
 </div>
-<div class="form-group">
-  <label for="direccion_fab">No de Solicitud</label>
-  <br>
-@foreach($solicitudes as $s)
-    @if ($s->idsolitud_trabajo==$permisos->solitud_trabajo_idsolitud_trabajo)
-    <p>{{$s->numero}}</p>
-  @endif
-   @endforeach
+
+
+<div class="row">
+    <div class="">
+        <div class="panel-body">
+
+            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
+                    <thead style="background-color:#2ab863">
+                        <th>Tipo de Trabajo</th>
+                        <th>Descrripcion</th>
+                    </thead>
+                    <tfoot>
+                    </tfoot>
+                    <tbody>
+                        @foreach($detallep as $det)
+                        <tr>
+                            <td>{{$det->tipo}}</td>
+                            <td>{{$det->descripcion_detalle_tipo_trabajo_permiso}}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+             </div>
+        </div>
+    </div>
+
 </div>
-<div class="form-group">
-<label for="telefono_fab">Fecha</label>
-<p>{{$permisos->fecha}}</p>
+<div class="row">
+    <div class="">
+        <div class="panel-body">
+
+            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
+                    <thead style="background-color:#2ab863">
+                        <th>Naturaleza Peligro </th>
+
+                    </thead>
+                    <tfoot>
+                    </tfoot>
+                    <tbody>
+                        @foreach($detallesn as $det)
+                        <tr>
+                            <td>{{$det->naturaleza}}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+             </div>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="">
+        <div class="panel-body">
+
+            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
+                    <thead style="background-color:#2ab863">
+                        <th>Responsable </th>
+
+                    </thead>
+                    <tfoot>
+                    </tfoot>
+                    <tbody>
+                        @foreach($detallesr as $det)
+                        <tr>
+                            <td>{{$det->responsable}}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+             </div>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="">
+        <div class="panel-body">
+
+            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
+                    <thead style="background-color:#2ab863">
+                        <th>Ejecutante </th>
+
+                    </thead>
+                    <tfoot>
+                    </tfoot>
+                    <tbody>
+                        @foreach($detallese as $det)
+                        <tr>
+                            <td>{{$det->ejecutante}}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+             </div>
+        </div>
+    </div>
+
 </div>
 </div>
 <!-- /.box-body -->

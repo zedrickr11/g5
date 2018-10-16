@@ -1,12 +1,18 @@
 <?php
 
-Route::get('/', function () {
+Route::get('/calendario', function () {
     return view ('index') ;
+})->middleware('auth');
+Route::get('/', function () {
+    return view ('auth.login') ;
 });
-
 //login
-Route::resource('login','LoginController');
+Route::get('loggin','Auth\LoginController@showLoginForm');
+Route::post('loggin','Auth\LoginController@login');
+Route::get('logout','Auth\LoginController@logout');
 
+//usuarios
+Route::resource('usuarios','UsersController');
 
 //equipo
 Route::resource('equipo/fabricante','FabricanteController');
@@ -20,21 +26,27 @@ Route::resource('equipo/subgrupo','SubgrupoController');
 Route::resource('equipo/confsubgrupo','Conf_subgrupoController');
 Route::resource('equipo/advertencia','AdvertenciaController');
 Route::resource('equipo/confcorrelativo','Conf_corrController');
-Route::get('equipo/equipo/fichatecnica/{id}', 'EquipoController@ficha')->name('equipo.ficha');
 Route::resource('equipo/equipo','EquipoController');
+Route::get('equipo/existente/{id}',['as'=>'existente','uses' => 'EquipoController@existente']);
 
 
-//Route::resource('equipo/equipo/fichatecnica','EquipoController');
-//Route::get('equipo/equipo/ficha/{id}',[
-//    'as' => 'equipo.ficha',
-  //  'uses' => 'EquipoController@ficha'
-//]);
-Route::get('equipo/nuevo',['as'=>'nuevo','uses' => 'EquipoController@nuevo']);
-Route::resource('equipo/equipo/fichatecnica','EquipoController');
 Route::get('equipo/equipo/ficha/{id}',[
     'as' => 'equipo.ficha',
     'uses' => 'EquipoController@ficha'
 ]);
+
+Route::get('equipo/rutina/ruman/agregar',[
+    'as' => 'ruman.agregar',
+    'uses' => 'rumanController@agregar'
+]);
+
+Route::get('equipo/rutina/ruman/create2/{idequipo}/{idsubgrupo}',[
+    'as' => 'ruman.create2',
+    'uses' => 'rumanController@create2'
+]);
+
+
+
 
 
 Route::resource('equipo/equipo/rutinamante','EquipoController');
@@ -42,6 +54,15 @@ Route::get('equipo/equipo/rutina/{id}',[
     'as' => 'equipo.rutina',
     'uses' => 'EquipoController@rutina'
 ]);
+Route::get('equipo/vista/indexsolicitudes/{id}',[
+    'as' => 'equipo.vista',
+    'uses' => 'EquipoIndexController@solis'
+]);
+
+//index del Equipo
+Route::get('equipo/principal/{id}',['as'=>'actualizar','uses' => 'EquipoIndexController@index']);
+Route::resource('equipo/equipo/imagen','Imagen_equipoController');
+
 
 
 
@@ -82,6 +103,7 @@ Route::resource('equipo/rutina/subru','subruController');
 Route::resource('equipo/rutina/ruman','rumanController');
 Route::resource('equipo/rutina/detcaracru','detcaracruController');
 Route::resource('equipo/rutina/detrupru','detrupruController');
+Route::resource('equipo/rutina/AsignarRutina','AsignarRutinaController');
 
 
 //solicitud de trabajo
@@ -89,7 +111,7 @@ Route::resource('precaucion/ejecutante','PrecaucionEjecutanteController');
 Route::resource('precaucion/responsable','PrecaucionResponsableController');
 Route::resource('peligro/naturaleza','NaturalezaPeligroController');
 Route::resource('trabajo/tipo','TipoTrabajoController');
-Route::resource('trabajo/solicitud','SolicitudTrabajoController');
+Route::resource('trabajo/solicitud','SolicitudTrabajoIndexController');
 Route::resource('trabajo/permiso','PermisoTrabajoController');
 Route::resource('trabajo/seguimiento','SeguimientoController');
 Route::get('trabajo/solicitud/solicitudpdf/{id}', 'SolicitudTrabajoController@ficha')->name('Solicitudes.ficha');//pdf
@@ -104,6 +126,14 @@ Route::get('/json-grupo','EquipoController@grupo');
 Route::get('/json-subgrupo','EquipoController@subgrupo');
 Route::get('/json-correlativo','EquipoController@correlativo');
 Route::get('/json-codigosubgrupo','EquipoController@codigosubgrupo');
+Route::get('/json-depto','EquipoController@depto');
+Route::get('/json-hospital','EquipoController@hospital');
+Route::get('/json-unidad','EquipoController@unidadsalud');
+Route::get('/json-tipounidad','EquipoController@tipounidad');
+
+
+
+
 
 
 //Detalles
@@ -128,3 +158,17 @@ Route::resource('compras/repuesto-ingreso','Ingreso_repuestoController');
 
 //calendario
 Route::get('/json-calendario','CalendarioController@llenarcalendario');
+
+
+//manuales
+Route::resource('equipo/principal/','EquipoIndexController');
+
+//imprimirQR
+use App\Equipo;
+Route::get('equipo/qr/{id}', function ($id) {
+    $equipo=DB::table('equipo')
+    ->select('*')
+    ->where('idequipo','=',$id)
+    ->get();
+    return view ('equipo.vista.img1',compact('equipo')) ;
+});

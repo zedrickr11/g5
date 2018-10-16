@@ -13,7 +13,7 @@
         <div class="icon">
           <i class="ion  ion-stats-bars"></i>
         </div>
-        <a href="http://localhost:8000/equipo/equipo" class="small-box-footer">Más información <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="{{route('equipo.index')}}" class="small-box-footer">Más información <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <!-- ./col -->
@@ -36,14 +36,15 @@
       <!-- small box -->
       <div class="small-box bg-yellow">
         <div class="inner">
-          <h3>25</h3>
+          <h3>Solicitud</h3>
 
-          <p>Usuarios Registrados</p>
+          <p>Solicitudes de Trabajo</p>
         </div>
         <div class="icon">
-          <i class="ion ion-person-add"></i>
+          <i class="ion ion-clipboard"></i>
+
         </div>
-        <a href="#" class="small-box-footer">Más información <i class="fa fa-arrow-circle-right"></i></a>
+        <a  href="{{route('solicitud.index')}}" class="small-box-footer">Ingresar <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <!-- ./col -->
@@ -83,37 +84,37 @@
                 <!-- Custom Tabs (Pulled to the right) -->
                 <div class="nav-tabs-custom">
                   <ul class="nav nav-tabs pull-right">
-                    <li class="active"><a href="#tab_1-1" data-toggle="tab">CORRECTIVO</a></li>
+                    <li class=""><a href="#tab_1-1" data-toggle="tab">CORRECTIVO</a></li>
                     <li><a href="#tab_2-2" data-toggle="tab">PREVENTIVO</a></li>
                     <li class="pull-left header"><i class="fa fa-th"></i> CALENDARIOS</li>
                   </ul>
 
                   <div class="tab-content">
-                    
+
                     <div class="tab-pane fade in active" id="tab_1-1">
-                          
+
                       <div class="box box-solid box-primary">
-                       <h2 class="text-center"> Mantenimientos Correctivos</h2> 
+                       <h2 class="text-center"> Mantenimientos Correctivos</h2>
                         <div class="box-body ">
                                 <!-- THE CALENDAR 1 -->
                             <div id="calendar">
-                
+
                             </div>
                           </div>
                               <!-- /.box-body -->
                        </div>
                             <!-- /. box -->
-                          
+
                       </div>
                     <!-- /.tab-pane -->
                     <div class="tab-pane fade in active " id="tab_2-2">
-                       
+
                         <div class="box box-solid box-danger">
                             <h2 class="text-center"> Mantenimientos Preventivos</h2>
                             <div class="box-body ">
                                   <!-- THE CALENDAR 2 -->
                               <div id="calendar2">
-                  
+
                               </div>
                             </div>
                                 <!-- /.box-body -->
@@ -125,29 +126,29 @@
                 </div>
                 <!-- nav-tabs-custom -->
             </div>
-          
-          
+
+
             <div class="modal modal-success fade" id="modal-success">
               <div class="modal-dialog">
                 <div class="modal-content">
-                  
+
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">AGREGAR MANTENIMIENTO CORRECTIVO</h4>
                   </div>
-                 
+
                   <div class="modal-body">
-                    
-                   
+
+
                     <form role="form">
                       <div class="box-body">
-                        
+
                         <div class="form-group">
                           <label for="nombreequipo">Equipo</label>
                           <input type="text" class="form-control" id="nombreequipo" placeholder="Equipo">
                         </div>
-                      
+
                         <div class="form-group">
                           <label for="idrutina">Numero de mantenimiento</label>
                           <input type="text" class="form-control" id="idrutina" placeholder=" numero de Mantenimniento">
@@ -177,10 +178,10 @@
                           <label for="estadonotificacion">Estado</label>
                           <input type="text" class="form-control" id="estadonotificacion " placeholder="Estado">
                         </div>
-                        
-                        
+
+
                         </div>
-                  
+
                         </div>
                         </div>
                         <div class="modal-footer">
@@ -199,35 +200,35 @@
             <div class="modal modal-success fade" id="ModalEventos">
               <div class="modal-dialog">
                 <div class="modal-content">
-                  
+
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title"> MANTENIMIENTO CORRECTIVO</h4>
                   </div>
-                 
+
                   <div class="modal-body">
-                    
-                   
+
+
                     <form role="form" id="formularioParaIngreso">
                       <div class="box-body">
-                        
+
                         <div class="form-group">
                           <label for="nombreequipo2">Equipo</label>
                           <input type="text" class="form-control" id="nombreequipo2" placeholder="Equipo">
                         </div>
-                      
+
                         <div class="form-group">
                           <label for="idrutina2">Numero de mantenimiento</label>
                           <input type="text" class="form-control" id="idrutina2" placeholder=" numero de Mantenimniento">
                         </div>
 
                         <div class="form-group">
-                          
-                          
+
+
                           <label for="descripcionmantenimiento2">Descripcion </label>
                           <textarea id="descripcionmantenimiento2" placeholder="Descripcion" rows="4" cols="88" style="color:black;"></textarea>
-                      
+
                         </div>
 
                         <div class="form-group">
@@ -249,10 +250,10 @@
                           <label for="estadonotificacion2">Estado</label>
                           <input type="text" class="form-control" id="estadonotificacion2 " placeholder="Estado">
                         </div>
-                        
-                        
+
+
                         </div>
-                  
+
                         </div>
                         </div>
                         <div class="modal-footer">
@@ -264,16 +265,11 @@
                 </div>
                 <!-- /.modal-content -->
               </div>
-              <!-- /.modal-dialog -->
-            </div>
+            
 
-         
-      </div>
-         <!-- /.row -->
-    
      </section>
 
-   
+
 
 
 <!-- jQuery 3 -->
@@ -334,7 +330,7 @@
         dayClick:function(date,jsEvent,view){
 
           $('#fechacreacion2').val(date.format());
-        
+
           $("#ModalEventos").modal();
 
         },
@@ -347,7 +343,7 @@
           $('#fechafinal').val(calEvent.end);
           $('#horamantenimiento').val(calEvent.hora);
           $('#estadonotificacion').val(calEvent.estadonotificacion);
-          
+
 
 
           $("#modal-success").modal();
@@ -357,7 +353,7 @@
 
         //Random default events
         events: '/json-calendario',
-        
+
         editable  : true,
         droppable : true, // this allows things to be dropped onto the calendar !!!
         drop      : function (date, allDay) { // this function is called when something is dropped
@@ -428,7 +424,7 @@
     $('#botonParaAgregar').click(function(){
 
       var NuevoEvento = {
-           
+
             title          :  $('#nombreequipo2').val(),
             start          :  $('#fechacreacion2').val()+" "+$('#horamantenimiento2').val(),
             end            : $('#fechafinal2').val()+" "+$('#horamantenimiento2').val(),
@@ -440,8 +436,8 @@
             estadonotificacion :  $('#estadonotificacion2').val()
       };
 
-       $('#calendar').fullCalendar( 'renderEvent',NuevoEvento); 
-      
+       $('#calendar').fullCalendar( 'renderEvent',NuevoEvento);
+
        $("#ModalEventos").modal('toggle');
        $("#formularioParaIngreso")[0].reset();
 

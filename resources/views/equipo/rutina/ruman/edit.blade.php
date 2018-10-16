@@ -18,8 +18,10 @@
 		<!-- general form elements -->
 		<div class="box box-success">
 			<div class="box-header with-border">
-				<h3 class="box-title">Editar prueba rutina</h3>
+				<h3 class="box-title">Nueva prueba rutina</h3>
 			</div>
+			<!-- /.box-header -->
+			<!-- form start -->
       @if (count($errors)>0)
       <div class="alert alert-danger">
         <ul>
@@ -29,129 +31,203 @@
         </ul>
       </div>
       @endif
-			<!-- /.box-header -->
-			<!-- form start -->
-			<form role="form" method="POST" action="{{route('ruman.update',$ruman->idrutina_mantenimiento)}}" >
-				{!!method_field('PUT')!!}
-				{!!csrf_field()!!}
+
+      <form role="form" method="POST" action="{{route('ruman.update',$ruman->idrutina_mantenimiento)}}" >
+        {!!method_field('PUT')!!}
+        {!!csrf_field()!!}
+      <div class="box-body col-md-6">
+<input type="hidden" name="idequipo" value="{{$ruman->idequipo}}">
+<input type="hidden" name="idtipo_rutina" value="{{$ruman->idtipo_rutina}}">
+<input type="hidden" name="observaciones_rutina" value="{{$ruman->observaciones_rutina}}">
+<input type="hidden" name="tiempo_estimado_rutina_mantenimiento" value="{{$ruman->tiempo_estimado_rutina_mantenimiento}}">
+<input type="hidden" name="responsable_area_rutina_mantenimiento" value="{{$ruman->responsable_area_rutina_mantenimiento}}">
+<input type="hidden" name="idsubgrupo" value="{{$ruman->idsubgrupo}}">
+<input type="hidden" name="frecuencia_rutina" value="{{$ruman->frecuencia_rutina}}">
+
+                    @foreach($notificacion as $hosp)
+                             @if ($hosp->rutina_mantenimiento_idrutina_mantenimiento==$ruman->idrutina_mantenimiento)
+
+                               @if($ruman->frecuencia_rutina==1)
+
+                             <input type="hidden" name="start22" value="{{date("Y-m-d",strtotime($hosp->start."+ 1 month"))}}">
+                             <input type="hidden" name="end22" value="{{date("Y-m-d",strtotime($hosp->end."+ 1 month"))}}">
+                             @endif
+                             @if($ruman->frecuencia_rutina==2)
+
+                           <input type="hidden" name="start22" value="{{date("Y-m-d",strtotime($hosp->start."+ 2 month"))}}">
+                           <input type="hidden" name="end22" value="{{date("Y-m-d",strtotime($hosp->end."+ 2 month"))}}">
+                           @endif
+                           @if($ruman->frecuencia_rutina==3)
+
+                         <input type="hidden" name="start22" value="{{date("Y-m-d",strtotime($hosp->start."+ 3 month"))}}">
+                         <input type="hidden" name="end22" value="{{date("Y-m-d",strtotime($hosp->end."+ 3 month"))}}">
+                         @endif
+                         @if($ruman->frecuencia_rutina==6)
+
+                       <input type="hidden" name="start22" value="{{date("Y-m-d",strtotime($hosp->start."+ 6 month"))}}">
+                       <input type="hidden" name="end22" value="{{date("Y-m-d",strtotime($hosp->end."+ 6 month"))}}">
+                       @endif
+                       @if($ruman->frecuencia_rutina==12)
+
+                     <input type="hidden" name="start22" value="{{date("Y-m-d",strtotime($hosp->start."+ 12 month"))}}">
+                     <input type="hidden" name="end22" value="{{date("Y-m-d",strtotime($hosp->end."+ 12 month"))}}">
+                     @endif
+
+                           @endif
+                            @endforeach
+
+                  <div class="form-group">
+                    <label for="select" class="">Tipo rutina</label>
+                    <br>
 
 
-        <div class="box-body col-md-6">
+                    @foreach($tiporu as $hosp)
+                             @if ($hosp->idtipo_rutina==$ruman->idtipo_rutina)
+                             <p>{{$hosp->tipo_rutina}}</p>
 
 
+                           @endif
+                            @endforeach
 
-                    <div class="form-group">
-                      <label for="select" class="">Tipo rutina</label>
-                      <select name="idtipo_rutina"  class="form-control" value="{{$ruman->idtipo_rutina}}">
-                  @foreach($tiporu as $hosp)
-                        @if ($hosp->idtipo_rutina==$ruman->idtipo_rutina)
-                      <option value="{{$hosp->idtipo_rutina}}" selected>{{$hosp->tipo_rutina}}</option>
-                      @else
-                      <option value="{{$hosp->idtipo_rutina}}">{{$hosp->tipo_rutina}}</option>
-                      @endif
-                       @endforeach
-                  </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="select" class="">Equipo</label>
+                    <br>
+
+                    @foreach($equipo as $hosp)
+                             @if ($hosp->idequipo==$ruman->idequipo)
+                             <p>{{$hosp->nombre_equipo}}</p>
+
+
+                           @endif
+                            @endforeach
+
+
+                  </div>
+
+
+                  <div class="form-group">
+
+                    <label for="direccion_fab">Observaciones rutina</label>
+                    <p>{{$ruman->observaciones_rutina}}</p>
                     </div>
 
-                    <div class="form-group">
-                      <label for="select" class="">Equipo</label>
-                      <select name="idequipo"  class="form-control" value="{{$ruman->idequipo}}">
-                  @foreach($equipo as $hosp)
-                        @if ($hosp->idequipo==$ruman->idequipo)
-                      <option value="{{$hosp->idequipo}}" selected>{{$hosp->nombre_equipo}}</option>
-                      @else
-                      <option value="{{$hosp->idequipo}}">{{$hosp->nombre_equipo}}</option>
-                      @endif
-                       @endforeach
-                  </select>
 
-                    </div>
+<input type="hidden" name="estado_rutina" value="REALIZADO">
 
-                    <div class="form-group">
-                        <label>Fecha realizacion rutina</label>
-
-                        <div class="input-group date">
-                          <div class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
                           </div>
-                          <input type="date" class="form-control pull-right" id="datepicker" name="fecha_realizacion_rutina" value="{{$ruman->fecha_realizacion_rutina}}">
-                        </div>
-                            <!-- /.input group -->
-                    </div>
-                    <div class="form-group">
+  <div class="box-body col-md-6">
+  <div class="form-group">
+          <label for="direccion_fab">Tiempo estimado rutina mantenimiento en horas</label>
+          <p>{{$ruman->tiempo_estimado_rutina_mantenimiento}}</p>
 
-                      <label for="direccion_fab">Observaciones rutina</label>
-                      <input type="text" class="form-control" name="observaciones_rutina" value="{{$ruman->observaciones_rutina}}">
-                    </div>
+  </div>
 
 
+        <div class="form-group">
 
-
-                            </div>
-    <div class="box-body col-md-6">
-    <div class="form-group">
-            <label for="direccion_fab">Tiempo estimado rutina mantenimiento en horas</label>
-    <input type="text" class="form-control" name="tiempo_estimado_rutina_mantenimiento" value="{{$ruman->tiempo_estimado_rutina_mantenimiento}}" onkeypress="return valida(event)">
-    </div>
-          <script>
-          function valida(e){
-              tecla = (document.all) ? e.keyCode : e.which;
-
-              //Tecla de retroceso para borrar, siempre la permite
-              if (tecla==8){
-                  return true;
-              }
-
-              // Patron de entrada, en este caso solo acepta numeros
-              patron =/[0-9]/;
-              tecla_final = String.fromCharCode(tecla);
-              return patron.test(tecla_final);
-          }
-          </script>
-
-          <div class="form-group">
-
-            <label for="direccion_fab">Responsable de area de rutina</label>
-            <input type="text" class="form-control" name="responsable_area_rutina_mantenimiento" value="{{$ruman->responsable_area_rutina_mantenimiento}}">
-          </div>
+          <label for="direccion_fab">Responsable de area de rutina</label>
+          <p>{{$ruman->responsable_area_rutina_mantenimiento}}</p>
+        </div>
 
 
 
-          <div class="form-group">
-            <label for="select" class="">Permiso de trabajo</label>
-            <select name="idpermiso_trabajo"  class="form-control" value="{{$ruman->idpermiso_trabajo}}">
-        @foreach($permisotrabajo as $hosp)
-              @if ($hosp->idpermiso_trabajo==$ruman->idpermiso_trabajo)
-            <option value="{{$hosp->idpermiso_trabajo}}" selected>{{$hosp->num_permiso}}</option>
-            @else
-            <option value="{{$hosp->idpermiso_trabajo}}">{{$hosp->num_permiso}}</option>
-            @endif
-             @endforeach
-        </select>
-          </div>
+        <div class="form-group">
+          <label for="select" class="">Permiso de trabajo</label>
+          <br>
 
-          <div class="form-group">
+          @foreach($permisotrabajo as $hosp)
+                   @if ($hosp->idpermiso_trabajo==$ruman->idpermiso_trabajo)
+                   <p>{{$hosp->num_permiso}}</p>
 
-            <label for="direccion_fab">Estado rutina</label>
-            <input type="text" class="form-control" name="estado_rutina" value="{{$ruman->estado_rutina}}">
-          </div>
 
-    </div>
+                 @endif
+                  @endforeach
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="direccion_fab">Estado rutina</label>
+          <p>{{$ruman->estado_rutina}}</p>
+
+        </div>
+
+  </div>
+
+
+  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+      <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
+          <thead style="background-color:#2ab863">
+
+              <th>Rutina</th>
+              <th>Subgrupo</th>
+              <th>Valor</th>
+              <th>Comentario</th>
+              <th>Verificación</th>
+
+
+          </thead>
+          <tfoot>
+
+   {{$cont = 0}}
+          </tfoot>
+          <tbody>
+              @foreach($detallerutina as $det)
+                 @if ($det->idrutina_mantenimiento==$ruman->idrutina_mantenimiento)
+              <tr>
+                @foreach($caracru as $dets)
+                @if ($dets->idcaracteristica_rutina==$det->idcaracteristica_rutina)
+      <td>{{$dets->caracteristica_rutina}}</td>  @endif @endforeach
+      @foreach($subru as $dets)
+      @if ($dets->idsubgrupo_rutina==$det->idsubgrupo_rutina)
+      <td>{{$dets->subgrupo_rutina}}</td>@endif @endforeach
+      @foreach($valrefru as $dets)
+      @if ($dets->idvalor_ref_rutina==$det->idvalor_ref_rutina)
+      <td>{{$dets->descripcion}}</td>@endif @endforeach
+        <input type="hidden" name="idcaracteristica_rutina2[]" value="{{$det->idcaracteristica_rutina}}">
+        <input type="hidden" name="idvalor_ref_rutina2[]" value="{{$det->idvalor_ref_rutina}}">
+    <input type="hidden" name="idsubgrupo_rutina2[]" value="{{$det->idsubgrupo_rutina}}">
+      <input type="hidden" name="iddetalle_caracteristica_rutina[]" value="{{$det->iddetalle_caracteristica_rutina}}">
+                    <td><input type="text" name="comentario_detalle_caracteristica_rutina[]" value=""></td>
+                    <input type="hidden" name="estado_detalle_caracteristica_rutina[{{$cont}}]" value="0">
+                  <td><input type="checkbox" name="estado_detalle_caracteristica_rutina[{{$cont}}]" value="1"></td>
+@php($cont=$cont+1)
+              </tr>
+              @endif
+              @endforeach
+          </tbody>
+      </table>
+   </div>
+
 
 				<!-- /.box-body -->
 
-        <div class="box-footer">
 
-          <a href="{{route('ruman.index')}}">
+        <div class="box-footer">
+          @foreach($equipo as $hosp)
+                   @if ($hosp->idequipo==$ruman->idequipo)
+
+
+
+
+           <a href="{{route('actualizar',$hosp->idequipo)}}">
             <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
           </a>
-          <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
-          <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
+          @endif
+           @endforeach
+
+           <button class="btn btn-primary" type="submit">Terminar rutina</button>
         </div>
-			</form>
+
+
+
+
+
 		</div>
 		<!-- /.box -->
-
+</form>
 
 	</div>
 

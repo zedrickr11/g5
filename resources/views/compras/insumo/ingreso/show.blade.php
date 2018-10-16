@@ -78,6 +78,11 @@
 
      </div>
    </div>
+   <div class="box-footer">
+   <a href="{{route('insumo-ingreso.index')}}">
+   <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
+   </a>
+   </div>
    </div>
 </section>
 <script>

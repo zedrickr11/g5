@@ -9,6 +9,10 @@ use App\TipoManual;
 
 class TipoManualController extends Controller
 {
+    function __construct()
+    {
+      $this->middleware(['auth','role:admin,jefe-mantto']);
+    }
     /**
      * Display a listing of the resource.
      *

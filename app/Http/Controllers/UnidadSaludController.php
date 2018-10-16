@@ -9,7 +9,10 @@ use App\Http\Controllers\Controller;
 use DB;
 use App\Http\Requests\UnidadSaludFormRequest;
 class UnidadSaludController extends Controller
-{
+{ function __construct()
+  {
+    $this->middleware(['auth','role:admin,jefe-mantto']);
+  }
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +29,7 @@ class UnidadSaludController extends Controller
         ->join('hospital as h', 'u.idhospital','=', 'h.idhospital')
         ->select('u.idunidadsalud','u.unidad_salud','h.hospital as hospi')
         ->where('unidad_salud','LIKE','%'.$query.'%')
-        ->orderBy('idunidadsalud','desc')
+        ->orderBy('idunidadsalud','asc')
         ->paginate(10);
 
 return view('hospital.unidad.index', ["unidades"=>$unidades,"searchText"=>$query]);

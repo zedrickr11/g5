@@ -63,6 +63,7 @@ class EquipoFormRequest extends FormRequest
           'idgrupo' => 'required',
           'idsubgrupo' => 'required',
           'idtipounidad' => 'required',
+          'users_id'=>'required|numeric'
         ];
     }
 }

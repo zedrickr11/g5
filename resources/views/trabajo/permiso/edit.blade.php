@@ -47,18 +47,18 @@
 
 
 <div class="form-group">
-  <label >No de solicitud</label>
- 
-  <select name="solitud_trabajo_idsolitud_trabajo"  class="form-control">
-@foreach($solicitudes as $s)
-    @if ($s->idsolitud_trabajo==$permisos->solitud_trabajo_idsolitud_trabajo)
-  <option value="{{$s->idsolitud_trabajo}}" selected>{{$s->numero}}</option>
-  @else
-  <option value="{{$s->idsolitud_trabajo}}">{{$s->numero}}</option>
-  @endif
-   @endforeach
-</select>
-</div>
+      <label for="solicitud">No de Solicitud</label>
+      <select name="solitud_trabajo_idsolitud_trabajo" id="solitud_trabajo_idsolitud_trabajo" class="form-control selectpicker" data-live-search="true">
+        @foreach($solicitudes as $s)
+            @if ($s->idsolitud_trabajo==$permisos->solitud_trabajo_idsolitud_trabajo)
+          <option value="{{$s->idsolitud_trabajo}}" selected>{{$s->numero}}</option>
+          @else
+          <option value="{{$s->idsolitud_trabajo}}">{{$s->numero}}</option>
+          @endif
+           @endforeach
+        </select>
+    </div>
+
 
 
 <div class="form-group">
@@ -85,4 +85,12 @@
 </div>
 </div>
 </section>
+<script src="{{asset('ajax/jquery.min.js')}}"></script>
+<script src="{{asset('ajax/bootstrap.min.js')}}"></script>
+<script src="{{asset('ajax/select2.min.js')}}"></script>
+<script>
+$('#solitud_trabajo_idsolitud_trabajo').select2({
+  theme: "classic"
+});
+</script>
 @endsection

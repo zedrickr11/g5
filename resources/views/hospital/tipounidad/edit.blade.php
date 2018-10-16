@@ -56,18 +56,17 @@
 
 
           <div class="form-group">
-            <label for="direccion_fab">Hospital</label>
-            <br>
-            <select name="idhospital"  name="idhospital" value="{{$tipos->idhospital}}">
-     @foreach($hospitals as $hosp)
-              @if ($hosp->idhospital==$tipos->idhospital)
-            <option value="{{$hosp->idhospital}}" selected>{{$hosp->hospital}}</option>
-            @else
-            <option value="{{$hosp->idhospital}}">{{$hosp->hospital}}</option>
-            @endif
-             @endforeach
-      </select>
-          </div>
+                <label for="hospital">Hospital</label>
+                <select name="idhospital" id="idhospital" class="form-control selectpicker" data-live-search="true">
+                  @foreach($hospitals as $hosp)
+                           @if ($hosp->idhospital==$tipos->idhospital)
+                         <option value="{{$hosp->idhospital}}" selected>{{$hosp->hospital}}</option>
+                         @else
+                         <option value="{{$hosp->idhospital}}">{{$hosp->hospital}}</option>
+                         @endif
+                          @endforeach
+                  </select>
+              </div>
 				</div>
 
 				<!-- /.box-body -->
@@ -87,4 +86,12 @@
 
 </div>
 </section>
+<script src="{{asset('ajax/jquery.min.js')}}"></script>
+<script src="{{asset('ajax/bootstrap.min.js')}}"></script>
+<script src="{{asset('ajax/select2.min.js')}}"></script>
+<script>
+$('#idhospital').select2({
+  theme: "classic"
+});
+</script>
 @endsection
