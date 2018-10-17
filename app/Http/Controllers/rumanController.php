@@ -35,14 +35,14 @@ class rumanController extends Controller
         $query=trim($request->get('searchText'));
         $ruman=DB::table('rutina_mantenimiento as f')
         ->join('tipo_rutina as d','f.idtipo_rutina','=','d.idtipo_rutina')
+->join('equipo as e','f.idequipo','=','e.idequipo')
 
 
 
+      ->select('e.*','f.idrutina_mantenimiento','d.tipo_rutina as idtipo_rutina','f.estado_rutina')
 
-      ->select('f.idrutina_mantenimiento','d.tipo_rutina as idtipo_rutina','f.estado_rutina')
 
-
-      //  ->where('e.nombre_equipo','LIKE','%'.$query.'%')
+       ->where('e.nombre_equipo','LIKE','%'.$query.'%')
         ->orderBy('idrutina_mantenimiento','desc')
         ->paginate(10);
         return view('equipo.rutina.ruman.index',["ruman"=>$ruman,"searchText"=>$query]);
@@ -83,7 +83,81 @@ class rumanController extends Controller
    * @return \Illuminate\Http\Response
    */
   public function store(rumanFormRequest $request)
-  {  //ruman::create($request->all());
+  {    $aceptar=$request->get('aceptar');
+    $observaciones_rutina=$request->get('observaciones_rutina');
+    $tiempo_estimado_rutina_mantenimiento=$request->get('tiempo_estimado_rutina_mantenimiento');
+    $responsable_area_rutina_mantenimiento=$request->get('responsable_area_rutina_mantenimiento');
+    $idsubgrupo=$request->get('idsubgrupo');
+    $frecuencia_rutina=$request->get('frecuencia_rutina');
+    $descripcion_noti=$request->get('descripcion_noti');
+    $end=$request->get('end');
+    $start=$request->get('start');
+      $cont=$request->get('cont');
+if($request->get('enviar')=='enviado'){
+  try{
+
+    for($num=0; $num<=$cont; $num++){
+      if( $aceptar[$num]=='SI'){
+        DB::beginTransaction();
+        $ruman=new ruman();
+        $ruman->idtipo_rutina=1;
+        $ruman->idequipo=$request->get('idequipo');
+        $mytime = Carbon::now('America/Guatemala');
+        $ruman->fecha_realizacion_rutina=$mytime->toDateTimeString();
+        $ruman->observaciones_rutina=$observaciones_rutina[$num];
+        $ruman->tiempo_estimado_rutina_mantenimiento=$tiempo_estimado_rutina_mantenimiento[$num];
+        $ruman->responsable_area_rutina_mantenimiento=$responsable_area_rutina_mantenimiento[$num];
+        $ruman->idsubgrupo=$idsubgrupo[$num];
+        $ruman->frecuencia_rutina=$frecuencia_rutina[$num];
+        $ruman->estado_rutina='PENDIENTE';
+        $ruman->save();
+
+        $comentario_detalle_caracteristica_rutina = $request->get('comentario_detalle_caracteristica_rutina');
+        $idcaracteristica_rutina = $request->get('idcaracteristica_rutina');
+        $idsubgrupo_rutina= $request->get('idsubgrupo_rutina');
+        $idvalor_ref_rutina = $request->get('idvalor_ref_rutina');
+
+       $noti=new Notificacion;
+       $noti->descripcion_noti=$descripcion_noti[$num];
+       $noti->start=$start[$num];
+       $noti->end=$end[$num];
+       $noti->rutina_mantenimiento_idrutina_mantenimiento=$ruman->idrutina_mantenimiento;
+       $noti->estado_notificacion='0';
+       $noti->backgroundColor='black';
+       $noti->textColor='white';
+       $noti->title=$request->get('idequipo');
+       $noti->save();
+
+        $cont2 = 0;
+
+        while($cont2 <count($idcaracteristica_rutina[$num])){
+
+            $detalle = new detcaracru();
+            $detalle->idcaracteristica_rutina=$idcaracteristica_rutina[$num][$cont2];
+            $detalle->idrutina_mantenimiento=$ruman->idrutina_mantenimiento;
+            $detalle->idvalor_ref_rutina=$idvalor_ref_rutina[$num][$cont2];
+            $detalle->idsubgrupo_rutina= $idsubgrupo_rutina[$num][$cont2];
+            $detalle->comentario_detalle_caracteristica_rutina= $comentario_detalle_caracteristica_rutina[$num][$cont2];
+            $detalle->save();
+            $cont2=$cont2+1;
+
+        }
+
+
+
+        DB::commit();
+}
+}}catch(\Exception $e)
+      {
+          DB::rollback();
+
+    }
+
+}else{
+
+
+
+
   try{
         DB::beginTransaction();
         $ruman=new ruman;
@@ -139,6 +213,8 @@ class rumanController extends Controller
       {
           DB::rollback();
       }
+
+    }
 //  return view('actualizar',$request->get('idequipo'));
   return redirect()->route('actualizar', [$request->get('idequipo')]);
   }
@@ -147,6 +223,7 @@ class rumanController extends Controller
 
   public function asignar($id,$idequipo)
   {
+    $equipo=equipo::all();
     $rutina=ruman::all();
       $tiporu=tiporu::all();
       $caracru=caracru::all();
@@ -158,14 +235,14 @@ class rumanController extends Controller
           ->where('d.idsubgrupo','LIKE',$id)
      ->orderBy('idrutina_mantenimiento','desc')
        ->paginate(100);
-        return view('equipo.rutina.ruman.asignarrutina', compact('ruman','rumen','idequipo','caracru','subru','valrefru','tiporu','rutina'));
+        return view('equipo.rutina.ruman.asignarrutina', compact('id','equipo','ruman','rumen','idequipo','caracru','subru','valrefru','tiporu','rutina'));
 
 
 
   }
-  public function agregar()
+  public function agregar(Request $request)
   {
-
+  return view('equipo.equipo.index');
 
 
   }
@@ -229,13 +306,28 @@ class rumanController extends Controller
     $idequipo = $request->get('idequipo');
 
     while($cont <count($comentario_detalle_caracteristica_rutina)){
-
+$mytime = Carbon::now('America/Guatemala');
+  if( $estado_detalle_caracteristica_rutina[$cont]==1){
         DB::table('detalle_caracteristica_rutina')
                     ->where('iddetalle_caracteristica_rutina',$iddetalle_caracteristica_rutina[$cont])
-                    ->update(['estado_detalle_caracteristica_rutina' =>  $estado_detalle_caracteristica_rutina[$cont],'comentario_detalle_caracteristica_rutina'=>$comentario_detalle_caracteristica_rutina[$cont]]);
-                      $cont=$cont+1;
-    }
+                    ->update(['estado_detalle_caracteristica_rutina' =>  $estado_detalle_caracteristica_rutina[$cont],
 
+                      'fecha_detalle_caracteristica_rutina' =>$mytime->toDateTimeString(),
+
+                    'comentario_detalle_caracteristica_rutina'=>$comentario_detalle_caracteristica_rutina[$cont]]);
+                      $cont=$cont+1;
+                        }
+  else{
+    DB::table('detalle_caracteristica_rutina')
+                ->where('iddetalle_caracteristica_rutina',$iddetalle_caracteristica_rutina[$cont])
+                ->update(['estado_detalle_caracteristica_rutina' => $estado_detalle_caracteristica_rutina[$cont],
+                'comentario_detalle_caracteristica_rutina'=>$comentario_detalle_caracteristica_rutina[$cont]]);
+                  $cont=$cont+1;
+  }
+
+    }
+    $estado_rutina=$request->get('estado_rutina');
+if("$estado_rutina"=="REALIZADO"){
     try{
           DB::beginTransaction();
           $ruman=new ruman;
@@ -292,7 +384,7 @@ class rumanController extends Controller
 
 
 
-
+}
 
 
 
