@@ -119,6 +119,10 @@ Route::resource('trabajo/seguimiento','SeguimientoController');
 Route::get('trabajo/solicitud/solicitudpdf/{id}', 'SolicitudTrabajoController@ficha')->name('Solicitudes.ficha');//pdf
 
 
+//Tecnicos
+Route::resource('tecnicos/interno','TecnicoInternoController');
+Route::resource('tecnicos/externo','TecnicoExternoController');
+
 //rutinas de mantenimiento
 Route::resource('mantenimiento/areamantenimiento','AreaMantenimientoController');
 

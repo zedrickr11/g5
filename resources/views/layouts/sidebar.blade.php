@@ -593,6 +593,8 @@
       <li id="liIngresos"><a href="{{url('compras/repuesto-ingreso')}}"><i class="fa  fa-caret-right"></i> Ingresos de repuestos</a></li>
     </ul>
   </li>
+
+  
 @elseif(auth()->user()->hasRole(['tec-ing']))
 <li id="liEq"class="treeview">
   <a href="#">
