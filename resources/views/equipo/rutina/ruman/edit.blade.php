@@ -43,6 +43,7 @@
 <input type="hidden" name="responsable_area_rutina_mantenimiento" value="{{$ruman->responsable_area_rutina_mantenimiento}}">
 <input type="hidden" name="idsubgrupo" value="{{$ruman->idsubgrupo}}">
 <input type="hidden" name="frecuencia_rutina" value="{{$ruman->frecuencia_rutina}}">
+@php($estado='PENDIENTE')
 
                     @foreach($notificacion as $hosp)
                              @if ($hosp->rutina_mantenimiento_idrutina_mantenimiento==$ruman->idrutina_mantenimiento)
@@ -114,7 +115,7 @@
                     </div>
 
 
-<input type="hidden" name="estado_rutina" value="REALIZADO">
+
 
                           </div>
   <div class="box-body col-md-6">
@@ -128,7 +129,11 @@
         <div class="form-group">
 
           <label for="direccion_fab">Responsable de area de rutina</label>
-          <p>{{$ruman->responsable_area_rutina_mantenimiento}}</p>
+          @foreach($users as $us)
+          @if($us->id==$ruman->responsable_area_rutina_mantenimiento)
+          <p>{{$us->name}}</p>
+@endif
+          @endforeach
         </div>
 
 
@@ -171,7 +176,7 @@
           </thead>
           <tfoot>
 
-   {{$cont = 0}}
+   @php($cont = 0)
           </tfoot>
           <tbody>
               @foreach($detallerutina as $det)
@@ -190,9 +195,16 @@
         <input type="hidden" name="idvalor_ref_rutina2[]" value="{{$det->idvalor_ref_rutina}}">
     <input type="hidden" name="idsubgrupo_rutina2[]" value="{{$det->idsubgrupo_rutina}}">
       <input type="hidden" name="iddetalle_caracteristica_rutina[]" value="{{$det->iddetalle_caracteristica_rutina}}">
+               @if($det->estado_detalle_caracteristica_rutina==0)
                     <td><input type="text" name="comentario_detalle_caracteristica_rutina[]" value=""></td>
                     <input type="hidden" name="estado_detalle_caracteristica_rutina[{{$cont}}]" value="0">
                   <td><input type="checkbox" name="estado_detalle_caracteristica_rutina[{{$cont}}]" value="1"></td>
+                  @else
+                  <input type="hidden" name="comentario_detalle_caracteristica_rutina[]" value="{{$det->comentario_detalle_caracteristica_rutina}}">
+                  <input type="hidden" name="estado_detalle_caracteristica_rutina[{{$cont}}]" value="1">
+                      <td>{{$det->comentario_detalle_caracteristica_rutina}}</td>
+                  <td>{{$det->fecha_detalle_caracteristica_rutina}}</td>
+                  @endif
 @php($cont=$cont+1)
               </tr>
               @endif
@@ -211,14 +223,17 @@
 
 
 
-
            <a href="{{route('actualizar',$hosp->idequipo)}}">
             <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
           </a>
           @endif
            @endforeach
-
-           <button class="btn btn-primary" type="submit">Terminar rutina</button>
+           <i id="ocultar2">
+           <button class="btn btn-primary" onclick="show()" type="submit" name"aplazar">Aplazar rutina</button>
+         </i>
+               <i id="guardar2">
+           <button class="btn btn-primary" onclick="show2()" type="submit">Terminar rutina</button>
+         </i>
         </div>
 
 
@@ -233,4 +248,77 @@
 
 </div>
 </section>
+
+<script src="{{asset('ajax/jquery.min.js')}}"></script>
+<script src="{{asset('ajax/bootstrap.min.js')}}"></script>
+<script src="{{asset('ajax/select2.min.js')}}"></script>
+
+
+
+
+
+
+<script>
+$(document).ready(function(){
+  $('#bt_add').click(function(){
+    show();
+  });
+});
+  $("#guardar").hide();
+  $num=0;
+$numero=<?php echo $cont; ?>;
+
+
+$(function(){
+  $('input:checkbox').change(function(){
+    var p=0;
+    if ($('input:checkbox:checked').length > 0) {
+
+      $num=$num+1;
+
+      p=1;
+    }
+    if (p==0){
+
+		$num=$num-2;
+	}
+
+      evaluar();
+  });
+});
+
+
+$( "#aplazar" ).click(function() {
+  alert( "Handler for .click() called." );
+});
+function show(){
+
+    var fila='<input type="hidden" name="estado_rutina" value="PENDIENTE">';
+$('#detalles').append(fila);
+}
+function show2(){
+
+    var fila='<input type="hidden" name="estado_rutina" value="REALIZADO">';
+$('#detalles').append(fila);
+}
+
+
+function evaluar()
+{
+  if ($num==$numero)
+  {
+    $("#guardar").show();
+      $("#ocultar").hide();
+  }
+  else
+  {
+    $("#guardar").hide();
+    $("#ocultar").show();
+  }
+ }
+
+
+</script>
+
+
 @endsection

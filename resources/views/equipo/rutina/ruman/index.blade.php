@@ -19,7 +19,7 @@
           <div class="box">
             <div class="box-header">
 
-			  <h3 class="box-title">Listado de rutina mantenimiento 
+			  <h3 class="box-title">Listado de rutina mantenimiento
 			  		<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
             </div>
             <!-- /.box-header -->
@@ -35,6 +35,7 @@
                   <thead>
                   <tr>
                     <th>Id</th>
+                    <th>Equipo</th>
                     <th>Tipo de rutina</th>
 
                     <th>Estado</th>
@@ -49,6 +50,8 @@
             @foreach ($ruman as $cat)
             <tr>
               <td>{{ $cat->idrutina_mantenimiento}}</td>
+              <td>{{ $cat->nombre_equipo}}</td>
+
               <td>{{ $cat->idtipo_rutina}}</td>
 
               <td>{{ $cat->estado_rutina}}</td>

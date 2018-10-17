@@ -57,16 +57,14 @@
             </select>
           </div>
 
+
+
                     <div class="form-group">
-                      <label for="select" class="">Tipo rutina</label>
-                      <select name="idtipo_rutina" class="form-control" id="tipo_rutina">
-                        @foreach($tiporu as $carac)
-                        <option value="{{$carac->idtipo_rutina}}">{{$carac->tipo_rutina}}</option>
-                    @endforeach
-                    </select>
+
+                      <label for="direccion_fab">Tipo rutina</label>
+                      <input type="hidden" class="form-control"  name="idtipo_rutina" value="1">
+                      <p>PREVENTIVO</p>
                     </div>
-
-
 
                     <div class="form-group">
 
@@ -102,9 +100,12 @@
           </script>
 
           <div class="form-group">
-
-            <label for="direccion_fab">Responsable de area de rutina</label>
-            <input type="text" class="form-control" name="responsable_area_rutina_mantenimiento" value="{{old('responsable_area_rutina_mantenimiento')}}">
+            <label for="select" class="">Responsabe de la rutina</label>
+            <select name="responsable_area_rutina_mantenimiento" class="form-control" style="width: 100%" id="pidsubgrupo_rutina" data-live-search="true">
+              @foreach($users as $carac)
+              <option value="{{$carac->id}}">{{$carac->name}}</option>
+          @endforeach
+          </select>
           </div>
 
 

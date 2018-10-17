@@ -47,7 +47,10 @@ Route::get('equipo/rutina/ruman/create2/{idequipo}/{idsubgrupo}',[
     'uses' => 'rumanController@create2'
 ]);
 
-
+Route::get('equipo/rutina/ruman/Asignar/{idequipo}/{idsubgrupo}',[
+    'as' => 'ruman.asignar',
+    'uses' => 'rumanController@asignar'
+]);
 
 
 

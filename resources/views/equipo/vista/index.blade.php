@@ -404,10 +404,10 @@
       <div class="tab-content">
         <div class="active tab-pane" id="rutina">
           <div class="box-body col-md-6">
-          <h3 class="box-title"><a href="{{route('ruman.create2',[$equipo->idequipo,$equipo->idsubgrupo])}}"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Crear rutina</button></a>
+          <h3 class="box-title"><a href="{{route('ruman.create2',[$equipo->idequipo,$equipo->idsubgrupo])}}"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Crear nueva rutina</button></a>
           </div>
           <div class="box-body col-md-6">
-          <h3 class="box-title"><a href="{{route('ruman.create2',[$equipo->idequipo,$equipo->idsubgrupo])}}"><button class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Copiar rutinas de otro equipo</button></a>
+          <h3 class="box-title"><a href="{{route('ruman.asignar',[$equipo->idequipo,$equipo->idsubgrupo])}}"><button class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Copiar rutina de otro equipo</button></a>
           </div>
 
 
