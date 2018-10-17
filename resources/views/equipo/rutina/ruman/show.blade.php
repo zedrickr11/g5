@@ -103,6 +103,19 @@
           <p>{{$ruman->estado_rutina}}</p>
 
         </div>
+        <div class="form-group">
+          <label for="select" class="">Permiso de trabajo</label>
+          <br>
+
+          @foreach($permisotrabajo as $hosp)
+                   @if ($hosp->idpermiso_trabajo==$ruman->permiso_trabajo_idpermiso_trabajo)
+                   <p>{{$hosp->num_permiso}}</p>
+
+
+                 @endif
+                  @endforeach
+
+        </div>
         <a href="{{route('ruman.index')}}">
               <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
             </a>

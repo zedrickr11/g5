@@ -81,6 +81,7 @@
                     <label for="select" class="">Tipo rutina</label>
                     <br>
 
+                    <input type="hidden" name="rutinatipo" value="{{$ruman->idtipo_rutina}}">
 
                     @foreach($tiporu as $hosp)
                              @if ($hosp->idtipo_rutina==$ruman->idtipo_rutina)
@@ -143,7 +144,7 @@
           <br>
 
           @foreach($permisotrabajo as $hosp)
-                   @if ($hosp->idpermiso_trabajo==$ruman->idpermiso_trabajo)
+                   @if ($hosp->idpermiso_trabajo==$ruman->permiso_trabajo_idpermiso_trabajo)
                    <p>{{$hosp->num_permiso}}</p>
 
 
