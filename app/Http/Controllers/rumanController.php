@@ -306,6 +306,7 @@ if($request->get('enviar')=='enviado'){
     ruman::findOrFail($id)->update($request->all());
 
     $cont = 0;
+    $rutinatipo=$request->get('rutinatipo');
     $comentario_detalle_caracteristica_rutina = $request->get('comentario_detalle_caracteristica_rutina');
     $estado_detalle_caracteristica_rutina = $request->get('estado_detalle_caracteristica_rutina');
     $iddetalle_caracteristica_rutina = $request->get('iddetalle_caracteristica_rutina');
@@ -333,7 +334,7 @@ $mytime = Carbon::now('America/Guatemala');
 
     }
     $estado_rutina=$request->get('estado_rutina');
-if("$estado_rutina"=="REALIZADO"){
+if("$estado_rutina"=="REALIZADO" and $rutinatipo==1){
     try{
           DB::beginTransaction();
           $ruman=new ruman;
