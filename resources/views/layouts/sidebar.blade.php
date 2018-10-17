@@ -268,7 +268,6 @@
   <ul class="treeview-menu">
     <li id="liProveedores"><a href="{{route('usuarios.index')}}"><i class="fa fa-user"></i> Usuarios</a></li>
 
-    <li id="liIngresos"><a href="#"><i class="fa  fa-user-plus"></i> Asignación de roles</a></li>
 
   </ul>
 </li>
@@ -531,9 +530,9 @@
   </a>
   <ul class="treeview-menu">
     <li id="liEquipo"><a href="{{route('equipo.index')}} "><i class="fa fa-bars"></i>Listado de equipo</a></li>
-   
 
-    
+
+
     <li class="">
     <a href="{{route('fabricante.index')}} ">
       <i class="fa fa-building-o"></i> <span>Fabricante</span>
@@ -549,7 +548,7 @@
       <i class="fa fa-cart-plus"></i> <span>Distribuidores</span>
     </a>
     </li>
-   
+
   </ul>
 </li>
 <li class="treeview">
@@ -559,7 +558,7 @@
       <i class="fa fa-angle-left pull-right"></i>
     </span>
   </a>
-  
+
   <ul class="treeview-menu">
     <li class=""><a href="{{route('ruman.index')}} "><i class="fa fa-align-center"></i>Rutina mantenimiento</a></li>
 
@@ -575,8 +574,8 @@
       <li id="#"><a href="{{url('/almacen/insumo')}}"><i class="fa fa-angle-right"></i> Insumos</a></li>
       <li id="#"><a href="{{url('almacen/repuesto')}}"><i class="fa fa-angle-right"></i> Repuestos</a></li>
       <li id="#"><a href="#"><i class="fa fa-angle-right"></i> Herramientas</a></li>
-  
-  
+
+
     </ul>
   </li>
   <li id="liCompras" class="treeview">
@@ -587,10 +586,10 @@
     </a>
     <ul class="treeview-menu">
       <li id="liProveedores"><a href="{{url('compras/insumo/prove')}}"><i class="fa fa-angle-double-right"></i> Proveedores de insumos</a></li>
-  
+
       <li id="liIngresos"><a href="{{url('compras/insumo-ingreso')}}"><i class="fa  fa-caret-right"></i> Ingresos de insumos</a></li>
       <li id="liProveedores"><a href="{{url('compras/repuesto/prov')}}"><i class="fa fa-angle-double-right"></i> Proveedores de repuestos</a></li>
-  
+
       <li id="liIngresos"><a href="{{url('compras/repuesto-ingreso')}}"><i class="fa  fa-caret-right"></i> Ingresos de repuestos</a></li>
     </ul>
   </li>
