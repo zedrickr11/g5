@@ -268,7 +268,6 @@
   <ul class="treeview-menu">
     <li id="liProveedores"><a href="{{route('usuarios.index')}}"><i class="fa fa-user"></i> Usuarios</a></li>
 
-    <li id="liIngresos"><a href="#"><i class="fa  fa-user-plus"></i> Asignación de roles</a></li>
 
   </ul>
 </li>
