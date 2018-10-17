@@ -47,7 +47,8 @@
   </a>
 
 
-<a href="{{route('equipo.vista',$s->idsolitud_trabajo)}}">
+  <a href="{{route('solicitud.show',$s->idsolitud_trabajo)}}">
+
 <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></span> </button>
 </a>
 

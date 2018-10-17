@@ -16,6 +16,10 @@ class CaracTecController extends Controller
      */
     public function index(Request $request)
     {
+      function __construct()
+      {
+        $this->middleware(['auth','role:admin,jefe-mantto']);
+      }
 
       if ($request)
       {

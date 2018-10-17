@@ -11,6 +11,10 @@ use App\Http\Controllers\Controller;
 
 class ProveedorController extends Controller
 {
+  function __construct()
+    {
+      $this->middleware(['auth','role:admin,jefe-mantto,jefe-sub']);
+    }
     /**
      * Display a listing of the resource.
      *

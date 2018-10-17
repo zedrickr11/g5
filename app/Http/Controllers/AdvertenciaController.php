@@ -11,6 +11,10 @@ use App\Equipo;
 use App\Http\Requests\AdvertenciaFormRequest;
 class AdvertenciaController extends Controller
 {
+  function __construct()
+      {
+        $this->middleware(['auth','role:admin,jefe-mantto']);
+      }
     /**
      * Display a listing of the resource.
      *

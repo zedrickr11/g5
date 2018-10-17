@@ -2,7 +2,7 @@
 
 Route::get('/calendario', function () {
     return view ('index') ;
-});
+})->middleware('auth');
 Route::get('/', function () {
     return view ('auth.login') ;
 });
@@ -119,6 +119,10 @@ Route::resource('trabajo/permiso','PermisoTrabajoController');
 Route::resource('trabajo/seguimiento','SeguimientoController');
 Route::get('trabajo/solicitud/solicitudpdf/{id}', 'SolicitudTrabajoController@ficha')->name('Solicitudes.ficha');//pdf
 
+
+//Tecnicos
+Route::resource('tecnicos/interno','TecnicoInternoController');
+Route::resource('tecnicos/externo','TecnicoExternoController');
 
 //rutinas de mantenimiento
 Route::resource('mantenimiento/areamantenimiento','AreaMantenimientoController');

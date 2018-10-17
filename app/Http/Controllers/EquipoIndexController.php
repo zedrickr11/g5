@@ -44,7 +44,10 @@ use DB;
 
 
 class EquipoIndexController extends Controller
-{
+  { function __construct()
+    {
+      $this->middleware(['auth','role:admin,jefe-mantto,jefe-sub,tec-ing']);
+    }
     public function index($id)
     {
       $proveedor=Proveedor::all();
