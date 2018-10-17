@@ -21,6 +21,7 @@ use Response;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
+use App\User;
 class rumanController extends Controller
 {
   function __construct()
@@ -62,7 +63,7 @@ class rumanController extends Controller
    * @return \Illuminate\Http\Response
    */
   public function create2($idequipo,$idsubgrupo)
-  {
+  { $users=User::all();
     $tiporu=tiporu::all();
     $equipo=Equipo::all();
     $caracru=caracru::all();
@@ -72,7 +73,7 @@ class rumanController extends Controller
         $subgrupo=Subgrupo::all();
         $permisotrabajo=PermisoTrabajo::all();
 
-    return view("equipo.rutina.ruman.create",compact('idsubgrupo','idequipo','subgrupo','tiporu','equipo','permisotrabajo','caracru','subru','valrefru','ruman'));
+    return view("equipo.rutina.ruman.create",compact('users','idsubgrupo','idequipo','subgrupo','tiporu','equipo','permisotrabajo','caracru','subru','valrefru','ruman'));
 
 
   //  return view("equipo.rutina.ruman.create",compact('tiporu','equipo'));
@@ -260,7 +261,7 @@ if($request->get('enviar')=='enviado'){
   public function show($id)
 
   {
-
+     $users=User::all();
     $caracru=caracru::all();
     $subru=subru::all();
     $valrefru=valrefru::all();
@@ -269,7 +270,7 @@ if($request->get('enviar')=='enviado'){
     $equipo=Equipo::all();
     $ruman=ruman::findOrFail($id);
     $permisotrabajo=PermisoTrabajo::all();
-    return view('equipo.rutina.ruman.show', compact('detallerutina','ruman','tiporu','equipo','permisotrabajo','caracru','subru','valrefru'));
+    return view('equipo.rutina.ruman.show', compact('users','detallerutina','ruman','tiporu','equipo','permisotrabajo','caracru','subru','valrefru'));
 
   }
 
@@ -280,7 +281,8 @@ if($request->get('enviar')=='enviado'){
    * @return \Illuminate\Http\Response
    */
   public function edit($id)
-  { $notificacion=Notificacion::all();
+  {  $users=User::all();
+    $notificacion=Notificacion::all();
     $caracru=caracru::all();
     $subru=subru::all();
     $valrefru=valrefru::all();
@@ -289,7 +291,7 @@ if($request->get('enviar')=='enviado'){
     $equipo=Equipo::all();
   $ruman=ruman::findOrFail($id);
       $permisotrabajo=PermisoTrabajo::all();
-    return view('equipo.rutina.ruman.edit', compact('notificacion','valrefru','subru','caracru','detallerutina','ruman','tiporu','equipo','permisotrabajo'));
+    return view('equipo.rutina.ruman.edit', compact('users','notificacion','valrefru','subru','caracru','detallerutina','ruman','tiporu','equipo','permisotrabajo'));
   }
 
   /**

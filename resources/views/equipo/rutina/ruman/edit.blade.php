@@ -129,7 +129,11 @@
         <div class="form-group">
 
           <label for="direccion_fab">Responsable de area de rutina</label>
-          <p>{{$ruman->responsable_area_rutina_mantenimiento}}</p>
+          @foreach($users as $us)
+          @if($us->id==$ruman->responsable_area_rutina_mantenimiento)
+          <p>{{$us->name}}</p>
+@endif
+          @endforeach
         </div>
 
 

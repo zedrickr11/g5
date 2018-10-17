@@ -150,8 +150,11 @@
 
           <label for="direccion_fab">Responsable de area de rutina</label>
 
-          <input type="text" class="form-control" name="responsable_area_rutina_mantenimiento[{{$cont}}]" value="{{$ru->responsable_area_rutina_mantenimiento}}">
-
+          <select name="responsable_area_rutina_mantenimiento[{{$cont}}]" class="form-control" style="width: 100%" id="pidsubgrupo_rutina" data-live-search="true">
+            @foreach($users as $carac)
+            <option value="{{$carac->id}}">{{$carac->name}}</option>
+        @endforeach
+        </select>
         </div>
 
 

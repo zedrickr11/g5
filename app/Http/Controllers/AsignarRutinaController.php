@@ -42,7 +42,7 @@ use Carbon\Carbon;
 USE App\caracru;
 use App\subru;
 use App\valrefru;
-
+use App\User;
 
 class AsignarRutinaController extends Controller
 {
@@ -62,7 +62,7 @@ class AsignarRutinaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    { $users=User::all();
        $equipo=equipo::all();
         $rutina=ruman::all();
           $tiporu=tiporu::all();
@@ -76,7 +76,7 @@ class AsignarRutinaController extends Controller
             ->where('d.estado_rutina','LIKE','PENDIENTE')
            ->orderBy('idrutina_mantenimiento','desc')
            ->paginate(1);
-            return view('equipo.rutina.ruman.asignarrutina0', compact('equipo','ruman','rumen','caracru','subru','valrefru','tiporu','rutina'));
+            return view('equipo.rutina.ruman.asignarrutina0', compact('users','equipo','ruman','rumen','caracru','subru','valrefru','tiporu','rutina'));
 
     }
 
@@ -87,7 +87,8 @@ class AsignarRutinaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {  $idequipo= $request->get('idequipo');
+    { $users=User::all();
+      $idequipo= $request->get('idequipo');
       $pidequipo= $request->get('pidequipo');
        $equipo=equipo::all();
         $rutina=ruman::all();
@@ -102,7 +103,7 @@ class AsignarRutinaController extends Controller
             ->where('d.estado_rutina','LIKE','PENDIENTE')
            ->orderBy('idrutina_mantenimiento','desc')
            ->paginate(100);
-            return view('equipo.rutina.ruman.asignarrutina0', compact('equipo','ruman','rumen','idequipo','caracru','subru','valrefru','tiporu','rutina'));
+            return view('equipo.rutina.ruman.asignarrutina0', compact('users','equipo','ruman','rumen','idequipo','caracru','subru','valrefru','tiporu','rutina'));
 
     }
 
