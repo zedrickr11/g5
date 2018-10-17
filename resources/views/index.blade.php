@@ -135,7 +135,7 @@
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">AGREGAR MANTENIMIENTO CORRECTIVO</h4>
+                    <h4 class="modal-title">OPCIONES</h4>
                   </div>
 
                   <div class="modal-body">
@@ -146,13 +146,27 @@
 
                         <div class="form-group">
                           <label for="nombreequipo">Equipo</label>
-                          <input type="text" class="form-control" id="nombreequipo" placeholder="Equipo">
+                          <input readonly type="text" class="form-control" id="nombreequipo" placeholder="Equipo">
                         </div>
 
+                        
                         <div class="form-group">
-                          <label for="idrutina">Numero de mantenimiento</label>
-                          <input type="text" class="form-control" id="idrutina" placeholder=" numero de Mantenimniento">
+                            <button id="irindexequipo" class="btn btn-outline pull-left" data-dismiss="modal">Vista General</button>
                         </div>
+                        
+                      
+                        <div class="form-group">
+                            <button id="irsolicitudboton" class="btn btn-outline pull-left" data-dismiss="modal">Solicitud</button>
+                        </div>
+                                            
+                        
+                        <div class="form-group">
+                            <button id="irfichaequipo" target="_blank" class="btn btn-outline pull-left" data-dismiss="modal">Ficha del Equipo</button>
+                        </div>
+
+                        <br>
+                        <br>
+                        <br>
 
                         <div class="form-group">
                           <label for="descripcionmantenimiento">Descripcion </label>
@@ -327,17 +341,17 @@
           day  : 'DÍA'
         },
 
-        dayClick:function(date,jsEvent,view){
+        // dayClick:function(date,jsEvent,view){
 
-          $('#fechacreacion2').val(date.format());
+        //   $('#fechacreacion2').val(date.format());
 
-          $("#ModalEventos").modal();
+        //   $("#ModalEventos").modal();
 
-        },
+        // },
         eventClick:function(calEvent,jsEvent,view){
 
           $('#nombreequipo').val(calEvent.title);
-          $('#idrutina').val(calEvent.idrutina);
+         
           $('#descripcionmantenimiento').val(calEvent.descripcionmantenimiento);
           $('#fechacreacion').val(calEvent.start);
           $('#fechafinal').val(calEvent.end);
@@ -345,6 +359,20 @@
           $('#estadonotificacion').val(calEvent.estadonotificacion);
 
 
+          $( "#irsolicitudboton" ).click(function() {
+            window.location.href = ("http://localhost:8000/equipo/vista/indexsolicitudes/").concat(calEvent.title);
+          });
+
+           $( "#irindexequipo" ).click(function() {
+            window.location.href = ("http://localhost:8000/equipo/principal/").concat(calEvent.title);
+          });
+
+           $( "#irfichaequipo" ).click(function() {
+            window.location.href = (" http://localhost:8000/equipo/equipo/ficha/").concat(calEvent.title);
+          });
+          
+         
+          
 
           $("#modal-success").modal();
 
