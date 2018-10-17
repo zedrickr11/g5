@@ -38,6 +38,11 @@ USE App\ruman;
 use App\tiporu;
 use App\PermisoTrabajo;
 use App\detcaracru;
+use Carbon\Carbon;
+USE App\caracru;
+use App\subru;
+use App\valrefru;
+use App\User;
 
 class AsignarRutinaController extends Controller
 {
@@ -57,8 +62,22 @@ class AsignarRutinaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    { $users=User::all();
+       $equipo=equipo::all();
+        $rutina=ruman::all();
+          $tiporu=tiporu::all();
+          $caracru=caracru::all();
+          $subru=subru::all();
+          $valrefru=valrefru::all();
+            $rumen = detcaracru::all();
+            $ruman=DB::table('rutina_mantenimiento as d')
+            ->select('d.*')
+
+            ->where('d.estado_rutina','LIKE','PENDIENTE')
+           ->orderBy('idrutina_mantenimiento','desc')
+           ->paginate(1);
+            return view('equipo.rutina.ruman.asignarrutina0', compact('users','equipo','ruman','rumen','caracru','subru','valrefru','tiporu','rutina'));
+
     }
 
     /**
@@ -68,6 +87,44 @@ class AsignarRutinaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+    { $users=User::all();
+      $idequipo= $request->get('idequipo');
+      $pidequipo= $request->get('pidequipo');
+       $equipo=equipo::all();
+        $rutina=ruman::all();
+          $tiporu=tiporu::all();
+          $caracru=caracru::all();
+          $subru=subru::all();
+          $valrefru=valrefru::all();
+            $rumen = detcaracru::all();
+            $ruman=DB::table('rutina_mantenimiento as d')
+            ->select('d.*')
+          ->where('d.idequipo','LIKE',$pidequipo)
+            ->where('d.estado_rutina','LIKE','PENDIENTE')
+           ->orderBy('idrutina_mantenimiento','desc')
+           ->paginate(100);
+            return view('equipo.rutina.ruman.asignarrutina0', compact('users','equipo','ruman','rumen','idequipo','caracru','subru','valrefru','tiporu','rutina'));
+
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\AsignarRutina  $asignarRutina
+     * @return \Illuminate\Http\Response
+     */
+    public function show(AsignarRutina $asignarRutina)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\AsignarRutina  $asignarRutina
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(AsignarRutina $asignarRutina)
     {
       try{
             DB::beginTransaction();
@@ -128,37 +185,15 @@ class AsignarRutinaController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\AsignarRutina  $asignarRutina
-     * @return \Illuminate\Http\Response
-     */
-    public function show(AsignarRutina $asignarRutina)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\AsignarRutina  $asignarRutina
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(AsignarRutina $asignarRutina)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\AsignarRutina  $asignarRutina
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AsignarRutina $asignarRutina)
+    public function update(AsignarRutina $asignarRutina)
     {
-        //
+
     }
 
     /**

@@ -49,10 +49,13 @@ class DatabaseSeeder extends Seeder
         $this->call(ValorRefTecTableSeeder::class);
         $this->call(SubGrupTecTableSeeder::class);
 
+        $this->call(TecnicoInternoTableSeeder::class);
+        $this->call(TecnicoExternoTableSeeder::class);
+
         //roles y usuarios
         $this->call(RolesTableSeeder::class);
         $this->call(UserTableSeeder::class);
-       
-        
+
+
     }
 }
