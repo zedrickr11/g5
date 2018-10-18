@@ -179,6 +179,6 @@ Route::get('equipo/qr/{id}', function ($id) {
     $equipo=DB::table('equipo')
     ->select('*')
     ->where('idequipo','=',$id)
-    ->get();
+    ->first();
     return view ('equipo.vista.img1',compact('equipo')) ;
-});
+})->middleware('auth');
