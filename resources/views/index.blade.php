@@ -28,7 +28,7 @@
         <div class="icon">
           <i class="ion ion-stats-bars"></i>
         </div>
-        <a href="#" class="small-box-footer">Más información <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="{{asset('#')}}" class="small-box-footer">Más información <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <!-- ./col -->
@@ -97,7 +97,7 @@
                        <h2 class="text-center"> Mantenimientos Correctivos</h2>
                         <div class="box-body ">
                                 <!-- THE CALENDAR 1 -->
-                            <div id="calendar">
+                            <div id="CalendarioCorrectivo">
 
                             </div>
                           </div>
@@ -113,7 +113,7 @@
                             <h2 class="text-center"> Mantenimientos Preventivos</h2>
                             <div class="box-body ">
                                   <!-- THE CALENDAR 2 -->
-                              <div id="calendar2">
+                              <div id="CalendarioPreventivo">
 
                               </div>
                             </div>
@@ -128,14 +128,14 @@
             </div>
 
 
-            <div class="modal modal-success fade" id="modal-success">
+            <div class="modal  fade" id="modal-success">
               <div class="modal-dialog">
                 <div class="modal-content">
 
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">AGREGAR MANTENIMIENTO CORRECTIVO</h4>
+                         <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">OPCIONES</h4>
                   </div>
 
                   <div class="modal-body">
@@ -145,16 +145,55 @@
                       <div class="box-body">
 
                         <div class="form-group">
-                          <label for="nombreequipo">Equipo</label>
-                          <input type="text" class="form-control" id="nombreequipo" placeholder="Equipo">
+
+                            
+                        
+                         <div class=" form-group bg-alert">
+                          <hr>
+                          <h3 class="text-success">Equipo ID:  <strong id="idequipo"></strong></h3>
+                          <hr><hr>
+                          <h3 class="text-success">Nombre Equipo:  <strong id="nombreequipo"></strong></h3>
+                          <hr><hr>
+                          <h3 class="text-success"> Tiempo estimado del mantenimiento: <strong id="tiempo" >0</strong><strong> H</strong></h3>
+                          <hr>
+
+                        </div>
+                          {{-- <input readonly type="text" class="form-control" id="nombreequipo" placeholder="Equipo"> --}}
+                        </div>
+                        
+                        <br>
+                        <br>
+                       
+
+                        <div class="form-group">
+                            <button id="irrutina" target="_blank" class="btn btn-info btn-lg btn-block" data-dismiss="modal"><strong>Realizar Mantenimiento</strong> </button>
+                        </div> 
+
+                        <div class="form-group">
+                            <button id="irindexequipo" class="btn btn-success btn-lg btn-block "   data-dismiss="modal">Vista General</button>
                         </div>
 
                         <div class="form-group">
-                          <label for="idrutina">Numero de mantenimiento</label>
-                          <input type="text" class="form-control" id="idrutina" placeholder=" numero de Mantenimniento">
+                          <button id="irhistorial" target="_blank" class="btn btn-success btn-lg btn-block" data-dismiss="modal">Historial de Mantenimientos</button>
+                      </div>
+                        
+                      
+                        <div class="form-group">
+                            <button id="irsolicitudboton" class="btn btn-success btn-lg btn-block" data-dismiss="modal">Solicitudes del Equipo</button>
+                        </div>
+                                            
+                        
+                        <div class="form-group">
+                            <button id="irfichaequipo" target="_blank" class="btn btn-success btn-lg btn-block" data-dismiss="modal">Ficha del Equipo</button>
                         </div>
 
-                        <div class="form-group">
+                       
+
+                        <br>
+                        <br>
+                        <br>
+
+                        {{-- <div class="form-group">
                           <label for="descripcionmantenimiento">Descripcion </label>
                           <input type="text" class="form-control" id="descripcionmantenimiento" placeholder="Descripcion">
                         </div>
@@ -177,24 +216,28 @@
                         <div class="form-group">
                           <label for="estadonotificacion">Estado</label>
                           <input type="text" class="form-control" id="estadonotificacion " placeholder="Estado">
-                        </div>
+                        </div> --}}
 
 
                         </div>
 
-                        </div>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">CERRAR</button>
-                          <button type="button" class="btn btn-outline pull-left" >Modificar</button>
-                          <button type="submit" class="btn btn-outline">AGREGAR</button>
+                          <button type="button" class="btn btn-info pull-left" data-dismiss="modal">CERRAR</button>
+                          {{-- <button type="button" class="btn btn-info pull-left" >Modificar</button> --}}
+                        
                         </div>
-                    </form>
-                </div>
+                        </div>
+                         
+                     </form>
+                  </div>
                 <!-- /.modal-content -->
-              </div>
+                </div>
               <!-- /.modal-dialog -->
             </div>
+              
+          
+            
 
 
             <div class="modal modal-success fade" id="ModalEventos">
@@ -266,6 +309,8 @@
                 <!-- /.modal-content -->
               </div>
             
+            </div>
+        
 
      </section>
 
@@ -276,49 +321,20 @@
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 
 
-
+<!-- CALENDARIO CORRECTIVO -->
   <script>
     $(function () {
 
-      /* initialize the external events
-      -----------------------------------------------------------------*/
-      function init_events(ele) {
-        ele.each(function () {
-
-          // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
-          // it doesn't need to have a start or end
-          var eventObject = {
-            title: $.trim($(this).text()) // use the element's text as the event title
-          }
-
-          // store the Event Object in the DOM element so we can get to it later
-          $(this).data('eventObject', eventObject)
-
-          // make the event draggable using jQuery UI
-          $(this).draggable({
-            zIndex        : 1070,
-            revert        : true, // will cause the event to go back to its
-            revertDuration: 0  //  original position after the drag
-          })
-
-        })
-      }
-
-      init_events($('#external-events div.external-event'))
-
-      /* initialize the calendar
-      -----------------------------------------------------------------*/
-      //Date for the calendar events (dummy data)
       var date = new Date()
       var d    = date.getDate(),
           m    = date.getMonth(),
           y    = date.getFullYear()
 
-      $('#calendar, #calendar2').fullCalendar({
+      $('#CalendarioCorrectivo').fullCalendar({
         header    : {
           left  : 'prev,next today',
           center: 'title',
-          right : 'month,agendaWeek,agendaDay'
+          right : 'month,agendaWeek'
         },
         buttonText: {
           today: 'HOY',
@@ -327,17 +343,19 @@
           day  : 'DÍA'
         },
 
-        dayClick:function(date,jsEvent,view){
+        // dayClick:function(date,jsEvent,view){
 
-          $('#fechacreacion2').val(date.format());
+        //   $('#fechacreacion2').val(date.format());
 
-          $("#ModalEventos").modal();
+        //   $("#ModalEventos").modal();
 
-        },
+        // },
         eventClick:function(calEvent,jsEvent,view){
 
-          $('#nombreequipo').val(calEvent.title);
-          $('#idrutina').val(calEvent.idrutina);
+          $('#idequipo').html(calEvent.title);
+          $('#tiempo').html(calEvent.tiempo_estimado_rutina_mantenimiento);
+          $('#nombreequipo').html(calEvent.nombre_equipo);
+         
           $('#descripcionmantenimiento').val(calEvent.descripcionmantenimiento);
           $('#fechacreacion').val(calEvent.start);
           $('#fechafinal').val(calEvent.end);
@@ -345,79 +363,42 @@
           $('#estadonotificacion').val(calEvent.estadonotificacion);
 
 
+          $( "#irsolicitudboton" ).click(function() {
+            window.location.href = ("http://localhost:8000/equipo/vista/indexsolicitudes/").concat(calEvent.title);
+          });
+
+           $( "#irindexequipo" ).click(function() {
+            window.location.href = ("http://localhost:8000/equipo/principal/").concat(calEvent.title);
+          });
+
+           $( "#irfichaequipo" ).click(function() {
+            window.location.href = (" http://localhost:8000/equipo/equipo/ficha/").concat(calEvent.title);
+          });
+          
+          $( "#irhistorial" ).click(function() {
+            window.location.href = ("#");
+          });
+          
+          $( "#irrutina" ).click(function() {
+            window.location.href = (" //localhost:8000/equipo/rutina/ruman/").concat(calEvent.idrutina_mantenimiento).concat("/edit");
+          });
+          
 
           $("#modal-success").modal();
 
 
         },
 
-        //Random default events
-        events: '/json-calendario',
+        
+        events: '/json-calendarioCorrectivo',
 
-        editable  : true,
-        droppable : true, // this allows things to be dropped onto the calendar !!!
-        drop      : function (date, allDay) { // this function is called when something is dropped
-
-          // retrieve the dropped element's stored Event Object
-          var originalEventObject = $(this).data('eventObject')
-
-          // we need to copy it, so that multiple events don't have a reference to the same object
-          var copiedEventObject = $.extend({}, originalEventObject)
-
-          // assign it the date that was reported
-          copiedEventObject.start           = date
-          copiedEventObject.allDay          = allDay
-          copiedEventObject.backgroundColor = $(this).css('background-color')
-          copiedEventObject.borderColor     = $(this).css('border-color')
-
-          // render the event on the calendar
-          // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-          $('#calendar,#calendar2').fullCalendar('renderEvent', copiedEventObject, true)
-
-          // is the "remove after drop" checkbox checked?
-          if ($('#drop-remove').is(':checked')) {
-            // if so, remove the element from the "Draggable Events" list
-            $(this).remove()
-          }
-
-        }
+        editable  : false,
+        droppable : false 
+       
       })
 
-      /* ADDING EVENTS */
-      var currColor = '#3c8dbc' //Red by default
-      //Color chooser button
-      var colorChooser = $('#color-chooser-btn')
-      $('#color-chooser > li > a').click(function (e) {
-        e.preventDefault()
-        //Save color
-        currColor = $(this).css('color')
-        //Add color effect to button
-        $('#add-new-event').css({ 'background-color': currColor, 'border-color': currColor })
-      })
-      $('#add-new-event').click(function (e) {
-        e.preventDefault()
-        //Get value and make sure it is not null
-        var val = $('#new-event').val()
-        if (val.length == 0) {
-          return
-        }
-
-        //Create events
-        var event = $('<div />')
-        event.css({
-          'background-color': currColor,
-          'border-color'    : currColor,
-          'color'           : '#fff'
-        }).addClass('external-event')
-        event.html(val)
-        $('#external-events').prepend(event)
-
-        //Add draggable funtionality
-        init_events(event)
-
-        //Remove event from text input
-        $('#new-event').val('')
-      })
+      
+     
     })
 
 
@@ -436,13 +417,130 @@
             estadonotificacion :  $('#estadonotificacion2').val()
       };
 
-       $('#calendar').fullCalendar( 'renderEvent',NuevoEvento);
+       $('#CalendarioCorrectivo').fullCalendar( 'renderEvent',NuevoEvento);
 
        $("#ModalEventos").modal('toggle');
        $("#formularioParaIngreso")[0].reset();
 
     });
+
+
   </script>
+
+
+<!-- CALENDARIO PREVENTIVO -->
+<script>
+  $(function () {
+
+    var date = new Date()
+    var d    = date.getDate(),
+        m    = date.getMonth(),
+        y    = date.getFullYear()
+
+    $('#CalendarioPreventivo').fullCalendar({
+      header    : {
+        left  : 'prev,next today',
+        center: 'title',
+        right : 'month,agendaWeek'
+      },
+      buttonText: {
+        today: 'HOY',
+        month: 'MES',
+        week : 'SEMANA',
+        day  : 'DÍA'
+      },
+
+      // dayClick:function(date,jsEvent,view){
+
+      //   $('#fechacreacion2').val(date.format());
+
+      //   $("#ModalEventos").modal();
+
+      // },
+      eventClick:function(calEvent,jsEvent,view){
+
+        $('#idequipo').html(calEvent.title);
+        $('#tiempo').html(calEvent.tiempo_estimado_rutina_mantenimiento);
+        $('#nombreequipo').html(calEvent.nombre_equipo);
+        
+       
+        $('#descripcionmantenimiento').val(calEvent.descripcionmantenimiento);
+        $('#fechacreacion').val(calEvent.start);
+        $('#fechafinal').val(calEvent.end);
+        $('#horamantenimiento').val(calEvent.hora);
+        $('#estadonotificacion').val(calEvent.estadonotificacion);
+
+
+        $( "#irsolicitudboton" ).click(function() {
+          window.location.href = ("http://localhost:8000/equipo/vista/indexsolicitudes/").concat(calEvent.title);
+        });
+
+         $( "#irindexequipo" ).click(function() {
+          window.location.href = ("http://localhost:8000/equipo/principal/").concat(calEvent.title);
+        });
+
+         $( "#irfichaequipo" ).click(function() {
+          window.location.href = (" http://localhost:8000/equipo/equipo/ficha/").concat(calEvent.title);
+        });
+        
+        $( "#irhistorial" ).click(function() {
+          window.location.href = ("#");
+        });
+
+            $( "#irrutina" ).click(function() {
+            window.location.href = (" //localhost:8000/equipo/rutina/ruman/").concat(calEvent.idrutina_mantenimiento).concat("/edit");
+          });
+
+
+
+        
+        
+
+        $("#modal-success").modal();
+
+
+      },
+
+      
+      events: '/json-calendarioPreventivo',
+
+      editable  : false,
+      droppable : false 
+     
+    })
+
+    
+   
+  })
+
+
+  $('#botonParaAgregar').click(function(){
+
+    var NuevoEvento = {
+
+          title          :  $('#nombreequipo2').val(),
+          start          :  $('#fechacreacion2').val()+" "+$('#horamantenimiento2').val(),
+          end            : $('#fechafinal2').val()+" "+$('#horamantenimiento2').val(),
+          backgroundColor: '#f56954', //red
+          borderColor    : '#f56954', //red
+          idrutina       :  $('#idrutina2').val(),
+          descripcionmantenimiento: $('#descripcionmantenimiento2').val(),
+          hora           : $('#horamantenimiento2').val(),
+          estadonotificacion :  $('#estadonotificacion2').val()
+    };
+
+     $('#CalendarioCorrectivo').fullCalendar( 'renderEvent',NuevoEvento);
+
+     $("#ModalEventos").modal('toggle');
+     $("#formularioParaIngreso")[0].reset();
+
+  });
+
+
+</script>
+
+
+
 </body>
 </html>
 
