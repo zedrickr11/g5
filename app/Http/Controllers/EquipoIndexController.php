@@ -50,49 +50,63 @@ class EquipoIndexController extends Controller
     }
     public function index($id)
     {
-      $proveedor=Proveedor::all();
-      $unidad_salud=UnidadSalud::all();
-      $area=Area::all();
-      $estado=Estado::all();
-      $servicio_tecnico=ServicioTecnico::all();
-      $fabricante=Fabricante::all();
-      $hospital=Hospital::all();
-      $departamento=Departamento::all();
-      $region=Region::all();
-      $grupo=Grupo::all();
-      $subgrupo=Subgrupo::all();
-      $tipounidadsalud=TipoUnidadSalud::all();
-      //rutinas
-      $tiporu=tiporu::all();
-      $permisotrabajo=PermisoTrabajo::all();
-      $ruman = ruman::all();
-      $detallerutina = detcaracru::all();
-      $notificacion = Notificacion::all();
+        $proveedor=Proveedor::all();
+        $unidad_salud=UnidadSalud::all();
+        $area=Area::all();
+        $estado=Estado::all();
+        $servicio_tecnico=ServicioTecnico::all();
+        $fabricante=Fabricante::all();
+        $hospital=Hospital::all();
+        $departamento=Departamento::all();
+        $region=Region::all();
+        $grupo=Grupo::all();
+        $subgrupo=Subgrupo::all();
+        $tipounidadsalud=TipoUnidadSalud::all();
+        //rutinas
+        $tiporu=tiporu::all();
+        $permisotrabajo=PermisoTrabajo::all();
+        $ruman = ruman::all();
+        $detallerutina = detcaracru::all();
+        $notificacion = Notificacion::all();
 
 
 
-      $imagen_equipo=DB::table('Imagen_equipo')
-      ->select('*')
-      ->where('idequipo','=',$id)
-      ->get();
+        $imagen_equipo=DB::table('Imagen_equipo')
+        ->select('*')
+        ->where('idequipo','=',$id)
+        ->get();
 
-      $TipoManual = TipoManual::all();
-      $EquipoM = Equipo::all();
+        $TipoManual = TipoManual::all();
+        $EquipoM = Equipo::all();
 
-      $Detalle_manual =DB::table('Detalle_manual')
-      ->select('*')
-      ->where('idequipo','=',$id)
-      ->get();
+        $Detalle_manual =DB::table('Detalle_manual')
+        ->select('*')
+        ->where('idequipo','=',$id)
+        ->get();
 
-      $areas = DB::table('area_mantenimiento')
+        $areas = DB::table('area_mantenimiento')
             ->select('idarea_mantenimiento','area_mantenimiento AS area')
             ->get();
-      $tipos = DB::table('tipo_trabajo')
+        $tipos = DB::table('tipo_trabajo')
             ->select('idtipo_trabajo','nombre_tipo AS tipo')
             ->get();
-      $equipos = DB::table('equipo')
+        $equipos = DB::table('equipo')
                   ->select('idequipo','nombre_equipo AS equipo')
                   ->get();
+
+
+        $partes=DB::table('parte_equipo')
+        ->select('idparte_equipo','nombre_parte', 'num_parte', 'descripcion')
+        ->where('idequipo','=', $id)
+        ->get();
+
+        $accesorios=DB::table('accesorio_equipo')
+        ->select('idaccesorio','nombre_accesorio', 'descripcion_accesorio', 'numero_parte_accesorio')
+        ->where('idequipo','=',$id)
+        ->get();
+        //$equipo=Equipo::findOrFail($id);
+        
+
       $responsable=DB::table('equipo as e')
                   ->join('users as u','u.id','e.users_id')
                   ->select('u.name as nombre')
@@ -101,6 +115,7 @@ class EquipoIndexController extends Controller
 
       //$equipo=Equipo::findOrFail($id);
       $equipo=DB::table('equipo as e')
+
         ->join('subgrupo as s','s.idsubgrupo','=','e.idsubgrupo')
         ->join('conf_corr as c','s.idsubgrupo','=','c.idsubgrupo')
         ->join('hospital as h','h.idhospital','=','e.idhospital')
@@ -108,13 +123,14 @@ class EquipoIndexController extends Controller
         ->where('e.idequipo','=',$id)
         ->first();
 
-      return view('equipo.vista.index', compact('notificacion','detallerutina','tiporu','permisotrabajo','ruman','equipo','proveedor','unidad_salud','area',
+        return view('equipo.vista.index', compact('notificacion','detallerutina','tiporu','permisotrabajo','ruman','equipo','proveedor','unidad_salud','area',
                   'estado','servicio_tecnico','fabricante','hospital','departamento',
                   'region','grupo','subgrupo','tipounidadsalud','TipoManual','EquipoM',
-                                                'Detalle_manual','imagen_equipo','tiporu','permisotrabajo','ruman','areas','tipos','equipos','responsable'));
+
+                                                'Detalle_manual','imagen_equipo','tiporu','permisotrabajo','ruman','areas','tipos','equipos', 'partes','accesorios','responsable'));
 
 
-      }
+    }
 
 
     public function store(Request $request){

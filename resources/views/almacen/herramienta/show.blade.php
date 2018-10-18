@@ -3,12 +3,12 @@
 
 <section class="content-header">
       <h1>
-        Equipo
-        <small>Tipo de Manual</small>
+        Almacen
+        <small>Herramienta</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Equipo</a></li>
-        <li class="active">Tipo de Manual</li>
+        <li><a href="#"><i class="fa fa-tv"></i>Almacen</a></li>
+        <li class="active">Herramienta</li>
       </ol>
 </section>
 	<section class="content">
@@ -18,24 +18,24 @@
 		<!-- general form elements -->
 		<div class="box box-success">
 			<div class="box-header with-border">
-				<h3 class="box-title">Nuevo Tipo de Manual</h3>
+				<h3 class="box-title">Detalle de Herramienta</h3>
 			</div>
 			<!-- /.box-header -->
 			<!-- form start -->
 
 				<div class="box-body col-md-6">
 					<div class="form-group">
-						<label for="est">Tipo de Manual</label>
-            <p>{{$tipoManuals->nombre_tipo_manual}}</p>
+						<label for="est">Herramienta</label>
+            <p>{{$herramientas->herramienta}}</p>
 					</div>
 				</div>
 				<!-- /.box-body -->
-				<br><br><br><br><br>
 				<div class="box-footer">
-					<a href="{{route('tipoManual.index')}}">
-		            <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
-		          	</a>
-				</div>
+						<a href="{{route('herramienta.index')}}">
+									<button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
+									</a>
+					</div>
+
 		</div>
 		<!-- /.box -->
 
