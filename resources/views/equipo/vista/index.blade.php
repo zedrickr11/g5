@@ -42,7 +42,7 @@
             </ul>
 
             <a href="{{route('equipo.ficha',$equipo->idequipo)}}" target="_blank" class="btn btn-success btn-block"><b>Ficha técnica</b></a>
-          <!--<a  href="{{route('equipo.vista',$equipo->idequipo)}}" target="_blank" class="btn btn-warning btn-block"><b>Ver Solicitudes</b></a>-->
+          <a  href="{{route('equipo.vista',$equipo->idequipo)}}" target="_blank" class="btn btn-warning btn-block"><b>Ver Solicitudes</b></a>
           </div>
           <!-- /.box-body -->
         </div>
@@ -372,7 +372,7 @@
                               </table>
                               <div class="box-body col-md-12">
 
-                              
+
 
                             <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
                             <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
