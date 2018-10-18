@@ -28,7 +28,7 @@
         <div class="icon">
           <i class="ion ion-stats-bars"></i>
         </div>
-        <a href="#" class="small-box-footer">Más información <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="{{asset('#')}}" class="small-box-footer">Más información <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <!-- ./col -->
@@ -97,7 +97,7 @@
                        <h2 class="text-center"> Mantenimientos Correctivos</h2>
                         <div class="box-body ">
                                 <!-- THE CALENDAR 1 -->
-                            <div id="calendar">
+                            <div id="CalendarioCorrectivo">
 
                             </div>
                           </div>
@@ -113,7 +113,7 @@
                             <h2 class="text-center"> Mantenimientos Preventivos</h2>
                             <div class="box-body ">
                                   <!-- THE CALENDAR 2 -->
-                              <div id="calendar2">
+                              <div id="CalendarioPreventivo">
 
                               </div>
                             </div>
@@ -128,13 +128,13 @@
             </div>
 
 
-            <div class="modal modal-success fade" id="modal-success">
+            <div class="modal  fade" id="modal-success">
               <div class="modal-dialog">
                 <div class="modal-content">
 
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span></button>
+                         <span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">OPCIONES</h4>
                   </div>
 
@@ -145,24 +145,35 @@
                       <div class="box-body">
 
                         <div class="form-group">
-                          <label for="nombreequipo">Equipo</label>
-                          <input readonly type="text" class="form-control" id="nombreequipo" placeholder="Equipo">
+                         
+                          <h1> Equipo ID: <small id="nombreequipo" >Secondary text</small></h1>
+                          {{-- <input readonly type="text" class="form-control" id="nombreequipo" placeholder="Equipo"> --}}
                         </div>
+                        
+                        <br>
+                        <br>
+                       
 
                         
                         <div class="form-group">
-                            <button id="irindexequipo" class="btn btn-outline pull-left" data-dismiss="modal">Vista General</button>
+                            <button id="irindexequipo" class="btn btn-success btn-lg btn-block"  data-dismiss="modal">Vista General</button>
                         </div>
+
+                        <div class="form-group">
+                          <button id="irhistorial" target="_blank" class="btn btn-success btn-lg btn-block" data-dismiss="modal">Historial de Mantenimientos</button>
+                      </div>
                         
                       
                         <div class="form-group">
-                            <button id="irsolicitudboton" class="btn btn-outline pull-left" data-dismiss="modal">Solicitud</button>
+                            <button id="irsolicitudboton" class="btn btn-success btn-lg btn-block" data-dismiss="modal">Solicitudes del Equipo</button>
                         </div>
                                             
                         
                         <div class="form-group">
-                            <button id="irfichaequipo" target="_blank" class="btn btn-outline pull-left" data-dismiss="modal">Ficha del Equipo</button>
+                            <button id="irfichaequipo" target="_blank" class="btn btn-success btn-lg btn-block" data-dismiss="modal">Ficha del Equipo</button>
                         </div>
+
+                       
 
                         <br>
                         <br>
@@ -197,18 +208,22 @@
                         </div>
 
                         </div>
-                        </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">CERRAR</button>
-                          <button type="button" class="btn btn-outline pull-left" >Modificar</button>
-                          <button type="submit" class="btn btn-outline">AGREGAR</button>
+                          <button type="button" class="btn btn-info pull-left" data-dismiss="modal">CERRAR</button>
+                          <button type="button" class="btn btn-info pull-left" >Modificar</button>
+                        
                         </div>
-                    </form>
-                </div>
+                        </div>
+                         
+                     </form>
+                  </div>
                 <!-- /.modal-content -->
-              </div>
+                </div>
               <!-- /.modal-dialog -->
             </div>
+              
+          
+            
 
 
             <div class="modal modal-success fade" id="ModalEventos">
@@ -280,6 +295,8 @@
                 <!-- /.modal-content -->
               </div>
             
+            </div>
+        
 
      </section>
 
@@ -290,49 +307,20 @@
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 
 
-
+<!-- CALENDARIO CORRECTIVO -->
   <script>
     $(function () {
 
-      /* initialize the external events
-      -----------------------------------------------------------------*/
-      function init_events(ele) {
-        ele.each(function () {
-
-          // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
-          // it doesn't need to have a start or end
-          var eventObject = {
-            title: $.trim($(this).text()) // use the element's text as the event title
-          }
-
-          // store the Event Object in the DOM element so we can get to it later
-          $(this).data('eventObject', eventObject)
-
-          // make the event draggable using jQuery UI
-          $(this).draggable({
-            zIndex        : 1070,
-            revert        : true, // will cause the event to go back to its
-            revertDuration: 0  //  original position after the drag
-          })
-
-        })
-      }
-
-      init_events($('#external-events div.external-event'))
-
-      /* initialize the calendar
-      -----------------------------------------------------------------*/
-      //Date for the calendar events (dummy data)
       var date = new Date()
       var d    = date.getDate(),
           m    = date.getMonth(),
           y    = date.getFullYear()
 
-      $('#calendar, #calendar2').fullCalendar({
+      $('#CalendarioCorrectivo').fullCalendar({
         header    : {
           left  : 'prev,next today',
           center: 'title',
-          right : 'month,agendaWeek,agendaDay'
+          right : 'month,agendaWeek'
         },
         buttonText: {
           today: 'HOY',
@@ -350,7 +338,7 @@
         // },
         eventClick:function(calEvent,jsEvent,view){
 
-          $('#nombreequipo').val(calEvent.title);
+          $('#nombreequipo').html(calEvent.title);
          
           $('#descripcionmantenimiento').val(calEvent.descripcionmantenimiento);
           $('#fechacreacion').val(calEvent.start);
@@ -371,7 +359,11 @@
             window.location.href = (" http://localhost:8000/equipo/equipo/ficha/").concat(calEvent.title);
           });
           
-         
+          $( "#irhistorial" ).click(function() {
+            window.location.href = ("#");
+          });
+
+          
           
 
           $("#modal-success").modal();
@@ -379,73 +371,16 @@
 
         },
 
-        //Random default events
-        events: '/json-calendario',
+        
+        events: '/json-calendarioCorrectivo',
 
-        editable  : true,
-        droppable : true, // this allows things to be dropped onto the calendar !!!
-        drop      : function (date, allDay) { // this function is called when something is dropped
-
-          // retrieve the dropped element's stored Event Object
-          var originalEventObject = $(this).data('eventObject')
-
-          // we need to copy it, so that multiple events don't have a reference to the same object
-          var copiedEventObject = $.extend({}, originalEventObject)
-
-          // assign it the date that was reported
-          copiedEventObject.start           = date
-          copiedEventObject.allDay          = allDay
-          copiedEventObject.backgroundColor = $(this).css('background-color')
-          copiedEventObject.borderColor     = $(this).css('border-color')
-
-          // render the event on the calendar
-          // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-          $('#calendar,#calendar2').fullCalendar('renderEvent', copiedEventObject, true)
-
-          // is the "remove after drop" checkbox checked?
-          if ($('#drop-remove').is(':checked')) {
-            // if so, remove the element from the "Draggable Events" list
-            $(this).remove()
-          }
-
-        }
+        editable  : false,
+        droppable : false 
+       
       })
 
-      /* ADDING EVENTS */
-      var currColor = '#3c8dbc' //Red by default
-      //Color chooser button
-      var colorChooser = $('#color-chooser-btn')
-      $('#color-chooser > li > a').click(function (e) {
-        e.preventDefault()
-        //Save color
-        currColor = $(this).css('color')
-        //Add color effect to button
-        $('#add-new-event').css({ 'background-color': currColor, 'border-color': currColor })
-      })
-      $('#add-new-event').click(function (e) {
-        e.preventDefault()
-        //Get value and make sure it is not null
-        var val = $('#new-event').val()
-        if (val.length == 0) {
-          return
-        }
-
-        //Create events
-        var event = $('<div />')
-        event.css({
-          'background-color': currColor,
-          'border-color'    : currColor,
-          'color'           : '#fff'
-        }).addClass('external-event')
-        event.html(val)
-        $('#external-events').prepend(event)
-
-        //Add draggable funtionality
-        init_events(event)
-
-        //Remove event from text input
-        $('#new-event').val('')
-      })
+      
+     
     })
 
 
@@ -464,13 +399,121 @@
             estadonotificacion :  $('#estadonotificacion2').val()
       };
 
-       $('#calendar').fullCalendar( 'renderEvent',NuevoEvento);
+       $('#CalendarioCorrectivo').fullCalendar( 'renderEvent',NuevoEvento);
 
        $("#ModalEventos").modal('toggle');
        $("#formularioParaIngreso")[0].reset();
 
     });
+
+
   </script>
+
+
+<!-- CALENDARIO PREVENTIVO -->
+<script>
+  $(function () {
+
+    var date = new Date()
+    var d    = date.getDate(),
+        m    = date.getMonth(),
+        y    = date.getFullYear()
+
+    $('#CalendarioPreventivo').fullCalendar({
+      header    : {
+        left  : 'prev,next today',
+        center: 'title',
+        right : 'month,agendaWeek'
+      },
+      buttonText: {
+        today: 'HOY',
+        month: 'MES',
+        week : 'SEMANA',
+        day  : 'DÍA'
+      },
+
+      // dayClick:function(date,jsEvent,view){
+
+      //   $('#fechacreacion2').val(date.format());
+
+      //   $("#ModalEventos").modal();
+
+      // },
+      eventClick:function(calEvent,jsEvent,view){
+
+        $('#nombreequipo').html(calEvent.title);
+       
+        $('#descripcionmantenimiento').val(calEvent.descripcionmantenimiento);
+        $('#fechacreacion').val(calEvent.start);
+        $('#fechafinal').val(calEvent.end);
+        $('#horamantenimiento').val(calEvent.hora);
+        $('#estadonotificacion').val(calEvent.estadonotificacion);
+
+
+        $( "#irsolicitudboton" ).click(function() {
+          window.location.href = ("http://localhost:8000/equipo/vista/indexsolicitudes/").concat(calEvent.title);
+        });
+
+         $( "#irindexequipo" ).click(function() {
+          window.location.href = ("http://localhost:8000/equipo/principal/").concat(calEvent.title);
+        });
+
+         $( "#irfichaequipo" ).click(function() {
+          window.location.href = (" http://localhost:8000/equipo/equipo/ficha/").concat(calEvent.title);
+        });
+        
+        $( "#irhistorial" ).click(function() {
+          window.location.href = ("#");
+        });
+
+        
+        
+
+        $("#modal-success").modal();
+
+
+      },
+
+      
+      events: '/json-calendarioPreventivo',
+
+      editable  : false,
+      droppable : false 
+     
+    })
+
+    
+   
+  })
+
+
+  $('#botonParaAgregar').click(function(){
+
+    var NuevoEvento = {
+
+          title          :  $('#nombreequipo2').val(),
+          start          :  $('#fechacreacion2').val()+" "+$('#horamantenimiento2').val(),
+          end            : $('#fechafinal2').val()+" "+$('#horamantenimiento2').val(),
+          backgroundColor: '#f56954', //red
+          borderColor    : '#f56954', //red
+          idrutina       :  $('#idrutina2').val(),
+          descripcionmantenimiento: $('#descripcionmantenimiento2').val(),
+          hora           : $('#horamantenimiento2').val(),
+          estadonotificacion :  $('#estadonotificacion2').val()
+    };
+
+     $('#CalendarioCorrectivo').fullCalendar( 'renderEvent',NuevoEvento);
+
+     $("#ModalEventos").modal('toggle');
+     $("#formularioParaIngreso")[0].reset();
+
+  });
+
+
+</script>
+
+
+
 </body>
 </html>
 
