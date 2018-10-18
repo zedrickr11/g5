@@ -145,8 +145,19 @@
                       <div class="box-body">
 
                         <div class="form-group">
-                         
-                          <h1> Equipo ID: <small id="nombreequipo" >Secondary text</small></h1>
+
+                            
+                        
+                         <div class=" form-group bg-alert">
+
+                          <h3 class="text-success">Equipo ID:  <strong id="idequipo"></strong></h3>
+                          <hr>
+                          <h3 class="text-success">Nombre Equipo:  <strong id="nombreequipo"></strong></h3>
+                          <hr>
+                          <h3 class="text-success"> Tiempo estimado del mantenimiento: <strong id="tiempo" >0</strong><strong> H</strong></h3>
+                          <hr>
+
+                        </div>
                           {{-- <input readonly type="text" class="form-control" id="nombreequipo" placeholder="Equipo"> --}}
                         </div>
                         
@@ -154,9 +165,12 @@
                         <br>
                        
 
-                        
                         <div class="form-group">
-                            <button id="irindexequipo" class="btn btn-success btn-lg btn-block"  data-dismiss="modal">Vista General</button>
+                            <button id="irrutina" target="_blank" class="btn btn-info btn-lg btn-block" data-dismiss="modal">Realizar Rutina</button>
+                        </div> 
+
+                        <div class="form-group">
+                            <button id="irindexequipo" class="btn btn-success btn-lg btn-block "   data-dismiss="modal">Vista General</button>
                         </div>
 
                         <div class="form-group">
@@ -179,7 +193,7 @@
                         <br>
                         <br>
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                           <label for="descripcionmantenimiento">Descripcion </label>
                           <input type="text" class="form-control" id="descripcionmantenimiento" placeholder="Descripcion">
                         </div>
@@ -202,7 +216,7 @@
                         <div class="form-group">
                           <label for="estadonotificacion">Estado</label>
                           <input type="text" class="form-control" id="estadonotificacion " placeholder="Estado">
-                        </div>
+                        </div> --}}
 
 
                         </div>
@@ -210,7 +224,7 @@
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-info pull-left" data-dismiss="modal">CERRAR</button>
-                          <button type="button" class="btn btn-info pull-left" >Modificar</button>
+                          {{-- <button type="button" class="btn btn-info pull-left" >Modificar</button> --}}
                         
                         </div>
                         </div>
@@ -338,7 +352,9 @@
         // },
         eventClick:function(calEvent,jsEvent,view){
 
-          $('#nombreequipo').html(calEvent.title);
+          $('#idequipo').html(calEvent.title);
+          $('#tiempo').html(calEvent.tiempo_estimado_rutina_mantenimiento);
+          $('#nombreequipo').html(calEvent.nombre_equipo);
          
           $('#descripcionmantenimiento').val(calEvent.descripcionmantenimiento);
           $('#fechacreacion').val(calEvent.start);
@@ -362,8 +378,10 @@
           $( "#irhistorial" ).click(function() {
             window.location.href = ("#");
           });
-
           
+          $( "#irrutina" ).click(function() {
+            window.location.href = (" //localhost:8000/equipo/rutina/ruman/").concat(calEvent.idrutina_mantenimiento).concat("/edit");
+          });
           
 
           $("#modal-success").modal();
@@ -441,7 +459,10 @@
       // },
       eventClick:function(calEvent,jsEvent,view){
 
-        $('#nombreequipo').html(calEvent.title);
+        $('#idequipo').html(calEvent.title);
+        $('#tiempo').html(calEvent.tiempo_estimado_rutina_mantenimiento);
+        $('#nombreequipo').html(calEvent.nombre_equipo);
+        
        
         $('#descripcionmantenimiento').val(calEvent.descripcionmantenimiento);
         $('#fechacreacion').val(calEvent.start);
@@ -465,6 +486,12 @@
         $( "#irhistorial" ).click(function() {
           window.location.href = ("#");
         });
+
+            $( "#irrutina" ).click(function() {
+            window.location.href = (" //localhost:8000/equipo/rutina/ruman/").concat(calEvent.idrutina_mantenimiento).concat("/edit");
+          });
+
+
 
         
         
