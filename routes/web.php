@@ -105,6 +105,8 @@ Route::resource('equipo/rutina/detcaracru','detcaracruController');
 Route::resource('equipo/rutina/detrupru','detrupruController');
 Route::resource('equipo/rutina/AsignarRutina','AsignarRutinaController');
 
+Route::resource('equipo/parte','ParteController');
+Route::resource('equipo/accesorio','AccesorioController');
 
 //solicitud de trabajo
 Route::resource('precaucion/ejecutante','PrecaucionEjecutanteController');
@@ -153,6 +155,7 @@ Route::resource('compras/insumo-ingreso','Ingreso_insumoController');
 Route::resource('compras/repuesto/prov','Proveedor_repuestoController');
 Route::resource('almacen/repuesto','RepuestoController');
 Route::resource('compras/repuesto-ingreso','Ingreso_repuestoController');
+Route::resource('almacen/herramienta','HerramientaController');
 
 
 

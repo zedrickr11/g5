@@ -104,71 +104,180 @@
             <li><a href="#settings" data-toggle="tab">Actualizar</a></li>
             <li><a href="#manuales" data-toggle="tab">Manuales</a></li>
             <li><a href="#imagen" data-toggle="tab">Imágenes</a></li>
-
+            
           </ul>
           <div class="tab-content">
             <div class="active tab-pane" id="activity">
-              <!-- Post -->
+              <!-- Post1 -->
               <div class="post">
                 <div class="user-block">
-                  <img class="img-circle img-bordered-sm" src="{{asset('dist/img/historial.png')}}" alt="user image">
+                  <img class="img-circle img-bordered-sm" src="{{asset('dist/img/config.png')}}" alt="user image">
                       <span class="username">
-                        <a href="#">Histarial de rutinas</a>
+                        <a>Partes del equipo</a>
                         <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
                       </span>
                   <span class="description">{{ $equipo->nombre_equipo }}</span>
                 </div>
-                <!-- /.user-block -->
-                <p>
-                  Lorem ipsum represents a long-held tradition for designers,
-                  typographers and the like. Some people hate it and argue for
-                  its demise, but others ignore the hate as they create awesome
-                  tools to help create filler text for everyone from bacon lovers
-                  to Charlie Sheen fans.
-                </p>
-                <ul class="list-inline">
-                  <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                  <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
-                  </li>
-                  <li class="pull-right">
-                    <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments
-                      (5)</a></li>
-                </ul>
+                <!-- /.user-block --><!-- /.Boniparte -->
+                <div class="row">
+                    <form role="form" method="POST" action="{{route('parte.store')}}" enctype="multipart/form-data" >
+                          {!! csrf_field() !!}
+                          <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+                            <div class="form-group">
+                              <label for="nombre_parte">Parte</label>
+                              <input type="text" name="nombre_parte" class="form-control"> 
+                            </div>
+                          </div> 
+                          <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+                              <div class="form-group">        
+                              <label for="num_parte">No. de parte </label>
+                              <input type="number" name="num_parte" class="form-control"> 
+                            </div>
+                          </div>
+                              <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+                                  <div class="form-group">
+                              <label for="descripcion">Descripción </label>
 
-                <input class="form-control input-sm" type="text" placeholder="Type a comment">
+                             
+                              <input type="text" name="descripcion" class="form-control"> 
+                              
+                                <input  type="hidden" name="idequipo" readonly class="form-control" value="{{$equipo->idequipo}}">
+                              </div>
+                              </div>
+                              <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                                  <div class="form-group">
+                              <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
+                              <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
+                            </div>
+                          </div>
+                            
+                  </form>
+                </div>
+                  <div class="row">
+                  <div class="col-md-12">
+                      <div class="table-responsive">
+                        <table id="tabla" class="table table-bordered table-striped">
+                          <thead>
+                          <tr>
+                            
+                            <th>Parte</th>
+                            <th>No. Parte</th>
+                            <th>Descripción</th>
+                            <th>Opciones</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                            @foreach ($partes as $par)
+                            <tr>
+                            
+                              <td>{{ $par->nombre_parte}}</td>
+                              <td>{{ $par->num_parte}}</td>
+                              <td>{{ $par->descripcion}}</td>
+                      <td>
+                          <form style="display: inline" method="POST" action="{{route('parte.destroy', $par->idparte_equipo)}}">
+                          {!!method_field('DELETE')!!}
+                          {!!csrf_field()!!}
+                            <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></span> </button>
+                          </form> 
+                      </td>
+                    </tr>
+                    @endforeach
+                          </tbody>
+                  </table>
+                      </div>
+                    </div>
+
+
+                </div> <!-- /.Boniparte -->
               </div>
-              <!-- /.post -->
+              <!-- /.post1 -->
 
               <!-- Post -->
-              <div class="post clearfix">
-                <div class="user-block">
-                  <img class="img-circle img-bordered-sm" src="../../dist/img/user7-128x128.jpg" alt="User Image">
-                      <span class="username">
-                        <a href="#">Sarah Ross</a>
-                        <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                      </span>
-                  <span class="description">Sent you a message - 3 days ago</span>
-                </div>
-                <!-- /.user-block -->
-                <p>
-                  Lorem ipsum represents a long-held tradition for designers,
-                  typographers and the like. Some people hate it and argue for
-                  its demise, but others ignore the hate as they create awesome
-                  tools to help create filler text for everyone from bacon lovers
-                  to Charlie Sheen fans.
-                </p>
+              <div class="post">
+                  <div class="user-block">
+                    <img class="img-circle img-bordered-sm" src="{{asset('dist/img/config.png')}}" alt="user image">
+                        <span class="username">
+                          <a>Accesorios del equipo </a>
+                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
+                        </span>
+                        <span class="description">{{ $equipo->nombre_equipo }}</span>
 
-                <form class="form-horizontal">
-                  <div class="form-group margin-bottom-none">
-                    <div class="col-sm-9">
-                      <input class="form-control input-sm" placeholder="Response">
-                    </div>
-                    <div class="col-sm-3">
-                      <button type="submit" class="btn btn-danger pull-right btn-block btn-sm">Send</button>
-                    </div>
                   </div>
-                </form>
-              </div>
+                  <!-- /.user-block --><!-- /.Boniparte -->
+                  <div class="row">
+                      <form role="form" method="POST" action="{{route('accesorio.store')}}" enctype="multipart/form-data" >
+                            {!! csrf_field() !!}
+                            <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+                              <div class="form-group">
+                                <label for="nombre_accesorio">Accesorio</label>
+                                <input type="text" name="nombre_accesorio" class="form-control">    
+                              </div>
+                            </div>      
+                              
+                                
+                                  <input  type="hidden" name="idequipo" readonly class="form-control "  value="{{$equipo->idequipo}}">
+                                  <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+                                      <div class="form-group">
+                                      <label for="numero_parte_accesorio">No. Accesorio</label>
+                                    <input type="number" name="numero_parte_accesorio" class="form-control"> 
+                                  </div>
+                                </div> 
+                                <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+                                    <div class="form-group">
+                                    <label for="nombre_accesorio">Descripción</label>
+    
+                                    <input type="text" name="descripcion_accesorio" class="form-control">
+                                  </div>
+                                </div> 
+                                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                                    <div class="form-group">
+                                <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
+                                <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
+                              </div>
+                            </div>
+                          </form>
+                          </div>
+                            
+                    <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                          <table id="tabla" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                              
+                              <th>Accesorio</th>
+                              <th>No. Accesorio</th>
+                              <th>Descripción</th>
+                              <th>Opciones</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                              @foreach ($accesorios as $accs)
+                              <tr>
+                               
+                                <td>{{ $accs->nombre_accesorio}}</td>
+                                <td>{{ $accs->descripcion_accesorio}}</td>
+                                <td>{{ $accs->numero_parte_accesorio}}</td>
+                        <td>
+                            <form style="display: inline" method="POST" action="{{route('accesorio.destroy', $accs->idaccesorio)}}">
+                            {!!method_field('DELETE')!!}
+                            {!!csrf_field()!!}
+                              <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></span> </button>
+                            </form> 
+                        </td>
+                      </tr>
+                      @endforeach
+                            </tbody>
+                    </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div> <!-- /.Boniparte -->
+                
+
+
+
+
               <!-- /.post -->
 
               <!-- Post -->
@@ -367,22 +476,52 @@
                               </table>
 
                             </div>
+<div class="tab-pane" id="parte">
+                          
+                        <ul class="nav nav-tabs">
+                          <li class="active"><a href="#list" data-toggle="tab">Crear</a></li>
+                        <li><a href="#listo" data-toggle="tab">Listado</a></li>
+                        <li ><a href="#listos" data-toggle="tab">Editar</a></li>
+                        </ul>
+
+                        <div class="row">
+                            <div class="tab-pane active" id="list">
+                          <div class="form-group">
+                            <form role="form" method="POST" action="{{route('parte.store')}}" enctype="multipart/form-data" >
+                                        {!! csrf_field() !!}
+          
+                                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+          
+                                  <div class="form-group">
+                                    Nombre de la parte<br>
+                                    <input type="text" name="nombre_parte" class="form-control">          
+                                    Numero de parte<br>
+                                    <input type="text" name="num_parte" class="form-control"> 
+                                    Descripcion<br>
+                                    <input type="text" name="descripcion" class="form-control"> 
+                                    <div class="form-group">
+                                      <label>Id Equipo</label>
+                                      <input  type="text" name="idequipo" readonly class="form-control select2" id="idequipo" data-live-search="true" value="{{$equipo->idequipo}}">
+                                    </div>
+                                  </div>
+                                        <button class="btn btn-primary" type="submit">Guardar</button>
+                                        <button class="btn btn-danger" type="reset">Cancelar</button>
+          
+                                </div>
+                            </form>
+                        </div>
+                        
+                      </div>
+                      
+                      </div>
+
+                    </div>
 
 
-
-
-
-
-
-
-
-</div>
+                          </div>
 
                   </div><!--nav-tabs-custom-->
                     <div class="box-body col-md-12">
-
-
-
                   <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
                   <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
                   </div>
@@ -391,11 +530,10 @@
                 </div><!--ROW-->
               </div><!--box-body-->
               </div>
-            <div class="tab-pane" id="timeline">
+    
+ <div class="tab-pane" id="timeline">
   <div class="box-body">
   <div class="row">
-
-
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
         <li class="active"><a href="#rutina" data-toggle="tab">Mantenimiento</a></li>
@@ -409,9 +547,6 @@
           <div class="box-body col-md-6">
           <h3 class="box-title"><a href="{{route('ruman.create2',[$equipo->idequipo,$equipo->idsubgrupo])}}"><button class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Copiar rutinas de otro equipo</button></a>
           </div>
-
-
-
           <div class="box-body col-md-6">
         <h3>Preventivo</h3>
         @foreach($ruman as $st)
@@ -445,30 +580,17 @@
 @if ($st->frecuencia_rutina==12)
 <i>Anual</i>     @endif</button></a>
 </h3>
-
-
  @endif
  @endif
 @endforeach
     @endif
           @endif
         @endforeach
-
-
                               </div>
                               <div class="box-body col-md-6">
                             <h3>Correctivo</h3>
-
-
-
                           </div>
-
-
       </div>
-
-
-
-
 
          <div class="tab-pane" id="prueba">
 
@@ -956,8 +1078,9 @@
             </div>
 
 
-
+              <!-- /.manuales -->
           </div>
+          
             <!-- /.box-body -->
             <div class="tab-pane" id="imagen">
 
@@ -994,6 +1117,17 @@
 
             </div>
             <!-- /.tab-pane -->
+            
+            <!-- /.box-body -->
+
+   
+
+
+
+
+
+
+
           </div>
           <!-- /.tab-content -->
         </div>

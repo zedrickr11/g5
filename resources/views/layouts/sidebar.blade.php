@@ -209,18 +209,9 @@
       <li class="treeview">
         <li class=""><a href="{{route('ejecutante.index')}} "><i class="fa fa-angle-right"></i>Ejecutante</a></li>
         <li class=""><a href="{{route('responsable.index')}} "><i class="fa fa-angle-right"></i>Responsable</a></li>
-
-
-
       </li>
     </ul>
   </li>
-
-
-
-
-
-
 </ul>
 </li>
 
@@ -239,7 +230,10 @@
   <ul class="treeview-menu">
     <li id="#"><a href="{{url('/almacen/insumo')}}"><i class="fa fa-angle-right"></i> Insumos</a></li>
     <li id="#"><a href="{{url('almacen/repuesto')}}"><i class="fa fa-angle-right"></i> Repuestos</a></li>
-    <li id="#"><a href="#"><i class="fa fa-angle-right"></i> Herramientas</a></li>
+    <li class=""><a href="{{route('herramienta.index')}} "><i class="fa fa-angle-right"></i>Herramientas</a></li>
+
+   
+
 
 
   </ul>
@@ -500,7 +494,7 @@
 <ul class="treeview-menu">
 <li id="#"><a href="{{url('/almacen/insumo')}}"><i class="fa fa-angle-right"></i> Insumos</a></li>
 <li id="#"><a href="{{url('almacen/repuesto')}}"><i class="fa fa-angle-right"></i> Repuestos</a></li>
-<li id="#"><a href="#"><i class="fa fa-angle-right"></i> Herramientas</a></li>
+<li id="#"><a href="{{route('herramienta.index')}}"><i class="fa fa-angle-right"></i> Herramientas</a></li>
 
 
 </ul>
@@ -574,7 +568,7 @@
     <ul class="treeview-menu">
       <li id="#"><a href="{{url('/almacen/insumo')}}"><i class="fa fa-angle-right"></i> Insumos</a></li>
       <li id="#"><a href="{{url('almacen/repuesto')}}"><i class="fa fa-angle-right"></i> Repuestos</a></li>
-      <li id="#"><a href="#"><i class="fa fa-angle-right"></i> Herramientas</a></li>
+      <li id="#"><a href="{{route('herramienta.index')}}"><i class="fa fa-angle-right"></i> Herramientas</a></li>
   
   
     </ul>
