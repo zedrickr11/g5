@@ -180,4 +180,4 @@ Route::get('equipo/qr/{id}', function ($id) {
     ->where('idequipo','=',$id)
     ->first();
     return view ('equipo.vista.img1',compact('equipo')) ;
-});
+})->middleware('auth');

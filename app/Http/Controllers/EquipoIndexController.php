@@ -93,7 +93,11 @@ class EquipoIndexController extends Controller
       $equipos = DB::table('equipo')
                   ->select('idequipo','nombre_equipo AS equipo')
                   ->get();
-
+      $responsable=DB::table('equipo as e')
+                  ->join('users as u','u.id','e.users_id')
+                  ->select('u.name as nombre')
+                  ->where('idequipo','=',$id)
+                  ->first();
 
       //$equipo=Equipo::findOrFail($id);
       $equipo=DB::table('equipo as e')
@@ -107,7 +111,7 @@ class EquipoIndexController extends Controller
       return view('equipo.vista.index', compact('notificacion','detallerutina','tiporu','permisotrabajo','ruman','equipo','proveedor','unidad_salud','area',
                   'estado','servicio_tecnico','fabricante','hospital','departamento',
                   'region','grupo','subgrupo','tipounidadsalud','TipoManual','EquipoM',
-                                                'Detalle_manual','imagen_equipo','tiporu','permisotrabajo','ruman','areas','tipos','equipos'));
+                                                'Detalle_manual','imagen_equipo','tiporu','permisotrabajo','ruman','areas','tipos','equipos','responsable'));
 
 
       }
