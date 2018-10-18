@@ -482,28 +482,10 @@
                             @if ($st->idrutina_mantenimiento==$noti->rutina_mantenimiento_idrutina_mantenimiento)
                             <p>{{date("Y-m-d",strtotime($noti->start))}}</p>
                             @if(date("Y-m-d",strtotime($noti->start))<= date('Y-m-d'))
-                            <h3 class="box-title"><a href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button class="btn btn-danger"><span class="fa fa-th"></span>    @if ($st->frecuencia_rutina==1)
-                            <i>Mensual</i>     @endif
-                            @if ($st->frecuencia_rutina==2)
-                            <i>Bimestral</i>     @endif
-                            @if ($st->frecuencia_rutina==3)
-                            <i>Trimestral</i>     @endif
-                            @if ($st->frecuencia_rutina==6)
-                            <i>Semestral</i>     @endif
-                            @if ($st->frecuencia_rutina==12)
-                            <i>Anual</i>     @endif</button></a>
+                            <h3 class="box-title"><a href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button class="btn btn-danger"><span class="fa fa-th"></span> CORRECTIVO</button></a>
                             </h3>
                             @else
-                            <h3 class="box-title"><a  href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button class="btn btn-warning"><span class="fa fa-th"></span>    @if ($st->frecuencia_rutina==1)
-                            <i>Mensual</i>     @endif
-                            @if ($st->frecuencia_rutina==2)
-                            <i>Bimestral</i>     @endif
-                            @if ($st->frecuencia_rutina==3)
-                            <i>Trimestral</i>     @endif
-                            @if ($st->frecuencia_rutina==6)
-                            <i>Semestral</i>     @endif
-                            @if ($st->frecuencia_rutina==12)
-                            <i>Anual</i>     @endif</button></a>
+                            <h3 class="box-title"><a  href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button class="btn btn-warning"><span class="fa fa-th"></span> CORRECTIVO</button></a>
                             </h3>
 
 
