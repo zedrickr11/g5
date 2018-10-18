@@ -13,6 +13,8 @@ Route::get('logout','Auth\LoginController@logout');
 
 //usuarios
 Route::resource('usuarios','UsersController');
+Route::post('role',['as'=>'usuarios.role','uses' => 'UsersController@role']);
+Route::get('usuarios/listado/{id}',['as'=>'usuarios.list','uses' => 'UsersController@listRole']);
 
 //equipo
 Route::resource('equipo/fabricante','FabricanteController');
@@ -45,7 +47,10 @@ Route::get('equipo/rutina/ruman/create2/{idequipo}/{idsubgrupo}',[
     'uses' => 'rumanController@create2'
 ]);
 
-
+Route::get('equipo/rutina/ruman/Asignar/{idequipo}/{idsubgrupo}',[
+    'as' => 'ruman.asignar',
+    'uses' => 'rumanController@asignar'
+]);
 
 
 

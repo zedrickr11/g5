@@ -44,7 +44,13 @@
 				<div class="box-body col-md-6">
           <input type="hidden" class="form-control" name="idequipo" value="{{$idequipo}}">
           <input type="hidden" class="form-control" name="idsubgrupo" value="{{$idsubgrupo}}">
+          @foreach($equipo as $carac)
+          @if($idequipo==$carac->idequipo)
+          <input type="hidden" class="form-control" name="idsubgrupo" value="{{$carac->idsubgrupo}}">
 
+         @endif
+      @endforeach
+      @if($idsubgrupo!='CORRECTIVO')
           <div class="form-group">
             <label for="frec_uso_dia_semana">Frecuencia</label>
             <select class="form-control" name="frecuencia_rutina">
@@ -56,17 +62,21 @@
 
             </select>
           </div>
+          @endif
+
+
 
                     <div class="form-group">
-                      <label for="select" class="">Tipo rutina</label>
-                      <select name="idtipo_rutina" class="form-control" id="tipo_rutina">
-                        @foreach($tiporu as $carac)
-                        <option value="{{$carac->idtipo_rutina}}">{{$carac->tipo_rutina}}</option>
-                    @endforeach
-                    </select>
+
+                      <label for="direccion_fab">Tipo rutina</label>
+                      @if($idsubgrupo!='CORRECTIVO')
+                      <input type="hidden" class="form-control"  name="idtipo_rutina" value="1">
+                      <p>PREVENTIVO</p>
+                      @else
+                      <input type="hidden" class="form-control"  name="idtipo_rutina" value="2">
+                      <p>CORRECTIVO</p>
+                      @endif
                     </div>
-
-
 
                     <div class="form-group">
 
@@ -102,15 +112,18 @@
           </script>
 
           <div class="form-group">
-
-            <label for="direccion_fab">Responsable de area de rutina</label>
-            <input type="text" class="form-control" name="responsable_area_rutina_mantenimiento" value="{{old('responsable_area_rutina_mantenimiento')}}">
+            <label for="select" class="">Responsabe de la rutina</label>
+            <select name="responsable_area_rutina_mantenimiento" class="form-control" style="width: 100%" id="responsable_area_rutina_mantenimiento" data-live-search="true">
+              @foreach($users as $carac)
+              <option value="{{$carac->id}}">{{$carac->name}}</option>
+          @endforeach
+          </select>
           </div>
 
 
 
 
-<!--
+@if($idsubgrupo=='CORRECTIVO')
           <div class="form-group">
             <label for="select" class="">Permiso de trabajo</label>
             <select name="permiso_trabajo_idpermiso_trabajo" class="form-control" id="permiso_trabajo_idpermiso_trabajo">
@@ -119,7 +132,7 @@
           @endforeach
           </select>
           </div>
--->
+@endif
 
 
 
@@ -368,6 +381,9 @@ $('#tipo_rutina2').select2({
   $('#pidsubgrupo_rutina').select2({
 
     });
+    $('#responsable_area_rutina_mantenimiento').select2({
+
+      });
   $(document).ready(function(){
     $('#bt_add').click(function(){
       agregar();
@@ -394,7 +410,7 @@ $('#tipo_rutina2').select2({
    comentario_detalle_caracteristica_rutina=$("#pcomentario_detalle_caracteristica_rutina").val();
 
 
-    if (caracteristica!="" && subgrupo!="" && valor!="")
+    if (caracteristica!="" && subgrupo!="" && valor!="" )
     {
         var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idcaracteristica_rutina[]" value="'+idcaracteristica+'">'+caracteristica+'</td><td><input type="hidden" name="idsubgrupo_rutina[]" value="'+idsubgrupo_rutina+'">'+subgrupo_rutina+'</td><td><input type="hidden" name="idvalor_ref_rutina[]" value="'+idvalor_ref_rutina+'">'+valor_ref_rutina+'</td></tr>';
         cont++;
@@ -414,7 +430,7 @@ $('#tipo_rutina2').select2({
 
   function evaluar()
   {
-    if ( valor!="")
+    if ( valor!="" )
     {
       $("#guardar").show();
     }
