@@ -94,6 +94,7 @@ class EquipoIndexController extends Controller
                   ->select('idequipo','nombre_equipo AS equipo')
                   ->get();
 
+
         $partes=DB::table('parte_equipo')
         ->select('idparte_equipo','nombre_parte', 'num_parte', 'descripcion')
         ->where('idequipo','=', $id)
@@ -105,6 +106,16 @@ class EquipoIndexController extends Controller
         ->get();
         //$equipo=Equipo::findOrFail($id);
         $equipo=DB::table('equipo as e')
+
+      $responsable=DB::table('equipo as e')
+                  ->join('users as u','u.id','e.users_id')
+                  ->select('u.name as nombre')
+                  ->where('idequipo','=',$id)
+                  ->first();
+
+      //$equipo=Equipo::findOrFail($id);
+      $equipo=DB::table('equipo as e')
+
         ->join('subgrupo as s','s.idsubgrupo','=','e.idsubgrupo')
         ->join('conf_corr as c','s.idsubgrupo','=','c.idsubgrupo')
         ->join('hospital as h','h.idhospital','=','e.idhospital')
@@ -115,7 +126,9 @@ class EquipoIndexController extends Controller
         return view('equipo.vista.index', compact('notificacion','detallerutina','tiporu','permisotrabajo','ruman','equipo','proveedor','unidad_salud','area',
                   'estado','servicio_tecnico','fabricante','hospital','departamento',
                   'region','grupo','subgrupo','tipounidadsalud','TipoManual','EquipoM',
-                                                'Detalle_manual','imagen_equipo','tiporu','permisotrabajo','ruman','areas','tipos','equipos', 'partes','accesorios'));
+
+                                                'Detalle_manual','imagen_equipo','tiporu','permisotrabajo','ruman','areas','tipos','equipos', 'partes','accesorios','responsable'));
+
 
     }
 

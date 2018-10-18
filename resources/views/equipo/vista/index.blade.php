@@ -42,8 +42,7 @@
             </ul>
 
             <a href="{{route('equipo.ficha',$equipo->idequipo)}}" target="_blank" class="btn btn-success btn-block"><b>Ficha técnica</b></a>
-            <a href="{{route('equipo.rutina',$equipo->idequipo)}}" target="_blank" class="btn btn-primary btn-block"><b>Historial de la rutina</b></a>
-          <a  href="{{route('equipo.vista',$equipo->idequipo)}}" target="_blank" class="btn btn-warning btn-block"><b>Ver Solicitudes</b></a>
+          <!--<a  href="{{route('equipo.vista',$equipo->idequipo)}}" target="_blank" class="btn btn-warning btn-block"><b>Ver Solicitudes</b></a>-->
           </div>
           <!-- /.box-body -->
         </div>
@@ -58,7 +57,7 @@
           <div class="box-body">
             <strong><i class="fa fa-user margin-r-5"></i> Usuario responsable</strong>
 
-            <p>Ing. Gabriel Cifuentes</p>
+            <p>{{ $responsable->nombre }}</p>
             <hr>
             <strong><i class="fa fa-book margin-r-5"></i> Manuales</strong>
 
@@ -99,12 +98,16 @@
         <div class="nav-tabs-custom">
           <ul class="nav nav-tabs">
             <li class="active"><a href="#activity" data-toggle="tab">Inicio</a></li>
+            <li><a href="#fichatecnica" data-toggle="tab">Ficha técnica</a></li>
+
             <li><a href="#solicitudes" data-toggle="tab">Solicitudes</a></li>
             <li><a href="#timeline" data-toggle="tab">Rutinas</a></li>
-            <li><a href="#settings" data-toggle="tab">Actualizar</a></li>
-            <li><a href="#manuales" data-toggle="tab">Manuales</a></li>
-            <li><a href="#imagen" data-toggle="tab">Imágenes</a></li>
-            
+
+            <li><a href="#settings" data-toggle="tab">Datos del equipo</a></li>
+            <li><a href="#multimedia" data-toggle="tab">Multimedia</a></li>
+            <li><a href="#historial" data-toggle="tab">Historial técnico</a></li>
+
+
           </ul>
           <div class="tab-content">
             <div class="active tab-pane" id="activity">
@@ -324,6 +327,10 @@
               <!-- /.post -->
             </div>
             <!-- /.tab-pane -->
+            <div class="tab-pane" id="fichatecnica">
+              <h1>Ficha técnica</h1>
+            </div>
+
 
 <!--SOLICITUDES-->
               <div class="tab-pane" id="solicitudes">
@@ -474,57 +481,17 @@
 
                                 </tbody>
                               </table>
+                              <div class="box-body col-md-12">
 
+                              
+
+                            <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
+                            <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
                             </div>
-<div class="tab-pane" id="parte">
-                          
-                        <ul class="nav nav-tabs">
-                          <li class="active"><a href="#list" data-toggle="tab">Crear</a></li>
-                        <li><a href="#listo" data-toggle="tab">Listado</a></li>
-                        <li ><a href="#listos" data-toggle="tab">Editar</a></li>
-                        </ul>
+                            </div>
+</div>
+                            </div>
 
-                        <div class="row">
-                            <div class="tab-pane active" id="list">
-                          <div class="form-group">
-                            <form role="form" method="POST" action="{{route('parte.store')}}" enctype="multipart/form-data" >
-                                        {!! csrf_field() !!}
-          
-                                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-          
-                                  <div class="form-group">
-                                    Nombre de la parte<br>
-                                    <input type="text" name="nombre_parte" class="form-control">          
-                                    Numero de parte<br>
-                                    <input type="text" name="num_parte" class="form-control"> 
-                                    Descripcion<br>
-                                    <input type="text" name="descripcion" class="form-control"> 
-                                    <div class="form-group">
-                                      <label>Id Equipo</label>
-                                      <input  type="text" name="idequipo" readonly class="form-control select2" id="idequipo" data-live-search="true" value="{{$equipo->idequipo}}">
-                                    </div>
-                                  </div>
-                                        <button class="btn btn-primary" type="submit">Guardar</button>
-                                        <button class="btn btn-danger" type="reset">Cancelar</button>
-          
-                                </div>
-                            </form>
-                        </div>
-                        
-                      </div>
-                      
-                      </div>
-
-                    </div>
-
-
-                          </div>
-
-                  </div><!--nav-tabs-custom-->
-                    <div class="box-body col-md-12">
-                  <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
-                  <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
-                  </div>
                   </form>
 
                 </div><!--ROW-->
@@ -541,16 +508,22 @@
       </ul>
       <div class="tab-content">
         <div class="active tab-pane" id="rutina">
+
           <div class="box-body col-md-6">
-          <h3 class="box-title"><a href="{{route('ruman.create2',[$equipo->idequipo,$equipo->idsubgrupo])}}"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Crear rutina</button></a>
-          </div>
-          <div class="box-body col-md-6">
-          <h3 class="box-title"><a href="{{route('ruman.create2',[$equipo->idequipo,$equipo->idsubgrupo])}}"><button class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Copiar rutinas de otro equipo</button></a>
-          </div>
-          <div class="box-body col-md-6">
+            <table width="280" cellspacing="1" cellpadding="3" border="0" bgcolor="#1E679A">
+            <tr>
+              <td bgcolor="#ffffcc">
+
         <h3>Preventivo</h3>
+        <h3 class="box-title"><a href="{{route('ruman.create2',[$equipo->idequipo,$equipo->idsubgrupo])}}"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Crear nueva rutina</button></a></h3>
+
+
+        <h3 class="box-title"><a href="{{route('ruman.asignar',[$equipo->idequipo,$equipo->idsubgrupo])}}"><button class="btn bg-aqua"><span class="glyphicon glyphicon-plus"></span> Copiar rutina de otro equipo</button></a></h3>
+
+
         @foreach($ruman as $st)
         @if ($st->idequipo==$equipo->idequipo)
+        @if ($st->idtipo_rutina==1)
         @if($st->estado_rutina=='PENDIENTE')
         <i>Fecha a realizar próxima rutina:</i>
         @foreach($notificacion as $noti)
@@ -585,16 +558,70 @@
 @endforeach
     @endif
           @endif
+          @endif
         @endforeach
+
+      </td>
+      </tr>
+</table>
+
                               </div>
-                              <div class="box-body col-md-6">
+
+                                <div class="box-body col-md-6">
+                                  <table width="280" cellspacing="1" cellpadding="3" border="0" bgcolor="#1E679A">
+                                  <tr>
+                                    <td bgcolor="#9AF0F7">
                             <h3>Correctivo</h3>
+                            <h3 class="box-title"><a href="{{route('ruman.create2',[$equipo->idequipo,'CORRECTIVO'])}}"><button class="btn bg-light-blue"><span class="glyphicon glyphicon-plus"></span> Crear rutina correctiva</button></a></h3>
+
+                            @foreach($ruman as $st)
+                            @if ($st->idequipo==$equipo->idequipo)
+                            @if ($st->idtipo_rutina==2)
+                            @if($st->estado_rutina=='PENDIENTE')
+                            <i>Fecha a realizar próxima rutina:</i>
+                            @foreach($notificacion as $noti)
+                            @if ($st->idrutina_mantenimiento==$noti->rutina_mantenimiento_idrutina_mantenimiento)
+                            <p>{{date("Y-m-d",strtotime($noti->start))}}</p>
+                            @if(date("Y-m-d",strtotime($noti->start))<= date('Y-m-d'))
+                            <h3 class="box-title"><a href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button class="btn btn-danger"><span class="fa fa-th"></span> CORRECTIVO</button></a>
+                            </h3>
+                            @else
+                            <h3 class="box-title"><a  href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button class="btn btn-warning"><span class="fa fa-th"></span> CORRECTIVO</button></a>
+                            </h3>
+
+
+                            @endif
+                            @endif
+                            @endforeach
+                            @endif
+                              @endif
+                              @endif
+                            @endforeach
+
+
+                          </td>
+                          </tr>
+                          </table>
                           </div>
       </div>
 
          <div class="tab-pane" id="prueba">
+               <div class="box-body col-md-6">
+           <table width="280" cellspacing="1" cellpadding="3" border="0" bgcolor="#1E679A">
+           <tr>
+             <td bgcolor="#9AF0F7">
+         <h3>Pruebas</h3>
 
 
+
+
+
+
+
+       </td>
+       </tr>
+       </table>
+       </div>
 
             </div>
           </div>        <!--se acabo la rutina mantenimiento -->
@@ -1034,20 +1061,24 @@
               </form>
             </div>
 
-            <div class="tab-pane" id="manuales">
+            <div class="tab-pane" id="multimedia">
 
             <!-- ingresar manual -->
 
             <div class="row">
-                <div class="form-group">
+
                   <form role="form" method="POST" action="{{route('store')}}" enctype="multipart/form-data" >
                               {!! csrf_field() !!}
+                              <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 
-                      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                                <h3>Agregar manual al equipo  <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-plus"></span> </button>
+                                </h3>
+                              </div>
+                      <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
 
                         <div class="form-group">
 
-                          Tipo de manual<br>
+                           <label for="idtipomanual">Tipo de manual</label>
 
                           <select name="idtipomanual" class="form-control" >
                               <option value="0" disabled selected>=== Selecciona un tipo de manual ===</option>
@@ -1058,62 +1089,75 @@
                                @endforeach
                             </select>
 
+
+                            </div>
+
+                            </div>
                           <input type="hidden" name="idequipo" class="form-control" value="{{$equipo->idequipo}}" >
-                          Observacion<br>
-                          <input type="text" name="observacion_detalle_manual" class="form-control">
+                          <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
 
-                          Ingrese manual<br>
+                            <div class="form-group">
+                           <label for="observacion_detalle_manual">Observación</label>
+                          <input type="text" name="observacion_detalle_manual" class="form-control" placeholder="Observación...">
+                        </div>
+
+                        </div>
+                        <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+
+                          <div class="form-group">
+                           <label for="imagen">Ingrese manual</label>
                           <input type="file" name="imagen" class="form-control">
-
+                        </div>
 
                         </div>
 
 
-                              <button class="btn btn-primary" type="submit">Guardar</button>
-                              <button class="btn btn-danger" type="reset">Cancelar</button>
 
-                      </div>
+
+
+
+
                   </form>
-              </div>
-            </div>
+                  </div>
+                  <hr>
 
+            {!! Form::open(array('route'=>'imagen.store','method'=>'POST', 'files'=>true)) !!}
+                  {{Form::token()}}
+                  <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 
-              <!-- /.manuales -->
-          </div>
-          
-            <!-- /.box-body -->
-            <div class="tab-pane" id="imagen">
-
-              {!! Form::open(array('route'=>'imagen.store','method'=>'POST', 'files'=>true)) !!}
-                    {{Form::token()}}
-                    <div class="row">
-
-
-                              <input type="hidden" name="idequipo" value="{{ $equipo->idequipo }}" class="form-control" >
-
-                      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                        <div class="form-group">
-                              <label for="descripcion_imagen">Descripción de la imagen</label>
-                              <input type="text" name="descripcion_imagen"  class="form-control" placeholder="Descripción...">
-                            </div>
-                      </div>
-                      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                        <div class="form-group">
-                              <label for="imagen">Imagen</label>
-                              <input type="file" name="imagen" class="form-control"  >
-                            </div>
-                      </div>
-                      <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-                        <div class="form-group">
-
-                          <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
-                          <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
-
-                            </div>
-                      </div>
+                      <h3>Agregar imagen al equipo  <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-plus"></span> </button>
+                      </h3>
                     </div>
 
-              {!!Form::close()!!}
+                            <input type="hidden" name="idequipo" value="{{ $equipo->idequipo }}" class="form-control" >
+
+                    <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                      <div class="form-group">
+                            <label for="descripcion_imagen">Descripción de la imagen</label>
+                            <input type="text" name="descripcion_imagen"  class="form-control" placeholder="Descripción...">
+                          </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                      <div class="form-group">
+                            <label for="imagen">Imagen</label>
+                            <input type="file" name="imagen" class="form-control"  >
+                          </div>
+                    </div>
+
+                  </div>
+
+            {!!Form::close()!!}
+
+
+
+          </div>
+            <!-- /.box-body -->
+            <div class="tab-pane" id="historial">
+
+              <h1>Historial técnico</h1>
+              <a href="{{route('equipo.rutina',$equipo->idequipo)}}" target="_blank" class="btn btn-primary btn-block"><b>Historial de la rutina</b></a>
+
 
             </div>
             <!-- /.tab-pane -->
@@ -1190,6 +1234,9 @@
   $('#pidtipo').select2({
     theme: "classic"
   });
+
+
+
 
   $(document).ready(function(){
     $('#bt_add').click(function(){

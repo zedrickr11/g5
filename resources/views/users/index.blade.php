@@ -17,7 +17,7 @@
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="box">
               <div class="box-header">
-  			  <h3 class="box-title">Listado de Usuarios  <a href="users/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button></a>
+  			  <h3 class="box-title">Listado de Usuarios  <a href="usuarios/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button></a>
   			  		</h3>
               <a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
               </div>
@@ -40,18 +40,20 @@
                   @foreach ($users as $user)
                   <tr>
                     <td>{{ $user->id}}</td>
-                    <td>{{ $user->name}}</td>
+                    <td><a href="{{route('usuarios.show',$user->id)}}">{{ $user->name}}</a></td>
                     <td>{{ $user->email}}</td>
                     <td>
                       @foreach ($user->roles as $role)
-                        {{ $role->display_name }}
+                        <a href="{{route('usuarios.list',$user->id)}}">{{$role->display_name }}</a>
                       @endforeach
                     </td>
 
 
 
                     <td>
-
+                      <a href="{{route('usuarios.edit',$user->id)}}">
+                        <button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-cog"></span> </button>
+                      </a>
 
 
 

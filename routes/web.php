@@ -13,6 +13,8 @@ Route::get('logout','Auth\LoginController@logout');
 
 //usuarios
 Route::resource('usuarios','UsersController');
+Route::post('role',['as'=>'usuarios.role','uses' => 'UsersController@role']);
+Route::get('usuarios/listado/{id}',['as'=>'usuarios.list','uses' => 'UsersController@listRole']);
 
 //equipo
 Route::resource('equipo/fabricante','FabricanteController');
@@ -45,7 +47,10 @@ Route::get('equipo/rutina/ruman/create2/{idequipo}/{idsubgrupo}',[
     'uses' => 'rumanController@create2'
 ]);
 
-
+Route::get('equipo/rutina/ruman/Asignar/{idequipo}/{idsubgrupo}',[
+    'as' => 'ruman.asignar',
+    'uses' => 'rumanController@asignar'
+]);
 
 
 
@@ -119,6 +124,10 @@ Route::resource('trabajo/seguimiento','SeguimientoController');
 Route::get('trabajo/solicitud/solicitudpdf/{id}', 'SolicitudTrabajoController@ficha')->name('Solicitudes.ficha');//pdf
 
 
+//Tecnicos
+Route::resource('tecnicos/interno','TecnicoInternoController');
+Route::resource('tecnicos/externo','TecnicoExternoController');
+
 //rutinas de mantenimiento
 Route::resource('mantenimiento/areamantenimiento','AreaMantenimientoController');
 
@@ -160,7 +169,8 @@ Route::resource('almacen/herramienta','HerramientaController');
 
 
 //calendario
-Route::get('/json-calendario','CalendarioController@llenarcalendario');
+Route::get('/json-calendarioCorrectivo','CalendarioController@llenarcalendarioCorrectivo');
+Route::get('/json-calendarioPreventivo','CalendarioController@llenarcalendarioPreventivo');
 
 
 //manuales
@@ -172,6 +182,6 @@ Route::get('equipo/qr/{id}', function ($id) {
     $equipo=DB::table('equipo')
     ->select('*')
     ->where('idequipo','=',$id)
-    ->get();
+    ->first();
     return view ('equipo.vista.img1',compact('equipo')) ;
-});
+})->middleware('auth');
