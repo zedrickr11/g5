@@ -149,11 +149,11 @@
                             
                         
                          <div class=" form-group bg-alert">
-
+                          <hr>
                           <h3 class="text-success">Equipo ID:  <strong id="idequipo"></strong></h3>
-                          <hr>
+                          <hr><hr>
                           <h3 class="text-success">Nombre Equipo:  <strong id="nombreequipo"></strong></h3>
-                          <hr>
+                          <hr><hr>
                           <h3 class="text-success"> Tiempo estimado del mantenimiento: <strong id="tiempo" >0</strong><strong> H</strong></h3>
                           <hr>
 
@@ -166,7 +166,7 @@
                        
 
                         <div class="form-group">
-                            <button id="irrutina" target="_blank" class="btn btn-info btn-lg btn-block" data-dismiss="modal">Realizar Rutina</button>
+                            <button id="irrutina" target="_blank" class="btn btn-info btn-lg btn-block" data-dismiss="modal"><strong>Realizar Mantenimiento</strong> </button>
                         </div> 
 
                         <div class="form-group">
