@@ -110,6 +110,8 @@ Route::resource('equipo/rutina/detcaracru','detcaracruController');
 Route::resource('equipo/rutina/detrupru','detrupruController');
 Route::resource('equipo/rutina/AsignarRutina','AsignarRutinaController');
 
+Route::resource('equipo/parte','ParteController');
+Route::resource('equipo/accesorio','AccesorioController');
 
 //solicitud de trabajo
 Route::resource('precaucion/ejecutante','PrecaucionEjecutanteController');
@@ -162,11 +164,13 @@ Route::resource('compras/insumo-ingreso','Ingreso_insumoController');
 Route::resource('compras/repuesto/prov','Proveedor_repuestoController');
 Route::resource('almacen/repuesto','RepuestoController');
 Route::resource('compras/repuesto-ingreso','Ingreso_repuestoController');
+Route::resource('almacen/herramienta','HerramientaController');
 
 
 
 //calendario
-Route::get('/json-calendario','CalendarioController@llenarcalendario');
+Route::get('/json-calendarioCorrectivo','CalendarioController@llenarcalendarioCorrectivo');
+Route::get('/json-calendarioPreventivo','CalendarioController@llenarcalendarioPreventivo');
 
 
 //manuales
@@ -178,6 +182,6 @@ Route::get('equipo/qr/{id}', function ($id) {
     $equipo=DB::table('equipo')
     ->select('*')
     ->where('idequipo','=',$id)
-    ->get();
+    ->first();
     return view ('equipo.vista.img1',compact('equipo')) ;
-});
+})->middleware('auth');

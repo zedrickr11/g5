@@ -20,7 +20,7 @@
           <div class="box">
             <div class="box-header">
 
-			  <h3 class="box-title">Listado de tipo rutina<a href="{{route('tiporu/create')}}"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
+			  <h3 class="box-title">Listado de tipo rutina<a href="tiporu/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
 			  		<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
             </div>
             <!-- /.box-header -->
@@ -76,7 +76,7 @@
               </div>
               {!! $tiporu->appends(['searchText'=>request('searchText')])->links() !!}
 
-  
+
 
             </div>
             <!-- /.box-body -->

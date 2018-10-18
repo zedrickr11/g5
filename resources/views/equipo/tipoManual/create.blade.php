@@ -31,10 +31,8 @@
 						<input type="text" class="form-control" name="nombre_tipo_manual" value="{{old('nombre_tipo_manual')}}">
 					</div>
 				</div>
-				<!-- /.box-body -->
-
+				<!-- /.box-body --><br><br><br><br><br>
 				<div class="box-footer">
-
 					<a href="{{route('tipoManual.index')}}">
 		            <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
 		          	</a>
@@ -44,10 +42,7 @@
 			</form>
 		</div>
 		<!-- /.box -->
-
-
 	</div>
-
 </div>
 </section>
 @endsection
