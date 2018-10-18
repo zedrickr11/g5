@@ -105,7 +105,7 @@ class EquipoIndexController extends Controller
         ->where('idequipo','=',$id)
         ->get();
         //$equipo=Equipo::findOrFail($id);
-        $equipo=DB::table('equipo as e')
+        
 
       $responsable=DB::table('equipo as e')
                   ->join('users as u','u.id','e.users_id')
