@@ -163,9 +163,19 @@ return view("trabajo.solicitud.show",["solicitudes"=>$solicitudes,"detalles"=>$d
      public function ficha($id)
      {
      $solicitudes=DB::table('solitud_trabajo')->where('idsolitud_trabajo', $id)->get();
+     $detalles=DB::table('detalle_tipo_trabajo as d')
+          ->join('tipo_trabajo as t','d.idtipo_trabajo','=','t.idtipo_trabajo')
+          ->select('t.nombre_tipo as tipo','d.descrpcion_detalle_tipo_trabajo','d.estado')
+          ->where('d.idsolitud_trabajo','=',$id)
+          ->get();
+     $detalless=DB::table('detalle_area_matenimiento as d')
+            ->join('area_mantenimiento as t','d.idarea_mantenimiento','=','t.idarea_mantenimiento')
+            ->select('t.area_mantenimiento as area')
+            ->where('d.idsolitud_trabajo','=',$id)
+            ->get();
      //$view= view("equipo.caracteristica.fichatecnica.show",compact('equipo'));
 
-         $pdf = PDF::loadView("trabajo.solicitudpdf.show",compact('solicitudes'));
+         $pdf = PDF::loadView("trabajo.solicitudpdf.show",["solicitudes"=>$solicitudes,"detalles"=>$detalles,"detalless"=>$detalless]);
 
          return $pdf->stream('SolicitudTrabajo.pdf');
          //return view("equipo.caracteristica.fichatecnica.show",compact('equipo'));
