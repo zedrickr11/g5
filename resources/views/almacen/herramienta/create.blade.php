@@ -3,12 +3,12 @@
 
 <section class="content-header">
       <h1>
-        Equipo
-        <small>Tipo de Manual</small>
+        Almacen
+        <small>Herramienta</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Equipo</a></li>
-        <li class="active">Tipo de Manual</li>
+        <li><a href="#"><i class="fa fa-tv"></i>Almacen</a></li>
+        <li class="active">Herramienta</li>
       </ol>
 </section>
 	<section class="content">
@@ -18,23 +18,26 @@
 		<!-- general form elements -->
 		<div class="box box-success">
 			<div class="box-header with-border">
-				<h3 class="box-title">Editar Tipo de Manual</h3>
+				<h3 class="box-title">Nueva Herramienta</h3>
 			</div>
 			<!-- /.box-header -->
 			<!-- form start -->
-			<form role="form" method="POST" action="{{route('tipoManual.update',$tipoManuals->idtipomanual)}}" >
-				{!!method_field('PUT')!!}
-				{!!csrf_field()!!}
+			<form role="form" method="POST" action="{{route('herramienta.store')}}" >
+					{!! csrf_field() !!}
+
 				<div class="box-body col-md-6">
 					<div class="form-group">
-						<label for="est">Estado del Equipo</label>
-						<input type="text" class="form-control" name="nombre_tipo_manual" value="{{$tipoManuals->nombre_tipo_manual}}">
+						<label for="tip">Nombre de Herramienta</label>
+						<input type="text" class="form-control" name="herramienta" value="{{old('herramienta')}}">
 					</div>
 				</div>
 				<!-- /.box-body -->
-				<br><br><br><br><br>
+				<br>				<br>
+				<br>
+				<br>
+				<br>
 				<div class="box-footer">
-					<a href="{{route('tipoManual.index')}}">
+					<a href="{{route('herramienta.index')}}">
 		            <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
 		          	</a>
 		          	<button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
@@ -43,10 +46,7 @@
 			</form>
 		</div>
 		<!-- /.box -->
-
-
 	</div>
-
 </div>
 </section>
 @endsection
