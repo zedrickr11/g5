@@ -50,6 +50,7 @@
 
          @endif
       @endforeach
+      @if($idsubgrupo!='CORRECTIVO')
           <div class="form-group">
             <label for="frec_uso_dia_semana">Frecuencia</label>
             <select class="form-control" name="frecuencia_rutina">
@@ -61,6 +62,7 @@
 
             </select>
           </div>
+          @endif
 
 
 
@@ -111,7 +113,7 @@
 
           <div class="form-group">
             <label for="select" class="">Responsabe de la rutina</label>
-            <select name="responsable_area_rutina_mantenimiento" class="form-control" style="width: 100%" id="pidsubgrupo_rutina" data-live-search="true">
+            <select name="responsable_area_rutina_mantenimiento" class="form-control" style="width: 100%" id="responsable_area_rutina_mantenimiento" data-live-search="true">
               @foreach($users as $carac)
               <option value="{{$carac->id}}">{{$carac->name}}</option>
           @endforeach
@@ -379,6 +381,9 @@ $('#tipo_rutina2').select2({
   $('#pidsubgrupo_rutina').select2({
 
     });
+    $('#responsable_area_rutina_mantenimiento').select2({
+
+      });
   $(document).ready(function(){
     $('#bt_add').click(function(){
       agregar();
