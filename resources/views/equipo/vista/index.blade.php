@@ -403,19 +403,25 @@
       </ul>
       <div class="tab-content">
         <div class="active tab-pane" id="rutina">
-          <div class="box-body col-md-6">
-          <h3 class="box-title"><a href="{{route('ruman.create2',[$equipo->idequipo,$equipo->idsubgrupo])}}"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Crear rutina</button></a>
-          </div>
-          <div class="box-body col-md-6">
-          <h3 class="box-title"><a href="{{route('ruman.create2',[$equipo->idequipo,$equipo->idsubgrupo])}}"><button class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Copiar rutinas de otro equipo</button></a>
-          </div>
+
 
 
 
           <div class="box-body col-md-6">
+            <table width="280" cellspacing="1" cellpadding="3" border="0" bgcolor="#1E679A">
+            <tr>
+              <td bgcolor="#ffffcc">
+
         <h3>Preventivo</h3>
+        <h3 class="box-title"><a href="{{route('ruman.create2',[$equipo->idequipo,$equipo->idsubgrupo])}}"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Crear nueva rutina</button></a></h3>
+
+
+        <h3 class="box-title"><a href="{{route('ruman.asignar',[$equipo->idequipo,$equipo->idsubgrupo])}}"><button class="btn bg-aqua"><span class="glyphicon glyphicon-plus"></span> Copiar rutina de otro equipo</button></a></h3>
+
+
         @foreach($ruman as $st)
         @if ($st->idequipo==$equipo->idequipo)
+        @if ($st->idtipo_rutina==1)
         @if($st->estado_rutina=='PENDIENTE')
         <i>Fecha a realizar próxima rutina:</i>
         @foreach($notificacion as $noti)
@@ -452,15 +458,49 @@
 @endforeach
     @endif
           @endif
+          @endif
         @endforeach
-
+      </td>
+      </tr>
+</table>
 
                               </div>
-                              <div class="box-body col-md-6">
+
+                                <div class="box-body col-md-6">
+                                  <table width="280" cellspacing="1" cellpadding="3" border="0" bgcolor="#1E679A">
+                                  <tr>
+                                    <td bgcolor="#9AF0F7">
                             <h3>Correctivo</h3>
+                            <h3 class="box-title"><a href="{{route('ruman.create2',[$equipo->idequipo,'CORRECTIVO'])}}"><button class="btn bg-light-blue"><span class="glyphicon glyphicon-plus"></span> Crear rutina correctiva</button></a></h3>
+
+                            @foreach($ruman as $st)
+                            @if ($st->idequipo==$equipo->idequipo)
+                            @if ($st->idtipo_rutina==2)
+                            @if($st->estado_rutina=='PENDIENTE')
+                            <i>Fecha a realizar próxima rutina:</i>
+                            @foreach($notificacion as $noti)
+                            @if ($st->idrutina_mantenimiento==$noti->rutina_mantenimiento_idrutina_mantenimiento)
+                            <p>{{date("Y-m-d",strtotime($noti->start))}}</p>
+                            @if(date("Y-m-d",strtotime($noti->start))<= date('Y-m-d'))
+                            <h3 class="box-title"><a href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button class="btn btn-danger"><span class="fa fa-th"></span> CORRECTIVO</button></a>
+                            </h3>
+                            @else
+                            <h3 class="box-title"><a  href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button class="btn btn-warning"><span class="fa fa-th"></span> CORRECTIVO</button></a>
+                            </h3>
 
 
+                            @endif
+                            @endif
+                            @endforeach
+                            @endif
+                              @endif
+                              @endif
+                            @endforeach
 
+
+                          </td>
+                          </tr>
+                          </table>
                           </div>
 
 
@@ -471,8 +511,22 @@
 
 
          <div class="tab-pane" id="prueba">
+               <div class="box-body col-md-6">
+           <table width="280" cellspacing="1" cellpadding="3" border="0" bgcolor="#1E679A">
+           <tr>
+             <td bgcolor="#9AF0F7">
+         <h3>Pruebas</h3>
 
 
+
+
+
+
+
+       </td>
+       </tr>
+       </table>
+       </div>
 
             </div>
           </div>        <!--se acabo la rutina mantenimiento -->

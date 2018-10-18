@@ -51,7 +51,19 @@
 
         </div>
 
+        <div class="form-group">
 
+          <label for="direccion_fab">ID Equipo</label>
+          <p>{{$ruman->idequipo}}</p>
+          </div>
+          <div class="form-group">
+
+            <label for="direccion_fab">Nombre de equipo</label>
+
+                                                      @foreach($equipo as $dets)
+                                                        @if ($dets->idequipo==$ruman->idequipo)
+                                              <p>{{$dets->nombre_equipo}}</p>  @endif @endforeach
+            </div>
 
                   <div class="form-group">
 
@@ -74,7 +86,11 @@
         <div class="form-group">
 
           <label for="direccion_fab">Responsable de area de rutina</label>
-          <p>{{$ruman->responsable_area_rutina_mantenimiento}}</p>
+          @foreach($users as $us)
+          @if($us->id==$ruman->responsable_area_rutina_mantenimiento)
+          <p>{{$us->name}}</p>
+@endif
+          @endforeach
         </div>
 
 
@@ -85,6 +101,19 @@
 
           <label for="direccion_fab">Estado rutina</label>
           <p>{{$ruman->estado_rutina}}</p>
+
+        </div>
+        <div class="form-group">
+          <label for="select" class="">Permiso de trabajo</label>
+          <br>
+
+          @foreach($permisotrabajo as $hosp)
+                   @if ($hosp->idpermiso_trabajo==$ruman->permiso_trabajo_idpermiso_trabajo)
+                   <p>{{$hosp->num_permiso}}</p>
+
+
+                 @endif
+                  @endforeach
 
         </div>
         <a href="{{route('ruman.index')}}">
