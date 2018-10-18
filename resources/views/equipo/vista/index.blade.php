@@ -365,7 +365,13 @@
 
                                 </tbody>
                               </table>
+                              <div class="box-body col-md-12">
 
+                              
+
+                            <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
+                            <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
+                            </div>
                             </div>
 
 
@@ -379,13 +385,7 @@
 </div>
 
                   </div><!--nav-tabs-custom-->
-                    <div class="box-body col-md-12">
 
-
-
-                  <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
-                  <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
-                  </div>
                   </form>
 
                 </div><!--ROW-->
@@ -1110,6 +1110,9 @@
   $('#pidtipo').select2({
     theme: "classic"
   });
+
+
+
 
   $(document).ready(function(){
     $('#bt_add').click(function(){
