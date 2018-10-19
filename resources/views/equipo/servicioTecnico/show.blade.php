@@ -49,12 +49,11 @@
             			<p>{{$servicioTecnicos->nombre_empresa_sevicio_tecnico}}</p>
 					</div>
 				</div>
-				<!-- /.box-body -->
+				<!-- /.box-body --><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 				<div class="box-footer">
-
-					<a href="{{route('servicioTecnico.index')}}">
-            <button type="button" name="atras" class="btn btn-warning">Atrás</button>
-          </a>
+					<a href="{{route('tipoManual.index')}}">
+		            <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
+		          	</a>
 				</div>
 
 		</div>

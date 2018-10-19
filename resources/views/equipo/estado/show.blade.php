@@ -18,7 +18,7 @@
 		<!-- general form elements -->
 		<div class="box box-success">
 			<div class="box-header with-border">
-				<h3 class="box-title">Nuevo Estado</h3>
+				<h3 class="box-title">Detalle de Estado</h3>
 			</div>
 			<!-- /.box-header -->
 			<!-- form start -->
@@ -31,12 +31,11 @@
 				</div>
 				<!-- /.box-body -->
 				<div class="box-footer">
-
-					<a href="{{route('estado.index')}}">
-            <button type="button" name="atras" class="btn btn-warning">Atrás</button>
-          </a>
-				</div>
-
+						<a href="{{route('estado.index')}}">
+									<button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
+									</a>
+								
+					</div>
 		</div>
 		<!-- /.box -->
 

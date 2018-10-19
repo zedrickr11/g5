@@ -32,6 +32,7 @@
                     <li class="active"><a href="#tab_1-1" data-toggle="tab">Rutina</a></li>
               <li ><a href="#tab_2-2" data-toggle="tab">Detalle</a></li>
               <li ><a href="#tab_3-3" data-toggle="tab">Programación </a></li>
+              <li ><a href="#tab_4-4" data-toggle="tab">Agregar técnico </a></li>
 
             </ul>
 
@@ -235,7 +236,7 @@
                 <a onclick="mostar2();">
                   <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
                 </a>
-                <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
+
                 <i id="guardar">
                   <a onclick="mostar3();" data-toggle="tab" aria-expanded="true">
                     <button type="button" name="adelante" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-right"></span> </button>
@@ -266,7 +267,7 @@
           <div class="input-group-addon">
             <i class="fa fa-calendar"></i>
           </div>
-          <input type="date" class="form-control pull-right" style="width: 100%" id="fechainicio" name="start"  min="{{date("Y-m-d")}}" value="{{date("Y-m-d")}}">
+          <input type="datetime-local" class="form-control pull-right" style="width: 100%" id="fechainicio" name="start"  min="" value="" required>
         </div>
 
     </div>
@@ -277,7 +278,7 @@
           <div class="input-group-addon">
             <i class="fa fa-calendar"></i>
           </div>
-          <input type="date" class="form-control pull-right" style="width: 100%" id="fechafinal" name="end" min="" value="{{date("Y-m-d")}}">
+          <input type="datetime-local" class="form-control pull-right" style="width: 100%" id="fechafinal" name="end" min="" value="" required>
         </div>
 
     </div>
@@ -292,10 +293,10 @@
           <a onclick="mostar();">
             <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
           </a>
-          <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
-          <i>
-            <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
-          </i>
+
+          <a onclick="mostar4();" data-toggle="tab" aria-expanded="true">
+          <button type="button" name="adelante" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-right"></span> </button>
+          </a>
         </div>
 
   </div>
@@ -304,6 +305,101 @@
 
 </div>
 </div>
+<div class="tab-pane" id="tab_4-4">
+  <div class="box-body">
+    <div class="row">
+	<div class="box-body col-md-6">
+<h3>Técnico interno </h3>
+    <div class="form-group">
+      <select name="tecnicointerno" class="form-control" style="width: 100%" id="tecnicointerno" data-live-search="true">
+        @foreach($tecnicointerno as $carac)
+        <option value="{{$carac->idtecnico}}">{{$carac->nombre_tecnico}}</option>
+    @endforeach
+    </select>
+    </div>
+    <div class="form-group">
+      <button type="button" id="bt_add2" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
+
+    </div>
+    <table id="detalles2" class="table table-striped table-bordered table-condensed table-hover">
+        <thead style="background-color:#2ab863">
+            <th>Opciones</th>
+            <th>Técnico interno</th>
+
+        </thead>
+        <tfoot>
+
+        </tfoot>
+        <tbody>
+
+        </tbody>
+    </table>
+<br>
+<br>
+
+
+
+
+</div>
+
+<div class="box-body col-md-6">
+<h3>Técnico externo </h3>
+  <div class="form-group">
+    <select name="tecnicoexterno" class="form-control" style="width: 100%" id="tecnicoexterno" data-live-search="true">
+      @foreach($tecnicoexterno as $carac)
+      <option value="{{$carac->idtecnico_externo}}">{{$carac->nombre_tecnico_externo}}</option>
+  @endforeach
+  </select>
+  </div>
+  <div class="form-group">
+    <button type="button" id="bt_add3" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
+
+  </div>
+      <table id="detalles3" class="table table-striped table-bordered table-condensed table-hover">
+          <thead style="background-color:#2ab863">
+              <th>Opciones</th>
+              <th>Técnico externo</th>
+
+          </thead>
+          <tfoot>
+
+          </tfoot>
+          <tbody>
+
+          </tbody>
+      </table>
+
+
+
+
+
+
+</div>
+
+
+    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+<a onclick="mostar3();">
+  <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
+</a>
+
+
+
+    <i>
+      <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
+    </i>
+
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+
+
+
       </div>
       </div>
 
@@ -359,6 +455,9 @@ function mostar2(){
 function mostar3(){
   $('.nav-tabs a[href="#tab_3-3"]').tab('show');
 }
+function mostar4(){
+  $('.nav-tabs a[href="#tab_4-4"]').tab('show');
+}
 $('#tipo_rutina').select2({
 
 });
@@ -387,6 +486,17 @@ $('#tipo_rutina2').select2({
   $(document).ready(function(){
     $('#bt_add').click(function(){
       agregar();
+    });
+  });
+  $(document).ready(function(){
+    $('#bt_add2').click(function(){
+
+      agregar2();
+    });
+  });
+  $(document).ready(function(){
+    $('#bt_add3').click(function(){
+      agregar3();
     });
   });
 
@@ -446,6 +556,72 @@ $('#tipo_rutina2').select2({
     evaluar();
 
   }
+
+
+  //tecnico interno
+  var cont2=0;
+  total2=0;
+  subtotal2=[];
+  function agregar2()
+  {
+    idtecnicointerno=$("#tecnicointerno").val();
+    tecnicointerno=$("#tecnicointerno option:selected").text();
+
+    if (tecnicointerno!="" )
+    {
+        var fila2='<tr class="selected" id="fila2'+cont2+'"><td><button type="button" class="btn btn-warning" onclick="eliminar2('+cont2+');">X</button></td><td><input type="hidden" name="tecnicointerno[]" value="'+idtecnicointerno+'">'+tecnicointerno+'</td></tr>';
+        cont2++;
+
+
+
+        $('#detalles2').append(fila2);
+    }
+    else
+    {
+        alert("Error al ingresar el técnico interno, revise los datos de técnico interno");
+    }
+  }
+  function eliminar2(index){
+
+   $("#fila2" + index).remove();
+   evaluar2();
+
+ }
+// tecnico externo
+
+
+var cont3=0;
+total3=0;
+subtotal3=[];
+function agregar3()
+{
+  idtecnicoexterno=$("#tecnicoexterno").val();
+  tecnicoexterno=$("#tecnicoexterno option:selected").text();
+
+  if (tecnicoexterno!="" )
+  {
+      var fila3='<tr class="selected" id="fila3'+cont3+'"><td><button type="button" class="btn btn-warning" onclick="eliminar3('+cont3+');">X</button></td><td><input type="hidden" name="tecnicoexterno[]" value="'+idtecnicoexterno+'">'+tecnicoexterno+'</td></tr>';
+      cont3++;
+
+
+
+      $('#detalles3').append(fila3);
+  }
+  else
+  {
+      alert("Error al ingresar el técnico externo, revise los datos de técnico externo");
+  }
+}
+function eliminar3(index){
+
+ $("#fila3" + index).remove();
+ evaluar3();
+
+}
+
+
+
+
   $('#liCompras').addClass("treeview active");
   $('#liIngresos').addClass("active");
 </script>

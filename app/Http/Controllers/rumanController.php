@@ -22,6 +22,14 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use App\User;
+use App\TecnicoExterno;
+use App\TecnicoInterno;
+use App\DetalleTecnicoInterno;
+use App\DetalleTecnicoExterno;
+use App\Detalle_ingreso_insumo;
+use App\Insumo;
+use App\Repuesto;
+use App\Herramienta;
 class rumanController extends Controller
 {
   function __construct()
@@ -63,7 +71,11 @@ class rumanController extends Controller
    * @return \Illuminate\Http\Response
    */
   public function create2($idequipo,$idsubgrupo)
-  { $users=User::all();
+  {
+
+    $tecnicoexterno=TecnicoExterno::all();
+    $tecnicointerno=TecnicoInterno::all();
+    $users=User::all();
     $tiporu=tiporu::all();
     $equipo=Equipo::all();
     $caracru=caracru::all();
@@ -73,7 +85,7 @@ class rumanController extends Controller
         $subgrupo=Subgrupo::all();
         $permisotrabajo=PermisoTrabajo::all();
 
-    return view("equipo.rutina.ruman.create",compact('users','idsubgrupo','idequipo','subgrupo','tiporu','equipo','permisotrabajo','caracru','subru','valrefru','ruman'));
+    return view("equipo.rutina.ruman.create",compact('tecnicoexterno','tecnicointerno','users','idsubgrupo','idequipo','subgrupo','tiporu','equipo','permisotrabajo','caracru','subru','valrefru','ruman'));
 
 
   //  return view("equipo.rutina.ruman.create",compact('tiporu','equipo'));
@@ -190,10 +202,29 @@ if($request->get('enviar')=='enviado'){
        $noti->end=$request->get('end');
        $noti->rutina_mantenimiento_idrutina_mantenimiento=$ruman->idrutina_mantenimiento;
        $noti->estado_notificacion='0';
-       $noti->backgroundColor='black';
+       $noti->backgroundColor='yellow';
        $noti->textColor='white';
        $noti->title=$request->get('idequipo');
        $noti->save();
+
+
+
+       //tecnico TecnicoInterno
+/*  $tecnicointerno = $request->get('tecnicointerno');
+       for($cont2 = 0; $cont2 <count($tecnicointerno); $cont2++){
+
+       $det = new DetalleTecnicoInterno();
+       $det->idrutina_mantenimiento=$ruman->idrutina_mantenimiento;
+       $det->idtecnico=$tecnicointerno[$cont2];
+       $det->save();
+
+       }
+
+*/
+
+
+
+       //fin tecnico interno
 
         $cont = 0;
 
@@ -218,6 +249,46 @@ if($request->get('enviar')=='enviado'){
       {
           DB::rollback();
       }
+      try{
+            DB::beginTransaction();
+
+            $tecnicointerno = $request->get('tecnicointerno');
+                  for($cont2 = 0; $cont2 <count($tecnicointerno); $cont2++){
+
+                  $det = new DetalleTecnicoInterno();
+                  $det->idrutina_mantenimiento=$ruman->idrutina_mantenimiento;
+                  $det->idtecnico=$tecnicointerno[$cont2];
+                  $det->save();
+
+                  }
+
+            DB::commit();
+
+          }catch(\Exception $e)
+          {
+              DB::rollback();
+          }
+
+          try{
+                DB::beginTransaction();
+
+                $tecnicoexterno = $request->get('tecnicoexterno');
+                      for($cont3 = 0; $cont3 <count($tecnicoexterno); $cont3++){
+
+                      $det2 = new DetalleTecnicoExterno();
+                      $det2->idrutina_mantenimiento=$ruman->idrutina_mantenimiento;
+                      $det2->idtecnico_externo=$tecnicoexterno[$cont3];
+                      $det2->save();
+
+                      }
+
+                DB::commit();
+
+              }catch(\Exception $e)
+              {
+                  DB::rollback();
+              }
+
 
     }
 //  return view('actualizar',$request->get('idequipo'));
@@ -281,7 +352,11 @@ if($request->get('enviar')=='enviado'){
    * @return \Illuminate\Http\Response
    */
   public function edit($id)
-  {  $users=User::all();
+  {
+    $herramienta=Herramienta::all();
+    $repuesto=Repuesto::all();
+       $insumo=Insumo::all();
+     $users=User::all();
     $notificacion=Notificacion::all();
     $caracru=caracru::all();
     $subru=subru::all();
@@ -291,7 +366,7 @@ if($request->get('enviar')=='enviado'){
     $equipo=Equipo::all();
   $ruman=ruman::findOrFail($id);
       $permisotrabajo=PermisoTrabajo::all();
-    return view('equipo.rutina.ruman.edit', compact('users','notificacion','valrefru','subru','caracru','detallerutina','ruman','tiporu','equipo','permisotrabajo'));
+    return view('equipo.rutina.ruman.edit', compact('herramienta','repuesto','insumo','users','notificacion','valrefru','subru','caracru','detallerutina','ruman','tiporu','equipo','permisotrabajo'));
   }
 
   /**
@@ -304,6 +379,10 @@ if($request->get('enviar')=='enviado'){
   public function update(rumanFormRequest $request, $id)
   {
     ruman::findOrFail($id)->update($request->all());
+    DB::table('notificacion')
+                ->where('rutina_mantenimiento_idrutina_mantenimiento',$id)
+                ->update(['backgroundColor' =>  $request->get('color')]);
+
 
     $cont = 0;
     $rutinatipo=$request->get('rutinatipo');
@@ -361,7 +440,7 @@ if("$estado_rutina"=="REALIZADO" and $rutinatipo==1){
          $noti->end=$request->get('end22');
          $noti->rutina_mantenimiento_idrutina_mantenimiento=$ruman->idrutina_mantenimiento;
          $noti->estado_notificacion='0';
-         $noti->backgroundColor='black';
+         $noti->backgroundColor='yellow';
          $noti->textColor='white';
          $noti->title=$request->get('idequipo');
          $noti->save();

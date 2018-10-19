@@ -56,11 +56,13 @@
 					</div>
 
 				</div>
-				<!-- /.box-body -->
-
+				<!-- /.box-body --><br><br><br><br><br><br><br><br><br>
+				<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 				<div class="box-footer">
-
-					<input class="btn btn-primary" type="submit" name="" value="Guardar">
+					<a href="{{route('servicioTecnico.index')}}">
+		            <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
+		          	</a>
+		          	<button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
 				</div>
 			</form>
 		</div>
