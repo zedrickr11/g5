@@ -128,22 +128,22 @@
                           <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                             <div class="form-group">
                               <label for="nombre_parte">Parte</label>
-                              <input type="text" name="nombre_parte" class="form-control"> 
+                              <input type="text" name="nombre_parte" class="form-control">
                             </div>
-                          </div> 
+                          </div>
                           <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
-                              <div class="form-group">        
+                              <div class="form-group">
                               <label for="num_parte">No. de parte </label>
-                              <input type="number" name="num_parte" class="form-control"> 
+                              <input type="number" name="num_parte" class="form-control">
                             </div>
                           </div>
                               <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                                   <div class="form-group">
                               <label for="descripcion">Descripción </label>
 
-                             
-                              <input type="text" name="descripcion" class="form-control"> 
-                              
+
+                              <input type="text" name="descripcion" class="form-control">
+
                                 <input  type="hidden" name="idequipo" readonly class="form-control" value="{{$equipo->idequipo}}">
                               </div>
                               </div>
@@ -153,7 +153,7 @@
                               <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
                             </div>
                           </div>
-                            
+
                   </form>
                 </div>
                   <div class="row">
@@ -162,7 +162,7 @@
                         <table id="tabla" class="table table-bordered table-striped">
                           <thead>
                           <tr>
-                            
+
                             <th>Parte</th>
                             <th>No. Parte</th>
                             <th>Descripción</th>
@@ -172,7 +172,7 @@
                           <tbody>
                             @foreach ($partes as $par)
                             <tr>
-                            
+
                               <td>{{ $par->nombre_parte}}</td>
                               <td>{{ $par->num_parte}}</td>
                               <td>{{ $par->descripcion}}</td>
@@ -181,7 +181,7 @@
                           {!!method_field('DELETE')!!}
                           {!!csrf_field()!!}
                             <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></span> </button>
-                          </form> 
+                          </form>
                       </td>
                     </tr>
                     @endforeach
@@ -213,25 +213,25 @@
                             <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                               <div class="form-group">
                                 <label for="nombre_accesorio">Accesorio</label>
-                                <input type="text" name="nombre_accesorio" class="form-control">    
+                                <input type="text" name="nombre_accesorio" class="form-control">
                               </div>
-                            </div>      
-                              
-                                
+                            </div>
+
+
                                   <input  type="hidden" name="idequipo" readonly class="form-control "  value="{{$equipo->idequipo}}">
                                   <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                                       <div class="form-group">
                                       <label for="numero_parte_accesorio">No. Accesorio</label>
-                                    <input type="number" name="numero_parte_accesorio" class="form-control"> 
+                                    <input type="number" name="numero_parte_accesorio" class="form-control">
                                   </div>
-                                </div> 
+                                </div>
                                 <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                                     <div class="form-group">
                                     <label for="nombre_accesorio">Descripción</label>
-    
+
                                     <input type="text" name="descripcion_accesorio" class="form-control">
                                   </div>
-                                </div> 
+                                </div>
                                 <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
                                     <div class="form-group">
                                 <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
@@ -240,14 +240,14 @@
                             </div>
                           </form>
                           </div>
-                            
+
                     <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
                           <table id="tabla" class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                              
+
                               <th>Accesorio</th>
                               <th>No. Accesorio</th>
                               <th>Descripción</th>
@@ -257,7 +257,7 @@
                             <tbody>
                               @foreach ($accesorios as $accs)
                               <tr>
-                               
+
                                 <td>{{ $accs->nombre_accesorio}}</td>
                                 <td>{{ $accs->descripcion_accesorio}}</td>
                                 <td>{{ $accs->numero_parte_accesorio}}</td>
@@ -266,7 +266,7 @@
                             {!!method_field('DELETE')!!}
                             {!!csrf_field()!!}
                               <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></span> </button>
-                            </form> 
+                            </form>
                         </td>
                       </tr>
                       @endforeach
@@ -276,7 +276,7 @@
                       </div>
                     </div>
                   </div> <!-- /.Boniparte -->
-                
+
 
 
 
@@ -483,7 +483,7 @@
                               </table>
                               <div class="box-body col-md-12">
 
-                              
+
 
                             <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
                             <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
@@ -497,7 +497,7 @@
                 </div><!--ROW-->
               </div><!--box-body-->
               </div>
-    
+
  <div class="tab-pane" id="timeline">
   <div class="box-body">
   <div class="row">
@@ -530,7 +530,9 @@
         @if ($st->idrutina_mantenimiento==$noti->rutina_mantenimiento_idrutina_mantenimiento)
         <p>{{date("Y-m-d",strtotime($noti->start))}}</p>
         @if(date("Y-m-d",strtotime($noti->start))<= date('Y-m-d'))
-        <h3 class="box-title"><a href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button class="btn btn-danger"><span class="fa fa-th"></span>    @if ($st->frecuencia_rutina==1)
+
+        <a href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}">
+          <i class="box-title"><i href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button class="btn btn-danger"><span class="fa fa-th"></span>    @if ($st->frecuencia_rutina==1)
         <i>Mensual</i>     @endif
         @if ($st->frecuencia_rutina==2)
      <i>Bimestral</i>     @endif
@@ -539,10 +541,14 @@
      @if ($st->frecuencia_rutina==6)
   <i>Semestral</i>     @endif
   @if ($st->frecuencia_rutina==12)
-   <i>Anual</i>     @endif</button></a>
- </h3>
+   <i>Anual</i>     @endif</button></i>
+ </i></a>
+  <br>
 @else
-<h3 class="box-title"><a  href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button class="btn btn-warning"><span class="fa fa-th"></span>    @if ($st->frecuencia_rutina==1)
+
+
+        <a href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}">
+<i class="box-title"><i  href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button class="btn btn-warning"><span class="fa fa-th"></span>    @if ($st->frecuencia_rutina==1)
 <i>Mensual</i>     @endif
 @if ($st->frecuencia_rutina==2)
 <i>Bimestral</i>     @endif
@@ -555,6 +561,7 @@
 </h3>
  @endif
  @endif
+
 @endforeach
     @endif
           @endif
@@ -1161,10 +1168,10 @@
 
             </div>
             <!-- /.tab-pane -->
-            
+
             <!-- /.box-body -->
 
-   
+
 
 
 
