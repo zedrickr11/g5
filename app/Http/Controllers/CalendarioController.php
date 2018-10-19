@@ -42,7 +42,7 @@ class CalendarioController extends Controller
           
           
 
-          dd( head($eventos));
+          
 
           return response()->json($eventos);
 
