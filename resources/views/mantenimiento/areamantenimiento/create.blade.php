@@ -4,11 +4,11 @@
 <section class="content-header">
 <h1>
 Mantenimiento
-<small>Areas de Mantenimiento</small>
+<small>Área de mantenimiento</small>
 </h1>
 <ol class="breadcrumb">
 <li><a href="#"><i class="fa 	fa fa-building-o"></i> Mantenimiento</a></li>
-<li class="active">Area</li>
+<li class="active">Área</li>
 </ol>
 </section>
 <section class="content">
@@ -18,7 +18,7 @@ Mantenimiento
 <!-- general form elements -->
 <div class="box box-success">
 <div class="box-header with-border">
-<h3 class="box-title">Nueva area de mantenimiento</h3>
+<h3 class="box-title">Nueva área de mantenimiento</h3>
 </div>
 @if (count($errors)>0)
 <div class="alert alert-danger">
@@ -35,7 +35,7 @@ Mantenimiento
 {!! csrf_field() !!}
 <div class="box-body col-md-12">
 <div class="form-group">
-<label for="direccion_fab">Nombre del area</label>
+<label for="direccion_fab">Nombre del área</label>
 <input type="text" class="form-control" name="area_mantenimiento" value="{{old('area_mantenimiento')}}">
 </div>
 </div>

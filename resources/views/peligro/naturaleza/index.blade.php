@@ -3,7 +3,7 @@
 <section class="content-header">
   <h1>
   Peligro
-  <small>Naturaleza Peligro</small>
+  <small>Naturaleza peligro</small>
   </h1>
   <ol class="breadcrumb">
   <li><a href="#"><i class="fa fa-times-circle-o"></i> Peligro</a></li>
@@ -16,7 +16,7 @@
 <div class="box">
 <div class="box-header">
 <h3 class="box-title">Listado de peligros <a href="naturaleza/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
-<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
+</h3>
 </div>
 <!-- /.box-header -->
 <div class="box-body">
@@ -56,7 +56,7 @@
 </tfoot>
 </table>
 {!! $naturalezas->appends(['searchText'=>request('searchText')])->links() !!}
- 
+
 </div>
 </div>
 </div>

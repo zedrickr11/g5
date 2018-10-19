@@ -7,7 +7,7 @@
         <small>Hospitales</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Hospitales</a></li>
+        <li><a href="#"><i class="fa fa-hospital-o"></i> Hospital</a></li>
         <li class="active">Detalles</li>
       </ol>
 </section>
@@ -26,7 +26,7 @@
 
 				<div class="box-body col-md-12">
 					<div class="form-group">
-						<label for="direccion_fab">Hospital</label>
+						<label for="direccion_fab">Id</label>
             <p>{{$hospitales->idhospital}}</p>
 					</div>
           <div class="form-group">
@@ -34,7 +34,7 @@
             <p>{{$hospitales->hospital}}</p>
           </div>
           <div class="form-group">
-						<label for="telefono_fab">Clave de Administrador</label>
+						<label for="telefono_fab">Clave administrador</label>
             <p>{{$hospitales->clave_admin}}</p>
 					</div>
 

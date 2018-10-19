@@ -4,7 +4,7 @@
 <section class="content-header">
 <h1>
 Precaución
-<small>Precaución Responsable</small>
+<small>Precaución responsable</small>
 </h1>
 <ol class="breadcrumb">
 <li><a href="#"><i class="fa fa-exclamation-triangle"></i> Precaución</a></li>
@@ -24,11 +24,11 @@ Precaución
 <!-- form start -->
 <div class="box-body col-md-12">
 <div class="form-group">
-<label for="direccion_fab">Codigo de Precaucion</label>
+<label for="direccion_fab">Código de precaución</label>
 <p>{{$responsables->idprecaucion_responsable}}</p>
 </div>
 <div class="form-group">
-<label for="telefono_fab">Precaucion</label>
+<label for="telefono_fab">Precaución</label>
 <p>{{$responsables->precaucion_responsable}}</p>
 </div>
 </div>

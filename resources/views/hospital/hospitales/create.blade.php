@@ -7,8 +7,8 @@
         <small>Hospitales</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Hospital</a></li>
-        <li class="active">Ingreso de Datos</li>
+        <li><a href="#"><i class="fa fa-hospital-o"></i> Hospital</a></li>
+        <li class="active">Ingreso</li>
       </ol>
 </section>
 	<section class="content">
@@ -18,7 +18,7 @@
 		<!-- general form elements -->
 		<div class="box box-success">
 			<div class="box-header with-border">
-				<h3 class="box-title">Nuevo Hospital</h3>
+				<h3 class="box-title">Nuevo hospital</h3>
 			</div>
       @if (count($errors)>0)
       <div class="alert alert-danger">
@@ -36,7 +36,7 @@
 
 				<div class="box-body col-md-12">
 					<div class="form-group">
-						<label for="direccion_fab">Nombre Hospital</label>
+						<label for="direccion_fab">Nombre hospital</label>
 						<input type="text" class="form-control" name="hospital" value="{{old('hospital')}}">
 					</div>
 					<div class="form-group">

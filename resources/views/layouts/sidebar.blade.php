@@ -594,7 +594,7 @@
     </ul>
   </li>
 
-  
+
 @elseif(auth()->user()->hasRole(['tec-ing']))
 <li id="liEq"class="treeview">
   <a href="#">

@@ -4,11 +4,11 @@
 <section class="content-header">
   <h1>
   Trabajo
-  <small>Seguimiento de Trabajo</small>
+  <small>Seguimiento de trabajo</small>
   </h1>
   <ol class="breadcrumb">
   <li><a href="#"><i class="fa fa-suitcase"></i> Trabajo</a></li>
-  <li class="active">Seguimiento de Trabajo</li>
+  <li class="active">Seguimiento de trabajo</li>
   </ol>
 </section>
 <section class="content">
@@ -32,7 +32,7 @@
 <p>{{$seguimientos->responsable_seguimiento}}</p>
 </div>
 <div class="form-group">
-  <label for="direccion_fab">No de Solicitud</label>
+  <label for="direccion_fab">No de solicitud</label>
   <br>
 @foreach($solicitudes as $s)
     @if ($s->idsolitud_trabajo==$seguimientos->solitud_trabajo_idsolitud_trabajo)

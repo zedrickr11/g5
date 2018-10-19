@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>Solicitud de Servicios</title>
+<title>Solicitud de trabajo</title>
 	<link type="text/css" rel="stylesheet" href="estilos.css" />
 
   <body>

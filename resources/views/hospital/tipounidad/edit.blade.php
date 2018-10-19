@@ -4,10 +4,10 @@
 <section class="content-header">
       <h1>
         Hospital
-        <small>Tipos de Unidades de Salud</small>
+        <small>Tipos de unidades de salud</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Tipo de Unidad</a></li>
+        <li><a href="#"><i class="fa fa-medkit"></i> Tipo de unidad</a></li>
         <li class="active">Modificar</li>
       </ol>
 </section>
@@ -36,20 +36,20 @@
 				{!!csrf_field()!!}
 				<div class="box-body col-md-12">
 					<div class="form-group">
-						<label for="direccion_fab">Nivel de Atencion</label>
+						<label for="direccion_fab">Nivel de atención</label>
 						<input type="text" class="form-control" name="nivel_atencion" value="{{$tipos->nivel_atencion}}">
 					</div>
           <div class="form-group">
-            <label for="direccion_fab">Categoria</label>
+            <label for="direccion_fab">Categoría</label>
             <input type="text" class="form-control" name="categoria" value="{{$tipos->categoria}}">
           </div>
 
           <div class="form-group">
-            <label for="direccion_fab">Comp</label>
+            <label for="direccion_fab">Complejidad y resolución </label>
             <input type="text" class="form-control" name="comp_res" value="{{$tipos->comp_res}}">
           </div>
           <div class="form-group">
-            <label for="direccion_fab">Unidad Medica</label>
+            <label for="direccion_fab">Unidad medica</label>
             <input type="text" class="form-control" name="unidad_medica" value="{{$tipos->unidad_medica}}">
           </div>
 
