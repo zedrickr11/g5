@@ -198,8 +198,8 @@ class EquipoController extends Controller
     $CaracTec=CaracTec::all();
     $subcaractec=subcaractec::all();
     $valorreftec=valorreftec::all();
-    $equipo=DB::table('equipo')->where('idequipo', $id)->get();
-//$view= view("equipo.caracteristica.fichatecnica.show",compact('equipo'));
+    $equipo=Equipo::all()->where('idequipo',$id);
+
 
         $pdf = PDF::loadView("equipo.caracteristica.fichatecnica.show",compact('equipo','proveedor','unidadsalud','area',
                     'estado','serviciotecnico','fabricante','hospital','departamento',
@@ -207,7 +207,7 @@ class EquipoController extends Controller
 
         return $pdf->stream('FICHA TÉCNICA"'.$id.'".pdf');
         //return view("equipo.caracteristica.fichatecnica.show",compact('equipo'));
-    }  
+    }
     public function rutina($id)
     {
     //   $equipo = Equipo::all();

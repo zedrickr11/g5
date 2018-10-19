@@ -1294,7 +1294,7 @@
                               {!! csrf_field() !!}
                               <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 
-                                <h3>Agregar manual al equipo  <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-plus"></span> </button>
+                                <h3>Agregar manual al equipo
                                 </h3>
                               </div>
                       <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
@@ -1333,10 +1333,14 @@
                         </div>
 
                         </div>
+                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 
+                          <div class="form-group">
 
+                        <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-plus"></span> </button>
+                      </div>
 
-
+                      </div>
 
 
 
@@ -1349,8 +1353,7 @@
                   <div class="row">
                     <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 
-                      <h3>Agregar imagen al equipo  <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-plus"></span> </button>
-                      </h3>
+                      <h3>Agregar imagen al equipo </h3>
                     </div>
 
                             <input type="hidden" name="idequipo" value="{{ $equipo->idequipo }}" class="form-control" >
@@ -1367,6 +1370,14 @@
                             <input type="file" name="imagen" class="form-control"  >
                           </div>
                     </div>
+                    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+
+                      <div class="form-group">
+
+                    <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-plus"></span> </button>
+                  </div>
+
+                  </div>
 
                   </div>
 
@@ -1382,7 +1393,7 @@
               <a href="{{route('equipo.rutina',$equipo->idequipo)}}" target="_blank" class="btn btn-primary btn-block"><b>Historial de la rutina</b></a>
 
 
-            </div>  
+            </div>
             <!-- /.tab-pane -->
 
             <!-- /.box-body -->
@@ -1586,50 +1597,50 @@
     });
     $(document).ready(function(){
       $('#bt_add_carac').click(function(){
-        agregar();
+        agregar5();
       });
     });
 
-    var cont=0;
+    var cont5=0;
 
     $("#guardar_carac").hide();
 
 
-    function agregar()
+    function agregar5()
     {
-      idcaracteristica=$("#carac").val();
-      carac=$("#carac option:selected").text();
-      idequipo=$("#idequipo_carac").val();
-      idvalor_ref=$("#valor_ref").val();
-      valor_ref=$("#valor_ref option:selected").text();
-      idsubgrupo=$("#sub_carac").val();
-      sub=$("#sub_carac option:selected").text();
-      desc=$("#desc_carac").val();
-      valor=$("#valor_tec").val();
+      idcaracteristica1=$("#carac").val();
+      carac1=$("#carac option:selected").text();
+      idequipo1=$("#idequipo_carac").val();
+      idvalor_ref1=$("#valor_ref").val();
+      valor_ref1=$("#valor_ref option:selected").text();
+      idsubgrupo1=$("#sub_carac").val();
+      sub1=$("#sub_carac option:selected").text();
+      desc1=$("#desc_carac").val();
+      valor1=$("#valor_tec").val();
 
 
-      if (idcaracteristica!="" && idequipo!="" )
+      if (idcaracteristica1!="" && idequipo1!="" )
       {
-          var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idcaracteristica_tecnica[]" value="'+idcaracteristica+'">'+carac+'</td><td><input type="hidden" name="idsubgrupo_carac_tecnica[]" value="'+idsubgrupo+'">'+sub+'</td><td><input type="hidden" name="idvalor_ref_tec[]" value="'+idvalor_ref+'">'+valor_ref+'</td><td><input type="text" name="descripcion_detalle_caracteristica_tecnica[]" value="'+desc+'"></td><td><input type="number" name="valor_detalle_caracteristica_tecnica[]" value="'+valor+'"></td><td><input type="hidden" name="idequipo[]" value="'+idequipo+'"><td></tr>';
-          cont++;
-          limpiar();
-          evaluar();
-          $('#detalles_carac').append(fila);
+          var fila5='<tr class="selected" id="fila5'+cont5+'"><td><button type="button" class="btn btn-warning" onclick="eliminar5('+cont5+');">X</button></td><td><input type="hidden" name="idcaracteristica_tecnica[]" value="'+idcaracteristica1+'">'+carac1+'</td><td><input type="hidden" name="idsubgrupo_carac_tecnica[]" value="'+idsubgrupo1+'">'+sub1+'</td><td><input type="hidden" name="idvalor_ref_tec[]" value="'+idvalor_ref1+'">'+valor_ref1+'</td><td><input type="text" name="descripcion_detalle_caracteristica_tecnica[]" value="'+desc1+'"></td><td><input type="number" name="valor_detalle_caracteristica_tecnica[]" value="'+valor1+'"></td><td><input type="hidden" name="idequipo[]" value="'+idequipo1+'"><td></tr>';
+          cont5++;
+          limpiar5();
+          evaluar5();
+          $('#detalles_carac').append(fila5);
       }
       else
       {
           alert("Error al ingresar el detalle del ingreso, revise los datos ");
       }
     }
-    function limpiar(){
+    function limpiar5(){
       $("#desc_carac").val("");
       $("#valor_tec").val("");
 
     }
 
-    function evaluar()
+    function evaluar5()
     {
-      if (idcaracteristica!="")
+      if (idcaracteristica1!="")
       {
         $("#guardar_carac").show();
       }
@@ -1639,10 +1650,10 @@
       }
      }
 
-     function eliminar(index){
+     function eliminar5(index){
 
-      $("#fila" + index).remove();
-      evaluar();
+      $("#fila5" + index).remove();
+      evaluar5();
 
     }
 
@@ -1659,16 +1670,16 @@
 
     $(document).ready(function(){
       $('#bt_add_esp').click(function(){
-        agregar();
+        agregar6();
       });
     });
 
-    var cont=0;
+    var cont6=0;
 
     $("#guardar_esp").hide();
 
 
-    function agregar()
+    function agregar6()
     {
       idcaracteristica=$("#espe").val();
       carac=$("#espe option:selected").text();
@@ -1682,24 +1693,24 @@
 
       if (idcaracteristica!="" && idequipo!="" )
       {
-          var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idcaracteristica_especial[]" value="'+idcaracteristica+'">'+carac+'</td><td><input type="hidden" name="idvalor_ref_esp[]" value="'+idvalor_ref+'">'+valor_ref+'</td><td><input type="text" name="descripcion_detalle_caracteristica_especial[]" value="'+desc+'"></td><td><input type="number" name="valor_detalle_caracteristica_especial[]" value="'+valor+'"></td><td><input type="hidden" name="idequipo[]" value="'+idequipo+'"><td></tr>';
-          cont++;
-          limpiar();
-          evaluar();
-          $('#detalles_esp').append(fila);
+          var fila6='<tr class="selected" id="fila6'+cont6+'"><td><button type="button" class="btn btn-warning" onclick="eliminar6('+cont6+');">X</button></td><td><input type="hidden" name="idcaracteristica_especial[]" value="'+idcaracteristica+'">'+carac+'</td><td><input type="hidden" name="idvalor_ref_esp[]" value="'+idvalor_ref+'">'+valor_ref+'</td><td><input type="text" name="descripcion_detalle_caracteristica_especial[]" value="'+desc+'"></td><td><input type="number" name="valor_detalle_caracteristica_especial[]" value="'+valor+'"></td><td><input type="hidden" name="idequipo[]" value="'+idequipo+'"><td></tr>';
+          cont6++;
+          limpiar6();
+          evaluar6();
+          $('#detalles_esp').append(fila6);
       }
       else
       {
           alert("Error al ingresar el detalle del ingreso, revise los datos");
       }
     }
-    function limpiar(){
+    function limpiar6(){
       $("#desc_esp").val("");
       $("#v_esp").val("");
 
     }
 
-    function evaluar()
+    function evaluar6()
     {
       if (idcaracteristica!="")
       {
@@ -1711,10 +1722,10 @@
       }
      }
 
-     function eliminar(index){
+     function eliminar6(index){
 
-      $("#fila" + index).remove();
-      evaluar();
+      $("#fila6" + index).remove();
+      evaluar6();
 
     }
 
