@@ -42,7 +42,9 @@
             </ul>
 
             <a href="{{route('equipo.ficha',$equipo->idequipo)}}" target="_blank" class="btn btn-success btn-block"><b>Ficha técnica</b></a>
-          <a  href="{{route('equipo.vista',$equipo->idequipo)}}" target="_blank" class="btn btn-warning btn-block"><b>Ver Solicitudes</b></a>
+          <a  href="{{route('equipo.vista',$equipo->idequipo)}}" target="_blank" class="btn btn-warning btn-block"><b>Solicitudes</b></a>
+          <a  href="{{route('carac',$equipo->idequipo)}}"  class="btn btn-info btn-block"><b>Características</b></a>
+
           </div>
           <!-- /.box-body -->
         </div>
@@ -128,22 +130,22 @@
                           <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                             <div class="form-group">
                               <label for="nombre_parte">Parte</label>
-                              <input type="text" name="nombre_parte" class="form-control"> 
+                              <input type="text" name="nombre_parte" class="form-control">
                             </div>
-                          </div> 
+                          </div>
                           <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
-                              <div class="form-group">        
+                              <div class="form-group">
                               <label for="num_parte">No. de parte </label>
-                              <input type="number" name="num_parte" class="form-control"> 
+                              <input type="number" name="num_parte" class="form-control">
                             </div>
                           </div>
                               <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                                   <div class="form-group">
                               <label for="descripcion">Descripción </label>
 
-                             
-                              <input type="text" name="descripcion" class="form-control"> 
-                              
+
+                              <input type="text" name="descripcion" class="form-control">
+
                                 <input  type="hidden" name="idequipo" readonly class="form-control" value="{{$equipo->idequipo}}">
                               </div>
                               </div>
@@ -153,7 +155,7 @@
                               <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
                             </div>
                           </div>
-                            
+
                   </form>
                 </div>
                   <div class="row">
@@ -162,7 +164,7 @@
                         <table id="tabla" class="table table-bordered table-striped">
                           <thead>
                           <tr>
-                            
+
                             <th>Parte</th>
                             <th>No. Parte</th>
                             <th>Descripción</th>
@@ -172,7 +174,7 @@
                           <tbody>
                             @foreach ($partes as $par)
                             <tr>
-                            
+
                               <td>{{ $par->nombre_parte}}</td>
                               <td>{{ $par->num_parte}}</td>
                               <td>{{ $par->descripcion}}</td>
@@ -181,7 +183,7 @@
                           {!!method_field('DELETE')!!}
                           {!!csrf_field()!!}
                             <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></span> </button>
-                          </form> 
+                          </form>
                       </td>
                     </tr>
                     @endforeach
@@ -213,25 +215,25 @@
                             <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                               <div class="form-group">
                                 <label for="nombre_accesorio">Accesorio</label>
-                                <input type="text" name="nombre_accesorio" class="form-control">    
+                                <input type="text" name="nombre_accesorio" class="form-control">
                               </div>
-                            </div>      
-                              
-                                
+                            </div>
+
+
                                   <input  type="hidden" name="idequipo" readonly class="form-control "  value="{{$equipo->idequipo}}">
                                   <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                                       <div class="form-group">
                                       <label for="numero_parte_accesorio">No. Accesorio</label>
-                                    <input type="number" name="numero_parte_accesorio" class="form-control"> 
+                                    <input type="number" name="numero_parte_accesorio" class="form-control">
                                   </div>
-                                </div> 
+                                </div>
                                 <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                                     <div class="form-group">
                                     <label for="nombre_accesorio">Descripción</label>
-    
+
                                     <input type="text" name="descripcion_accesorio" class="form-control">
                                   </div>
-                                </div> 
+                                </div>
                                 <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
                                     <div class="form-group">
                                 <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
@@ -240,14 +242,14 @@
                             </div>
                           </form>
                           </div>
-                            
+
                     <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
                           <table id="tabla" class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                              
+
                               <th>Accesorio</th>
                               <th>No. Accesorio</th>
                               <th>Descripción</th>
@@ -257,7 +259,7 @@
                             <tbody>
                               @foreach ($accesorios as $accs)
                               <tr>
-                               
+
                                 <td>{{ $accs->nombre_accesorio}}</td>
                                 <td>{{ $accs->descripcion_accesorio}}</td>
                                 <td>{{ $accs->numero_parte_accesorio}}</td>
@@ -266,7 +268,7 @@
                             {!!method_field('DELETE')!!}
                             {!!csrf_field()!!}
                               <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></span> </button>
-                            </form> 
+                            </form>
                         </td>
                       </tr>
                       @endforeach
@@ -276,7 +278,7 @@
                       </div>
                     </div>
                   </div> <!-- /.Boniparte -->
-                
+
 
 
 
@@ -328,7 +330,221 @@
             </div>
             <!-- /.tab-pane -->
             <div class="tab-pane" id="fichatecnica">
-              <h1>Ficha técnica</h1>
+              <div class="row">
+                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+
+                <div class="form-group">
+                <h3>Características técnicas</h3>
+              </div>
+            </div>
+                {!!Form::open(array('url'=>'equipo/caracteristica/detcaractec','method'=>'POST','autocomplete'=>'off'))!!}
+                      {{Form::token()}}
+                <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+
+                <div class="form-group">
+                <label for="idcaracteristica_tecnica" class="est">Característica técnica</label>
+                <select id="carac" name="cidcaracteristica_tecnica" class="form-control" style="width:100%">
+                  <option disabled selected>=== Selecciona una característica ===</option>
+                @foreach($caract_tec as $tec)
+
+                  <option value="{{$tec->idcaracteristica_tecnica}}">{{$tec->nombre_caracteristica_tecnica}}</option>
+
+                @endforeach
+                </select>
+                </div>
+              </div>
+              <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+
+              <div class="form-group">
+              <label for="idsubgrupo_carac_tecnica" class="est">Subgrupo técnico</label>
+              <select id="sub_carac" name="cidsubgrupo_carac_tecnica" class="form-control" style="width:100%">
+                <option disabled selected>=== Selecciona una subgrupo ===</option>
+              @foreach($subcaractec as $tec)
+
+                <option value="{{$tec->idsubgrupo_carac_tecnica}}">{{$tec->nombre_subgrupo_carac_tecnica}}</option>
+
+              @endforeach
+              </select>
+              </div>
+            </div>
+              <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+
+              <div class="form-group">
+              <label for="idvalor_ref_tec" class="est">Valor de referencia</label>
+              <select id="valor_ref" name="cidvalor_ref_tec" class="form-control" style="width:100%">
+                <option disabled selected>=== Selecciona un valor de referencia===</option>
+              @foreach($valorreftec as $tec)
+
+                <option value="{{$tec->idvalor_ref_tec}}">{{$tec->nombre_valor_ref_tec}}</option>
+
+              @endforeach
+              </select>
+              </div>
+            </div>
+                  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+
+                  <div class="form-group">
+                    <label for="descripcion_detalle_caracteristica_tecnica">Descripción</label>
+                    <textarea id="desc_carac" rows="3" class="form-control" name="cdescripcion_detalle_caracteristica_tecnica">
+
+                    </textarea>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+
+                <div class="form-group">
+                  <label for="valor_detalle_caracteristica_tecnica">Valor</label>
+                  <input id="valor_tec" name="cvalor_detalle_caracteristica_tecnica" type="number" min="0" step="0.1" class="form-control">
+
+                </div>
+              </div>
+              <input id="idequipo_carac" type="hidden" name="cidequipo" value="{{ $equipo->idequipo }}">
+
+              <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+
+              <div class="form-group">
+                <label for=""></label>
+                <button type="button" id="bt_add_carac" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
+
+
+              </div>
+            </div>
+            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                <table id="detalles_carac" class="table table-striped table-bordered table-condensed table-hover">
+                    <thead style="background-color:#2ab863">
+                        <th>Opciones</th>
+                        <th>Característica</th>
+                        <th>Subgrupo</th>
+                        <th>Valor de ref</th>
+                        <th>Descripción</th>
+                        <th>Valor</th>
+
+
+
+
+                    </thead>
+                    <tfoot>
+
+                    </tfoot>
+                    <tbody>
+
+                    </tbody>
+                </table>
+             </div>
+             <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12" id="guardar_carac">
+               <div class="form-group">
+                     <input name"_token" value="{{ csrf_token() }}" type="hidden"></input>
+
+                     <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
+                     <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
+
+                   </div>
+             </div>
+                {!!Form::close()!!}
+
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+
+                <div class="form-group">
+                <h3>Características especiales de funcionamiento</h3>
+              </div>
+            </div>
+                {!!Form::open(array('url'=>'equipo/caracteristica/detcaracesp','method'=>'POST','autocomplete'=>'off'))!!}
+                      {{Form::token()}}
+                <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+
+                <div class="form-group">
+                <label for="idcaracteristica_tecnica" class="est">Característica especial</label>
+                <select id="espe" name="cidcaracteristica_tecnica" class="form-control" style="width:100%">
+                  <option disabled selected>=== Selecciona una característica ===</option>
+                @foreach($caracespefun as $tec)
+
+                  <option value="{{$tec->idcaracteristica_especial}}">{{$tec->nombre_caracteristica_especial}}</option>
+
+                @endforeach
+                </select>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+
+              <div class="form-group">
+              <label for="idvalor_ref_tec" class="est">Valor de referencia</label>
+              <select id="valor_esp" name="cidvalor_ref_tec" class="form-control" style="width:100%">
+                <option disabled selected>=== Selecciona un valor de referencia===</option>
+              @foreach($valorrefesp as $tec)
+
+                <option value="{{$tec->idvalor_ref_esp}}">{{$tec->nombre_valor_ref_esp}}</option>
+
+              @endforeach
+              </select>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+
+            <div class="form-group">
+              <label for="valor_detalle_caracteristica_tecnica">Valor</label>
+              <input id="v_esp" name="cvalor_detalle_caracteristica_tecnica" type="number" min="0" step="0.1" class="form-control">
+
+            </div>
+          </div>
+                  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+
+                  <div class="form-group">
+                    <label for="descripcion_detalle_caracteristica_tecnica">Descripción</label>
+                    <textarea id="desc_esp" rows="3" class="form-control" name="cdescripcion_detalle_caracteristica_tecnica">
+
+                    </textarea>
+                  </div>
+                </div>
+
+              <input id="idequipo_esp" type="hidden" name="cidequipo" value="{{ $equipo->idequipo }}">
+
+              <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+
+              <div class="form-group">
+                <label for=""></label>
+                <button type="button" id="bt_add_esp" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
+
+
+              </div>
+            </div>
+            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                <table id="detalles_esp" class="table table-striped table-bordered table-condensed table-hover">
+                    <thead style="background-color:#2ab863">
+                        <th>Opciones</th>
+                        <th>Característica</th>
+
+                        <th>Valor de ref</th>
+                        <th>Descripción</th>
+                        <th>Valor</th>
+
+
+
+
+                    </thead>
+                    <tfoot>
+
+                    </tfoot>
+                    <tbody>
+
+                    </tbody>
+                </table>
+             </div>
+             <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12" id="guardar_esp">
+               <div class="form-group">
+                     <input name"_token" value="{{ csrf_token() }}" type="hidden"></input>
+
+                     <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
+                     <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
+
+                   </div>
+             </div>
+                {!!Form::close()!!}
+
+              </div>
             </div>
 
 
@@ -497,7 +713,7 @@
                 </div><!--ROW-->
               </div><!--box-body-->
               </div>
-    
+
  <div class="tab-pane" id="timeline">
   <div class="box-body">
   <div class="row">
@@ -780,7 +996,7 @@
                           <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
 
                           <div class="form-group">
-                          <label>Fecha de expiración de grarantia</label>
+                          <label>Fecha de expiración de garantía</label>
 
                           <div class="input-group date">
                             <div class="input-group-addon">
@@ -1161,10 +1377,10 @@
 
             </div>
             <!-- /.tab-pane -->
-            
+
             <!-- /.box-body -->
 
-   
+
 
 
 
@@ -1347,6 +1563,154 @@
     evaluar();
 
   }
+  </script>
+
+  <script>
+
+    $('#carac').select2({
+      theme: "classic"
+    });
+    $('#sub_carac').select2({
+      theme: "classic"
+    });
+
+    $('#valor_ref').select2({
+      theme: "classic"
+    });
+    $(document).ready(function(){
+      $('#bt_add_carac').click(function(){
+        agregar();
+      });
+    });
+
+    var cont=0;
+
+    $("#guardar_carac").hide();
+
+
+    function agregar()
+    {
+      idcaracteristica=$("#carac").val();
+      carac=$("#carac option:selected").text();
+      idequipo=$("#idequipo_carac").val();
+      idvalor_ref=$("#valor_ref").val();
+      valor_ref=$("#valor_ref option:selected").text();
+      idsubgrupo=$("#sub_carac").val();
+      sub=$("#sub_carac option:selected").text();
+      desc=$("#desc_carac").val();
+      valor=$("#valor_tec").val();
+
+
+      if (idcaracteristica!="" && idequipo!="" )
+      {
+          var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idcaracteristica_tecnica[]" value="'+idcaracteristica+'">'+carac+'</td><td><input type="hidden" name="idsubgrupo_carac_tecnica[]" value="'+idsubgrupo+'">'+sub+'</td><td><input type="hidden" name="idvalor_ref_tec[]" value="'+idvalor_ref+'">'+valor_ref+'</td><td><input type="text" name="descripcion_detalle_caracteristica_tecnica[]" value="'+desc+'"></td><td><input type="number" name="valor_detalle_caracteristica_tecnica[]" value="'+valor+'"></td><td><input type="hidden" name="idequipo[]" value="'+idequipo+'"><td></tr>';
+          cont++;
+          limpiar();
+          evaluar();
+          $('#detalles_carac').append(fila);
+      }
+      else
+      {
+          alert("Error al ingresar el detalle del ingreso, revise los datos ");
+      }
+    }
+    function limpiar(){
+      $("#desc_carac").val("");
+      $("#valor_tec").val("");
+
+    }
+
+    function evaluar()
+    {
+      if (idcaracteristica!="")
+      {
+        $("#guardar_carac").show();
+      }
+      else
+      {
+        $("#guardar_carac").hide();
+      }
+     }
+
+     function eliminar(index){
+
+      $("#fila" + index).remove();
+      evaluar();
+
+    }
+
+  </script>
+  <script>
+
+    $('#espe').select2({
+      theme: "classic"
+    });
+    $('#valor_esp').select2({
+      theme: "classic"
+    });
+
+
+    $(document).ready(function(){
+      $('#bt_add_esp').click(function(){
+        agregar();
+      });
+    });
+
+    var cont=0;
+
+    $("#guardar_esp").hide();
+
+
+    function agregar()
+    {
+      idcaracteristica=$("#espe").val();
+      carac=$("#espe option:selected").text();
+      idequipo=$("#idequipo_esp").val();
+      idvalor_ref=$("#valor_esp").val();
+      valor_ref=$("#valor_esp option:selected").text();
+
+      desc=$("#desc_esp").val();
+      valor=$("#v_esp").val();
+
+
+      if (idcaracteristica!="" && idequipo!="" )
+      {
+          var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idcaracteristica_especial[]" value="'+idcaracteristica+'">'+carac+'</td><td><input type="hidden" name="idvalor_ref_esp[]" value="'+idvalor_ref+'">'+valor_ref+'</td><td><input type="text" name="descripcion_detalle_caracteristica_especial[]" value="'+desc+'"></td><td><input type="number" name="valor_detalle_caracteristica_especial[]" value="'+valor+'"></td><td><input type="hidden" name="idequipo[]" value="'+idequipo+'"><td></tr>';
+          cont++;
+          limpiar();
+          evaluar();
+          $('#detalles_esp').append(fila);
+      }
+      else
+      {
+          alert("Error al ingresar el detalle del ingreso, revise los datos");
+      }
+    }
+    function limpiar(){
+      $("#desc_esp").val("");
+      $("#v_esp").val("");
+
+    }
+
+    function evaluar()
+    {
+      if (idcaracteristica!="")
+      {
+        $("#guardar_esp").show();
+      }
+      else
+      {
+        $("#guardar_esp").hide();
+      }
+     }
+
+     function eliminar(index){
+
+      $("#fila" + index).remove();
+      evaluar();
+
+    }
+
   </script>
 
   <script>

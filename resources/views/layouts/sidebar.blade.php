@@ -232,7 +232,7 @@
     <li id="#"><a href="{{url('almacen/repuesto')}}"><i class="fa fa-angle-right"></i> Repuestos</a></li>
     <li class=""><a href="{{route('herramienta.index')}} "><i class="fa fa-angle-right"></i>Herramientas</a></li>
 
-   
+
 
 
 
@@ -255,12 +255,25 @@
 </li>
 <li id="liCompras" class="treeview">
   <a href="#">
+    <i class="fa fa-users"></i>
+    <span>Técnicos</span>
+     <i class="fa fa-angle-left pull-right"></i>
+  </a>
+  <ul class="treeview-menu">
+    <li id="liProveedores"><a href="{{url('tecnicos/interno')}}"><i class="fa fa-user"></i> Técnicos internos</a></li>
+    <li id="liProveedores"><a href="{{url('tecnicos/externo')}}"><i class="fa fa-user"></i> Técnicos externos</a></li>
+
+
+  </ul>
+</li>
+<li id="liCompras" class="treeview">
+  <a href="#">
     <i class="fa fa-lock"></i>
     <span>Seguridad</span>
      <i class="fa fa-angle-left pull-right"></i>
   </a>
   <ul class="treeview-menu">
-    <li id="liProveedores"><a href="{{route('usuarios.index')}}"><i class="fa fa-user"></i> Usuarios</a></li>
+    <li id="liProveedores"><a href="{{route('usuarios.index')}}"><i class="fa fa-user-plus"></i> Usuarios</a></li>
 
 
   </ul>
@@ -513,7 +526,20 @@
 <li id="liIngresos"><a href="{{url('compras/repuesto-ingreso')}}"><i class="fa  fa-caret-right"></i> Ingresos de repuestos</a></li>
 </ul>
 </li>
-//jefe de sub area
+<li id="liCompras" class="treeview">
+  <a href="#">
+    <i class="fa fa-users"></i>
+    <span>Técnicos</span>
+     <i class="fa fa-angle-left pull-right"></i>
+  </a>
+  <ul class="treeview-menu">
+    <li id="liProveedores"><a href="{{url('tecnicos/interno')}}"><i class="fa fa-user"></i> Técnicos internos</a></li>
+    <li id="liProveedores"><a href="{{url('tecnicos/externo')}}"><i class="fa fa-user"></i> Técnicos externos</a></li>
+
+
+  </ul>
+</li>
+
 @elseif(auth()->user()->hasRole(['jefe-sub']))
 <li id="liEq"class="treeview">
   <a href="#">
@@ -588,7 +614,7 @@
     </ul>
   </li>
 
-  
+
 @elseif(auth()->user()->hasRole(['tec-ing']))
 <li id="liEq"class="treeview">
   <a href="#">
