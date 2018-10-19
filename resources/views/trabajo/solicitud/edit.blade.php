@@ -8,7 +8,7 @@
   </h1>
   <ol class="breadcrumb">
   <li><a href="#"><i class="fa fa-suitcase"></i> Trabajo</a></li>
-  <li class="active">Solicitud de Trabajo</li>
+  <li class="active">Solicitud de trabajo</li>
   </ol>
 </section>
 <section class="content">
@@ -41,7 +41,7 @@
   </div>
 
 <div class="form-group">
-  <label for="estado">Compra de Material</label>
+  <label for="estado">Compra de material</label>
   <select class="form-control" name="compra_material">
     @if ($solicitudes->compra_material==1)
       <option value="1" selected>SI</option>
@@ -66,7 +66,7 @@
 <div class="box-body col-md-6">
 
 <div class="form-group">
-<label>Fecha de Solicitud</label>
+<label>Fecha de solicitud</label>
 <div class="input-group date">
 <div class="input-group-addon">
 <i class="fa fa-calendar"></i>
@@ -77,7 +77,7 @@
 
 
 <div class="form-group">
-  <label for="solicitudes">Contratar Trabajo</label>
+  <label for="solicitudes">Contratar trabajo</label>
   <select class="form-control" name="contratar_trabajo"  >
     @if ($solicitudes->contratar_trabajo==1)
       <option value="1" selected>SI</option>
@@ -101,7 +101,7 @@
 </div>
 <div class="box-body col-md-12">
   <div class="form-group">
-  <label for="direccion_fab">Descripcion</label>
+  <label for="direccion_fab">Descripción</label>
   <input type="text" class="form-control" name="descripcion" value="{{$solicitudes->descripcion}}">
   </div>
 </div>

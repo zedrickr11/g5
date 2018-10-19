@@ -342,8 +342,8 @@
 
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tabsol" data-toggle="tab">ID</a></li>
-                      <li><a href="#tab-tipo" data-toggle="tab">Tipo de Trabajo</a></li>
-                      <li ><a href="#tab-area" data-toggle="tab">Area de Mantenimiento</a></li>
+                      <li><a href="#tab-tipo" data-toggle="tab">Tipo de trabajo</a></li>
+                      <li ><a href="#tab-area" data-toggle="tab">Área de mantenimiento</a></li>
                     </ul>
 
                     <div class="tab-content">
@@ -352,14 +352,14 @@
 
                       <div class="box-body col-md-6">
                         <div class="form-group">
-                        <label for="direccion_fab">No de solicitud</label>
+                        <label for="direccion_fab">No. de solicitud</label>
                         <input type="text" class="form-control" name="numero" value="{{old('numero')}}">
                         </div>
                       <div class="form-group">
-                      <label for="estado">Compra de Material</label>
+                      <label for="estado">Compra de material</label>
                       <select class="form-control" name="compra_material">
-                      <option value='1'>SI</option>
-                      <option value='0'>NO</option>
+                      <option value='1'>Si</option>
+                      <option value='0'>No</option>
                       </select>
                       </div>
                       <div class="form-group">
@@ -373,17 +373,17 @@
                       </div>
                       <div class="box-body col-md-6">
                         <div class="form-group">
-                        <label>Id Equipo</label>
+                        <label>Id equipo</label>
                         <input  type="text" name="idequipo" readonly class="form-control select2" id="idequipo" data-live-search="true" value="{{$equipo->idequipo}}">
                        <!--aqui va el for each de equipo-->
 
                         </div>
 
                       <div class="form-group">
-                        <label for="solicitudes">Contratar Trabajo</label>
+                        <label for="solicitudes">Contratar trabajo</label>
                         <select class="form-control" name="contratar_trabajo"  >
-                          <option value="1">SI</option>
-                          <option value="0">NO</option>
+                          <option value="1">Si</option>
+                          <option value="0">No</option>
                         </select>
                       </div>
                       <div class="form-group">
@@ -400,7 +400,7 @@
 
                       <div class="box-body col-md-12">
                         <div class="form-group">
-                        <label for="direccion_fab">Descripcion de Solicitud</label>
+                        <label for="direccion_fab">Descripción de solicitud</label>
                         <input type="text" class="form-control" name="descripcion" value="{{old('descripcion')}}">
                         </div>
                       </div>
@@ -411,9 +411,9 @@
 
 
                                 <div class="form-group">
-                                <label for="idarea" >Tipo de Trabajo</label>
+                                <label for="idarea" >Tipo de trabajo</label>
                                 <select name="pidtipo" class="form-control " id="pidtipo" style="width:100%">
-                                   <option value="0" disabled selected>=== Selecciona un Tipo de Trabajo===</option>
+                                   <option value="0" disabled selected>=== Seleccione un tipo de trabajo===</option>
                                    @foreach($tipos as $tip)
                                                           <option value="{{$tip->idtipo_trabajo}}">{{$tip->tipo}}</option>
                                                           @endforeach
@@ -421,7 +421,7 @@
                                 </div>
 
                             <div class="form-group">
-                            <label for="direccion_fab">Descripcion del Tipo de Trabajo</label>
+                            <label for="direccion_fab">Descripción del tipo de trabajo</label>
                             <input type="text" class="form-control" name="descripcion" id="pdescripcion" value="">
                             </div>
 
@@ -433,8 +433,8 @@
                             <table id="detalle" class="table table-striped table-bordered table-condensed table-hover">
                             <thead style="background-color:#2ab863">
                               <th>Opciones</th>
-                              <th>Tipo de Trabajo</th>
-                              <th>Descripcion tipo de trabajo</th>
+                              <th>Tipo de trabajo</th>
+                              <th>Descripción tipo de trabajo</th>
 
                             </thead>
                               <tfoot>
@@ -453,9 +453,9 @@
 
 
                                     <div class="form-group">
-                                    <label for="ipdarea" >Area de Mantenimiento (*)</label>
+                                    <label for="ipdarea" >Área de mantenimiento (*)</label>
                                     <select name="idarea" class="form-control "  id="pidarea" style="width:100%">
-                                       <option value="0" disabled selected>=== Selecciona un Area de Mantenimiento ===</option>
+                                       <option value="0" disabled selected>=== Seleccione un área de mantenimiento ===</option>
                                        @foreach($areas as $are)
                                        <option value="{{$are->idarea_mantenimiento}}">{{$are->area}}</option>
                                        @endforeach
@@ -471,7 +471,7 @@
                               <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
                               <thead style="background-color:#2ab863">
                                 <th>Opciones</th>
-                                <th>Areas de Mantenimiento</th>
+                                <th>Áreas de mantenimiento</th>
 
                               </thead>
                                 <tfoot>

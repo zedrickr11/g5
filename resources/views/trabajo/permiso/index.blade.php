@@ -3,11 +3,11 @@
 <section class="content-header">
   <h1>
   Trabajo
-  <small>Permiso de Trabajo</small>
+  <small>Permiso de trabajo</small>
   </h1>
   <ol class="breadcrumb">
   <li><a href="#"><i class="fa 	fa-suitcase"></i> Trabajo</a></li>
-  <li class="active">Permiso de Trabajo</li>
+  <li class="active">Permiso de trabajo</li>
   </ol>
 </section>
 <section class="content">
@@ -27,10 +27,10 @@
 <thead>
 <tr>
 <th>Id</th>
-<th>Numero de Permiso</th>
+<th>Número de permiso</th>
 <th>Descripción</th>
-<th>No de solicitud</th>
-<th>fecha</th>
+<th>No. de solicitud</th>
+<th>Fecha</th>
 <th>Opciones</th>
 </tr>
 </thead>
@@ -44,15 +44,14 @@
 <td>{{ $per->fecha}}</td>
 
 <td>
+  <a href="{{route('permiso.ficha',  $per->idpermiso_trabajo)}}">
+    <button type="button" class="btn btn-success btn-sm" name="button"><span class="fa fa-edit"></span></button>
+  </a>
 
 <a href="{{route('permiso.show',$per->idpermiso_trabajo)}}">
 <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></span> </button>
 </a>
-<form style="display: inline" method="POST" action="{{route('permiso.destroy',$per->idpermiso_trabajo)}}">
-{!!method_field('DELETE')!!}
-{!!csrf_field()!!}
-<button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></span> </button>
-</form>
+
 </td>
 </tr>
 @endforeach

@@ -3,10 +3,10 @@
 <section class="content-header">
       <h1>
         Hospital
-        <small>Unidades De Salud</small>
+        <small>Unidades de salud</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Region</a></li>
+        <li><a href="#"><i class="fa fa-stethoscope"></i> Unidad de salud</a></li>
         <li class="active">Listado</li>
       </ol>
 	</section>
@@ -17,7 +17,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Listado de Unidades de Salud <a href="{{route('unidad.create')}}"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button></a>
+              <h3 class="box-title">Listado de unidades de salud <a href="{{route('unidad.create')}}"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button></a>
                   </h3>
 
 
@@ -31,7 +31,7 @@
                   <thead>
                   <tr>
                     <th>Id</th>
-                    <th>Unidad de Salud</th>
+                    <th>Unidad de salud</th>
                     <th>Hospital</th>
                     <th>Opciones</th>
                   </tr>
