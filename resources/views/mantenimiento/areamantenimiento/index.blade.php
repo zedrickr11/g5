@@ -3,11 +3,11 @@
 <section class="content-header">
   <h1>
   Mantenimiento
-  <small>Areas de Mantenimiento</small>
+  <small>Área de mantenimiento</small>
   </h1>
   <ol class="breadcrumb">
   <li><a href="#"><i class="fa 	fa fa-building-o"></i> Mantenimiento</a></li>
-  <li class="active">Area</li>
+  <li class="active">Área</li>
   </ol>
 </section>
 <section class="content">
@@ -15,8 +15,8 @@
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 <div class="box">
 <div class="box-header">
-<h3 class="box-title">Listado de areas <a href="areamantenimiento/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
-<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
+<h3 class="box-title">Listado de áreas <a href="areamantenimiento/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
+</h3>
 </div>
 <!-- /.box-header -->
 <div class="box-body">
@@ -27,7 +27,7 @@
 <thead>
 <tr>
 <th>Id</th>
-<th>Area de mantenimiento</th>
+<th>Área de mantenimiento</th>
 <th>Opciones</th>
 </tr>
 </thead>
@@ -56,7 +56,7 @@
 </tfoot>
 </table>
 {!! $areas->appends(['searchText'=>request('searchText')])->links() !!}
- 
+
 </div>
 </div>
 </div>

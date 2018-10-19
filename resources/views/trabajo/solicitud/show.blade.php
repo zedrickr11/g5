@@ -8,7 +8,7 @@
   </h1>
   <ol class="breadcrumb">
   <li><a href="#"><i class="fa fa-suitcase"></i> Trabajo</a></li>
-  <li class="active">Solicitud de Trabajo</li>
+  <li class="active">Solicitud de trabajo</li>
   </ol>
 </section>
 <section class="content">
@@ -21,11 +21,11 @@
 
      <div class="box-body col-md-6">
        <div class="form-group">
-             <label for="proveedor">No de Solicitud</label>
+             <label for="proveedor">No. de solicitud</label>
              <p>{{$solicitudes->numero}}</p>
        </div>
        <div class="form-group">
-             <label for="proveedor">Compra de Material</label>
+             <label for="proveedor">Compra de material</label>
              @if ($solicitudes->compra_material==1)
             <input type="checkbox" checked disabled>
             @else
@@ -33,7 +33,7 @@
             @endif
            </div>
            <div class="form-group">
-                 <label for="proveedor">Solicitud Dirigida</label>
+                 <label for="proveedor">Solicitud dirigida</label>
                  <p>{{$solicitudes->dirigido_solitud_trabajo}}</p>
                </div>
                <div class="form-group">
@@ -44,11 +44,11 @@
      </div>
      <div class="box-body col-md-6">
        <div class="form-group">
-             <label for="proveedor">Fecha de Solicitud</label>
+             <label for="proveedor">Fecha de solicitud</label>
              <p>{{$solicitudes->fecha}}</p>
        </div>
        <div class="form-group">
-             <label for="proveedor">Contratar Trabajo</label>
+             <label for="proveedor">Contratar trabajo</label>
              @if ($solicitudes->contratar_trabajo==1)
             <input type="checkbox" checked disabled>
             @else
@@ -56,7 +56,7 @@
             @endif
            </div>
            <div class="form-group">
-                 <label for="proveedor">Puesto Dirigido</label>
+                 <label for="proveedor">Puesto dirigido</label>
                  <p>{{$solicitudes->puesto_dirigido_solitud_trabajo}}</p>
                </div>
                <div class="form-group">
@@ -70,6 +70,13 @@
            <p>{{$solicitudes->equipo}}</p>
          </div>
    </div>
+   <div class="box-body col-md-12">
+     <div class="form-group">
+           <label for="proveedor">Descripción</label>
+           <p>{{$solicitudes->equipo}}</p>
+         </div>
+   </div>
+
 
 
     </div>
@@ -80,8 +87,8 @@
                 <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
                     <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
                         <thead style="background-color:#2ab863">
-                            <th>Tipo de Trabajo</th>
-                            <th>Descrripcion</th>
+                            <th>Tipo de trabajo</th>
+                            <th>Descripción</th>
                         </thead>
                         <tfoot>
                         </tfoot>
@@ -106,7 +113,7 @@
                 <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
                     <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
                         <thead style="background-color:#2ab863">
-                            <th>Area de Mantenimiento </th>
+                            <th>Área de mantenimiento </th>
 
                         </thead>
                         <tfoot>

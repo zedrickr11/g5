@@ -4,10 +4,10 @@
 <section class="content-header">
       <h1>
         Hospital
-        <small>Regiones</small>
+        <small>Región</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Hospital</a></li>
+        <li><a href="#"><i class="fa fa-map-pin"></i> Región</a></li>
         <li class="active">Detalles</li>
       </ol>
 </section>
@@ -26,11 +26,11 @@
 
 				<div class="box-body col-md-12">
 					<div class="form-group">
-						<label for="direccion_fab">Codigo Region</label>
+						<label for="direccion_fab">Codigo región</label>
             <p>{{$regiones->idregion}}</p>
 					</div>
 					<div class="form-group">
-						<label for="telefono_fab">Region</label>
+						<label for="telefono_fab">Región</label>
             <p>{{$regiones->region}}</p>
 					</div>
 

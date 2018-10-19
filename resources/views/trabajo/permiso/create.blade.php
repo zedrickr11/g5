@@ -4,11 +4,11 @@
 <section class="content-header">
 <h1>
 Trabajo
-<small>Permiso de Trabajo</small>
+<small>Permiso de trabajo</small>
 </h1>
 <ol class="breadcrumb">
 <li><a href="#"><i class="fa 	fa-suitcase"></i> Trabajo</a></li>
-<li class="active">Seguimiento de  Trabajo</li>
+<li class="active">Seguimiento de trabajo</li>
 </ol>
 </section>
 <section class="content">
@@ -18,7 +18,7 @@ Trabajo
 <!-- general form elements -->
 <div class="box box-success">
 <div class="box-header with-border">
-<h3 class="box-title">Nuevo Permiso  de trabajo</h3>
+<h3 class="box-title">Nuevo permiso de trabajo</h3>
 </div>
 
 <!-- /.box-header -->
@@ -42,7 +42,7 @@ Trabajo
     </div>
 <div class="box-body col-md-6">
   <div class="form-group">
-<label for="direccion_fab">No de permiso</label>
+<label for="direccion_fab">No. de permiso</label>
 <input type="text" class="form-control" readonly name="num_permiso" value="{{$numeropermiso->num_permiso+1}} ">
 
 </div>
@@ -54,9 +54,9 @@ Trabajo
 
 <div class="box-body col-md-6">
   <div class="form-group">
-        <label for="solicitud">No de Solicitud(*)</label>
+        <label for="solicitud">No. de solicitud(*)</label>
         <select name="idsolitud_trabajo" id="idsolitud_trabajo" style="width:100%" class="form-control selectpicker" data-live-search="true">
-             <option value="0" disabled selected>=== Selecciona un numero de solicitud===</option>
+             <option value="0" disabled selected>=== Selecciona un número de solicitud===</option>
           @foreach($solicitudes as $s)
             <option value="{{$s->idsolitud_trabajo}}">{{$s->num}}</option>
              @endforeach
@@ -67,16 +67,16 @@ Trabajo
 
 <div class="box-body col-md-12">
 <div class="form-group">
-<label>Tipo de Trabajo(*)</label>
+<label>Tipo de trabajo(*)</label>
 <select name="pidtipo" class="form-control select2" style="width:100%" id="pidtipo" data-live-search="true">
-         <option value="0" disabled selected>=== Selecciona un tipo de trabajo===</option
+         <option value="0" disabled selected>=== Seleccione un tipo de trabajo===</option
 @foreach($tipos as $tip)
 <option value="{{$tip->idtipo_trabajo}}">{{$tip->tipo}}</option>
 @endforeach
 </select>
 </div>
 <div class="form-group">
-<label for="direccion_fab">Descripcion del Tipo de Trabajo</label>
+<label for="direccion_fab">Descripción del tipo de trabajo</label>
 <input type="text" class="form-control" name="pdescripcion" id="pdescripcion" value="">
 </div>
 
@@ -89,8 +89,8 @@ Trabajo
 <table id="detalle" class="table table-striped table-bordered table-condensed table-hover">
 <thead style="background-color:#2ab863">
   <th>Opciones</th>
-  <th>Tipo de Trabajo</th>
-  <th>Descripcion tipo de trabajo</th>
+  <th>Tipo de trabajo</th>
+  <th>Descripción </th>
 </thead>
   <tfoot>
 
@@ -104,9 +104,9 @@ Trabajo
 <div class="box-body col-md-12">
 
   <div class="form-group">
-  <label>Naturaleza de Peligro(*)</label>
+  <label>Naturaleza de peligro(*)</label>
   <select name="pidnaturaleza" class="form-control select2" style="width:100%"  id="pidnaturaleza" data-live-search="true">
-       <option value="0" disabled selected>=== Selecciona un numero de solicitud===</option>
+       <option value="0" disabled selected>=== Seleccione un número de solicitud===</option>
   @foreach($naturalezas as $na)
   <option value="{{$na->idnaturaleza_peligro}}">{{$na->naturaleza}}</option>
   @endforeach
@@ -122,7 +122,7 @@ Trabajo
   <table id="detallen" class="table table-striped table-bordered table-condensed table-hover">
   <thead style="background-color:#2ab863">
     <th>Opciones</th>
-    <th>Naturaleza de Peligro</th>
+    <th>Naturaleza de peligro</th>
 
 
   </thead>
@@ -138,9 +138,9 @@ Trabajo
 
 <div class="box-body col-md-6">
   <div class="form-group">
-  <label>Precaucion Responsable(*)</label>
+  <label>Precaución responsable(*)</label>
   <select name="pidresponsable" class="form-control select2" style="width:100%" id="pidresponsable" data-live-search="true">
-           <option value="0" disabled selected>=== Selecciona una precaucion de responsable===</option>
+           <option value="0" disabled selected>=== Seleccione una precaución de responsable===</option>
   @foreach($responsables as $r)
   <option value="{{$r->idprecaucion_responsable}}">{{$r->responsable}}</option>
   @endforeach
@@ -171,9 +171,9 @@ Trabajo
 </div>
 <div class="box-body col-md-6">
   <div class="form-group">
-  <label>Precaucion Ejecutante(*)</label>
+  <label>Precaución ejecutante(*)</label>
   <select name="pidejecutante" class="form-control select2" style="width:100%" id="pidejecutante" data-live-search="true">
-           <option value="0" disabled selected>=== Selecciona una precaución ejecutante==</option>
+           <option value="0" disabled selected>=== Seleccione una precaución ejecutante==</option>
   @foreach($ejecutantes as $e)
   <option value="{{$e->idprecaucion_ejecutante}}">{{$e->ejecutante}}</option>
   @endforeach

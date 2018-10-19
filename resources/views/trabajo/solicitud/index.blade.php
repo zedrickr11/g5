@@ -3,11 +3,11 @@
 <section class="content-header">
   <h1>
   Trabajo
-  <small>Solicitud de Trabajo</small>
+  <small>Solicitud de trabajo</small>
   </h1>
   <ol class="breadcrumb">
   <li><a href="#"><i class="fa 	fa-suitcase"></i> Trabajo</a></li>
-  <li class="active">Solicitud de Trabajo</li>
+  <li class="active">Solicitud de trabajo</li>
   </ol>
 </section>
 <section class="content">
@@ -27,10 +27,10 @@
 <thead>
 <tr>
 <th>Id</th>
-<th>Numero</th>
+<th>Número</th>
 <th>Equipo</th>
 <th>Fecha</th>
-<th>Descripcion</th>
+<th>Descripción</th>
 <th>Opciones</th>
 </tr>
 </thead>

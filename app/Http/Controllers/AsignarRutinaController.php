@@ -43,7 +43,8 @@ USE App\caracru;
 use App\subru;
 use App\valrefru;
 use App\User;
-
+use App\TecnicoExterno;
+use App\TecnicoInterno;
 class AsignarRutinaController extends Controller
 {
     /**
@@ -87,7 +88,9 @@ class AsignarRutinaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    { $users=User::all();
+    { $tecnicointerno=TecnicoInterno::all();
+      $tecnicoexterno=TecnicoExterno::all();
+      $users=User::all();
       $idequipo= $request->get('idequipo');
       $pidequipo= $request->get('pidequipo');
        $equipo=equipo::all();
@@ -103,7 +106,7 @@ class AsignarRutinaController extends Controller
             ->where('d.estado_rutina','LIKE','PENDIENTE')
            ->orderBy('idrutina_mantenimiento','desc')
            ->paginate(100);
-            return view('equipo.rutina.ruman.asignarrutina0', compact('users','equipo','ruman','rumen','idequipo','caracru','subru','valrefru','tiporu','rutina'));
+            return view('equipo.rutina.ruman.asignarrutina0', compact('tecnicoexterno','tecnicointerno','users','equipo','ruman','rumen','idequipo','caracru','subru','valrefru','tiporu','rutina'));
 
     }
 

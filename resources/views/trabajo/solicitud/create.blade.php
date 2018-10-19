@@ -4,11 +4,11 @@
 <section class="content-header">
 <h1>
 Trabajo
-<small>Solicitud de Trabajo</small>
+<small>Solicitud de trabajo</small>
 </h1>
 <ol class="breadcrumb">
 <li><a href="#"><i class="fa 	fa-suitcase"></i> Trabajo</a></li>
-<li class="active">Solicitud de Trabajo</li>
+<li class="active">Solicitud de trabajo</li>
 </ol>
 </section>
 <section class="content">
@@ -22,10 +22,10 @@ Trabajo
 <div class="nav-tabs-custom">
      <ul class="nav nav-tabs pull-right">
 
-     <li ><a href="#tab_2-2" data-toggle="tab">Area de Mantenimiento</a></li>
-     <li><a href="#tab_3-3" data-toggle="tab">Tipo de Trabajo</a></li>
+     <li ><a href="#tab_2-2" data-toggle="tab">Área de mantenimiento</a></li>
+     <li><a href="#tab_3-3" data-toggle="tab">Tipo de trabajo</a></li>
      <li class="active"><a href="#tab_4-4" data-toggle="tab">ID</a></li>
-     <li class="pull-left header"><i class="fa fa-tv"></i>Nueva Solicitud de Trabajo</li>
+     <li class="pull-left header"><i class="fa fa-tv"></i>Nueva solicitud de trabajo</li>
     </ul>
 <div class="tab-content">
   <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
@@ -44,14 +44,16 @@ Trabajo
       <p class="text-danger">(*) Campos requeridos</p>
     </div>
       <div class="form-group">
-      <label>Area de Mantenimiento(*)</label>
-      <select name="pidarea" class="form-control select2"  style="width:100%"id="pidarea" data-live-search="true">
-           <option value="0" disabled selected>=== Selecciona un Area===</option>
+      <label>Área de mantenimiento(*)</label>
+      <select name="pidarea" class="form-control"  style="width:100%" id="pidarea" data-live-search="true">
+           <option value="0" disabled selected>=== Seleccione un área===</option>
       @foreach($areas as $are)
       <option value="{{$are->idarea_mantenimiento}}">{{$are->area}}</option>
       @endforeach
       </select>
       </div>
+
+
 
       <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
       <div class="form-group">
@@ -62,7 +64,7 @@ Trabajo
       <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
       <thead style="background-color:#2ab863">
         <th>Opciones</th>
-        <th>Areas de Mantenimiento</th>
+        <th>Áreas de mantenimiento</th>
 
       </thead>
         <tfoot>
@@ -79,16 +81,16 @@ Trabajo
     <p class="text-danger">(*) Campos requeridos</p>
   </div>
     <div class="form-group">
-    <label>Tipo de Trabajo(*)</label>
+    <label>Tipo de trabajo(*)</label>
     <select name="pidinsumo"  style="width:100%"class="form-control select2" id="pidtipo" data-live-search="true">
-         <option value="0" disabled selected>=== Selecciona un Tipo de Trabajo===</option>
+         <option value="0" disabled selected>=== Seleccione un tipo de trabajo===</option>
     @foreach($tipos as $tip)
     <option value="{{$tip->idtipo_trabajo}}">{{$tip->tipo}}</option>
     @endforeach
     </select>
     </div>
     <div class="form-group">
-    <label for="direccion_fab">Descripcion del Tipo de Trabajo</label>
+    <label for="direccion_fab">Descripción del tipo de trabajo</label>
     <input type="text" class="form-control" name="descripcion" id="pdescripcion" value="">
     </div>
 
@@ -101,8 +103,8 @@ Trabajo
     <table id="detalle" class="table table-striped table-bordered table-condensed table-hover">
     <thead style="background-color:#2ab863">
       <th>Opciones</th>
-      <th>Tipo de Trabajo</th>
-      <th>Descripcion tipo de trabajo</th>
+      <th>Tipo de trabajo</th>
+      <th>Descripción tipo de trabajo</th>
 
     </thead>
       <tfoot>
@@ -122,11 +124,11 @@ Trabajo
 </div>
   <div class="box-body col-md-6">
     <div class="form-group">
-    <label for="direccion_fab">No de solicitud(*)</label>
+    <label for="direccion_fab">Número de solicitud(*)</label>
     <input type="text" class="form-control" name="numero" value="{{old('numero')}}">
     </div>
   <div class="form-group">
-  <label for="estado">Compra de Material</label>
+  <label for="estado">Compra de material</label>
   <select class="form-control" name="compra_material">
   <option value='1'>SI</option>
   <option value='0'>NO</option>
@@ -152,7 +154,7 @@ Trabajo
     </select>
     </div>
   <div class="form-group">
-    <label for="solicitudes">Contratar Trabajo</label>
+    <label for="solicitudes">Contratar trabajo</label>
     <select class="form-control" name="contratar_trabajo"  >
       <option value="1">SI</option>
       <option value="0">NO</option>
@@ -167,12 +169,10 @@ Trabajo
   <input type="text" class="form-control" name="edificio_solitud_trabajo" value="{{old('edificio_solitud_trabajo')}}">
   </div>
   </div>
-  <div class="box-body col-md-12">
 
-  </div>
   <div class="box-body col-md-12">
     <div class="form-group">
-    <label for="direccion_fab">Descripcion de Solicitud</label>
+    <label>Descripción de solicitud</label>
     <input type="text" class="form-control" name="descripcion" value="{{old('descripcion')}}">
     </div>
   </div>

@@ -4,7 +4,7 @@
 <section class="content-header">
 <h1>
 Peligro
-<small>Naturaleza Peligro</small>
+<small>Naturaleza peligro</small>
 </h1>
 <ol class="breadcrumb">
 <li><a href="#"><i class="fa fa-times-circle-o"></i> Peligro</a></li>
@@ -18,7 +18,7 @@ Peligro
 <!-- general form elements -->
 <div class="box box-success">
 <div class="box-header with-border">
-<h3 class="box-title">Nueva Naturaleza del Peligro</h3>
+<h3 class="box-title">Nueva naturaleza del peligro</h3>
 </div>
 @if (count($errors)>0)
 <div class="alert alert-danger">

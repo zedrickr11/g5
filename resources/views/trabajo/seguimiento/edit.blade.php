@@ -4,11 +4,11 @@
 <section class="content-header">
   <h1>
   Trabajo
-  <small>Seguimiento de Trabajo</small>
+  <small>Seguimiento de trabajo</small>
   </h1>
   <ol class="breadcrumb">
   <li><a href="#"><i class="fa fa-suitcase"></i> Trabajo</a></li>
-  <li class="active">Seguimiento de Trabajo</li>
+  <li class="active">Seguimiento de trabajo</li>
   </ol>
 </section>
 <section class="content">
@@ -50,11 +50,11 @@
 </div>
 </div>
 
- 
+
 
 
 <div class="form-group">
-      <label for="solicitud">No de Solicitud</label>
+      <label for="solicitud">No. de solicitud</label>
       <select name="solitud_trabajo_idsolitud_trabajo" id="solitud_trabajo_idsolitud_trabajo" class="form-control selectpicker" data-live-search="true">
         @foreach($solicitudes as $s)
             @if ($s->idsolitud_trabajo==$seguimientos->solitud_trabajo_idsolitud_trabajo)

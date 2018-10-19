@@ -3,10 +3,10 @@
 <section class="content-header">
       <h1>
         Hospital
-        <small>Tipos de Unidades de Salud</small>
+        <small>Tipos de unidades de salud</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Tipo de Unidad</a></li>
+        <li><a href="#"><i class="fa fa-medkit"></i> Tipo de unidad</a></li>
         <li class="active">Listado</li>
       </ol>
 	</section>
@@ -17,9 +17,9 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Listado de Tipos de Unidades de Salud <a href="{{route('tipounidad.create')}}"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button></a>
+              <h3 class="box-title">Listado de tipos de unidades de salud <a href="{{route('tipounidad.create')}}"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button></a>
                   </h3>
-                  <a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
+           
 
             </div>
             <!-- /.box-header -->
@@ -31,10 +31,10 @@
                   <thead>
                   <tr>
                     <th>Id</th>
-                    <th>Nivel de Atencion</th>
-                    <th>Categoria</th>
-                    <th>Comp</th>
-                    <th>Unidad Medica</th>
+                    <th>Nivel de atención</th>
+                    <th>Categoría</th>
+                    <th>Complejidad </th>
+                    <th>Unidad medica</th>
                     <th>Hospital</th>
                     <th>Opciones</th>
                   </tr>

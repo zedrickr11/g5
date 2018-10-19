@@ -4,7 +4,7 @@
 <section class="content-header">
 <h1>
 Peligro
-<small>Naturaleza Peligro</small>
+<small>Naturaleza peligro</small>
 </h1>
 <ol class="breadcrumb">
 <li><a href="#"><i class="fa fa-times-circle-o"></i> Peligro</a></li>
@@ -24,7 +24,7 @@ Peligro
 <!-- form start -->
 <div class="box-body col-md-12">
 <div class="form-group">
-<label for="direccion_fab">Codigo del peligro</label>
+<label for="direccion_fab">Código del peligro</label>
 <p>{{$naturalezas->idnaturaleza_peligro}}</p>
 </div>
 <div class="form-group">

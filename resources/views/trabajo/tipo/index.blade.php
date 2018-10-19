@@ -3,11 +3,11 @@
 <section class="content-header">
   <h1>
   Trabajo
-  <small>Tipo de Trabajo</small>
+  <small>Tipo de trabajo</small>
   </h1>
   <ol class="breadcrumb">
   <li><a href="#"><i class="fa 	fa-suitcase"></i> Trabajo</a></li>
-  <li class="active">Tipo de Trabajo</li>
+  <li class="active">Tipo de trabajo</li>
   </ol>
 </section>
 <section class="content">
@@ -16,7 +16,7 @@
 <div class="box">
 <div class="box-header">
 <h3 class="box-title">Listado de tipos de trabajos <a href="{{route('tipo.create')}}"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
-<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
+</h3>
 </div>
 <!-- /.box-header -->
 <div class="box-body">
