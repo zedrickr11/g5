@@ -32,9 +32,11 @@
 					</div>
 				</div>
 				<!-- /.box-body -->
-
+				<br>				<br>
+				<br>
+				<br>
+				<br>
 				<div class="box-footer">
-
 					<a href="{{route('estado.index')}}">
 		            <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
 		          	</a>
