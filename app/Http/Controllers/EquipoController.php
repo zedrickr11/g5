@@ -207,7 +207,7 @@ class EquipoController extends Controller
 
         return $pdf->stream('FICHA TÉCNICA"'.$id.'".pdf');
         //return view("equipo.caracteristica.fichatecnica.show",compact('equipo'));
-    }
+    }  
     public function rutina($id)
     {
     //   $equipo = Equipo::all();

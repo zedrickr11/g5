@@ -1382,7 +1382,7 @@
               <a href="{{route('equipo.rutina',$equipo->idequipo)}}" target="_blank" class="btn btn-primary btn-block"><b>Historial de la rutina</b></a>
 
 
-            </div>
+            </div>  
             <!-- /.tab-pane -->
 
             <!-- /.box-body -->
