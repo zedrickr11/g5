@@ -29,6 +29,7 @@ use App\DetalleTecnicoExterno;
 use App\Detalle_ingreso_insumo;
 use App\Insumo;
 use App\Repuesto;
+use App\Herramienta;
 class rumanController extends Controller
 {
   function __construct()
@@ -201,7 +202,7 @@ if($request->get('enviar')=='enviado'){
        $noti->end=$request->get('end');
        $noti->rutina_mantenimiento_idrutina_mantenimiento=$ruman->idrutina_mantenimiento;
        $noti->estado_notificacion='0';
-       $noti->backgroundColor='black';
+       $noti->backgroundColor='yellow';
        $noti->textColor='white';
        $noti->title=$request->get('idequipo');
        $noti->save();
@@ -351,7 +352,9 @@ if($request->get('enviar')=='enviado'){
    * @return \Illuminate\Http\Response
    */
   public function edit($id)
-  { $repuesto=Repuesto::all();
+  {
+    $herramienta=Herramienta::all();
+    $repuesto=Repuesto::all();
        $insumo=Insumo::all();
      $users=User::all();
     $notificacion=Notificacion::all();
@@ -363,7 +366,7 @@ if($request->get('enviar')=='enviado'){
     $equipo=Equipo::all();
   $ruman=ruman::findOrFail($id);
       $permisotrabajo=PermisoTrabajo::all();
-    return view('equipo.rutina.ruman.edit', compact('repuesto','insumo','users','notificacion','valrefru','subru','caracru','detallerutina','ruman','tiporu','equipo','permisotrabajo'));
+    return view('equipo.rutina.ruman.edit', compact('herramienta','repuesto','insumo','users','notificacion','valrefru','subru','caracru','detallerutina','ruman','tiporu','equipo','permisotrabajo'));
   }
 
   /**
@@ -376,6 +379,10 @@ if($request->get('enviar')=='enviado'){
   public function update(rumanFormRequest $request, $id)
   {
     ruman::findOrFail($id)->update($request->all());
+    DB::table('notificacion')
+                ->where('rutina_mantenimiento_idrutina_mantenimiento',$id)
+                ->update(['backgroundColor' =>  $request->get('color')]);
+
 
     $cont = 0;
     $rutinatipo=$request->get('rutinatipo');
@@ -433,7 +440,7 @@ if("$estado_rutina"=="REALIZADO" and $rutinatipo==1){
          $noti->end=$request->get('end22');
          $noti->rutina_mantenimiento_idrutina_mantenimiento=$ruman->idrutina_mantenimiento;
          $noti->estado_notificacion='0';
-         $noti->backgroundColor='black';
+         $noti->backgroundColor='yellow';
          $noti->textColor='white';
          $noti->title=$request->get('idequipo');
          $noti->save();

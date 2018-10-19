@@ -294,6 +294,39 @@
     </div>
       <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
 
+
+
+        <h3>Herramienta </h3>
+          <div class="form-group">
+            <select name="repuesto" class="form-control" style="width: 100%" id="repuesto" data-live-search="true">
+              @foreach($repuesto as $carac)
+              <option value="{{$carac->idrepuesto}}">{{$carac->nombre}}</option>
+          @endforeach
+          </select>
+          </div>
+
+
+          <div class="form-group">
+            <button type="button" id="bt_add3" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
+
+          </div>
+          <table id="detalles3" class="table table-striped table-bordered table-condensed table-hover">
+              <thead style="background-color:#2ab863">
+                  <th>Opciones</th>
+                  <th>Herramienta</th>
+
+
+              </thead>
+              <tfoot>
+
+              </tfoot>
+              <tbody>
+
+              </tbody>
+          </table>
+
+
+
 </div>
 </div>
 
@@ -377,12 +410,12 @@ $( "#aplazar" ).click(function() {
 });
 function show(){
 
-    var fila='<input type="hidden" name="estado_rutina" value="PENDIENTE">';
+    var fila='<input type="hidden" name="estado_rutina" value="PENDIENTE"><input type="hidden" name="color" value="yellow">';
 $('#detalles').append(fila);
 }
 function show2(){
 
-    var fila='<input type="hidden" name="estado_rutina" value="REALIZADO">';
+    var fila='<input type="hidden" name="estado_rutina" value="REALIZADO"><input type="hidden" name="color" value="green">';
 $('#detalles').append(fila);
 }
 
