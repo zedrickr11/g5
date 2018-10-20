@@ -18,7 +18,8 @@
           <div class="box">
             <div class="box-header">
 			  <h3 class="box-title">Listado de subgrupo caracteristica tecnica <a href="subcaractec/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
-			  		<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
+			  	<!--	<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a>-->
+          </h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -52,11 +53,11 @@
                   <a href="{{route('subcaractec.show',$cat->idsubgrupo_carac_tecnica)}}">
                     <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></button>
                   </a>
-                  <form style="display: inline" method="POST" action="{{route('subcaractec.destroy', $cat->idsubgrupo_carac_tecnica)}}">
+                <!--  <form style="display: inline" method="POST" action="{{route('subcaractec.destroy', $cat->idsubgrupo_carac_tecnica)}}">
                   {!!method_field('DELETE')!!}
                   {!!csrf_field()!!}
                     <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></button>
-                  </form>
+                  </form> -->
 
 
               </td>

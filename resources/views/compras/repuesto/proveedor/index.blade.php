@@ -19,7 +19,7 @@
             <div class="box-header">
 			  <h3 class="box-title">Listado de Proveedores de Repuestos  <a href="prov/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button></a>
 			  		</h3>
-            <a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
+          <!--  <a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a>--></h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

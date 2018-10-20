@@ -18,7 +18,7 @@
           <div class="box">
             <div class="box-header">
        <h3 class="box-title">Listado de Configuración de los subgrupos <a href="confsubgrupo/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button></a>
-           <a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
+           <!--<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a>--></h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -62,11 +62,11 @@
                 <a href="{{route('confsubgrupo.show',$confsub->idconf_subgrupo)}}">
                   <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></span></button>
                 </a>
-                <form style="display: inline" method="POST" action="{{route('confsubgrupo.destroy', $confsub->idconf_subgrupo)}}">
+              <!--  <form style="display: inline" method="POST" action="{{route('confsubgrupo.destroy', $confsub->idconf_subgrupo)}}">
                 {!!method_field('DELETE')!!}
                 {!!csrf_field()!!}
                   <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></span> </button>
-                </form>
+                </form> -->
 
 
             </td>

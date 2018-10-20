@@ -43,11 +43,11 @@
 <a href="{{route('naturaleza.show',$n->idnaturaleza_peligro)}}">
 <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></span> </button>
 </a>
-<form style="display: inline" method="POST" action="{{route('naturaleza.destroy', $n->idnaturaleza_peligro)}}">
+<!--<form style="display: inline" method="POST" action="{{route('naturaleza.destroy', $n->idnaturaleza_peligro)}}">
 {!!method_field('DELETE')!!}
 {!!csrf_field()!!}
 <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></span> </button>
-</form>
+</form> -->
 </td>
 </tr>
 @endforeach

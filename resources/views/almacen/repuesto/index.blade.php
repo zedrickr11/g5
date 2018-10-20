@@ -19,7 +19,7 @@
             <div class="box-header">
 			  <h3 class="box-title">Listado de Repuestos  <a href="repuesto/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button></a>
 
-            <a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
+          <!--  <a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a>--></h3>
           	</h3>  </div>
             <!-- /.box-header -->
             <div class="box-body">

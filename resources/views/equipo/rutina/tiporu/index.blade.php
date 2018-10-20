@@ -21,7 +21,7 @@
             <div class="box-header">
 
 			  <h3 class="box-title">Listado de tipo rutina<a href="tiporu/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
-			  		<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
+			  		<!--<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a>--></h3>
             </div>
             <!-- /.box-header -->
 
@@ -57,11 +57,11 @@
                   <a href="{{route('tiporu.show',$cat->idtipo_rutina)}}">
                     <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></button>
                   </a>
-                  <form style="display: inline" method="POST" action="{{route('tiporu.destroy', $cat->idtipo_rutina)}}">
+                <!--  <form style="display: inline" method="POST" action="{{route('tiporu.destroy', $cat->idtipo_rutina)}}">
                   {!!method_field('DELETE')!!}
                   {!!csrf_field()!!}
                     <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></button>
-                  </form>
+                  </form> -->
 
 
               </td>
