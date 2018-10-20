@@ -16,6 +16,7 @@ use App\Http\Controllers\Controller;
 use App\SolicitudTrabajo;
 use DB;
 use Carbon\Carbon;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Collection;
 class PermisoTrabajoController extends Controller
 {
@@ -23,7 +24,7 @@ class PermisoTrabajoController extends Controller
     {
       $this->middleware(['auth','role:admin,jefe-mantto']);
     }
-  
+
     /**
      * Display a listing of the resource.
      *
@@ -77,6 +78,43 @@ class PermisoTrabajoController extends Controller
 
                       $numeropermiso = DB::table('permiso_trabajo')->select('num_permiso')->orderBy('num_permiso', 'desc')->first();
     return view("trabajo.permiso.create",["solicitudes"=>$solicitudes,"tipos"=>$tipos,"naturalezas"=>$naturalezas,"responsables"=>$responsables,"ejecutantes"=>$ejecutantes,"numeropermiso"=>$numeropermiso]);
+     }
+     public function ficha($id)
+     {
+
+     $permisos=DB::table('permiso_trabajo as p')
+          ->join('solitud_trabajo as s','p.idsolitud_trabajo','=','s.idsolitud_trabajo')
+          ->select('p.fecha','p.num_permiso','p.descripcion','s.numero as num')
+          ->where('p.idpermiso_trabajo','=',$id)
+          ->get();
+
+    $detalles=DB::table('detalle_tipo_trabajo_permiso as d')
+               ->join('tipo_trabajo as t','d.idtipo_trabajo','=','t.idtipo_trabajo')
+               ->select('t.nombre_tipo as tipo')
+               ->where('d.idpermiso_trabajo','=',$id)
+               ->get();
+   $detallesn=DB::table('detalle_naturaleza_peligro as dn')
+               ->join('naturaleza_peligro as n','dn.idnaturaleza_peligro','=','n.idnaturaleza_peligro')
+               ->select('n.naturaleza_peligro as naturaleza')
+               ->where('dn.idpermiso_trabajo','=',$id)
+              ->get();
+   $detallesr=DB::table('detalle_precaucion_responsable as dr')
+             ->join('precaucion_responsable as r','dr.idprecaucion_responsable','=','r.idprecaucion_responsable')
+             ->select('r.precaucion_responsable as responsable')
+             ->where('dr.idpermiso_trabajo','=',$id)
+              ->get();
+
+   $detallese=DB::table('detalle_precaucion_ejecutante as de')
+             ->join('precaucion_ejecutante as e','de.idprecaucion_ejecutante','=','e.idprecaucion_ejecutante')
+             ->select('e.precaucion_ejecutante as ejecutante')
+             ->where('de.idpermiso_trabajo','=',$id)
+             ->get();
+
+
+         $pdf = PDF::loadView("trabajo.permisopdf.show",["permisos"=>$permisos,"detalles"=>$detalles,"detallesn"=>$detallesn,"detallesr"=>$detallesr,"detallese"=>$detallese]);
+
+         return $pdf->stream('PermisoTrabajo.pdf');
+     
      }
 
     /**

@@ -37,6 +37,8 @@ USE App\ruman;
 use App\tiporu;
 use App\PermisoTrabajo;
 use App\detcaracru;
+use App\caracespefun;
+use App\valorrefesp;
 use Barryvdh\DomPDF\Facade as PDF;
 
 use Carbon\Carbon;
@@ -105,7 +107,7 @@ class EquipoIndexController extends Controller
         ->where('idequipo','=',$id)
         ->get();
         //$equipo=Equipo::findOrFail($id);
-        
+
 
       $responsable=DB::table('equipo as e')
                   ->join('users as u','u.id','e.users_id')
@@ -123,11 +125,17 @@ class EquipoIndexController extends Controller
         ->where('e.idequipo','=',$id)
         ->first();
 
+        $caract_tec=CaracTec::all();
+        $subcaractec=subcaractec::all();
+        $valorreftec=valorreftec::all();
+        $caracespefun=caracespefun::all();
+        $valorrefesp=valorrefesp::all();
+
         return view('equipo.vista.index', compact('notificacion','detallerutina','tiporu','permisotrabajo','ruman','equipo','proveedor','unidad_salud','area',
                   'estado','servicio_tecnico','fabricante','hospital','departamento',
                   'region','grupo','subgrupo','tipounidadsalud','TipoManual','EquipoM',
 
-                                                'Detalle_manual','imagen_equipo','tiporu','permisotrabajo','ruman','areas','tipos','equipos', 'partes','accesorios','responsable'));
+                                                'Detalle_manual','imagen_equipo','tiporu','permisotrabajo','ruman','areas','tipos','equipos', 'partes','accesorios','responsable','caract_tec','subcaractec','valorreftec','caracespefun','valorrefesp'));
 
 
     }

@@ -2,11 +2,11 @@
 @section ('contenido')
 <section class="content-header">
       <h1>
-        Precaucion
-        <small>Precaucion Ejecutante</small>
+        Precaución
+        <small>Precaución ejecutante</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-exclamation-triangle"></i> Precaucion</a></li>
+        <li><a href="#"><i class="fa fa-exclamation-triangle"></i> Precaución</a></li>
         <li class="active">Ejecutante</li>
       </ol>
 	</section>
@@ -17,8 +17,8 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="box">
             <div class="box-header">
-        <h3 class="box-title">Listado de Precauciones <a href="ejecutante/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
-            <a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
+        <h3 class="box-title">Listado de precauciones <a href="ejecutante/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
+            </h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -29,7 +29,7 @@
                   <thead>
                   <tr>
                     <th>Id</th>
-                    <th>Precaucion</th>
+                    <th>Precaución</th>
                         <th>Opciones</th>
                   </tr>
                   </thead>
@@ -64,7 +64,7 @@
                   </tfoot>
           </table>
             {!! $ejecutantes->appends(['searchText'=>request('searchText')])->links() !!}
-        
+
 
               </div>
 </div>

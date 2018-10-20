@@ -6,7 +6,7 @@
         <small>Regiones</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Region</a></li>
+        <li><a href="#"><i class="fa fa-map-pin"></i> Región</a></li>
         <li class="active">Listado</li>
       </ol>
 	</section>
@@ -17,8 +17,8 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="box">
             <div class="box-header">
-        <h3 class="box-title">Listado de Regiones <a href="{{route('region.create')}}"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
-            <a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
+        <h3 class="box-title">Listado de regiones <a href="{{route('region.create')}}"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
+          </h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -29,11 +29,11 @@
                   <thead>
                   <tr>
                     <th>Id</th>
-                    <th>Region</th>
+                    <th>Región</th>
                         <th>Opciones</th>
                   </tr>
                   </thead>
-                  <tbody>
+                  <tbody
             @foreach ($regiones as $reg)
             <tr>
               <td>{{ $reg->idregion}}</td>

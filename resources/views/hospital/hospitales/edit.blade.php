@@ -7,7 +7,7 @@
         <small>Hospitales</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Hospital</a></li>
+        <li><a href="#"><i class="fa fa-hospital-o"></i> Hospital</a></li>
         <li class="active">Modificar</li>
       </ol>
 </section>
@@ -18,7 +18,7 @@
 		<!-- general form elements -->
 		<div class="box box-success">
 			<div class="box-header with-border">
-				<h3 class="box-title">Editar Region</h3>
+				<h3 class="box-title">Editar</h3>
 			</div>
       @if (count($errors)>0)
       <div class="alert alert-danger">
@@ -40,7 +40,7 @@
 						<input type="text" class="form-control" name="hospital" value="{{$hospitales->hospital}}">
 					</div>
           <div class="form-group">
-            <label for="direccion_fab">Clave Administador</label>
+            <label for="direccion_fab">Clave administador</label>
             <input type="text" class="form-control" name="clave_admin" value="{{$hospitales->clave_admin}}">
           </div>
 				</div>

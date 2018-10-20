@@ -4,10 +4,10 @@
 <section class="content-header">
       <h1>
         Hospital
-        <small>Region</small>
+        <small>Región</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Region</a></li>
+        <li><a href="#"><i class="fa fa-tv"></i> Región</a></li>
         <li class="active">Modificar</li>
       </ol>
 </section>
@@ -18,7 +18,7 @@
 		<!-- general form elements -->
 		<div class="box box-success">
 			<div class="box-header with-border">
-				<h3 class="box-title">Editar Region</h3>
+				<h3 class="box-title">Editar región</h3>
 			</div>
       @if (count($errors)>0)
       <div class="alert alert-danger">
@@ -36,7 +36,7 @@
 				{!!csrf_field()!!}
 				<div class="box-body col-md-12">
 					<div class="form-group">
-						<label for="direccion_fab">Region</label>
+						<label for="direccion_fab">Región</label>
 						<input type="text" class="form-control" name="region" value="{{$regiones->region}}">
 					</div>
 				</div>

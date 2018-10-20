@@ -7,7 +7,7 @@
         <small>Unidades de Salud</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Unidad de Salud</a></li>
+        <li><a href="#"><i class="fa fa-tv"></i> Unidad de salud</a></li>
         <li class="active">Detalles</li>
       </ol>
 </section>
@@ -26,11 +26,11 @@
 
 				<div class="box-body col-md-12">
 					<div class="form-group">
-						<label for="codigo">Codigo de Unidad de Salud</label>
+						<label for="codigo">Código de unidad de salud</label>
             <p>{{$unidades->idunidadsalud}}</p>
 					</div>
 					<div class="form-group">
-						<label for="unidad">Unidad de Salud</label>
+						<label for="unidad">Unidad de salud</label>
             <p>{{$unidades->unidad_salud}}</p>
 					</div>
 

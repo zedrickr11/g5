@@ -18,7 +18,7 @@ Precaución
 <!-- general form elements -->
 <div class="box box-success">
 <div class="box-header with-border">
-<h3 class="box-title">Editar Precaución</h3>
+<h3 class="box-title">Editar precaución</h3>
 </div>
 @if (count($errors)>0)
 <div class="alert alert-danger">
@@ -36,7 +36,7 @@ Precaución
 {!!csrf_field()!!}
 <div class="box-body col-md-12">
 <div class="form-group">
-<label for="direccion_fab">Nombre de la Precaución</label>
+<label for="direccion_fab">Nombre de la precaución</label>
 <input type="text" class="form-control" name="precaucion_responsable" value="{{$responsables->precaucion_responsable}}">
 </div>
 </div>

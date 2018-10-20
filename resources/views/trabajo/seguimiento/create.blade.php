@@ -4,11 +4,11 @@
 <section class="content-header">
 <h1>
 Trabajo
-<small>Seguimiento de Trabajo</small>
+<small>Seguimiento de trabajo</small>
 </h1>
 <ol class="breadcrumb">
 <li><a href="#"><i class="fa 	fa-suitcase"></i> Trabajo</a></li>
-<li class="active">Seguimiento de  Trabajo</li>
+<li class="active">Seguimiento de  trabajo</li>
 </ol>
 </section>
 <section class="content">
@@ -18,7 +18,7 @@ Trabajo
 <!-- general form elements -->
 <div class="box box-success">
 <div class="box-header with-border">
-<h3 class="box-title">Nuevo Seguimiento de trabajo</h3>
+<h3 class="box-title">Nuevo seguimiento de trabajo</h3>
 </div>
 @if (count($errors)>0)
 <div class="alert alert-danger">
@@ -36,7 +36,7 @@ Trabajo
 <div class="box-body col-md-12">
 
 <div class="form-group">
-<label for="direccion_fab">Nombre del Responsable</label>
+<label for="direccion_fab">Nombre del responsable</label>
 <input type="text" class="form-control" name="responsable_seguimiento" value="{{old('responsable_seguimiento')}}">
 </div>
 
@@ -52,7 +52,7 @@ Trabajo
 
 
 <div class="form-group">
-      <label for="solicitud">No de Solicitud</label>
+      <label for="solicitud">No. de solicitud</label>
       <select name="solitud_trabajo_idsolitud_trabajo" id="solitud_trabajo_idsolitud_trabajo" class="form-control selectpicker" data-live-search="true">
         @foreach($solicitudes as $s)
           <option value="{{$s->idsolitud_trabajo}}">{{$s->numero}}</option>

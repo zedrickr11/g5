@@ -3,11 +3,11 @@
 <section class="content-header">
 <h1>
 Trabajo
-<small>Tipo de Trabajo</small>
+<small>Tipo de trabajo</small>
 </h1>
 <ol class="breadcrumb">
 <li><a href="#"><i class="fa 	fa-suitcase"></i> Trabajo</a></li>
-<li class="active">Tipo de Trabajo</li>
+<li class="active">Tipo de trabajo</li>
 </ol>
 </section>
 <section class="content">
@@ -32,7 +32,7 @@ Trabajo
 <!-- form start -->
 <form role="form" method="POST" action="{{route('tipo.store')}}" >
 {!! csrf_field() !!}
- 
+
 <div class="box-body col-md-12">
 <div class="form-group">
 <label for="direccion_fab">Nombre del tipo de trabajo</label>

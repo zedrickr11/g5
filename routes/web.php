@@ -79,6 +79,12 @@ Route::get('trabajo/solicitud/ficha/{id}',[
     'uses' => 'SolicitudTrabajoController@ficha'
 ]);
 
+//pdf permiso de tipo_trabajo
+Route::get('trabajo/permiso/ficha/{id}',[
+    'as' => 'permiso.ficha',
+    'uses' => 'PermisoTrabajoController@ficha'
+]);
+
 //hospital
 Route::resource('hospital/region','RegionController');
 Route::resource('hospital/hospitales','HospitalController');
@@ -96,6 +102,7 @@ Route::resource('equipo/caracteristica/valorreftec','valorreftecController');
 Route::resource('equipo/caracteristica/detcaractec','detcaractecController');
 Route::resource('equipo/caracteristica/detcaracesp','detcaracespController');
 Route::resource('equipo/caracteristica/fichatecnica','fichatecnicaController');
+Route::get('equipo/caracteristica/{id}',['as'=>'carac','uses'=>'detcaracespController@list']);
 
 //Caracteristicas de rutinas
 Route::resource('equipo/rutina/valorrefpru','valorrefpruController');
@@ -118,7 +125,7 @@ Route::resource('precaucion/ejecutante','PrecaucionEjecutanteController');
 Route::resource('precaucion/responsable','PrecaucionResponsableController');
 Route::resource('peligro/naturaleza','NaturalezaPeligroController');
 Route::resource('trabajo/tipo','TipoTrabajoController');
-Route::resource('trabajo/solicitud','SolicitudTrabajoIndexController');
+Route::resource('trabajo/solicitud','SolicitudTrabajoController');
 Route::resource('trabajo/permiso','PermisoTrabajoController');
 Route::resource('trabajo/seguimiento','SeguimientoController');
 Route::get('trabajo/solicitud/solicitudpdf/{id}', 'SolicitudTrabajoController@ficha')->name('Solicitudes.ficha');//pdf

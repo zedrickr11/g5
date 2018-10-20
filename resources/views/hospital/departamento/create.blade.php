@@ -7,7 +7,7 @@
         <small>Departamento</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i>Departamento</a></li>
+        <li><a href="#"><i class="fa fa-map-signs"></i>Departamento</a></li>
         <li class="active">Ingreso</li>
       </ol>
 </section>
@@ -18,7 +18,7 @@
 		<!-- general form elements -->
 		<div class="box box-success">
 			<div class="box-header with-border">
-				<h3 class="box-title">Nuevo Departamento</h3>
+				<h3 class="box-title">Nuevo departamento</h3>
 			</div>
       @if (count($errors)>0)
       <div class="alert alert-danger">
@@ -36,11 +36,11 @@
 
 				<div class="box-body col-md-12">
 					<div class="form-group">
-						<label for="direccion_fab">Codigo de Departamento</label>
+						<label for="direccion_fab">Código de departamento</label>
 						<input type="text" class="form-control" name="iddepartamento" value="{{old('iddepartamento')}}">
 					</div>
 					<div class="form-group">
-						<label for="telefono_fab">Nombre del Departamento</label>
+						<label for="telefono_fab">Nombre del departamento</label>
 						<input type="text" class="form-control" name="depto" value="{{old('depto')}}">
 					</div>
 
@@ -55,7 +55,7 @@
 
 
 <div class="form-group">
-      <label for="region">Region</label>
+      <label for="region">Región</label>
       <select name="idregion" id="idregion" class="form-control selectpicker" data-live-search="true">
         @foreach($regiones as $r)
             <option value="{{$r->idregion}}">{{$r->region}}</option>

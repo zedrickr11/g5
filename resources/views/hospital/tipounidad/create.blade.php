@@ -4,10 +4,10 @@
 <section class="content-header">
       <h1>
         Hospital
-        <small>Tipo de Unidad de Salud</small>
+        <small>Tipo de unidad de salud</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i>Tipos de Unidades de Salud</a></li>
+        <li><a href="#"><i class="fa fa-medkit"></i>Tipos de unidades de salud</a></li>
         <li class="active">Ingreso</li>
       </ol>
 </section>
@@ -18,7 +18,7 @@
 		<!-- general form elements -->
 		<div class="box box-success">
 			<div class="box-header with-border">
-				<h3 class="box-title">Nuevo Tipo de Unidad</h3>
+				<h3 class="box-title">Nuevo tipo de unidad</h3>
 			</div>
       @if (count($errors)>0)
       <div class="alert alert-danger">
@@ -36,23 +36,23 @@
 
 				<div class="box-body col-md-12">
 					<div class="form-group">
-						<label for="direccion_fab">Codigo de Tipo de Unidad de Salud</label>
+						<label for="direccion_fab">Código</label>
 						<input type="text" class="form-control" name="idtipounidad" value="{{old('idtipounidad')}}">
 					</div>
 					<div class="form-group">
-						<label for="telefono_fab">Nivel de Atencion</label>
+						<label for="telefono_fab">Nivel de atención</label>
 						<input type="text" class="form-control" name="nivel_atencion" value="{{old('nivel_atencion')}}">
 					</div>
           <div class="form-group">
-						<label for="telefono_fab">Categoria</label>
+						<label for="telefono_fab">Categoría</label>
 						<input type="text" class="form-control" name="categoria" value="{{old('categoria')}}">
 					</div>
           <div class="form-group">
-						<label for="telefono_fab">Comp</label>
+						<label for="telefono_fab">Complejidad y resolución </label>
 						<input type="text" class="form-control" name="comp_res" value="{{old('comp_res')}}">
 					</div>
           <div class="form-group">
-            <label for="telefono_fab">Unidad Medica</label>
+            <label for="telefono_fab">Unidad medica</label>
             <input type="text" class="form-control" name="unidad_medica" value="{{old('unidad_medica')}}">
           </div>
           <div class="form-group">

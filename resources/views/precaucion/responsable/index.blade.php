@@ -3,7 +3,7 @@
 <section class="content-header">
 <h1>
 Precaución
-<small>Precaución Responsable</small>
+<small>Precaución responsable</small>
 </h1>
 <ol class="breadcrumb">
 <li><a href="#"><i class="fa fa-exclamation-triangle"></i> Precaución</a></li>
@@ -15,8 +15,8 @@ Precaución
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 <div class="box">
 <div class="box-header">
-<h3 class="box-title">Listado de Precauciones de Responsables <a href="responsable/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
-<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
+<h3 class="box-title">Listado de precauciones de responsable <a href="responsable/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
+</h3>
 </div>
 <!-- /.box-header -->
 <div class="box-body">
@@ -27,7 +27,7 @@ Precaución
 <thead>
 <tr>
 <th>Id</th>
-<th>Precaucion</th>
+<th>Precaución</th>
 <th>Opciones</th>
 </tr>
 </thead>

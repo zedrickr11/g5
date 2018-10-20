@@ -7,8 +7,8 @@
         <small>Departamentos</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Departamento</a></li>
-        <li class="active">Detalles</li>
+        <li><a href="#"><i class="fa fa-map-signs"></i> Departamento</a></li>
+        <li class="active">Detalle</li>
       </ol>
 </section>
 	<section class="content">
@@ -26,7 +26,7 @@
 
 				<div class="box-body col-md-12">
 					<div class="form-group">
-						<label for="codigo">Codigo de Departamento</label>
+						<label for="codigo">Código de departamento</label>
             <p>{{$departamentos->iddepartamento}}</p>
 					</div>
 					<div class="form-group">
@@ -45,7 +45,7 @@
           </div>
 
           <div class="form-group">
-            <label for="direccion_fab">Region</label>
+            <label for="direccion_fab">Región</label>
             <br>
      @foreach($regions as $reg)
               @if ($reg->idregion==$departamentos->idregion)
