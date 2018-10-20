@@ -39,10 +39,6 @@ class CalendarioController extends Controller
           
           $eventos= DB::select($sql,array(1,20));
 
-          
-          
-
-          
 
           return response()->json($eventos);
 

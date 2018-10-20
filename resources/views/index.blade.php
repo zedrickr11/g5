@@ -135,7 +135,14 @@
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                          <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">OPCIONES</h4>
+                         <h3 class=" modal-title text-success">Equipo ID:  <strong id="idequipo"></strong></h3>
+                         <hr>
+                         <h3 class="text-success">Nombre Equipo:  <strong id="nombreequipo"></strong></h3>
+                         <hr><hr>
+                         <h3 class="text-success"> Tiempo estimado del mantenimiento: <strong id="tiempo" >0</strong><strong> H</strong></h3>
+                         <hr><hr>
+                         <h5 class="text-success"> Estado del mantenimiento:  <strong id="EstadoMan" ></strong><strong> </strong></h5>
+                         <hr>
                   </div>
 
                   <div class="modal-body">
@@ -143,19 +150,12 @@
 
                     <form role="form">
                       <div class="box-body">
-
                         <div class="form-group">
 
                             
                         
                          <div class=" form-group bg-alert">
-                          <hr>
-                          <h3 class="text-success">Equipo ID:  <strong id="idequipo"></strong></h3>
-                          <hr><hr>
-                          <h3 class="text-success">Nombre Equipo:  <strong id="nombreequipo"></strong></h3>
-                          <hr><hr>
-                          <h3 class="text-success"> Tiempo estimado del mantenimiento: <strong id="tiempo" >0</strong><strong> H</strong></h3>
-                          <hr>
+                         
 
                         </div>
                           {{-- <input readonly type="text" class="form-control" id="nombreequipo" placeholder="Equipo"> --}}
@@ -355,12 +355,15 @@
           $('#idequipo').html(calEvent.title);
           $('#tiempo').html(calEvent.tiempo_estimado_rutina_mantenimiento);
           $('#nombreequipo').html(calEvent.nombre_equipo);
+          $('#EstadoMan').html(calEvent.estado_rutina);
          
           $('#descripcionmantenimiento').val(calEvent.descripcionmantenimiento);
           $('#fechacreacion').val(calEvent.start);
           $('#fechafinal').val(calEvent.end);
           $('#horamantenimiento').val(calEvent.hora);
           $('#estadonotificacion').val(calEvent.estadonotificacion);
+          
+          
 
 
           $( "#irsolicitudboton" ).click(function() {
@@ -462,6 +465,7 @@
         $('#idequipo').html(calEvent.title);
         $('#tiempo').html(calEvent.tiempo_estimado_rutina_mantenimiento);
         $('#nombreequipo').html(calEvent.nombre_equipo);
+        $('#EstadoMan').html(calEvent.estado_rutina);
         
        
         $('#descripcionmantenimiento').val(calEvent.descripcionmantenimiento);
@@ -469,6 +473,8 @@
         $('#fechafinal').val(calEvent.end);
         $('#horamantenimiento').val(calEvent.hora);
         $('#estadonotificacion').val(calEvent.estadonotificacion);
+      
+          
 
 
         $( "#irsolicitudboton" ).click(function() {
