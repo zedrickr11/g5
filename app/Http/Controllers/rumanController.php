@@ -96,6 +96,12 @@ class rumanController extends Controller
   }
   public function create($idequipo)
   {}
+
+    public function tecnicos($id)
+    {
+
+
+    }
   /**
    * Store a newly created resource in storage.
    *
