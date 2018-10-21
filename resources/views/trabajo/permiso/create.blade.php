@@ -43,7 +43,7 @@ Trabajo
 <div class="box-body col-md-6">
   <div class="form-group">
 <label for="direccion_fab">No. de permiso</label>
-<input type="text" class="form-control" readonly name="num_permiso" value="{{$numeropermiso->num_permiso+1}} ">
+<input type="number" class="form-control"  name="num_permiso" value=" {{ old('num_permiso') }}">
 
 </div>
 <div class="form-group">
