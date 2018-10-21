@@ -21,7 +21,7 @@
             <td id="gris" colspan="3"> 	<div align="center"> FICHA TÉCNICA             </div>  </td>
 
               <td rowspan="3" ><div align="center">
-  <IMG src="dist/img/iggs.jpg" WIDTH=50 HEIGHT=50 BORDER=0>    </td>
+  <IMG src="{{ public_path('dist/img/igss.png') }}" WIDTH=100 HEIGHT=100 BORDER=0>    </td>
   </div></tr>
           <tr>
             <td id="gris"> <div align="center"> No. Inventario Técnico </div></td>

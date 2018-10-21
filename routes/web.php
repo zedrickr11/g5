@@ -106,6 +106,7 @@ Route::resource('equipo/caracteristica/valorreftec','valorreftecController');
 Route::resource('equipo/caracteristica/detcaractec','detcaractecController');
 Route::resource('equipo/caracteristica/detcaracesp','detcaracespController');
 Route::resource('equipo/caracteristica/fichatecnica','fichatecnicaController');
+Route::get('equipo/caracteristica/{id}',['as'=>'carac','uses'=>'detcaracespController@list']);
 
 //Caracteristicas de rutinas
 Route::resource('equipo/rutina/valorrefpru','valorrefpruController');

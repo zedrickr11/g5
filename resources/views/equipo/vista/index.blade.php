@@ -42,7 +42,9 @@
             </ul>
 
             <a href="{{route('equipo.ficha',$equipo->idequipo)}}" target="_blank" class="btn btn-success btn-block"><b>Ficha técnica</b></a>
-          <!--<a  href="{{route('equipo.vista',$equipo->idequipo)}}" target="_blank" class="btn btn-warning btn-block"><b>Ver Solicitudes</b></a>-->
+          <a  href="{{route('equipo.vista',$equipo->idequipo)}}" target="_blank" class="btn btn-warning btn-block"><b>Solicitudes</b></a>
+          <a  href="{{route('carac',$equipo->idequipo)}}"  class="btn btn-info btn-block"><b>Características</b></a>
+
           </div>
           <!-- /.box-body -->
         </div>
@@ -328,7 +330,221 @@
             </div>
             <!-- /.tab-pane -->
             <div class="tab-pane" id="fichatecnica">
-              <h1>Ficha técnica</h1>
+              <div class="row">
+                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+
+                <div class="form-group">
+                <h3>Características técnicas</h3>
+              </div>
+            </div>
+                {!!Form::open(array('url'=>'equipo/caracteristica/detcaractec','method'=>'POST','autocomplete'=>'off'))!!}
+                      {{Form::token()}}
+                <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+
+                <div class="form-group">
+                <label for="idcaracteristica_tecnica" class="est">Característica técnica</label>
+                <select id="carac" name="cidcaracteristica_tecnica" class="form-control" style="width:100%">
+                  <option disabled selected>=== Selecciona una característica ===</option>
+                @foreach($caract_tec as $tec)
+
+                  <option value="{{$tec->idcaracteristica_tecnica}}">{{$tec->nombre_caracteristica_tecnica}}</option>
+
+                @endforeach
+                </select>
+                </div>
+              </div>
+              <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+
+              <div class="form-group">
+              <label for="idsubgrupo_carac_tecnica" class="est">Subgrupo técnico</label>
+              <select id="sub_carac" name="cidsubgrupo_carac_tecnica" class="form-control" style="width:100%">
+                <option disabled selected>=== Selecciona una subgrupo ===</option>
+              @foreach($subcaractec as $tec)
+
+                <option value="{{$tec->idsubgrupo_carac_tecnica}}">{{$tec->nombre_subgrupo_carac_tecnica}}</option>
+
+              @endforeach
+              </select>
+              </div>
+            </div>
+              <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+
+              <div class="form-group">
+              <label for="idvalor_ref_tec" class="est">Valor de referencia</label>
+              <select id="valor_ref" name="cidvalor_ref_tec" class="form-control" style="width:100%">
+                <option disabled selected>=== Selecciona un valor de referencia===</option>
+              @foreach($valorreftec as $tec)
+
+                <option value="{{$tec->idvalor_ref_tec}}">{{$tec->nombre_valor_ref_tec}}</option>
+
+              @endforeach
+              </select>
+              </div>
+            </div>
+                  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+
+                  <div class="form-group">
+                    <label for="descripcion_detalle_caracteristica_tecnica">Descripción</label>
+                    <textarea id="desc_carac" rows="3" class="form-control" name="cdescripcion_detalle_caracteristica_tecnica">
+
+                    </textarea>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+
+                <div class="form-group">
+                  <label for="valor_detalle_caracteristica_tecnica">Valor</label>
+                  <input id="valor_tec" name="cvalor_detalle_caracteristica_tecnica" type="number" min="0" step="0.1" class="form-control">
+
+                </div>
+              </div>
+              <input id="idequipo_carac" type="hidden" name="cidequipo" value="{{ $equipo->idequipo }}">
+
+              <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+
+              <div class="form-group">
+                <label for=""></label>
+                <button type="button" id="bt_add_carac" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
+
+
+              </div>
+            </div>
+            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                <table id="detalles_carac" class="table table-striped table-bordered table-condensed table-hover">
+                    <thead style="background-color:#2ab863">
+                        <th>Opciones</th>
+                        <th>Característica</th>
+                        <th>Subgrupo</th>
+                        <th>Valor de ref</th>
+                        <th>Descripción</th>
+                        <th>Valor</th>
+
+
+
+
+                    </thead>
+                    <tfoot>
+
+                    </tfoot>
+                    <tbody>
+
+                    </tbody>
+                </table>
+             </div>
+             <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12" id="guardar_carac">
+               <div class="form-group">
+                     <input name"_token" value="{{ csrf_token() }}" type="hidden"></input>
+
+                     <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
+                     <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
+
+                   </div>
+             </div>
+                {!!Form::close()!!}
+
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+
+                <div class="form-group">
+                <h3>Características especiales de funcionamiento</h3>
+              </div>
+            </div>
+                {!!Form::open(array('url'=>'equipo/caracteristica/detcaracesp','method'=>'POST','autocomplete'=>'off'))!!}
+                      {{Form::token()}}
+                <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+
+                <div class="form-group">
+                <label for="idcaracteristica_tecnica" class="est">Característica especial</label>
+                <select id="espe" name="cidcaracteristica_tecnica" class="form-control" style="width:100%">
+                  <option disabled selected>=== Selecciona una característica ===</option>
+                @foreach($caracespefun as $tec)
+
+                  <option value="{{$tec->idcaracteristica_especial}}">{{$tec->nombre_caracteristica_especial}}</option>
+
+                @endforeach
+                </select>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+
+              <div class="form-group">
+              <label for="idvalor_ref_tec" class="est">Valor de referencia</label>
+              <select id="valor_esp" name="cidvalor_ref_tec" class="form-control" style="width:100%">
+                <option disabled selected>=== Selecciona un valor de referencia===</option>
+              @foreach($valorrefesp as $tec)
+
+                <option value="{{$tec->idvalor_ref_esp}}">{{$tec->nombre_valor_ref_esp}}</option>
+
+              @endforeach
+              </select>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+
+            <div class="form-group">
+              <label for="valor_detalle_caracteristica_tecnica">Valor</label>
+              <input id="v_esp" name="cvalor_detalle_caracteristica_tecnica" type="number" min="0" step="0.1" class="form-control">
+
+            </div>
+          </div>
+                  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+
+                  <div class="form-group">
+                    <label for="descripcion_detalle_caracteristica_tecnica">Descripción</label>
+                    <textarea id="desc_esp" rows="3" class="form-control" name="cdescripcion_detalle_caracteristica_tecnica">
+
+                    </textarea>
+                  </div>
+                </div>
+
+              <input id="idequipo_esp" type="hidden" name="cidequipo" value="{{ $equipo->idequipo }}">
+
+              <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+
+              <div class="form-group">
+                <label for=""></label>
+                <button type="button" id="bt_add_esp" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
+
+
+              </div>
+            </div>
+            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                <table id="detalles_esp" class="table table-striped table-bordered table-condensed table-hover">
+                    <thead style="background-color:#2ab863">
+                        <th>Opciones</th>
+                        <th>Característica</th>
+
+                        <th>Valor de ref</th>
+                        <th>Descripción</th>
+                        <th>Valor</th>
+
+
+
+
+                    </thead>
+                    <tfoot>
+
+                    </tfoot>
+                    <tbody>
+
+                    </tbody>
+                </table>
+             </div>
+             <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12" id="guardar_esp">
+               <div class="form-group">
+                     <input name"_token" value="{{ csrf_token() }}" type="hidden"></input>
+
+                     <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
+                     <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
+
+                   </div>
+             </div>
+                {!!Form::close()!!}
+
+              </div>
             </div>
 
 
@@ -796,7 +1012,7 @@
                           <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
 
                           <div class="form-group">
-                          <label>Fecha de expiración de grarantia</label>
+                          <label>Fecha de expiración de garantía</label>
 
                           <div class="input-group date">
                             <div class="input-group-addon">
@@ -1087,7 +1303,7 @@
                               {!! csrf_field() !!}
                               <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 
-                                <h3>Agregar manual al equipo  <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-plus"></span> </button>
+                                <h3>Agregar manual al equipo
                                 </h3>
                               </div>
                       <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
@@ -1126,10 +1342,14 @@
                         </div>
 
                         </div>
+                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 
+                          <div class="form-group">
 
+                        <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-plus"></span> </button>
+                      </div>
 
-
+                      </div>
 
 
 
@@ -1142,8 +1362,7 @@
                   <div class="row">
                     <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 
-                      <h3>Agregar imagen al equipo  <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-plus"></span> </button>
-                      </h3>
+                      <h3>Agregar imagen al equipo </h3>
                     </div>
 
                             <input type="hidden" name="idequipo" value="{{ $equipo->idequipo }}" class="form-control" >
@@ -1160,6 +1379,14 @@
                             <input type="file" name="imagen" class="form-control"  >
                           </div>
                     </div>
+                    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+
+                      <div class="form-group">
+
+                    <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-plus"></span> </button>
+                  </div>
+
+                  </div>
 
                   </div>
 
@@ -1363,6 +1590,154 @@
     evaluar();
 
   }
+  </script>
+
+  <script>
+
+    $('#carac').select2({
+      theme: "classic"
+    });
+    $('#sub_carac').select2({
+      theme: "classic"
+    });
+
+    $('#valor_ref').select2({
+      theme: "classic"
+    });
+    $(document).ready(function(){
+      $('#bt_add_carac').click(function(){
+        agregar5();
+      });
+    });
+
+    var cont5=0;
+
+    $("#guardar_carac").hide();
+
+
+    function agregar5()
+    {
+      idcaracteristica1=$("#carac").val();
+      carac1=$("#carac option:selected").text();
+      idequipo1=$("#idequipo_carac").val();
+      idvalor_ref1=$("#valor_ref").val();
+      valor_ref1=$("#valor_ref option:selected").text();
+      idsubgrupo1=$("#sub_carac").val();
+      sub1=$("#sub_carac option:selected").text();
+      desc1=$("#desc_carac").val();
+      valor1=$("#valor_tec").val();
+
+
+      if (idcaracteristica1!="" && idequipo1!="" )
+      {
+          var fila5='<tr class="selected" id="fila5'+cont5+'"><td><button type="button" class="btn btn-warning" onclick="eliminar5('+cont5+');">X</button></td><td><input type="hidden" name="idcaracteristica_tecnica[]" value="'+idcaracteristica1+'">'+carac1+'</td><td><input type="hidden" name="idsubgrupo_carac_tecnica[]" value="'+idsubgrupo1+'">'+sub1+'</td><td><input type="hidden" name="idvalor_ref_tec[]" value="'+idvalor_ref1+'">'+valor_ref1+'</td><td><input type="text" name="descripcion_detalle_caracteristica_tecnica[]" value="'+desc1+'"></td><td><input type="number" name="valor_detalle_caracteristica_tecnica[]" value="'+valor1+'"></td><td><input type="hidden" name="idequipo[]" value="'+idequipo1+'"><td></tr>';
+          cont5++;
+          limpiar5();
+          evaluar5();
+          $('#detalles_carac').append(fila5);
+      }
+      else
+      {
+          alert("Error al ingresar el detalle del ingreso, revise los datos ");
+      }
+    }
+    function limpiar5(){
+      $("#desc_carac").val("");
+      $("#valor_tec").val("");
+
+    }
+
+    function evaluar5()
+    {
+      if (idcaracteristica1!="")
+      {
+        $("#guardar_carac").show();
+      }
+      else
+      {
+        $("#guardar_carac").hide();
+      }
+     }
+
+     function eliminar5(index){
+
+      $("#fila5" + index).remove();
+      evaluar5();
+
+    }
+
+  </script>
+  <script>
+
+    $('#espe').select2({
+      theme: "classic"
+    });
+    $('#valor_esp').select2({
+      theme: "classic"
+    });
+
+
+    $(document).ready(function(){
+      $('#bt_add_esp').click(function(){
+        agregar6();
+      });
+    });
+
+    var cont6=0;
+
+    $("#guardar_esp").hide();
+
+
+    function agregar6()
+    {
+      idcaracteristica=$("#espe").val();
+      carac=$("#espe option:selected").text();
+      idequipo=$("#idequipo_esp").val();
+      idvalor_ref=$("#valor_esp").val();
+      valor_ref=$("#valor_esp option:selected").text();
+
+      desc=$("#desc_esp").val();
+      valor=$("#v_esp").val();
+
+
+      if (idcaracteristica!="" && idequipo!="" )
+      {
+          var fila6='<tr class="selected" id="fila6'+cont6+'"><td><button type="button" class="btn btn-warning" onclick="eliminar6('+cont6+');">X</button></td><td><input type="hidden" name="idcaracteristica_especial[]" value="'+idcaracteristica+'">'+carac+'</td><td><input type="hidden" name="idvalor_ref_esp[]" value="'+idvalor_ref+'">'+valor_ref+'</td><td><input type="text" name="descripcion_detalle_caracteristica_especial[]" value="'+desc+'"></td><td><input type="number" name="valor_detalle_caracteristica_especial[]" value="'+valor+'"></td><td><input type="hidden" name="idequipo[]" value="'+idequipo+'"><td></tr>';
+          cont6++;
+          limpiar6();
+          evaluar6();
+          $('#detalles_esp').append(fila6);
+      }
+      else
+      {
+          alert("Error al ingresar el detalle del ingreso, revise los datos");
+      }
+    }
+    function limpiar6(){
+      $("#desc_esp").val("");
+      $("#v_esp").val("");
+
+    }
+
+    function evaluar6()
+    {
+      if (idcaracteristica!="")
+      {
+        $("#guardar_esp").show();
+      }
+      else
+      {
+        $("#guardar_esp").hide();
+      }
+     }
+
+     function eliminar6(index){
+
+      $("#fila6" + index).remove();
+      evaluar6();
+
+    }
+
   </script>
 
   <script>

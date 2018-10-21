@@ -20,7 +20,7 @@
             <div class="box-header">
 
 			  <h3 class="box-title">Listado de rutina mantenimiento
-			  		<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
+			  	<!--	<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a>--></h3>
             </div>
             <!-- /.box-header -->
 
@@ -65,12 +65,14 @@
                   <a href="{{route('ruman.show',$cat->idrutina_mantenimiento)}}">
                     <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></button>
                   </a>
-                  <form style="display: inline" method="POST" action="{{route('ruman.destroy', $cat->idrutina_mantenimiento)}}">
+
+
+                  <!--<form style="display: inline" method="POST" action="{{route('ruman.destroy', $cat->idrutina_mantenimiento)}}">
                   {!!method_field('DELETE')!!}
                   {!!csrf_field()!!}
                     <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></button>
                   </form>
-
+-->
 
               </td>
             </tr>
