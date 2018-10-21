@@ -26,9 +26,12 @@ use App\TecnicoExterno;
 use App\TecnicoInterno;
 use App\DetalleTecnicoInterno;
 use App\DetalleTecnicoExterno;
-use App\Detalle_ingreso_insumo;
+use App\DetalleInsumoRutina;
+use App\DetalleRepuestoRutina;
+use App\Detalle_ingreso_repuesto;
 use App\Insumo;
 use App\Repuesto;
+use App\DetalleHerramienta;
 use App\Herramienta;
 class rumanController extends Controller
 {
@@ -93,6 +96,12 @@ class rumanController extends Controller
   }
   public function create($idequipo)
   {}
+
+    public function tecnicos($id)
+    {
+
+
+    }
   /**
    * Store a newly created resource in storage.
    *
@@ -378,6 +387,59 @@ if($request->get('enviar')=='enviado'){
    */
   public function update(rumanFormRequest $request, $id)
   {
+
+
+    $herramientaceptar=$request->get('herramientaceptar');
+   $herramienta=$request->get('herramienta');
+    $contherramienta = 0;
+  if($herramientaceptar=="aceptar"){
+    while($contherramienta <count($herramienta)){
+
+        $detalleherramienta = new DetalleHerramienta();
+        $detalleherramienta->idherramienta=$herramienta[$contherramienta];
+        $detalleherramienta->idrutina_mantenimiento=$id;
+        $detalleherramienta->save();
+        $contherramienta=$contherramienta+1;
+
+    }}
+
+
+
+
+    $repuestoaceptar=$request->get('repuestoaceptar');
+   $repuesto=$request->get('repuesto');
+    $cantidadrepuesto = $request->get('cantidad2');
+    $contrepuesto = 0;
+if($repuestoaceptar=="aceptar"){
+    while($contrepuesto <count($repuesto)){
+
+        $detallerepuesto = new DetalleRepuestoRutina();
+        $detallerepuesto->idrepuesto=$repuesto[$contrepuesto];
+        $detallerepuesto->cantidad=$cantidadrepuesto[$contrepuesto];
+        $detallerepuesto->idrutina_mantenimiento=$id;
+        $detallerepuesto->save();
+        $contrepuesto=$contrepuesto+1;
+
+    }}
+
+    $insumoaceptar=$request->get('insumoaceptar');
+    $insumo=$request->get('insumo');
+    $cantidadinsumo = $request->get('cantidad');
+    $continsumo = 0;
+
+if($insumoaceptar=="aceptar"){
+    while($continsumo <count($insumo)){
+
+        $detalleinsumo = new DetalleInsumoRutina();
+        $detalleinsumo->idinsumo=$insumo[$continsumo];
+        $detalleinsumo->cantidad=$cantidadinsumo[$continsumo];
+        $detalleinsumo->idrutina_mantenimiento=$id;
+        $detalleinsumo->save();
+        $continsumo=$continsumo+1;
+
+    }}
+
+
     ruman::findOrFail($id)->update($request->all());
     DB::table('notificacion')
                 ->where('rutina_mantenimiento_idrutina_mantenimiento',$id)
