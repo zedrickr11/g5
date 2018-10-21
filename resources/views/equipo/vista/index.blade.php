@@ -747,7 +747,12 @@
         <p>{{date("Y-m-d",strtotime($noti->start))}}</p>
         @if(date("Y-m-d",strtotime($noti->start))<= date('Y-m-d'))
 
-        <a href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}">
+        <a href="{{route('ruman.tecnicos',$st->idrutina_mantenimiento)}}">
+          <button type="button" class="btn  btn-vk" name="button"><span class="glyphicon glyphicon-wrench"></button></span>
+        </a>
+
+
+          <a href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}">
           <i class="box-title"><i href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button class="btn btn-danger"><span class="fa fa-th"></span>    @if ($st->frecuencia_rutina==1)
         <i>Mensual</i>     @endif
         @if ($st->frecuencia_rutina==2)
@@ -761,6 +766,9 @@
  </i></a>
   <br>
 @else
+<a href="{{route('ruman.tecnicos',$st->idrutina_mantenimiento)}}">
+  <button type="button" class="btn  btn-vk" name="button"><span class="glyphicon glyphicon-wrench"></button></span>
+</a>
 
 
         <a href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}">
@@ -775,6 +783,7 @@
 @if ($st->frecuencia_rutina==12)
 <i>Anual</i>     @endif</button></a>
 </h3>
+<br>
  @endif
  @endif
 
