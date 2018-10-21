@@ -18,7 +18,8 @@
           <div class="box">
             <div class="box-header">
 			  <h3 class="box-title">Listado de Estados <a href="estado/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
-			  		<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
+			  		<!--<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a>-->
+          </h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -47,11 +48,12 @@
                     <a href="{{route('estado.show',$est->idestado)}}">
                       <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></span> </button>
                     </a>
-                    <form style="display: inline" method="POST" action="{{route('estado.destroy', $est->idestado)}}">
+
+                    <!--<form style="display: inline" method="POST" action="{{route('estado.destroy', $est->idestado)}}">
                     {!!method_field('DELETE')!!}
                     {!!csrf_field()!!}
                       <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></span> </button>
-                    </form>
+                    </form> -->
 
 
                 </td>

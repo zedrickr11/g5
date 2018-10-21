@@ -48,11 +48,12 @@
 <a href="{{route('seguimiento.show',$seg->idseguimiento)}}">
 <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></span> </button>
 </a>
-<form style="display: inline" method="POST" action="{{route('seguimiento.destroy',$seg->idseguimiento)}}">
+
+<!--<form style="display: inline" method="POST" action="{{route('seguimiento.destroy',$seg->idseguimiento)}}">
 {!!method_field('DELETE')!!}
 {!!csrf_field()!!}
 <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></span> </button>
-</form>
+</form>-->
 </td>
 </tr>
 @endforeach

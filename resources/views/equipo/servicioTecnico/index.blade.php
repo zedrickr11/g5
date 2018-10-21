@@ -18,7 +18,11 @@
           <div class="box">
             <div class="box-header">
 			  <h3 class="box-title">Listado de Servicios Tecnicos <a href="servicioTecnico/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
-			  		<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
+
+
+          <!--	<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a>
+          -->
+          </h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -56,12 +60,12 @@
                     <a href="{{route('servicioTecnico.show',$ser->idservicio_tecnico)}}">
                       <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></span> </button>
                     </a>
-                    <form style="display: inline" method="POST" action="{{route('servicioTecnico.destroy', $ser->idservicio_tecnico)}}">
+                    <!--<form style="display: inline" method="POST" action="{{route('servicioTecnico.destroy', $ser->idservicio_tecnico)}}">
                     {!!method_field('DELETE')!!}
                     {!!csrf_field()!!}
                       <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></span> </button>
                     </form>
-
+-->
 
                 </td>
               </tr>

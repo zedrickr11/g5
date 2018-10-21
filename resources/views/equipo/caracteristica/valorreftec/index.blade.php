@@ -18,7 +18,8 @@
           <div class="box">
             <div class="box-header">
 			  <h3 class="box-title">Listado de valor referencia tecnica <a href="valorreftec/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
-			  		<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
+			  	<!--	<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a> -->
+          </h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -52,11 +53,11 @@
                   <a href="{{route('valorreftec.show',$cat->idvalor_ref_tec)}}">
                     <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></button>
                   </a>
-                  <form style="display: inline" method="POST" action="{{route('valorreftec.destroy', $cat->idvalor_ref_tec)}}">
+                  <!-- <form style="display: inline" method="POST" action="{{route('valorreftec.destroy', $cat->idvalor_ref_tec)}}">
                   {!!method_field('DELETE')!!}
                   {!!csrf_field()!!}
                     <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></button>
-                  </form>
+                  </form> -->
 
 
               </td>
