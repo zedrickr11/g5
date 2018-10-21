@@ -44,6 +44,7 @@
             <a href="{{route('equipo.ficha',$equipo->idequipo)}}" target="_blank" class="btn btn-success btn-block"><b>Ficha técnica</b></a>
           <a  href="{{route('equipo.vista',$equipo->idequipo)}}" target="_blank" class="btn btn-warning btn-block"><b>Solicitudes</b></a>
           <a  href="{{route('carac',$equipo->idequipo)}}"  class="btn btn-info btn-block"><b>Características</b></a>
+          <a href="{{route('equipo.rutina',$equipo->idequipo)}}" target="_blank" class="btn btn-primary btn-block"><b>Historial técnico</b></a>
 
           </div>
           <!-- /.box-body -->
@@ -107,7 +108,7 @@
 
             <li><a href="#settings" data-toggle="tab">Datos del equipo</a></li>
             <li><a href="#multimedia" data-toggle="tab">Multimedia</a></li>
-            <li><a href="#historial" data-toggle="tab">Historial técnico</a></li>
+
 
 
           </ul>
@@ -1387,13 +1388,7 @@
 
           </div>
             <!-- /.box-body -->
-            <div class="tab-pane" id="historial">
 
-              <h1>Historial técnico</h1>
-              <a href="{{route('equipo.rutina',$equipo->idequipo)}}" target="_blank" class="btn btn-primary btn-block"><b>Historial de la rutina</b></a>
-
-
-            </div>
             <!-- /.tab-pane -->
 
             <!-- /.box-body -->

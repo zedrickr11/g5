@@ -76,8 +76,8 @@ class PermisoTrabajoController extends Controller
                       ->select('idprecaucion_ejecutante','precaucion_ejecutante AS ejecutante')
                       ->get();
 
-                      $numeropermiso = DB::table('permiso_trabajo')->select('num_permiso')->orderBy('num_permiso', 'desc')->first();
-    return view("trabajo.permiso.create",["solicitudes"=>$solicitudes,"tipos"=>$tipos,"naturalezas"=>$naturalezas,"responsables"=>$responsables,"ejecutantes"=>$ejecutantes,"numeropermiso"=>$numeropermiso]);
+     //$numeropermiso = DB::table('permiso_trabajo')->select('num_permiso')->orderBy('num_permiso', 'desc')->first();
+    return view("trabajo.permiso.create",["solicitudes"=>$solicitudes,"tipos"=>$tipos,"naturalezas"=>$naturalezas,"responsables"=>$responsables,"ejecutantes"=>$ejecutantes]);
      }
      public function ficha($id)
      {
@@ -114,7 +114,7 @@ class PermisoTrabajoController extends Controller
          $pdf = PDF::loadView("trabajo.permisopdf.show",["permisos"=>$permisos,"detalles"=>$detalles,"detallesn"=>$detallesn,"detallesr"=>$detallesr,"detallese"=>$detallese]);
 
          return $pdf->stream('PermisoTrabajo.pdf');
-     
+
      }
 
     /**

@@ -24,8 +24,8 @@ class SolicitudTrabajoFormRequest extends FormRequest
     public function rules()
     {
         return [
-              'numero'=>'required|max:50',
-              
+              'numero'=>'required|unique:solitud_trabajo,numero',
+
         ];
     }
 }
