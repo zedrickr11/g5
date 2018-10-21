@@ -41,6 +41,10 @@ Route::get('equipo/rutina/ruman/agregar',[
     'as' => 'ruman.agregar',
     'uses' => 'rumanController@agregar'
 ]);
+Route::get('equipo/rutina/ruman/tecnicos/{id}',[
+    'as' => 'ruman.tecnicos',
+    'uses' => 'rumanController@tecnicos'
+]);
 
 Route::get('equipo/rutina/ruman/create2/{idequipo}/{idsubgrupo}',[
     'as' => 'ruman.create2',

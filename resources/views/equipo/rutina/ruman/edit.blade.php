@@ -298,19 +298,23 @@
 
         <h3>Herramienta </h3>
           <div class="form-group">
-            <select name="repuesto" class="form-control" style="width: 100%" id="repuesto" data-live-search="true">
-              @foreach($repuesto as $carac)
-              <option value="{{$carac->idrepuesto}}">{{$carac->nombre}}</option>
+            <select name="herramienta" class="form-control" style="width: 100%" id="herramienta" data-live-search="true">
+              @foreach($herramienta as $carac)
+              <option value="{{$carac->idherramienta}}">{{$carac->herramienta}}</option>
           @endforeach
           </select>
           </div>
+          <br>
+          <br>
+          <br>
+          <br>
 
 
           <div class="form-group">
-            <button type="button" id="bt_add3" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
+            <button type="button" id="bt_add4" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
 
           </div>
-          <table id="detalles3" class="table table-striped table-bordered table-condensed table-hover">
+          <table id="detalles4" class="table table-striped table-bordered table-condensed table-hover">
               <thead style="background-color:#2ab863">
                   <th>Opciones</th>
                   <th>Herramienta</th>
@@ -437,6 +441,8 @@ function evaluar()
 $(document).ready(function(){
   $('#bt_add2').click(function(){
 
+  var fila='<input type="hidden" name="insumoaceptar" value="aceptar">';
+  $('#detalles').append(fila);
     agregar2();
   });
 });
@@ -481,7 +487,8 @@ function limpiar(){
 //Repuesto
 $(document).ready(function(){
   $('#bt_add3').click(function(){
-
+  var fila='<input type="hidden" name="repuestoaceptar" value="aceptar">';
+  $('#detalles').append(fila);
     agregar3();
   });
 });
@@ -523,6 +530,48 @@ function limpiar2(){
 
 }
 
+//Herramienta
+$(document).ready(function(){
+  $('#bt_add4').click(function(){
+    var fila='<input type="hidden" name="herramientaceptar" value="aceptar">';
+    $('#detalles').append(fila);
+
+    agregar4();
+  });
+});
+$('#herramienta').select2({
+
+});
+
+var cont4=0;
+total4=0;
+subtotal4=[];
+function agregar4()
+{
+  idherramienta=$("#herramienta").val();
+  herramienta=$("#herramienta option:selected").text();
+
+
+  if (idherramienta!="" )
+  {
+      var fila4='<tr class="selected" id="fila4'+cont4+'"><td><button type="button" class="btn btn-warning" onclick="eliminar4('+cont4+');">X</button></td><td><input type="hidden" name="herramienta[]" value="'+idherramienta+'">'+herramienta+'</td></tr>';
+      cont4++;
+
+
+
+      $('#detalles4').append(fila4);
+  }
+  else
+  {
+      alert("Error al ingresar el herramienta, revise los datos de herramienta");
+  }
+}
+function eliminar4(index){
+
+ $("#fila4" + index).remove();
+ evaluar3();
+
+}
 
 
 
