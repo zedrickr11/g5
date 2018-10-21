@@ -7,7 +7,7 @@
       <!-- small box -->
       <div class="small-box bg-aqua">
         <div class="inner">
-          <h3>150</h3>
+          <h3>EQUIPOS</h3>
           <p>Equipos Guardados</p>
         </div>
         <div class="icon">
@@ -21,7 +21,7 @@
       <!-- small box -->
       <div class="small-box bg-green">
         <div class="inner">
-          <h3>53</h3>
+          <h3>RUTINAS</h3>
 
           <p>Rutinas asignadas</p>
         </div>
@@ -36,7 +36,7 @@
       <!-- small box -->
       <div class="small-box bg-yellow">
         <div class="inner">
-          <h3>Solicitud</h3>
+          <h3>SOLICITUDES</h3>
 
           <p>Solicitudes de Trabajo</p>
         </div>
@@ -167,6 +167,10 @@
 
                         <div class="form-group">
                             <button id="irrutina" target="_blank" class="btn btn-info btn-lg btn-block" data-dismiss="modal"><strong>Realizar Mantenimiento</strong> </button>
+                        </div> 
+
+                        <div class="form-group">
+                            <button id="verrutina" target="_blank" class="btn btn-info btn-lg btn-block" data-dismiss="modal"><strong>Ver Mantenimiento</strong> </button>
                         </div> 
 
                         <div class="form-group">
@@ -352,6 +356,23 @@
         // },
         eventClick:function(calEvent,jsEvent,view){
 
+          var estado = calEvent.estado_rutina;
+        
+
+         if( estado == 'REALIZADO'){
+
+           
+            $('#irrutina').hide();
+            $('#verrutina').show();
+
+          }else {
+
+           $('#irrutina').show();
+           $('#verrutina').hide();
+           
+
+          }
+
           $('#idequipo').html(calEvent.title);
           $('#tiempo').html(calEvent.tiempo_estimado_rutina_mantenimiento);
           $('#nombreequipo').html(calEvent.nombre_equipo);
@@ -385,6 +406,13 @@
           $( "#irrutina" ).click(function() {
             window.location.href = (" //localhost:8000/equipo/rutina/ruman/").concat(calEvent.idrutina_mantenimiento).concat("/edit");
           });
+
+           $( "#verrutina" ).click(function() {
+            window.location.href = (" //localhost:8000/equipo/rutina/ruman/").concat(calEvent.idrutina_mantenimiento)
+          });
+          
+
+
           
 
           $("#modal-success").modal();
@@ -395,7 +423,7 @@
         
         events: '/json-calendarioCorrectivo',
 
-        editable  : false,
+        editable  : true,
         droppable : false 
        
       })
@@ -462,6 +490,20 @@
       // },
       eventClick:function(calEvent,jsEvent,view){
 
+          var estado = calEvent.estado_rutina;
+        
+
+        if( estado == 'REALIZADO'){
+
+          
+           $('#irrutina').hide();
+
+         }else {
+
+          $('#irrutina').show();
+
+         }
+
         $('#idequipo').html(calEvent.title);
         $('#tiempo').html(calEvent.tiempo_estimado_rutina_mantenimiento);
         $('#nombreequipo').html(calEvent.nombre_equipo);
@@ -493,9 +535,14 @@
           window.location.href = ("#");
         });
 
-            $( "#irrutina" ).click(function() {
+        $( "#irrutina" ).click(function() {
             window.location.href = (" //localhost:8000/equipo/rutina/ruman/").concat(calEvent.idrutina_mantenimiento).concat("/edit");
           });
+
+        $( "#verrutina" ).click(function() {
+            window.location.href = (" //localhost:8000/equipo/rutina/ruman/").concat(calEvent.idrutina_mantenimiento)
+          });
+          
 
 
 
