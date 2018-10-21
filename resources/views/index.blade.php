@@ -76,247 +76,219 @@
       </ol>
     </section>
 
-    <section class="content">
+  <section class="content">
 
-      <div class="row">
-        <!--TABS -->
-          <div class="col-md-12">
-                <!-- Custom Tabs (Pulled to the right) -->
-                <div class="nav-tabs-custom">
-                  <ul class="nav nav-tabs pull-right">
-                    <li class=""><a href="#tab_1-1" data-toggle="tab">CORRECTIVO</a></li>
-                    <li><a href="#tab_2-2" data-toggle="tab">PREVENTIVO</a></li>
-                    <li class="pull-left header"><i class="fa fa-th"></i> CALENDARIOS</li>
-                  </ul>
+        <div class="row">
+          <!--TABS -->
+            <div class="col-md-12">
+                  <!-- Custom Tabs (Pulled to the right) -->
+                  <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs pull-right">
+                      <li class=""><a href="#tab_1-1" data-toggle="tab">CORRECTIVO</a></li>
+                      <li><a href="#tab_2-2" data-toggle="tab">PREVENTIVO</a></li>
+                      <li class="pull-left header"><i class="fa fa-th"></i> CALENDARIOS</li>
+                    </ul>
 
-                  <div class="tab-content">
+                    <div class="tab-content">
 
-                    <div class="tab-pane fade in active" id="tab_1-1">
+                      <div class="tab-pane fade in active" id="tab_1-1">
 
-                      <div class="box box-solid box-primary">
-                       <h2 class="text-center"> Mantenimientos Correctivos</h2>
+                        <div class="box box-solid box-primary">
+                        <h2 class="text-center"> Mantenimientos Correctivos</h2>
+                          
                         <div class="box-body ">
-                                <!-- THE CALENDAR 1 -->
-                            <div id="CalendarioCorrectivo">
-
-                            </div>
-                          </div>
-                              <!-- /.box-body -->
-                       </div>
-                            <!-- /. box -->
-
-                      </div>
-                    <!-- /.tab-pane -->
-                    <div class="tab-pane fade in active " id="tab_2-2">
-
-                        <div class="box box-solid box-danger">
-                            <h2 class="text-center"> Mantenimientos Preventivos</h2>
-                            <div class="box-body ">
-                                  <!-- THE CALENDAR 2 -->
-                              <div id="CalendarioPreventivo">
-
+                                  <!-- THE CALENDAR 1 -->
+                              
+                              <div class="col-md-8" id="CalendarioCorrectivo">
                               </div>
-                            </div>
+
+                              <div class="col-md-4">
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                              
+                                  <div class="info-box">
+                                      <span class="info-box-icon bg-yellow"><i class="fa fa-calendar-plus-o"></i></span>
+                                      <div class="info-box-content">
+                                        <br>
+                                        <span class="info-box-text">RUTINAS POR REALIZAR HOY</span>
+                                        <span class="info-box-number">1</span>
+                                      </div>
+                                      <!-- /.info-box-content -->
+                                    </div>
+                                    <!-- /.info-box -->
+                                    <div class="info-box">
+                                        <span class="info-box-icon bg-green"><i class="fa fa-calendar-plus-o"></i></span>
+                                        <div class="info-box-content">
+                                          <br>
+                                          <span class="info-box-text">RUTINAS REALIZADAS HOY</span>
+                                          <span class="info-box-number">1</span>
+                                        </div>
+                                        <!-- /.info-box-content -->
+                                      </div>
+                                      <!-- /.info-box -->
+                                      <div class="info-box">
+                                          <span class="info-box-icon bg-red"><i class="fa fa-calendar-plus-o"></i></span>
+                                          <div class="info-box-content">
+                                            <br>
+                                            <span class="info-box-text">RUTINAS POR REALIZAR HOY</span>
+                                            <span class="info-box-number">1</span>
+                                          </div>
+                                          <!-- /.info-box-content -->
+                                        </div>
+                                        <!-- /.info-box -->
+                                </div>
+                                <!-- /.col-md-4 -->
+                              </div> 
                                 <!-- /.box-body -->
+
+                            </div>
+                              
                         </div>
-                              <!-- /. box -->
-                    </div>
-                  </div>
-                  <!-- /.tab-content -->
-                </div>
-                <!-- nav-tabs-custom -->
-            </div>
-
-
-            <div class="modal  fade" id="modal-success">
-              <div class="modal-dialog">
-                <div class="modal-content">
-
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                         <span aria-hidden="true">&times;</span></button>
-                         <h3 class=" modal-title text-success">Equipo ID:  <strong id="idequipo"></strong></h3>
-                         <hr>
-                         <h3 class="text-success">Nombre Equipo:  <strong id="nombreequipo"></strong></h3>
-                         <hr><hr>
-                         <h3 class="text-success"> Tiempo estimado del mantenimiento: <strong id="tiempo" >0</strong><strong> H</strong></h3>
-                         <hr><hr>
-                         <h5 class="text-success"> Estado del mantenimiento:  <strong id="EstadoMan" ></strong><strong> </strong></h5>
-                         <hr>
-                  </div>
-
-                  <div class="modal-body">
-
-
-                    <form role="form">
-                      <div class="box-body">
-                        <div class="form-group">
-
-                            
-                        
-                         <div class=" form-group bg-alert">
-                         
-
-                        </div>
-                          {{-- <input readonly type="text" class="form-control" id="nombreequipo" placeholder="Equipo"> --}}
-                        </div>
-                        
-                        <br>
-                        <br>
-                       
-
-                        <div class="form-group">
-                            <button id="irrutina" target="_blank" class="btn btn-info btn-lg btn-block" data-dismiss="modal"><strong>Realizar Mantenimiento</strong> </button>
-                        </div> 
-
-                        <div class="form-group">
-                            <button id="verrutina" target="_blank" class="btn btn-info btn-lg btn-block" data-dismiss="modal"><strong>Ver Mantenimiento</strong> </button>
-                        </div> 
-
-                        <div class="form-group">
-                            <button id="irindexequipo" class="btn btn-success btn-lg btn-block "   data-dismiss="modal">Vista General</button>
-                        </div>
-
-                        <div class="form-group">
-                          <button id="irhistorial" target="_blank" class="btn btn-success btn-lg btn-block" data-dismiss="modal">Historial de Mantenimientos</button>
-                      </div>
-                        
                       
-                        <div class="form-group">
-                            <button id="irsolicitudboton" class="btn btn-success btn-lg btn-block" data-dismiss="modal">Solicitudes del Equipo</button>
-                        </div>
-                                            
+                              <!-- /. box -->
+                      
                         
-                        <div class="form-group">
-                            <button id="irfichaequipo" target="_blank" class="btn btn-success btn-lg btn-block" data-dismiss="modal">Ficha del Equipo</button>
-                        </div>
+                      <!-- /.tab-pane -->
+                      <div class="tab-pane  active  " id="tab_2-2">
 
-                       
+                          <div class="box box-solid box-danger">
+                              <h2 class="text-center"> Mantenimientos Preventivos</h2>
+                              <div class="box-body ">
+                                    <!-- THE CALENDAR 2 -->
+                                <div  id="CalendarioPreventivo">
 
-                        <br>
-                        <br>
-                        <br>
-
-                        {{-- <div class="form-group">
-                          <label for="descripcionmantenimiento">Descripcion </label>
-                          <input type="text" class="form-control" id="descripcionmantenimiento" placeholder="Descripcion">
-                        </div>
-
-                        <div class="form-group">
-                          <label for="fechacreacion">Fecha de inicio</label>
-                          <input type="text" class="form-control" id="fechacreacion" placeholder="Fecha de inicio">
-                        </div>
-
-                        <div class="form-group">
-                          <label for="fechafinal">Fecha final</label>
-                          <input type="text" class="form-control" id="fechafinal" placeholder="Fecha final">
-                        </div>
-
-                        <div class="form-group">
-                          <label for="horamantenimiento">Hora</label>
-                          <input type="text" class="form-control" id="horamantenimiento" placeholder="Hora">
-                        </div>
-
-                        <div class="form-group">
-                          <label for="estadonotificacion">Estado</label>
-                          <input type="text" class="form-control" id="estadonotificacion " placeholder="Estado">
-                        </div> --}}
-
-
-                        </div>
-
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-info pull-left" data-dismiss="modal">CERRAR</button>
-                          {{-- <button type="button" class="btn btn-info pull-left" >Modificar</button> --}}
-                        
-                        </div>
-                        </div>
-                         
-                     </form>
+                                </div>
+                              </div>
+                                  <!-- /.box-body -->
+                          </div>
+                                <!-- /. box -->
+                      </div>
+                    </div>
+                    <!-- /.tab-content -->
                   </div>
-                <!-- /.modal-content -->
-                </div>
-              <!-- /.modal-dialog -->
-            </div>
-              
-          
-            
-
-
-            <div class="modal modal-success fade" id="ModalEventos">
-              <div class="modal-dialog">
-                <div class="modal-content">
-
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"> MANTENIMIENTO CORRECTIVO</h4>
-                  </div>
-
-                  <div class="modal-body">
-
-
-                    <form role="form" id="formularioParaIngreso">
-                      <div class="box-body">
-
-                        <div class="form-group">
-                          <label for="nombreequipo2">Equipo</label>
-                          <input type="text" class="form-control" id="nombreequipo2" placeholder="Equipo">
-                        </div>
-
-                        <div class="form-group">
-                          <label for="idrutina2">Numero de mantenimiento</label>
-                          <input type="text" class="form-control" id="idrutina2" placeholder=" numero de Mantenimniento">
-                        </div>
-
-                        <div class="form-group">
-
-
-                          <label for="descripcionmantenimiento2">Descripcion </label>
-                          <textarea id="descripcionmantenimiento2" placeholder="Descripcion" rows="4" cols="88" style="color:black;"></textarea>
-
-                        </div>
-
-                        <div class="form-group">
-                          <label for="fechacreacion2">Fecha de inicio</label>
-                          <input type="text" class="form-control" id="fechacreacion2" placeholder="Fecha de inicio">
-                        </div>
-
-                        <div class="form-group">
-                          <label for="fechafinal2">Fecha final</label>
-                          <input type="text" class="form-control" id="fechafinal2" placeholder="Fecha final">
-                        </div>
-
-                        <div class="form-group">
-                          <label for="horamantenimiento2">Hora</label>
-                          <input type="text" class="form-control" id="horamantenimiento2" placeholder="Hora" value ="10:30">
-                        </div>
-
-                        <div class="form-group">
-                          <label for="estadonotificacion2">Estado</label>
-                          <input type="text" class="form-control" id="estadonotificacion2 " placeholder="Estado">
-                        </div>
-
-
-                        </div>
-
-                        </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">CERRAR</button>
-                          <button type="button" class="btn btn-outline pull-left" >Modificar</button>
-                          <button type="button" class="btn btn-outline" id="botonParaAgregar">AGREGAR</button>
-                        </div>
-                    </form>
-                </div>
-                <!-- /.modal-content -->
+                  <!-- nav-tabs-custom -->
               </div>
-            
-            </div>
-        
+            </div>   
 
-     </section>
+
+              <div class="modal  fade" id="modal-success">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span></button>
+                          <h3 class=" modal-title text-success">Equipo ID:  <strong id="idequipo"></strong></h3>
+                          <hr>
+                          <h3 class="text-success">Nombre Equipo:  <strong id="nombreequipo"></strong></h3>
+                          <hr><hr>
+                          <h3 class="text-success"> Tiempo estimado del mantenimiento: <strong id="tiempo" >0</strong><strong> H</strong></h3>
+                          <hr><hr>
+                          <h5 class="text-success"> Estado del mantenimiento:  <strong id="EstadoMan" ></strong><strong> </strong></h5>
+                          <hr>
+                    </div>
+
+                    <div class="modal-body">
+
+
+                      <form role="form">
+                        <div class="box-body">
+                          <div class="form-group">
+
+                              
+                          
+                          <div class=" form-group bg-alert">
+                          
+
+                          </div>
+                            {{-- <input readonly type="text" class="form-control" id="nombreequipo" placeholder="Equipo"> --}}
+                          </div>
+                          
+                          <br>
+                          <br>
+                        
+
+                          <div class="form-group">
+                              <button id="irrutina" target="_blank" class="btn btn-info btn-lg btn-block" data-dismiss="modal"><strong>Realizar Mantenimiento</strong> </button>
+                          </div> 
+
+                          <div class="form-group">
+                              <button id="verrutina" target="_blank" class="btn btn-info btn-lg btn-block" data-dismiss="modal"><strong>Ver Mantenimiento</strong> </button>
+                          </div> 
+
+                          <div class="form-group">
+                              <button id="irindexequipo" class="btn btn-success btn-lg btn-block "   data-dismiss="modal">Vista General</button>
+                          </div>
+
+                          <div class="form-group">
+                            <button id="irhistorial" target="_blank" class="btn btn-success btn-lg btn-block" data-dismiss="modal">Historial de Mantenimientos</button>
+                        </div>
+                          
+                        
+                          <div class="form-group">
+                              <button id="irsolicitudboton" class="btn btn-success btn-lg btn-block" data-dismiss="modal">Solicitudes del Equipo</button>
+                          </div>
+                                              
+                          
+                          <div class="form-group">
+                              <button id="irfichaequipo" target="_blank" class="btn btn-success btn-lg btn-block" data-dismiss="modal">Ficha del Equipo</button>
+                          </div>
+
+                        
+
+                          <br>
+                          <br>
+                          <br>
+
+                          {{-- <div class="form-group">
+                            <label for="descripcionmantenimiento">Descripcion </label>
+                            <input type="text" class="form-control" id="descripcionmantenimiento" placeholder="Descripcion">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="fechacreacion">Fecha de inicio</label>
+                            <input type="text" class="form-control" id="fechacreacion" placeholder="Fecha de inicio">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="fechafinal">Fecha final</label>
+                            <input type="text" class="form-control" id="fechafinal" placeholder="Fecha final">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="horamantenimiento">Hora</label>
+                            <input type="text" class="form-control" id="horamantenimiento" placeholder="Hora">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="estadonotificacion">Estado</label>
+                            <input type="text" class="form-control" id="estadonotificacion " placeholder="Estado">
+                          </div> --}}
+
+                          </form>
+                          </div>
+
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-info pull-left" data-dismiss="modal">CERRAR</button>
+                            {{-- <button type="button" class="btn btn-info pull-left" >Modificar</button> --}}
+                          
+                          </div>
+                         
+                        </div>
+                          
+                     
+                    </div>
+                  <!-- /modal  fade -->
+                
+            
+            
+          
+      
+
+  </section>
 
 
 
@@ -493,16 +465,19 @@
           var estado = calEvent.estado_rutina;
         
 
-        if( estado == 'REALIZADO'){
+         if( estado == 'REALIZADO'){
 
-          
-           $('#irrutina').hide();
+           
+            $('#irrutina').hide();
+            $('#verrutina').show();
 
-         }else {
+            }else {
 
-          $('#irrutina').show();
+            $('#irrutina').show();
+            $('#verrutina').hide();
 
-         }
+
+            }
 
         $('#idequipo').html(calEvent.title);
         $('#tiempo').html(calEvent.tiempo_estimado_rutina_mantenimiento);
