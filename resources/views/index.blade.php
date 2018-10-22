@@ -152,16 +152,54 @@
                               <!-- /. box -->
                       
                         
-                      <!-- /.tab-pane -->
+                      <!-- /.tab-pane 2 CALENDARIO PREVENTIVO -->
                       <div class="tab-pane  active  " id="tab_2-2">
 
                           <div class="box box-solid box-danger">
                               <h2 class="text-center"> Mantenimientos Preventivos</h2>
                               <div class="box-body ">
-                                    <!-- THE CALENDAR 2 -->
-                                <div  id="CalendarioPreventivo">
-
-                                </div>
+                                  <div class="col-md-8" id="CalendarioPreventivo">
+                                    </div>
+      
+                                    <div class="col-md-4">
+                                      <br>
+                                      <br>
+                                      <br>
+                                      <br>
+                                      <br>
+                                      <br>
+                                    
+                                        <div class="info-box">
+                                            <span class="info-box-icon bg-yellow"><i class="fa fa-calendar-plus-o"></i></span>
+                                            <div class="info-box-content">
+                                              <br>
+                                              <span class="info-box-text">RUTINAS POR REALIZAR HOY</span>
+                                              <span class="info-box-number">1</span>
+                                            </div>
+                                            <!-- /.info-box-content -->
+                                          </div>
+                                          <!-- /.info-box -->
+                                          <div class="info-box">
+                                              <span class="info-box-icon bg-green"><i class="fa fa-calendar-plus-o"></i></span>
+                                              <div class="info-box-content">
+                                                <br>
+                                                <span class="info-box-text">RUTINAS REALIZADAS HOY</span>
+                                                <span class="info-box-number">1</span>
+                                              </div>
+                                              <!-- /.info-box-content -->
+                                            </div>
+                                            <!-- /.info-box -->
+                                            <div class="info-box">
+                                                <span class="info-box-icon bg-red"><i class="fa fa-calendar-plus-o"></i></span>
+                                                <div class="info-box-content">
+                                                  <br>
+                                                  <span class="info-box-text">RUTINAS POR REALIZAR HOY</span>
+                                                  <span class="info-box-number">1</span>
+                                                </div>
+                                                <!-- /.info-box-content -->
+                                              </div>
+                                              <!-- /.info-box -->
+                                      </div>
                               </div>
                                   <!-- /.box-body -->
                           </div>
@@ -182,14 +220,9 @@
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span></button>
-                          <h3 class=" modal-title text-success">Equipo ID:  <strong id="idequipo"></strong></h3>
-                          <hr>
                           <h3 class="text-success">Nombre Equipo:  <strong id="nombreequipo"></strong></h3>
-                          <hr><hr>
-                          <h3 class="text-success"> Tiempo estimado del mantenimiento: <strong id="tiempo" >0</strong><strong> H</strong></h3>
-                          <hr><hr>
-                          <h5 class="text-success"> Estado del mantenimiento:  <strong id="EstadoMan" ></strong><strong> </strong></h5>
-                          <hr>
+                          <h3 class=" modal-title text-success">Equipo ID:  <strong id="idequipo"></strong></h3>
+                          
                     </div>
 
                     <div class="modal-body">
@@ -198,18 +231,17 @@
                       <form role="form">
                         <div class="box-body">
                           <div class="form-group">
-
-                              
                           
-                          <div class=" form-group bg-alert">
-                          
-
-                          </div>
+                          <h4 class="text-success"> Estado del mantenimiento:    <strong id="EstadoMan" ></strong><strong> </strong></h4>
+                          <h4 class="text-success"> Tiempo estimado del mantenimiento: <strong id="tiempo" >0</strong><strong> H</strong></h4>
+                          <h4 class="text-success"> Descripción del mantenimiento:    <strong id="descripcionMantenimiento" ></strong><strong> </strong></h4>
+                          <hr>      
                             {{-- <input readonly type="text" class="form-control" id="nombreequipo" placeholder="Equipo"> --}}
                           </div>
                           
-                          <br>
-                          <br>
+                          <div class="form-group">
+                            <h1>Opciones</h1>
+                          </div>
                         
 
                           <div class="form-group">
@@ -240,9 +272,6 @@
 
                         
 
-                          <br>
-                          <br>
-                          <br>
 
                           {{-- <div class="form-group">
                             <label for="descripcionmantenimiento">Descripcion </label>
@@ -352,12 +381,15 @@
           $('#tiempo').html(calEvent.tiempo_estimado_rutina_mantenimiento);
           $('#nombreequipo').html(calEvent.nombre_equipo);
           $('#EstadoMan').html(calEvent.estado_rutina);
+          $('#descripcionMantenimiento').html(calEvent.descripcion_noti);
          
-          $('#descripcionmantenimiento').val(calEvent.descripcionmantenimiento);
-          $('#fechacreacion').val(calEvent.start);
-          $('#fechafinal').val(calEvent.end);
-          $('#horamantenimiento').val(calEvent.hora);
-          $('#estadonotificacion').val(calEvent.estadonotificacion);
+          // $('#descripcionmantenimiento').val(calEvent.descripcionmantenimiento);
+          // $('#fechacreacion').val(calEvent.start);
+          // $('#fechafinal').val(calEvent.end);
+          // $('#horamantenimiento').val(calEvent.hora);
+          // $('#estadonotificacion').val(calEvent.estadonotificacion);
+         
+          
           
           
 
@@ -488,13 +520,14 @@
         $('#tiempo').html(calEvent.tiempo_estimado_rutina_mantenimiento);
         $('#nombreequipo').html(calEvent.nombre_equipo);
         $('#EstadoMan').html(calEvent.estado_rutina);
-        
+        $('#descripcionMantenimiento').html(calEvent.descripcion_noti);
+      
        
-        $('#descripcionmantenimiento').val(calEvent.descripcionmantenimiento);
-        $('#fechacreacion').val(calEvent.start);
-        $('#fechafinal').val(calEvent.end);
-        $('#horamantenimiento').val(calEvent.hora);
-        $('#estadonotificacion').val(calEvent.estadonotificacion);
+        // $('#descripcionmantenimiento').val(calEvent.descripcionmantenimiento);
+        // $('#fechacreacion').val(calEvent.start);
+        // $('#fechafinal').val(calEvent.end);
+        // $('#horamantenimiento').val(calEvent.hora);
+        // $('#estadonotificacion').val(calEvent.estadonotificacion);
       
           
 

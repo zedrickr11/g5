@@ -23,11 +23,10 @@ class CalendarioController extends Controller
     
       public function llenarcalendarioCorrectivo()
     {
+            $id = Auth::id();
+            dd($id);
 
-     
-
-      
-    
+            
           $sql = "SELECT rutina_mantenimiento.estado_rutina,notificacion.idnotificacion,notificacion.descripcion_noti,notificacion.start,notificacion.end,notificacion.rutina_mantenimiento_idrutina_mantenimiento,notificacion.estado_notificacion,notificacion.backgroundColor,notificacion.textColor,notificacion.title,rutina_mantenimiento.tiempo_estimado_rutina_mantenimiento,
                         equipo.nombre_equipo,rutina_mantenimiento.idrutina_mantenimiento  
           from notificacion,rutina_mantenimiento,tipo_rutina,equipo 
@@ -39,19 +38,13 @@ class CalendarioController extends Controller
           
           $eventos= DB::select($sql,array(1,20));
 
-
           return response()->json($eventos);
 
     }
 
     public function llenarcalendarioPreventivo()
     {
-    
-      
-      //  $id = Auth::id();
-      //  dd($id);
-       
-
+   
       $sql = "SELECT rutina_mantenimiento.estado_rutina,notificacion.idnotificacion,notificacion.descripcion_noti,notificacion.start,notificacion.end,notificacion.rutina_mantenimiento_idrutina_mantenimiento,notificacion.estado_notificacion,notificacion.backgroundColor,notificacion.textColor,notificacion.title,rutina_mantenimiento.tiempo_estimado_rutina_mantenimiento,
                     equipo.nombre_equipo,rutina_mantenimiento.idrutina_mantenimiento  
           from notificacion,rutina_mantenimiento,tipo_rutina,equipo 
