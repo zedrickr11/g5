@@ -7,9 +7,9 @@
     </SPAN>
 
 
-      <table id="table" width="100%" border="10" cellpadding="5" cellspacing="0" bordercolor="#000000">
+      <table id="table" width="100%" border="10" cellpadding="5" cellspacing="0" bordercolor="#000000"  style="table-layout:fixed;word-wrap:break-word;">
         <tr>
-          <td id="negrita" > 	<div align="center"> Insituto Guatemalteco de Seguridad Social (IGGS)</div>  </td>
+          <td id="negrita" colspan="3" > 	<div align="center"> Insituto Guatemalteco de Seguridad Social (IGGS)</div>  </td>
 
           <td  padding="0" rowspan="3" ><div align="center">
 
@@ -17,14 +17,14 @@
     </div></td></tr>
     <tr>
 
-    <td id="negrita" > <div align="center"> <font style="text-transform: uppercase;"> HISTORIAL TÉCNICO</font> </div></td>
+    <td id="negrita" colspan="3" > <div align="center"> <font style="text-transform: uppercase;"> HISTORIAL TÉCNICO</font> </div></td>
 
 </tr>
       <tr>
-    <td id="p2" > <div align="center"> IDENTIFICACIÓN </div></td>
+    <td id="p2" colspan="3" > <div align="center"> IDENTIFICACIÓN </div></td>
   </tr>
 
-  <table id="table" width="100%" border="10" cellpadding="5" cellspacing="0" bordercolor="#000000">
+  <table id="table" width="100%" border="10" cellpadding="5" cellspacing="0" bordercolor="#000000" style="table-layout:fixed;word-wrap:break-word;">
     <tr>
       <td id="" colspan="3"> <div align="left"> EQUIPO: {{ $equipo->nombre_equipo }} </div></td>
       <td id="" colspan="2"> <div align="left"> MARCA:  {{ $equipo->marca }}</div></td>
@@ -40,11 +40,11 @@
     @foreach ($preventivo as $prev)
 
 
-  <table id="table" width="100%" border="10" cellpadding="5" cellspacing="0" bordercolor="#000000">
+  <table id="table" width="100%" border="10" cellpadding="5" cellspacing="0" bordercolor="#000000" style="table-layout:fixed;word-wrap:break-word;">
     <tr>
       <td id="gris" colspan="1"> <div align="left">FECHA:<br>{{ $prev->fecha_realizacion_rutina }}</div></td>
 
-      <td id="gris" colspan="1"> <div align="center">MANTENIMIENTO<br>{{ $prev->tipo_rutina }} </div></td>
+      <td id="gris" colspan="2"> <div align="center">MANTENIMIENTO<br>{{ $prev->tipo_rutina }} </div></td>
       <td id="gris" colspan="1"> <div align="center">
         @if ($prev->frecuencia_rutina==1)
           Mensual
@@ -65,7 +65,7 @@
     @foreach ($correctivo as $corr)
 
 
-    <table id="table" width="100%" border="10" cellpadding="5" cellspacing="0" bordercolor="#000000">
+    <table id="table" width="100%" border="10" cellpadding="5" cellspacing="0" bordercolor="#000000" style="table-layout:fixed;word-wrap:break-word;">
       <tr>
         <td id="" > <div align="left"> FECHA:<br>{{ $corr->fecha_realizacion_rutina }}</div></td>
 
