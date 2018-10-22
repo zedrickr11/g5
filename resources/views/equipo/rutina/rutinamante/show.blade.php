@@ -26,15 +26,15 @@
 
   <table id="table" width="100%" border="10" cellpadding="5" cellspacing="0" bordercolor="#000000" style="table-layout:fixed;word-wrap:break-word;">
     <tr>
-      <td id="" colspan="3"> <div align="left"> EQUIPO: {{ $equipo->nombre_equipo }} </div></td>
+      <td id="" colspan="2"> <div align="left"> EQUIPO: {{ $equipo->nombre_equipo }} </div></td>
       <td id="" colspan="2"> <div align="left"> MARCA:  {{ $equipo->marca }}</div></td>
     </tr>
     <tr>
-      <td id="" colspan="3"> <div align="left"> MODELO: {{ $equipo->modelo }}</div></td>
+      <td id="" colspan="2"> <div align="left"> MODELO: {{ $equipo->modelo }}</div></td>
       <td id="" colspan="2"> <div align="left"> SERIE: {{ $equipo->serie }}</div></td>
     </tr>
     <tr>
-      <td id="" colspan="3"> <div align="left"> INVENTARIO: {{ $equipo->inventario }}</div></td>
+      <td id="" colspan="2"> <div align="left"> INVENTARIO: {{ $equipo->inventario }}</div></td>
       <td id="" colspan="2"> <div align="left"> CÓDIGO:  {{ $equipo->codigo }}</div></td>
     </tr>
     @foreach ($preventivo as $prev)
