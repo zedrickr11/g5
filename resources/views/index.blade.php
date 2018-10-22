@@ -1,6 +1,6 @@
 @extends ('layouts.admin')
 @section ('contenido')
-
+ 
 <section class="content-header">
   <div class="row">
     <div class="col-lg-3 col-xs-6">
@@ -95,14 +95,16 @@
 
                         <div class="box box-solid box-primary">
                         <h2 class="text-center"> Mantenimientos Correctivos</h2>
-                          
+                        <hr>
                         <div class="box-body ">
                                   <!-- THE CALENDAR 1 -->
                               
-                              <div class="col-md-8" id="CalendarioCorrectivo">
+                            <div class="col-md-8" id="CalendarioCorrectivo">
                               </div>
 
                               <div class="col-md-4">
+                                <br>
+                                <br>
                                 <br>
                                 <br>
                                 <br>
@@ -299,6 +301,7 @@
 
 <!-- CALENDARIO CORRECTIVO -->
   <script>
+
     $(function () {
 
       var date = new Date()
@@ -434,6 +437,8 @@
 <!-- CALENDARIO PREVENTIVO -->
 <script>
   $(function () {
+    
+    
 
     var date = new Date()
     var d    = date.getDate(),
