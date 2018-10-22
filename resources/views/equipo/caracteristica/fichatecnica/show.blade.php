@@ -14,7 +14,7 @@
 
 
 
-        <table id="table" width="100%" border="10" cellpadding="5" cellspacing="0" bordercolor="#000000">
+        <table id="table" width="100%" border="10" cellpadding="5" cellspacing="0" bordercolor="#000000" style="table-layout:fixed;word-wrap:break-word;">
 
           <tr>
             <td id="gris" colspan="3"> 	<div align="center"> FICHA TÉCNICA             </div>  </td>
@@ -62,17 +62,25 @@
 
           </tr>
           <tr>
-            <td  colspan="4">  Partes de Equipo:
+            <td id="gris"  colspan="4">  Partes del equipo:
               @foreach ($partes as $parte )
-                <br>Parte: {{ $parte->nombre_parte }} - No. parte: {{ $parte->num_parte }}
+								<tr>
+									<td colspan="2">Parte: {{ $parte->nombre_parte }}</td>
+									<td colspan="2">No. parte: {{ $parte->num_parte }}</td>
+								</tr>
+
 
               @endforeach
             </td>
           </tr>
           <tr>
-            <td  colspan="4">  Accesorios:
+            <td id="gris" colspan="4">  Accesorios:
               @foreach ($accesorios as $acc )
-                <br>Parte: {{ $acc->nombre_accesorio }} - No. accesorio: {{ $acc->numero_parte_accesorio }}
+								<tr>
+									<td colspan="2">Accesorio: {{ $acc->nombre_accesorio }}</td>
+									<td colspan="2">No. accesorio: {{ $acc->numero_parte_accesorio }}</td>
+								</tr>
+
 
               @endforeach
             </td>
@@ -134,11 +142,22 @@
             <td id="neg" colspan="4"> <div align="center"><font style="text-transform: uppercase;"> {{ $carac->nombre_caracteristica_tecnica }} </font></div></td>
             </tr>
 
-             <tr>
 
-             <td  colspan="4"><font style="text-transform: uppercase;"> {{ $carac->nombre_valor_ref_tec }} </font> {{ $carac->descripcion_detalle_caracteristica_tecnica }} {{ $carac->valor_detalle_caracteristica_tecnica }} </td>
 
-             </tr>
+
+							 <tr>
+								<td colspan="1">{{ $carac->nombre_valor_ref_tec }} </td>
+							 	<td  colspan="2">
+									Descripción: {{ $carac->descripcion_detalle_caracteristica_tecnica }}
+							 </td>
+								<td colspan="1">Valor: {{ $carac->valor_detalle_caracteristica_tecnica }}</td>
+							 </tr>
+
+
+
+
+
+
           @endforeach
           @foreach ($cacateristicas_especiales as $carace)
             <tr>
@@ -148,7 +167,9 @@
 
              <tr>
 
-             <td  colspan="4"><font style="text-transform: uppercase;"> {{ $carace->nombre_valor_ref_esp }} </font> {{ $carace->descripcion_detalle_caracteristica_especial }} {{ $carace->valor_detalle_caracteristica_especial }} </td>
+             <td  colspan="1"><font style="text-transform: uppercase;"> {{ $carace->nombre_valor_ref_esp }} </font> </td>
+							<td colspan="2">Descripción: {{ $carace->descripcion_detalle_caracteristica_especial }} </td>
+							 <td colspan="1">Valor: {{ $carace->valor_detalle_caracteristica_especial }} </td>
 
              </tr>
           @endforeach
@@ -169,7 +190,7 @@
               <tr>
                 <td  colspan="2">  DIRECCIÓN: {{ $equipo->direccion_fabricante }}
                                     </td>
-                <td id="neg"  colspan="2" rowspan="8">  No existe información técnica</td>
+                <td id="neg"  colspan="2" rowspan="8" >  No existe información técnica</td>
               </tr>
               <tr>
                 <td  colspan="2">  TEL/FAX: {{ $equipo->telefono_fabricante }} / {{ $equipo->fax_fabricante }} </td>
