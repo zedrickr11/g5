@@ -27,6 +27,8 @@ class CalendarioController extends Controller
             dd($id);
 
             
+
+
           $sql = "SELECT rutina_mantenimiento.estado_rutina,notificacion.idnotificacion,notificacion.descripcion_noti,notificacion.start,notificacion.end,notificacion.rutina_mantenimiento_idrutina_mantenimiento,notificacion.estado_notificacion,notificacion.backgroundColor,notificacion.textColor,notificacion.title,rutina_mantenimiento.tiempo_estimado_rutina_mantenimiento,
                         equipo.nombre_equipo,rutina_mantenimiento.idrutina_mantenimiento  
           from notificacion,rutina_mantenimiento,tipo_rutina,equipo 
