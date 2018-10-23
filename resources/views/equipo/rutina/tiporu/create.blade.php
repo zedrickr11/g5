@@ -65,4 +65,13 @@
 
 </div>
 </section>
+@push ('scripts')
+<script>
+$('#liRutinas').addClass("treeview active");
+
+
+$('#tiporu').addClass("active");
+
+</script>
+@endpush
 @endsection

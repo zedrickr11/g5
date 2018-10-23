@@ -84,4 +84,11 @@
         </div>
 
   </section>
+  @push ('scripts')
+    <script>
+    $('#liSeguridad').addClass("treeview active");
+    $('#liUsers').addClass("active");
+    </script>
+
+  @endpush
 @endsection

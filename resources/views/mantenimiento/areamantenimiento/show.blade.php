@@ -43,4 +43,13 @@
 </div>
 </div>
 </section>
+@push ('scripts')
+<script>
+$('#liSolicitud').addClass("treeview active");
+
+
+$('#liAreamantto').addClass("active");
+
+</script>
+@endpush
 @endsection

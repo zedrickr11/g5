@@ -30,4 +30,11 @@
   </div>
   <!-- /.error-page -->
 </section>
+@push ('scripts')
+  <script>
+
+  $('#liCalendario').addClass("active");
+  </script>
+
+@endpush
 @endsection

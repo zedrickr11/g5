@@ -50,10 +50,9 @@
 												<td>{{ $art->estado}}</td>
 												<td>
 													<a href="{{URL::action('RepuestoController@edit',$art->idrepuesto)}}"><button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-cog"></span> </button></a>
-							                         <a href="" data-target="#modal-delete-{{$art->idrepuesto}}" data-toggle="modal"><button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></span> </button></a>
 												</td>
 											</tr>
-			 					@include('almacen.repuesto.modal')
+			
 			 					@endforeach
 
                       </tbody>
@@ -79,4 +78,14 @@
       </div>
 
 </section>
+@push ('scripts')
+<script>
+$('#liAlmacen').addClass("treeview active");
+
+
+$('#liRepuestos').addClass("active");
+
+</script>
+
+@endpush
 @endsection

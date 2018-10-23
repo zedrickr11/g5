@@ -330,7 +330,7 @@ class EquipoController extends Controller
     public function update(EquipoFormRequest $request, $id)
     {
       Equipo::findOrFail($id)->update($request->all());
-      return back();
+      return back()->with('info','Equipo actualizado correctamente!');
       //return redirect()->route('grupo.index');
     }
 

@@ -71,7 +71,7 @@
           <select name="idequipo" class="form-control" id="equipo">}
               <option value="0" disabled selected>=== Selecciona un equipo ===</option>
             @foreach($equipo as $carac)
-            <option value="{{$carac->idequipo}}">{{$carac->nombre_equipo}}</option>
+            <option value="{{$carac->idequipo}}">{{$carac->nombre}}</option>
             @endforeach
         </select>
         </div>
@@ -102,12 +102,19 @@
 
 </div>
 </section>
-<script src="{{asset('ajax/jquery.min.js')}}"></script>
-<script src="{{asset('ajax/bootstrap.min.js')}}"></script>
-<script src="{{asset('ajax/select2.min.js')}}"></script>
+
+@push ('scripts')
+<script>
+$('#liAlmacen').addClass("treeview active");
+
+
+$('#liRepuestos').addClass("active");
+
+</script>
 <script >
 $('#equipo').select2({
   theme: "classic"
 });
 </script>
+@endpush
 @endsection

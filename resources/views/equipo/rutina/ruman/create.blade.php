@@ -32,7 +32,7 @@
                     <li class="active"><a href="#tab_1-1" data-toggle="tab">Rutina</a></li>
               <li ><a href="#tab_2-2" data-toggle="tab">Detalle</a></li>
               <li ><a href="#tab_3-3" data-toggle="tab">Programación </a></li>
-              <li ><a href="#tab_4-4" data-toggle="tab">Agregar técnico </a></li>
+
 
             </ul>
 
@@ -82,8 +82,10 @@
                     <div class="form-group">
 
                       <label for="direccion_fab">Observaciones rutina</label>
-                      <input type="text" class="form-control" name="observaciones_rutina" value="{{old('observaciones_rutina')}}">
-                    </div>
+                      <br>
+                        <textarea  style="width: 100%" name="observaciones_rutina" value="{{old('observaciones_rutina')}}">
+                          </textarea>
+                      </div>
 
 
 
@@ -123,14 +125,20 @@
 
 
 
-
 @if($idsubgrupo=='CORRECTIVO')
           <div class="form-group">
             <label for="select" class="">Permiso de trabajo</label>
-            <select name="permiso_trabajo_idpermiso_trabajo" class="form-control" id="permiso_trabajo_idpermiso_trabajo">
+            <select name="permiso_trabajo_idpermiso_trabajo" class="form-control" id="permiso_trabajo_idpermiso_trabajo" required>
+              @foreach($solicitudtrabajo as $carac2)
               @foreach($permisotrabajo as $carac)
+             @if($carac2->idequipo==$idequipo)
+                 @if($carac2->idsolitud_trabajo==$carac->idsolitud_trabajo)
+
               <option value="{{$carac->idpermiso_trabajo}}">{{$carac->num_permiso}}</option>
-          @endforeach
+              @endif
+              @endif
+              @endforeach
+              @endforeach
           </select>
           </div>
 @endif
@@ -294,9 +302,8 @@
             <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
           </a>
 
-          <a onclick="mostar4();" data-toggle="tab" aria-expanded="true">
-          <button type="button" name="adelante" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-right"></span> </button>
-          </a>
+          <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
+
         </div>
 
   </div>

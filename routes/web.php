@@ -41,7 +41,15 @@ Route::get('equipo/rutina/ruman/agregar',[
     'as' => 'ruman.agregar',
     'uses' => 'rumanController@agregar'
 ]);
-Route::get('equipo/rutina/ruman/tecnicos/{id}',[
+Route::get('equipo/rutina/ruman/store2',[
+    'as' => 'ruman.store2',
+    'uses' => 'rumanController@store2'
+]);
+Route::get('equipo/rutina/ruman/update2/',[
+    'as' => 'ruman.update2',
+    'uses' => 'rumanController@update2'
+]);
+Route::get('equipo/rutina/ruman/tecnicos/{id}/{idequipo}',[
     'as' => 'ruman.tecnicos',
     'uses' => 'rumanController@tecnicos'
 ]);
@@ -50,12 +58,23 @@ Route::get('equipo/rutina/ruman/create2/{idequipo}/{idsubgrupo}',[
     'as' => 'ruman.create2',
     'uses' => 'rumanController@create2'
 ]);
+Route::get('equipo/rutina/ruman/create3/{idequipo}/{idsubgrupo}',[
+    'as' => 'ruman.create3',
+    'uses' => 'rumanController@create3'
+]);
 
 Route::get('equipo/rutina/ruman/Asignar/{idequipo}/{idsubgrupo}',[
     'as' => 'ruman.asignar',
     'uses' => 'rumanController@asignar'
 ]);
-
+Route::get('equipo/rutina/ruman/edit2/{idrutina}',[
+    'as' => 'ruman.edit2',
+    'uses' => 'rumanController@edit2'
+]);
+Route::get('equipo/rutina/ruman/Asignar2/{idequipo}/{idsubgrupo}',[
+    'as' => 'ruman.asignar2',
+    'uses' => 'rumanController@asignar2'
+]);
 
 
 Route::resource('equipo/equipo/rutinamante','EquipoController');
@@ -120,10 +139,11 @@ Route::resource('equipo/rutina/ruman','rumanController');
 Route::resource('equipo/rutina/detcaracru','detcaracruController');
 Route::resource('equipo/rutina/detrupru','detrupruController');
 Route::resource('equipo/rutina/AsignarRutina','AsignarRutinaController');
+Route::resource('equipo/rutina/GuardarRutinaPrueba','GuardarRutinaPruebaController');
 
 Route::resource('equipo/parte','ParteController');
 Route::resource('equipo/accesorio','AccesorioController');
-
+Route::resource('equipo/rutina/DetalleRutinaPrueba','DetalleRutinaPruebaController');
 //solicitud de trabajo
 Route::resource('precaucion/ejecutante','PrecaucionEjecutanteController');
 Route::resource('precaucion/responsable','PrecaucionResponsableController');

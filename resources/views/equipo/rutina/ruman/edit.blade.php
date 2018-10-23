@@ -414,7 +414,7 @@ $( "#aplazar" ).click(function() {
 });
 function show(){
 
-    var fila='<input type="hidden" name="estado_rutina" value="PENDIENTE"><input type="hidden" name="color" value="yellow">';
+    var fila='<input type="hidden" name="estado_rutina" value="PENDIENTE"><input type="hidden" name="color" value="#DF3A01">';
 $('#detalles').append(fila);
 }
 function show2(){

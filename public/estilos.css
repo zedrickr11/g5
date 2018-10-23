@@ -72,3 +72,9 @@ margin: 20px;
 padding: 20px;
 border-width: 20px;
 }
+
+#div1 {
+     overflow:scroll;
+     height:200px;
+     width:500px;
+}

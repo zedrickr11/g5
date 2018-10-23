@@ -52,9 +52,13 @@
       @php($num=0)
       @foreach($rutina as $rut)
       @if ($rut->idequipo==$equi->idequipo)
+         @if ($rut->idtipo_rutina==1)
+          @if ($rut->idsubgrupo==$idequipo)
        @if($num==0)
       <option value="{{$equi->idequipo}}">{{$equi->nombre_equipo}}</option>
       @php($num=1)
+        @endif
+        @endif
         @endif
       @endif
   @endforeach
