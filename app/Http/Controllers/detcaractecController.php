@@ -106,7 +106,7 @@ class detcaractecController extends Controller
           DB::rollback();
       }
 
-      return back();
+      return back()->with('carac','¡Características agregadas!');
   }
 
   /**
