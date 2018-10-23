@@ -87,4 +87,13 @@
       </div>
 
 </section>
+@push ('scripts')
+<script>
+$('#liRutinas').addClass("treeview active");
+$('#liCarap').addClass("treeview active");
+
+$('#liValorp').addClass("active");
+
+</script>
+@endpush
 @endsection

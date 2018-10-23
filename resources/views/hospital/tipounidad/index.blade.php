@@ -93,4 +93,14 @@
       </div>
 
 </section>
+@push ('scripts')
+<script>
+$('#liRegiones').addClass("treeview active");
+
+
+$('#liTipo').addClass("active");
+
+</script>
+
+@endpush
 @endsection

@@ -53,4 +53,13 @@ Trabajo
 </div>
 </div>
 </section>
+@push ('scripts')
+<script>
+$('#liSolicitud').addClass("treeview active");
+
+
+$('#liTipotrabajo').addClass("active");
+
+</script>
+@endpush
 @endsection

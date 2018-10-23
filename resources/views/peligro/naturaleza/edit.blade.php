@@ -53,4 +53,14 @@
 </div>
 </div>
 </section>
+@push ('scripts')
+<script>
+$('#liPermisos').addClass("treeview active");
+
+
+$('#liPeligro').addClass("active");
+
+</script>
+
+@endpush
 @endsection

@@ -211,8 +211,11 @@
       evaluar();
 
     }
-    $('#liCompras').addClass("treeview active");
-    $('#liIngresos').addClass("active");
+  
+  </script>
+  <script>
+  $('#liCompras').addClass("treeview active");
+  $('#liIngresosI').addClass("active");
   </script>
 @endpush
 

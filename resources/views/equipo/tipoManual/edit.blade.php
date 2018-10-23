@@ -49,4 +49,12 @@
 
 </div>
 </section>
+@push ('scripts')
+<script>
+$('#liEq').addClass("treeview active");
+
+$('#liManuales').addClass("active");
+
+</script>
+@endpush
 @endsection

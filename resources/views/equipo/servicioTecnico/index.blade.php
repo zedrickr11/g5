@@ -93,4 +93,12 @@
       </div>
 
 </section>
+@push ('scripts')
+<script>
+$('#liEq').addClass("treeview active");
+
+$('#liServTec').addClass("active");
+
+</script>
+@endpush
 @endsection

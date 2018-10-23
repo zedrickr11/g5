@@ -49,4 +49,10 @@
 	</div>
 </div>
 </section>
+@push ('scripts')
+<script>
+$('#liAlmacen').addClass("treeview active");
+$('#liHerramientas').addClass("active");
+</script>
+@endpush
 @endsection
