@@ -4,7 +4,7 @@
 <section class="content-header">
   <h1>
   Trabajo
-  <small>Solicitud de Trabajo</small>
+  <small>Solicitud de trabajo</small>
   </h1>
   <ol class="breadcrumb">
   <li><a href="#"><i class="fa fa-suitcase"></i> Trabajo</a></li>
@@ -27,9 +27,9 @@
        <div class="form-group">
              <label for="proveedor">Compra de material</label>
              @if ($solicitudes->compra_material==1)
-            <input type="checkbox" checked disabled>
+            <p> Si</P>
             @else
-            <input  type="checkbox" disabled>
+            <p> No</P>
             @endif
            </div>
            <div class="form-group">
@@ -50,9 +50,9 @@
        <div class="form-group">
              <label for="proveedor">Contratar trabajo</label>
              @if ($solicitudes->contratar_trabajo==1)
-            <input type="checkbox" checked disabled>
+              <p> Si</P>
             @else
-            <input  type="checkbox" disabled>
+          <p> No</P>
             @endif
            </div>
            <div class="form-group">
@@ -73,7 +73,7 @@
    <div class="box-body col-md-12">
      <div class="form-group">
            <label for="proveedor">Descripción</label>
-           <p>{{$solicitudes->equipo}}</p>
+           <p>{{$solicitudes->descripcion}}</p>
          </div>
    </div>
 
