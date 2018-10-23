@@ -8,7 +8,7 @@ use App\Equipo;
 
 use App\Http\Controllers\Controller;
 
-//falta el form Request
+use App\Http\Requests\AsignarRutinaFormRequest;
 use App\Http\Requests\EquipoFormRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
@@ -45,6 +45,8 @@ use App\valrefru;
 use App\User;
 use App\TecnicoExterno;
 use App\TecnicoInterno;
+use App\DetalleTecnicoInterno;
+use App\DetalleTecnicoExterno;
 class AsignarRutinaController extends Controller
 {
     /**
@@ -121,6 +123,12 @@ class AsignarRutinaController extends Controller
         //
     }
 
+    public function guardartecnicos(Request $asignarRutina)
+    {
+        return view('calendario');
+    }
+
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -194,9 +202,70 @@ class AsignarRutinaController extends Controller
      * @param  \App\AsignarRutina  $asignarRutina
      * @return \Illuminate\Http\Response
      */
-    public function update(AsignarRutina $asignarRutina)
+    public function update(Request $request, $asignarRutina)
     {
+          $aceptar=$request->get('aceptarfecha');
 
+      if($aceptar=='aceptar'){
+                 DB::table('notificacion')
+                  ->where('rutina_mantenimiento_idrutina_mantenimiento',$asignarRutina)
+                  ->update(['start' =>  $request->get('start'),'end' =>  $request->get('end') ,'descripcion_noti' =>  $request->get('descripcion_noti')]);
+}
+
+      $eliminar=$request->get('eliminar');
+      if($eliminar=='eliminar'){
+
+
+            DB::table('rutina_mantenimiento')
+                        ->where('idrutina_mantenimiento',$asignarRutina)
+                        ->update(['estado_rutina' =>  $request->get('estado_rutina')]);
+
+      }
+
+
+
+
+      try{
+            DB::beginTransaction();
+
+                $tecnicointerno = $request->get('tecnicointerno');
+                  for($cont2 = 0; $cont2 <count($tecnicointerno); $cont2++){
+
+                  $det = new DetalleTecnicoInterno();
+                  $det->idrutina_mantenimiento=$asignarRutina;
+                  $det->idtecnico=$tecnicointerno[$cont2];
+                  $det->save();
+
+                  }
+
+            DB::commit();
+
+          }catch(\Exception $e)
+          {
+              DB::rollback();
+          }
+
+          try{
+                DB::beginTransaction();
+
+                $tecnicoexterno = $request->get('tecnicoexterno');
+                      for($cont3 = 0; $cont3 <count($tecnicoexterno); $cont3++){
+
+                      $det2 = new DetalleTecnicoExterno();
+                      $det2->idrutina_mantenimiento=$asignarRutina;
+                      $det2->idtecnico_externo=$tecnicoexterno[$cont3];
+                      $det2->save();
+
+                      }
+
+                DB::commit();
+
+              }catch(\Exception $e)
+              {
+                  DB::rollback();
+              }
+
+      return redirect()->route('actualizar', [$request->get('idequipo')]);
     }
 
     /**
