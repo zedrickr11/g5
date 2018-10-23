@@ -227,7 +227,7 @@ class EquipoController extends Controller
 
 
         $pdf = PDF::loadView("equipo.caracteristica.fichatecnica.show",compact('equipo','partes','accesorios','repuestos','manuales','cacateristicas_tecnicas','cacateristicas_especiales'));
-
+        
         return $pdf->stream('FICHA TÉCNICA"'.$id.'".pdf');
 
     }
