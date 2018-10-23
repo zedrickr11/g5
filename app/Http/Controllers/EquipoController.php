@@ -227,7 +227,7 @@ class EquipoController extends Controller
 
 
         $pdf = PDF::loadView("equipo.caracteristica.fichatecnica.show",compact('equipo','partes','accesorios','repuestos','manuales','cacateristicas_tecnicas','cacateristicas_especiales'));
-        
+
         return $pdf->stream('FICHA TÉCNICA"'.$id.'".pdf');
 
     }
@@ -330,7 +330,7 @@ class EquipoController extends Controller
     public function update(EquipoFormRequest $request, $id)
     {
       Equipo::findOrFail($id)->update($request->all());
-      return back();
+      return back()->with('info','Equipo actualizado correctamente!');
       //return redirect()->route('grupo.index');
     }
 

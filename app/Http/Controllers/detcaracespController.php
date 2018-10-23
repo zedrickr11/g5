@@ -111,7 +111,7 @@ class detcaracespController extends Controller
             DB::rollback();
         }
 
-        return back();
+        return back()->with('caracesp','¡Características agregadas!');
     }
 
     /**

@@ -155,7 +155,7 @@ class EquipoIndexController extends Controller
       }
 
       $manual->save();
-      return back();
+      return back()->with('manual','¡Subida correcta!');
 
     }
 
