@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ruman;
-
+use App\GuardarRutinaPrueba;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests\rumanFormRequest;
@@ -33,6 +33,15 @@ use App\Insumo;
 use App\Repuesto;
 use App\DetalleHerramienta;
 use App\Herramienta;
+use App\SolicitudTrabajo;
+use App\subpru;
+use App\valrefpru;
+use App\pruru;
+use App\DetalleRutinaPrueba;
+use App\detrupru;
+
+
+
 class rumanController extends Controller
 {
   function __construct()
@@ -76,6 +85,8 @@ class rumanController extends Controller
   public function create2($idequipo,$idsubgrupo)
   {
 
+      $solicitudtrabajo=SolicitudTrabajo::all();
+
     $tecnicoexterno=TecnicoExterno::all();
     $tecnicointerno=TecnicoInterno::all();
     $users=User::all();
@@ -88,17 +99,51 @@ class rumanController extends Controller
         $subgrupo=Subgrupo::all();
         $permisotrabajo=PermisoTrabajo::all();
 
-    return view("equipo.rutina.ruman.create",compact('tecnicoexterno','tecnicointerno','users','idsubgrupo','idequipo','subgrupo','tiporu','equipo','permisotrabajo','caracru','subru','valrefru','ruman'));
+    return view("equipo.rutina.ruman.create",compact('solicitudtrabajo','tecnicoexterno','tecnicointerno','users','idsubgrupo','idequipo','subgrupo','tiporu','equipo','permisotrabajo','caracru','subru','valrefru','ruman'));
 
 
   //  return view("equipo.rutina.ruman.create",compact('tiporu','equipo'));
 
   }
+
+  public function create3($idequipo,$idsubgrupo)
+  {
+    $solicitudtrabajo=SolicitudTrabajo::all();
+
+  $tecnicoexterno=TecnicoExterno::all();
+  $tecnicointerno=TecnicoInterno::all();
+  $users=User::all();
+  $tiporu=tiporu::all();
+  $equipo=Equipo::all();
+  $pruru=pruru::all();
+  $subpru=subpru::all();
+    $valrefpru=valrefpru::all();
+      $ruman=ruman::all();
+      $subgrupo=Subgrupo::all();
+      $permisotrabajo=PermisoTrabajo::all();
+
+  return view("equipo.rutina.ruman.createprueba",compact('solicitudtrabajo','tecnicoexterno','tecnicointerno','users','idsubgrupo','idequipo','subgrupo','tiporu','equipo','permisotrabajo','pruru','subpru','valrefpru','ruman'));
+
+
+
+  }
   public function create($idequipo)
   {}
 
-    public function tecnicos($id)
+    public function tecnicos($id,$idequipo)
     {
+      $notificacion=Notificacion::all();
+      $ruman=ruman::all();
+      $tecnicoexterno=TecnicoExterno::all();
+      $tecnicointerno=TecnicoInterno::all();
+      return view("equipo.rutina.ruman.asignartecnicos",compact('notificacion','ruman','tecnicoexterno','tecnicointerno','id','idequipo'));
+
+    }
+
+
+    public function guardartecnicos(rumanFormRequest $request)
+    {
+
 
 
     }
@@ -306,7 +351,31 @@ if($request->get('enviar')=='enviado'){
 
 
 
+  public function storetecnico(rumanFormRequest $request)
+  { }
+
+
   public function asignar($id,$idequipo)
+  {
+    $equipo=equipo::all();
+    $rutina=ruman::all();
+      $tiporu=tiporu::all();
+      $caracru=caracru::all();
+      $subru=subru::all();
+      $valrefru=valrefru::all();
+        $rumen = detcaracru::all();
+        $ruman=DB::table('rutina_mantenimiento as d')
+          ->where('d.idsubgrupo','LIKE',$idequipo)
+            ->select('d.*')
+     ->orderBy('idrutina_mantenimiento','desc')
+       ->paginate(10000);
+        return view('equipo.rutina.ruman.asignarrutina', compact('id','equipo','ruman','rumen','idequipo','caracru','subru','valrefru','tiporu','rutina'));
+
+
+
+  }
+
+  public function asignar2($id,$idequipo)
   {
     $equipo=equipo::all();
     $rutina=ruman::all();
@@ -319,16 +388,92 @@ if($request->get('enviar')=='enviado'){
           ->select('d.*')
           ->where('d.idsubgrupo','LIKE',$id)
      ->orderBy('idrutina_mantenimiento','desc')
-       ->paginate(100);
-        return view('equipo.rutina.ruman.asignarrutina', compact('id','equipo','ruman','rumen','idequipo','caracru','subru','valrefru','tiporu','rutina'));
+       ->paginate(10000);
+        return view('equipo.rutina.ruman.asignarrutina2', compact('id','equipo','ruman','rumen','idequipo','caracru','subru','valrefru','tiporu','rutina'));
 
 
 
   }
+
+
+
   public function agregar(Request $request)
   {
   return view('equipo.equipo.index');
 
+
+  }
+
+
+
+  public function store2(rumanFormRequest $request)
+  {
+
+
+    try{
+        DB::beginTransaction();
+        $ruman=new ruman;
+        $ruman->idtipo_rutina=$request->get('idtipo_rutina');
+        $ruman->idequipo=$request->get('idequipo');
+        $mytime = Carbon::now('America/Guatemala');
+        $ruman->fecha_realizacion_rutina=$mytime->toDateTimeString();
+        $ruman->observaciones_rutina=$request->get('observaciones_rutina');
+        $ruman->tiempo_estimado_rutina_mantenimiento=$request->get('tiempo_estimado_rutina_mantenimiento');
+        $ruman->responsable_area_rutina_mantenimiento=$request->get('responsable_area_rutina_mantenimiento');
+        $ruman->permiso_trabajo_idpermiso_trabajo=$request->get('permiso_trabajo_idpermiso_trabajo');
+        $ruman->idsubgrupo=$request->get('idsubgrupo');
+        $ruman->estado_rutina='PENDIENTE';
+        $ruman->save();
+
+
+        $noti=new Notificacion;
+        $noti->descripcion_noti=$request->get('descripcion_noti');
+        $noti->start=$request->get('start');
+        $noti->end=$request->get('end');
+        $noti->rutina_mantenimiento_idrutina_mantenimiento=$ruman->idrutina_mantenimiento;
+        $noti->estado_notificacion='0';
+        $noti->backgroundColor='yellow';
+        $noti->textColor='white';
+        $noti->title=$request->get('idequipo');
+        $noti->save();
+
+        $prueba_rutina = $request->get('prueba_rutina');
+        $subgrupo_prueba= $request->get('subgrupo_prueba');
+        $valor_ref_prueba = $request->get('valor_ref_prueba');
+        $norma= $request->get('norma');
+        $unidadmedida = $request->get('unidadmedida');
+
+
+                $cont = 0;
+
+                while($cont <count($prueba_rutina)){
+
+                    $detalle = new DetalleRutinaPrueba();
+                    $detalle->idprueba_rutina=$prueba_rutina[$cont];
+                    $detalle->idrutina_mantenimiento=$ruman->idrutina_mantenimiento;
+                    $detalle->idvalor_ref_prueba=$valor_ref_prueba[$cont];
+                    $detalle->idsubgrupo_prueba= $subgrupo_prueba[$cont];
+                    $detalle->norma_detalle_rutina_prueba= $norma[$cont];
+                    $detalle->unidad_medida_detalle_rutina_prueba= $unidadmedida[$cont];
+
+
+
+                    $detalle->save();
+                    $cont=$cont+1;
+
+                }
+
+
+
+
+                DB::commit();
+
+              }catch(\Exception $e)
+              {
+                  DB::rollback();
+              }
+
+  return redirect()->route('actualizar', [$request->get('idequipo')]);
 
   }
 
@@ -378,6 +523,28 @@ if($request->get('enviar')=='enviado'){
     return view('equipo.rutina.ruman.edit', compact('herramienta','repuesto','insumo','users','notificacion','valrefru','subru','caracru','detallerutina','ruman','tiporu','equipo','permisotrabajo'));
   }
 
+
+  public function edit2($id)
+  {
+    $herramienta=Herramienta::all();
+    $repuesto=Repuesto::all();
+       $insumo=Insumo::all();
+     $users=User::all();
+    $notificacion=Notificacion::all();
+    $caracru=caracru::all();
+    $subru=subru::all();
+    $valrefru=valrefru::all();
+      $detallerutina = detrupru::all();
+    $tiporu=tiporu::all();
+    $equipo=Equipo::all();
+  $ruman=ruman::findOrFail($id);
+      $permisotrabajo=PermisoTrabajo::all();
+      $pruru=pruru::all();
+      $subpru=subpru::all();
+        $valrefpru=valrefpru::all();
+    return view('equipo.rutina.ruman.edit2', compact('valrefpru','subpru','pruru','herramienta','repuesto','insumo','users','notificacion','valrefru','subru','caracru','detallerutina','ruman','tiporu','equipo','permisotrabajo'));
+  }
+
   /**
    * Update the specified resource in storage.
    *
@@ -387,6 +554,18 @@ if($request->get('enviar')=='enviado'){
    */
   public function update(rumanFormRequest $request, $id)
   {
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     $herramientaceptar=$request->get('herramientaceptar');
@@ -541,6 +720,14 @@ if("$estado_rutina"=="REALIZADO" and $rutinatipo==1){
     return redirect()->route('actualizar',$idequipo);
 
   }
+
+
+
+  public function update2(rumanFormRequest $request, $id)
+  {
+
+
+}
 
   /**
    * Remove the specified resource from storage.

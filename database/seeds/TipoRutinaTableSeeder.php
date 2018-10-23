@@ -17,5 +17,8 @@ class TipoRutinaTableSeeder extends Seeder
       tiporu::create([
         'tipo_rutina' => "CORRECTIVO"
       ]);
+      tiporu::create([
+        'tipo_rutina' => "PRUEBA"
+      ]);
     }
 }
