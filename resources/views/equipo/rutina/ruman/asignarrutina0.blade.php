@@ -222,7 +222,7 @@
 
 
 
-
+<!--
      <div class="box-body col-md-6">
      <h3>Técnico interno </h3>
        <div class="form-group">
@@ -291,7 +291,7 @@
 
      </div>
 
-
+-->
 
 
 
