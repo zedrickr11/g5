@@ -15,17 +15,21 @@
   </tr>
 
     <tr>
-      <td padding="0"   rowspan="3"><div align="center">
+      <td padding="0"   rowspan="4"><div align="center">
     <IMG src="{{public_path('dist/img/igsslogo.png')}}" width="70" height="70" BORDER=0>    </td>
     </div>
     	<td  colspan="3"  > <div align="center">Fecha: {{$p->fecha}}  </div></td>
     </tr>
+		<tr>
+				<td  colspan="3" > <div align="center">ING-7: </div></td>
+			</tr>
 <tr>
     <td  colspan="3" > <div align="center">Número de solicitud: {{$p->num}}  </div></td>
   </tr>
 <tr>
 		<td  colspan="3" > <div align="center">Permiso número : {{$p->num_permiso}}</div></td>
 	</tr>
+
 
 	<!--Descripcion-->
 					<tr>

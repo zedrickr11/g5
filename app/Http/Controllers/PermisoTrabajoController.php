@@ -54,6 +54,11 @@ class PermisoTrabajoController extends Controller
      */
      public function create()
      {
+ 
+
+
+
+
 
        $solicitudes = DB::table('solitud_trabajo')
                 ->select('idsolitud_trabajo','numero  AS num')

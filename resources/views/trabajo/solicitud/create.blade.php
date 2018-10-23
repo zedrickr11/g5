@@ -75,7 +75,15 @@ Trabajo
         </tbody>
       </table>
        </div>
+                <div class="box-body col-md-12">
+       <a onclick="mostar();">
+         <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
+       </a>
+
+
+       <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
   </div>
+    </div>
   <div class="tab-pane" id="tab_3-3">
     <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
     <p class="text-danger">(*) Campos requeridos</p>
@@ -115,6 +123,14 @@ Trabajo
       </tbody>
     </table>
      </div>
+         <div class="box-body col-md-12">
+           <a onclick="mostar3();">
+             <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
+           </a>
+     <a onclick="mostar2();" data-toggle="tab" aria-expanded="true">
+  <button type="button" name="adelante" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-right"></span> </button>
+  </a>
+    </div>
   </div>
 
 
@@ -172,22 +188,21 @@ Trabajo
 
   <div class="box-body col-md-12">
     <div class="form-group">
-    <label>Descripción de solicitud</label>
-    <input type="text" class="form-control" name="descripcion" value="{{old('descripcion')}}">
+      <label>Descripción de solicitud</label>
+      <textarea type="text" rows="5" cols="92"  name="descripcion" value="{{old('descripcion')}}" class="form-control">
+     </textarea>
     </div>
+  </div>
+    <div class="box-body col-md-12">
+       <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
+  <a onclick="mostar();" data-toggle="tab" aria-expanded="true">
+  <button type="button" name="adelante" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-right"></span> </button>
+  </a>
   </div>
 </div>
 <!-- /.tab-pane -->
 <div class="box-footer">
-  <div class="box-body col-md-12">
-    <a href="{{route('solicitud.index')}}">
-    <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
-    </a>
-  <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
-
-  <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
-
-</div>
+ 
 </div>
 
 </div>
@@ -318,6 +333,18 @@ function evaluar2()
   $("#fila" + index).remove();
   evaluar();
 
+}
+function mostar(){
+
+  $('.nav-tabs a[href="#tab_3-3"]').tab('show');
+}
+function mostar2(){
+
+  $('.nav-tabs a[href="#tab_2-2"]').tab('show');
+}
+function mostar3(){
+
+  $('.nav-tabs a[href="#tab_4-4"]').tab('show');
 }
 </script>
 
