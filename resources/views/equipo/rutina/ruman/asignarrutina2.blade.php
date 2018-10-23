@@ -41,21 +41,23 @@
 
 
 
+
 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
   <div class="form-group">
     <label for="select" class="">Buscar equipo con rutina</label>
     <select name="pidequipo" class="form-control" id="pidequipo">
 
 
-
       @foreach($equipo as $equi)
       @php($num=0)
       @foreach($rutina as $rut)
       @if ($rut->idequipo==$equi->idequipo)
-         @if ($rut->idtipo_rutina==1)
-          @if ($rut->idsubgrupo==$idequipo)
+           @if ($rut->idtipo_rutina==3)
+            @if ($rut->idsubgrupo==$idequipo)
        @if($num==0)
+
       <option value="{{$equi->idequipo}}">{{$equi->nombre_equipo}}</option>
+
       @php($num=1)
         @endif
         @endif
