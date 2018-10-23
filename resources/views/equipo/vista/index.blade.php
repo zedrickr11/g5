@@ -6,6 +6,20 @@
         <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
       </a>Vista General
     </h1>
+    @if (session()->has('info'))
+    <div class="row">
+    <div id="alerta_eq" class="col-md-offset-3 col-md-6 alert alert-success alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{ session('info') }}</strong>
+    </div>
+    </div>
+
+
+
+
+    @endif
+
+
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Equipo</a></li>
 
@@ -1286,7 +1300,7 @@
 
 
 
-                <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-saved"></span> </button>
+                <button id="g" class="btn btn-success" type="submit"><span class="glyphicon glyphicon-saved"></span> </button>
               </div>
 
               </div>
@@ -1739,6 +1753,11 @@
   $('#liEq').addClass("treeview active");
   $('#liEquipo').addClass("active");
   </script>
+
+
+
+  </script>
+
 
   @endpush
 
