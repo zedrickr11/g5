@@ -6,6 +6,48 @@
         <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
       </a>Vista General
     </h1>
+    @if (session()->has('info'))
+    <div class="row">
+    <div id="alerta_eq" class="col-md-offset-3 col-md-6 alert alert-success alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{ session('info') }}</strong>
+    </div>
+    </div>
+    @endif
+    @if (session()->has('manual'))
+    <div class="row">
+    <div id="alerta_eq" class="col-md-offset-3 col-md-6 alert alert-success alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{ session('manual') }}</strong>
+    </div>
+    </div>
+    @endif
+    @if (session()->has('img'))
+    <div class="row">
+    <div id="alerta_eq" class="col-md-offset-3 col-md-6 alert alert-success alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{ session('img') }}</strong>
+    </div>
+    </div>
+    @endif
+    @if (session()->has('caracesp'))
+    <div class="row">
+    <div id="alerta_eq" class="col-md-offset-3 col-md-6 alert alert-success alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{ session('caracesp') }}</strong>
+    </div>
+    </div>
+    @endif
+    @if (session()->has('carac'))
+    <div class="row">
+    <div id="alerta_eq" class="col-md-offset-3 col-md-6 alert alert-success alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{ session('carac') }}</strong>
+    </div>
+    </div>
+    @endif
+
+
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Equipo</a></li>
 
@@ -1286,7 +1328,7 @@
 
 
 
-                <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-saved"></span> </button>
+                <button id="g" class="btn btn-success" type="submit"><span class="glyphicon glyphicon-saved"></span> </button>
               </div>
 
               </div>
@@ -1623,7 +1665,7 @@
       valor1=$("#valor_tec").val();
 
 
-      if (idcaracteristica1!="" && idequipo1!="" )
+      if (idcaracteristica1!="" && idequipo1!="" && valor1!="")
       {
           var fila5='<tr class="selected" id="fila5'+cont5+'"><td><button type="button" class="btn btn-warning" onclick="eliminar5('+cont5+');">X</button></td><td><input type="hidden" name="idcaracteristica_tecnica[]" value="'+idcaracteristica1+'">'+carac1+'</td><td><input type="hidden" name="idsubgrupo_carac_tecnica[]" value="'+idsubgrupo1+'">'+sub1+'</td><td><input type="hidden" name="idvalor_ref_tec[]" value="'+idvalor_ref1+'">'+valor_ref1+'</td><td><input type="text" name="descripcion_detalle_caracteristica_tecnica[]" value="'+desc1+'"></td><td><input type="number" name="valor_detalle_caracteristica_tecnica[]" value="'+valor1+'"></td><td><input type="hidden" name="idequipo[]" value="'+idequipo1+'"><td></tr>';
           cont5++;
@@ -1633,7 +1675,7 @@
       }
       else
       {
-          alert("Error al ingresar el detalle del ingreso, revise los datos ");
+          alert("Error al ingresar el detalle, revise los datos ");
       }
     }
     function limpiar5(){
@@ -1695,7 +1737,7 @@
       valor=$("#v_esp").val();
 
 
-      if (idcaracteristica!="" && idequipo!="" )
+      if (idcaracteristica!="" && idequipo!="" && valor!="")
       {
           var fila6='<tr class="selected" id="fila6'+cont6+'"><td><button type="button" class="btn btn-warning" onclick="eliminar6('+cont6+');">X</button></td><td><input type="hidden" name="idcaracteristica_especial[]" value="'+idcaracteristica+'">'+carac+'</td><td><input type="hidden" name="idvalor_ref_esp[]" value="'+idvalor_ref+'">'+valor_ref+'</td><td><input type="text" name="descripcion_detalle_caracteristica_especial[]" value="'+desc+'"></td><td><input type="number" name="valor_detalle_caracteristica_especial[]" value="'+valor+'"></td><td><input type="hidden" name="idequipo[]" value="'+idequipo+'"><td></tr>';
           cont6++;
@@ -1705,7 +1747,7 @@
       }
       else
       {
-          alert("Error al ingresar el detalle del ingreso, revise los datos");
+          alert("Error al ingresar el detalle, revise los datos");
       }
     }
     function limpiar6(){
@@ -1739,6 +1781,11 @@
   $('#liEq').addClass("treeview active");
   $('#liEquipo').addClass("active");
   </script>
+
+
+
+  </script>
+
 
   @endpush
 

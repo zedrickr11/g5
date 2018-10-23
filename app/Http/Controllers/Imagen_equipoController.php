@@ -60,7 +60,7 @@ class Imagen_equipoController extends Controller
             $imagen->imagen=$file->getClientOriginalName();
         }
         $imagen->save();
-        return back();
+        return back()->with('img','¡Subida correcta!');
     }
 
     /**
