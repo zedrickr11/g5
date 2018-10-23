@@ -35,7 +35,9 @@ class RepuestoController extends Controller
   }
   public function create()
   {
-      $equipo=Equipo::all();
+      $equipo=DB::table('equipo as eq')
+      ->select('eq.idequipo',DB::raw('CONCAT(eq.idequipo, " - ", eq.nombre_equipo) as nombre'))
+      ->get();
       return view("almacen.repuesto.create", compact('equipo'));
   }
   public function store (RepuestoFormRequest $request)
@@ -61,7 +63,9 @@ class RepuestoController extends Controller
   public function edit($id)
   {
       $repuestos=Repuesto::findOrFail($id);
-      $equipo=Equipo::all();
+      $equipo=DB::table('equipo as eq')
+      ->select('eq.idequipo',DB::raw('CONCAT(eq.idequipo, " - ", eq.nombre_equipo) as nombre'))
+      ->get();
       return view("almacen.repuesto.edit",compact('repuestos','equipo'));
   }
 

@@ -50,4 +50,13 @@
 
 </div>
 </section>
+@push ('scripts')
+<script>
+$('#liRutinas').addClass("treeview active");
+$('#liCarap').addClass("treeview active");
+
+$('#liPrueba').addClass("active");
+
+</script>
+@endpush
 @endsection

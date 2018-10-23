@@ -87,12 +87,18 @@
 
 </div>
 </section>
-<script src="{{asset('ajax/jquery.min.js')}}"></script>
-<script src="{{asset('ajax/bootstrap.min.js')}}"></script>
-<script src="{{asset('ajax/select2.min.js')}}"></script>
+@push ('scripts')
+<script>
+$('#liRegiones').addClass("treeview active");
+
+
+$('#liTipo').addClass("active");
+
+</script>
 <script>
 $('#idhospital').select2({
   theme: "classic"
 });
 </script>
+@endpush
 @endsection

@@ -81,8 +81,8 @@
 </section>
 @push ('scripts')
 <script>
-$('#liEq').addClass("treeview active");
-$('#liEstado').addClass("active");
+$('#liAlmacen').addClass("treeview active");
+$('#liHerramientas').addClass("active");
 </script>
 @endpush
 @endsection

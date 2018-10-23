@@ -80,8 +80,10 @@
    </div>
    </div>
 </section>
-<script>
-$('#liCompras').addClass("treeview active");
-$('#liIngresos').addClass("active");
-</script>
+@push ('scripts')
+  <script>
+  $('#liCompras').addClass("treeview active");
+  $('#liIngresosR').addClass("active");
+  </script>
+@endpush
 @endsection

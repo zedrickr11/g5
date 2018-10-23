@@ -43,7 +43,7 @@
 					</div>
 
 
-      	
+
     	</div>
 
 
@@ -69,4 +69,28 @@
 
 </div>
 </section>
+@push ('scripts')
+<script>
+$('#liAreas').addClass("treeview active");
+$('#liSubgrupo').addClass("active");
+</script>
+<script type="text/javascript">
+  $('#grupo').on('change', function(e){
+    console.log(e);
+    var grupo_id = e.target.value;
+    $.get('/json-confsubgrupo?grupo_id=' + grupo_id,function(data) {
+      console.log(data);
+
+      $.each(data, function(index, regenciesObj){
+
+        $('#codigosubgrupo').val(regenciesObj.actual);
+      })
+    });
+  });
+
+
+
+
+</script>
+@endpush
 @endsection

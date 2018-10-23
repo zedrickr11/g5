@@ -81,10 +81,11 @@
 </div>
 </section>
 
-
-<script src="{{asset('ajax/jquery.min.js')}}"></script>
-<script src="{{asset('ajax/bootstrap.min.js')}}"></script>
-
+@push ('scripts')
+<script>
+$('#liAreas').addClass("treeview active");
+$('#liSubgrupo').addClass("active");
+</script>
 <script type="text/javascript">
   $('#grupo').on('change', function(e){
     console.log(e);
@@ -103,4 +104,7 @@
 
 
 </script>
+@endpush
+
+
 @endsection

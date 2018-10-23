@@ -76,4 +76,10 @@
       </div>
 
 </section>
+@push ('scripts')
+<script>
+$('#liCompras').addClass("treeview active");
+$('#liProveedoresR').addClass("active");
+</script>
+@endpush
 @endsection

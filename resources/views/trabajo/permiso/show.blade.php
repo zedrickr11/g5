@@ -162,4 +162,14 @@
 </div>
 </div>
 </section>
+@push ('scripts')
+<script>
+$('#liPermisos').addClass("treeview active");
+
+
+$('#liPermiso').addClass("active");
+
+</script>
+
+@endpush
 @endsection

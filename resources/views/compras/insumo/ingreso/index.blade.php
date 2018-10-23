@@ -42,10 +42,8 @@
               					<td>{{ $ing->estado}}</td>
               					<td>
               						<a href="{{URL::action('Ingreso_insumoController@show',$ing->idingreso_insumo)}}"><button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></span> </button></a>
-              						<a href="" data-target="#modal-delete-{{$ing->idingreso_insumo}}" data-toggle="modal"><button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></span> </button></a>
               					</td>
               				</tr>
-			 					@include('compras.insumo.ingreso.modal')
 			 					@endforeach
 
                       </tbody>
@@ -71,8 +69,11 @@
       </div>
 
 </section>
-<script>
-$('#liCompras').addClass("treeview active");
-$('#liIngresos').addClass("active");
-</script>
+@push ('scripts')
+  <script>
+  $('#liCompras').addClass("treeview active");
+  $('#liIngresosI').addClass("active");
+  </script>
+@endpush
+
 @endsection

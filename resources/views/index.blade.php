@@ -619,5 +619,11 @@
 
 </body>
 </html>
+@push ('scripts')
+<script>
 
+$('#liCalendario').addClass("active");
+
+</script>
+@endpush
     @endsection

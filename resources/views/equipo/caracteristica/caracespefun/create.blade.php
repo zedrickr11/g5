@@ -64,4 +64,12 @@
 
 </div>
 </section>
+@push ('scripts')
+<script>
+$('#liEq').addClass("treeview active");
+$('#liEspe').addClass("treeview active");
+$('#liCesp').addClass("active");
+
+</script>
+@endpush
 @endsection

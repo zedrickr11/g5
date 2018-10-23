@@ -66,4 +66,12 @@
 
 </div>
 </section>
+@push ('scripts')
+<script>
+$('#liEq').addClass("treeview active");
+
+$('#liProveedores').addClass("active");
+
+</script>
+@endpush
 @endsection

@@ -51,14 +51,7 @@
                 <a href="{{route('externo.edit', $ex->idtecnico_externo)}}">
                 <button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-cog"></span> </button>
                   </a>
-                                <a href="{{route('externo.show', $ex->idtecnico_externo)}}">
-                                <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></span></button>
-                                                                  </a>
-                                                                  <form style="display: inline" method="POST" action="{{route('externo.destroy',  $ex->idtecnico_externo)}}">
-                                                                  {!!method_field('DELETE')!!}
-                                                                  {!!csrf_field()!!}
-                                <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></span> </button>
-                                </form>
+                                
 
 
 
@@ -89,4 +82,10 @@
       </div>
 
 </section>
+@push ('scripts')
+  <script>
+  $('#liTecnicos').addClass("treeview active");
+  $('#liExternos').addClass("active");
+  </script>
+@endpush
 @endsection

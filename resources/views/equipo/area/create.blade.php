@@ -67,4 +67,11 @@
 
 </div>
 </section>
+@push ('scripts')
+<script>
+$('#liAreas').addClass("treeview active");
+$('#liFormato').addClass("active");
+</script>
+
+@endpush
 @endsection
