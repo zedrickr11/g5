@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
 
-      @foreach($equipo as $eq)
-  @php($clave =$eq->idequipo)
 
-<title>FICHA TÉCNICA {{ $eq->idequipo}}</title>
+
+<title>FICHA TÉCNICA </title>
 	<link type="text/css" rel="stylesheet" href="estilos.css" />
 
   <body>
@@ -15,7 +14,7 @@
 
 
 
-        <table id="table" width="100%" border="10" cellpadding="5" cellspacing="0" bordercolor="#000000">
+        <table id="table" width="100%" border="10" cellpadding="5" cellspacing="0" bordercolor="#000000" style="table-layout:fixed;word-wrap:break-word;">
 
           <tr>
             <td id="gris" colspan="3"> 	<div align="center"> FICHA TÉCNICA             </div>  </td>
@@ -31,211 +30,273 @@
 
           </tr>
           <tr>
-            @php($clavedividida= explode("-",$clave))
-            <td id="neg">  <div align="center">{{$clavedividida[0]}} </div></td>
-              <td id="neg"> <div align="center"> {{$clavedividida[1]}} </div></td>
+
+            <td id="neg">  <div align="center"> {{ $equipo->inventario }}</div></td>
+              <td id="neg"> <div align="center"> {{ $equipo->codigo }}</div></td>
 
           </tr>
           <tr>
             <td id="gris" colspan="4"> <div align="center"> IDENTIFICACIÓN </div></td>
           </tr>
           <tr>
-            <td > Equipo/Instalación: <br>
-            {{ $eq->nombre_equipo}}</td>
+            <td > Equipo/Instalación: <br> {{ $equipo->nombre_equipo }}<br>
+            </td>
             <td > Marca:<br>
-              {{ $eq->marca}}
+              {{ $equipo->marca }}
              </td>
             <td > Modelo: <br>
-              {{ $eq->modelo}}</td>
+              {{ $equipo->modelo }}
+            </td>
             <td > No. de serie: <br>
-            {{ $eq->serie}}</td>
+              {{ $equipo->serie }}
+            </td>
           </tr>
           <tr>
-              <td colspan="4">Descripción del Equipo: {{ $eq->descripcion}}  </td>
+              <td colspan="4">Descripción del equipo:  {{ $equipo->descripcion }} </td>
 
           </tr>
           <tr>
 
-            <td  colspan="2">  Clase Tenología Médica: {{ $eq->clase_tec_med}}</td>
-            <td  colspan="2">  Nivel de Riesgo: {{ $eq->nivel_riesgo}}</td>
+            <td  colspan="2">  Clase Tenología Médica: {{ $equipo->clase_tec_med }}</td>
+            <td  colspan="2">  Nivel de Riesgo: {{ $equipo->nivel_riesgo }} </td>
 
           </tr>
           <tr>
-            <td  colspan="4">  Partes de Equipo:</td>
+            <td id="gris"  colspan="4">  Partes del equipo:
+              @foreach ($partes as $parte )
+								<tr>
+									<td colspan="2">Parte: {{ $parte->nombre_parte }}</td>
+									<td colspan="2">No. parte: {{ $parte->num_parte }}</td>
+								</tr>
+
+
+              @endforeach
+            </td>
           </tr>
           <tr>
-            <td  colspan="4">  Accesorios:</td>
+            <td id="gris" colspan="4">  Accesorios:
+              @foreach ($accesorios as $acc )
+								<tr>
+									<td colspan="2">Accesorio: {{ $acc->nombre_accesorio }}</td>
+									<td colspan="2">No. accesorio: {{ $acc->numero_parte_accesorio }}</td>
+								</tr>
+
+
+              @endforeach
+            </td>
           </tr>
           <tr>
-            <td  colspan="4">  Conexión Con otro equipo: {{ $eq->conexion_otro_eq}}</td>
+            <td  colspan="4">  Conexión Con otro equipo: {{ $equipo->conexion_otro_eq }}</td>
           </tr>
           <tr>
             <td id="gris" colspan="4"> <div align="center"> LOCALIZACIÓN Y FRECUENCIA DE USO </div></td>
           </tr>
           <tr>
-            @foreach($unidadsalud as $hosp)
-                     @if ($hosp->idunidadsalud==$eq->idunidadsalud)
-           <td  colspan="2">   Unidad: {{$hosp->unidad_salud}} </td>
-                   @endif
-                    @endforeach
-                    @foreach($equipo as $hosp)
-                    @if ($hosp->idequipo==$eq->idequipo)
-                    <td  colspan="2">   Departamento/Servicio: {{$hosp->servicio}} </td>
-                    @endif
-                    @endforeach
 
-          </tr>
-          <tr>
-            @foreach($area as $hosp)
-                     @if ($hosp->idarea==$eq->idarea)
-           <td  colspan="2">   Área/Sala/Laboratorio: {{$hosp->nombre_area}}</td>
-                   @endif
-                    @endforeach
+           <td  colspan="2">   Unidad: {{ $equipo->idunidadsalud }}</td>
 
-                    <td  colspan="2"> Usuario responsable: PREGUNTAR!!!</td>
+                    <td  colspan="2">   Departamento/Servicio: {{ $equipo->servicio }} </td>
 
 
           </tr>
           <tr>
 
-            <td  >  Frecuencia de uso: {{ $eq->frec_uso_dia_semana}}</td>
-            <td >  Nivel de Riesgo: {{ $eq->frec_uso_hora_dia}}</td>
-             @if ($eq->personal_cap=="1")
+           <td  colspan="2">   Área/Sala/Laboratorio: {{ $equipo->ambiente }}</td>
+
+
+                    <td  colspan="2"> Usuario responsable: {{ $equipo->name }}</td>
+
+
+          </tr>
+          <tr>
+
+            <td  colspan="2">  Frecuencia de uso:
+              <br>
+              {{ $equipo->frec_uso_hora_dia }} horas/día - {{ $equipo->frec_uso_dia_semana }} días/semana
+            </td>
+
+
+             @if ($equipo->personal_cap=="1")
             <td  colspan="2">  Cuenta con personal capacitado para su uso? Sí</td>
             @else
             <td  colspan="2">  Cuenta con personal capacitado para su uso? No</td>
             @endif
           </tr>
+
+
+
           <tr>
             <td id="gris" colspan="4"> <div align="center"> INFORMACIÓN TÉCNICA </div></td>
           </tr>
-
-
-
-          @foreach($CaracTec as $CaracTecnica)
-            @php ($num = 0)
-          @foreach($detcaractec as $hosp)
-          @if ($num==0 and $hosp->idequipo==$eq->idequipo  and $hosp->idcaracteristica_tecnica==$CaracTecnica->idcaracteristica_tecnica)
+          @if (count($cacateristicas_tecnicas)==0 && count($cacateristicas_especiales)==0)
           <tr>
-          <td id="neg" colspan="4"> <div align="center"><font style="text-transform: uppercase;"> {{$CaracTecnica->nombre_caracteristica_tecnica}}  </font></div></td>
-          </tr>
-           @php ($num=1)
-           @foreach($subcaractec as $subcaractecnica)
-           @php ($num2 = 0)
-           @foreach($detcaractec as $hosp2)
-           @if ($num2==0 and $hosp2->idequipo==$eq->idequipo  and $hosp2->idsubgrupo_carac_tecnica==$subcaractecnica->idsubgrupo_carac_tecnica and $hosp2->idcaracteristica_tecnica==$CaracTecnica->idcaracteristica_tecnica)
-
-           <tr>
-             <td id="neg" colspan="4"> <font style="text-transform: uppercase;"> {{$subcaractecnica->nombre_subgrupo_carac_tecnica}}  </font></td>
+             <td id="neg" colspan="4"> <div align="center"><font style="text-transform: uppercase;"> NO EXISTE INFORMACIÓN TÉCNICA </font></div></td>
            </tr>
-            @php ($num2=1)
-            @php ($divisor=0)
+           @else
+          @foreach ($cacateristicas_tecnicas as $carac)
+            <tr>
+               <td id="neg" colspan="4"> <div align="center"><font style="text-transform: uppercase;"> {{ $carac->nombre_subgrupo_carac_tecnica }}  </font></div></td>
+             </tr>
+            <tr>
+
+            <td id="neg" colspan="4"> <div align="center"><font style="text-transform: uppercase;"> {{ $carac->nombre_caracteristica_tecnica }} </font></div></td>
+            </tr>
 
 
-            @foreach($detcaractec as $hosp3)
-            @foreach($valorreftec as $hosp4)
 
-            @if ($hosp3->idequipo==$eq->idequipo and $hosp3->idsubgrupo_carac_tecnica==$subcaractecnica->idsubgrupo_carac_tecnica and $hosp3->idcaracteristica_tecnica==$CaracTecnica->idcaracteristica_tecnica)
-            @if ($hosp4->idvalor_ref_tec==$hosp3->idvalor_ref_tec)
-              @if ($divisor%2==0)
-              <tr>
-              @endif
-              <td  colspan="2"><font style="text-transform: uppercase;"> {{$hosp4->nombre_valor_ref_tec}}  </font></div></td>
 
-              @if ($divisor%2!=0 )
-              </tr>
-              @endif
-                @php ($divisor++)
-            @endif
+							 <tr>
+								<td colspan="1">{{ $carac->nombre_valor_ref_tec }} </td>
+							 	<td  colspan="2">
+									Descripción: {{ $carac->descripcion_detalle_caracteristica_tecnica }}
+							 </td>
+								<td colspan="1">Valor: {{ $carac->valor_detalle_caracteristica_tecnica }}</td>
+							 </tr>
 
-            @endif
 
-            @endforeach
-            @endforeach
-            @if ($divisor%2!=0 )
-                <td  colspan="2"></td>
-                  </tr>
-            @endif
 
-           @endif
-           @endforeach
-           @endforeach
+
+
+
+          @endforeach
+          @foreach ($cacateristicas_especiales as $carace)
+            <tr>
+
+            <td id="neg" colspan="4"> <div align="center"><font style="text-transform: uppercase;"> {{ $carace->nombre_caracteristica_especial }} </font></div></td>
+            </tr>
+
+             <tr>
+
+             <td  colspan="1"><font style="text-transform: uppercase;"> {{ $carace->nombre_valor_ref_esp }} </font> </td>
+							<td colspan="2">Descripción: {{ $carace->descripcion_detalle_caracteristica_especial }} </td>
+							 <td colspan="1">Valor: {{ $carace->valor_detalle_caracteristica_especial }} </td>
+
+             </tr>
+          @endforeach
 
           @endif
 
 
-          @endforeach
-          @endforeach
+
+
+
+          @if (count($manuales)==0)
+
+
+              <tr>
+                <td id="gris" colspan="2">  FABRICANTE: </td>
+                <td id="gris" colspan="2"> <div align="center"> EXSITENCIA DE INFORMACIÓN TÉCNICA </div></td>
+              </tr>
+              <tr>
+                <td  colspan="2">  DIRECCIÓN: {{ $equipo->direccion_fabricante }}
+                                    </td>
+                <td id="neg"  colspan="2" rowspan="8" >  No existe información técnica</td>
+              </tr>
+              <tr>
+                <td  colspan="2">  TEL/FAX: {{ $equipo->telefono_fabricante }} / {{ $equipo->fax_fabricante }} </td>
+
+              </tr>
+              <tr>
+                <td  colspan="2">  e-mail:  {{ $equipo->correo_fabricante }}</td>
+
+              </tr>
+
+
+
+              <tr>
+                <td id="gris" colspan="2">  DISTRIBUIDOR: </td>
+
+              </tr>
+              <tr>
+                <td  colspan="2">  DIRECCIÓN: {{ $equipo->direccion_proveedor }}</td>
+
+              </tr>
+              <tr>
+                <td  colspan="2">  TEL/FAX: {{ $equipo->telefono_proveedor }}/{{ $equipo->fax_proveedor }}</td>
+
+              </tr>
+              <tr>
+                <td  colspan="2">  e-mail: {{ $equipo->correo_proveedor }}</td>
+
+              </tr>
+
+              <tr>
+                <td  colspan="2">  NOMBRE DE CONTACTO: {{ $equipo->contacto_proveedor }}</td>
+
+              </tr>
+
+            @else
+
+              <tr>
+                <td id="gris" colspan="2">  FABRICANTE: </td>
+                <td id="gris" colspan="2"> <div align="center"> EXSITENCIA DE INFORMACIÓN TÉCNICA </div></td>
+              </tr>
+              <tr>
+                <td  colspan="2">  DIRECCIÓN: {{ $equipo->direccion_fabricante }}
+                                    </td>
+                <td  colspan="2" rowspan="8" >
+
+                @foreach ($manuales as $manual)
+                    {{ $manual->nombre_tipo_manual }} : {{ $manual->link_detalle_manual }} <br>
+                @endforeach
+                </td>
+              </tr>
+              <tr>
+                <td  colspan="2">  TEL/FAX: {{ $equipo->telefono_fabricante }} / {{ $equipo->fax_fabricante }} </td>
+
+              </tr>
+              <tr>
+                <td  colspan="2">  e-mail:  {{ $equipo->correo_fabricante }}</td>
+
+              </tr>
+
+
+
+              <tr>
+                <td id="gris" colspan="2">  DISTRIBUIDOR: </td>
+
+              </tr>
+              <tr>
+                <td  colspan="2">  DIRECCIÓN: {{ $equipo->direccion_proveedor }}</td>
+
+              </tr>
+              <tr>
+                <td  colspan="2">  TEL/FAX: {{ $equipo->telefono_proveedor }}/{{ $equipo->fax_proveedor }}</td>
+
+              </tr>
+              <tr>
+                <td  colspan="2">  e-mail: {{ $equipo->correo_proveedor }}</td>
+
+              </tr>
+
+              <tr>
+                <td  colspan="2">  NOMBRE DE CONTACTO: {{ $equipo->contacto_proveedor }}</td>
+
+              </tr>
+
+            @endif
 
 
 
 
 
 
-          <tr>
-            <td id="gris" colspan="2">  FABRICANTE: </div></td>
-            <td id="gris" colspan="2"> <div align="center"> EXSITENCIA DE INFORMACIÓN TÉCNICA </div></td>
-          </tr>
-          <tr>
-            <td  colspan="2">  DIRECCIÓN:      @foreach($fabricante as $hosp)
-                           @if ($hosp->idfabricante==$eq->idfabricante) {{ $hosp->direccion_fabricante}}       @endif  @endforeach
-                                </td>
-            <td  colspan="2">  Manual de operación</td>
-          </tr>
-          <tr>
-            <td  colspan="2">  TEL/FAX:  @foreach($fabricante as $hosp)
-                           @if ($hosp->idfabricante==$eq->idfabricante)  {{ $hosp->telefono_fabricante}}        @endif  @endforeach</td>
-            <td  colspan="2">  Manual de instalación</td>
-          </tr>
-          <tr>
-            <td  colspan="2">  e-mail:  @foreach($fabricante as $hosp)
-                           @if ($hosp->idfabricante==$eq->idfabricante) {{ $hosp->correo_fabricante}}        @endif  @endforeach</td>
-            <td  colspan="2">  Manual de servicio</td>
-          </tr>
+
+             @foreach ($repuestos as $repuesto)
+               <tr>
+                 <td id="gris" colspan="4"> <div align="center"> REPUESTOS EN ALMACÉN </div></td>
+               </tr>
+               <tr>
+               <td  colspan="2">  Repuesto: {{ $repuesto->nombre }}</td>
+               <td  colspan="2">  No. de parte: {{ $repuesto->num_serie }}</td>
+               </tr>
+             @endforeach
 
 
-
-          <tr>
-            <td id="gris" colspan="2">  DISTRIBUIDOR: </div></td>
-            <td  colspan="2">  Manual de partes</td>
-          </tr>
-          <tr>
-            <td  colspan="2">  DIRECCIÓN:@foreach($proveedor as $hosp)
-            @if ($hosp->id_proveedor==$eq->id_proveedor) {{ $hosp->direccion_proveedor}}   @endif @endforeach</td>
-            <td  colspan="2">  Otra literatura</td>
-          </tr>
-          <tr>
-            <td  colspan="2">  TEL/FAX: @foreach($proveedor as $hosp)
-            @if ($hosp->id_proveedor==$eq->id_proveedor){{ $hosp->telefono_proveedor}}  @endif @endforeach</td>
-            <td  colspan="2">  No existe información técnica</td>
-          </tr>
-          <tr>
-            <td  colspan="2">  e-mail: @foreach($proveedor as $hosp)
-            @if ($hosp->id_proveedor==$eq->id_proveedor){{ $hosp->correo_proveedor}}  @endif @endforeach</td>
-            <td  colspan="2" owspan="2">  Observaciones:</td>
-          </tr>
-
-          <tr>
-            <td  colspan="2">  NOMBRE DE CONTACTO:@foreach($proveedor as $hosp)
-            @if ($hosp->id_proveedor==$eq->id_proveedor) {{ $hosp->contacto_proveedor}}  @endif @endforeach</td>
-            <td  colspan="2" owspan="2">  Observaciones:</td>
-          </tr>
-
-
-
-
-           <tr>
-             <td id="gris" colspan="4"> <div align="center"> REPUESTOS EN ALMACÉN </div></td>
-           </tr>
-           <tr>
-             <td  colspan="2">  Repuesto: </td>
-             <td  colspan="2">  No. de parte:</td>
-           </tr>
 
     </table>
 
 
 
-  @endforeach
 </body>
 </html>

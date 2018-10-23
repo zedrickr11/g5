@@ -178,63 +178,135 @@ class EquipoController extends Controller
 
     public function ficha($id)
     {
-    //   $equipo = Equipo::all();
-      // $equipo = Equipo::where('idequipo', $id)->first();
 
-    //  $equipo=Equipo::findOrFail($id);
-    $proveedor=Proveedor::all();
-    $unidadsalud=UnidadSalud::all();
-    $area=Area::all();
-    $estado=Estado::all();
-    $serviciotecnico=ServicioTecnico::all();
-    $fabricante=Fabricante::all();
-    $hospital=Hospital::all();
-    $departamento=Departamento::all();
-    $region=Region::all();
-    $grupo=Grupo::all();
-    $subgrupo=Subgrupo::all();
-    $tipounidadsalud=TipoUnidadSalud::all();
-    $detcaractec=detcaractec::all();
-    $CaracTec=CaracTec::all();
-    $subcaractec=subcaractec::all();
-    $valorreftec=valorreftec::all();
-    $equipo=Equipo::all()->where('idequipo',$id);
+    $equipo=DB::table('equipo as e')
+    ->join('subgrupo as s','s.idsubgrupo','=','e.idsubgrupo')
+    ->join('conf_corr as c','s.idsubgrupo','=','c.idsubgrupo')
+    ->join('fabricante as fab','fab.idfabricante','e.idfabricante')
+    ->join('proveedor as prov','prov.id_proveedor','e.id_proveedor')
+    ->join('users as user','user.id','e.users_id')
+    ->select('*',DB::raw('CONCAT(e.idarea,e.idgrupo,s.codigosubgrupo) as inventario '), DB::raw('CONCAT(e.idregion,e.iddepartamento,e.idtipounidad,e.idunidadsalud,e.correlativo) AS codigo'))
+    ->where('e.idequipo',$id)
+    ->first();
+    $partes=DB::table('parte_equipo as part')
+    ->join('equipo as eq','eq.idequipo','part.idequipo')
+    ->select('*')
+    ->where('eq.idequipo',$id)
+    ->get();
+    $accesorios=DB::table('accesorio_equipo as acc')
+    ->join('equipo as eq','eq.idequipo','acc.idequipo')
+    ->select('*')
+    ->where('eq.idequipo',$id)
+    ->get();
+    $repuestos=DB::table('repuesto as r')
+    ->join('equipo as eq','eq.idequipo','r.idequipo')
+    ->select('*')
+    ->where('stock','>',0)
+    ->where('eq.idequipo',$id)
+    ->get();
+    $manuales=DB::table('equipo as e')
+    ->join('detalle_manual as dm','dm.idequipo','e.idequipo')
+    ->join('tipomanual as tm','tm.idtipomanual','dm.idtipomanual')
+    ->select('tm.nombre_tipo_manual','dm.link_detalle_manual')
+    ->where('e.idequipo',$id)
+    ->groupBy('tm.nombre_tipo_manual','dm.link_detalle_manual')
+    ->get();
+    $cacateristicas_tecnicas=DB::table('detalle_caracteristica_tecnica as dc')
+    ->join('caracteristica_tecnica as c','c.idcaracteristica_tecnica','dc.idcaracteristica_tecnica')
+    ->join('subgrupo_carac_tecnica as s','s.idsubgrupo_carac_tecnica','dc.idsubgrupo_carac_tecnica')
+    ->join('valor_ref_tec as v','v.idvalor_ref_tec','dc.idvalor_ref_tec')
+    ->select('c.nombre_caracteristica_tecnica', 'dc.descripcion_detalle_caracteristica_tecnica', 'dc.valor_detalle_caracteristica_tecnica', 's.nombre_subgrupo_carac_tecnica', 'v.nombre_valor_ref_tec')
+    ->where('dc.idequipo',$id)
+    ->get();
+    $cacateristicas_especiales=DB::table('detalle_caracteristica_especial as dc')
+    ->join('caracteristica_especial_funcionamiento as c','c.idcaracteristica_especial','dc.idcaracteristica_especial')
+    ->join('valor_ref_esp as v','v.idvalor_ref_esp','dc.idvalor_ref_esp')
+    ->select('c.nombre_caracteristica_especial', 'dc.descripcion_detalle_caracteristica_especial', 'dc.valor_detalle_caracteristica_especial',  'v.nombre_valor_ref_esp')
+    ->where('dc.idequipo',$id)
+    ->get();
 
 
-        $pdf = PDF::loadView("equipo.caracteristica.fichatecnica.show",compact('equipo','proveedor','unidadsalud','area',
-                    'estado','serviciotecnico','fabricante','hospital','departamento',
-                    'region','grupo','subgrupo','tipounidadsalud','detcaractec','CaracTec','subcaractec','valorreftec'));
+        $pdf = PDF::loadView("equipo.caracteristica.fichatecnica.show",compact('equipo','partes','accesorios','repuestos','manuales','cacateristicas_tecnicas','cacateristicas_especiales'));
 
         return $pdf->stream('FICHA TÉCNICA"'.$id.'".pdf');
-        //return view("equipo.caracteristica.fichatecnica.show",compact('equipo'));
+
     }
     public function rutina($id)
     {
-    //   $equipo = Equipo::all();
-      // $equipo = Equipo::where('idequipo', $id)->first();
+      $equipo=DB::table('equipo as e')
+      ->join('subgrupo as s','s.idsubgrupo','=','e.idsubgrupo')
+      ->join('conf_corr as c','s.idsubgrupo','=','c.idsubgrupo')
+      ->join('fabricante as fab','fab.idfabricante','e.idfabricante')
+      ->join('proveedor as prov','prov.id_proveedor','e.id_proveedor')
+      ->join('users as user','user.id','e.users_id')
+      ->select('*',DB::raw('CONCAT(e.idarea,e.idgrupo,s.codigosubgrupo) as inventario '), DB::raw('CONCAT(e.idregion,e.iddepartamento,e.idtipounidad,e.idunidadsalud,e.correlativo) AS codigo'))
+      ->where('e.idequipo',$id)
+      ->first();
+      $preventivo=DB::table('rutina_mantenimiento as rut')
+      ->join('tipo_rutina as tipo','tipo.idtipo_rutina','rut.idtipo_rutina')
+      ->select('*')
+      ->where('rut.estado_rutina','=','REALIZADO')
+      ->where('tipo.tipo_rutina','=','PREVENTIVO')
+      ->where('rut.idequipo',$id)
+      ->get();
+      $tecnicos_internos_prev=DB::table('rutina_mantenimiento as rut')
+      ->join('tipo_rutina as tipo','tipo.idtipo_rutina','rut.idtipo_rutina')
+      ->join('rutina_mantenimiento_tecnico_interno as rti','rti.idrutina_mantenimiento','rut.idrutina_mantenimiento')
+      ->join('tecnico_interno as ti','ti.idtecnico','rti.idtecnico')
+      ->select('*')
+      ->where('rut.estado_rutina','=','REALIZADO')
+      ->where('tipo.tipo_rutina','=','PREVENTIVO')
+      ->where('rut.idequipo',$id)
+      ->get();
+      $tecnicos_externos_prev=DB::table('rutina_mantenimiento as rut')
+      ->join('tipo_rutina as tipo','tipo.idtipo_rutina','rut.idtipo_rutina')
+      ->join('rutina_mantenimiento_tecnico_externo as rte','rte.idrutina_mantenimiento','rut.idrutina_mantenimiento')
+      ->join('tecnico_externo as te','te.idtecnico_externo','rte.idtecnico_externo')
+      ->select('*')
+      ->where('rut.estado_rutina','=','REALIZADO')
+      ->where('tipo.tipo_rutina','=','PREVENTIVO')
+      ->where('rut.idequipo',$id)
+      ->get();
 
-    //  $equipo=Equipo::findOrFail($id);
-    $proveedor=Proveedor::all();
-    $unidadsalud=UnidadSalud::all();
-    $area=Area::all();
-    $estado=Estado::all();
-    $serviciotecnico=ServicioTecnico::all();
-    $fabricante=Fabricante::all();
-    $hospital=Hospital::all();
-    $departamento=Departamento::all();
-    $region=Region::all();
-    $grupo=Grupo::all();
-    $subgrupo=Subgrupo::all();
-    $tipounidadsalud=TipoUnidadSalud::all();
-    $equipo=DB::table('equipo')->where('idequipo', $id)->get();
-//$view= view("equipo.caracteristica.fichatecnica.show",compact('equipo'));
+      $correctivo=DB::table('rutina_mantenimiento as rut')
+      ->join('tipo_rutina as tipo','tipo.idtipo_rutina','rut.idtipo_rutina')
+      ->select('*')
+      ->where('rut.estado_rutina','=','REALIZADO')
+      ->where('tipo.tipo_rutina','=','CORRECTIVO')
+      ->where('rut.idequipo',$id)
+      ->get();
+      $tecnicos_internos_corr=DB::table('rutina_mantenimiento as rut')
+      ->join('rutina_mantenimiento_tecnico_interno as rti','rti.idrutina_mantenimiento','rut.idrutina_mantenimiento')
+      ->join('tecnico_interno as ti','ti.idtecnico','rti.idtecnico')
+      ->join('tipo_rutina as tipo','tipo.idtipo_rutina','rut.idtipo_rutina')
+      ->select('*')
+      ->where('rut.estado_rutina','=','REALIZADO')
+      ->where('tipo.tipo_rutina','=','CORRECTIVO')
+      ->where('rut.idequipo',$id)
+      ->get();
+      $tecnicos_externos_corr=DB::table('rutina_mantenimiento as rut')
+      ->join('tipo_rutina as tipo','tipo.idtipo_rutina','rut.idtipo_rutina')
+      ->join('rutina_mantenimiento_tecnico_externo as rte','rte.idrutina_mantenimiento','rut.idrutina_mantenimiento')
+      ->join('tecnico_externo as te','te.idtecnico_externo','rte.idtecnico_externo')
+      ->select('*')
+      ->where('rut.estado_rutina','=','REALIZADO')
+      ->where('tipo.tipo_rutina','=','CORRECTIVO')
+      ->where('rut.idequipo',$id)
+      ->get();
 
-        $pdf = PDF::loadView("equipo.rutina.rutinamante.show",compact('equipo','proveedor','unidadsalud','area',
-                    'estado','serviciotecnico','fabricante','hospital','departamento',
-                    'region','grupo','subgrupo','tipounidadsalud'));
 
-        return $pdf->stream('RutinaMantenimiento.pdf');
-        //return view("equipo.caracteristica.fichatecnica.show",compact('equipo'));
+
+
+
+        $pdf = PDF::loadView("equipo.rutina.rutinamante.show",compact('equipo','preventivo',
+        'correctivo',
+        'tecnicos_internos_prev',
+        'tecnicos_externos_prev',
+        'tecnicos_internos_corr',
+        'tecnicos_externos_corr'));
+
+        return $pdf->stream('Historial.pdf');
+
     }
 
     /**
@@ -258,7 +330,7 @@ class EquipoController extends Controller
     public function update(EquipoFormRequest $request, $id)
     {
       Equipo::findOrFail($id)->update($request->all());
-      return back();
+      return back()->with('info','Equipo actualizado correctamente!');
       //return redirect()->route('grupo.index');
     }
 

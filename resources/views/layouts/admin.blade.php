@@ -7,7 +7,10 @@
   <title>IGSS | Mantenimiento</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Select con busqueda -->
+  <!-- alertas -->
+  <link rel="stylesheet" href="{{asset('dist/css/alertify.core.css')}}">
+  <link rel="stylesheet" href="{{asset('dist/css/alertify.default.css')}}" id="toggleCSS" />
+
 
   <!-- datepicker -->
   <link rel="stylesheet" href="{{asset('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
@@ -25,6 +28,10 @@
   <link rel="stylesheet" href="{{asset('bower_components/fullcalendar/dist/fullcalendar.min.css')}}">
   <link rel="stylesheet" href="{{asset('bower_components/fullcalendar/dist/fullcalendar.print.min.css')}}"
    media="print">
+
+   <link rel="stylesheet" href="{{ asset('bower_components/bootstrap-daterangepicker/daterangepicker.css')}}">
+  <link rel="stylesheet" href="{{ asset('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
+
 
 
   <!-- Theme style -->
@@ -154,7 +161,7 @@
 
               <!-- Menu Footer-->
               <li class="user-footer ">
-                
+
                 <div class="pull-right">
                   <a href="/logout" class="btn btn-default btn-flat">Salir</a>
                 </div>
@@ -205,7 +212,9 @@
 
 </div>
 <!-- ./wrapper -->
-<!-- Select con busqueda -->
+<!-- alertas -->
+<script src="{{asset('dist/js/alertify.js')}}"></script>
+<script src="{{asset('dist/js/alertify.min.js')}}"></script>
 
 <!-- jQuery 3 -->
 <script src="{{asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
@@ -259,6 +268,20 @@
 <script src="{{asset('bower_components/moment/moment.js')}}"></script>
 <script src="{{asset('bower_components/fullcalendar/dist/fullcalendar.min.js')}}"></script>
 <script src="{{asset('bower_components/fullCalendar/dist/locale/es.js')}}"></script>
+<script>
+function reset () {
+  $("#toggleCSS").attr("href", "{{asset('dist/css/alertify.default.css')}}");
+  alertify.set({
+    labels : {
+      ok     : "OK",
+      cancel : "Cancel"
+    },
+    delay : 5000,
+    buttonReverse : false,
+    buttonFocus   : "ok"
+  });
+}
+</script>
 @stack('scripts')
 
 

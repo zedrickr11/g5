@@ -24,8 +24,8 @@ class PermisoTrabajoFormRequest extends FormRequest
     public function rules()
     {
         return [
-       
-            'num_permiso'=>'required|numeric',
+
+            'num_permiso'=>'required|unique:permiso_trabajo,num_permiso',  
             'descripcion'=>'required|max:255',
             'idsolitud_trabajo'=>'required',
         ];
