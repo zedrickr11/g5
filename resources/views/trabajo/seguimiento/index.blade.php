@@ -74,4 +74,13 @@
 <!-- /.col -->
 </div>
 </section>
+@push ('scripts')
+<script>
+$('#liSolicitud').addClass("treeview active");
+
+
+$('#liSeguimiento').addClass("active");
+
+</script>
+@endpush
 @endsection

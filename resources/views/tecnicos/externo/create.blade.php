@@ -77,12 +77,16 @@
 
 </div>
 </section>
-<script src="{{asset('ajax/jquery.min.js')}}"></script>
-<script src="{{asset('ajax/bootstrap.min.js')}}"></script>
-<script src="{{asset('ajax/select2.min.js')}}"></script>
-<script>
-$('#idempresa').select2({
-  theme: "classic"
-});
-</script>
+
+@push ('scripts')
+  <script>
+  $('#liTecnicos').addClass("treeview active");
+  $('#liExternos').addClass("active");
+  </script>
+  <script>
+  $('#idempresa').select2({
+    theme: "classic"
+  });
+  </script>
+@endpush
 @endsection

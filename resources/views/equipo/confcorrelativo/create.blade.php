@@ -90,5 +90,11 @@
 
 </div>
 </section>
+@push ('scripts')
+<script>
+$('#liAreas').addClass("treeview active");
+$('#liConfcorr').addClass("active");
+</script>
 
+@endpush
 @endsection

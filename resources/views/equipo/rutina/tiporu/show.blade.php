@@ -9,7 +9,7 @@
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-th"></i> Rutinas</a></li>
         <li class="active">Tipo rutina</li>
-      
+
       </ol>
 </section>
 	<section class="content">
@@ -52,4 +52,13 @@
 
 </div>
 </section>
+@push ('scripts')
+<script>
+$('#liRutinas').addClass("treeview active");
+
+
+$('#tiporu').addClass("active");
+
+</script>
+@endpush
 @endsection
