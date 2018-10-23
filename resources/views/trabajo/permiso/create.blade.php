@@ -8,7 +8,7 @@ Trabajo
 </h1>
 <ol class="breadcrumb">
 <li><a href="#"><i class="fa 	fa-suitcase"></i> Trabajo</a></li>
-<li class="active">Seguimiento de trabajo</li>
+<li class="active">Permiso de trabajo</li>
 </ol>
 </section>
 <section class="content">
@@ -46,9 +46,12 @@ Trabajo
 <input type="number" class="form-control"  name="num_permiso" value=" {{ old('num_permiso') }}">
 
 </div>
+
+
 <div class="form-group">
-<label for="direccion_fab">Descripción(*)</label>
-<input type="text" class="form-control" name="descripcion" value="{{old('descripcion')}}">
+  <label for="direccion_fab">Descripción(*)</label>
+  <textarea type="text" rows="5" cols="92"  name="descripcion" value="{{old('descripcion')}}" class="form-control">
+ </textarea>
 </div>
 </div>
 
@@ -307,11 +310,11 @@ function agregarn()
 
   if (idnaturaleza!="" )
   {
-var fila='<tr class="selected" id="fila'+contn+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+contn+');">X</button></td><td><input type="hidden" name="idnaturaleza_peligro[]" value="'+idnaturaleza+'">'+naturaleza+'</td></tr>';
+var fila1='<tr class="selected" id="fila1'+contn+'"><td><button type="button" class="btn btn-warning" onclick="eliminar1('+contn+');">X</button></td><td><input type="hidden" name="idnaturaleza_peligro[]" value="'+idnaturaleza+'">'+naturaleza+'</td></tr>';
  contn++;
  limpiar();
  evaluar2();
- $('#detallen').append(fila);
+ $('#detallen').append(fila1);
   }
   else
   {
@@ -336,9 +339,9 @@ function evaluar2()
  }
 
 
-  function eliminar(index){
+  function eliminar1(index){
 
-   $("#fila" + index).remove();
+   $("#fila1" + index).remove();
    evaluar2();
 
  }
@@ -367,11 +370,11 @@ function agregarr()
 
   if (idresponsable!="" )
   {
-  var fila='<tr class="selected" id="fila'+contr+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+contr+');">X</button></td><td><input type="hidden" name="idprecaucion_responsable[]" value="'+idresponsable+'">'+responsable+'</td></tr>';
+  var fila3='<tr class="selected" id="fila3'+contr+'"><td><button type="button" class="btn btn-warning" onclick="eliminar3('+contr+');">X</button></td><td><input type="hidden" name="idprecaucion_responsable[]" value="'+idresponsable+'">'+responsable+'</td></tr>';
  contr++;
  limpiar();
  evaluar3();
- $('#detaller').append(fila);
+ $('#detaller').append(fila3);
   }
   else
   {
@@ -391,11 +394,14 @@ function evaluar3()
     $("#guardarr").hide();
   }
  }
-  function eliminar(index){
-   $("#fila" + index).remove();
+  function eliminar3(index){
+   $("#fila3" + index).remove();
    evaluar3();
  }
 </script>
+
+
+
 
 <!--Detalle Ejecutante -->
 <script>
@@ -420,11 +426,11 @@ function agregarj()
 
   if (idejecutante!="" )
   {
-  var fila='<tr class="selected" id="fila'+contj+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+contj+');">X</button></td><td><input type="hidden" name="idprecaucion_ejecutante[]" value="'+idejecutante+'">'+ejecutante+'</td></tr>';
+  var fila4='<tr class="selected" id="fila4'+contj+'"><td><button type="button" class="btn btn-warning" onclick="eliminar4('+contj+');">X</button></td><td><input type="hidden" name="idprecaucion_ejecutante[]" value="'+idejecutante+'">'+ejecutante+'</td></tr>';
  contj++;
  limpiar();
  evaluar4();
- $('#detallej').append(fila);
+ $('#detallej').append(fila4);
   }
   else
   {
@@ -444,8 +450,8 @@ function evaluar4()
     $("#guardarj").hide();
   }
  }
-  function eliminar(index){
-   $("#fila" + index).remove();
+  function eliminar4(index){
+   $("#fila4" + index).remove();
    evaluar4();
  }
 </script>
