@@ -52,7 +52,7 @@
             </td>
           </tr>
           <tr>
-              <td colspan="4">Descripción del Equipo:  {{ $equipo->descripcion }} </td>
+              <td colspan="4">Descripción del equipo:  {{ $equipo->descripcion }} </td>
 
           </tr>
           <tr>
