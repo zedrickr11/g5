@@ -1,7 +1,22 @@
 @extends ('layouts.admin')
 @section ('contenido')
 
+<link rel="stylesheet" href="../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
+<link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 
+<!-- Date and time range -->
+<div class="form-group">
+  <label>Date and time range:</label>
+
+  <div class="input-group">
+    <div class="input-group-addon">
+      <i class="fa fa-clock-o"></i>
+    </div>
+    <input type="text" class="form-control pull-right" id="reservationtime">
+  </div>
+  <!-- /.input group -->
+</div>
+<!-- /.form group -->
 
 
 <section class="content-header">
@@ -332,13 +347,35 @@
 
 <!-- jQuery 3 -->
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-
-
+  <!-- date-range-picker -->
+  <script src="../bower_components/moment/min/moment.min.js"></script>
+  <script src="../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+  <!-- bootstrap datepicker -->
+  <script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+  
+  <!-- bootstrap time picker -->
+  <script src="../plugins/timepicker/bootstrap-timepicker.min.js"></script>
+  
 
 <!-- CALENDARIO CORRECTIVO -->
   <script>
  
 
+
+
+
+  $('#reservationtime').daterangepicker({ 
+    timePicker: true, 
+    timePickerIncrement: 30, 
+    format: 'DD/MM/YYYY h:mm A',
+    startDate:'12/12/2018 12:00',
+    endDate: '12/13/2018 13:00'
+
+    },function(start, end, label) {
+
+    alert(start.format('YYYY/MM/DD h:mm A'));
+    //console.log("A new date selection was made: " + start.format('YYYY-MM-DD'). + ' to ' + end.format('YYYY-MM-DD'));
+  });
 
 
    $(function () {
@@ -478,6 +515,10 @@
 
 <!-- CALENDARIO PREVENTIVO -->
 <script>
+
+
+  
+
   $(function () {
     
     
