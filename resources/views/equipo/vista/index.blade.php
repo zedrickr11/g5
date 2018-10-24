@@ -94,6 +94,7 @@
           <a  href="{{route('equipo.vista',$equipo->idequipo)}}" target="_blank" class="btn btn-warning btn-block"><b>Solicitudes</b></a>
           <a  href="{{route('carac',$equipo->idequipo)}}"  class="btn btn-info btn-block"><b>Características</b></a>
           <a href="{{route('equipo.rutina',$equipo->idequipo)}}" target="_blank" class="btn btn-primary btn-block"><b>Historial técnico</b></a>
+          <a href="{{route('equipo.HistorialRutina',$equipo->idequipo)}}" target="_blank" class="btn btn-danger btn-block"><b>Historial de mantenimientos</b></a>
 
           </div>
           <!-- /.box-body -->

@@ -32,7 +32,7 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('login/images/Xela.jpg');">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" method="POST" action="{!! route('iniciar') !!}">
+				<form class="login100-form validate-form" method="POST" action="{{route('usuarios.store')}}">
           {!! csrf_field() !!}
 					<span class="login100-form-logo">
 						<i ><img src="{{asset('login/images/igss.png')}}" alt=""></i>
@@ -40,43 +40,37 @@
 					</span>
 					<br>
 
-
-
-					@if (auth()->check())
-						<br>
-						<div class="container-login100-form-btn">
-							<a href="{{ url('calendario') }}" class="login100-form-btn">
-								Ir al inicio
-							</a>
-						</div>
-					@else
 						<span class="login100-form-title p-b-34 p-t-27">
 
-						Iniciar sesión
+						nuevo usuario
 						</span>
+            <div class="wrap-input100 validate-input" data-validate = "Ingrese su nombre">
+              <input class="input100" type="text" name="name" placeholder="Nombre">
+              <span class="focus-input100" data-placeholder="&#xf207;"></span>
+              {!!$errors->first('name','<span class-error>:message</span>')!!}
+            </div>
 
-						<div class="wrap-input100 validate-input" data-validate = "Enter username">
+						<div class="wrap-input100 validate-input" data-validate = "Correo electrónico">
 							<input class="input100" type="email" name="email" placeholder="Correo Electrónico">
 							<span class="focus-input100" data-placeholder="&#xf207;"></span>
+                {!!$errors->first('email','<span class-error>:message</span>')!!}
 						</div>
 
 						<div class="wrap-input100 validate-input" data-validate="Enter password">
 							<input class="input100" type="password" name="password" placeholder="Contraseña">
 							<span class="focus-input100" data-placeholder="&#xf191;"></span>
+                    {!!$errors->first('password','<span class-error>:message</span>')!!}
 						</div>
 						<div class="container-login100-form-btn">
-							<button class="login100-form-btn">
-								Ingresar
+							<button type="submit" class="login100-form-btn">
+								Crear
 							</button>
 						</div>
-						<div class="text-center p-t-60">
-							<a class="txt1 p-b-34 p-t-27" href="{!! route('registro') !!}">
-							<h6>No tienes un usuario? ¡REGISTRATE!</h6>
+						<div class="text-center p-t-40">
+							<a class="txt1 p-b-34 p-t-27" href="{!! route('login') !!}">
+							<h5>¡Iniciar sesión!</h5>
 							</a>
 						</div>
-					@endif
-
-
 
 				</form>
 			</div>
