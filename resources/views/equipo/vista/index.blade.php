@@ -811,7 +811,7 @@
 
         @foreach($ruman as $st)
         @if ($st->idequipo==$equipo->idequipo)
-        @if ($st->idtipo_rutina==1)
+        @if ($st->idtipo_rutina==1 )
         @if($st->estado_rutina=='PENDIENTE')
         <i>Fecha a realizar próxima rutina:</i>
         @foreach($notificacion as $noti)

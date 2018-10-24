@@ -268,17 +268,7 @@
   <div class="box-body">
     <div class="row">
 	<div class="box-body col-md-6">
-  <div class="form-group">
-        <label>Date and time range:</label>
 
-        <div class="input-group">
-          <div class="input-group-addon">
-            <i class="fa fa-clock-o"></i>
-          </div>
-          <input type="text" class="form-control pull-right" id="reservationtime" value="10/30/2020 - 01/11/2020">
-        </div>
-        <!-- /.input group -->
-      </div>
 
 
 

@@ -9,7 +9,9 @@ use App\ruman;
 use DB;
 use App\detrupru;
 use Carbon\Carbon;
-
+use App\DetalleHerramienta;
+use App\DetalleRepuestoRutina;
+use App\DetalleInsumoRutina;
 class DetalleRutinaPruebaController extends Controller
 {
     /**
@@ -138,7 +140,7 @@ return redirect()->route('actualizar', [$request->get('idequipo')]);
      * @param  \App\DetalleRutinaPrueba  $detalleRutinaPrueba
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request,$id)
     {
 
 

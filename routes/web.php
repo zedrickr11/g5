@@ -32,6 +32,11 @@ Route::resource('equipo/equipo','EquipoController');
 Route::get('equipo/existente/{id}',['as'=>'existente','uses' => 'EquipoController@existente']);
 
 
+Route::get('equipo/equipo/RutinaPdf/{id}',[
+    'as' => 'equipo.RutinaPdf',
+    'uses' => 'EquipoController@RutinaPdf'
+]);
+
 Route::get('equipo/equipo/ficha/{id}',[
     'as' => 'equipo.HistorialRutina',
     'uses' => 'EquipoController@HistorialRutina'
