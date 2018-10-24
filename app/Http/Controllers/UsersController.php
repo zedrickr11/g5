@@ -21,7 +21,8 @@ use DB;
 class UsersController extends Controller
 {   function __construct()
     {
-      $this->middleware(['auth','role:admin']);
+      $this->middleware('auth')->except(['store']);
+      $this->middleware('role:admin')->except(['store']);
     }
     /**
      * Display a listing of the resource.
