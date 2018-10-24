@@ -23,7 +23,7 @@
 @include('trabajo.permiso.search')
 <div class="col-md-12">
 <div class="table-responsive">
-<table  class="table table-bordered table-striped">
+<table  class="table table-bordered table-striped" style="table-layout:fixed;word-wrap:break-word;">
 <thead>
 <tr>
 <th>Id</th>
