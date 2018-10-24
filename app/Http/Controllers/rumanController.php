@@ -132,7 +132,10 @@ class rumanController extends Controller
 
     public function tecnicos($id,$idequipo)
     {
-      $notificacion=Notificacion::all();
+      $notificacion=DB::table('notificacion as f')
+     ->select('f.*')
+      ->where('f.rutina_mantenimiento_idrutina_mantenimiento','LIKE',$id)
+      ->first();
       $ruman=ruman::all();
       $tecnicoexterno=TecnicoExterno::all();
       $tecnicointerno=TecnicoInterno::all();

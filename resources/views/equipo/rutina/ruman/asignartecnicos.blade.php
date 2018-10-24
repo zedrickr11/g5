@@ -1,5 +1,8 @@
 @extends ('layouts.admin')
 @section ('contenido')
+<link rel="stylesheet" href="../../../../../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
+<link rel="stylesheet" href="../../../../../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
 <section class="content-header">
       <h1>
         Rutinas
@@ -46,6 +49,29 @@
           <button onclick="alerta()"  type="button" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"> ELIMINAR RUTINA</button>
                   </div>
                 </div>
+
+
+                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                <div class="box-body col-md-6">
+
+                 <h3>Notificación </h3>
+
+                 <div class="form-group">
+                       <label>Date and time range:</label>
+
+                       <div class="input-group">
+                         <div class="input-group-addon">
+                           <i class="fa fa-clock-o"></i>
+                         </div>
+                         <input type="text" class="form-control pull-right" id="reservationtime" value="{{$notificacion->start}} - 01/11/2020">
+                       </div>
+                       <!-- /.input group -->
+                     </div>
+
+
+
+                 </div>
+                 </div>
                     @foreach($notificacion as $noti)
                   @foreach($ruman as $carac)
                   @if($carac->idrutina_mantenimiento==$id)
@@ -202,7 +228,36 @@
     <script src="{{asset('ajax/bootstrap.min.js')}}"></script>
     <script src="{{asset('ajax/select2.min.js')}}"></script>
 
+
+    <script src="../../../../../bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- date-range-picker -->
+    <script src="../../../../../bower_components/moment/min/moment.min.js"></script>
+    <script src="../../../../../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap datepicker -->
+    <script src="../../../../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+    <!-- bootstrap time picker -->
+    <script src="../plugins/timepicker/bootstrap-timepicker.min.js"></script>
+
     <script>
+
+    $('#reservationtime').daterangepicker({
+    //  timePicker: true,
+    //  timePickerIncrement: 1,
+    //  format: 'YYYY/MM/DD h:mm A'
+    //  "setDate": "30/10/2030",//moment().startOf('hour'),
+      //endDate: moment().startOf('hour').add(32, 'hour'),
+
+
+
+      },function(start, end, label) {
+
+      alert(start.format('YYYY/MM/DD h:mm A')+ end.format('YYYY/MM/DD h:mm A'));
+
+      //console.log("A new date selection was made: " + start.format('YYYY-MM-DD'). + ' to ' + end.format('YYYY-MM-DD'));
+    });
+
+
 
     function alerta()
         {
