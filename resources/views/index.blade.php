@@ -432,7 +432,7 @@
         },
 
         
-        events: '/json-calendarioCorrectivo',
+        events: '{!! route('calendarioCorrectivo') !!}',
 
         editable  : true,
         droppable : false 
@@ -576,7 +576,9 @@
       },
 
       
-      events: '/json-calendarioPreventivo',
+      events: '{!! route('calendarioPreventivo') !!}',
+      
+     
 
       editable  : false,
       droppable : false 

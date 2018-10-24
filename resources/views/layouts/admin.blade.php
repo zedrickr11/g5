@@ -72,13 +72,14 @@
     }
   </style>
 
-
+<link rel="shortcut icon"   href="{{asset('login/images/igss.png')}}" /> 
 
 </head>
-<body class="hold-transition skin-green fixed  sidebar-mini">
+<body class="hold-transition skin-green fixed sidebar-collapse sidebar-mini">
 <div class="wrapper">
 
   <header class="main-header">
+     
     <!-- Logo -->
     <a href="#" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -199,10 +200,14 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
+      <strong>Copyright &copy; 2018 </strong>
+      
       <b>Version</b> 1.0.0
+      <strong>All rights reserved.</strong>
     </div>
-    <strong>Copyright &copy; 2018 <a href="#">Proyecto de Carrera | Grupo No. 5</a>.</strong> All rights
-    reserved.
+   
+     <strong><a href="#"> | UNIVERSIDAD MESOAMERICANA QUETGO. | Ronald Perez | José Bonilla | Andy Yee | Zedrick Rodríguez | Fredy Ramírez | </a>.</strong> 
+    
   </footer>
 
   <!-- Control Sidebar -->

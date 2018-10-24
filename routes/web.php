@@ -202,9 +202,8 @@ Route::resource('almacen/herramienta','HerramientaController');
 
 
 //calendario
-Route::get('/json-calendarioCorrectivo','CalendarioController@llenarcalendarioCorrectivo');
-Route::get('/json-calendarioPreventivo','CalendarioController@llenarcalendarioPreventivo');
-
+Route::get('/json-calendarioCorrectivo',['as'=>'calendarioCorrectivo','uses'=> 'CalendarioController@llenarcalendarioCorrectivo']);
+Route::get('/json-calendarioPreventivo',['as'=>'calendarioPreventivo','uses'=> 'CalendarioController@llenarcalendarioPreventivo']);
 
 //manuales
 Route::resource('equipo/principal/','EquipoIndexController');
