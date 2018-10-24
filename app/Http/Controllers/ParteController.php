@@ -12,6 +12,10 @@ use App\Http\Requests\ParteFormRequest;
 
 class ParteController extends Controller
 {
+  function __construct()
+    {
+      $this->middleware(['auth','role:admin,jefe-mantto,jefe-sub,tec-ing']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -37,10 +41,10 @@ class ParteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ParteFormRequest $request)
     {
         Parte::create($request->all());
-        return back();
+        return back()->with('parte', 'Se agrego una parte');
     }
 
     /**

@@ -4,11 +4,11 @@
 <section class="content-header">
       <h1>
         Equipo
-        <small>Tipo de Manual</small>
+        <small>Tipo de manual</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-tv"></i> Equipo</a></li>
-        <li class="active">Tipo de Manual</li>
+        <li class="active">Tipo de manual</li>
       </ol>
 </section>
 	<section class="content">
@@ -18,8 +18,17 @@
 		<!-- general form elements -->
 		<div class="box box-success">
 			<div class="box-header with-border">
-				<h3 class="box-title">Nuevo Tipo de Manual</h3>
+				<h3 class="box-title">Nuevo tipo de manual</h3>
 			</div>
+      @if (count($errors)>0)
+      <div class="alert alert-danger">
+        <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{$error}}</li>
+        @endforeach
+        </ul>
+      </div>
+      @endif
 			<!-- /.box-header -->
 			<!-- form start -->
 			<form role="form" method="POST" action="{{route('tipoManual.store')}}" >
@@ -27,7 +36,7 @@
 
 				<div class="box-body col-md-6">
 					<div class="form-group">
-						<label for="tip">Nombre de Manual</label>
+						<label for="tip">Tipo de manual</label>
 						<input type="text" class="form-control" name="nombre_tipo_manual" value="{{old('nombre_tipo_manual')}}">
 					</div>
 				</div>

@@ -12,7 +12,7 @@ class SeguimientoController extends Controller
 {
   function __construct()
     {
-      $this->middleware(['auth','role:admin,jefe-mantto']);
+      $this->middleware(['auth','role:admin,jefe-mantto,jefe-sub,tec-ing']);
     }
     /**
      * Display a listing of the resource.

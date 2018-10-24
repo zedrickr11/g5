@@ -1,16 +1,17 @@
 <?php
 
-Route::get('/calendario', function () {
-    return view ('index') ;
-})->middleware('auth');
+Route::get('calendario', 'CalendarioController@index');
+
 Route::get('/', function () {
     return view ('auth.login') ;
 });
 //login
-Route::get('loggin','Auth\LoginController@showLoginForm');
-Route::post('loggin','Auth\LoginController@login');
-Route::get('logout','Auth\LoginController@logout');
-
+Route::get('loggin',['as'=>'login','uses'=>'Auth\LoginController@showLoginForm']);
+Route::post('loggin',['as'=>'iniciar','uses'=>'Auth\LoginController@login']);
+Route::get('logout',['as'=>'cerrar','uses'=>'Auth\LoginController@logout']);
+Route::get('/registro', function () {
+    return view ('auth.register') ;
+})->middleware('guest')->name('registro');
 //usuarios
 Route::resource('usuarios','UsersController');
 Route::post('role',['as'=>'usuarios.role','uses' => 'UsersController@role']);
@@ -33,6 +34,10 @@ Route::get('equipo/existente/{id}',['as'=>'existente','uses' => 'EquipoControlle
 
 
 Route::get('equipo/equipo/ficha/{id}',[
+    'as' => 'equipo.HistorialRutina',
+    'uses' => 'EquipoController@HistorialRutina'
+]);
+Route::get('equipo/equipo/HistorialRutina/{id}',[
     'as' => 'equipo.ficha',
     'uses' => 'EquipoController@ficha'
 ]);
@@ -207,8 +212,8 @@ Route::resource('almacen/herramienta','HerramientaController');
 
 
 //calendario
-Route::get('/json-calendarioCorrectivo','CalendarioController@llenarcalendarioCorrectivo');
-Route::get('/json-calendarioPreventivo','CalendarioController@llenarcalendarioPreventivo');
+Route::get('/json-calendarioCorrectivo',['as'=>'calendarioCorrectivo','uses'=> 'CalendarioController@llenarcalendarioCorrectivo']);
+Route::get('/json-calendarioPreventivo',['as'=>'calendarioPreventivo','uses'=> 'CalendarioController@llenarcalendarioPreventivo']);
 
 
 //manuales
