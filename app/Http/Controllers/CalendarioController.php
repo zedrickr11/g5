@@ -77,7 +77,7 @@ class CalendarioController extends Controller
 
     public function llenarcalendarioPreventivo()
     {
-   
+     
       $id = Auth::id();
             
           $a = auth()->user()->hasRole(['admin']);
@@ -132,6 +132,27 @@ class CalendarioController extends Controller
 
     }
 
+    function index(){
+     
+        $noti = DB::table('notificacion')
+        ->select(DB::raw('count(*) as noti, backgroundColor'))
+        ->where('backgroundColor','green')
+        ->groupBy('backgroundColor')
+        ->first();
+
+        $noti2 = DB::table('notificacion')
+        ->select(DB::raw('count(*) as noti2, backgroundColor'))
+        ->where('backgroundColor','#DF3A01')
+        ->groupBy('backgroundColor')
+        ->first();
+
+
+
+
+
+        return view ('index',compact('noti','noti2'));
+        
+    }
 
   
     

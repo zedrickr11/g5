@@ -1,8 +1,7 @@
 <?php
 
-Route::get('/calendario', function () {
-    return view ('index') ;
-})->middleware('auth');
+Route::get('calendario', 'CalendarioController@index');
+
 Route::get('/', function () {
     return view ('auth.login') ;
 });

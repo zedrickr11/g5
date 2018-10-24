@@ -120,38 +120,36 @@
                                           <strong><i class="fa fa-pencil margin-r-6"></i> Codígo de colores</strong>
                           
                                           <p>
-                                            <span class="label label-danger"><strong>Mantenimiento pendiente</strong></span>
-                                            <span class="label label-success"> <strong>Mantenimiento realizado</strong></span>
+                                            <span class="label-lg label-danger"><strong>Mantenimiento pendiente</strong></span>
+                                            <span class="label-lg label-success"> <strong>Mantenimiento realizado</strong></span>
                                            
                                           </p>
                                         <hr>
 
-                                        <strong><i class="fa fa-book margin-r-5"></i> MANTENIMIENTOS</strong>
-                                        <h4>Total de mantenimientos: </h4>
-                                        <p class="">
+                                        <strong><i class="fa fa-book margin-r-5"></i> MANTENIMIENTOS REALIZADOS: </strong>
+                                        <h4>Total de mantenimientos:  {{ $noti->noti }}</h4>
                                         
-                                        </p>
+                                        
                           
                                         <hr>
                           
-                                        <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
+                                        <strong><i class="fa fa-map-marker margin-r-5"></i> MANTENIMIENTOS PENDIENTES: </strong>
                           
-                                        <p class="text-muted">Malibu, California</p>
+                                        <h4>Total de mantenimientos:  {{ $noti2->noti2 }}</h4>
 
                           
                                         <hr>
                           
-                                        <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
+                                        <strong><i class="fa fa-file-text-o margin-r-5"></i> Notas</strong>
                           
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+                                        <p>El MANTENIMIENTO, es normalmente conocido como el conjunto de actividades desarrolladas con
+                                           el fin de conservar las propiedades (inmuebles, equipos médicos, equipos industriales 
+                                           hospitalarios instalaciones especiales, herramientas, etc.), en condiciones de funcionamiento
+                                          seguro, eficiente y económico, previniendo daños o reparándolos cuando ya se hubieran producido. </p>
 
                                         <hr>
                           
-                                        <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
-                          
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
-
-                                        <hr>
+                                        
                                         <br>
                                         
                           
@@ -195,38 +193,38 @@
                                                   <strong><i class="fa fa-pencil margin-r-6"></i> Codígo de colores</strong>
                                   
                                                   <p>
-                                                    <span class="label label-danger"><strong>Mantenimiento pendiente</strong></span>
-                                                    <span class="label label-success"> <strong>Mantenimiento realizado</strong></span>
+                                                    <span class="labe-lg label-danger"><strong>Mantenimiento pendiente</strong></span>
+                                                    <span class="label-lg label-success"> <strong>Mantenimiento realizado</strong></span>
                                                    
                                                   </p>
-                                                <hr>
-        
-                                                <strong><i class="fa fa-book margin-r-5"></i> MANTENIMIENTOS</strong>
-                                                <h4>Total de mantenimientos: </h4>
-                                                <p class="">
-                                                 10
-                                                </p>
-                                  
-                                                <hr>
-                                  
-                                                <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
-                                  
-                                                <p class="text-muted">Malibu, California</p>
-        
-                                  
-                                                <hr>
-                                  
-                                                <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
-                                  
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
-        
-                                                <hr>
+                                                  <hr>
+
+                                                  <strong><i class="fa fa-book margin-r-5"></i> MANTENIMIENTOS REALIZADOS: </strong>
+                                                  <h4>Total de mantenimientos:  {{ $noti->noti }}</h4>
+                                                  
+                                                  
+                                    
+                                                  <hr>
+                                    
+                                                  <strong><i class="fa fa-map-marker margin-r-5"></i> MANTENIMIENTOS PENDIENTES: </strong>
+                                    
+                                                  <h4>Total de mantenimientos:  {{ $noti2->noti2 }}</h4>
+          
+                                    
+                                                  <hr>
                                   
                                                 <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
                                   
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+                                                <p>El MANTENIMIENTO, es normalmente conocido como el conjunto de actividades desarrolladas con
+                                                    el fin de conservar las propiedades (inmuebles, equipos médicos, equipos industriales 
+                                                    hospitalarios instalaciones especiales, herramientas, etc.), en condiciones de funcionamiento
+                                                   seguro, eficiente y económico, previniendo daños o reparándolos cuando ya se hubieran producido. </p>
+         </p>
         
                                                 <hr>
+                                  
+                                                
+                                              
                                                 <br>
                                                 
                                   
@@ -657,6 +655,5 @@ $('#liCalendario').addClass("active");
 
 </script>
 @endpush
-</body>
-</html>
+
 @endsection
