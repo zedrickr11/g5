@@ -66,7 +66,7 @@
 				</tr>
 				<tr>
 					@if ($s->compra_material==1)
-					<td id="" colspan="4"> <div align="center"> A) Para Compra de Materiales: SI </div></td>
+					<td id="" colspan="4"> <div align="center"> A) Para Compra de Materiales: Si </div></td>
 					 	@else
 							<td id="" colspan="4"> <div align="center"> A) Para Compra de Materiales: No</div></td>
 							    @endif

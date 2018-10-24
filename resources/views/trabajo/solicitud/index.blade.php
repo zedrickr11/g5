@@ -39,12 +39,12 @@
 <tr>
 <td>{{ $s->idsolitud_trabajo}}</td>
 <td>{{ $s->numero}}</td>
-<td>{{ $s->idequipo}}</td>
+<td>{{ $s->equipo}}</td>
 <td>{{ $s->fecha}}</td>
 <td>{{ $s->descripcion}}</td>
 <td>
 
-  <a href="{{route('solicitud.ficha',  $s->idsolitud_trabajo)}}">
+  <a href="{{route('solicitud.ficha',  $s->idsolitud_trabajo)}}" target="_blank">
     <button type="button" class="btn btn-success btn-sm" name="button"><span class="fa fa-edit"></span></button>
   </a>
 
