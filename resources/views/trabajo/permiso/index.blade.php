@@ -23,12 +23,12 @@
 @include('trabajo.permiso.search')
 <div class="col-md-12">
 <div class="table-responsive">
-<table  class="table table-bordered table-striped" style="table-layout:fixed;word-wrap:break-word;">
+<table  class="table table-bordered table-striped" >
 <thead>
 <tr>
-<th>Id</th>
+
 <th>No. de permiso</th>
-<th>Descripción</th>
+
 <th>No. de solicitud</th>
 <th>Fecha</th>
 <th>Opciones</th>
@@ -37,9 +37,9 @@
 <tbody>
 @foreach ($permisos as $per)
 <tr>
-<td>{{ $per->idpermiso_trabajo}}</td>
+
 <td  >{{ $per->num_permiso}}</td>
-<td  >{{ $per->descripcion}}</td>
+
 <td>{{ $per->num}}</td>
 <td>{{ $per->fecha}}</td>
 

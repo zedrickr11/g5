@@ -88,6 +88,7 @@
 
     </div>
     </section>
+    @push('scripts')
     <script src="{{asset('ajax/jquery.min.js')}}"></script>
     <script src="{{asset('ajax/bootstrap.min.js')}}"></script>
     <script src="{{asset('ajax/select2.min.js')}}"></script>
@@ -172,5 +173,5 @@
       $('#liCompras').addClass("treeview active");
       $('#liIngresos').addClass("active");
     </script>
-
+@endpush
     @endsection

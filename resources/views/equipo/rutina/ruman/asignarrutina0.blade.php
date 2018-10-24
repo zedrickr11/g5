@@ -326,7 +326,7 @@
 
 </form>
     {!!Form::close()!!}
-
+@push('scripts')
 <script>
 $(document).ready(function(){
   $('#bt_add2').click(function(){
@@ -400,7 +400,7 @@ evaluar3();
 
 }
 </script>
-
+@endpush
 
 </section>
 @endsection

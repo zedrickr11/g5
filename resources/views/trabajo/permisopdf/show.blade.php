@@ -6,7 +6,7 @@
 <SPAN style="position: absolute; top: -45 px; left: -45 px;">
 </SPAN>
 		@foreach($permisos as $p)
-<table id="table" width="100%" border="10" cellpadding="5" cellspacing="0" bordercolor="#000000">
+<table id="table" width="100%" border="10" cellpadding="5" cellspacing="0" bordercolor="#000000" style="table-layout:fixed;word-wrap:break-word;">
   	<tr>
       <td id="gris" colspan="4"> 	<div align="center">INSTITUTO GUATEMALTECO DE	SEGURIDAD SOCIAL<br>
         PERMISO DE TRABAJO<br>

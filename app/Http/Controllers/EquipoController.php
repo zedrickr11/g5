@@ -29,6 +29,15 @@ use App\detcaractec;
 USE App\CaracTec;
 USE App\subcaractec;
 USE App\valorreftec;
+USE App\valorrefpru;
+USE App\ruman;
+USE App\DetalleRutinaPrueba;
+USE App\DetalleHerramienta;
+USE App\Herramienta;
+USE App\DetalleInsumoRutina;
+USE App\Insumo;
+USE App\DetalleRepuestoRutina;
+USE App\Repuesto;
 use Barryvdh\DomPDF\Facade as PDF;
 
 use Carbon\Carbon;
@@ -317,7 +326,72 @@ class EquipoController extends Controller
       ->where('rut.idequipo',$id)
       ->get();
 
-      return view('equipo.existente.rutinas', compact('rutinas'));
+      return view('equipo.existente.rutinas', compact('rutinas','id'));
+    }
+
+
+
+
+
+
+    public function RutinaPdf($id)
+    {
+
+
+      $equipo=DB::table('equipo as e')
+      ->join('rutina_mantenimiento as s','s.idequipo','=','e.idequipo')
+        ->join('hospital as ho','ho.idhospital','=','e.idhospital')
+        ->select('*')
+      ->where('s.idrutina_mantenimiento',$id)
+      ->first();
+      $rutina=DB::table('rutina_mantenimiento as ru')
+      ->select('ru.*')
+      ->where('ru.idrutina_mantenimiento',$id)
+      ->first();
+      $rutinaPrueba=DB::table('detalle_rutina_prueba as rupru')
+      ->join('valor_ref_prueba as va','va.idvalor_ref_prueba','=','rupru.idvalor_ref_prueba')
+      ->join('rutina_mantenimiento as ru','ru.idrutina_mantenimiento','=','rupru.idrutina_mantenimiento')
+      ->select('*','va.*')
+      ->where('rupru.idrutina_mantenimiento',$id)
+      ->get();
+      $ruman=DB::table('detalle_caracteristica_rutina as rupru')
+      ->join('valor_ref_rutina as va','va.idvalor_ref_rutina','=','rupru.idvalor_ref_rutina')
+      ->join('rutina_mantenimiento as ru','ru.idrutina_mantenimiento','=','rupru.idrutina_mantenimiento')
+      ->select('*','va.*')
+      ->where('rupru.idrutina_mantenimiento',$id)
+      ->get();
+
+
+
+      $valorPrueba=DB::table('valor_ref_prueba as vapru')
+      ->join('detalle_rutina_prueba as s','s.idvalor_ref_prueba','=','vapru.idvalor_ref_prueba')
+      ->join('rutina_mantenimiento as ru','ru.idrutina_mantenimiento','=','s.idrutina_mantenimiento')
+      ->select('vapru.*')
+      ->where('ru.idrutina_mantenimiento',$id)
+      ->get();
+
+      $herramienta=DB::table('herramienta as he')
+      ->join('detalle_herramienta as de','de.idherramienta','=','he.idherramienta')
+      ->join('rutina_mantenimiento as ru','ru.idrutina_mantenimiento','=','de.idrutina_mantenimiento')
+      ->select('*')
+      ->where('ru.idrutina_mantenimiento',$id)
+      ->get();
+
+      $insumo=DB::table('insumo as he')
+      ->join('detalle_insumo_rutina as de','de.idinsumo','=','he.idinsumo')
+      ->join('rutina_mantenimiento as ru','ru.idrutina_mantenimiento','=','de.idrutina_mantenimiento')
+      ->select('*')
+      ->where('ru.idrutina_mantenimiento',$id)
+      ->get();
+      $repuesto=DB::table('repuesto as he')
+      ->join('detalle_repuesto_rutina as de','de.idrepuesto','=','he.idrepuesto')
+      ->join('rutina_mantenimiento as ru','ru.idrutina_mantenimiento','=','de.idrutina_mantenimiento')
+      ->select('*')
+      ->where('ru.idrutina_mantenimiento',$id)
+      ->get();
+      $pdf = PDF::loadView('equipo.existente.RutinaPdf',compact('ruman','repuesto','insumo','herramienta','id','equipo','rutina','rutinaPrueba','valorPrueba'));
+      return $pdf->stream('HistorialRutina.pdf');
+
     }
 
     /**

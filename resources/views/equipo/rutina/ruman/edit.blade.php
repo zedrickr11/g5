@@ -163,8 +163,8 @@
   </div>
 
 
-  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-      <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
+  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 table-responsive" >
+      <table  id="detalles" class="table table-striped table-bordered table-condensed table-hover">
           <thead style="background-color:#2ab863">
 
               <th>Rutina</th>
@@ -369,7 +369,7 @@
 
 </div>
 </section>
-
+@push('scripts')
 <script src="{{asset('ajax/jquery.min.js')}}"></script>
 <script src="{{asset('ajax/bootstrap.min.js')}}"></script>
 <script src="{{asset('ajax/select2.min.js')}}"></script>
@@ -419,7 +419,7 @@ $('#detalles').append(fila);
 }
 function show2(){
 
-    var fila='<input type="hidden" name="estado_rutina" value="REALIZADO"><input type="hidden" name="color" value="green">';
+    var fila='<input type="hidden" name="estado_rutina" value="REALIZADO"><input type="hidden" name="color" value="green"><input type="hidden" name="fecha_realizacion_rutina" value="{{ date("Y/m/d")}}">';
 $('#detalles').append(fila);
 }
 
@@ -576,6 +576,6 @@ function eliminar4(index){
 
 
 </script>
-
+@endpush
 
 @endsection

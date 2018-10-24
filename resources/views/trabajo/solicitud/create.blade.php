@@ -54,7 +54,7 @@ Trabajo
       <div class="form-group">
       <label>Área de mantenimiento(*)</label>
       <select name="pidarea" class="form-control"  style="width:100%" id="pidarea" data-live-search="true">
-           <option value="0" disabled selected>=== Seleccione un área===</option>
+           <option value="0" disabled selected></option>
       @foreach($areas as $are)
       <option value="{{$are->idarea_mantenimiento}}">{{$are->area}}</option>
       @endforeach
@@ -99,7 +99,7 @@ Trabajo
     <div class="form-group">
     <label>Tipo de trabajo(*)</label>
     <select name="pidinsumo"  style="width:100%"class="form-control select2" id="pidtipo" data-live-search="true">
-         <option value="0" disabled selected>=== Seleccione un tipo de trabajo===</option>
+         <option value="0" disabled selected></option>
     @foreach($tipos as $tip)
     <option value="{{$tip->idtipo_trabajo}}">{{$tip->tipo}}</option>
     @endforeach
@@ -172,6 +172,7 @@ Trabajo
     <div class="form-group">
     <label>Equipo</label>
     <select name="idequipo" class="form-control select2" style="width:100%" id="idequipo" data-live-search="true">
+         <option value="0" disabled selected></option>
     @foreach($equipos as $eq)
     <option value="{{$eq->idequipo}}">{{$eq->equipo}}</option>
     @endforeach
@@ -225,6 +226,7 @@ Trabajo
 <!-- /.box -->
 </div>
 </section>
+@push ('scripts')
 <script src="{{asset('ajax/jquery.min.js')}}"></script>
 <script src="{{asset('ajax/bootstrap.min.js')}}"></script>
 <script src="{{asset('ajax/select2.min.js')}}"></script>
@@ -358,6 +360,6 @@ function mostar3(){
   $('.nav-tabs a[href="#tab_4-4"]').tab('show');
 }
 </script>
-
+@endpush
 
 @endsection
