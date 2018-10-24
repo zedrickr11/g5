@@ -4,11 +4,11 @@
 <section class="content-header">
       <h1>
         Equipo
-        <small>Servicio Tecnico</small>
+        <small>Servicio técnico</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Equipo</a></li>
-        <li class="active">Servicio Tecnico</li>
+        <li><a href="#"><i class="fa fa-tv"></i>Equipo</a></li>
+        <li class="active">Servicio técnico</li>
       </ol>
 </section>
 	<section class="content">
@@ -18,7 +18,7 @@
 		<!-- general form elements -->
 		<div class="box box-success">
 			<div class="box-header with-border">
-				<h3 class="box-title">Editar Servicio Tecnico</h3>
+				<h3 class="box-title">Editar servicio técnico</h3>
 			</div>
 			<!-- /.box-header -->
 			<!-- form start -->
@@ -41,7 +41,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="ser">Correo Electronico</label>
+						<label for="ser">Email</label>
 						<input type="text" class="form-control" name="correo_servicio_mantenimiento" value="{{$servicioTecnicos->correo_servicio_mantenimiento}}">
 					</div>
 
@@ -51,7 +51,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="ser">Nombre de la Empresa</label>
+						<label for="ser">Nombre de empresa</label>
 						<input type="text" class="form-control" name="nombre_empresa_sevicio_tecnico" value="{{$servicioTecnicos->nombre_empresa_sevicio_tecnico}}">
 					</div>
 

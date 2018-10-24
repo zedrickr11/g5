@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\TipoManualFormRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
@@ -21,7 +21,7 @@ class TipoManualController extends Controller
     public function index(Request $request)
     {
         //$tipoManuals=TipoManual::all();
-        //return view('equipo.tipoManual.index', compact('tipoManuals'));    
+        //return view('equipo.tipoManual.index', compact('tipoManuals'));
         if ($request)
         {
             $query=trim($request->get('searchText'));
@@ -50,7 +50,7 @@ class TipoManualController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TipoManualFormRequest $request)
     {
         TipoManual::create($request->all());
         return redirect()->route('tipoManual.index');
@@ -87,7 +87,7 @@ class TipoManualController extends Controller
      * @param  \App\TipoManual  $tipoManual
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TipoManualFormRequest $request, $id)
     {
          TipoManual::findOrFail($id)->update($request->all());
       return redirect()->route('tipoManual.index');
@@ -102,6 +102,6 @@ class TipoManualController extends Controller
     public function destroy( $id)
     {
          TipoManual::findOrFail($id)->delete();
-      return redirect()->route('tipoManual.index'); 
+      return redirect()->route('tipoManual.index');
     }
 }

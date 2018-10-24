@@ -8,6 +8,10 @@ use App\Http\Controllers\Controller;
 
 class HerramientaController extends Controller
 {
+  function __construct()
+    {
+      $this->middleware(['auth','role:admin,jefe-mantto,jefe-sub,tec-ing']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -83,7 +87,7 @@ class HerramientaController extends Controller
     public function update(Request $request,  $id)
     {
         Herramienta::findOrFail($id)->update($request->all());
-      return redirect()->route('herramienta.index');  
+      return redirect()->route('herramienta.index');
     }
 
     /**
@@ -95,6 +99,6 @@ class HerramientaController extends Controller
     public function destroy($id)
     {
         Herramienta::findOrFail($id)->delete();
-      return redirect()->route('herramienta.index'); 
+      return redirect()->route('herramienta.index');
     }
 }
