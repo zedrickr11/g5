@@ -88,6 +88,11 @@ Route::get('equipo/vista/indexsolicitudes/{id}',[
     'uses' => 'EquipoIndexController@solis'
 ]);
 
+Route::get('seguimiento/seguir/{idsolitud_trabajo}',[
+    'as' => 'seguimiento',
+    'uses' => 'SeguimientoController@seguir'
+]);
+
 //index del Equipo
 Route::get('equipo/principal/{id}',['as'=>'actualizar','uses' => 'EquipoIndexController@index']);
 Route::resource('equipo/equipo/imagen','Imagen_equipoController');

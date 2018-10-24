@@ -690,7 +690,7 @@
                                 <div class="form-group">
                                 <label for="idarea" >Tipo de trabajo</label>
                                 <select name="pidtipo" class="form-control " id="pidtipo" style="width:100%">
-                                   <option value="0" disabled selected>=== Seleccione un tipo de trabajo===</option>
+                                   <option value="0" disabled selected></option>
                                    @foreach($tipos as $tip)
                                                           <option value="{{$tip->idtipo_trabajo}}">{{$tip->tipo}}</option>
                                                           @endforeach
@@ -740,7 +740,7 @@
                                     <div class="form-group">
                                     <label for="ipdarea" >Área de mantenimiento (*)</label>
                                     <select name="idarea" class="form-control "  id="pidarea" style="width:100%">
-                                       <option value="0" disabled selected>=== Seleccione un área de mantenimiento ===</option>
+                                       <option value="0" disabled selected></option>
                                        @foreach($areas as $are)
                                        <option value="{{$are->idarea_mantenimiento}}">{{$are->area}}</option>
                                        @endforeach

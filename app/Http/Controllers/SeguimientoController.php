@@ -42,8 +42,17 @@ class SeguimientoController extends Controller
      */
      public function create()
      {
-       $solicitudes=SolicitudTrabajo::all();
-         return view("trabajo.seguimiento.create",compact('solicitudes'));
+
+         return view("trabajo.seguimiento.create");
+     }
+
+     public function seguir($id)
+     {
+       $solicitudes=DB::table('solitud_trabajo')
+       ->select('*')
+       ->where('idsolitud_trabajo',$id)
+       ->first();
+         return view("trabajo.seguimiento.create",["solicitudes"=>$solicitudes]);
      }
     /**
      * Store a newly created resource in storage.
