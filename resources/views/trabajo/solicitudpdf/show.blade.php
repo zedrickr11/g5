@@ -7,7 +7,7 @@
 		<SPAN style="position: absolute; top: -45 px; left: -45 px;">
 			</SPAN>
 			@foreach($solicitudes as $s)
-				<table id="table" width="100%" border="10" cellpadding="5" cellspacing="0" bordercolor="#000000">
+				<table id="table" width="100%" border="10" cellpadding="5" cellspacing="0" bordercolor="#000000" style="table-layout:fixed;word-wrap:break-word;">
 					<tr>
 						<td id="gris" colspan="3"> 	<div align="center">INSTITUTO GUATEMALTECO DE	SEGURIDAD SOCIAL<br>
 							SOLICITUD DE TRABAJO</div>  </td>
@@ -100,7 +100,26 @@
 
 										<td   colspan="2"  align="center"><br> <br> <br> <br>_________________________________ <br>Jefe de Dependencia <br></td>
 							</tr>
-
+							<!--DESCRIPCION-->
+										<tr>
+											<td id="gris" colspan="4"> <div align="left">Seguimiento</div></td>
+										</tr>
+										<tr>
+											<td  colspan="1"> <div align="left">Fecha</div></td>
+										  <td  colspan="1"> <div align="left">Acción tomada</div></td>
+											<td  colspan="1"> <div align="left">Responsable</div></td>
+														<td  colspan="1"> <div align="left">Firma y sello</div></td>
+										</tr>
+										<tbody>
+										@foreach ($seguimientos as $se)
+										<tr>
+											<td  colspan="1"> <div align="left">{{$se->fecha_seguimiento}}</div></td>
+											<td  colspan="1"> <div align="left"></div></td>
+											<td  colspan="1"> <div align="left">{{$se->responsable_seguimiento}}</div></td>
+														<td  colspan="1"> <div align="left"></div></td>
+										</tr>
+										@endforeach
+										</tbody>
 
 			</table>
 @endforeach

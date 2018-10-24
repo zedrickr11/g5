@@ -1,8 +1,7 @@
 <?php
 
-Route::get('/calendario', function () {
-    return view ('index') ;
-})->middleware('auth');
+Route::get('calendario', 'CalendarioController@index');
+
 Route::get('/', function () {
     return view ('auth.login') ;
 });
@@ -97,6 +96,11 @@ Route::get('equipo/equipo/rutina/{id}',[
 Route::get('equipo/vista/indexsolicitudes/{id}',[
     'as' => 'equipo.vista',
     'uses' => 'EquipoIndexController@solis'
+]);
+
+Route::get('seguimiento/seguir/{idsolitud_trabajo}',[
+    'as' => 'seguimiento',
+    'uses' => 'SeguimientoController@seguir'
 ]);
 
 //index del Equipo
@@ -213,8 +217,8 @@ Route::resource('almacen/herramienta','HerramientaController');
 
 
 //calendario
-Route::get('/json-calendarioCorrectivo','CalendarioController@llenarcalendarioCorrectivo');
-Route::get('/json-calendarioPreventivo','CalendarioController@llenarcalendarioPreventivo');
+Route::get('/json-calendarioCorrectivo',['as'=>'calendarioCorrectivo','uses'=> 'CalendarioController@llenarcalendarioCorrectivo']);
+Route::get('/json-calendarioPreventivo',['as'=>'calendarioPreventivo','uses'=> 'CalendarioController@llenarcalendarioPreventivo']);
 
 
 //manuales

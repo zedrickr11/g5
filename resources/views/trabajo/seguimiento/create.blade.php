@@ -52,13 +52,10 @@ Trabajo
 
 
 <div class="form-group">
-      <label for="solicitud">No. de solicitud</label>
-      <select name="solitud_trabajo_idsolitud_trabajo" id="solitud_trabajo_idsolitud_trabajo" class="form-control selectpicker" data-live-search="true">
-        @foreach($solicitudes as $s)
-          <option value="{{$s->idsolitud_trabajo}}">{{$s->numero}}</option>
-           @endforeach
-        </select>
-    </div>
+<label for="direccion_fab">No. solicitud</label>
+<input type="text" class="form-control"  readonly value="{{$solicitudes->numero}}">
+<input type="hidden" class="form-control" name="solitud_trabajo_idsolitud_trabajo" readonly value="{{$solicitudes->idsolitud_trabajo}}">
+</div>
 
 
 

@@ -12,6 +12,7 @@ use App\Http\Requests\SolicitudTrabajoFormRequest;
 use App\SolicitudTrabajo;
 use App\DetalleTipoTrabajo;
 use App\DetalleAreaMantenimiento;
+use App\Seguimiento;
 use App\Http\Controllers\Controller;
 use DB;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -144,6 +145,8 @@ class SolicitudTrabajoController extends Controller
              ->select('s.idsolitud_trabajo','s.numero','s.fecha','s.descripcion','s.compra_material','s.contratar_trabajo','s.dirigido_solitud_trabajo','s.puesto_dirigido_solitud_trabajo','s.edificio_solitud_trabajo','s.jefe_solitud_trabajo','di.nombre_equipo as equipo')
              ->where('s.idsolitud_trabajo','=',$id)
              ->first();
+
+
         $detalles=DB::table('detalle_tipo_trabajo as d')
              ->join('tipo_trabajo as t','d.idtipo_trabajo','=','t.idtipo_trabajo')
              ->select('t.nombre_tipo as tipo','d.descrpcion_detalle_tipo_trabajo','d.estado')
@@ -164,6 +167,13 @@ return view("trabajo.solicitud.show",["solicitudes"=>$solicitudes,"detalles"=>$d
      public function ficha($id)
      {
      $solicitudes=DB::table('solitud_trabajo')->where('idsolitud_trabajo', $id)->get();
+
+     $seguimientos=DB::table('seguimiento as se')
+                 ->join('solitud_trabajo as so','se.solitud_trabajo_idsolitud_trabajo','=','so.idsolitud_trabajo')
+                 ->select('se.idseguimiento','se.fecha_seguimiento','se.responsable_seguimiento','so.numero as num')
+                 ->where('so.idsolitud_trabajo','=',$id)
+                 ->get();
+
      $detalles=DB::table('detalle_tipo_trabajo as d')
           ->join('tipo_trabajo as t','d.idtipo_trabajo','=','t.idtipo_trabajo')
           ->select('t.nombre_tipo as tipo','d.descrpcion_detalle_tipo_trabajo','d.estado')
@@ -176,7 +186,7 @@ return view("trabajo.solicitud.show",["solicitudes"=>$solicitudes,"detalles"=>$d
             ->get();
      //$view= view("equipo.caracteristica.fichatecnica.show",compact('equipo'));
 
-         $pdf = PDF::loadView("trabajo.solicitudpdf.show",["solicitudes"=>$solicitudes,"detalles"=>$detalles,"detalless"=>$detalless]);
+         $pdf = PDF::loadView("trabajo.solicitudpdf.show",["solicitudes"=>$solicitudes,"detalles"=>$detalles,"detalless"=>$detalless,"seguimientos"=>$seguimientos]);
 
          return $pdf->stream('SolicitudTrabajo.pdf');
          //return view("equipo.caracteristica.fichatecnica.show",compact('equipo'));
@@ -217,4 +227,5 @@ return view("trabajo.solicitud.show",["solicitudes"=>$solicitudes,"detalles"=>$d
     {
 
     }
+    
 }

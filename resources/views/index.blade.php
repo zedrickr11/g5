@@ -36,7 +36,7 @@
       <!-- small box -->
       <div class="small-box bg-yellow">
         <div class="inner">
-          <h3>SOLICITUDES</h3>
+          <h3>SOLICITUD</h3>
 
           <p>Solicitudes de Trabajo</p>
         </div>
@@ -52,13 +52,13 @@
       <!-- small box -->
       <div class="small-box bg-red">
         <div class="inner">
-          <h3>Informes</h3>
-          <p>Ficha Técnica de Equipo</p>
+          <h3>Almacén</h3>
+          <p>Insumos-repuestos</p>
         </div>
         <div class="icon">
           <i class="ion ion-pie-graph"></i>
         </div>
-        <a href="#" class="small-box-footer">Buscar <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="#" class="small-box-footer">Ingresar <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <!-- ./col -->
@@ -110,39 +110,53 @@
                                 <br>
                                 <br>
                                 <br>
-                                <br>
-                                <br>
-                              
-                                  <div class="info-box">
-                                      <span class="info-box-icon bg-yellow"><i class="fa fa-calendar-plus-o"></i></span>
-                                      <div class="info-box-content">
+                                <div class="box box-primary">
+                                      <div class="box-header with-border">
+                                        <h3 class="box-title">INFORMACIÓN</h3>
+                                      </div>
+                                      <!-- /.box-header -->
+                                      <div class="box-body">
+                                        
+                                          <strong><i class="fa fa-pencil margin-r-6"></i> Codígo de colores</strong>
+                          
+                                          <p>
+                                            <span class="label-lg label-danger"><strong>Mantenimiento pendiente</strong></span>
+                                            <span class="label-lg label-success"> <strong>Mantenimiento realizado</strong></span>
+                                           
+                                          </p>
+                                        <hr>
+
+                                        <strong><i class="fa fa-book margin-r-5"></i> MANTENIMIENTOS REALIZADOS: </strong>
+                                        <h4>Total de mantenimientos:  {{ $noti->noti }}</h4>
+                                        
+                                        
+                          
+                                        <hr>
+                          
+                                        <strong><i class="fa fa-map-marker margin-r-5"></i> MANTENIMIENTOS PENDIENTES: </strong>
+                          
+                                        <h4>Total de mantenimientos:  {{ $noti2->noti2 }}</h4>
+
+                          
+                                        <hr>
+                          
+                                        <strong><i class="fa fa-file-text-o margin-r-5"></i> Notas</strong>
+                          
+                                        <p>El MANTENIMIENTO, es normalmente conocido como el conjunto de actividades desarrolladas con
+                                           el fin de conservar las propiedades (inmuebles, equipos médicos, equipos industriales 
+                                           hospitalarios instalaciones especiales, herramientas, etc.), en condiciones de funcionamiento
+                                          seguro, eficiente y económico, previniendo daños o reparándolos cuando ya se hubieran producido. </p>
+
+                                        <hr>
+                          
+                                        
                                         <br>
-                                        <span class="info-box-text">RUTINAS POR REALIZAR HOY</span>
-                                        <span class="info-box-number">1</span>
+                                        
+                          
+                                        
                                       </div>
-                                      <!-- /.info-box-content -->
+                                      <!-- /.box-body -->
                                     </div>
-                                    <!-- /.info-box -->
-                                    <div class="info-box">
-                                        <span class="info-box-icon bg-green"><i class="fa fa-calendar-plus-o"></i></span>
-                                        <div class="info-box-content">
-                                          <br>
-                                          <span class="info-box-text">RUTINAS REALIZADAS HOY</span>
-                                          <span class="info-box-number">1</span>
-                                        </div>
-                                        <!-- /.info-box-content -->
-                                      </div>
-                                      <!-- /.info-box -->
-                                      <div class="info-box">
-                                          <span class="info-box-icon bg-red"><i class="fa fa-calendar-plus-o"></i></span>
-                                          <div class="info-box-content">
-                                            <br>
-                                            <span class="info-box-text">RUTINAS POR REALIZAR HOY</span>
-                                            <span class="info-box-number">1</span>
-                                          </div>
-                                          <!-- /.info-box-content -->
-                                        </div>
-                                        <!-- /.info-box -->
                                 </div>
                                 <!-- /.col-md-4 -->
                               </div> 
@@ -165,43 +179,59 @@
                                     </div>
       
                                     <div class="col-md-4">
-                                      <br>
-                                      <br>
-                                      <br>
-                                      <br>
-                                      <br>
-                                      <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <div class="box box-primary">
+                                              <div class="box-header with-border">
+                                                <h3 class="box-title">INFORMACIÓN</h3>
+                                              </div>
+                                              <!-- /.box-header -->
+                                              <div class="box-body">
+                                                
+                                                  <strong><i class="fa fa-pencil margin-r-6"></i> Codígo de colores</strong>
+                                  
+                                                  <p>
+                                                    <span class="labe-lg label-danger"><strong>Mantenimiento pendiente</strong></span>
+                                                    <span class="label-lg label-success"> <strong>Mantenimiento realizado</strong></span>
+                                                   
+                                                  </p>
+                                                  <hr>
+
+                                                  <strong><i class="fa fa-book margin-r-5"></i> MANTENIMIENTOS REALIZADOS: </strong>
+                                                  <h4>Total de mantenimientos:  {{ $noti->noti }}</h4>
+                                                  
+                                                  
                                     
-                                        <div class="info-box">
-                                            <span class="info-box-icon bg-yellow"><i class="fa fa-calendar-plus-o"></i></span>
-                                            <div class="info-box-content">
-                                              <br>
-                                              <span class="info-box-text">RUTINAS POR REALIZAR HOY</span>
-                                              <span class="info-box-number">1</span>
-                                            </div>
-                                            <!-- /.info-box-content -->
-                                          </div>
-                                          <!-- /.info-box -->
-                                          <div class="info-box">
-                                              <span class="info-box-icon bg-green"><i class="fa fa-calendar-plus-o"></i></span>
-                                              <div class="info-box-content">
+                                                  <hr>
+                                    
+                                                  <strong><i class="fa fa-map-marker margin-r-5"></i> MANTENIMIENTOS PENDIENTES: </strong>
+                                    
+                                                  <h4>Total de mantenimientos:  {{ $noti2->noti2 }}</h4>
+          
+                                    
+                                                  <hr>
+                                  
+                                                <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
+                                  
+                                                <p>El MANTENIMIENTO, es normalmente conocido como el conjunto de actividades desarrolladas con
+                                                    el fin de conservar las propiedades (inmuebles, equipos médicos, equipos industriales 
+                                                    hospitalarios instalaciones especiales, herramientas, etc.), en condiciones de funcionamiento
+                                                   seguro, eficiente y económico, previniendo daños o reparándolos cuando ya se hubieran producido. </p>
+         </p>
+        
+                                                <hr>
+                                  
+                                                
+                                              
                                                 <br>
-                                                <span class="info-box-text">RUTINAS REALIZADAS HOY</span>
-                                                <span class="info-box-number">1</span>
+                                                
+                                  
+                                                
                                               </div>
-                                              <!-- /.info-box-content -->
+                                              <!-- /.box-body -->
                                             </div>
-                                            <!-- /.info-box -->
-                                            <div class="info-box">
-                                                <span class="info-box-icon bg-red"><i class="fa fa-calendar-plus-o"></i></span>
-                                                <div class="info-box-content">
-                                                  <br>
-                                                  <span class="info-box-text">RUTINAS POR REALIZAR HOY</span>
-                                                  <span class="info-box-number">1</span>
-                                                </div>
-                                                <!-- /.info-box-content -->
-                                              </div>
-                                              <!-- /.info-box -->
                                       </div>
                               </div>
                                   <!-- /.box-body -->
@@ -432,10 +462,10 @@
         },
 
         
-        events: '/json-calendarioCorrectivo',
+        events: '{!! route('calendarioCorrectivo') !!}',
 
-        editable  : true,
-        droppable : false 
+        editable  : false,
+        droppable : true 
        
       })
 
@@ -576,7 +606,9 @@
       },
 
       
-      events: '/json-calendarioPreventivo',
+      events: '{!! route('calendarioPreventivo') !!}',
+      
+     
 
       editable  : false,
       droppable : false 
@@ -623,6 +655,5 @@ $('#liCalendario').addClass("active");
 
 </script>
 @endpush
-</body>
-</html>
+
 @endsection
