@@ -827,6 +827,7 @@
             <tr>
               <td bgcolor="#ffffcc">
 
+
         <h3>Preventivo</h3>
 
           @if (auth()->user()->hasRole(['tec-ing']))
@@ -834,15 +835,21 @@
             @if ($st->idequipo==$equipo->idequipo)
             @if ($st->idtipo_rutina==1)
             @if($st->estado_rutina=='PENDIENTE')
+            @if($st->responsable_area_rutina_mantenimiento==Auth::id())
             <i>Fecha a realizar próxima rutina:</i>
             @foreach($notificacion as $noti)
             @if ($st->idrutina_mantenimiento==$noti->rutina_mantenimiento_idrutina_mantenimiento)
             <p>{{date("Y-m-d",strtotime($noti->start))}}</p>
             @if(date("Y-m-d",strtotime($noti->start))<= date('Y-m-d'))
 
+
+            @if (auth()->user()->hasRole(['tec-ing']))
+
+            @else
             <a href="{{route('ruman.tecnicos',[$st->idrutina_mantenimiento,$equipo->idequipo])}}">
               <button type="button" class="btn  btn-vk" name="button"><span class="glyphicon glyphicon-wrench"></button></span>
             </a>
+            @endif
 
 
               <a href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}">
@@ -859,13 +866,16 @@
      </i></a>
       <br>
     @else
+    @if (auth()->user()->hasRole(['tec-ing']))
+
+    @else
     <a href="{{route('ruman.tecnicos',[$st->idrutina_mantenimiento,$equipo->idequipo])}}">
       <button type="button" class="btn  btn-vk" name="button"><span class="glyphicon glyphicon-wrench"></button></span>
     </a>
 
-
+    @endif
             <a href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}">
-    <i class="box-title"><i  href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button class="btn btn-warning"><span class="fa fa-th"></span>    @if ($st->frecuencia_rutina==1)
+    <i class="box-title"><i  href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button style="height:100%" class="btn btn-warning"><span class="fa fa-th"></span>    @if ($st->frecuencia_rutina==1)
     <i>Mensual</i>     @endif
     @if ($st->frecuencia_rutina==2)
     <i>Bimestral</i>     @endif
@@ -882,6 +892,7 @@
 
     @endforeach
         @endif
+              @endif
               @endif
               @endif
             @endforeach
@@ -907,11 +918,13 @@
         @if ($st->idrutina_mantenimiento==$noti->rutina_mantenimiento_idrutina_mantenimiento)
         <p>{{date("Y-m-d",strtotime($noti->start))}}</p>
         @if(date("Y-m-d",strtotime($noti->start))<= date('Y-m-d'))
+        @if (auth()->user()->hasRole(['tec-ing']))
 
+        @else
         <a href="{{route('ruman.tecnicos',[$st->idrutina_mantenimiento,$equipo->idequipo])}}">
           <button type="button" class="btn  btn-vk" name="button"><span class="glyphicon glyphicon-wrench"></button></span>
         </a>
-
+        @endif
 
           <a href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}">
           <i class="box-title"><i href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button class="btn btn-danger"><span class="fa fa-th"></span>    @if ($st->frecuencia_rutina==1)
@@ -927,10 +940,13 @@
  </i></a>
   <br>
 @else
+@if (auth()->user()->hasRole(['tec-ing']))
+
+@else
 <a href="{{route('ruman.tecnicos',[$st->idrutina_mantenimiento,$equipo->idequipo])}}">
   <button type="button" class="btn  btn-vk" name="button"><span class="glyphicon glyphicon-wrench"></button></span>
 </a>
-
+@endif
 
         <a href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}">
 <i class="box-title"><i  href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button class="btn btn-warning"><span class="fa fa-th"></span>    @if ($st->frecuencia_rutina==1)
@@ -970,21 +986,30 @@
                               @if ($st->idequipo==$equipo->idequipo)
                               @if ($st->idtipo_rutina==2)
                               @if($st->estado_rutina=='PENDIENTE')
+                                @if($st->responsable_area_rutina_mantenimiento==Auth::id())
                               <br>
                               <i>Fecha a realizar próxima rutina:</i>
                               @foreach($notificacion as $noti)
                               @if ($st->idrutina_mantenimiento==$noti->rutina_mantenimiento_idrutina_mantenimiento)
                               <p>{{date("Y-m-d",strtotime($noti->start))}}</p>
                               @if(date("Y-m-d",strtotime($noti->start))<= date('Y-m-d'))
-                              <a href="{{route('ruman.tecnicos',[$st->idrutina_mantenimiento,$equipo->idequipo])}}">
-                                <button type="button" class="btn  btn-vk" name="button"><span class="glyphicon glyphicon-wrench"></button></span>
-                              </a>
-                              <i class="box-title"><a href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button class="btn btn-danger"><span class="fa fa-th"></span> CORRECTIVO</button></a>
-                              </i>
+                              @if (auth()->user()->hasRole(['tec-ing']))
+
                               @else
                               <a href="{{route('ruman.tecnicos',[$st->idrutina_mantenimiento,$equipo->idequipo])}}">
                                 <button type="button" class="btn  btn-vk" name="button"><span class="glyphicon glyphicon-wrench"></button></span>
                               </a>
+                              @endif
+                              <i class="box-title"><a href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button class="btn btn-danger"><span class="fa fa-th"></span> CORRECTIVO</button></a>
+                              </i>
+                              @else
+                              @if (auth()->user()->hasRole(['tec-ing']))
+
+                              @else
+                              <a href="{{route('ruman.tecnicos',[$st->idrutina_mantenimiento,$equipo->idequipo])}}">
+                                <button type="button" class="btn  btn-vk" name="button"><span class="glyphicon glyphicon-wrench"></button></span>
+                              </a>
+                              @endif
                               <i class="box-title"><a  href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button class="btn btn-warning"><span class="fa fa-th"></span> CORRECTIVO</button></a>
                               </i>
 
@@ -993,6 +1018,7 @@
                               @endif
                               @endforeach
                               @endif
+                                @endif
                                 @endif
                                 @endif
                               @endforeach
@@ -1056,6 +1082,7 @@
                     @if ($st->idequipo==$equipo->idequipo)
                     @if ($st->idtipo_rutina==3)
                     @if($st->estado_rutina=='PENDIENTE')
+                      @if($st->responsable_area_rutina_mantenimiento==Auth::id())
                     <br>
 
                     @foreach($notificacion as $noti)
@@ -1081,6 +1108,7 @@
                     @endif
                     @endforeach
                     @endif
+                      @endif
                       @endif
                       @endif
                     @endforeach

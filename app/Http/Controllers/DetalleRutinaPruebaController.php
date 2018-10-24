@@ -54,7 +54,7 @@ class DetalleRutinaPruebaController extends Controller
         $ruman->idtipo_rutina=3;
         $ruman->idequipo=$request->get('idequipo');
         $mytime = Carbon::now('America/Guatemala');
-        $ruman->fecha_realizacion_rutina=$mytime->toDateTimeString();
+      //  $ruman->fecha_realizacion_rutina=$mytime->toDateTimeString();
         $ruman->observaciones_rutina=$request->get('observaciones_rutina');
         $ruman->tiempo_estimado_rutina_mantenimiento=$request->get('tiempo_estimado_rutina_mantenimiento');
         $ruman->responsable_area_rutina_mantenimiento=$request->get('responsable_area_rutina_mantenimiento');
@@ -241,7 +241,7 @@ return redirect()->route('actualizar', [$request->get('idequipo')]);
                       $ruman->idtipo_rutina=$request->get('idtipo_rutina');
                       $ruman->idequipo=$request->get('idequipo');
                       $mytime = Carbon::now('America/Guatemala');
-                      $ruman->fecha_realizacion_rutina=$mytime->toDateTimeString();
+                  //    $ruman->fecha_realizacion_rutina=$mytime->toDateTimeString();
                       $ruman->observaciones_rutina=$request->get('observaciones_rutina');
                       $ruman->tiempo_estimado_rutina_mantenimiento=$request->get('tiempo_estimado_rutina_mantenimiento');
                       $ruman->responsable_area_rutina_mantenimiento=$request->get('responsable_area_rutina_mantenimiento');

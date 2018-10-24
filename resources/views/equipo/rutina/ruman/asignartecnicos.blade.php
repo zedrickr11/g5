@@ -1,7 +1,5 @@
 @extends ('layouts.admin')
 @section ('contenido')
-<link rel="stylesheet" href="../../../../../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
-<link rel="stylesheet" href="../../../../../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 
 <section class="content-header">
       <h1>
@@ -51,32 +49,8 @@
                 </div>
 
 
-                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-                <div class="box-body col-md-6">
-
-                 <h3>Notificación </h3>
-
-                 <div class="form-group">
-                       <label>Date and time range:</label>
-
-                       <div class="input-group">
-                         <div class="input-group-addon">
-                           <i class="fa fa-clock-o"></i>
-                         </div>
-                         <input type="text" class="form-control pull-right" id="reservationtime" value="{{$notificacion->start}} - 01/11/2020">
-                       </div>
-                       <!-- /.input group -->
-                     </div>
 
 
-
-                 </div>
-                 </div>
-                    @foreach($notificacion as $noti)
-                  @foreach($ruman as $carac)
-                  @if($carac->idrutina_mantenimiento==$id)
-                  @if($carac->idtipo_rutina==3)
-                    @if($carac->idrutina_mantenimiento==$noti->rutina_mantenimiento_idrutina_mantenimiento)
                     <input type="hidden" class="form-control" name="aceptarfecha" value="aceptar">
                     <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
     	             <div class="box-body col-md-6">
@@ -88,7 +62,9 @@
                           <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                           </div>
-                          <input type="datetime-local" class="form-control pull-right" style="width: 100%" id="fechainicio" name="start"  min="" value="{{$noti->start}}" required>
+
+
+                          <input type="datetime-local" class="form-control pull-right" style="width: 100%" id="fechainicio" name="start"  min="" value="{{date("Y-m-d\TH:i:s", strtotime($notificacion->start))}}" required>
                         </div>
 
                     </div>
@@ -99,21 +75,38 @@
                           <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                           </div>
-                          <input type="datetime-local" class="form-control pull-right" style="width: 100%" id="fechafinal" name="end" min="" value="" required>
+                          <input type="datetime-local" class="form-control pull-right" style="width: 100%" id="fechafinal" name="end" min="" value="{{date("Y-m-d\TH:i:s", strtotime($notificacion->end))}}" required>
                         </div>
 
                     </div>
                     <div class="form-group">
                       <label for="direccion_fab">Descripción</label>
-                      <input type="text" class="form-control" id="descripcion_noti" style="width: 100%" name="descripcion_noti" value="{{old('descripcion_noti')}}">
+                      <input type="text" class="form-control" id="descripcion_noti" style="width: 100%" name="descripcion_noti" value="{{$notificacion->descripcion_noti}}">
                     </div>
                   </div>
+
+                  <div class="box-body col-md-6">
+                   <h3>Responsable </h3>
+
+
+                   <div class="form-group">
+                     <label for="select" class="">Responsabe de la rutina</label>
+                     <select name="responsable_area_rutina_mantenimiento" class="form-control" style="width: 100%" id="responsable_area_rutina_mantenimiento" data-live-search="true">
+                       @foreach($users as $carac)
+                       @if($ruman->responsable_area_rutina_mantenimiento==$carac->id)
+
+                          <option value="{{$carac->id}}" selected>{{$carac->name}}</option>
+                       @else
+                       <option value="{{$carac->id}}">{{$carac->name}}</option>
+                       @endif
+                   @endforeach
+                   </select>
+                   </div>
+
+
+                     </div>
                     </div>
-                      @endif
-                  @endif
-                  @endif
-                  @endforeach
-                  @endforeach
+
 
                 	<div class="box-body col-md-6">
                 <h3>Técnico interno </h3>
@@ -224,37 +217,16 @@
 
     </div>
     </section>
+@push('scripts')
+
     <script src="{{asset('ajax/jquery.min.js')}}"></script>
     <script src="{{asset('ajax/bootstrap.min.js')}}"></script>
     <script src="{{asset('ajax/select2.min.js')}}"></script>
 
 
-    <script src="../../../../../bower_components/jquery/dist/jquery.min.js"></script>
-    <!-- date-range-picker -->
-    <script src="../../../../../bower_components/moment/min/moment.min.js"></script>
-    <script src="../../../../../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <!-- bootstrap datepicker -->
-    <script src="../../../../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-
-    <!-- bootstrap time picker -->
-    <script src="../plugins/timepicker/bootstrap-timepicker.min.js"></script>
-
     <script>
+    $('#responsable_area_rutina_mantenimiento').select2({
 
-    $('#reservationtime').daterangepicker({
-    //  timePicker: true,
-    //  timePickerIncrement: 1,
-    //  format: 'YYYY/MM/DD h:mm A'
-    //  "setDate": "30/10/2030",//moment().startOf('hour'),
-      //endDate: moment().startOf('hour').add(32, 'hour'),
-
-
-
-      },function(start, end, label) {
-
-      alert(start.format('YYYY/MM/DD h:mm A')+ end.format('YYYY/MM/DD h:mm A'));
-
-      //console.log("A new date selection was made: " + start.format('YYYY-MM-DD'). + ' to ' + end.format('YYYY-MM-DD'));
     });
 
 
@@ -277,7 +249,8 @@
 
     	}
     	//document.getElementById("ejemplo").innerHTML = mensaje;
-    }
+    };
+
 
     $('#tecnicointerno').select2({
 
@@ -358,11 +331,6 @@
 
     }
 
-
-
-
-      $('#liCompras').addClass("treeview active");
-      $('#liIngresos').addClass("active");
     </script>
-
+@endpush
     @endsection

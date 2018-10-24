@@ -136,10 +136,14 @@ class rumanController extends Controller
      ->select('f.*')
       ->where('f.rutina_mantenimiento_idrutina_mantenimiento','LIKE',$id)
       ->first();
-      $ruman=ruman::all();
+      $ruman=DB::table('rutina_mantenimiento as f')
+     ->select('f.*')
+      ->where('f.idrutina_mantenimiento','LIKE',$id)
+      ->first();
+         $users=User::all();
       $tecnicoexterno=TecnicoExterno::all();
       $tecnicointerno=TecnicoInterno::all();
-      return view("equipo.rutina.ruman.asignartecnicos",compact('notificacion','ruman','tecnicoexterno','tecnicointerno','id','idequipo'));
+      return view("equipo.rutina.ruman.asignartecnicos",compact('users','notificacion','ruman','tecnicoexterno','tecnicointerno','id','idequipo'));
 
     }
 
@@ -238,7 +242,7 @@ if($request->get('enviar')=='enviado'){
         $ruman->idtipo_rutina=$request->get('idtipo_rutina');
         $ruman->idequipo=$request->get('idequipo');
         $mytime = Carbon::now('America/Guatemala');
-        $ruman->fecha_realizacion_rutina=$mytime->toDateTimeString();
+      //  $ruman->fecha_realizacion_rutina=$mytime->toDateTimeString();
         $ruman->observaciones_rutina=$request->get('observaciones_rutina');
         $ruman->tiempo_estimado_rutina_mantenimiento=$request->get('tiempo_estimado_rutina_mantenimiento');
         $ruman->responsable_area_rutina_mantenimiento=$request->get('responsable_area_rutina_mantenimiento');
@@ -419,7 +423,7 @@ if($request->get('enviar')=='enviado'){
         $ruman->idtipo_rutina=$request->get('idtipo_rutina');
         $ruman->idequipo=$request->get('idequipo');
         $mytime = Carbon::now('America/Guatemala');
-        $ruman->fecha_realizacion_rutina=$mytime->toDateTimeString();
+        //$ruman->fecha_realizacion_rutina=$mytime->toDateTimeString();
         $ruman->observaciones_rutina=$request->get('observaciones_rutina');
         $ruman->tiempo_estimado_rutina_mantenimiento=$request->get('tiempo_estimado_rutina_mantenimiento');
         $ruman->responsable_area_rutina_mantenimiento=$request->get('responsable_area_rutina_mantenimiento');
@@ -664,7 +668,7 @@ if("$estado_rutina"=="REALIZADO" and $rutinatipo==1){
           $ruman->idtipo_rutina=$request->get('idtipo_rutina');
           $ruman->idequipo=$request->get('idequipo');
           $mytime = Carbon::now('America/Guatemala');
-          $ruman->fecha_realizacion_rutina=$mytime->toDateTimeString();
+        //  $ruman->fecha_realizacion_rutina=$mytime->toDateTimeString();
           $ruman->observaciones_rutina=$request->get('observaciones_rutina');
           $ruman->tiempo_estimado_rutina_mantenimiento=$request->get('tiempo_estimado_rutina_mantenimiento');
           $ruman->responsable_area_rutina_mantenimiento=$request->get('responsable_area_rutina_mantenimiento');
