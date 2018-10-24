@@ -44,11 +44,23 @@
 			<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 				<div class="form-group">
 							<label for="codigo">Código</label>
-							<input type="text" name="codigo" id="codigobar" required value="{{$repuestos->codigo}}" class="form-control">
+							<input type="text" name="codigo" id="codigobar"  value="{{$repuestos->codigo}}" class="form-control">
 
 
 						 </div>
 			</div>
+      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+        <div class="form-group">
+              <label for="nombre">Serie</label>
+              <input type="text" name="num_serie" required value="{{$repuestos->num_serie}}" class="form-control" >
+            </div>
+      </div>
+      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+        <div class="form-group">
+              <label for="nombre">Modelo</label>
+              <input type="text" name="modelo" required value="{{$repuestos->modelo}}" class="form-control" >
+            </div>
+      </div>
 			<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 				<div class="form-group">
 							<label for="stock">Stock</label>
@@ -68,9 +80,9 @@
             <option value="0" disabled selected>=== Selecciona un equipo ===</option>
             @foreach ($equipo as $equipos)
                    @if ($equipos->idequipo==$repuestos->idequipo)
-                   <option value="{{$equipos->idequipo}}" selected>{{$equipos->nombre_equipo}}</option>
+                   <option value="{{$equipos->idequipo}}" selected>{{$equipos->nombre}}</option>
                    @else
-                   <option value="{{$equipos->idequipo}}">{{$equipos->nombre_equipo}}</option>
+                   <option value="{{$equipos->idequipo}}">{{$equipos->nombre}}</option>
                    @endif
             @endforeach
           </select>
@@ -98,12 +110,18 @@
 
 </div>
 </section>
-<script src="{{asset('ajax/jquery.min.js')}}"></script>
-<script src="{{asset('ajax/bootstrap.min.js')}}"></script>
-<script src="{{asset('ajax/select2.min.js')}}"></script>
+@push ('scripts')
+<script>
+$('#liAlmacen').addClass("treeview active");
+
+
+$('#liRepuestos').addClass("active");
+
+</script>
 <script >
 $('#equipo').select2({
   theme: "classic"
 });
 </script>
+@endpush
 @endsection

@@ -30,15 +30,16 @@ class SolicitudTrabajoController extends Controller
      */
      public function index(Request $request)
         {
-            if ($request)
-            {
-                $query=trim($request->get('searchText'));
-                  $solicitudes=DB::table('solitud_trabajo as t')
-                  ->select('*')
-                  ->where('numero','LIKE','%'.$query.'%')
+          if ($request)
+              {
+                  $query=trim($request->get('searchText'));
+                $solicitudes=DB::table('solitud_trabajo as s')
+                  ->join('equipo as e', 's.idequipo','=', 'e.idequipo')
+                  ->select('s.idsolitud_trabajo','s.numero','e.nombre_equipo as equipo','s.fecha','s.descripcion')
+                  ->where('e.nombre_equipo','LIKE','%'.$query.'%')
                   ->orderBy('idsolitud_trabajo','desc')
                   ->paginate(10);
-          return view('trabajo.solicitud.index', ["solicitudes"=>$solicitudes,"searchText"=>$query]);
+                return view('trabajo.solicitud.index', ["solicitudes"=>$solicitudes,"searchText"=>$query]);
               }
         }
 
@@ -126,7 +127,7 @@ class SolicitudTrabajoController extends Controller
                   DB::rollback();
               }
 
-                return back();
+                return back()->with('solicituds','¡Solicitud creada correctamente!');
       }
 
 

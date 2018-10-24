@@ -57,4 +57,18 @@
 </div>
 </div>
 </section>
+@push ('scripts')
+<script>
+$('#liSolicitud').addClass("treeview active");
+
+
+$('#liSeguimiento').addClass("active");
+
+</script>
+<script>
+$('#solitud_trabajo_idsolitud_trabajo').select2({
+  theme: "classic"
+});
+</script>
+@endpush
 @endsection

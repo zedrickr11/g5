@@ -23,11 +23,11 @@
 @include('trabajo.permiso.search')
 <div class="col-md-12">
 <div class="table-responsive">
-<table  class="table table-bordered table-striped">
+<table  class="table table-bordered table-striped" style="table-layout:fixed;word-wrap:break-word;">
 <thead>
 <tr>
 <th>Id</th>
-<th>Número de permiso</th>
+<th>No. de permiso</th>
 <th>Descripción</th>
 <th>No. de solicitud</th>
 <th>Fecha</th>
@@ -38,13 +38,13 @@
 @foreach ($permisos as $per)
 <tr>
 <td>{{ $per->idpermiso_trabajo}}</td>
-<td>{{ $per->num_permiso}}</td>
-<td>{{ $per->descripcion}}</td>
+<td  >{{ $per->num_permiso}}</td>
+<td  >{{ $per->descripcion}}</td>
 <td>{{ $per->num}}</td>
 <td>{{ $per->fecha}}</td>
 
 <td>
-  <a href="{{route('permiso.ficha',  $per->idpermiso_trabajo)}}">
+  <a href="{{route('permiso.ficha',  $per->idpermiso_trabajo)}}" target="_blank">
     <button type="button" class="btn btn-success btn-sm" name="button"><span class="fa fa-edit"></span></button>
   </a>
 
@@ -71,4 +71,14 @@
 <!-- /.col -->
 </div>
 </section>
+@push ('scripts')
+<script>
+$('#liPermisos').addClass("treeview active");
+
+
+$('#liPermiso').addClass("active");
+
+</script>
+
+@endpush
 @endsection

@@ -183,4 +183,12 @@
 
 </div>
 </section>
+@push ('scripts')
+<script>
+$('#liRutinas').addClass("treeview active");
+
+$('#liRuman').addClass("active");
+
+</script>
+@endpush
 @endsection

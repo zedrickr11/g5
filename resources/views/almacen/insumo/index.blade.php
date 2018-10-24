@@ -19,7 +19,7 @@
             <div class="box-header">
 			  <h3 class="box-title">Listado de Insumos  <a href="insumo/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button></a>
 			  		</h3>
-    
+
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -47,10 +47,9 @@
 												<td>{{ $art->estado}}</td>
 												<td>
 													<a href="{{URL::action('InsumoController@edit',$art->idinsumo)}}"><button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-cog"></span> </button></a>
-							                         <a href="" data-target="#modal-delete-{{$art->idinsumo}}" data-toggle="modal"><button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></span> </button></a>
 												</td>
 											</tr>
-			 					@include('almacen.insumo.modal')
+			 				
 			 					@endforeach
 
                       </tbody>
@@ -76,5 +75,14 @@
       </div>
 
 </section>
+@push ('scripts')
+<script>
+$('#liAlmacen').addClass("treeview active");
 
+
+$('#liInsumos').addClass("active");
+
+</script>
+
+@endpush
 @endsection

@@ -53,4 +53,15 @@ Precaución
 </div>
 </div>
 </section>
+@push ('scripts')
+<script>
+$('#liPermisos').addClass("treeview active");
+$('#liPrecaucion').addClass("treeview active");
+
+
+$('#liResponsable').addClass("active");
+
+</script>
+
+@endpush
 @endsection

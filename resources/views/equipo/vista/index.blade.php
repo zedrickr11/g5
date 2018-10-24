@@ -46,7 +46,14 @@
     </div>
     </div>
     @endif
-
+    @if (session()->has('solicituds'))
+    <div class="row">
+    <div id="alerta_eq" class="col-md-offset-3 col-md-6 alert alert-success alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{ session('solicituds') }}</strong>
+    </div>
+    </div>
+    @endif
 
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Equipo</a></li>
@@ -658,11 +665,22 @@
 
 
                       <div class="box-body col-md-12">
-                        <div class="form-group">
-                        <label for="direccion_fab">Descripción de solicitud</label>
-                        <input type="text" class="form-control" name="descripcion" value="{{old('descripcion')}}">
-                        </div>
+
+
+                          <div class="form-group">
+                            <label>Descripción de solicitud</label>
+                            <textarea type="text" rows="5" cols="92"  name="descripcion" value="{{old('descripcion')}}" class="form-control">
+                           </textarea>
+                          </div>
+
+
                       </div>
+                      <div class="box-body col-md-12">
+                         <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
+                    <a onclick="mostar();" data-toggle="tab" aria-expanded="true">
+                    <button type="button" name="adelante" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-right"></span> </button>
+                    </a>
+                    </div>
                     </div>
 
 
@@ -703,8 +721,16 @@
 
                               </tbody>
                             </table>
-
-
+                              <br>
+                              <br>
+                            <div class="box-body col-md-12">
+                              <a onclick="mostar3();">
+                                <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
+                              </a>
+                        <a onclick="mostar2();" data-toggle="tab" aria-expanded="true">
+                     <button type="button" name="adelante" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-right"></span> </button>
+                     </a>
+                       </div>
                           </div>
                             <div class="tab-pane" id="tab-area">
 
@@ -742,9 +768,11 @@
                               </table>
                               <div class="box-body col-md-12">
 
+                                <a onclick="mostar();">
+                                  <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
+                                </a>
 
 
-                            <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
                             <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> </button>
                             </div>
                             </div>
@@ -1819,6 +1847,18 @@
   </script>
 
   <script>
+  function mostar(){
+
+    $('.nav-tabs a[href="#tab-tipo"]').tab('show');
+  }
+  function mostar2(){
+
+    $('.nav-tabs a[href="#tab-area"]').tab('show');
+  }
+  function mostar3(){
+
+    $('.nav-tabs a[href="#tabsol"]').tab('show');
+  }
   $('#liEq').addClass("treeview active");
   $('#liEquipo').addClass("active");
   </script>

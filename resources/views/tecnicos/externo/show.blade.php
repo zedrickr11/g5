@@ -65,4 +65,10 @@
 
 </div>
 </section>
+@push ('scripts')
+  <script>
+  $('#liTecnicos').addClass("treeview active");
+  $('#liExternos').addClass("active");
+  </script>
+@endpush
 @endsection

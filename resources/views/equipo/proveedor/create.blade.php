@@ -52,7 +52,7 @@
 
 				<!-- /.box-body -->
 
-	 
+
         <div class="box-footer">
           <a href="{{route('proveedor.index')}}">
           <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
@@ -69,4 +69,12 @@
 
 </div>
 </section>
+@push ('scripts')
+<script>
+$('#liEq').addClass("treeview active");
+
+$('#liProveedores').addClass("active");
+
+</script>
+@endpush
 @endsection

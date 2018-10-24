@@ -210,7 +210,8 @@
 
     }
     $('#liCompras').addClass("treeview active");
-    $('#liIngresos').addClass("active");
+    $('#liIngresosR').addClass("active");
   </script>
 @endpush
+
 @endsection

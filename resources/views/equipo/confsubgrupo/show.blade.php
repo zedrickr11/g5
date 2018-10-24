@@ -73,4 +73,11 @@
 
 </div>
 </section>
+@push ('scripts')
+<script>
+$('#liAreas').addClass("treeview active");
+$('#liConfsubgrupo').addClass("active");
+</script>
+
+@endpush
 @endsection

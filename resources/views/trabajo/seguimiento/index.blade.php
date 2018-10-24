@@ -7,7 +7,7 @@
   </h1>
   <ol class="breadcrumb">
   <li><a href="#"><i class="fa 	fa-suitcase"></i> Trabajo</a></li>
-  <li class="active">Seguimiento de Trabajo</li>
+  <li class="active">Seguimiento de trabajo</li>
   </ol>
 </section>
 <section class="content">
@@ -74,4 +74,13 @@
 <!-- /.col -->
 </div>
 </section>
+@push ('scripts')
+<script>
+$('#liSolicitud').addClass("treeview active");
+
+
+$('#liSeguimiento').addClass("active");
+
+</script>
+@endpush
 @endsection

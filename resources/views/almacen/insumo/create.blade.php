@@ -85,4 +85,14 @@
 
 </div>
 </section>
+@push ('scripts')
+<script>
+$('#liAlmacen').addClass("treeview active");
+
+
+$('#liInsumos').addClass("active");
+
+</script>
+
+@endpush
 @endsection

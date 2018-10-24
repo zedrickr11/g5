@@ -92,4 +92,12 @@
 
 </div>
 </section>
+@push ('scripts')
+<script>
+$('#liEq').addClass("treeview active");
+
+$('#liFabricante').addClass("active");
+
+</script>
+@endpush
 @endsection
