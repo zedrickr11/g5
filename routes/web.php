@@ -35,6 +35,10 @@ Route::get('equipo/existente/{id}',['as'=>'existente','uses' => 'EquipoControlle
 
 
 Route::get('equipo/equipo/ficha/{id}',[
+    'as' => 'equipo.HistorialRutina',
+    'uses' => 'EquipoController@HistorialRutina'
+]);
+Route::get('equipo/equipo/HistorialRutina/{id}',[
     'as' => 'equipo.ficha',
     'uses' => 'EquipoController@ficha'
 ]);

@@ -309,6 +309,17 @@ class EquipoController extends Controller
 
     }
 
+
+    public function HistorialRutina($id)
+    {
+      $rutinas=DB::table('rutina_mantenimiento as rut')
+      ->select('*')
+      ->where('rut.idequipo',$id)
+      ->get();
+
+      return view('equipo.existente.rutinas', compact('rutinas'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
