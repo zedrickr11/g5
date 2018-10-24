@@ -134,6 +134,7 @@ class CalendarioController extends Controller
 
     function index(){
      
+      
         $noti = DB::table('notificacion')
         ->select(DB::raw('count(*) as noti, backgroundColor'))
         ->where('backgroundColor','green')
@@ -146,12 +147,11 @@ class CalendarioController extends Controller
         ->groupBy('backgroundColor')
         ->first();
 
-
-
-
-
-        return view ('index',compact('noti','noti2'));
-        
+     
+       
+     
+          return view ('index',compact('noti','noti2'));
+ 
     }
 
   

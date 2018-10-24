@@ -1,6 +1,8 @@
 @extends ('layouts.admin')
 @section ('contenido')
 
+
+
 <section class="content-header">
   <div class="row">
     <div class="col-lg-3 col-xs-6">
@@ -127,7 +129,10 @@
                                         <hr>
 
                                         <strong><i class="fa fa-book margin-r-5"></i> MANTENIMIENTOS REALIZADOS: </strong>
-                                        <h4>Total de mantenimientos:  {{ $noti->noti }}</h4>
+                                 
+                                        <h4>Total de mantenimientos:  0</h4>
+                                   
+                                       
                                         
                                         
                           
@@ -135,7 +140,9 @@
                           
                                         <strong><i class="fa fa-map-marker margin-r-5"></i> MANTENIMIENTOS PENDIENTES: </strong>
                           
-                                        <h4>Total de mantenimientos:  {{ $noti2->noti2 }}</h4>
+                                      
+                                        <h4>Total de mantenimientos:  0</h4>
+                                        
 
                           
                                         <hr>
@@ -200,7 +207,7 @@
                                                   <hr>
 
                                                   <strong><i class="fa fa-book margin-r-5"></i> MANTENIMIENTOS REALIZADOS: </strong>
-                                                  <h4>Total de mantenimientos:  {{ $noti->noti }}</h4>
+                                                  <h4>Total de mantenimientos:  0</h4>
                                                   
                                                   
                                     
@@ -208,7 +215,7 @@
                                     
                                                   <strong><i class="fa fa-map-marker margin-r-5"></i> MANTENIMIENTOS PENDIENTES: </strong>
                                     
-                                                  <h4>Total de mantenimientos:  {{ $noti2->noti2 }}</h4>
+                                                  <h4>Total de mantenimientos:  0</h4>
           
                                     
                                                   <hr>
@@ -571,15 +578,18 @@
 
 
         $( "#irsolicitudboton" ).click(function() {
-          window.location.href = ("http://localhost:8000/equipo/vista/indexsolicitudes/").concat(calEvent.title);
+          
+          window.location.href = ( '{!! url('equipo/vista/indexsolicitudes/') !!}').concat(calEvent.title);
         });
 
          $( "#irindexequipo" ).click(function() {
-          window.location.href = ("http://localhost:8000/equipo/principal/").concat(calEvent.title);
+          
+          window.location.href = ('{!! url('equipo/principal/') !!}').concat(calEvent.title);
         });
 
          $( "#irfichaequipo" ).click(function() {
-          window.location.href = (" http://localhost:8000/equipo/equipo/ficha/").concat(calEvent.title);
+          
+          window.location.href = ('{!! url('equipo/equipo/ficha/') !!}').concat(calEvent.title);
         });
         
         $( "#irhistorial" ).click(function() {
