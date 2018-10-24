@@ -77,6 +77,7 @@ Route::get('equipo/rutina/ruman/Asignar2/{idequipo}/{idsubgrupo}',[
 ]);
 
 
+
 Route::resource('equipo/equipo/rutinamante','EquipoController');
 Route::get('equipo/equipo/rutina/{id}',[
     'as' => 'equipo.rutina',
@@ -140,6 +141,7 @@ Route::resource('equipo/rutina/detcaracru','detcaracruController');
 Route::resource('equipo/rutina/detrupru','detrupruController');
 Route::resource('equipo/rutina/AsignarRutina','AsignarRutinaController');
 Route::resource('equipo/rutina/GuardarRutinaPrueba','GuardarRutinaPruebaController');
+Route::resource('equipo/rutina/DetalleHerramienta','DetalleHerramientaController');
 
 Route::resource('equipo/parte','ParteController');
 Route::resource('equipo/accesorio','AccesorioController');

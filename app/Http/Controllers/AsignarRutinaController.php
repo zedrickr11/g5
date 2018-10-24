@@ -106,11 +106,13 @@ class AsignarRutinaController extends Controller
             ->select('d.*')
           ->where('d.idequipo','LIKE',$pidequipo)
             ->where('d.estado_rutina','LIKE','PENDIENTE')
+            ->where('d.idtipo_rutina','LIKE','1')
            ->orderBy('idrutina_mantenimiento','desc')
            ->paginate(100);
             return view('equipo.rutina.ruman.asignarrutina0', compact('tecnicoexterno','tecnicointerno','users','equipo','ruman','rumen','idequipo','caracru','subru','valrefru','tiporu','rutina'));
 
     }
+
 
     /**
      * Display the specified resource.
@@ -120,7 +122,7 @@ class AsignarRutinaController extends Controller
      */
     public function show(AsignarRutina $asignarRutina)
     {
-        //
+
     }
 
     public function guardartecnicos(Request $asignarRutina)

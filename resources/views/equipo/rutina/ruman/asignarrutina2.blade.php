@@ -17,7 +17,7 @@
     		<!-- general form elements -->
     		<div class="box box-success">
     			<div class="box-header with-border">
-    				<h3 class="box-title">Asignar rutina de mantenimiento</h3>
+    				<h3 class="box-title">Asignar rutina de prueba</h3>
     			</div>
           @if (count($errors)>0)
           <div class="alert alert-danger">
@@ -31,7 +31,7 @@
     			<!-- /.box-header -->
     			<!-- form start -->
 
-          <form role="form" method="POST" action="{{route('AsignarRutina.store')}}">
+          <form role="form" method="POST" action="{{route('DetalleHerramienta.store')}}">
                 {{Form::token()}}
 
                   <input type="hidden" id="idequipo" name="idequipo" style="width: 100%" value="{{$id}}">
