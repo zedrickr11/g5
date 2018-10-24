@@ -127,7 +127,7 @@ class SolicitudTrabajoController extends Controller
                   DB::rollback();
               }
 
-                return back();
+                return back()->with('solicituds','¡Solicitud creada correctamente!');
       }
 
 

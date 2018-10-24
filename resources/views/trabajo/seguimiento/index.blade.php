@@ -7,7 +7,7 @@
   </h1>
   <ol class="breadcrumb">
   <li><a href="#"><i class="fa 	fa-suitcase"></i> Trabajo</a></li>
-  <li class="active">Seguimiento de Trabajo</li>
+  <li class="active">Seguimiento de trabajo</li>
   </ol>
 </section>
 <section class="content">
