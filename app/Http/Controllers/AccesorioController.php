@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\AccesorioFormRequest;
 use App\Accesorio;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -9,6 +9,10 @@ use DB;
 use App\Equipo;
 class AccesorioController extends Controller
 {
+  function __construct()
+    {
+      $this->middleware(['auth','role:admin,jefe-mantto,jefe-sub,tec-ing']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -35,10 +39,10 @@ class AccesorioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AccesorioFormRequest $request)
     {
         Accesorio::create($request->all());
-        return back();  
+        return back()->with('accesorio', 'Se agrego un accesorio');
     }
 
     /**

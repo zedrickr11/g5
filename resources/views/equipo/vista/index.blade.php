@@ -8,7 +8,7 @@
     </h1>
     @if (session()->has('info'))
     <div class="row">
-    <div id="alerta_eq" class="col-md-offset-3 col-md-6 alert alert-success alert-dismissable">
+    <div id="alerta_eq" class="col-md-offset-3 col-md-6 col-xs-12 col-lg-6 alert alert-success alert-dismissable">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <strong>{{ session('info') }}</strong>
     </div>
@@ -16,7 +16,7 @@
     @endif
     @if (session()->has('manual'))
     <div class="row">
-    <div id="alerta_eq" class="col-md-offset-3 col-md-6 alert alert-success alert-dismissable">
+    <div id="alerta_eq" class="col-md-offset-3 col-md-6 col-xs-12 col-lg-6 alert alert-success alert-dismissable">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <strong>{{ session('manual') }}</strong>
     </div>
@@ -24,7 +24,7 @@
     @endif
     @if (session()->has('img'))
     <div class="row">
-    <div id="alerta_eq" class="col-md-offset-3 col-md-6 alert alert-success alert-dismissable">
+    <div id="alerta_eq" class="col-md-offset-3 col-md-6 col-xs-12 col-lg-6 alert alert-success alert-dismissable">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <strong>{{ session('img') }}</strong>
     </div>
@@ -32,7 +32,7 @@
     @endif
     @if (session()->has('caracesp'))
     <div class="row">
-    <div id="alerta_eq" class="col-md-offset-3 col-md-6 alert alert-success alert-dismissable">
+    <div id="alerta_eq" class="col-md-offset-3 col-md-6 col-xs-12 col-lg-6 alert alert-success alert-dismissable">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <strong>{{ session('caracesp') }}</strong>
     </div>
@@ -40,7 +40,7 @@
     @endif
     @if (session()->has('carac'))
     <div class="row">
-    <div id="alerta_eq" class="col-md-offset-3 col-md-6 alert alert-success alert-dismissable">
+    <div id="alerta_eq" class="col-md-offset-3 col-md-6 col-xs-12 col-lg-6 alert alert-success alert-dismissable">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <strong>{{ session('carac') }}</strong>
     </div>
@@ -48,13 +48,28 @@
     @endif
     @if (session()->has('solicituds'))
     <div class="row">
-    <div id="alerta_eq" class="col-md-offset-3 col-md-6 alert alert-success alert-dismissable">
+    <div id="alerta_eq" class="col-md-offset-3 col-md-6 col-xs-12 col-lg-6 alert alert-success alert-dismissable">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <strong>{{ session('solicituds') }}</strong>
     </div>
     </div>
     @endif
-
+    @if (session()->has('parte'))
+    <div class="row">
+    <div id="alerta_eq" class="col-md-offset-3 col-md-6 alert alert-success alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{ session('parte') }}</strong>
+    </div>
+    </div>
+    @endif
+    @if (session()->has('accesorio'))
+    <div class="row">
+    <div id="alerta_eq" class="col-md-offset-3 col-md-6 alert alert-success alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{ session('accesorio') }}</strong>
+    </div>
+    </div>
+    @endif
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Equipo</a></li>
 
@@ -79,14 +94,14 @@
 
             <ul class="list-group list-group-unbordered">
               <li class="list-group-item">
-                <b>Tipo de equipo  </b> <a class="pull">{{ $equipo->subgrupo }}</a>
+                <b>Tipo de equipo  </b> <br> <a class="pull">{{ $equipo->subgrupo }}</a>
 
               </li>
               <li class="list-group-item">
-                <b>Marca</b> <a class="pull-right">{{ $equipo->marca }}</a>
+                <b>Marca</b>  <br><a class="pull">{{ $equipo->marca }}</a>
               </li>
               <li class="list-group-item">
-                <b>Modelo</b> <a class="pull-right">{{ $equipo->modelo }}</a>
+                <b>Modelo</b> <br> <a class="pull">{{ $equipo->modelo }}</a>
               </li>
             </ul>
 
@@ -170,7 +185,7 @@
                   <img class="img-circle img-bordered-sm" src="{{asset('dist/img/config.png')}}" alt="user image">
                       <span class="username">
                         <a>Partes del equipo</a>
-                        <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
+                        <a href="#" class="pull-right btn-box-tool"></a>
                       </span>
                   <span class="description">{{ $equipo->nombre_equipo }}</span>
                 </div>
@@ -247,18 +262,27 @@
                 </div> <!-- /.Boniparte -->
               </div>
               <!-- /.post1 -->
-
+              @if (count($errors)>0)
+              <div class="alert alert-danger">
+                <ul>
+                @foreach ($errors->all() as $error)
+                  <li>{{$error}}</li>
+                @endforeach
+                </ul>
+              </div>
+              @endif
               <!-- Post -->
               <div class="post">
                   <div class="user-block">
                     <img class="img-circle img-bordered-sm" src="{{asset('dist/img/config.png')}}" alt="user image">
                         <span class="username">
                           <a>Accesorios del equipo </a>
-                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
+                          <a href="#" class="pull-right btn-box-tool"></a>
                         </span>
                         <span class="description">{{ $equipo->nombre_equipo }}</span>
 
                   </div>
+
                   <!-- /.user-block --><!-- /.Boniparte -->
                   <div class="row">
                       <form role="form" method="POST" action="{{route('accesorio.store')}}" enctype="multipart/form-data" >
@@ -312,8 +336,9 @@
                               <tr>
 
                                 <td>{{ $accs->nombre_accesorio}}</td>
-                                <td>{{ $accs->descripcion_accesorio}}</td>
                                 <td>{{ $accs->numero_parte_accesorio}}</td>
+                                <td>{{ $accs->descripcion_accesorio}}</td>
+
                         <td>
                             <form style="display: inline" method="POST" action="{{route('accesorio.destroy', $accs->idaccesorio)}}">
                             {!!method_field('DELETE')!!}
@@ -342,7 +367,7 @@
                   <img class="img-circle img-bordered-sm" src="{{asset('dist/img/config1.png')}}" alt="User Image">
                       <span class="username">
                         <a href="#">Imágenes del equipo</a>
-                        <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
+                        <a href="#" class="pull-right btn-box-tool"></i></a>
                       </span>
                   <span class="description">{{ $equipo->nombre_equipo }}</span>
                 </div>
@@ -460,7 +485,7 @@
 
               </div>
             </div>
-            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+            <div class="table-responsive col-lg-12 col-sm-12 col-md-12 col-xs-12">
                 <table id="detalles_carac" class="table table-striped table-bordered table-condensed table-hover">
                     <thead style="background-color:#2ab863">
                         <th>Opciones</th>
@@ -562,7 +587,7 @@
 
               </div>
             </div>
-            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+            <div class="table-responsive col-lg-12 col-sm-12 col-md-12 col-xs-12">
                 <table id="detalles_esp" class="table table-striped table-bordered table-condensed table-hover">
                     <thead style="background-color:#2ab863">
                         <th>Opciones</th>
@@ -803,6 +828,70 @@
               <td bgcolor="#ffffcc">
 
         <h3>Preventivo</h3>
+
+          @if (auth()->user()->hasRole(['tec-ing']))
+            @foreach($ruman as $st)
+            @if ($st->idequipo==$equipo->idequipo)
+            @if ($st->idtipo_rutina==1)
+            @if($st->estado_rutina=='PENDIENTE')
+            <i>Fecha a realizar próxima rutina:</i>
+            @foreach($notificacion as $noti)
+            @if ($st->idrutina_mantenimiento==$noti->rutina_mantenimiento_idrutina_mantenimiento)
+            <p>{{date("Y-m-d",strtotime($noti->start))}}</p>
+            @if(date("Y-m-d",strtotime($noti->start))<= date('Y-m-d'))
+
+            <a href="{{route('ruman.tecnicos',[$st->idrutina_mantenimiento,$equipo->idequipo])}}">
+              <button type="button" class="btn  btn-vk" name="button"><span class="glyphicon glyphicon-wrench"></button></span>
+            </a>
+
+
+              <a href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}">
+              <i class="box-title"><i href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button class="btn btn-danger"><span class="fa fa-th"></span>    @if ($st->frecuencia_rutina==1)
+            <i>Mensual</i>     @endif
+            @if ($st->frecuencia_rutina==2)
+         <i>Bimestral</i>     @endif
+            @if ($st->frecuencia_rutina==3)
+         <i>Trimestral</i>     @endif
+         @if ($st->frecuencia_rutina==6)
+      <i>Semestral</i>     @endif
+      @if ($st->frecuencia_rutina==12)
+       <i>Anual</i>     @endif</button></i>
+     </i></a>
+      <br>
+    @else
+    <a href="{{route('ruman.tecnicos',[$st->idrutina_mantenimiento,$equipo->idequipo])}}">
+      <button type="button" class="btn  btn-vk" name="button"><span class="glyphicon glyphicon-wrench"></button></span>
+    </a>
+
+
+            <a href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}">
+    <i class="box-title"><i  href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button class="btn btn-warning"><span class="fa fa-th"></span>    @if ($st->frecuencia_rutina==1)
+    <i>Mensual</i>     @endif
+    @if ($st->frecuencia_rutina==2)
+    <i>Bimestral</i>     @endif
+    @if ($st->frecuencia_rutina==3)
+    <i>Trimestral</i>     @endif
+    @if ($st->frecuencia_rutina==6)
+    <i>Semestral</i>     @endif
+    @if ($st->frecuencia_rutina==12)
+    <i>Anual</i>     @endif</button></a>
+    </h3>
+    <br>
+     @endif
+     @endif
+
+    @endforeach
+        @endif
+              @endif
+              @endif
+            @endforeach
+
+          </td>
+          </tr>
+    </table>
+      </div>
+          @else
+
         <h3 class="box-title"><a href="{{route('ruman.create2',[$equipo->idequipo,$equipo->idsubgrupo])}}"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Crear nueva rutina</button></a></h3>
 
 
@@ -870,12 +959,50 @@
 </table>
 
                               </div>
-
+@endif
                                 <div class="box-body col-md-6">
                                   <table width="280" cellspacing="1" cellpadding="3" border="0" bgcolor="#1E679A">
                                   <tr>
                                     <td bgcolor="#9AF0F7">
                             <h3>Correctivo</h3>
+                            @if (auth()->user()->hasRole(['tec-ing']))
+                              @foreach($ruman as $st)
+                              @if ($st->idequipo==$equipo->idequipo)
+                              @if ($st->idtipo_rutina==2)
+                              @if($st->estado_rutina=='PENDIENTE')
+                              <br>
+                              <i>Fecha a realizar próxima rutina:</i>
+                              @foreach($notificacion as $noti)
+                              @if ($st->idrutina_mantenimiento==$noti->rutina_mantenimiento_idrutina_mantenimiento)
+                              <p>{{date("Y-m-d",strtotime($noti->start))}}</p>
+                              @if(date("Y-m-d",strtotime($noti->start))<= date('Y-m-d'))
+                              <a href="{{route('ruman.tecnicos',[$st->idrutina_mantenimiento,$equipo->idequipo])}}">
+                                <button type="button" class="btn  btn-vk" name="button"><span class="glyphicon glyphicon-wrench"></button></span>
+                              </a>
+                              <i class="box-title"><a href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button class="btn btn-danger"><span class="fa fa-th"></span> CORRECTIVO</button></a>
+                              </i>
+                              @else
+                              <a href="{{route('ruman.tecnicos',[$st->idrutina_mantenimiento,$equipo->idequipo])}}">
+                                <button type="button" class="btn  btn-vk" name="button"><span class="glyphicon glyphicon-wrench"></button></span>
+                              </a>
+                              <i class="box-title"><a  href="{{route('ruman.edit',$st->idrutina_mantenimiento)}}"><button class="btn btn-warning"><span class="fa fa-th"></span> CORRECTIVO</button></a>
+                              </i>
+
+
+                              @endif
+                              @endif
+                              @endforeach
+                              @endif
+                                @endif
+                                @endif
+                              @endforeach
+
+
+                            </td>
+                            </tr>
+                            </table>
+                            @else
+
                             <h3 class="box-title"><a href="{{route('ruman.create2',[$equipo->idequipo,'CORRECTIVO'])}}"><button class="btn bg-light-blue"><span class="glyphicon glyphicon-plus"></span> Crear rutina correctiva</button></a></h3>
 
                             @foreach($ruman as $st)
@@ -913,6 +1040,7 @@
                           </td>
                           </tr>
                           </table>
+                          @endif
                           </div>
       </div>
 
@@ -922,6 +1050,49 @@
            <tr>
              <td bgcolor="#9AF0F7">
          <h3>Pruebas</h3>
+         @if (auth()->user()->hasRole(['tec-ing']))
+
+                    @foreach($ruman as $st)
+                    @if ($st->idequipo==$equipo->idequipo)
+                    @if ($st->idtipo_rutina==3)
+                    @if($st->estado_rutina=='PENDIENTE')
+                    <br>
+
+                    @foreach($notificacion as $noti)
+                    @if ($st->idrutina_mantenimiento==$noti->rutina_mantenimiento_idrutina_mantenimiento)
+                     <i>Fecha a realizar próxima rutina:</i>
+
+                    <p>{{date("Y-m-d",strtotime($noti->start))}}</p>
+                    @if(date("Y-m-d",strtotime($noti->start))<= date('Y-m-d'))
+                    <a href="{{route('ruman.tecnicos',[$st->idrutina_mantenimiento,$equipo->idequipo])}}">
+                      <button type="button" class="btn  btn-vk" name="button"><span class="glyphicon glyphicon-wrench"></button></span>
+                    </a>
+                    <i class="box-title"><a href="{{route('ruman.edit2',$st->idrutina_mantenimiento)}}"><button class="btn btn-danger"><span class="fa fa-th"></span> PRUEBA</button></a>
+                    </i>
+                    @else
+                    <a href="{{route('ruman.tecnicos',[$st->idrutina_mantenimiento,$equipo->idequipo])}}">
+                      <button type="button" class="btn  btn-vk" name="button"><span class="glyphicon glyphicon-wrench"></button></span>
+                    </a>
+                    <i class="box-title"><a  href="{{route('ruman.edit2',$st->idrutina_mantenimiento)}}"><button class="btn btn-warning"><span class="fa fa-th"></span> PRUEBA</button></a>
+                    </i>
+
+
+                    @endif
+                    @endif
+                    @endforeach
+                    @endif
+                      @endif
+                      @endif
+                    @endforeach
+
+
+
+
+                  </td>
+                  </tr>
+                  </table>
+         @else
+
          <h3 class="box-title"><a href="{{route('ruman.create3',[$equipo->idequipo,$equipo->idsubgrupo])}}"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Crear nueva rutina de prueba</button></a></h3>
          <h3 class="box-title"><a href="{{route('ruman.asignar2',[$equipo->idequipo,$equipo->idsubgrupo])}}"><button class="btn bg-aqua"><span class="glyphicon glyphicon-plus"></span> Copiar rutina de prrueba de otro equipo</button></a></h3>
 
@@ -966,6 +1137,7 @@
        </td>
        </tr>
        </table>
+       @endif
        </div>
 
             </div>

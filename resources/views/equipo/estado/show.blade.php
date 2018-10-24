@@ -8,7 +8,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-tv"></i> Equipo</a></li>
-        <li class="active">Estado de Equipo</li>
+        <li class="active">Estado de equipo</li>
       </ol>
 </section>
 	<section class="content">
@@ -18,14 +18,14 @@
 		<!-- general form elements -->
 		<div class="box box-success">
 			<div class="box-header with-border">
-				<h3 class="box-title">Detalle de Estado</h3>
+				<h3 class="box-title">Detalle de estado</h3>
 			</div>
 			<!-- /.box-header -->
 			<!-- form start -->
 
 				<div class="box-body col-md-6">
 					<div class="form-group">
-						<label for="est">Estado del Equipo</label>
+						<label for="est">Estado del equipo</label>
             <p>{{$estados->estado}}</p>
 					</div>
 				</div>
@@ -34,7 +34,7 @@
 						<a href="{{route('estado.index')}}">
 									<button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
 									</a>
-								
+
 					</div>
 		</div>
 		<!-- /.box -->
