@@ -165,7 +165,7 @@ Route::resource('tecnicos/externo','TecnicoExternoController');
 Route::resource('mantenimiento/areamantenimiento','AreaMantenimientoController');
 
 //selects dinamicos
-Route::get('/json-confsubgrupo','SubgrupoController@codigosubgrupo');
+Route::get('/json-confsubgrupo',['as'=>'conf.subgrupo','uses'=>'SubgrupoController@codigosubgrupo']);
 Route::get('/json-grupo','EquipoController@grupo');
 Route::get('/json-subgrupo','EquipoController@subgrupo');
 Route::get('/json-correlativo','EquipoController@correlativo');
