@@ -149,8 +149,8 @@ class CalendarioController extends Controller
 
 
 
-
         return view ('index',compact('noti','noti2'));
+
 
     }
 
