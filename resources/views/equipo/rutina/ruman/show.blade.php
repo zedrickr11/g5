@@ -19,6 +19,7 @@
 		<div class="box box-success">
 			<div class="box-header with-border">
 				<h3 class="box-title">Detalle rutina mantenimiento</h3>
+
 			</div>
 			<!-- /.box-header -->
 			<!-- form start -->
@@ -28,13 +29,13 @@
         <div class="form-group">
 
           <label for="direccion_fab">Frecuencia</label>
-             @if ($ruman->idtipo_rutina==1)
+             @if ($ruman->frecuencia_rutina==1)
           <p>Mensual</p>     @endif
-          @if ($ruman->idtipo_rutina==3)
+          @if ($ruman->frecuencia_rutina==3)
        <p>Trimestral</p>     @endif
-       @if ($ruman->idtipo_rutina==6)
+       @if ($ruman->frecuencia_rutina==6)
     <p>Semestral</p>     @endif
-    @if ($ruman->idtipo_rutina==12)
+    @if ($ruman->frecuencia_rutina==12)
  <p>Anual</p>     @endif
           </div>
 
@@ -117,13 +118,13 @@
 
         </div>
         <a href="{{route('ruman.index')}}">
-              <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> </button>
+              <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span></button>
             </a>
 
   </div>
 
 
-  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 table-responsive">
       <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
           <thead style="background-color:#2ab863">
 

@@ -33,6 +33,11 @@ Route::resource('equipo/equipo','EquipoController');
 Route::get('equipo/existente/{id}',['as'=>'existente','uses' => 'EquipoController@existente']);
 
 
+Route::get('equipo/equipo/RutinaPdf/{id}',[
+    'as' => 'equipo.RutinaPdf',
+    'uses' => 'EquipoController@RutinaPdf'
+]);
+
 Route::get('equipo/equipo/ficha/{id}',[
     'as' => 'equipo.HistorialRutina',
     'uses' => 'EquipoController@HistorialRutina'
@@ -91,6 +96,11 @@ Route::get('equipo/equipo/rutina/{id}',[
 Route::get('equipo/vista/indexsolicitudes/{id}',[
     'as' => 'equipo.vista',
     'uses' => 'EquipoIndexController@solis'
+]);
+
+Route::get('seguimiento/seguir/{idsolitud_trabajo}',[
+    'as' => 'seguimiento',
+    'uses' => 'SeguimientoController@seguir'
 ]);
 
 //index del Equipo

@@ -148,7 +148,7 @@ class AsignarRutinaController extends Controller
             $ruman=new ruman;
             $ruman->idtipo_rutina=$request->get('idtipo_rutina');
             $mytime = Carbon::now('America/Guatemala');
-            $ruman->fecha_realizacion_rutina=$mytime->toDateTimeString();
+          //  $ruman->fecha_realizacion_rutina=$mytime->toDateTimeString();
             $ruman->observaciones_rutina=$request->get('observaciones_rutina');
             $ruman->tiempo_estimado_rutina_mantenimiento=$request->get('tiempo_estimado_rutina_mantenimiento');
             $ruman->responsable_area_rutina_mantenimiento=$request->get('responsable_area_rutina_mantenimiento');
@@ -210,13 +210,14 @@ class AsignarRutinaController extends Controller
      */
     public function update(Request $request, $asignarRutina)
     {
-          $aceptar=$request->get('aceptarfecha');
 
-      if($aceptar=='aceptar'){
                  DB::table('notificacion')
                   ->where('rutina_mantenimiento_idrutina_mantenimiento',$asignarRutina)
                   ->update(['start' =>  $request->get('start'),'end' =>  $request->get('end') ,'descripcion_noti' =>  $request->get('descripcion_noti')]);
-}
+
+                              DB::table('rutina_mantenimiento')
+                                          ->where('idrutina_mantenimiento',$asignarRutina)
+                                          ->update(['responsable_area_rutina_mantenimiento' =>  $request->get('responsable_area_rutina_mantenimiento')]);
 
       $eliminar=$request->get('eliminar');
       if($eliminar=='eliminar'){
