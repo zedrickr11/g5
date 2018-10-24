@@ -1,8 +1,7 @@
 <?php
 
-Route::get('/calendario', function () {
-    return view ('index') ;
-})->middleware('auth');
+Route::get('calendario', 'CalendarioController@index');
+
 Route::get('/', function () {
     return view ('auth.login') ;
 });
@@ -208,8 +207,8 @@ Route::resource('almacen/herramienta','HerramientaController');
 
 
 //calendario
-Route::get('/json-calendarioCorrectivo','CalendarioController@llenarcalendarioCorrectivo');
-Route::get('/json-calendarioPreventivo','CalendarioController@llenarcalendarioPreventivo');
+Route::get('/json-calendarioCorrectivo',['as'=>'calendarioCorrectivo','uses'=> 'CalendarioController@llenarcalendarioCorrectivo']);
+Route::get('/json-calendarioPreventivo',['as'=>'calendarioPreventivo','uses'=> 'CalendarioController@llenarcalendarioPreventivo']);
 
 
 //manuales
