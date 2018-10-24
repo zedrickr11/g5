@@ -101,47 +101,7 @@
           <!-- Messages: style can be found in dropdown.less-->
 
           <!-- Notifications: style can be found in dropdown.less -->
-          <li class="dropdown notifications-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">Tienes 5 notificaciones</li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-warning text-yellow"></i> Mantto preventivo a equipo 1
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-warning text-yellow"></i>  Mantto preventivo a equipo 2
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-warning text-yellow"></i>  Mantto preventivo a equipo 3
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-warning text-yellow"></i>  Mantto preventivo a equipo 4
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-warning text-yellow"></i>  Mantto preventivo a equipo 5
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="footer"><a href="#">Ver todo</a></li>
-            </ul>
-          </li>
-          <!-- Tasks: style can be found in dropdown.less -->
+          
 
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
@@ -199,14 +159,15 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <div class="pull-right hidden-xs">
+    
+    <div class="pull-right ">  
+      <b>Version</b> 1.0.0 <br>
+      <strong>All rights reserved.</strong><br>
       <strong>Copyright &copy; 2018 </strong>
-      
-      <b>Version</b> 1.0.0
-      <strong>All rights reserved.</strong>
     </div>
-   
-     <strong><a href="#"> | UNIVERSIDAD MESOAMERICANA QUETGO. | Ronald Perez | José Bonilla | Andy Yee | Zedrick Rodríguez | Fredy Ramírez | </a>.</strong> 
+    
+    <img  src="{{asset('login/images/logom.png')}}" width="50" height="50" >
+    <strong  style=" padding-left: 25%">| Ronald Perez | José Bonilla | Andy Yee | Zedrick Rodríguez | Fredy Ramírez |</strong> 
     
   </footer>
 

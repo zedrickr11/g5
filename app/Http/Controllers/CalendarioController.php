@@ -11,6 +11,7 @@ use App\Notificacion;
 use App\Rutina_mantenimiento;
 use App\Equipo;
 
+
 use DB;
 
 
@@ -66,8 +67,6 @@ class CalendarioController extends Controller
 
             return response()->json($eventos);
 
-            
-           
           }
 
 
@@ -126,10 +125,14 @@ class CalendarioController extends Controller
            
           }
 
+        
 
 
           
 
     }
+
+
+  
     
 }
