@@ -89,6 +89,12 @@ $('#liSeguimiento').addClass("active");
 $('#solitud_trabajo_idsolitud_trabajo').select2({
   theme: "classic"
 });
+
+
+
+
+
+
 </script>
 @endpush
 

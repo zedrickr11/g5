@@ -432,7 +432,7 @@ if($request->get('enviar')=='enviado'){
         $noti->end=$request->get('end');
         $noti->rutina_mantenimiento_idrutina_mantenimiento=$ruman->idrutina_mantenimiento;
         $noti->estado_notificacion='0';
-        $noti->backgroundColor='yellow';
+        $noti->backgroundColor='#FFBF00';
         $noti->textColor='white';
         $noti->title=$request->get('idequipo');
         $noti->save();
@@ -681,7 +681,7 @@ if("$estado_rutina"=="REALIZADO" and $rutinatipo==1){
          $noti->end=$request->get('end22');
          $noti->rutina_mantenimiento_idrutina_mantenimiento=$ruman->idrutina_mantenimiento;
          $noti->estado_notificacion='0';
-         $noti->backgroundColor='#FFBF00';
+         $noti->backgroundColor='#DF3A01';
          $noti->textColor='white';
          $noti->title=$request->get('idequipo');
          $noti->save();

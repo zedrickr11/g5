@@ -46,7 +46,14 @@
     </div>
     </div>
     @endif
-
+    @if (session()->has('solicituds'))
+    <div class="row">
+    <div id="alerta_eq" class="col-md-offset-3 col-md-6 alert alert-success alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{ session('solicituds') }}</strong>
+    </div>
+    </div>
+    @endif
 
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Equipo</a></li>
@@ -666,7 +673,7 @@
                            </textarea>
                           </div>
 
-                     
+
                       </div>
                       <div class="box-body col-md-12">
                          <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span> </button>
