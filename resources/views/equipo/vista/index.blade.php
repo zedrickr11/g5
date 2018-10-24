@@ -54,7 +54,22 @@
     </div>
     </div>
     @endif
-
+    @if (session()->has('parte'))
+    <div class="row">
+    <div id="alerta_eq" class="col-md-offset-3 col-md-6 alert alert-success alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{ session('parte') }}</strong>
+    </div>
+    </div>
+    @endif
+    @if (session()->has('accesorio'))
+    <div class="row">
+    <div id="alerta_eq" class="col-md-offset-3 col-md-6 alert alert-success alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{ session('accesorio') }}</strong>
+    </div>
+    </div>
+    @endif
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Equipo</a></li>
 
@@ -170,7 +185,7 @@
                   <img class="img-circle img-bordered-sm" src="{{asset('dist/img/config.png')}}" alt="user image">
                       <span class="username">
                         <a>Partes del equipo</a>
-                        <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
+                        <a href="#" class="pull-right btn-box-tool"></a>
                       </span>
                   <span class="description">{{ $equipo->nombre_equipo }}</span>
                 </div>
@@ -247,18 +262,27 @@
                 </div> <!-- /.Boniparte -->
               </div>
               <!-- /.post1 -->
-
+              @if (count($errors)>0)
+              <div class="alert alert-danger">
+                <ul>
+                @foreach ($errors->all() as $error)
+                  <li>{{$error}}</li>
+                @endforeach
+                </ul>
+              </div>
+              @endif
               <!-- Post -->
               <div class="post">
                   <div class="user-block">
                     <img class="img-circle img-bordered-sm" src="{{asset('dist/img/config.png')}}" alt="user image">
                         <span class="username">
                           <a>Accesorios del equipo </a>
-                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
+                          <a href="#" class="pull-right btn-box-tool"></a>
                         </span>
                         <span class="description">{{ $equipo->nombre_equipo }}</span>
 
                   </div>
+
                   <!-- /.user-block --><!-- /.Boniparte -->
                   <div class="row">
                       <form role="form" method="POST" action="{{route('accesorio.store')}}" enctype="multipart/form-data" >
@@ -312,8 +336,9 @@
                               <tr>
 
                                 <td>{{ $accs->nombre_accesorio}}</td>
-                                <td>{{ $accs->descripcion_accesorio}}</td>
                                 <td>{{ $accs->numero_parte_accesorio}}</td>
+                                <td>{{ $accs->descripcion_accesorio}}</td>
+
                         <td>
                             <form style="display: inline" method="POST" action="{{route('accesorio.destroy', $accs->idaccesorio)}}">
                             {!!method_field('DELETE')!!}
@@ -342,7 +367,7 @@
                   <img class="img-circle img-bordered-sm" src="{{asset('dist/img/config1.png')}}" alt="User Image">
                       <span class="username">
                         <a href="#">Imágenes del equipo</a>
-                        <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
+                        <a href="#" class="pull-right btn-box-tool"></i></a>
                       </span>
                   <span class="description">{{ $equipo->nombre_equipo }}</span>
                 </div>
