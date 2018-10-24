@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Http\Requests\EstadoFormRequest;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
@@ -52,7 +52,7 @@ class EstadoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EstadoFormRequest $request)
     {
         Estado::create($request->all());
         return redirect()->route('estado.index');
@@ -89,7 +89,7 @@ class EstadoController extends Controller
      * @param  \App\Estado  $estado
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EstadoFormRequest $request, $id)
     {
         Estado::findOrFail($id)->update($request->all());
       return redirect()->route('estado.index');    }

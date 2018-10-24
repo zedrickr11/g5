@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\AccesorioFormRequest;
 use App\Accesorio;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -35,10 +35,10 @@ class AccesorioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AccesorioFormRequest $request)
     {
         Accesorio::create($request->all());
-        return back();  
+        return back()->with('accesorio', 'Se agrego un accesorio');
     }
 
     /**

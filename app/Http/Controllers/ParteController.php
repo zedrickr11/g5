@@ -37,10 +37,10 @@ class ParteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ParteFormRequest $request)
     {
         Parte::create($request->all());
-        return back();
+        return back()->with('parte', 'Se agrego una parte');
     }
 
     /**

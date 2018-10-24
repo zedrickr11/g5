@@ -3,11 +3,11 @@
 <section class="content-header">
       <h1>
         Equipo
-        <small>Estado del Equipo</small>
+        <small>Estados de equipos</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-tv"></i> Equipo</a></li>
-        <li class="active">Estado De Equipo</li>
+        <li class="active">Estados de equipos</li>
       </ol>
 	</section>
 	<section class="content">
@@ -17,7 +17,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="box">
             <div class="box-header">
-			  <h3 class="box-title">Listado de Estados <a href="estado/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
+			  <h3 class="box-title">Listado de estados <a href="estado/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
 			  		<!--<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a>-->
           </h3>
             </div>
