@@ -102,7 +102,7 @@ class DetalleHerramientaController extends Controller
           $ruman->idtipo_rutina=3;
           $ruman->idequipo=$request->get('idequipo');
           $mytime = Carbon::now('America/Guatemala');
-          $ruman->fecha_realizacion_rutina=$mytime->toDateTimeString();
+        //  $ruman->fecha_realizacion_rutina=$mytime->toDateTimeString();
           $ruman->observaciones_rutina=$observaciones_rutina[$num];
           $ruman->tiempo_estimado_rutina_mantenimiento=$tiempo_estimado_rutina_mantenimiento[$num];
           $ruman->responsable_area_rutina_mantenimiento=$responsable_area_rutina_mantenimiento[$num];
