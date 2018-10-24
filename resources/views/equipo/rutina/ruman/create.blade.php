@@ -1,7 +1,5 @@
 @extends ('layouts.admin')
 @section ('contenido')
-<link rel="stylesheet" href="../../../../../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
-<link rel="stylesheet" href="../../../../../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 
 <section class="content-header">
       <h1>
@@ -440,41 +438,12 @@
 
 
 
-<script src="{{asset('ajax/jquery.min.js')}}"></script>
-<script src="{{asset('ajax/bootstrap.min.js')}}"></script>
-<script src="{{asset('ajax/select2.min.js')}}"></script>
 
+@push('scripts')
 
-
-<!-- jQuery 3 -->
-<script src="../../../../../bower_components/jquery/dist/jquery.min.js"></script>
-<!-- date-range-picker -->
-<script src="../../../../../bower_components/moment/min/moment.min.js"></script>
-<script src="../../../../../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-<!-- bootstrap datepicker -->
-<script src="../../../../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-
-<!-- bootstrap time picker -->
-<script src="../plugins/timepicker/bootstrap-timepicker.min.js"></script>
 
 
 <script>
-//$('#reservationtime').data('daterangepicker').setStartDate('30/10/2020');
-$('#reservationtime').daterangepicker({
-  timePicker: true,
-  timePickerIncrement: 1,
-  format: 'DD/MM/YYYY h:mm A'
-//  "setDate": "30/10/2030",//moment().startOf('hour'),
-  //endDate: moment().startOf('hour').add(32, 'hour'),
-
-
-
-  },function(start, end, label) {
-
-  alert(start.format('YYYY/MM/DD h:mm A')+ end.format('YYYY/MM/DD h:mm A'));
-
-  //console.log("A new date selection was made: " + start.format('YYYY-MM-DD'). + ' to ' + end.format('YYYY-MM-DD'));
-});
 
 
 
@@ -677,5 +646,5 @@ function eliminar3(index){
   $('#liIngresos').addClass("active");
 </script>
 
-
+@endpush
 @endsection
