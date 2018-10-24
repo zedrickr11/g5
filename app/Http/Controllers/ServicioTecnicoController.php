@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\ServicioTecnicoFormRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
@@ -20,17 +20,17 @@ class ServicioTecnicoController extends Controller
     public function index(Request $request)
     {
         //$servicioTecnicos=ServicioTecnico::all();
-        //return view('equipo.servicioTecnico.index', compact('servicioTecnicos'));  
+        //return view('equipo.servicioTecnico.index', compact('servicioTecnicos'));
         if ($request)
         {
             $query=trim($request->get('searchText'));
             $servicioTecnicos=DB::table('servicio_tecnico as f')
             ->select('*')
-            ->where('nombre_empresa_sevicio_tecnico','LIKE','%'.$query.'%') 
+            ->where('nombre_empresa_sevicio_tecnico','LIKE','%'.$query.'%')
             ->orderBy('idservicio_tecnico','asc')
             ->paginate(10);
             return view('equipo.servicioTecnico.index',["servicioTecnicos"=>$servicioTecnicos,"searchText"=>$query]);
-        }  
+        }
     }
 
     /**
@@ -49,7 +49,7 @@ class ServicioTecnicoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ServicioTecnicoFormRequest $request)
     {
         ServicioTecnico::create($request->all());
         return redirect()->route('servicioTecnico.index');
@@ -86,7 +86,7 @@ class ServicioTecnicoController extends Controller
      * @param  \App\ServicioTecnico  $servicioTecnico
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,  $id)
+    public function update(ServicioTecnicoFormRequest $request,  $id)
     {
         ServicioTecnico::findOrFail($id)->update($request->all());
       return redirect()->route('servicioTecnico.index');

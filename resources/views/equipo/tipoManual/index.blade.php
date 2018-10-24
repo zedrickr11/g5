@@ -3,11 +3,11 @@
 <section class="content-header">
       <h1>
         Equipo
-        <small>Tipo de Manual</small>
+        <small>Tipo de manual</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-tv"></i> Equipo</a></li>
-        <li class="active">Tipo de Manual</li>
+        <li><a href="#"><i class="fa fa-tv"></i>Equipo</a></li>
+        <li class="active">Tipo de manual</li>
       </ol>
 	</section>
 	<section class="content">
@@ -17,7 +17,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="box">
             <div class="box-header">
-			  <h3 class="box-title">Listado de Tipos de Manual <a href="tipoManual/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
+			  <h3 class="box-title">Listado de tipos de manuales <a href="tipoManual/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
 			  	<!--	<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a> -->
           </h3>
             </div>
@@ -30,7 +30,7 @@
                     <thead>
                     <tr>
                       <th>Id</th>
-                      <th>Tipo de Manual</th>
+                      <th>Tipo de manual</th>
 
                       <th>Opciones</th>
                     </tr>

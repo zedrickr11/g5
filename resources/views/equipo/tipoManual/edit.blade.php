@@ -4,11 +4,11 @@
 <section class="content-header">
       <h1>
         Equipo
-        <small>Tipo de Manual</small>
+        <small>Tipo de manual</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-tv"></i> Equipo</a></li>
-        <li class="active">Tipo de Manual</li>
+        <li class="active">Tipo de manual</li>
       </ol>
 </section>
 	<section class="content">
@@ -18,7 +18,7 @@
 		<!-- general form elements -->
 		<div class="box box-success">
 			<div class="box-header with-border">
-				<h3 class="box-title">Editar Tipo de Manual</h3>
+				<h3 class="box-title">Editar tipo de manual</h3>
 			</div>
 			<!-- /.box-header -->
 			<!-- form start -->
@@ -27,7 +27,7 @@
 				{!!csrf_field()!!}
 				<div class="box-body col-md-6">
 					<div class="form-group">
-						<label for="est">Estado del Equipo</label>
+						<label for="est">Tipo de manual</label>
 						<input type="text" class="form-control" name="nombre_tipo_manual" value="{{$tipoManuals->nombre_tipo_manual}}">
 					</div>
 				</div>

@@ -4,11 +4,11 @@
 <section class="content-header">
       <h1>
         Equipo
-        <small>Servicio Tecnico</small>
+        <small>Servicio técnico</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-tv"></i> Equipo</a></li>
-        <li class="active">Servicio Tecnico</li>
+        <li class="active">Servicio técnico</li>
       </ol>
 </section>
 	<section class="content">
@@ -18,8 +18,17 @@
 		<!-- general form elements -->
 		<div class="box box-success">
 			<div class="box-header with-border">
-				<h3 class="box-title">Nuevo Servicio</h3>
+				<h3 class="box-title">Nuevo servicio técnico</h3>
 			</div>
+      @if (count($errors)>0)
+      <div class="alert alert-danger">
+        <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{$error}}</li>
+        @endforeach
+        </ul>
+      </div>
+      @endif
 			<!-- /.box-header -->
 			<!-- form start -->
 			<form role="form" method="POST" action="{{route('servicioTecnico.store')}}" >
@@ -27,7 +36,7 @@
 
 				<div class="box-body col-md-6">
 					<div class="form-group">
-						<label for="ser">Direccion del servicio tenico </label>
+						<label for="ser">Direccion del servicio técnico </label>
 						<input type="text" class="form-control" name="direccion_servicio_tecnico" value="{{old('direccion_servicio_tecnico')}}">
 					</div>
 					<div class="form-group">
@@ -39,7 +48,7 @@
 						<input type="text" class="form-control" name="fax_servicio_tecnico" value="{{old('fax_servicio_tecnico')}}">
 					</div>
 					<div class="form-group">
-						<label for="ser">Correo Electronico</label>
+						<label for="ser">Email</label>
 						<input type="text" class="form-control" name="correo_servicio_mantenimiento" value="{{old('correo_servicio_mantenimiento')}}">
 					</div>
 					<div class="form-group">
