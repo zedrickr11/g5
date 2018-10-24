@@ -11,37 +11,39 @@
   </ol>
 </section>
 <section class="content">
+
+
 <div class="row">
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 <div class="box">
 <div class="box-header">
 <h3 class="box-title">Listado de solicitudes <a href="{{route('solicitud.create')}}"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
  </h3>
 </div>
+
 <!-- /.box-header -->
 <div class="box-body">
 @include('trabajo.solicitud.search')
 <div class="col-md-12">
-<div class="table-responsive">
-<table  class="table table-bordered table-striped" style="table-layout:fixed;word-wrap:break-word;">
+  <div class="table-responsive">
+<table class="table table-bordered table-striped" >
 <thead>
 <tr>
-<th>Id</th>
-<th>Número</th>
+
+<th>No. solicitud</th>
 <th>Equipo</th>
 <th>Fecha</th>
-<th>Descripción</th>
 <th>Opciones</th>
 </tr>
 </thead>
 <tbody>
 @foreach ($solicitudes as $s)
 <tr>
-<td>{{ $s->idsolitud_trabajo}}</td>
+
 <td>{{ $s->numero}}</td>
 <td>{{ $s->equipo}}</td>
 <td>{{ $s->fecha}}</td>
-<td>{{ $s->descripcion}}</td>
+
 <td>
 
   <a href="{{route('solicitud.ficha',  $s->idsolitud_trabajo)}}" target="_blank">
@@ -51,6 +53,10 @@
 
 <a href="{{route('solicitud.show',$s->idsolitud_trabajo)}}">
 <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></span> </button>
+</a>
+
+<a href="{{route('seguimiento',$s->idsolitud_trabajo)}}" target="_blank">
+<button type="button"   class="btn btn-warning"><span ></span>Seguimiento</button>
 </a>
 <!--
 <form style="display: inline" method="POST" action="{{route('solicitud.destroy',$s->idsolitud_trabajo)}}">

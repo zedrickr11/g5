@@ -42,7 +42,7 @@
 <td>
 
 
-  <a href="{{route('solicitud.ficha',  $s->idsolitud_trabajo)}}">
+  <a href="{{route('solicitud.ficha',  $s->idsolitud_trabajo)}}"  target="_blank">
     <button type="button" class="btn btn-success btn-sm" name="button"><span class="fa fa-edit"></span></button>
   </a>
 
@@ -50,6 +50,10 @@
   <a href="{{route('solicitud.show',$s->idsolitud_trabajo)}}">
 
 <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></span> </button>
+</a>
+
+<a href="{{route('seguimiento',$s->idsolitud_trabajo)}}" target="_blank">
+<button type="button"   class="btn btn-warning"><span ></span>Seguimiento</button>
 </a>
 
 <!--

@@ -54,15 +54,20 @@ class PermisoTrabajoController extends Controller
      */
      public function create()
      {
- 
 
 
 
 
 
-       $solicitudes = DB::table('solitud_trabajo')
-                ->select('idsolitud_trabajo','numero  AS num')
-                ->get();
+$solicitudes=DB::table('solitud_trabajo as so')
+            ->join('equipo as e','e.idequipo','=','so.idequipo')
+            ->select('so.idsolitud_trabajo', DB::raw('CONCAT(so.numero, " - ", e.nombre_equipo,"->",e.idequipo) as nombre'))
+            ->whereNotExists(function ($query) {
+  $query->select(DB::raw(1))
+                  ->from('permiso_trabajo as pe')
+                      ->whereRaw('pe.idsolitud_trabajo= so.idsolitud_trabajo');
+            })
+            ->get();
 
      $tipos = DB::table('tipo_trabajo')
                   ->select('idtipo_trabajo','nombre_tipo  AS tipo')
