@@ -8,7 +8,7 @@
     </h1>
     @if (session()->has('info'))
     <div class="row">
-    <div id="alerta_eq" class="col-md-offset-3 col-md-6 alert alert-success alert-dismissable">
+    <div id="alerta_eq" class="col-md-offset-3 col-md-6 col-xs-12 col-lg-6 alert alert-success alert-dismissable">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <strong>{{ session('info') }}</strong>
     </div>
@@ -16,7 +16,7 @@
     @endif
     @if (session()->has('manual'))
     <div class="row">
-    <div id="alerta_eq" class="col-md-offset-3 col-md-6 alert alert-success alert-dismissable">
+    <div id="alerta_eq" class="col-md-offset-3 col-md-6 col-xs-12 col-lg-6 alert alert-success alert-dismissable">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <strong>{{ session('manual') }}</strong>
     </div>
@@ -24,7 +24,7 @@
     @endif
     @if (session()->has('img'))
     <div class="row">
-    <div id="alerta_eq" class="col-md-offset-3 col-md-6 alert alert-success alert-dismissable">
+    <div id="alerta_eq" class="col-md-offset-3 col-md-6 col-xs-12 col-lg-6 alert alert-success alert-dismissable">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <strong>{{ session('img') }}</strong>
     </div>
@@ -32,7 +32,7 @@
     @endif
     @if (session()->has('caracesp'))
     <div class="row">
-    <div id="alerta_eq" class="col-md-offset-3 col-md-6 alert alert-success alert-dismissable">
+    <div id="alerta_eq" class="col-md-offset-3 col-md-6 col-xs-12 col-lg-6 alert alert-success alert-dismissable">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <strong>{{ session('caracesp') }}</strong>
     </div>
@@ -40,7 +40,7 @@
     @endif
     @if (session()->has('carac'))
     <div class="row">
-    <div id="alerta_eq" class="col-md-offset-3 col-md-6 alert alert-success alert-dismissable">
+    <div id="alerta_eq" class="col-md-offset-3 col-md-6 col-xs-12 col-lg-6 alert alert-success alert-dismissable">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <strong>{{ session('carac') }}</strong>
     </div>
@@ -48,7 +48,7 @@
     @endif
     @if (session()->has('solicituds'))
     <div class="row">
-    <div id="alerta_eq" class="col-md-offset-3 col-md-6 alert alert-success alert-dismissable">
+    <div id="alerta_eq" class="col-md-offset-3 col-md-6 col-xs-12 col-lg-6 alert alert-success alert-dismissable">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <strong>{{ session('solicituds') }}</strong>
     </div>
