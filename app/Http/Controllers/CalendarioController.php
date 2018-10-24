@@ -21,13 +21,13 @@ class CalendarioController extends Controller
       {
         $this->middleware(['auth']);
       }
-    
+
       public function llenarcalendarioCorrectivo()
     {
             $id = Auth::id();
-            
+
           $a = auth()->user()->hasRole(['admin']);
-          
+
           //  $sql1= 'select roles.name from users, role_user, roles
           //   where users.id = role_user.user_id
           //   and role_user.role_id = roles.id
@@ -35,18 +35,18 @@ class CalendarioController extends Controller
 
           // $e = DB::select($sql1);
 
-           
+
           if ($a){
 
             $sql = "SELECT rutina_mantenimiento.estado_rutina,notificacion.idnotificacion,notificacion.descripcion_noti,notificacion.start,notificacion.end,notificacion.rutina_mantenimiento_idrutina_mantenimiento,notificacion.estado_notificacion,notificacion.backgroundColor,notificacion.textColor,notificacion.title,rutina_mantenimiento.tiempo_estimado_rutina_mantenimiento,
-                        equipo.nombre_equipo,rutina_mantenimiento.idrutina_mantenimiento  
-          from notificacion,rutina_mantenimiento,tipo_rutina,equipo 
-          where rutina_mantenimiento.idrutina_mantenimiento = notificacion.rutina_mantenimiento_idrutina_mantenimiento 
-          and rutina_mantenimiento.idtipo_rutina = tipo_rutina.idtipo_rutina 
+                        equipo.nombre_equipo,rutina_mantenimiento.idrutina_mantenimiento
+          from notificacion,rutina_mantenimiento,tipo_rutina,equipo
+          where rutina_mantenimiento.idrutina_mantenimiento = notificacion.rutina_mantenimiento_idrutina_mantenimiento
+          and rutina_mantenimiento.idtipo_rutina = tipo_rutina.idtipo_rutina
           and equipo.idequipo = rutina_mantenimiento.idequipo
-          and rutina_mantenimiento.estado_rutina != 'DESACTIVADO' 
+          and rutina_mantenimiento.estado_rutina != 'DESACTIVADO'
           and tipo_rutina = 'CORRECTIVO'";
-          
+
           $eventos= DB::select($sql,array(1,20));
 
           return response()->json($eventos);
@@ -54,12 +54,12 @@ class CalendarioController extends Controller
           }else{
 
             $sql = "SELECT rutina_mantenimiento.estado_rutina,notificacion.idnotificacion,notificacion.descripcion_noti,notificacion.start,notificacion.end,notificacion.rutina_mantenimiento_idrutina_mantenimiento,notificacion.estado_notificacion,notificacion.backgroundColor,notificacion.textColor,notificacion.title,rutina_mantenimiento.tiempo_estimado_rutina_mantenimiento,
-            equipo.nombre_equipo,rutina_mantenimiento.idrutina_mantenimiento  
-            from notificacion,rutina_mantenimiento,tipo_rutina,equipo 
-            where rutina_mantenimiento.idrutina_mantenimiento = notificacion.rutina_mantenimiento_idrutina_mantenimiento 
-            and rutina_mantenimiento.idtipo_rutina = tipo_rutina.idtipo_rutina 
+            equipo.nombre_equipo,rutina_mantenimiento.idrutina_mantenimiento
+            from notificacion,rutina_mantenimiento,tipo_rutina,equipo
+            where rutina_mantenimiento.idrutina_mantenimiento = notificacion.rutina_mantenimiento_idrutina_mantenimiento
+            and rutina_mantenimiento.idtipo_rutina = tipo_rutina.idtipo_rutina
             and equipo.idequipo = rutina_mantenimiento.idequipo
-            and rutina_mantenimiento.estado_rutina != 'DESACTIVADO' 
+            and rutina_mantenimiento.estado_rutina != 'DESACTIVADO'
             and tipo_rutina = 'CORRECTIVO'
             and responsable_area_rutina_mantenimiento =".$id;
 
@@ -71,17 +71,17 @@ class CalendarioController extends Controller
 
 
 
-          
+
 
     }
 
     public function llenarcalendarioPreventivo()
     {
-     
+
       $id = Auth::id();
-            
+
           $a = auth()->user()->hasRole(['admin']);
-          
+
           //  $sql1= 'select roles.name from users, role_user, roles
           //   where users.id = role_user.user_id
           //   and role_user.role_id = roles.id
@@ -89,18 +89,18 @@ class CalendarioController extends Controller
 
           // $e = DB::select($sql1);
 
-           
+
           if ($a){
 
             $sql = "SELECT rutina_mantenimiento.estado_rutina,notificacion.idnotificacion,notificacion.descripcion_noti,notificacion.start,notificacion.end,notificacion.rutina_mantenimiento_idrutina_mantenimiento,notificacion.estado_notificacion,notificacion.backgroundColor,notificacion.textColor,notificacion.title,rutina_mantenimiento.tiempo_estimado_rutina_mantenimiento,
-                        equipo.nombre_equipo,rutina_mantenimiento.idrutina_mantenimiento  
-          from notificacion,rutina_mantenimiento,tipo_rutina,equipo 
-          where rutina_mantenimiento.idrutina_mantenimiento = notificacion.rutina_mantenimiento_idrutina_mantenimiento 
-          and rutina_mantenimiento.idtipo_rutina = tipo_rutina.idtipo_rutina 
+                        equipo.nombre_equipo,rutina_mantenimiento.idrutina_mantenimiento
+          from notificacion,rutina_mantenimiento,tipo_rutina,equipo
+          where rutina_mantenimiento.idrutina_mantenimiento = notificacion.rutina_mantenimiento_idrutina_mantenimiento
+          and rutina_mantenimiento.idtipo_rutina = tipo_rutina.idtipo_rutina
           and equipo.idequipo = rutina_mantenimiento.idequipo
-          and rutina_mantenimiento.estado_rutina != 'DESACTIVADO' 
+          and rutina_mantenimiento.estado_rutina != 'DESACTIVADO'
           and tipo_rutina = 'PREVENTIVO'";
-          
+
           $eventos= DB::select($sql,array(1,20));
 
           return response()->json($eventos);
@@ -108,12 +108,12 @@ class CalendarioController extends Controller
           }else{
 
             $sql = "SELECT rutina_mantenimiento.estado_rutina,notificacion.idnotificacion,notificacion.descripcion_noti,notificacion.start,notificacion.end,notificacion.rutina_mantenimiento_idrutina_mantenimiento,notificacion.estado_notificacion,notificacion.backgroundColor,notificacion.textColor,notificacion.title,rutina_mantenimiento.tiempo_estimado_rutina_mantenimiento,
-            equipo.nombre_equipo,rutina_mantenimiento.idrutina_mantenimiento  
-            from notificacion,rutina_mantenimiento,tipo_rutina,equipo 
-            where rutina_mantenimiento.idrutina_mantenimiento = notificacion.rutina_mantenimiento_idrutina_mantenimiento 
-            and rutina_mantenimiento.idtipo_rutina = tipo_rutina.idtipo_rutina 
+            equipo.nombre_equipo,rutina_mantenimiento.idrutina_mantenimiento
+            from notificacion,rutina_mantenimiento,tipo_rutina,equipo
+            where rutina_mantenimiento.idrutina_mantenimiento = notificacion.rutina_mantenimiento_idrutina_mantenimiento
+            and rutina_mantenimiento.idtipo_rutina = tipo_rutina.idtipo_rutina
             and equipo.idequipo = rutina_mantenimiento.idequipo
-            and rutina_mantenimiento.estado_rutina != 'DESACTIVADO' 
+            and rutina_mantenimiento.estado_rutina != 'DESACTIVADO'
             and tipo_rutina = 'PREVENTIVO'
             and responsable_area_rutina_mantenimiento =".$id;
 
@@ -121,19 +121,19 @@ class CalendarioController extends Controller
 
             return response()->json($eventos);
 
-            
-           
+
+
           }
 
-        
 
 
-          
+
+
 
     }
 
     function index(){
-     
+
         $noti = DB::table('notificacion')
         ->select(DB::raw('count(*) as noti, backgroundColor'))
         ->where('backgroundColor','green')
@@ -151,9 +151,9 @@ class CalendarioController extends Controller
 
 
         return view ('index',compact('noti','noti2'));
-        
+
     }
 
-  
-    
+
+
 }
