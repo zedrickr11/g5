@@ -23,7 +23,7 @@ class Proveedor_repuestoController extends Controller
       if ($request)
       {
           $query=trim($request->get('searchText'));
-          $prov_insumo=DB::table('Proveedor_repuesto')
+          $prov_insumo=DB::table('proveedor_repuesto')
           ->where('nombre','LIKE','%'.$query.'%')
           ->where ('estado','=','1')
           ->orderBy('idproveedor_repuesto','desc')
