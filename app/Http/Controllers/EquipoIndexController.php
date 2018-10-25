@@ -73,7 +73,7 @@ class EquipoIndexController extends Controller
 
 
 
-        $imagen_equipo=DB::table('Imagen_equipo')
+        $imagen_equipo=DB::table('imagen_equipo')
         ->select('*')
         ->where('idequipo','=',$id)
         ->get();
@@ -81,7 +81,7 @@ class EquipoIndexController extends Controller
         $TipoManual = TipoManual::all();
         $EquipoM = Equipo::all();
 
-        $Detalle_manual =DB::table('Detalle_manual')
+        $Detalle_manual =DB::table('detalle_manual')
         ->select('*')
         ->where('idequipo','=',$id)
         ->get();
