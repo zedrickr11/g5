@@ -87,7 +87,7 @@ class EquipoController extends Controller
     }
     public function correlativo(){
       $subgrupo_id = Input::get('subgrupo_id');
-      $correlativo = DB::table('Conf_corr as c')
+      $correlativo = DB::table('conf_corr as c')
       ->select('c.actual')
       ->where('c.idsubgrupo','=',$subgrupo_id)
       ->get();
