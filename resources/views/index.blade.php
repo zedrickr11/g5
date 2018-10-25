@@ -1,6 +1,8 @@
 @extends ('layouts.admin')
 @section ('contenido')
 
+
+
 <section class="content-header">
   <div class="row">
     <div class="col-lg-3 col-xs-6">
@@ -127,7 +129,10 @@
                                         <hr>
 
                                         <strong><i class="fa fa-book margin-r-5"></i> MANTENIMIENTOS REALIZADOS: </strong>
-                                        <h4>Total de mantenimientos:  {{ $noti->noti }}</h4>
+                                 
+                                        <h4>Total de mantenimientos:  0</h4>
+                                   
+                                       
                                         
                                         
                           
@@ -135,7 +140,9 @@
                           
                                         <strong><i class="fa fa-map-marker margin-r-5"></i> MANTENIMIENTOS PENDIENTES: </strong>
                           
-                                        <h4>Total de mantenimientos:  {{ $noti2->noti2 }}</h4>
+                                      
+                                        <h4>Total de mantenimientos:  0</h4>
+                                        
 
                           
                                         <hr>
@@ -200,7 +207,7 @@
                                                   <hr>
 
                                                   <strong><i class="fa fa-book margin-r-5"></i> MANTENIMIENTOS REALIZADOS: </strong>
-                                                  <h4>Total de mantenimientos:  {{ $noti->noti }}</h4>
+                                                  <h4>Total de mantenimientos:  0</h4>
                                                   
                                                   
                                     
@@ -208,7 +215,7 @@
                                     
                                                   <strong><i class="fa fa-map-marker margin-r-5"></i> MANTENIMIENTOS PENDIENTES: </strong>
                                     
-                                                  <h4>Total de mantenimientos:  {{ $noti2->noti2 }}</h4>
+                                                  <h4>Total de mantenimientos:  0</h4>
           
                                     
                                                   <hr>
@@ -428,31 +435,38 @@
           
 
 
-          $( "#irsolicitudboton" ).click(function() {
-            window.location.href = ("http://localhost:8000/equipo/vista/indexsolicitudes/").concat(calEvent.title);
+        $( "#irsolicitudboton" ).click(function() {
+          
+          window.location.href = ( '{!! url('equipo/vista/indexsolicitudes/') !!}').concat('/').concat(calEvent.title);
+        });
+
+         $( "#irindexequipo" ).click(function() {
+          
+          window.location.href = ('{!! url('equipo/principal/') !!}').concat('/').concat(calEvent.title);
+        });
+
+         $( "#irfichaequipo" ).click(function() {
+          
+          window.location.href = ('{!! url('equipo/equipo/ficha/') !!}').concat('/').concat(calEvent.title);
+        });
+        
+        $( "#irhistorial" ).click(function() {
+          window.location.href = ("#");
+        });
+
+        $( "#irrutina" ).click(function() {
+         
+          
+          window.location.href = ('{!! url('equipo/rutina/ruman/') !!}').concat('/').concat(calEvent.idrutina_mantenimiento).concat('/edit');
+
           });
 
-           $( "#irindexequipo" ).click(function() {
-            window.location.href = ("http://localhost:8000/equipo/principal/").concat(calEvent.title);
-          });
+        $( "#verrutina" ).click(function() {
 
-           $( "#irfichaequipo" ).click(function() {
-            window.location.href = (" http://localhost:8000/equipo/equipo/ficha/").concat(calEvent.title);
+
+            window.location.href = ('{!! url('equipo/rutina/ruman/') !!}').concat('/').concat(calEvent.idrutina_mantenimiento)
           });
           
-          $( "#irhistorial" ).click(function() {
-            window.location.href = ("#");
-          });
-          
-          $( "#irrutina" ).click(function() {
-            window.location.href = (" //localhost:8000/equipo/rutina/ruman/").concat(calEvent.idrutina_mantenimiento).concat("/edit");
-          });
-
-           $( "#verrutina" ).click(function() {
-            window.location.href = (" //localhost:8000/equipo/rutina/ruman/").concat(calEvent.idrutina_mantenimiento)
-          });
-          
-
 
           
 
@@ -561,25 +575,24 @@
         $('#descripcionMantenimiento').html(calEvent.descripcion_noti);
       
        
-        // $('#descripcionmantenimiento').val(calEvent.descripcionmantenimiento);
-        // $('#fechacreacion').val(calEvent.start);
-        // $('#fechafinal').val(calEvent.end);
-        // $('#horamantenimiento').val(calEvent.hora);
-        // $('#estadonotificacion').val(calEvent.estadonotificacion);
+      
       
           
 
 
         $( "#irsolicitudboton" ).click(function() {
-          window.location.href = ("http://localhost:8000/equipo/vista/indexsolicitudes/").concat(calEvent.title);
+          
+          window.location.href = ( '{!! url('equipo/vista/indexsolicitudes/') !!}').concat('/').concat(calEvent.title);
         });
 
          $( "#irindexequipo" ).click(function() {
-          window.location.href = ("http://localhost:8000/equipo/principal/").concat(calEvent.title);
+          
+          window.location.href = ('{!! url('equipo/principal/') !!}').concat('/').concat(calEvent.title);
         });
 
          $( "#irfichaequipo" ).click(function() {
-          window.location.href = (" http://localhost:8000/equipo/equipo/ficha/").concat(calEvent.title);
+          
+          window.location.href = ('{!! url('equipo/equipo/ficha/') !!}').concat('/').concat(calEvent.title);
         });
         
         $( "#irhistorial" ).click(function() {
@@ -587,11 +600,16 @@
         });
 
         $( "#irrutina" ).click(function() {
-            window.location.href = (" //localhost:8000/equipo/rutina/ruman/").concat(calEvent.idrutina_mantenimiento).concat("/edit");
+         
+          
+          window.location.href = ('{!! url('equipo/rutina/ruman/') !!}').concat('/').concat(calEvent.idrutina_mantenimiento).concat('/edit');
+
           });
 
         $( "#verrutina" ).click(function() {
-            window.location.href = (" //localhost:8000/equipo/rutina/ruman/").concat(calEvent.idrutina_mantenimiento)
+
+
+            window.location.href = ('{!! url('equipo/rutina/ruman/') !!}').concat('/').concat(calEvent.idrutina_mantenimiento)
           });
           
 
