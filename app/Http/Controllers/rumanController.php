@@ -67,7 +67,7 @@ class rumanController extends Controller
       ->select('e.*','f.idrutina_mantenimiento','d.tipo_rutina as idtipo_rutina','f.estado_rutina')
 
 
-       ->where('e.nombre_equipo','LIKE','%'.$query.'%')
+       ->where('e.idequipo','LIKE','%'.$query.'%')
         ->orderBy('idrutina_mantenimiento','desc')
         ->paginate(10);
         return view('equipo.rutina.ruman.index',["ruman"=>$ruman,"searchText"=>$query]);
@@ -493,6 +493,44 @@ if($request->get('enviar')=='enviado'){
   public function show($id)
 
   {
+
+    $herramienta=DB::table('herramienta as he')
+    ->join('detalle_herramienta as de','de.idherramienta','=','he.idherramienta')
+    ->join('rutina_mantenimiento as ru','ru.idrutina_mantenimiento','=','de.idrutina_mantenimiento')
+    ->select('*')
+    ->where('ru.idrutina_mantenimiento',$id)
+    ->get();
+
+    $insumo=DB::table('insumo as he')
+    ->join('detalle_insumo_rutina as de','de.idinsumo','=','he.idinsumo')
+    ->join('rutina_mantenimiento as ru','ru.idrutina_mantenimiento','=','de.idrutina_mantenimiento')
+    ->select('*')
+    ->where('ru.idrutina_mantenimiento',$id)
+    ->get();
+    $repuesto=DB::table('repuesto as he')
+    ->join('detalle_repuesto_rutina as de','de.idrepuesto','=','he.idrepuesto')
+    ->join('rutina_mantenimiento as ru','ru.idrutina_mantenimiento','=','de.idrutina_mantenimiento')
+    ->select('*')
+    ->where('ru.idrutina_mantenimiento',$id)
+    ->get();
+    $tecnicoexterno=DB::table('rutina_mantenimiento_tecnico_externo as rupru')
+    ->join('tecnico_externo as va','va.idtecnico_externo','=','rupru.idtecnico_externo')
+    ->join('rutina_mantenimiento as ru','ru.idrutina_mantenimiento','=','rupru.idrutina_mantenimiento')
+    ->select('*','va.*')
+    ->where('rupru.idrutina_mantenimiento',$id)
+    ->get();
+    $tecnicointerno=DB::table('rutina_mantenimiento_tecnico_interno as rupru')
+    ->join('tecnico_interno as va','va.idtecnico','=','rupru.idtecnico')
+    ->join('rutina_mantenimiento as ru','ru.idrutina_mantenimiento','=','rupru.idrutina_mantenimiento')
+    ->select('*','va.*')
+    ->where('rupru.idrutina_mantenimiento',$id)
+    ->get();
+
+    $subpru=subpru::all();
+    $valrefpru=valrefpru::all();
+    $pruru=pruru::all();
+    $DetalleRutinaPrueba=DetalleRutinaPrueba::all();
+
      $users=User::all();
     $caracru=caracru::all();
     $subru=subru::all();
@@ -502,7 +540,7 @@ if($request->get('enviar')=='enviado'){
     $equipo=Equipo::all();
     $ruman=ruman::findOrFail($id);
     $permisotrabajo=PermisoTrabajo::all();
-    return view('equipo.rutina.ruman.show', compact('users','detallerutina','ruman','tiporu','equipo','permisotrabajo','caracru','subru','valrefru'));
+    return view('equipo.rutina.ruman.show', compact('repuesto','insumo','herramienta','tecnicoexterno','tecnicointerno','DetalleRutinaPrueba','pruru','valrefpru','subpru','users','detallerutina','ruman','tiporu','equipo','permisotrabajo','caracru','subru','valrefru'));
 
   }
 
