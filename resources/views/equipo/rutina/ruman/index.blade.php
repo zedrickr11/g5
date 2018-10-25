@@ -59,9 +59,7 @@
 
               <td>
 
-                  <a href="{{route('ruman.show',$cat->idrutina_mantenimiento)}}">
-                    <button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-cog"></button>
-                  </a>
+                
                   <a href="{{route('ruman.show',$cat->idrutina_mantenimiento)}}">
                     <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></button>
                   </a>

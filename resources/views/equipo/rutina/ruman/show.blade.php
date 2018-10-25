@@ -117,13 +117,13 @@
                   @endforeach
 
         </div>
-        <a href="{{route('ruman.index')}}">
+        <a href="javascript:history.back(-1);">
               <button type="button" name="atras" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span></button>
             </a>
 
   </div>
 
-
+@if($ruman->idtipo_rutina!=3)
   <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 table-responsive">
       <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
           <thead style="background-color:#2ab863">
@@ -163,6 +163,197 @@
           </tbody>
       </table>
    </div>
+@else
+
+<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 table-responsive">
+    <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
+        <thead style="background-color:#2ab863">
+
+            <th>Caracteristica</th>
+            <th>Subgrupo</th>
+            <th>Valor</th>
+              <th>Norma</th>
+                <th>Unidad de medida</th>
+              <th>Estado</th>
+
+
+
+
+        </thead>
+        <tfoot>
+
+
+        </tfoot>
+        <tbody>
+            @foreach($DetalleRutinaPrueba as $det)
+               @if ($det->idrutina_mantenimiento==$ruman->idrutina_mantenimiento)
+            <tr>
+
+                                          @foreach($pruru as $dets)
+                                          @if ($dets->idprueba_rutina==$det->idprueba_rutina)
+                                <td>{{$dets->prueba_rutina}}</td>  @endif @endforeach
+                                @foreach($subpru as $dets)
+                                @if ($dets->idsubgrupo_prueba==$det->idsubgrupo_prueba)
+                                <td>{{$dets->subgrupo_prueba}}</td>@endif @endforeach
+                                @foreach($valrefpru as $dets)
+                                @if ($dets->idvalor_ref_prueba==$det->idvalor_ref_prueba)
+                                <td>{{$dets->descripcion}}</td>@endif @endforeach
+                                  <td>{{$det->norma_detalle_rutina_prueba}}</td>
+                                    <td>{{$det->unidad_medida_detalle_rutina_prueba}}</td>
+                                  <td>{{$det->estado_detalle_rutina_prueba}}</td>
+
+              </tr>
+            @endif
+            @endforeach
+        </tbody>
+    </table>
+ </div>
+
+
+   @endif
+
+   <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 table-responsive">
+
+     <div class="box-body col-md-6">
+    <h3>Técnico interno </h3>
+
+        <table id="detalles2" class="table table-striped table-bordered table-condensed table-hover">
+            <thead style="background-color:#2ab863">
+                <th>Técnico interno</th>
+
+            </thead>
+            <tfoot>
+
+                @foreach($tecnicointerno as $det)
+                <tr>
+                  <td>{{$det->nombre_tecnico}}</td>
+                </tr>
+                    @endforeach
+            </tfoot>
+            <tbody>
+
+            </tbody>
+        </table>
+    <br>
+    <br>
+
+
+
+
+    </div>
+
+    <div class="box-body col-md-6">
+   <h3>Técnico externos </h3>
+
+       <table id="detalles2" class="table table-striped table-bordered table-condensed table-hover">
+           <thead style="background-color:#2ab863">
+               <th>Técnico externo</th>
+
+           </thead>
+           <tfoot>
+
+               @foreach($tecnicoexterno as $det)
+               <tr>
+                 <td>{{$det->nombre_tecnico_externo}}</td>
+               </tr>
+                   @endforeach
+           </tfoot>
+           <tbody>
+
+           </tbody>
+       </table>
+   <br>
+   <br>
+
+
+
+
+   </div>
+
+   </div>
+
+<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 table-responsive">
+
+  <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+    <h3>Insumo </h3>
+
+        <table id="detalles2" class="table table-striped table-bordered table-condensed table-hover">
+            <thead style="background-color:#2ab863">
+                <th>Nombre</th>
+                    <th>Cantidad</th>
+            </thead>
+            <tfoot>
+
+                @foreach($insumo as $det)
+                <tr>
+                  <td>{{$det->nombre}}</td>
+                    <td>{{$det->cantidad}}</td>
+                </tr>
+                    @endforeach
+            </tfoot>
+            <tbody>
+
+            </tbody>
+        </table>
+    <br>
+    <br>
+
+
+
+  </div>
+
+  <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+    <h3>Repuesto </h3>
+
+        <table id="detalles2" class="table table-striped table-bordered table-condensed table-hover">
+            <thead style="background-color:#2ab863">
+                <th>Nombre</th>
+                    <th>Cantidad</th>
+            </thead>
+            <tfoot>
+
+                @foreach($repuesto as $det)
+                <tr>
+                  <td>{{$det->nombre}}</td>
+                    <td>{{$det->cantidad}}</td>
+                </tr>
+                    @endforeach
+            </tfoot>
+            <tbody>
+
+            </tbody>
+        </table>
+    <br>
+    <br>
+  </div>
+  <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+    <h3>Herramienta </h3>
+
+        <table id="detalles2" class="table table-striped table-bordered table-condensed table-hover">
+            <thead style="background-color:#2ab863">
+                <th>Nombre</th>
+
+            </thead>
+            <tfoot>
+
+                @foreach($herramienta as $det)
+                <tr>
+                  <td>{{$det->herramienta}}</td>
+
+                </tr>
+                    @endforeach
+            </tfoot>
+            <tbody>
+
+            </tbody>
+        </table>
+    <br>
+    <br>
+  </div>
+
+</div>
+
+
 
 
 				<!-- /.box-body -->

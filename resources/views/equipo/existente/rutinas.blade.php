@@ -70,6 +70,9 @@
   <a href="{{route('equipo.RutinaPdf',$rutina->idrutina_mantenimiento)}}" target="_blank">
     <button type="button" class="btn btn-success btn-sm" name="button"><span class="fa fa-edit"></span></button>
   </a>
+  <a href="{{route('ruman.show',$rutina->idrutina_mantenimiento)}}">
+    <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></button>
+  </a>
 
 
 
