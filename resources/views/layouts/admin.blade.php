@@ -79,7 +79,7 @@
 <div class="wrapper">
 
   <header class="main-header">
-     
+
     <!-- Logo -->
     <a href="#" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -101,7 +101,7 @@
           <!-- Messages: style can be found in dropdown.less-->
 
           <!-- Notifications: style can be found in dropdown.less -->
-          
+
 
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
@@ -159,16 +159,16 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    
-    <div class="pull-right ">  
+
+    <div class="pull-right ">
       <b>Version</b> 1.0.0 <br>
       <strong>All rights reserved.</strong><br>
       <strong>Copyright &copy; 2018 </strong>
     </div>
-    
+
     <img  src="{{asset('login/images/logom.png')}}" width="50" height="50" >
-    <strong  style=" padding-left: 25%">| Ronald Perez | José Bonilla | Andy Yee | Zedrick Rodríguez | Fredy Ramírez |</strong> 
-    
+    <strong  style=" padding-left: 25%">| Ronald Perez | José Bonilla | Andy Yee | Zedrick Rodríguez | Fredy Ramírez |</strong>
+
   </footer>
 
   <!-- Control Sidebar -->

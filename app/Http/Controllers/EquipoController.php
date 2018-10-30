@@ -243,9 +243,6 @@ class EquipoController extends Controller
     {
       $equipo=DB::table('equipo as e')
       ->join('subgrupo as s','s.idsubgrupo','=','e.idsubgrupo')
-      ->join('conf_corr as c','s.idsubgrupo','=','c.idsubgrupo')
-      ->join('fabricante as fab','fab.idfabricante','e.idfabricante')
-      ->join('proveedor as prov','prov.id_proveedor','e.id_proveedor')
       ->join('users as user','user.id','e.users_id')
       ->select('*',DB::raw('CONCAT(e.idarea,e.idgrupo,s.codigosubgrupo) as inventario '), DB::raw('CONCAT(e.idregion,e.iddepartamento,e.idtipounidad,e.idunidadsalud,e.correlativo) AS codigo'))
       ->where('e.idequipo',$id)
