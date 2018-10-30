@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="{{asset('login/images/icons/favicon.ico')}}"/>
+	<link rel="icon" type="image/png" href="{{asset('login/images/igss.png')}}"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('login/vendor/bootstrap/css/bootstrap.min.css')}}">
 <!--===============================================================================================-->
@@ -56,13 +56,17 @@
 						</span>
 
 						<div class="wrap-input100 validate-input" data-validate = "Enter username">
-							<input class="input100" type="email" name="email" placeholder="Correo Electrónico">
+							<input required class="input100" type="email" name="email" placeholder="Correo Electrónico">
 							<span class="focus-input100" data-placeholder="&#xf207;"></span>
+
+
 						</div>
 
 						<div class="wrap-input100 validate-input" data-validate="Enter password">
-							<input class="input100" type="password" name="password" placeholder="Contraseña">
+							<input required class="input100" type="password" name="password" placeholder="Contraseña">
 							<span class="focus-input100" data-placeholder="&#xf191;"></span>
+
+							{!!$errors->first('email','<span class="danger">:message</span>')!!}
 						</div>
 						<div class="container-login100-form-btn">
 							<button class="login100-form-btn">
