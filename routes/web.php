@@ -31,7 +31,8 @@ Route::resource('equipo/advertencia','AdvertenciaController');
 Route::resource('equipo/confcorrelativo','Conf_corrController');
 Route::resource('equipo/equipo','EquipoController');
 Route::get('equipo/existente/{id}',['as'=>'existente','uses' => 'EquipoController@existente']);
-
+//copiar un equipo
+Route::post('equipo/guardarexistente',['as'=>'guardareq','uses'=>'EquipoController@guardarexistente']);
 
 Route::get('equipo/equipo/RutinaPdf/{id}',[
     'as' => 'equipo.RutinaPdf',

@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\EquipoFormRequest;
 
 use Illuminate\Support\Facades\Input;
+use App\Accesorio;
+
+use App\Detalle_manual;
+use App\Parte;
 use App\User;
 use App\Proveedor;
 use App\UnidadSalud;
@@ -450,12 +454,173 @@ class EquipoController extends Controller
         ->select('e.*','c.actual as actual','s.codigosubgrupo as codigosubgrupo','h.hospital as hospi',DB::raw('CONCAT(e.idarea,e.idgrupo,s.codigosubgrupo, "-",e.idregion,e.iddepartamento,e.idtipounidad,e.idunidadsalud,c.actual) AS codigo'))
         ->where('e.idequipo','=',$id)
         ->first();
+        $partes=DB::table('parte_equipo as part')
+        ->join('equipo as eq','eq.idequipo','part.idequipo')
+        ->select('*', 'part.descripcion as desc')
+        ->where('eq.idequipo',$id)
+        ->get();
+        $accesorios=DB::table('accesorio_equipo as acc')
+        ->join('equipo as eq','eq.idequipo','acc.idequipo')
+        ->select('*')
+        ->where('eq.idequipo',$id)
+        ->get();
+
+        $manuales=DB::table('equipo as e')
+        ->join('detalle_manual as dm','dm.idequipo','e.idequipo')
+        ->join('tipomanual as tm','tm.idtipomanual','dm.idtipomanual')
+        ->select('e.idequipo','tm.nombre_tipo_manual','dm.link_detalle_manual','tm.idtipomanual','dm.observacion_detalle_manual')
+        ->where('e.idequipo',$id)
+        ->groupBy('e.idequipo','tm.nombre_tipo_manual','dm.link_detalle_manual','tm.idtipomanual','dm.observacion_detalle_manual')
+        ->get();
+        $nombre=DB::table('equipo')
+        ->select('idequipo','nombre_equipo')
+        ->where('idequipo',$id)
+        ->first();
+
+        $detcaracesp=DB::table('detalle_caracteristica_especial as a')
+        ->join('caracteristica_especial_funcionamiento as d','a.idcaracteristica_especial','=','d.idcaracteristica_especial')
+        ->join('valor_ref_esp as s','a.idvalor_ref_esp','=','s.idvalor_ref_esp')
+        ->join('equipo as e','a.idequipo','=','e.idequipo')
+        ->select('*')
+        ->where('e.idequipo',$id)
+        ->orderBy('d.idcaracteristica_especial','desc')
+        ->get();
+        $detcaractec=DB::table('detalle_caracteristica_tecnica as d')
+        ->join('valor_ref_tec as t','t.idvalor_ref_tec','=','d.idvalor_ref_tec')
+        ->join('subgrupo_carac_tecnica as s','s.idsubgrupo_carac_tecnica','=','d.idsubgrupo_carac_tecnica')
+        ->join('caracteristica_tecnica as c','c.idcaracteristica_tecnica','=','d.idcaracteristica_tecnica')
+        ->join('equipo as e','e.idequipo','=','d.idequipo')
+        ->select('d.*','t.*','s.*','c.*','e.*')
+        ->where('e.idequipo',$id)
+        ->orderBy('c.idcaracteristica_tecnica','desc')
+        ->get();
       return view('equipo.existente.index', compact('equipo','proveedor','unidad_salud','area',
                   'estado','servicio_tecnico','fabricante','hospital','departamento',
-                  'region','grupo','subgrupo','tipounidadsalud'));
+                  'region','grupo','subgrupo','tipounidadsalud',
+                'partes',
+                'accesorios',
+                'detcaracesp',
+                'detcaractec',
+                'manuales'));
 
     }
+     public function guardarexistente(Request $request){
 
+
+       try{
+          DB::beginTransaction();
+        //datos del equipo
+        Equipo::create($request->all());
+        //global id equipo
+        $idequipo=$request->get('prueba');
+
+
+       //partes
+       $nombre_parte=$request->get('nombre_parte');
+       $num_parte=$request->get('num_parte');
+       $descripcion=$request->get('descripcion_parte');
+       //$idequipo_parte=$request->get('idequipo');
+
+       $cont_parte = 0;
+
+       while($cont_parte < count($num_parte)){
+           $detalle_parte = new Parte();
+           $detalle_parte->nombre_parte= $nombre_parte[$cont_parte];
+           $detalle_parte->num_parte= $num_parte[$cont_parte];
+           $detalle_parte->descripcion=$descripcion[$cont_parte];
+           $detalle_parte->idequipo=$idequipo;
+           $detalle_parte->save();
+           $cont_parte=$cont_parte+1;
+       }
+       //accesorios
+       $nombre_accesorio=$request->get('nombre_accesorio');
+       $numero_parte_accesorio=$request->get('numero_parte_accesorio');
+       $descripcion_accesorio=$request->get('descripcion_accesorio');
+       //$idequipo_acc=$request->get('idequipo');
+
+       $cont_acc = 0;
+
+       while($cont_acc < count($numero_parte_accesorio)){
+           $detalle_acc = new Accesorio();
+           $detalle_acc->nombre_accesorio= $nombre_accesorio[$cont_acc];
+           $detalle_acc->numero_parte_accesorio= $numero_parte_accesorio[$cont_acc];
+           $detalle_acc->descripcion_accesorio=$descripcion_accesorio[$cont_acc];
+           $detalle_acc->idequipo=$idequipo;
+           $detalle_acc->save();
+           $cont_acc=$cont_acc+1;
+       }
+       //caracteristicas tecnicas
+
+       $idcaracteristica_tecnica = $request->get('idcaracteristica_tecnica');
+       //$idequipo_tec = $request->get('idequipo');
+       $idvalor_ref_tec=$request->get('idvalor_ref_tec');
+       $idsubgrupo_carac_tecnica=$request->get('idsubgrupo_carac_tecnica');
+       $descripcion_detalle_caracteristica_tecnica=$request->get('descripcion_detalle_caracteristica_tecnica');
+       $valor_detalle_caracteristica_tecnica=$request->get('valor_detalle_caracteristica_tecnica');
+
+       $cont_tec = 0;
+
+       while($cont_tec < count($idcaracteristica_tecnica)){
+           $detalle_tec = new detcaractec();
+           $detalle_tec->idcaracteristica_tecnica= $idcaracteristica_tecnica[$cont_tec];
+           $detalle_tec->idequipo= $idequipo;
+           $detalle_tec->idvalor_ref_tec=$idvalor_ref_tec[$cont_tec];
+           $detalle_tec->idsubgrupo_carac_tecnica=$idsubgrupo_carac_tecnica[$cont_tec];
+           $detalle_tec->estado_detalle_caracteristica_tecnica=1;
+           $detalle_tec->descripcion_detalle_caracteristica_tecnica=$descripcion_detalle_caracteristica_tecnica[$cont_tec];
+           $detalle_tec->valor_detalle_caracteristica_tecnica=$valor_detalle_caracteristica_tecnica[$cont_tec];
+           $detalle_tec->save();
+           $cont_tec=$cont_tec+1;
+       }
+       //caracteristicas especiales
+       $idcaracteristica_especial = $request->get('idcaracteristica_especial');
+       //$idequipo_esp = $request->get('idequipo');
+       $idvalor_ref_esp=$request->get('idvalor_ref_esp');
+       $descripcion_detalle_caracteristica_especial=$request->get('descripcion_detalle_caracteristica_especial');
+       $valor_detalle_caracteristica_especial=$request->get('valor_detalle_caracteristica_especial');
+
+       $cont_esp = 0;
+
+       while($cont_esp < count($idcaracteristica_especial)){
+           $detalle_esp = new detcaracesp();
+           $detalle_esp->idcaracteristica_especial= $idcaracteristica_especial[$cont_esp];
+           $detalle_esp->idequipo= $idequipo;
+           $detalle_esp->idvalor_ref_esp=$idvalor_ref_esp[$cont_esp];
+           $detalle_esp->estado_detalle_caracteristica_especial=1;
+           $detalle_esp->descripcion_detalle_caracteristica_especial=$descripcion_detalle_caracteristica_especial[$cont_esp];
+           $detalle_esp->valor_detalle_caracteristica_especial=$valor_detalle_caracteristica_especial[$cont_esp];
+           $detalle_esp->save();
+           $cont_esp=$cont_esp+1;
+       }
+
+       //manuales
+       $idtipomanual=$request->get('idtipomanual');
+       $link_detalle_manual=$request->get('link_detalle_manual');
+       $observacion_detalle_manual=$request->get('observacion_detalle_manual');
+       $cont_manual=0;
+       while($cont_manual< count($idtipomanual)){
+         $manual = new Detalle_manual;
+         $manual->idtipomanual=$idtipomanual[$cont_manual];
+         $manual->idequipo=$idequipo;
+         $manual->link_detalle_manual=$link_detalle_manual[$cont_manual];
+         $manual->observacion_detalle_manual=$observacion_detalle_manual[$cont_manual];
+         $manual->save();
+         $cont_manual=$cont_manual+1;
+       }
+
+
+
+
+
+      DB::commit();
+
+     }catch(\Exception $e)
+     {
+         DB::rollback();
+
+       }
+       return redirect()->route('equipo.index');
+     }
 
 
 }
