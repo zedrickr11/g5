@@ -42,7 +42,10 @@ USE App\DetalleInsumoRutina;
 USE App\Insumo;
 USE App\DetalleRepuestoRutina;
 USE App\Repuesto;
-use App\detcaracesp;
+USE App\detcaracesp;
+USE App\caracespefun;
+USE App\valorrefesp;
+USE App\TipoManual;
 use Barryvdh\DomPDF\Facade as PDF;
 
 use Carbon\Carbon;
@@ -192,58 +195,53 @@ class EquipoController extends Controller
 
     public function ficha($id)
     {
+        $tipomanual=DB::table('tipomanual as ti')
+      ->join('detalle_manual as det','det.idtipomanual','ti.idtipomanual')
+      ->join('equipo as eq','eq.idequipo','det.idequipo')
+      ->where('eq.idequipo', $id)
+      ->select('ti.*')
+      ->get();
+        $manual=DB::table('detalle_manual as ma')
+        ->join('equipo as eq','eq.idequipo','ma.idequipo')
+      ->where('eq.idequipo', $id)
+      ->select('ma.*')
+      ->get();
+        $repuesto=DB::table('repuesto')
+        ->where('idequipo', $id)
+        ->select('*')
+        ->get();
+        $proveedor=Proveedor::all();
+        $unidadsalud=UnidadSalud::all();
+        $area=Area::all();
+        $estado=Estado::all();
+        $serviciotecnico=ServicioTecnico::all();
+        $fabricante=Fabricante::all();
+        $hospital=Hospital::all();
+        $departamento=Departamento::all();
+        $region=Region::all();
+        $grupo=Grupo::all();
+        $subgrupo=Subgrupo::all();
+        $tipounidadsalud=TipoUnidadSalud::all();
+        $detcaractec=detcaractec::all();
+        $CaracTec=CaracTec::all();
+        $subcaractec=subcaractec::all();
+        $valorreftec=valorreftec::all();
+          $detcaracesp=detcaracesp::all();
+            $valorrefesp=valorrefesp::all();
+              $caracespefun=caracespefun::all();
+        $equipo=DB::table('equipo as e')
+        ->join('users as user','user.id','e.users_id')
+        ->where('idequipo', $id)
+        ->select('*')
+        ->get();
+    //$view= view("equipo.caracteristica.fichatecnica.show",compact('equipo'));
 
-    $equipo=DB::table('equipo as e')
-    ->join('subgrupo as s','s.idsubgrupo','=','e.idsubgrupo')
-    ->join('conf_corr as c','s.idsubgrupo','=','c.idsubgrupo')
-    ->join('fabricante as fab','fab.idfabricante','e.idfabricante')
-    ->join('proveedor as prov','prov.id_proveedor','e.id_proveedor')
-    ->join('users as user','user.id','e.users_id')
-    ->select('*',DB::raw('CONCAT(e.idarea,e.idgrupo,s.codigosubgrupo) as inventario '), DB::raw('CONCAT(e.idregion,e.iddepartamento,e.idtipounidad,e.idunidadsalud,e.correlativo) AS codigo'))
-    ->where('e.idequipo',$id)
-    ->first();
-    $partes=DB::table('parte_equipo as part')
-    ->join('equipo as eq','eq.idequipo','part.idequipo')
-    ->select('*')
-    ->where('eq.idequipo',$id)
-    ->get();
-    $accesorios=DB::table('accesorio_equipo as acc')
-    ->join('equipo as eq','eq.idequipo','acc.idequipo')
-    ->select('*')
-    ->where('eq.idequipo',$id)
-    ->get();
-    $repuestos=DB::table('repuesto as r')
-    ->join('equipo as eq','eq.idequipo','r.idequipo')
-    ->select('*')
-    ->where('stock','>',0)
-    ->where('eq.idequipo',$id)
-    ->get();
-    $manuales=DB::table('equipo as e')
-    ->join('detalle_manual as dm','dm.idequipo','e.idequipo')
-    ->join('tipomanual as tm','tm.idtipomanual','dm.idtipomanual')
-    ->select('tm.nombre_tipo_manual','dm.link_detalle_manual')
-    ->where('e.idequipo',$id)
-    ->groupBy('tm.nombre_tipo_manual','dm.link_detalle_manual')
-    ->get();
-    $cacateristicas_tecnicas=DB::table('detalle_caracteristica_tecnica as dc')
-    ->join('caracteristica_tecnica as c','c.idcaracteristica_tecnica','dc.idcaracteristica_tecnica')
-    ->join('subgrupo_carac_tecnica as s','s.idsubgrupo_carac_tecnica','dc.idsubgrupo_carac_tecnica')
-    ->join('valor_ref_tec as v','v.idvalor_ref_tec','dc.idvalor_ref_tec')
-    ->select('c.nombre_caracteristica_tecnica', 'dc.descripcion_detalle_caracteristica_tecnica', 'dc.valor_detalle_caracteristica_tecnica', 's.nombre_subgrupo_carac_tecnica', 'v.nombre_valor_ref_tec')
-    ->where('dc.idequipo',$id)
-    ->get();
-    $cacateristicas_especiales=DB::table('detalle_caracteristica_especial as dc')
-    ->join('caracteristica_especial_funcionamiento as c','c.idcaracteristica_especial','dc.idcaracteristica_especial')
-    ->join('valor_ref_esp as v','v.idvalor_ref_esp','dc.idvalor_ref_esp')
-    ->select('c.nombre_caracteristica_especial', 'dc.descripcion_detalle_caracteristica_especial', 'dc.valor_detalle_caracteristica_especial',  'v.nombre_valor_ref_esp')
-    ->where('dc.idequipo',$id)
-    ->get();
+            $pdf = PDF::loadView("equipo.caracteristica.fichatecnica.show",compact('tipomanual','manual','caracespefun','valorrefesp','detcaracesp','repuesto','fabricante','equipo','proveedor','unidadsalud','area',
+                        'estado','serviciotecnico','fabricante','hospital','departamento',
+                        'region','grupo','subgrupo','tipounidadsalud','detcaractec','CaracTec','subcaractec','valorreftec'));
 
-
-        $pdf = PDF::loadView("equipo.caracteristica.fichatecnica.show",compact('equipo','partes','accesorios','repuestos','manuales','cacateristicas_tecnicas','cacateristicas_especiales'));
-
-        return $pdf->stream('FICHA TÉCNICA"'.$id.'".pdf');
-
+            return $pdf->stream('FICHA TÉCNICA"'.$id.'".pdf');
+            //return view("equipo.caracteristica.fichatecnica.show",compact('equipo'));
     }
     public function rutina($id)
     {
