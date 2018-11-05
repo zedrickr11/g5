@@ -109,7 +109,7 @@
           <a  href="{{route('equipo.vista',$equipo->idequipo)}}" target="_blank" class="btn btn-warning btn-block"><b>Solicitudes</b></a>
           <a  href="{{route('carac',$equipo->idequipo)}}"  class="btn btn-info btn-block"><b>Características</b></a>
           <a href="{{route('equipo.rutina',$equipo->idequipo)}}" target="_blank" class="btn btn-primary btn-block"><b>Historial técnico</b></a>
-          <a href="{{route('equipo.HistorialRutina',$equipo->idequipo)}}" target="_blank" class="btn btn-danger btn-block"><b>Historial de mantenimientos</b></a>
+          <a href="{{route('equipo.HistorialRutina',$equipo->idequipo)}}" target="_blank"  class="btn btn-danger btn-block"><b>Historial de mantenimientos</b></a>
 
           </div>
           <!-- /.box-body -->
@@ -823,9 +823,9 @@
         <div class="active tab-pane" id="rutina">
 
           <div class="box-body col-md-6">
-            <table width="280" cellspacing="1" cellpadding="3" border="0" bgcolor="#1E679A">
+            <table width="280" cellspacing="1" cellpadding="3" border="3" >
             <tr>
-              <td bgcolor="#ffffcc">
+              <td  bgcolor="#ffffcc">
 
 
         <h3>Preventivo</h3>
@@ -977,7 +977,7 @@
                               </div>
 @endif
                                 <div class="box-body col-md-6">
-                                  <table width="280" cellspacing="1" cellpadding="3" border="0" bgcolor="#1E679A">
+                                      <table width="280" cellspacing="1" cellpadding="3" border="3" >
                                   <tr>
                                     <td bgcolor="#9AF0F7">
                             <h3>Correctivo</h3>
@@ -1072,7 +1072,7 @@
 
          <div class="tab-pane" id="prueba">
                <div class="box-body col-md-6">
-           <table width="280" cellspacing="1" cellpadding="3" border="0" bgcolor="#1E679A">
+                       <table width="280" cellspacing="1" cellpadding="3" border="3" >
            <tr>
              <td bgcolor="#9AF0F7">
          <h3>Pruebas</h3>

@@ -31,7 +31,7 @@ Route::resource('equipo/advertencia','AdvertenciaController');
 Route::resource('equipo/confcorrelativo','Conf_corrController');
 Route::resource('equipo/equipo','EquipoController');
 Route::get('equipo/existente/{id}',['as'=>'existente','uses' => 'EquipoController@existente']);
-
+Route::resource('equipo/existente','EquipoController');
 
 Route::get('equipo/equipo/RutinaPdf/{id}',[
     'as' => 'equipo.RutinaPdf',

@@ -61,10 +61,10 @@
 
           </tr>
           <tr>
-            <td  colspan="4">  Partes de Equipo:</td>
+            <td  colspan="4">  Partes de Equipo: @foreach($partes as $part) {{$part->nombre_parte}}, @endforeach  </td>
           </tr>
           <tr>
-            <td  colspan="4">  Accesorios:</td>
+            <td  colspan="4">  Accesorios:  @foreach($accesorio as $part) {{$part->nombre_accesorio}}, @endforeach</td>
           </tr>
           <tr>
             <td  colspan="4">  Conexión Con otro equipo: {{ $eq->conexion_otro_eq}}</td>
@@ -99,7 +99,7 @@
           <tr>
 
             <td  >  Frecuencia de uso: {{ $eq->frec_uso_dia_semana}}</td>
-            <td >  Nivel de Riesgo: {{ $eq->frec_uso_hora_dia}}</td>
+            <td >  {{ $eq->frec_uso_dia_semana}}</td>
              @if ($eq->personal_cap=="1")
             <td  colspan="2">  Cuenta con personal capacitado para su uso? Sí</td>
             @else

@@ -155,7 +155,7 @@
                                   @foreach($valrefru as $dets)
                                   @if ($dets->idvalor_ref_rutina==$det->idvalor_ref_rutina)
                                   <td>{{$dets->descripcion}}</td>@endif @endforeach
-                                    <td>{{$det->estado_detalle_caracteristica_rutina}}</td>
+                                    <td>@if($det->estado_detalle_caracteristica_rutina==1) REALIZADO @else  @endif</td>
 
                 </tr>
               @endif
@@ -373,6 +373,7 @@
 
 	</div>
 
+
 </div>
 </section>
 @push ('scripts')
@@ -380,6 +381,13 @@
 $('#liRutinas').addClass("treeview active");
 
 $('#liRuman').addClass("active");
+
+
+
+
+
+
+
 
 </script>
 @endpush
