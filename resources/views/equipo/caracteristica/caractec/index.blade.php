@@ -19,7 +19,7 @@
           <div class="box">
             <div class="box-header">
 
-			  <h3 class="box-title">Listado de Caracteristica Técnica<a href="caractec/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
+			  <h3 class="box-title">Listado de Caracteristica Técnica      <a href="caractec/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
 			  	<!--	<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a> -->
           </h3>
             </div>
@@ -54,9 +54,7 @@
                   <a href="{{route('caractec.edit',$cat->idcaracteristica_tecnica)}}">
                     <button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-cog"></button>
                   </a>
-                  <a href="{{route('caractec.show',$cat->idcaracteristica_tecnica)}}">
-                    <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></button>
-                  </a>
+                
 
                   <!--
                   <form style="display: inline" method="POST" action="{{route('caractec.destroy', $cat->idcaracteristica_tecnica)}}">
@@ -99,4 +97,3 @@ $('#liTecnicas').addClass("active");
 </script>
 @endpush
 @endsection
- 

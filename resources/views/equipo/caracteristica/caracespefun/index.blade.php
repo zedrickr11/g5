@@ -18,7 +18,7 @@
           <div class="box">
             <div class="box-header">
 			  <h3 class="box-title">Listado de Caracteristica especial <a href="caracespefun/create"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> </button></a>
-			  		<a href="#" target="_blank"><button class="btn btn-info"><span class="glyphicon glyphicon-print"></span> </button></a></h3>
+			  </h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -49,14 +49,8 @@
                   <a href="{{route('caracespefun.edit',$cat->idcaracteristica_especial)}}">
                     <button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-cog"></button>
                   </a>
-                  <a href="{{route('caracespefun.show',$cat->idcaracteristica_especial)}}">
-                    <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></button>
-                  </a>
-                  <form style="display: inline" method="POST" action="{{route('caracespefun.destroy', $cat->idcaracteristica_especial)}}">
-                  {!!method_field('DELETE')!!}
-                  {!!csrf_field()!!}
-                    <button type="submit" class="btn btn-danger btn-sm" name="button"><span class="glyphicon glyphicon-trash"></button>
-                  </form>
+
+
 
 
               </td>

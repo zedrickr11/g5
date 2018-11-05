@@ -50,9 +50,7 @@
                   <a href="{{route('subcaractec.edit',$cat->idsubgrupo_carac_tecnica)}}">
                     <button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-cog"></button>
                   </a>
-                  <a href="{{route('subcaractec.show',$cat->idsubgrupo_carac_tecnica)}}">
-                    <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></button>
-                  </a>
+                
                 <!--  <form style="display: inline" method="POST" action="{{route('subcaractec.destroy', $cat->idsubgrupo_carac_tecnica)}}">
                   {!!method_field('DELETE')!!}
                   {!!csrf_field()!!}

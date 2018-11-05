@@ -122,8 +122,10 @@ class rumanController extends Controller
   public function create2($idequipo,$idsubgrupo)
   {
 
-      $solicitudtrabajo=SolicitudTrabajo::all();
-
+      $solicitudtrabajo=DB::table('solitud_trabajo as f')
+        ->select('f.*')
+          ->where('f.idequipo','=',$idequipo)
+          ->get();
     $tecnicoexterno=TecnicoExterno::all();
     $tecnicointerno=TecnicoInterno::all();
     $users=User::all();
@@ -134,7 +136,16 @@ class rumanController extends Controller
       $valrefru=valrefru::all();
         $ruman=ruman::all();
         $subgrupo=Subgrupo::all();
-        $permisotrabajo=PermisoTrabajo::all();
+        $permisotrabajo=DB::table('permiso_trabajo as f')
+        ->whereNotExists(function ($query) {
+        $query->select(DB::raw(1))
+        ->from('rutina_mantenimiento as pe')
+       ->whereRaw('pe.permiso_trabajo_idpermiso_trabajo = f.idpermiso_trabajo');
+        })
+          ->get();
+
+    //    PermisoTrabajo::all();
+
 
     return view("equipo.rutina.ruman.create",compact('solicitudtrabajo','tecnicoexterno','tecnicointerno','users','idsubgrupo','idequipo','subgrupo','tiporu','equipo','permisotrabajo','caracru','subru','valrefru','ruman'));
 
