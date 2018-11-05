@@ -22,7 +22,7 @@ class SolicitudTrabajoController extends Controller
 {
     function __construct()
     {
-      $this->middleware(['auth','role:admin,jefe-mantto']);
+      $this->middleware(['auth','role:admin,jefe-mantto,tec-ing']);
     }
     /**
      * Display a listing of the resource.
@@ -227,5 +227,5 @@ return view("trabajo.solicitud.show",["solicitudes"=>$solicitudes,"detalles"=>$d
     {
 
     }
-    
+
 }
