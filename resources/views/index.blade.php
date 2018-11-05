@@ -9,7 +9,7 @@
       <!-- small box -->
       <div class="small-box bg-aqua">
         <div class="inner">
-          <h3>EQUIPOS</h3>
+          <h4>EQUIPOS</h4>
           <p>Equipos Guardados</p>
         </div>
         <div class="icon">
@@ -23,7 +23,7 @@
       <!-- small box -->
       <div class="small-box bg-green">
         <div class="inner">
-          <h3>RUTINAS</h3>
+          <h4>RUTINAS</h4>
 
           <p>Rutinas asignadas</p>
         </div>
@@ -38,7 +38,7 @@
       <!-- small box -->
       <div class="small-box bg-yellow">
         <div class="inner">
-          <h3>SOLICITUD</h3>
+          <h4>SOLICITUD</h4>
 
           <p>Solicitudes de Trabajo</p>
         </div>
@@ -54,13 +54,13 @@
       <!-- small box -->
       <div class="small-box bg-red">
         <div class="inner">
-          <h3>Almacén</h3>
+          <h4>Almacén</h4>
           <p>Insumos-repuestos</p>
         </div>
         <div class="icon">
           <i class="ion ion-pie-graph"></i>
         </div>
-        <a href="#" class="small-box-footer">Ingresar <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="{{route('insumo.index')}}" class="small-box-footer">Ingresar <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <!-- ./col -->
@@ -104,10 +104,10 @@
                         <div class="box-body ">
                                   <!-- THE CALENDAR 1 -->
                               
-                            <div class="col-md-8" id="CalendarioCorrectivo">
+                            <div class="col-md-9" id="CalendarioCorrectivo">
                               </div>
 
-                              <div class="col-md-4">
+                              <div class="col-md-3">
                                 <br>
                                 <br>
                                 <br>
@@ -118,6 +118,13 @@
                                       </div>
                                       <!-- /.box-header -->
                                       <div class="box-body">
+                                         
+                          
+                                          <strong><i class="fa fa-map-marker margin-r-5"></i> Hospital: </strong>
+                            
+                                        
+                                          <h4>IGSS Quetzaltenango</h4>
+                                        <hr>  
                                         
                                           <strong><i class="fa fa-pencil margin-r-6"></i> Codígo de colores</strong>
                           
@@ -128,21 +135,15 @@
                                           </p>
                                         <hr>
 
-                                        <strong><i class="fa fa-book margin-r-5"></i> MANTENIMIENTOS REALIZADOS: </strong>
+                                        <strong><i class="fa fa-book margin-r-5"></i>Usuario: </strong>
                                  
-                                        <h4>Total de mantenimientos:  0</h4>
+                                        <h4>{{ Auth::user()->name }}</h4>
                                    
                                        
                                         
                                         
                           
-                                        <hr>
-                          
-                                        <strong><i class="fa fa-map-marker margin-r-5"></i> MANTENIMIENTOS PENDIENTES: </strong>
-                          
-                                      
-                                        <h4>Total de mantenimientos:  0</h4>
-                                        
+                                       
 
                           
                                         <hr>
@@ -154,10 +155,9 @@
                                            hospitalarios instalaciones especiales, herramientas, etc.), en condiciones de funcionamiento
                                           seguro, eficiente y económico, previniendo daños o reparándolos cuando ya se hubieran producido. </p>
 
-                                        <hr>
+                                       
                           
-                                        
-                                        <br>
+                                   
                                         
                           
                                         
@@ -182,10 +182,10 @@
                           <div class="box box-solid box-danger">
                               <h2 class="text-center"> Mantenimientos Preventivos</h2>
                               <div class="box-body ">
-                                  <div class="col-md-8" id="CalendarioPreventivo">
+                                  <div class="col-md-9" id="CalendarioPreventivo">
                                     </div>
       
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <br>
                                         <br>
                                         <br>
@@ -196,6 +196,11 @@
                                               </div>
                                               <!-- /.box-header -->
                                               <div class="box-body">
+                                                  <strong><i class="fa fa-map-marker margin-r-5"></i> Hospital: </strong>
+                            
+                                        
+                                                    <h4>IGSS Quetzaltenango</h4>
+                                                  <hr>  
                                                 
                                                   <strong><i class="fa fa-pencil margin-r-6"></i> Codígo de colores</strong>
                                   
@@ -206,17 +211,11 @@
                                                   </p>
                                                   <hr>
 
-                                                  <strong><i class="fa fa-book margin-r-5"></i> MANTENIMIENTOS REALIZADOS: </strong>
-                                                  <h4>Total de mantenimientos:  0</h4>
+                                                  <strong><i class="fa fa-book margin-r-5"></i> Usuario: </strong>
+                                 
+                                                  <h4>{{ Auth::user()->name }}</h4>
                                                   
-                                                  
-                                    
-                                                  <hr>
-                                    
-                                                  <strong><i class="fa fa-map-marker margin-r-5"></i> MANTENIMIENTOS PENDIENTES: </strong>
-                                    
-                                                  <h4>Total de mantenimientos:  0</h4>
-          
+                                      
                                     
                                                   <hr>
                                   
@@ -226,7 +225,7 @@
                                                     el fin de conservar las propiedades (inmuebles, equipos médicos, equipos industriales 
                                                     hospitalarios instalaciones especiales, herramientas, etc.), en condiciones de funcionamiento
                                                    seguro, eficiente y económico, previniendo daños o reparándolos cuando ya se hubieran producido. </p>
-         </p>
+                                                </p>
         
                                                 <hr>
                                   
@@ -447,11 +446,12 @@
 
          $( "#irfichaequipo" ).click(function() {
           
-          window.location.href = ('{!! url('equipo/equipo/ficha/') !!}').concat('/').concat(calEvent.title);
+          window.location.href = ('{!! url('/equipo/caracteristica/') !!}').concat('/').concat(calEvent.title);
         });
         
         $( "#irhistorial" ).click(function() {
-          window.location.href = ("#");
+          window.location.href = ('{!! url('equipo/equipo/ficha/') !!}').concat('/').concat(calEvent.title);
+         
         });
 
         $( "#irrutina" ).click(function() {
@@ -592,11 +592,11 @@
 
          $( "#irfichaequipo" ).click(function() {
           
-          window.location.href = ('{!! url('equipo/equipo/ficha/') !!}').concat('/').concat(calEvent.title);
+          window.location.href = ('{!! url('/equipo/caracteristica/') !!}').concat('/').concat(calEvent.title);
         });
         
         $( "#irhistorial" ).click(function() {
-          window.location.href = ("#");
+          window.location.href = ('{!! url('equipo/equipo/ficha/') !!}').concat('/').concat(calEvent.title);
         });
 
         $( "#irrutina" ).click(function() {

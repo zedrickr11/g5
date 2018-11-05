@@ -5,7 +5,7 @@
   <li class="header">MENU</li>
   <li id="liCalendario"  class="">
   <a href="{{ url('calendario') }}">
-    <i class="fa fa-dashboard"></i> <span>Inicio</span>
+    <i class="fa fa-dashboard"></i> <span>Calendario</span>
 
   </a>
 

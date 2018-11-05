@@ -81,7 +81,7 @@
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="#" class="logo">
+    <a href="{{ url('calendario') }}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>I</b>GSS</span>
       <!-- logo for regular state and mobile devices -->
@@ -159,18 +159,11 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-
-    <div class="pull-right ">
-      <b>Version</b> 1.0.0 <br>
-      <strong>All rights reserved.</strong><br>
-      <strong>Copyright &copy; 2018 </strong>
+    <div class="pull-right hidden-xs">
+      <strong> Todos los derechos reservados.  </strong><b> |Versión</b> 1.0|
     </div>
-
-    <img  src="{{asset('login/images/logom.png')}}" width="50" height="50" >
-    <strong  style=" padding-left: 25%">| Ronald Perez | José Bonilla | Andy Yee | Zedrick Rodríguez | Fredy Ramírez |</strong>
-
+    <strong>Copyright &copy; 2018 <a href="https://www.facebook.com/g5Projects/">G5 PROJECTS  |Ronald Pérez| |José Bonilla| |Zedrick Rodríguez| |Andy Yee| |Fredy Ramírez| </a></strong> 
   </footer>
-
   <!-- Control Sidebar -->
 
   <!-- /.control-sidebar -->
