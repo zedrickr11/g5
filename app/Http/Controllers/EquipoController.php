@@ -581,120 +581,143 @@ class EquipoController extends Controller
 
     }
      public function guardarexistente(Request $request){
-
-
+       //global id equipo
+       $idequipo=$request->get('prueba');
+       //datos del equipo
        try{
-          DB::beginTransaction();
-        //datos del equipo
+
+        DB::beginTransaction();
+
         Equipo::create($request->all());
-        //global id equipo
-        $idequipo=$request->get('prueba');
 
+        DB::commit();
 
+       }catch(\Exception $e)
+       {
+           DB::rollback();
+
+       }
        //partes
-       $nombre_parte=$request->get('nombre_parte');
-       $num_parte=$request->get('num_parte');
-       $descripcion=$request->get('descripcion_parte');
-       //$idequipo_parte=$request->get('idequipo');
+       try{
+           DB::beginTransaction();
+         $nombre_parte=$request->get('nombre_parte');
+         $num_parte=$request->get('num_parte');
+         $descripcion=$request->get('descripcion_parte');
 
-       $cont_parte = 0;
 
-       while($cont_parte < count($num_parte)){
-           $detalle_parte = new Parte();
-           $detalle_parte->nombre_parte= $nombre_parte[$cont_parte];
-           $detalle_parte->num_parte= $num_parte[$cont_parte];
-           $detalle_parte->descripcion=$descripcion[$cont_parte];
-           $detalle_parte->idequipo=$idequipo;
-           $detalle_parte->save();
-           $cont_parte=$cont_parte+1;
+         $cont_parte = 0;
+
+         while($cont_parte < count($num_parte)){
+             $detalle_parte = new Parte();
+             $detalle_parte->nombre_parte= $nombre_parte[$cont_parte];
+             $detalle_parte->num_parte= $num_parte[$cont_parte];
+             $detalle_parte->descripcion=$descripcion[$cont_parte];
+             $detalle_parte->idequipo=$idequipo;
+             $detalle_parte->save();
+             $cont_parte=$cont_parte+1;
+         }
+         DB::commit();
+       }catch(\Exception $e)
+       {
+           DB::rollback();
+
        }
        //accesorios
-       $nombre_accesorio=$request->get('nombre_accesorio');
-       $numero_parte_accesorio=$request->get('numero_parte_accesorio');
-       $descripcion_accesorio=$request->get('descripcion_accesorio');
-       //$idequipo_acc=$request->get('idequipo');
-
-       $cont_acc = 0;
-
-       while($cont_acc < count($numero_parte_accesorio)){
-           $detalle_acc = new Accesorio();
-           $detalle_acc->nombre_accesorio= $nombre_accesorio[$cont_acc];
-           $detalle_acc->numero_parte_accesorio= $numero_parte_accesorio[$cont_acc];
-           $detalle_acc->descripcion_accesorio=$descripcion_accesorio[$cont_acc];
-           $detalle_acc->idequipo=$idequipo;
-           $detalle_acc->save();
-           $cont_acc=$cont_acc+1;
-       }
-       //caracteristicas tecnicas
-
-       $idcaracteristica_tecnica = $request->get('idcaracteristica_tecnica');
-       //$idequipo_tec = $request->get('idequipo');
-       $idvalor_ref_tec=$request->get('idvalor_ref_tec');
-       $idsubgrupo_carac_tecnica=$request->get('idsubgrupo_carac_tecnica');
-       $descripcion_detalle_caracteristica_tecnica=$request->get('descripcion_detalle_caracteristica_tecnica');
-       $valor_detalle_caracteristica_tecnica=$request->get('valor_detalle_caracteristica_tecnica');
-
-       $cont_tec = 0;
-
-       while($cont_tec < count($idcaracteristica_tecnica)){
-           $detalle_tec = new detcaractec();
-           $detalle_tec->idcaracteristica_tecnica= $idcaracteristica_tecnica[$cont_tec];
-           $detalle_tec->idequipo= $idequipo;
-           $detalle_tec->idvalor_ref_tec=$idvalor_ref_tec[$cont_tec];
-           $detalle_tec->idsubgrupo_carac_tecnica=$idsubgrupo_carac_tecnica[$cont_tec];
-           $detalle_tec->estado_detalle_caracteristica_tecnica=1;
-           $detalle_tec->descripcion_detalle_caracteristica_tecnica=$descripcion_detalle_caracteristica_tecnica[$cont_tec];
-           $detalle_tec->valor_detalle_caracteristica_tecnica=$valor_detalle_caracteristica_tecnica[$cont_tec];
-           $detalle_tec->save();
-           $cont_tec=$cont_tec+1;
-       }
-       //caracteristicas especiales
-       $idcaracteristica_especial = $request->get('idcaracteristica_especial');
-       //$idequipo_esp = $request->get('idequipo');
-       $idvalor_ref_esp=$request->get('idvalor_ref_esp');
-       $descripcion_detalle_caracteristica_especial=$request->get('descripcion_detalle_caracteristica_especial');
-       $valor_detalle_caracteristica_especial=$request->get('valor_detalle_caracteristica_especial');
-
-       $cont_esp = 0;
-
-       while($cont_esp < count($idcaracteristica_especial)){
-           $detalle_esp = new detcaracesp();
-           $detalle_esp->idcaracteristica_especial= $idcaracteristica_especial[$cont_esp];
-           $detalle_esp->idequipo= $idequipo;
-           $detalle_esp->idvalor_ref_esp=$idvalor_ref_esp[$cont_esp];
-           $detalle_esp->estado_detalle_caracteristica_especial=1;
-           $detalle_esp->descripcion_detalle_caracteristica_especial=$descripcion_detalle_caracteristica_especial[$cont_esp];
-           $detalle_esp->valor_detalle_caracteristica_especial=$valor_detalle_caracteristica_especial[$cont_esp];
-           $detalle_esp->save();
-           $cont_esp=$cont_esp+1;
-       }
-
-       //manuales
-       $idtipomanual=$request->get('idtipomanual');
-       $link_detalle_manual=$request->get('link_detalle_manual');
-       $observacion_detalle_manual=$request->get('observacion_detalle_manual');
-       $cont_manual=0;
-       while($cont_manual< count($idtipomanual)){
-         $manual = new Detalle_manual;
-         $manual->idtipomanual=$idtipomanual[$cont_manual];
-         $manual->idequipo=$idequipo;
-         $manual->link_detalle_manual=$link_detalle_manual[$cont_manual];
-         $manual->observacion_detalle_manual=$observacion_detalle_manual[$cont_manual];
-         $manual->save();
-         $cont_manual=$cont_manual+1;
-       }
+       try {
+         DB::beginTransaction();
+         $nombre_accesorio=$request->get('nombre_accesorio');
+         $numero_parte_accesorio=$request->get('numero_parte_accesorio');
+         $descripcion_accesorio=$request->get('descripcion_accesorio');
 
 
+         $cont_acc = 0;
 
-
-
-      DB::commit();
-
-     }catch(\Exception $e)
-     {
+         while($cont_acc < count($numero_parte_accesorio)){
+             $detalle_acc = new Accesorio();
+             $detalle_acc->nombre_accesorio= $nombre_accesorio[$cont_acc];
+             $detalle_acc->numero_parte_accesorio= $numero_parte_accesorio[$cont_acc];
+             $detalle_acc->descripcion_accesorio=$descripcion_accesorio[$cont_acc];
+             $detalle_acc->idequipo=$idequipo;
+             $detalle_acc->save();
+             $cont_acc=$cont_acc+1;
+         }
+         DB::commit();
+       } catch (\Exception $e) {
          DB::rollback();
-
        }
+        //caracteristicas tecnicas
+       try {
+         DB::beginTransaction();
+         $idcaracteristica_tecnica = $request->get('idcaracteristica_tecnica');
+         $idvalor_ref_tec=$request->get('idvalor_ref_tec');
+         $idsubgrupo_carac_tecnica=$request->get('idsubgrupo_carac_tecnica');
+         $descripcion_detalle_caracteristica_tecnica=$request->get('descripcion_detalle_caracteristica_tecnica');
+         $valor_detalle_caracteristica_tecnica=$request->get('valor_detalle_caracteristica_tecnica');
+
+         $cont_tec = 0;
+
+         while($cont_tec < count($idcaracteristica_tecnica)){
+             $detalle_tec = new detcaractec();
+             $detalle_tec->idcaracteristica_tecnica= $idcaracteristica_tecnica[$cont_tec];
+             $detalle_tec->idequipo= $idequipo;
+             $detalle_tec->idvalor_ref_tec=$idvalor_ref_tec[$cont_tec];
+             $detalle_tec->idsubgrupo_carac_tecnica=$idsubgrupo_carac_tecnica[$cont_tec];
+             $detalle_tec->estado_detalle_caracteristica_tecnica=1;
+             $detalle_tec->descripcion_detalle_caracteristica_tecnica=$descripcion_detalle_caracteristica_tecnica[$cont_tec];
+             $detalle_tec->valor_detalle_caracteristica_tecnica=$valor_detalle_caracteristica_tecnica[$cont_tec];
+             $detalle_tec->save();
+             $cont_tec=$cont_tec+1;
+         }
+         DB::commit();
+       } catch (\Exception $e) {
+         DB::rollback();
+       }
+        //caracteristicas especiales
+       try {
+         DB::beginTransaction();
+         $idcaracteristica_especial = $request->get('idcaracteristica_especial');
+         $idvalor_ref_esp=$request->get('idvalor_ref_esp');
+         $descripcion_detalle_caracteristica_especial=$request->get('descripcion_detalle_caracteristica_especial');
+         $valor_detalle_caracteristica_especial=$request->get('valor_detalle_caracteristica_especial');
+
+         $cont_esp = 0;
+
+         while($cont_esp < count($idcaracteristica_especial)){
+             $detalle_esp = new detcaracesp();
+             $detalle_esp->idcaracteristica_especial= $idcaracteristica_especial[$cont_esp];
+             $detalle_esp->idequipo= $idequipo;
+             $detalle_esp->idvalor_ref_esp=$idvalor_ref_esp[$cont_esp];
+             $detalle_esp->estado_detalle_caracteristica_especial=1;
+             $detalle_esp->descripcion_detalle_caracteristica_especial=$descripcion_detalle_caracteristica_especial[$cont_esp];
+             $detalle_esp->valor_detalle_caracteristica_especial=$valor_detalle_caracteristica_especial[$cont_esp];
+             $detalle_esp->save();
+             $cont_esp=$cont_esp+1;
+         }
+         DB::commit();
+       } catch (\Exception $e) {
+         DB::rollback();
+       }
+       //manuales
+       try {
+         DB::beginTransaction();
+         $idtipomanual=$request->get('idtipomanual');
+         $link_detalle_manual=$request->get('link_detalle_manual');
+         $observacion_detalle_manual=$request->get('observacion_detalle_manual');
+         $cont_manual=0;
+         while($cont_manual< count($idtipomanual)){
+           $manual = new Detalle_manual;
+           $manual->idtipomanual=$idtipomanual[$cont_manual];
+           $manual->idequipo=$idequipo;
+           $manual->link_detalle_manual=$link_detalle_manual[$cont_manual];
+           $manual->observacion_detalle_manual=$observacion_detalle_manual[$cont_manual];
+           $manual->save();
+           $cont_manual=$cont_manual+1;
+         }
+         DB::commit();
+       } catch (\Exception $e) {
+         DB::rollback();
+       }
+
        return redirect()->route('equipo.index');
      }
 
