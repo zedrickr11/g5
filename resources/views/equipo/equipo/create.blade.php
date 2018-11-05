@@ -284,8 +284,8 @@
 
               <div class="form-group">
               <label for="idestado" >Estado</label>
-              <select name="idestado" class="form-control" id="estado" style="width: 100%">
-                <option value="0" disabled selected>=== Selecciona un estado ===</option>
+              <select required name="idestado" class="form-control" id="estado" style="width: 100%">
+                
               @foreach($estado as $e)
                 <option value="{{$e->idestado}}">{{$e->estado}}</option>
                  @endforeach
@@ -497,12 +497,12 @@
                   <input id="idequipo" readonly type="text" class="form-control" name="idequipo" value="{{old('idequipo')}}">
                 </div>
               </div>
-           
-              
-                  
+
+
+
               <input type="hidden" class="form-control" name="users_id" value="{{ Auth::user()->id }}">
-                
-                  
+
+
 
                 <input type="hidden" id="codigosubgrupo" name="codigosubgrupo">
                 @if (count($errors)>0)

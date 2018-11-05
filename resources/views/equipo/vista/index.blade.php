@@ -105,11 +105,16 @@
               </li>
             </ul>
 
-            <a href="{{route('equipo.ficha',$equipo->idequipo)}}" target="_blank" class="btn btn-success btn-block"><b>Ficha técnica</b></a>
-          <a  href="{{route('equipo.vista',$equipo->idequipo)}}" target="_blank" class="btn btn-warning btn-block"><b>Solicitudes</b></a>
-          <a  href="{{route('carac',$equipo->idequipo)}}"  class="btn btn-info btn-block"><b>Características</b></a>
+          <!--ficha tecnica-->
+          <a href="{{route('equipo.ficha',$equipo->idequipo)}}" target="_blank" class="btn btn-success btn-block"><b>Ficha técnica</b></a>
+          <!--historial tecnico-->
           <a href="{{route('equipo.rutina',$equipo->idequipo)}}" target="_blank" class="btn btn-primary btn-block"><b>Historial técnico</b></a>
-          <a href="{{route('equipo.HistorialRutina',$equipo->idequipo)}}" target="_blank"  class="btn btn-danger btn-block"><b>Historial de mantenimientos</b></a>
+          <!--caracteristicas del equipo-->
+          <a  href="{{route('carac',$equipo->idequipo)}}"  class="btn btn-info btn-block"><b>Ver todas las características</b></a>
+          <!--index de rutinas del equipo-->
+          <a href="{{route('equipo.HistorialRutina',$equipo->idequipo)}}" target="_blank" class="btn btn-danger btn-block"><b>Ver todos los mantenimientos</b></a>
+          <!--index de las solicitudes-->
+          <a  href="{{route('equipo.vista',$equipo->idequipo)}}" target="_blank" class="btn btn-warning btn-block"><b>Ver todas las solicitudes</b></a>
 
           </div>
           <!-- /.box-body -->
@@ -380,8 +385,8 @@
 
                           @foreach ($imagen_equipo as $img)
                               <div class="col-sm-3">
-                            <img class="img-responsive" src="{{asset('img/equipo/'.$img->imagen)}}" alt="{{$img->descripcion_imagen}}">
-
+                          <a href="{{asset('img/equipo/'.$img->imagen)}}" target="_blank"> <img class="img-responsive" src="{{asset('img/equipo/'.$img->imagen)}}" alt="{{$img->descripcion_imagen}}">
+                            </a>
 
                             </div>
 

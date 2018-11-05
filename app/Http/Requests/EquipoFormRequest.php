@@ -54,7 +54,7 @@ class EquipoFormRequest extends FormRequest
           'id_proveedor' => 'numeric',
           'idunidadsalud' => 'required',
           'idarea' => 'required',
-          'idestado' => 'numeric',
+          'idestado' => 'required|numeric',
           'idservicio_tecnico' => 'numeric',
           'idfabricante' => 'numeric',
           'idhospital' => 'required',
