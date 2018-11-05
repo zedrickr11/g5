@@ -23,15 +23,15 @@
 <!-- /.box-header -->
 
 <div class="box-body">
-
-<div class="col-md-12">
-<div class="table-responsive">
-<table  class="table table-bordered table-striped" style="table-layout:fixed;word-wrap:break-word;">
+  @include('equipo.existente.search')
+<div class="col-md-12  table-responsive">
+<div >
+<table  class="table table-bordered table-striped" >
 <thead>
 <tr>
   <th>Tipo de rutina</th>
 <th>Frecuencia</th>
-<th>Fecha realización</th>
+<th>Fecha programada</th>
 <th>Estado de rutina</th>
 <th>Ver rutina</th>
 
@@ -63,7 +63,7 @@
 <p>No tiene frecuencia</p>     @endif
 
  </td>
-<td>{{$rutina->fecha_realizacion_rutina}}</td>
+<td>{{$rutina->start}}</td>
 <td>{{$rutina->estado_rutina}}</td>
 <td>
 
@@ -93,6 +93,7 @@
 
 
 </div>
+  {!! $rutinas->appends(['id'=>request('id'),'searchTextfecha1'=>request('searchTextfecha1'),'searchTextfecha2'=>request('searchTextfecha2'),'searchRutina'=>request('searchRutina'),'searchEstado'=>request('searchEstado')])->links() !!}
 </div>
 </div>
 

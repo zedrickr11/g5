@@ -58,19 +58,56 @@ class rumanController extends Controller
     if ($request)
     {
         $query=trim($request->get('searchText'));
+          $query2=trim($request->get('searchTextfecha1'));
+          $query3=trim($request->get('searchTextfecha2'));
+            $query4=trim($request->get('searchRutina'));
+          $query5=trim($request->get('searchEstado'));
+              $aceptar=trim($request->get('fechaaceptar'));
+              if($aceptar!='aceptar'){
         $ruman=DB::table('rutina_mantenimiento as f')
         ->join('tipo_rutina as d','f.idtipo_rutina','=','d.idtipo_rutina')
-->join('equipo as e','f.idequipo','=','e.idequipo')
+          ->join('notificacion as noti','f.idrutina_mantenimiento','=','noti.rutina_mantenimiento_idrutina_mantenimiento')
+       ->join('equipo as e','f.idequipo','=','e.idequipo')
 
 
 
-      ->select('e.*','f.idrutina_mantenimiento','d.tipo_rutina as idtipo_rutina','f.estado_rutina')
+      ->select('noti.*','e.*','f.idrutina_mantenimiento','d.tipo_rutina as idtipo_rutina','f.estado_rutina')
 
 
        ->where('e.idequipo','LIKE','%'.$query.'%')
+       ->where('f.idtipo_rutina','LIKE','%'.$query4.'%')
+       ->where('f.estado_rutina','LIKE','%'.$query5.'%')
+    //   ->where('noti.start','BETWEEN','>='.$query2.'%')
+      ->where('noti.start','>=',$query2)
+        //->where('noti.start','<=',$query3)}
+    //    ->where('noti.start','BETWEEN',$query2,'and',$query3)
         ->orderBy('idrutina_mantenimiento','desc')
-        ->paginate(10);
-        return view('equipo.rutina.ruman.index',["ruman"=>$ruman,"searchText"=>$query]);
+        ->paginate(10);}else{
+          $ruman=DB::table('rutina_mantenimiento as f')
+          ->join('tipo_rutina as d','f.idtipo_rutina','=','d.idtipo_rutina')
+            ->join('notificacion as noti','f.idrutina_mantenimiento','=','noti.rutina_mantenimiento_idrutina_mantenimiento')
+         ->join('equipo as e','f.idequipo','=','e.idequipo')
+
+
+
+        ->select('noti.*','e.*','f.idrutina_mantenimiento','d.tipo_rutina as idtipo_rutina','f.estado_rutina')
+
+
+         ->where('e.idequipo','LIKE','%'.$query.'%')
+         ->where('f.idtipo_rutina','LIKE','%'.$query4.'%')
+         ->where('f.estado_rutina','LIKE','%'.$query5.'%')
+      //   ->where('noti.start','BETWEEN','>='.$query2.'%')
+        ->where('noti.start','>=',$query2)
+          ->where('noti.start','<=',$query3)
+      //    ->where('noti.start','BETWEEN',$query2,'and',$query3)
+          ->orderBy('idrutina_mantenimiento','desc')
+          ->paginate(10);
+
+
+
+
+        }
+        return view('equipo.rutina.ruman.index',["ruman"=>$ruman,"searchText"=>$query,"searchTextfecha1"=>$query2,"searchTextfecha2"=>$query3,"searchRutina"=>$query4,"searchEstado"=>$query5,"fechaaceptar"=>$aceptar]);
     }
 
   //  $subcaractec=subcaractec::all();

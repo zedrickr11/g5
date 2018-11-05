@@ -828,9 +828,9 @@
         <div class="active tab-pane" id="rutina">
 
           <div class="box-body col-md-6">
-            <table width="280" cellspacing="1" cellpadding="3" border="0" bgcolor="#1E679A">
+            <table width="280" cellspacing="1" cellpadding="3" border="3" >
             <tr>
-              <td bgcolor="#ffffcc">
+              <td  bgcolor="#ffffcc">
 
 
         <h3>Preventivo</h3>
@@ -982,7 +982,7 @@
                               </div>
 @endif
                                 <div class="box-body col-md-6">
-                                  <table width="280" cellspacing="1" cellpadding="3" border="0" bgcolor="#1E679A">
+                                      <table width="280" cellspacing="1" cellpadding="3" border="3" >
                                   <tr>
                                     <td bgcolor="#9AF0F7">
                             <h3>Correctivo</h3>
@@ -1077,7 +1077,7 @@
 
          <div class="tab-pane" id="prueba">
                <div class="box-body col-md-6">
-           <table width="280" cellspacing="1" cellpadding="3" border="0" bgcolor="#1E679A">
+                       <table width="280" cellspacing="1" cellpadding="3" border="3" >
            <tr>
              <td bgcolor="#9AF0F7">
          <h3>Pruebas</h3>

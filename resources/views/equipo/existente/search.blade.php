@@ -1,5 +1,5 @@
 
-<form class="" action="{{route('ruman.index')}}" method="get">
+<form class="" href="javascript:history.back(-1);" method="get">
   {!! csrf_field() !!}
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 <div class="col-md-4">
@@ -22,6 +22,10 @@
   </div>
 
 
+</div>
+<div class="col-md-4">
+  <br>
+<button type="submit" class="btn btn-primary "> <span class="fa fa-fw fa-search"></span> </button></span>
 </div>
 </div>
 
@@ -95,12 +99,11 @@ Estado de rutina:
 
   <div class="col-md-4">
     <div class="form-group">
-      Buscar por ID de equipo:
+
       <div class="input-group">
-        <input type="text" class="form-control" name="searchText" placeholder="Buscar por ID de equipo..." value="{{$searchText}}">
+
         <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary "> <span class="fa fa-fw fa-search"></span> </button></span>
-      </div>
+        </div>
     </div>
 
 

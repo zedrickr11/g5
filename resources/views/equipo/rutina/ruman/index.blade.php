@@ -25,21 +25,30 @@
             <!-- /.box-header -->
 
             <div class="box-body">
+              Buscar:
+              <br>
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
                   @include('equipo.rutina.ruman.search')
-                  <br>
-                  <br>
-                  <br>
+                </div>
+
+
+                </div>
+
+
+
+
 
               <div class="table-responsive">
                 <table  class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Id</th>
+                    <th>ID</th>
                     <th>Equipo</th>
                     <th>Tipo de rutina</th>
 
                     <th>Estado</th>
-
+                    <th>Fecha programada</th>
 
 
 
@@ -49,17 +58,20 @@
                   <tbody>
             @foreach ($ruman as $cat)
             <tr>
-              <td>{{ $cat->idrutina_mantenimiento}}</td>
+              <td>{{ $cat->idequipo}}</td>
               <td>{{ $cat->nombre_equipo}}</td>
 
               <td>{{ $cat->idtipo_rutina}}</td>
 
               <td>{{ $cat->estado_rutina}}</td>
+                <td>{{ $cat->start}}</td>
 
 
               <td>
+                <a href="{{route('equipo.RutinaPdf',$cat->idrutina_mantenimiento)}}" target="_blank">
+                  <button type="button" class="btn btn-success btn-sm" name="button"><span class="fa fa-edit"></span></button>
+                </a>
 
-                
                   <a href="{{route('ruman.show',$cat->idrutina_mantenimiento)}}">
                     <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></button>
                   </a>
@@ -82,7 +94,7 @@
                   </tfoot>
           </table>
               </div>
-              {!! $ruman->appends(['searchText'=>request('searchText')])->links() !!}
+              {!! $ruman->appends(['searchText'=>request('searchText'),'searchTextfecha1'=>request('searchTextfecha1'),'searchTextfecha2'=>request('searchTextfecha2'),'searchRutina'=>request('searchRutina'),'searchEstado'=>request('searchEstado')])->links() !!}
 
 
             </div>

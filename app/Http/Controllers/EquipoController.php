@@ -195,6 +195,17 @@ class EquipoController extends Controller
 
     public function ficha($id)
     {
+      $partes=DB::table('parte_equipo as pa')
+    ->join('equipo as eq','eq.idequipo','pa.idequipo')
+    ->where('eq.idequipo', $id)
+    ->select('pa.*')
+    ->get();
+
+    $accesorio=DB::table('accesorio_equipo as ac')
+  ->join('equipo as eq','eq.idequipo','ac.idequipo')
+  ->where('eq.idequipo', $id)
+  ->select('ac.*')
+  ->get();
         $tipomanual=DB::table('tipomanual as ti')
       ->join('detalle_manual as det','det.idtipomanual','ti.idtipomanual')
       ->join('equipo as eq','eq.idequipo','det.idequipo')
@@ -236,7 +247,7 @@ class EquipoController extends Controller
         ->get();
     //$view= view("equipo.caracteristica.fichatecnica.show",compact('equipo'));
 
-            $pdf = PDF::loadView("equipo.caracteristica.fichatecnica.show",compact('tipomanual','manual','caracespefun','valorrefesp','detcaracesp','repuesto','fabricante','equipo','proveedor','unidadsalud','area',
+            $pdf = PDF::loadView("equipo.caracteristica.fichatecnica.show",compact('accesorio','partes','tipomanual','manual','caracespefun','valorrefesp','detcaracesp','repuesto','fabricante','equipo','proveedor','unidadsalud','area',
                         'estado','serviciotecnico','fabricante','hospital','departamento',
                         'region','grupo','subgrupo','tipounidadsalud','detcaractec','CaracTec','subcaractec','valorreftec'));
 
@@ -319,14 +330,79 @@ class EquipoController extends Controller
     }
 
 
-    public function HistorialRutina($id)
+    public function HistorialRutina($id,Request $request)
     {
+      if ($request)
+      {  $query2=trim($request->get('searchTextfecha1'));
+        $query3=trim($request->get('searchTextfecha2'));
+          $query4=trim($request->get('searchRutina'));
+        $query5=trim($request->get('searchEstado'));
+            $aceptar=trim($request->get('fechaaceptar'));
+          $query=trim($request->get('searchText'));
+            $ideq=trim($request->get('idequ'));
+
+
+          if($aceptar!='aceptar'){
+    $rutinas=DB::table('rutina_mantenimiento as f')
+    ->join('tipo_rutina as d','f.idtipo_rutina','=','d.idtipo_rutina')
+      ->join('notificacion as noti','f.idrutina_mantenimiento','=','noti.rutina_mantenimiento_idrutina_mantenimiento')
+   ->join('equipo as e','f.idequipo','=','e.idequipo')
+
+
+
+  ->select('noti.*','e.*','f.idrutina_mantenimiento','d.tipo_rutina as idtipo_rutina','f.*')
+
+
+->where('f.idequipo',$id)
+
+   ->where('f.idtipo_rutina','LIKE','%'.$query4.'%')
+   ->where('f.estado_rutina','LIKE','%'.$query5.'%')
+//   ->where('noti.start','BETWEEN','>='.$query2.'%')
+  ->where('noti.start','>=',$query2)
+    //->where('noti.start','<=',$query3)
+//    ->where('noti.start','BETWEEN',$query2,'and',$query3)
+    ->orderBy('idrutina_mantenimiento','desc')
+    ->paginate(10);}else{
+      $rutinas=DB::table('rutina_mantenimiento as f')
+      ->join('tipo_rutina as d','f.idtipo_rutina','=','d.idtipo_rutina')
+        ->join('notificacion as noti','f.idrutina_mantenimiento','=','noti.rutina_mantenimiento_idrutina_mantenimiento')
+     ->join('equipo as e','f.idequipo','=','e.idequipo')
+
+
+
+    ->select('noti.*','e.*','f.idrutina_mantenimiento','d.tipo_rutina as idtipo_rutina','f.*')
+
+->where('f.idequipo',$id)
+
+     ->where('f.idtipo_rutina','LIKE','%'.$query4.'%')
+     ->where('f.estado_rutina','LIKE','%'.$query5.'%')
+  //   ->where('noti.start','BETWEEN','>='.$query2.'%')
+    ->where('noti.start','>=',$query2)
+      ->where('noti.start','<=',$query3)
+  //    ->where('noti.start','BETWEEN',$query2,'and',$query3)
+      ->orderBy('idrutina_mantenimiento','desc')
+      ->paginate(10);
+
+
+
+
+    }
+          /*
+        $rutinas=DB::table('rutina_mantenimiento as rut')
+          ->select('*')
+          ->where('rut.idequipo',$id)
+            ->where('rut.idequipo','LIKE','%'.$query.'%')
+          ->orderBy('rut.idrutina_mantenimiento','desc')
+          ->paginate(10);*/
+          return view('equipo.existente.rutinas',["rutinas"=>$rutinas,"id"=>$id,"searchText"=>$query,"searchTextfecha1"=>$query2,"searchTextfecha2"=>$query3,"searchRutina"=>$query4,"searchEstado"=>$query5,"fechaaceptar"=>$aceptar]);
+      }
+      /*
       $rutinas=DB::table('rutina_mantenimiento as rut')
       ->select('*')
       ->where('rut.idequipo',$id)
       ->get();
 
-      return view('equipo.existente.rutinas', compact('rutinas','id'));
+      return view('equipo.existente.rutinas', compact('rutinas','id'));*/
     }
 
 
