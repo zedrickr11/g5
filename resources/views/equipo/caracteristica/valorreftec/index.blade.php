@@ -50,9 +50,7 @@
                   <a href="{{route('valorreftec.edit',$cat->idvalor_ref_tec)}}">
                     <button type="button" class="btn btn-warning btn-sm" name="button"><span class="glyphicon glyphicon-cog"></button>
                   </a>
-                  <a href="{{route('valorreftec.show',$cat->idvalor_ref_tec)}}">
-                    <button type="button" class="btn btn-info btn-sm" name="button"><span class="glyphicon glyphicon-info-sign"></button>
-                  </a>
+                
                   <!-- <form style="display: inline" method="POST" action="{{route('valorreftec.destroy', $cat->idvalor_ref_tec)}}">
                   {!!method_field('DELETE')!!}
                   {!!csrf_field()!!}
