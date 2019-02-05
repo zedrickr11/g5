@@ -57,7 +57,7 @@ class SubgrupoController extends Controller
         }
         public function codigosubgrupo(){
           $grupo_id = Input::get('grupo_id');
-          $confsubgrupo = DB::table('Conf_subgrupo as c')
+          $confsubgrupo = DB::table('conf_subgrupo as c')
           ->select('c.actual')
           ->where('c.idgrupo','=',$grupo_id)
           ->get();
